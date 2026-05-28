@@ -1,5 +1,9 @@
-<script>
-	import Map from '$lib/components/Map.svelte';
-</script>
+<script lang="ts">
+	import { goto } from '$app/navigation';
+	import { onMount } from 'svelte';
 
-<Map />
+	onMount(() => {
+		const params = window.location.search;
+		goto('/' + params);
+	});
+</script>
