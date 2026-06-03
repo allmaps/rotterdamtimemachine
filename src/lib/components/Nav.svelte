@@ -81,6 +81,7 @@
     </button>
 </div>
 
+<p class="mb-1 text-xs font-bold tracking-widest text-gray-500 uppercase">Tijdperiode</p>
 <div class="mb-3 flex flex-wrap gap-1">
     <button onclick={() => (periodeFilter = 'alle')}
         class="rounded px-2 py-1 text-xs font-bold {periodeFilter === 'alle' ? 'bg-gray-800 text-white' : 'bg-gray-200 text-gray-600'}">
