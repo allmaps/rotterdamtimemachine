@@ -1,8 +1,11 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import maplibregl from 'maplibre-gl';
+	import { WarpedMapLayer } from '@allmaps/maplibre';
 	import 'maplibre-gl/dist/maplibre-gl.css';
 	import { viewState, flyTo, selectedLocation, mapView } from '$lib/store.svelte';
 	import { replaceState } from '$app/navigation';
+	import { MapCollection } from '$lib/models/MapCollection';
 
 	// Optionele props — als ze meegegeven worden, is het vergelijkingsmodus
 	let {
@@ -24,14 +27,19 @@
 	let map: any;
 	let loaded: boolean = $state(false);
 	let isSyncing = false;
-	let maplibregl: any = null;
-	let warpedMapLayer: any = null;
+	let warpedMapLayer = new WarpedMapLayer({ visible: false });
+
+	const collection = new MapCollection();
+	const allMaps = collection.getAllMaps();
+	const mapIdsByAnnotation = new Map<string, Set<string>>();
 
 	// Laad de kaartlaag als de annotatie verandert
 	$effect(() => {
-		if (loaded && actieveAnnotation) {
-			warpedMapLayer.clear();
-			warpedMapLayer.addGeoreferenceAnnotationByUrl(actieveAnnotation);
+		if (loaded && actieveAnnotation && mapIdsByAnnotation.size > 0) {
+			const idsToShow = mapIdsByAnnotation.get(actieveAnnotation) ?? new Set();
+			warpedMapLayer.setMapsOptions((id: string) =>
+				idsToShow.has(id) ? { visible: true } : { visible: false }
+			);
 		}
 	});
 
@@ -75,16 +83,6 @@
 	});
 
 	onMount(async () => {
-		// Dynamic imports so SSR doesn't try to resolve these modules
-		const ml = await import('maplibre-gl');
-		maplibregl = ml.default ?? ml;
-
-		const allmaps = await import('@allmaps/maplibre').catch(() => null);
-		const WarpedMapLayer = allmaps ? allmaps.WarpedMapLayer : null;
-		if (WarpedMapLayer) {
-			warpedMapLayer = new WarpedMapLayer();
-		}
-
 		map = new maplibregl.Map({
 			style: 'https://tiles.openfreemap.org/styles/liberty',
 			container: mapElement,
@@ -118,8 +116,15 @@
 			}
 		});
 
-		map.on('load', () => {
-			if (warpedMapLayer) map.addLayer(warpedMapLayer);
+		map.on('load', async () => {
+			map.addLayer(warpedMapLayer);
+			await Promise.all(
+				allMaps.map(async (mapCard) => {
+					const annotationUrl = mapCard.metadata.annotation;
+					const ids = await warpedMapLayer.addGeoreferenceAnnotationByUrl(annotationUrl);
+					mapIdsByAnnotation.set(annotationUrl, new Set(ids));
+				})
+			);
 			loaded = true;
 		});
 	});
