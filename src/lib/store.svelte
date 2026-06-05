@@ -1,21 +1,20 @@
 <script module lang="ts">
+	const savedFavorites =
+		typeof localStorage !== 'undefined'
+			? JSON.parse(localStorage.getItem('favorites') ?? '[]')
+			: [];
 
-const savedFavorites =
-    typeof localStorage !== 'undefined'
-        ? JSON.parse(localStorage.getItem('favorites') ?? '[]')
-        : [];
+	export const favorites = $state<string[]>(savedFavorites);
 
-export const favorites = $state<string[]>(savedFavorites);
-
-export function toggleFavorite(annotation: string) {
-    const index = favorites.indexOf(annotation);
-    if (index === -1) {
-        favorites.push(annotation);
-    } else {
-        favorites.splice(index, 1);
-    }
-    localStorage.setItem('favorites', JSON.stringify(favorites));
-}
+	export function toggleFavorite(annotation: string) {
+		const index = favorites.indexOf(annotation);
+		if (index === -1) {
+			favorites.push(annotation);
+		} else {
+			favorites.splice(index, 1);
+		}
+		localStorage.setItem('favorites', JSON.stringify(favorites));
+	}
 
 	export const viewState = $state({ annotation: '', opacity: 100 });
 

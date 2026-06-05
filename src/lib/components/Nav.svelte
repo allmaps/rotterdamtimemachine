@@ -43,8 +43,25 @@
 
 	let currentOpacity = $derived(onSelect ? (opacity ?? 100) : viewState.opacity);
 	let toonAlleen = $state(false);
+	let periodeFilter = $state('alle');
+
 	let zichtbareKaarten = $derived(
-		toonAlleen ? maps.filter((m) => favorites.includes(m.metadata.annotation)) : maps
+		maps.filter((m) => {
+			const favorietOk = toonAlleen ? favorites.includes(m.metadata.annotation) : true;
+			const periodeOk =
+				periodeFilter === 'alle'
+					? true
+					: periodeFilter === 'voor1850'
+						? m.metadata.year < 1850
+						: periodeFilter === '1850-1900'
+							? m.metadata.year >= 1850 && m.metadata.year < 1900
+							: periodeFilter === '1900-1940'
+								? m.metadata.year >= 1900 && m.metadata.year < 1940
+								: periodeFilter === 'na1940'
+									? m.metadata.year >= 1940
+									: true;
+			return favorietOk && periodeOk;
+		})
 	);
 </script>
 
@@ -52,27 +69,72 @@
 	class="w-56 flex-none overflow-y-auto bg-gray-50 p-4"
 	style="font-family: 'Barlow Condensed', sans-serif;"
 >
-	<h2 class="mb-4 text-sm font-bold tracking-widest text-gray-500 uppercase">Kaartcollectie</h2>
-	<ul class="flex flex-col divide-y divide-gray-200">
-		<div class="mb-3 flex gap-2">
-			<button
-				onclick={() => (toonAlleen = false)}
-				class="flex-1 rounded py-1 text-xs font-bold {!toonAlleen
-					? 'bg-gray-800 text-white'
-					: 'bg-gray-200 text-gray-600'}"
-			>
-				Alle kaarten
-			</button>
-			<button
-				onclick={() => (toonAlleen = true)}
-				class="flex-1 rounded py-1 text-xs font-bold {toonAlleen
-					? 'bg-red-500 text-white'
-					: 'bg-gray-200 text-gray-600'}"
-			>
-				❤️ Favorieten
-			</button>
-		</div>
+	<h2 class="mb-3 text-sm font-bold tracking-widest text-gray-500 uppercase">Kaartcollectie</h2>
 
+	<div class="mb-3 flex gap-2">
+		<button
+			onclick={() => (toonAlleen = false)}
+			class="flex-1 rounded py-1 text-xs font-bold {!toonAlleen
+				? 'bg-gray-800 text-white'
+				: 'bg-gray-200 text-gray-600'}"
+		>
+			Alle kaarten
+		</button>
+		<button
+			onclick={() => (toonAlleen = true)}
+			class="flex-1 rounded py-1 text-xs font-bold {toonAlleen
+				? 'bg-red-500 text-white'
+				: 'bg-gray-200 text-gray-600'}"
+		>
+			❤️ Favorieten
+		</button>
+	</div>
+
+	<p class="mb-1 text-xs font-bold tracking-widest text-gray-500 uppercase">Tijdperiode</p>
+	<div class="mb-3 flex flex-wrap gap-1">
+		<button
+			onclick={() => (periodeFilter = 'alle')}
+			class="rounded px-2 py-1 text-xs font-bold {periodeFilter === 'alle'
+				? 'bg-gray-800 text-white'
+				: 'bg-gray-200 text-gray-600'}"
+		>
+			Alle
+		</button>
+		<button
+			onclick={() => (periodeFilter = 'voor1850')}
+			class="rounded px-2 py-1 text-xs font-bold {periodeFilter === 'voor1850'
+				? 'bg-orange-500 text-white'
+				: 'bg-gray-200 text-gray-600'}"
+		>
+			&lt; 1850
+		</button>
+		<button
+			onclick={() => (periodeFilter = '1850-1900')}
+			class="rounded px-2 py-1 text-xs font-bold {periodeFilter === '1850-1900'
+				? 'bg-yellow-500 text-white'
+				: 'bg-gray-200 text-gray-600'}"
+		>
+			1850-1900
+		</button>
+		<button
+			onclick={() => (periodeFilter = '1900-1940')}
+			class="rounded px-2 py-1 text-xs font-bold {periodeFilter === '1900-1940'
+				? 'bg-blue-500 text-white'
+				: 'bg-gray-200 text-gray-600'}"
+		>
+			1900-1940
+		</button>
+		<button
+			onclick={() => (periodeFilter = 'na1940')}
+			class="rounded px-2 py-1 text-xs font-bold {periodeFilter === 'na1940'
+				? 'bg-green-600 text-white'
+				: 'bg-gray-200 text-gray-600'}"
+		>
+			&gt; 1940
+		</button>
+	</div>
+
+	<ul class="flex flex-col divide-y divide-gray-200">
 		{#each zichtbareKaarten as map}
 			<li class="flex items-center">
 				<button
