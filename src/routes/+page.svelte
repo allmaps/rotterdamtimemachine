@@ -87,6 +87,7 @@
 						class="relative h-72 flex-none border-b-2 border-gray-300 md:relative md:h-auto md:flex-1 md:border-b-0"
 					>
 						<Map annotation={comparison.leftAnnotation} opacity={comparison.leftOpacity} />
+						<MapInfo annotation={comparison.leftAnnotation} opacity={comparison.leftOpacity} onOpacityChange={(v) => (comparison.leftOpacity = v)} />
 					</div>
 				</div>
 				<!-- Panel 2 -->
@@ -104,6 +105,7 @@
 					<!-- Kaart -->
 					<div class="relative h-72 flex-none md:relative md:h-auto md:flex-1">
 						<Map annotation={comparison.rightAnnotation} opacity={comparison.rightOpacity} />
+						<MapInfo annotation={comparison.rightAnnotation} opacity={comparison.rightOpacity} onOpacityChange={(v) => (comparison.rightOpacity = v)} />
 					</div>
 				</div>
 			</div>
