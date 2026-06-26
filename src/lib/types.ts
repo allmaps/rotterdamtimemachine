@@ -10,3 +10,8 @@ export type MapMetadata = {
 	};
 	annotation: string;
 };
+
+export type MapLocation = {
+	center: [number, number];
+	zoom: number;
+};

@@ -1,59 +1,34 @@
 <script lang="ts">
 	import { MapCollection } from '$lib/models/MapCollection';
-	import { viewState, favorites, toggleFavorite, loadedAnnotations } from '$lib/store.svelte';
-
+	import { favorites, toggleFavorite, loadedAnnotations } from '$lib/store.svelte';
 
 	let {
-		onSelect = null,
-		opacity = null,
-		onOpacityChange = null,
-		onOverOpen = null,
-		onShareOpen = null
+		annotation = $bindable()
 	}: {
-		onSelect?: ((annotation: string) => void) | null;
-		opacity?: number | null;
-		onOpacityChange?: ((value: number) => void) | null;
-		onOverOpen?: (() => void) | null;
-		onShareOpen?: (() => void) | null;
+		annotation?: string;
 	} = $props();
 
 	const collection = new MapCollection();
 	const maps = collection.getAllMaps();
 
-	let activeAnnotation = $state(maps[0]?.metadata.annotation);
-
 	$effect(() => {
-		if (!onSelect) {
-			viewState.annotation = maps[0]?.metadata.annotation;
+		if (!annotation && maps[0]) {
+			annotation = maps[0].metadata.annotation;
 		}
 	});
 
 	function select(map: (typeof maps)[0]) {
-		activeAnnotation = map.metadata.annotation;
-
-		if (onSelect) {
-			onSelect(map.metadata.annotation);
-		} else {
-			viewState.annotation = map.metadata.annotation;
-		}
+		annotation = map.metadata.annotation;
 	}
 
-	function handleOpacity(e: Event) {
-		const value = Number((e.target as HTMLInputElement).value);
-		if (onOpacityChange) {
-			onOpacityChange(value);
-		} else {
-			viewState.opacity = value;
-		}
-	}
-
-	let currentOpacity = $derived(onSelect ? (opacity ?? 100) : viewState.opacity);
+	let activeAnnotation = $derived(annotation ?? maps[0]?.metadata.annotation);
 	let toonAlleen = $state(false);
 	let periodeFilter = $state('alle');
 
 	let zichtbareKaarten = $derived(
 		maps.filter((m) => {
-			const beschikbaar = loadedAnnotations.size === 0 || loadedAnnotations.has(m.metadata.annotation);
+			const beschikbaar =
+				loadedAnnotations.size === 0 || loadedAnnotations.has(m.metadata.annotation);
 			if (!beschikbaar) return false;
 			const favorietOk = toonAlleen ? favorites.includes(m.metadata.annotation) : true;
 			const periodeOk =
@@ -73,26 +48,7 @@
 	);
 </script>
 
-<aside
-    class="bg-gray-50 h-full w-72 flex-none overflow-y-auto p-4"
-	style="font-family: 'Barlow Condensed', sans-serif;"
->
-	<div class="mb-4 flex flex-col gap-2 md:hidden">
-		
-		<div class="flex gap-2">
-			{#if onOverOpen}
-				<button onclick={onOverOpen} class="flex-1 rounded bg-gray-200 py-1 text-sm text-gray-700"
-					>Over</button
-				>
-			{/if}
-			{#if onShareOpen}
-				<button onclick={onShareOpen} class="flex-1 rounded bg-gray-200 py-1 text-sm text-gray-700"
-					>Delen</button
-				>
-			{/if}
-		</div>
-	</div>
-
+<aside class="h-full w-72 flex-none overflow-y-auto bg-gray-50 p-4">
 	<h2 class="mb-3 text-sm font-bold tracking-widest text-gray-500 uppercase">Kaartcollectie</h2>
 
 	<div class="mb-3 flex gap-2">
@@ -126,9 +82,8 @@
 		<option value="na1940">Na 1940</option>
 	</select>
 
-
 	<ul class="mt-6 flex flex-col divide-y divide-gray-200">
-		{#each zichtbareKaarten as map}
+		{#each zichtbareKaarten as map (map.metadata.annotation)}
 			<li class="flex items-center">
 				<button
 					onclick={() => select(map)}

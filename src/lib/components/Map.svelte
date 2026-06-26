@@ -1,37 +1,65 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { SvelteMap } from 'svelte/reactivity';
 	import maplibregl from 'maplibre-gl';
 	import { WarpedMapLayer } from '@allmaps/maplibre';
 	import 'maplibre-gl/dist/maplibre-gl.css';
-	import { viewState, flyTo, selectedLocation, mapView, zoomTo, loadedAnnotations } from '$lib/store.svelte';
-	import { replaceState } from '$app/navigation';
+	import {
+		viewState,
+		flyTo,
+		selectedLocation,
+		mapView,
+		zoomTo,
+		loadedAnnotations
+	} from '$lib/store.svelte';
+	import { afterNavigate, replaceState } from '$app/navigation';
+	import { resolve } from '$app/paths';
+	import { getProtomapsLayers, getProtomapsStyle } from '$lib/basemap';
 	import { MapCollection } from '$lib/models/MapCollection';
+	import type { MapLocation } from '$lib/types';
 
-	// Optionele props — als ze meegegeven worden, is het vergelijkingsmodus
 	let {
-		annotation = undefined,
-		opacity = undefined
+		annotation = $bindable(viewState.annotation),
+		opacity = $bindable(viewState.opacity),
+		currentLocation = $bindable({
+			center: [...mapView.center] as [number, number],
+			zoom: mapView.zoom
+		}),
+		syncUrl = false,
+		enableFlyTo = false,
+		enableLocationMarker = false,
+		enableKeyboardToggle = false
 	}: {
 		annotation?: string;
 		opacity?: number;
+		currentLocation?: MapLocation;
+		syncUrl?: boolean;
+		enableFlyTo?: boolean;
+		enableLocationMarker?: boolean;
+		enableKeyboardToggle?: boolean;
 	} = $props();
 
-	// Vergelijkingsmodus als annotation prop meegegeven is
-	let isVergelijken = $derived(annotation !== undefined);
-
-	// Gebruik props in vergelijkingsmodus, anders de store
-	let actieveAnnotation = $derived(isVergelijken ? annotation : viewState.annotation);
-	let actieveOpacity = $derived((isVergelijken ? (opacity ?? 100) : viewState.opacity) / 100);
+	let actieveAnnotation = $derived(annotation);
+	let actieveOpacity = $derived((opacity ?? 100) / 100);
 
 	let mapElement: HTMLDivElement;
-	let map: any;
+	let map: maplibregl.Map;
+	let mapReady: boolean = $state(false);
 	let loaded: boolean = $state(false);
+	let routerReady = false;
 	let isSyncing = false;
 	let warpedMapLayer = new WarpedMapLayer({ visible: false });
 
 	const collection = new MapCollection();
 	const allMaps = collection.getAllMaps();
-	const mapIdsByAnnotation = new Map<string, Set<string>>();
+	const mapIdsByAnnotation = new SvelteMap<string, Set<string>>();
+	const basemapStyle = getProtomapsStyle('light');
+	const basemapLayers = getProtomapsLayers('light', undefined, {});
+	const loadedStyleImages = new Set<string>();
+
+	afterNavigate(() => {
+		routerReady = true;
+	});
 
 	// Laad de kaartlaag als de annotatie verandert
 	$effect(() => {
@@ -50,9 +78,9 @@
 		}
 	});
 
-	// Vlieg naar locatie (alleen normale modus)
+	// Vlieg naar locatie
 	$effect(() => {
-		if (!isVergelijken && loaded && flyTo.center) {
+		if (enableFlyTo && mapReady && flyTo.center) {
 			map.flyTo({ center: flyTo.center, zoom: 14 });
 		}
 	});
@@ -71,9 +99,9 @@
 		}
 	});
 
-	// Tijdelijke marker (alleen normale modus)
+	// Tijdelijke marker
 	$effect(() => {
-		if (!isVergelijken && loaded && selectedLocation.center) {
+		if (enableLocationMarker && mapReady && selectedLocation.center) {
 			const marker = new maplibregl.Marker().setLngLat(selectedLocation.center).addTo(map);
 			setTimeout(() => {
 				marker.remove();
@@ -82,13 +110,12 @@
 		}
 	});
 
-	// Synchroniseer kaarten in vergelijkingsmodus
+	// Synchroniseer kaartpositie met de gebonden locatie.
 	$effect(() => {
-		if (isVergelijken && loaded) {
-			const center = mapView.center;
-			const zoom = mapView.zoom;
-			const c = map.getCenter();
-			if (c.lng !== center[0] || c.lat !== center[1] || map.getZoom() !== zoom) {
+		if (mapReady && currentLocation) {
+			const center = currentLocation.center;
+			const zoom = currentLocation.zoom;
+			if (!mapMatchesLocation(center, zoom)) {
 				isSyncing = true;
 				map.jumpTo({ center, zoom });
 				isSyncing = false;
@@ -96,21 +123,51 @@
 		}
 	});
 
-	onMount(async () => {
-		map = new maplibregl.Map({
-			style: 'https://tiles.openfreemap.org/styles/liberty',
-			container: mapElement,
-			maxPitch: 0,
-			center: mapView.center,
-			zoom: mapView.zoom
+	function mapMatchesLocation(center: [number, number], zoom: number) {
+		const c = map.getCenter();
+		return (
+			Math.abs(c.lng - center[0]) < 0.000001 &&
+			Math.abs(c.lat - center[1]) < 0.000001 &&
+			Math.abs(map.getZoom() - zoom) < 0.000001
+		);
+	}
+
+	function updateBrowserUrl() {
+		if (!routerReady) return;
+
+		const center = map.getCenter();
+		const params = new URLSearchParams({
+			lat: center.lat.toFixed(5),
+			lng: center.lng.toFixed(5),
+			zoom: map.getZoom().toFixed(2),
+			year: String(annotation)
 		});
+		replaceState(resolve(`/?${params.toString()}`), {});
+	}
+
+	function isImageUrl(id: string) {
+		return /^https?:\/\//.test(id) || id.startsWith('/') || id.startsWith('data:');
+	}
+
+	onMount(() => {
+		map = new maplibregl.Map({
+			style: basemapStyle,
+			container: mapElement,
+			attributionControl: false,
+			maxPitch: 0,
+			center: currentLocation.center,
+			zoom: currentLocation.zoom
+		});
+		mapReady = true;
 
 		map.addControl(new maplibregl.NavigationControl());
 
 		map.on('move', () => {
 			if (!isSyncing) {
-				mapView.center = map.getCenter().toArray() as [number, number];
-				mapView.zoom = map.getZoom();
+				currentLocation = {
+					center: map.getCenter().toArray() as [number, number],
+					zoom: map.getZoom()
+				};
 			}
 		});
 
@@ -118,19 +175,13 @@
 			const center = map.getCenter();
 			console.log('Kaart gestopt op:', center.lng, center.lat, 'zoom:', map.getZoom());
 
-			// URL bijwerken (alleen normale modus)
-			if (!isVergelijken) {
-				const params = new URLSearchParams({
-					lat: center.lat.toFixed(5),
-					lng: center.lng.toFixed(5),
-					zoom: map.getZoom().toFixed(2),
-					year: String(viewState.annotation)
-				});
-				replaceState('?' + params.toString(), {});
+			if (syncUrl) {
+				updateBrowserUrl();
 			}
 		});
 
 		map.on('load', async () => {
+			basemapLayers.forEach((layer) => map.addLayer(layer, 'foreground'));
 			map.addLayer(warpedMapLayer);
 			await Promise.all(
 				allMaps.map(async (mapCard) => {
@@ -149,18 +200,36 @@
 			);
 			loaded = true;
 		});
+
+		map.on('styleimagemissing', async (event) => {
+			if (loadedStyleImages.has(event.id)) return;
+			if (!isImageUrl(event.id)) return;
+
+			loadedStyleImages.add(event.id);
+			try {
+				const image = await map.loadImage(event.id);
+				if (!map.hasImage(event.id)) {
+					map.addImage(event.id, image.data);
+				}
+			} catch {
+				loadedStyleImages.delete(event.id);
+			}
+		});
+
+		return () => {
+			map.remove();
+		};
 	});
 
-	// Toetsenbord toggle (alleen normale modus)
 	let previousOpacity: number | undefined;
 	function toggleMap(event: KeyboardEvent) {
-		if (isVergelijken || event.repeat) return;
+		if (!enableKeyboardToggle || event.repeat) return;
 		if (event.code === 'Space') {
 			if (previousOpacity === undefined) {
-				previousOpacity = viewState.opacity;
-				viewState.opacity = 0;
+				previousOpacity = opacity;
+				opacity = 0;
 			} else {
-				viewState.opacity = previousOpacity;
+				opacity = previousOpacity;
 				previousOpacity = undefined;
 			}
 		}
