@@ -1,8 +1,7 @@
 <script lang="ts">
 	import { MapCollection } from '$lib/models/MapCollection';
 	import { zoomTo } from '$lib/store.svelte';
-	import { ChevronDown, ChevronUp, LocateFixed } from '@lucide/svelte';
-	import { onMount } from 'svelte';
+	import { ChevronDown, ChevronLeft, ChevronRight, ChevronUp, LocateFixed } from '@lucide/svelte';
 
 	let {
 		annotation = $bindable(),
@@ -20,8 +19,7 @@
 	const maps = collection.getAllMaps();
 	const availableYears = [...new Set(maps.map((map) => map.metadata.year))].sort((a, b) => a - b);
 
-	let collapsed = $state(false);
-	let userToggled = false;
+	let collapsed = $state(true);
 	let resolvedYear = $derived(resolveAvailableYear(selectedYear));
 	let mapsForResolvedYear = $derived(maps.filter((map) => map.metadata.year === resolvedYear));
 	let activeOpacity = $derived(opacity ?? 100);
@@ -29,28 +27,17 @@
 		mapsForResolvedYear.find((map) => map.metadata.annotation === annotation) ??
 			mapsForResolvedYear[0]
 	);
+	let activeMapIndex = $derived(
+		mapsForResolvedYear.findIndex(
+			(map) => map.metadata.annotation === activeMap?.metadata.annotation
+		)
+	);
+	let hasMultipleMaps = $derived(mapsForResolvedYear.length > 1);
 
 	$effect(() => {
 		if (activeMap && !mapsForResolvedYear.some((map) => map.metadata.annotation === annotation)) {
 			annotation = activeMap.metadata.annotation;
 		}
-	});
-
-	onMount(() => {
-		const smallScreen = window.matchMedia('(max-width: 767px)');
-
-		function syncCollapsed(event: MediaQueryList | MediaQueryListEvent) {
-			if (!userToggled) {
-				collapsed = event.matches;
-			}
-		}
-
-		syncCollapsed(smallScreen);
-		smallScreen.addEventListener('change', syncCollapsed);
-
-		return () => {
-			smallScreen.removeEventListener('change', syncCollapsed);
-		};
 	});
 
 	function resolveAvailableYear(year: number) {
@@ -68,37 +55,87 @@
 	}
 
 	function toggleCollapsed() {
-		userToggled = true;
 		collapsed = !collapsed;
+	}
+
+	function selectRelativeMap(direction: -1 | 1) {
+		if (!hasMultipleMaps) return;
+
+		const currentIndex = activeMapIndex >= 0 ? activeMapIndex : 0;
+		const nextIndex =
+			(currentIndex + direction + mapsForResolvedYear.length) % mapsForResolvedYear.length;
+		const nextMap = mapsForResolvedYear[nextIndex];
+		if (nextMap) {
+			annotation = nextMap.metadata.annotation;
+		}
 	}
 </script>
 
 {#if activeMap}
 	{#if collapsed}
-		<button
-			type="button"
-			aria-expanded="false"
-			aria-controls={panelId}
-			onclick={toggleCollapsed}
-			class="absolute right-2 bottom-8 z-10 flex max-w-[calc(100%-1rem)] items-center gap-2 rounded-md border border-gray-200 bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-lg hover:bg-gray-50"
+		<div
+			class="absolute right-2 bottom-2 left-2 z-30 flex min-h-14 items-center gap-1 overflow-hidden rounded-md border border-gray-200 bg-white p-1 text-gray-900 shadow-lg md:right-auto md:left-1/2 md:w-80 md:-translate-x-1/2"
 		>
-			<span class="min-w-0 truncate">Kaartinfo {resolvedYear}</span>
-			<ChevronUp class="h-4 w-4 flex-none" />
-		</button>
+			<button
+				type="button"
+				aria-expanded="false"
+				aria-controls={panelId}
+				onclick={toggleCollapsed}
+				class="flex min-w-0 flex-1 items-center gap-2 rounded px-2 py-1 text-left hover:bg-gray-50"
+			>
+				<span
+					class="flex-none rounded bg-gray-900 px-1.5 py-0.5 font-heading text-[0.65rem] text-white"
+				>
+					{activeMap.metadata.year}
+				</span>
+				<span class="min-w-0 flex-1 truncate text-sm leading-4 font-semibold">
+					{activeMap.metadata.label}
+				</span>
+			</button>
+
+			{#if hasMultipleMaps}
+				<button
+					type="button"
+					aria-label="Vorige kaart"
+					onclick={() => selectRelativeMap(-1)}
+					class="flex h-10 w-8 flex-none items-center justify-center rounded text-gray-500 hover:bg-gray-100 hover:text-gray-900"
+				>
+					<ChevronLeft class="h-4 w-4" />
+				</button>
+				<button
+					type="button"
+					aria-label="Volgende kaart"
+					onclick={() => selectRelativeMap(1)}
+					class="flex h-10 w-8 flex-none items-center justify-center rounded text-gray-500 hover:bg-gray-100 hover:text-gray-900"
+				>
+					<ChevronRight class="h-4 w-4" />
+				</button>
+			{/if}
+
+			<button
+				type="button"
+				aria-label="Kaartinfo uitklappen"
+				aria-expanded="false"
+				aria-controls={panelId}
+				onclick={toggleCollapsed}
+				class="flex h-10 w-8 flex-none items-center justify-center rounded text-gray-500 hover:bg-gray-100 hover:text-gray-900"
+			>
+				<ChevronUp class="h-4 w-4" />
+			</button>
+		</div>
 	{:else}
 		<div
 			id={panelId}
-			class="absolute right-2 bottom-8 left-2 z-10 max-h-[min(32rem,calc(100%-4rem))] overflow-x-hidden overflow-y-auto rounded-md border border-gray-200 bg-white p-2 text-gray-900 shadow-lg md:left-auto md:w-80"
+			class="absolute right-2 bottom-2 left-2 z-30 max-h-[min(32rem,calc(100%-1rem))] overflow-x-hidden overflow-y-auto rounded-md border border-gray-200 bg-white p-2 text-gray-900 shadow-lg md:right-auto md:left-1/2 md:w-80 md:-translate-x-1/2"
 		>
 			<div class="mb-2 flex min-w-0 items-start justify-between gap-3">
 				<div class="min-w-0">
-					<p class="text-xs font-bold tracking-widest text-gray-500 uppercase">Kaartinfo</p>
-					<h2 class="text-lg leading-5 font-bold text-gray-900">{resolvedYear}</h2>
+					<p class="text-m font-bolder font-semibold">Kaartlagen</p>
 				</div>
 				<div class="flex flex-none items-start gap-2">
 					{#if selectedYear !== resolvedYear}
 						<span class="rounded bg-gray-100 px-2 py-1 text-xs font-semibold text-gray-600">
-							gekozen: {selectedYear}
+							Geselecteerd: {selectedYear}
 						</span>
 					{/if}
 					<button
@@ -117,6 +154,7 @@
 			<div class="mb-3 flex min-w-0 flex-col gap-2">
 				{#each mapsForResolvedYear as map (map.metadata.annotation)}
 					<button
+						type="button"
 						onclick={() => (annotation = map.metadata.annotation)}
 						class="min-w-0 rounded border p-2 text-left transition {annotation ===
 						map.metadata.annotation
@@ -128,7 +166,7 @@
 								{map.metadata.label}
 							</p>
 							<span
-								class="flex-none rounded bg-gray-900 px-1.5 py-0.5 font-mono text-[0.65rem] text-white"
+								class="flex-none rounded bg-gray-900 px-1.5 py-0.5 font-heading text-[0.65rem] text-white"
 							>
 								{map.metadata.year}
 							</span>
@@ -137,30 +175,29 @@
 							<span class="max-w-full rounded bg-gray-100 px-1.5 py-0.5 break-words">
 								{map.metadata.institution}
 							</span>
-							<span class="rounded border border-gray-200 px-1.5 py-0.5">
-								{map.metadata.iiif ? 'IIIF / GeoRef' : 'GeoRef'}
-							</span>
 						</div>
 					</button>
 				{/each}
 			</div>
-
-			<p class="mb-1 text-xs font-bold tracking-widest text-gray-500 uppercase">Transparantie</p>
-			<input
-				value={activeOpacity}
-				oninput={handleOpacity}
-				type="range"
-				min="0"
-				max="100"
-				class="m-0 mb-1 w-full accent-green-700"
-			/>
-			<div class="mb-3 flex justify-between text-xs text-gray-400">
-				<span>0%</span>
-				<span class="font-bold text-gray-700">{activeOpacity}%</span>
-				<span>100%</span>
+			<div class="mt-3 pt-2 leading-4">
+				<p class="text-m mb-3 font-bolder font-light">Transparantie</p>
+				<input
+					value={activeOpacity}
+					oninput={handleOpacity}
+					type="range"
+					min="0"
+					max="100"
+					class="m-0 mb-1 w-full accent-green-700"
+				/>
+				<div class="mb-3 flex justify-between text-xs text-gray-400">
+					<span>0%</span>
+					<span class="font-bold text-gray-700">{activeOpacity}%</span>
+					<span>100%</span>
+				</div>
 			</div>
 
 			<button
+				type="button"
 				onclick={() => (zoomTo.annotation = activeMap?.metadata.annotation ?? null)}
 				class="flex w-full items-center justify-center gap-2 rounded bg-green-700 px-3 py-2 text-xs font-semibold text-white hover:bg-green-800"
 			>
@@ -168,20 +205,11 @@
 				Zoom
 			</button>
 
-			<div class="mt-3 border-t border-gray-200 pt-2 text-[0.65rem] leading-4 text-gray-500">
-				<p class="font-bold tracking-widest uppercase">Attributie</p>
-				<p class="break-words">
+			<div class="mt-3 pt-2 leading-4">
+				<p class="text-m mb-3 font-bolder font-light">Achtergrondkaart</p>
+				<p class="text-xs font-light break-words">
 					<a
-						class="font-semibold hover:text-gray-800"
-						href="https://maplibre.org/"
-						target="_blank"
-						rel="external noreferrer"
-					>
-						MapLibre
-					</a>
-					<span aria-hidden="true"> | </span>
-					<a
-						class="font-semibold hover:text-gray-800"
+						class=" hover:text-gray-800"
 						href="https://github.com/protomaps/basemaps"
 						target="_blank"
 						rel="external noreferrer"
@@ -190,12 +218,12 @@
 					</a>
 					<span aria-hidden="true"> | </span>
 					<a
-						class="font-semibold hover:text-gray-800"
+						class=" hover:text-gray-800"
 						href="https://www.openstreetmap.org/copyright"
 						target="_blank"
 						rel="external noreferrer"
 					>
-						OpenStreetMap
+						© OpenStreetMap
 					</a>
 				</p>
 			</div>

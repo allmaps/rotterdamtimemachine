@@ -43,7 +43,7 @@
 </script>
 
 <aside class="z-20 flex h-full flex-none flex-col font-bolder text-gray-800">
-	<div class="relative min-h-0 flex-1">
+	<div class="relative min-h-0 flex-1 pb-20 md:pb-0">
 		<BitsSlider.Root
 			type="single"
 			bind:value={selectedYear}
