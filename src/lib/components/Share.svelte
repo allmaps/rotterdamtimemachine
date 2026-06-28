@@ -2,8 +2,15 @@
 	import Modal from '$lib/components/Modal.svelte';
 	import { Check, Copy, X, Share2 } from '@lucide/svelte';
 	import { onMount, tick } from 'svelte';
+	import type { AppConfig } from '$lib/types';
 
-	let { onClose }: { onClose: () => void } = $props();
+	let {
+		config,
+		onClose
+	}: {
+		config: AppConfig;
+		onClose: () => void;
+	} = $props();
 
 	let url = $state('');
 	let copied = $state(false);
@@ -52,11 +59,11 @@
 <Modal {onClose} ariaLabelledby="share-title">
 	<div class="flex items-center justify-between gap-4 border-b border-gray-200 px-5 py-4">
 		<Share2 class="h-5 w-5 flex-none text-green-700" />
-		<h2 id="share-title" class="text-xl leading-none font-bold md:text-xl">Deel jouw tijdreis</h2>
+		<h2 id="share-title" class="text-xl leading-none font-bold md:text-xl">{config.share.title}</h2>
 		<button
 			type="button"
 			onclick={onClose}
-			aria-label="Sluit delen"
+			aria-label={config.share.closeLabel}
 			class="cursor-pointer rounded p-1 text-gray-500 hover:bg-gray-100 hover:text-gray-800"
 		>
 			<X class="h-5 w-5" />
@@ -64,7 +71,7 @@
 	</div>
 
 	<div class="px-5 py-5">
-		<p class="mb-4 text-gray-500">Deel het kaartgedeelte dat jij nu bekijkt.</p>
+		<p class="mb-4 text-gray-500">{config.share.description}</p>
 		<div class="flex flex-col gap-2 sm:flex-row">
 			<input
 				bind:this={inputElement}
@@ -82,10 +89,10 @@
 			>
 				{#if copied}
 					<Check class="h-4 w-4" />
-					Gekopieerd
+					{config.share.copied}
 				{:else}
 					<Copy class="h-4 w-4" />
-					Kopieer
+					{config.share.copy}
 				{/if}
 			</button>
 		</div>

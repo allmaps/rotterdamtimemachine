@@ -1,19 +1,21 @@
 <script lang="ts">
-	import { flyTo, selectedLocation } from '$lib/store.svelte';
-	import { SearchService, type SearchResult } from '$lib/models/SearchService.svelte';
+	import { flyTo, selectedLocation } from '$lib/app-state.svelte.js';
+	import { GeocoderService, type GeocoderResult } from '$lib/services/geocoder.svelte.js';
 	import Modal from '$lib/components/Modal.svelte';
-	import { LocateFixed, MapPin, Search as SearchIcon, X } from '@lucide/svelte';
-	import { tick } from 'svelte';
+	import { CornerDownLeft, LocateFixed, MapPin, Search as SearchIcon, X } from '@lucide/svelte';
+	import { tick, untrack } from 'svelte';
 	import { slide } from 'svelte/transition';
-	import type { GeocoderBounds } from '$lib/types';
-
-	const search = new SearchService();
+	import type { AppConfig, GeocoderBounds } from '$lib/types';
 
 	let {
-		bounds
+		bounds,
+		config
 	}: {
 		bounds?: GeocoderBounds;
+		config: AppConfig;
 	} = $props();
+
+	const search = untrack(() => new GeocoderService(config.search));
 
 	let open = $state(false);
 	let selectedIndex = $state(0);
@@ -25,7 +27,13 @@
 		search.searchTerm.trim() !== '' &&
 			(search.loading || search.hasSearched || !!search.error || search.results.length > 0)
 	);
-	let canSubmitSearch = $derived(search.searchTerm.trim().length >= 3 && !!search.bounds);
+	let canSubmitSearch = $derived(
+		search.searchTerm.trim().length >= config.search.minLength && !!search.bounds
+	);
+
+	$effect(() => {
+		search.setConfig(config.search);
+	});
 
 	$effect(() => {
 		search.bounds = bounds;
@@ -65,7 +73,7 @@
 		search.searchWithDelay();
 	}
 
-	function selectResult(result: SearchResult) {
+	function selectResult(result: GeocoderResult) {
 		flyTo.center = search.selectLocation(result);
 		selectedLocation.center = flyTo.center;
 		open = false;
@@ -75,7 +83,7 @@
 		locationError = '';
 
 		if (typeof navigator === 'undefined' || !navigator.geolocation) {
-			locationError = 'Je browser ondersteunt locatiebepaling niet.';
+			locationError = config.search.locationUnsupported;
 			return;
 		}
 
@@ -94,11 +102,11 @@
 				locating = false;
 
 				if (error.code === error.PERMISSION_DENIED) {
-					locationError = 'Locatiebepaling is geweigerd.';
+					locationError = config.search.locationDenied;
 				} else if (error.code === error.TIMEOUT) {
-					locationError = 'Locatiebepaling duurde te lang.';
+					locationError = config.search.locationTimeout;
 				} else {
-					locationError = 'Je locatie kon niet worden bepaald.';
+					locationError = config.search.locationUnavailable;
 				}
 			},
 			{ enableHighAccuracy: true, maximumAge: 60000, timeout: 10000 }
@@ -143,28 +151,20 @@
 <button
 	type="button"
 	onclick={showSearch}
-	aria-label="Zoek locatie"
+	aria-label={config.search.modalLabel}
 	class="flex h-8 cursor-pointer items-center gap-1 rounded px-2 text-sm font-semibold hover:bg-green-800 md:px-3"
 >
 	<SearchIcon class="h-4 w-4" />
-	<span class="hidden sm:inline">Zoeken</span>
+	<span class="hidden sm:inline">{config.search.buttonLabel}</span>
 </button>
 
 {#if open}
-	<Modal onClose={closeSearch} ariaLabel="Zoek locatie" onKeydown={handleKeydown}>
+	<Modal onClose={closeSearch} ariaLabel={config.search.modalLabel} onKeydown={handleKeydown}>
 		<form
 			class="flex items-center gap-3 border-b border-gray-200 px-4 py-3"
 			onsubmit={handleSearchSubmit}
 		>
-			<button
-				type="submit"
-				aria-label="Zoek"
-				title="Zoek"
-				disabled={!canSubmitSearch || search.loading}
-				class="cursor-pointer rounded p-1 text-green-700 hover:bg-green-50 disabled:cursor-default disabled:opacity-45"
-			>
-				<SearchIcon class="h-5 w-5 flex-none" />
-			</button>
+			<SearchIcon class="h-5 w-5 flex-none text-green-700" />
 			<input
 				bind:this={inputElement}
 				bind:value={search.searchTerm}
@@ -172,14 +172,23 @@
 				enterkeyhint="search"
 				spellcheck="false"
 				autocomplete="off"
-				placeholder="Zoek locatie..."
+				placeholder={config.search.placeholder}
 				class="m-0 min-w-0 flex-1 bg-transparent text-lg font-medium outline-none placeholder:text-gray-400"
 				oninput={handleInput}
 			/>
 			<button
+				type="submit"
+				aria-label={config.search.submitLabel}
+				title={config.search.submitLabel}
+				disabled={!canSubmitSearch || search.loading}
+				class="cursor-pointer rounded p-1 text-gray-500 hover:bg-gray-100 hover:text-green-700 disabled:cursor-default disabled:opacity-45"
+			>
+				<CornerDownLeft class="h-5 w-5" />
+			</button>
+			<button
 				type="button"
-				aria-label={locating ? 'Locatie bepalen...' : 'Gebruik mijn locatie'}
-				title={locating ? 'Locatie bepalen...' : 'Gebruik mijn locatie'}
+				aria-label={locating ? config.search.locating : config.search.useLocation}
+				title={locating ? config.search.locating : config.search.useLocation}
 				disabled={locating}
 				class="cursor-pointer rounded p-1 text-gray-500 hover:bg-gray-100 hover:text-green-700 disabled:cursor-wait disabled:opacity-70"
 				onclick={useUserLocation}
@@ -188,7 +197,7 @@
 			</button>
 			<button
 				type="button"
-				aria-label="Sluit zoeken"
+				aria-label={config.search.closeLabel}
 				class="cursor-pointer rounded p-1 text-gray-500 hover:bg-gray-100 hover:text-gray-800"
 				onclick={closeSearch}
 			>
@@ -232,9 +241,9 @@
 						{#if search.error}
 							{search.error}
 						{:else if search.loading}
-							Aan het zoeken...
+							{config.search.loading}
 						{:else}
-							Geen resultaten gevonden.
+							{config.search.noResults}
 						{/if}
 					</li>
 				{/if}
@@ -242,19 +251,19 @@
 		{/if}
 
 		<p class="border-t border-gray-100 px-4 py-2 text-xs font-light text-gray-500">
-			Zoeken via
+			{config.search.attribution.prefix}
 			<a
-				href="https://nominatim.openstreetmap.org/"
+				href={config.search.attribution.providerUrl}
 				target="_blank"
 				rel="noopener noreferrer"
-				class="hover:text-green-700">Nominatim</a
+				class="hover:text-green-700">{config.search.attribution.provider}</a
 			>
 			· ©
 			<a
-				href="https://www.openstreetmap.org/copyright"
+				href={config.search.attribution.copyrightUrl}
 				target="_blank"
 				rel="noopener noreferrer"
-				class="hover:text-green-700">OpenStreetMap-bijdragers</a
+				class="hover:text-green-700">{config.search.attribution.copyright}</a
 			>
 		</p>
 	</Modal>

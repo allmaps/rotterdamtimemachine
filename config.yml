@@ -1,0 +1,147 @@
+site:
+  name: Rotterdam Tijdmachine
+  url: https://pages.allmaps.org/rotterdam-tijdmachine/
+  description: Verken historische kaarten van Rotterdam door de tijd en vergelijk kaartlagen met de huidige stad.
+  locale: nl_NL
+  themeColor: "#15803d"
+
+map:
+  defaultYear: 1897
+  initialView:
+    center: [4.484882, 51.921456]
+    zoom: 14
+    bearing: 0
+  keyboard:
+    panPixels: 100
+    bearingStep: 15
+
+slider:
+  scaleInterval: 25
+
+header:
+  search: Zoeken
+  compare: Vergelijken
+  closeCompare: Sluiten
+  compareMode: Vergelijkmodus
+  about: Over
+  share: Delen
+
+about:
+  title: Over Rotterdam Tijdmachine
+  closeLabel: Sluit over
+  paragraphs:
+    - Rotterdam Tijdmachine maakt het mogelijk om ruim 150 jaar aan Rotterdamse stadsgeschiedenis te ontdekken. Vanaf de negentiende eeuw is er veel veranderd in de manier waarop Rotterdam zich heeft ontwikkeld als stad en haven.
+    - De historische kaarten laten zien hoe Rotterdam groeide van een kleine handelsstad tot een van de grootste havens ter wereld. Je ziet hoe wijken verschoven, nieuwe gebieden werden aangelegd en oude structuren verdwenen.
+    - Deze cultuurhistorische tijdreis geeft inzicht in de keuzes die hebben geleid tot het Rotterdam van nu, en kan inspireren om historische kennis opnieuw te benutten.
+  shortcutsTitle: Sneltoetsen
+  shortcuts:
+    - keys: ["⌘", K, "/", Ctrl, K]
+      description: Kaartlagen openen
+    - keys: ["[", "]"]
+      description: Door kaarten van hetzelfde jaar bladeren
+    - keys: [Shift, "↑", "↓"]
+      description: Naar het volgende of vorige beschikbare kaartjaar
+    - keys: ["←", "↑", "↓", "→"]
+      description: Kaartbeeld verschuiven
+    - keys: ["+", "=", "-"]
+      description: In- en uitzoomen
+    - keys: [Shift, "←", "→"]
+      description: Kaartbeeld draaien
+    - keys: [F]
+      description: Filter op kaarten in beeld aan- of uitzetten
+    - keys: [R]
+      description: Kaartoriëntatie volgen aan- of uitzetten
+    - keys: [Z]
+      description: Kaartlaagfocus volgen aan- of uitzetten
+    - keys: [Spatie]
+      wide: true
+      description: Historische kaartlagen tijdelijk verbergen
+
+share:
+  title: Deel jouw tijdreis
+  closeLabel: Sluit delen
+  description: Deel het kaartgedeelte dat jij nu bekijkt.
+  copy: Kopieer
+  copied: Gekopieerd
+
+search:
+  buttonLabel: Zoeken
+  modalLabel: Zoek locatie
+  submitLabel: Zoek
+  closeLabel: Sluit zoeken
+  placeholder: Zoek locatie...
+  useLocation: Gebruik mijn locatie
+  locating: Locatie bepalen...
+  loading: Aan het zoeken...
+  noResults: Geen resultaten gevonden.
+  minimumCharacters: Gebruik minimaal 3 tekens.
+  notReady: Zoeken is nog niet klaar.
+  unavailable: Zoeken is tijdelijk niet beschikbaar.
+  locationUnsupported: Je browser ondersteunt locatiebepaling niet.
+  locationDenied: Locatiebepaling is geweigerd.
+  locationTimeout: Locatiebepaling duurde te lang.
+  locationUnavailable: Je locatie kon niet worden bepaald.
+  countryCodes: nl
+  minLength: 3
+  limit: 8
+  debounceMs: 350
+  minRequestIntervalMs: 1100
+  cacheLimit: 100
+  attribution:
+    prefix: Zoeken via
+    provider: Nominatim
+    providerUrl: https://nominatim.openstreetmap.org/
+    copyright: OpenStreetMap-bijdragers
+    copyrightUrl: https://www.openstreetmap.org/copyright
+
+layers:
+  title: Kaartlagen
+  openLabel: Open kaartlagen
+  closeLabel: Sluit kaartlagen
+  searchPlaceholder: Zoek kaart...
+  current: Huidig
+  collection: Collectie
+  favorite: Favoriet
+  inView: In beeld
+  noResults: Geen kaarten gevonden.
+  found: gevonden
+  yearPrefix: voor
+  resultSingular: kaart
+  resultPlural: kaarten
+  leftPane: Linker kaart
+  rightPane: Rechter kaart
+  previousMap: Vorige kaart
+  nextMap: Volgende kaart
+  mapPosition: Kaart
+  selectMap: Selecteer
+  visibleOnMap: Zichtbaar op de kaart
+  addFavorite: Voeg toe aan favorieten
+  removeFavorite: Verwijder uit favorieten
+  viewItemAt: Bekijk item bij
+  basemap: Achtergrondkaart
+  protomaps: Protomaps
+  openStreetMap: © OpenStreetMap
+
+controls:
+  groupLabel: Kaartnavigatie
+  zoomIn: Inzoomen
+  zoomOut: Uitzoomen
+  showAllYears: Toon alle jaren
+  filterInView: Filter op kaarten in beeld
+  noMapsInView: Geen kaarten in beeld
+  disableOrientation: Kaartoriëntatie uitschakelen
+  followOrientation: Kaartoriëntatie volgen
+  disableFocus: Kaartlaagfocus uitschakelen
+  followFocus: Kaartlaagfocus volgen
+  opacity: Transparantie
+  adjustOpacity: Transparantie aanpassen
+  layerOpacity: Transparantie kaartlaag
+
+mapWarnings:
+  label: Waarschuwing kaartlaag
+  outsideTitle: Kaartlaag buiten beeld
+  partialTitle: Kaartlaag deels zichtbaar
+  outsideDescription: De geselecteerde kaartlaag ligt niet in de huidige kaartuitsnede.
+  partialDescription: De geselecteerde kaartlaag is maar gedeeltelijk zichtbaar in de huidige kaartuitsnede.
+  dismiss: Laat zo
+  zoomToLayer: Zoom naar kaartlaag

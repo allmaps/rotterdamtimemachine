@@ -1,7 +1,6 @@
 <script lang="ts">
 	import Modal from '$lib/components/Modal.svelte';
-	import { MapCollection } from '$lib/models/MapCollection';
-	import { favorites, toggleFavorite } from '$lib/store.svelte';
+	import { favorites, toggleFavorite } from '$lib/app-state.svelte.js';
 	import {
 		ChevronLeft,
 		ChevronRight,
@@ -17,8 +16,11 @@
 	} from '@lucide/svelte';
 	import { tick } from 'svelte';
 	import { slide } from 'svelte/transition';
+	import type { AppConfig, MapMetadata } from '$lib/types';
 
 	let {
+		maps: mapMetadata,
+		config,
 		annotation = $bindable(),
 		selectedYear = $bindable(),
 		layersId = 'map-layers',
@@ -28,6 +30,8 @@
 		annotationsInView = [],
 		preferInViewMaps = false
 	}: {
+		maps: MapMetadata[];
+		config: AppConfig;
 		annotation?: string;
 		selectedYear: number;
 		layersId?: string;
@@ -38,9 +42,10 @@
 		preferInViewMaps?: boolean;
 	} = $props();
 
-	const collection = new MapCollection();
-	const maps = collection.getAllMaps();
-	const availableYears = [...new Set(maps.map((map) => map.metadata.year))].sort((a, b) => a - b);
+	let maps = $derived(mapMetadata);
+	let availableYears = $derived(
+		[...new Set(maps.map((map) => map.year))].sort((a, b) => a - b)
+	);
 
 	let layersOpen = $state(false);
 	let showCollection = $state(false);
@@ -53,28 +58,23 @@
 
 	let modalId = $derived(`${layersId}-modal`);
 	let modalTitleId = $derived(`${modalId}-title`);
-	let paneIndicatorLabel = $derived(paneSide === 'left' ? 'Linker kaart' : 'Rechter kaart');
-	let annotationsInViewSet = $derived(new Set(annotationsInView));
-	let inViewMaps = $derived(
-		maps.filter((map) => annotationsInViewSet.has(map.metadata.annotation))
+	let paneIndicatorLabel = $derived(
+		paneSide === 'left' ? config.layers.leftPane : config.layers.rightPane
 	);
+	let annotationsInViewSet = $derived(new Set(annotationsInView));
+	let inViewMaps = $derived(maps.filter((map) => annotationsInViewSet.has(map.annotation)));
 	let selectionMaps = $derived(preferInViewMaps && inViewMaps.length > 0 ? inViewMaps : maps);
 	let selectionAvailableYears = $derived(
-		[...new Set(selectionMaps.map((map) => map.metadata.year))].sort((a, b) => a - b)
+		[...new Set(selectionMaps.map((map) => map.year))].sort((a, b) => a - b)
 	);
 	let resolvedYear = $derived(resolveAvailableYear(selectedYear, selectionAvailableYears));
-	let mapsForResolvedYear = $derived(
-		selectionMaps.filter((map) => map.metadata.year === resolvedYear)
-	);
-	let mapsForVisibleYear = $derived(maps.filter((map) => map.metadata.year === resolvedYear));
+	let mapsForResolvedYear = $derived(selectionMaps.filter((map) => map.year === resolvedYear));
+	let mapsForVisibleYear = $derived(maps.filter((map) => map.year === resolvedYear));
 	let activeMap = $derived(
-		mapsForResolvedYear.find((map) => map.metadata.annotation === annotation) ??
-			mapsForResolvedYear[0]
+		mapsForResolvedYear.find((map) => map.annotation === annotation) ?? mapsForResolvedYear[0]
 	);
 	let activeMapIndex = $derived(
-		mapsForResolvedYear.findIndex(
-			(map) => map.metadata.annotation === activeMap?.metadata.annotation
-		)
+		mapsForResolvedYear.findIndex((map) => map.annotation === activeMap?.annotation)
 	);
 	let activeMapPosition = $derived(activeMapIndex >= 0 ? activeMapIndex + 1 : 1);
 	let hasMultipleMaps = $derived(mapsForResolvedYear.length > 1);
@@ -82,16 +82,20 @@
 	let visibleMaps = $derived(
 		(showCollection ? maps : mapsForVisibleYear).filter(
 			(map) =>
-				(showFavoritesOnly ? favorites.includes(map.metadata.annotation) : true) &&
-				(showInViewOnly ? annotationsInViewSet.has(map.metadata.annotation) : true) &&
+				(showFavoritesOnly ? favorites.includes(map.annotation) : true) &&
+				(showInViewOnly ? annotationsInViewSet.has(map.annotation) : true) &&
 				(normalizedSearchTerm ? getSearchText(map).includes(normalizedSearchTerm) : true)
 		)
 	);
-	let resultLabel = $derived(`${visibleMaps.length} kaart${visibleMaps.length === 1 ? '' : 'en'}`);
+	let resultLabel = $derived(
+		`${visibleMaps.length} ${
+			visibleMaps.length === 1 ? config.layers.resultSingular : config.layers.resultPlural
+		}`
+	);
 
 	$effect(() => {
-		if (activeMap && !mapsForResolvedYear.some((map) => map.metadata.annotation === annotation)) {
-			annotation = activeMap.metadata.annotation;
+		if (activeMap && !mapsForResolvedYear.some((map) => map.annotation === annotation)) {
+			annotation = activeMap.annotation;
 		}
 	});
 
@@ -132,9 +136,7 @@
 
 	function getSearchText(map: (typeof maps)[0]) {
 		return normalizeSearchTerm(
-			[map.metadata.label, map.metadata.title, map.metadata.year, map.metadata.institution].join(
-				' '
-			)
+			[map.label, map.title, map.year, map.institution].join(' ')
 		);
 	}
 
@@ -207,13 +209,13 @@
 		searchTerm = '';
 		selectedIndex = Math.max(
 			0,
-			mapsForResolvedYear.findIndex((map) => map.metadata.annotation === annotation)
+			mapsForResolvedYear.findIndex((map) => map.annotation === annotation)
 		);
 	}
 
 	function selectMap(map: (typeof maps)[0]) {
-		annotation = map.metadata.annotation;
-		selectedYear = map.metadata.year;
+		annotation = map.annotation;
+		selectedYear = map.year;
 		closeLayers();
 	}
 
@@ -233,7 +235,7 @@
 		await tick();
 		if (!annotation) return;
 
-		const activeIndex = visibleMaps.findIndex((map) => map.metadata.annotation === annotation);
+		const activeIndex = visibleMaps.findIndex((map) => map.annotation === annotation);
 		selectedIndex = Math.max(0, activeIndex);
 		scrollSelectedIntoView('center');
 	}
@@ -320,7 +322,7 @@
 			(currentIndex + direction + mapsForResolvedYear.length) % mapsForResolvedYear.length;
 		const nextMap = mapsForResolvedYear[nextIndex];
 		if (nextMap) {
-			annotation = nextMap.metadata.annotation;
+			annotation = nextMap.annotation;
 		}
 	}
 </script>
@@ -345,21 +347,21 @@
 					<span
 						class="flex-none rounded bg-gray-900 px-1.5 py-0.5 font-heading text-[0.65rem] text-white"
 					>
-						{activeMap.metadata.year}
+						{activeMap.year}
 					</span>
 					<span class="min-w-0 flex-1 truncate text-sm leading-4 font-semibold">
-						{activeMap.metadata.label}
+						{activeMap.label}
 					</span>
 				</button>
 				<div class="px-2 pt-1 pb-1">
 					<a
-						href={activeMap.metadata.url}
+						href={activeMap.url}
 						target="_blank"
 						rel="external noopener noreferrer"
 						class="inline-flex max-w-full items-center gap-1 text-xs font-medium text-gray-500 hover:text-green-700"
-						aria-label="Bekijk item bij {activeMap.metadata.institution}"
+						aria-label="{config.layers.viewItemAt} {activeMap.institution}"
 					>
-						<span class="min-w-0 truncate">{activeMap.metadata.institution}</span>
+						<span class="min-w-0 truncate">{activeMap.institution}</span>
 						<ExternalLink class="h-3 w-3 flex-none" />
 					</a>
 				</div>
@@ -368,22 +370,22 @@
 			{#if hasMultipleMaps}
 				<button
 					type="button"
-					aria-label="Vorige kaart ({activeMapPosition} van {mapsForResolvedYear.length})"
+					aria-label="{config.layers.previousMap} ({activeMapPosition} van {mapsForResolvedYear.length})"
 					onclick={() => selectRelativeMap(-1)}
 					class="flex h-10 w-8 flex-none items-center justify-center rounded text-gray-500 hover:bg-gray-100 hover:text-gray-900"
 				>
 					<ChevronLeft class="h-4 w-4" />
 				</button>
 				<span
-					aria-label="Kaart {activeMapPosition} van {mapsForResolvedYear.length}"
-					title="Kaart {activeMapPosition} van {mapsForResolvedYear.length}"
+					aria-label="{config.layers.mapPosition} {activeMapPosition} van {mapsForResolvedYear.length}"
+					title="{config.layers.mapPosition} {activeMapPosition} van {mapsForResolvedYear.length}"
 					class="flex h-10 min-w-10 flex-none items-center justify-center rounded bg-gray-50 px-2 font-heading text-xs font-bold text-gray-700 tabular-nums"
 				>
 					{activeMapPosition}/{mapsForResolvedYear.length}
 				</span>
 				<button
 					type="button"
-					aria-label="Volgende kaart ({activeMapPosition} van {mapsForResolvedYear.length})"
+					aria-label="{config.layers.nextMap} ({activeMapPosition} van {mapsForResolvedYear.length})"
 					onclick={() => selectRelativeMap(1)}
 					class="flex h-10 w-8 flex-none items-center justify-center rounded text-gray-500 hover:bg-gray-100 hover:text-gray-900"
 				>
@@ -393,7 +395,7 @@
 
 			<button
 				type="button"
-				aria-label="Open kaartlagen"
+				aria-label={config.layers.openLabel}
 				aria-haspopup="dialog"
 				aria-controls={modalId}
 				onclick={openLayers}
@@ -414,14 +416,16 @@
 			<div class="flex items-center gap-3 border-b border-gray-200 px-4 py-3">
 				<Layers class="h-5 w-5 flex-none text-green-700" />
 				<div class="min-w-0 flex-1">
-					<h2 id={modalTitleId} class="text-lg leading-6 font-semibold">Kaartlagen</h2>
+					<h2 id={modalTitleId} class="text-lg leading-6 font-semibold">
+						{config.layers.title}
+					</h2>
 					<p class="truncate text-xs font-medium text-gray-500">
 						{resultLabel}
 						{#if searchTerm}
-							gevonden
+							{config.layers.found}
 						{/if}
 						{#if !showCollection}
-							voor {resolvedYear}
+							{config.layers.yearPrefix} {resolvedYear}
 						{/if}
 					</p>
 				</div>
@@ -440,7 +444,7 @@
 				{/if}
 				<button
 					type="button"
-					aria-label="Sluit kaartlagen"
+					aria-label={config.layers.closeLabel}
 					class="rounded p-1 text-gray-500 hover:bg-gray-100 hover:text-gray-800"
 					onclick={closeLayers}
 				>
@@ -457,7 +461,7 @@
 					enterkeyhint="search"
 					spellcheck="false"
 					autocomplete="off"
-					placeholder="Zoek kaart..."
+					placeholder={config.layers.searchPlaceholder}
 					class="m-0 min-w-0 flex-1 bg-transparent text-lg font-medium outline-none placeholder:text-gray-400"
 					oninput={handleSearchInput}
 				/>
@@ -473,7 +477,7 @@
 							? 'border-gray-900 bg-white text-gray-900 shadow-sm'
 							: 'border-gray-200 bg-white text-gray-600 hover:bg-gray-50 hover:text-gray-900'}"
 					>
-						<span class="block truncate">Huidig</span>
+						<span class="block truncate">{config.layers.current}</span>
 					</button>
 					<button
 						type="button"
@@ -483,7 +487,7 @@
 							? 'border-gray-900 bg-white text-gray-900 shadow-sm'
 							: 'border-gray-200 bg-white text-gray-600 hover:bg-gray-50 hover:text-gray-900'}"
 					>
-						<span class="block truncate">Collectie</span>
+						<span class="block truncate">{config.layers.collection}</span>
 					</button>
 					<button
 						type="button"
@@ -498,7 +502,7 @@
 								? 'fill-yellow-400 text-yellow-500'
 								: 'text-gray-400'}"
 						/>
-						<span class="min-w-0 truncate">Favoriet</span>
+						<span class="min-w-0 truncate">{config.layers.favorite}</span>
 					</button>
 
 					<button
@@ -512,7 +516,7 @@
 						<MapPinned
 							class="h-4 w-4 flex-none {showInViewOnly ? 'text-green-700' : 'text-gray-400'}"
 						/>
-						<span class="min-w-0 truncate">In beeld</span>
+						<span class="min-w-0 truncate">{config.layers.inView}</span>
 					</button>
 				</div>
 
@@ -529,9 +533,9 @@
 					transition:slide={{ duration: 140 }}
 					class="min-h-0 flex-1 overflow-y-auto overscroll-contain bg-white"
 				>
-					{#each visibleMaps as map, index (map.metadata.annotation)}
+					{#each visibleMaps as map, index (map.annotation)}
 						<li
-							data-map-annotation={map.metadata.annotation}
+							data-map-annotation={map.annotation}
 							class="border-b border-gray-100 last:border-b-0"
 						>
 							<div
@@ -542,8 +546,7 @@
 								<div class="min-w-0 flex-1">
 									<button
 										type="button"
-										aria-label="Selecteer {map.metadata.label} ({map.metadata.year}, {map.metadata
-											.institution})"
+										aria-label="{config.layers.selectMap} {map.label} ({map.year}, {map.institution})"
 										onclick={() => selectMap(map)}
 										onmouseenter={() => (selectedIndex = index)}
 										class="w-full min-w-0 px-4 pt-3 pb-1 text-left"
@@ -552,19 +555,19 @@
 											<p
 												class="min-w-0 flex-1 text-sm leading-4 font-semibold break-words text-gray-900"
 											>
-												{map.metadata.label}
+												{map.label}
 											</p>
 											<span
 												class="flex-none rounded bg-gray-900 px-1.5 py-0.5 font-heading text-[0.65rem] text-white"
 											>
-												{map.metadata.year}
+												{map.year}
 											</span>
-											{#if annotation === map.metadata.annotation}
+											{#if annotation === map.annotation}
 												<span
-													title="Zichtbaar op de kaart"
+													title={config.layers.visibleOnMap}
 													class="flex h-5 w-5 flex-none items-center justify-center rounded bg-green-100 text-green-700"
 												>
-													<span class="sr-only">Zichtbaar op de kaart</span>
+													<span class="sr-only">{config.layers.visibleOnMap}</span>
 													<Eye class="h-3.5 w-3.5" />
 												</span>
 											{/if}
@@ -572,14 +575,14 @@
 									</button>
 									<div class="px-4 pb-3 text-[0.65rem] font-semibold text-gray-500">
 										<a
-											href={map.metadata.url}
+											href={map.url}
 											target="_blank"
 											rel="external noopener noreferrer"
-											aria-label="Bekijk item bij {map.metadata.institution}"
+											aria-label="{config.layers.viewItemAt} {map.institution}"
 											onmouseenter={() => (selectedIndex = index)}
 											class="inline-flex max-w-full items-center gap-1 rounded bg-gray-100 px-1.5 py-0.5 hover:bg-green-50 hover:text-green-700"
 										>
-											<span class="min-w-0 break-words">{map.metadata.institution}</span>
+											<span class="min-w-0 break-words">{map.institution}</span>
 											<ExternalLink class="h-3 w-3 flex-none" />
 										</a>
 									</div>
@@ -587,16 +590,16 @@
 
 								<button
 									type="button"
-									aria-label={favorites.includes(map.metadata.annotation)
-										? `Verwijder ${map.metadata.label} (${map.metadata.year}, ${map.metadata.institution}) uit favorieten`
-										: `Voeg ${map.metadata.label} (${map.metadata.year}, ${map.metadata.institution}) toe aan favorieten`}
-									aria-pressed={favorites.includes(map.metadata.annotation)}
-									onclick={() => toggleFavorite(map.metadata.annotation)}
+									aria-label={favorites.includes(map.annotation)
+										? `${config.layers.removeFavorite} ${map.label} (${map.year}, ${map.institution})`
+										: `${config.layers.addFavorite} ${map.label} (${map.year}, ${map.institution})`}
+									aria-pressed={favorites.includes(map.annotation)}
+									onclick={() => toggleFavorite(map.annotation)}
 									onmouseenter={() => (selectedIndex = index)}
 									class="flex w-12 flex-none items-center justify-center border-l border-gray-100 text-gray-400 hover:bg-white hover:text-yellow-500"
 								>
 									<Star
-										class="h-4 w-4 {favorites.includes(map.metadata.annotation)
+										class="h-4 w-4 {favorites.includes(map.annotation)
 											? 'fill-yellow-400 text-yellow-500'
 											: ''}"
 									/>
@@ -610,20 +613,20 @@
 					transition:slide={{ duration: 140 }}
 					class="bg-white px-4 py-8 text-center text-sm text-gray-500"
 				>
-					Geen kaarten gevonden.
+					{config.layers.noResults}
 				</p>
 			{/if}
 
 			<div class="border-t border-gray-200 px-4 py-3 text-xs leading-4 font-light text-gray-600">
 				<p class="break-words">
-					Achtergrondkaart:
+					{config.layers.basemap}:
 					<a
 						class="hover:text-green-700"
 						href="https://github.com/protomaps/basemaps"
 						target="_blank"
 						rel="external noreferrer"
 					>
-						Protomaps
+						{config.layers.protomaps}
 					</a>
 					<span aria-hidden="true"> | </span>
 					<a
@@ -632,7 +635,7 @@
 						target="_blank"
 						rel="external noreferrer"
 					>
-						© OpenStreetMap
+						{config.layers.openStreetMap}
 					</a>
 				</p>
 			</div>

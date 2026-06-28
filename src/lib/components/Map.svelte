@@ -4,17 +4,14 @@
 	import { WarpedMapLayer } from '@allmaps/maplibre';
 	import { AlertTriangle, Focus } from '@lucide/svelte';
 	import 'maplibre-gl/dist/maplibre-gl.css';
-	import { viewState, flyTo, selectedLocation, mapView } from '$lib/store.svelte';
+	import { viewState, flyTo, selectedLocation } from '$lib/app-state.svelte.js';
 	import { replaceState } from '$app/navigation';
 	import { resolve } from '$app/paths';
 	import { getProtomapsLayers, getProtomapsStyle } from '$lib/basemap';
-	import {
-		annotationsByMapId,
-		getWarpedMapList,
-		mapIdsByAnnotation
-	} from '$lib/shared/warped-map-list';
+	import { annotationsByMapId, getWarpedMapList, mapIdsByAnnotation } from '$lib/warped-map-list';
 	import MapControls from '$lib/components/MapControls.svelte';
 	import type {
+		AppConfig,
 		GeocoderBounds,
 		MapKeyboardCommand,
 		MapLocation,
@@ -22,15 +19,16 @@
 	} from '$lib/types';
 
 	let {
+		config,
 		annotation = $bindable(viewState.annotation),
 		opacity = $bindable(viewState.opacity),
 		rotateToMapOrientation = $bindable(false),
 		focusActiveMap = $bindable(false),
 		inViewOnly = $bindable(false),
 		currentLocation = $bindable({
-			center: [...mapView.center] as [number, number],
-			zoom: mapView.zoom,
-			bearing: mapView.bearing
+			center: [...config.map.initialView.center] as [number, number],
+			zoom: config.map.initialView.zoom,
+			bearing: config.map.initialView.bearing
 		}),
 		annotationsInView = $bindable<string[]>([]),
 		geocoderBounds = $bindable(),
@@ -41,6 +39,7 @@
 		enableLocationMarker = false,
 		controlsPosition = 'top-right'
 	}: {
+		config: AppConfig;
 		annotation?: string;
 		opacity?: number;
 		rotateToMapOrientation?: boolean;
@@ -225,10 +224,7 @@
 			duration: 300,
 			easeId: 'keyboardHandler',
 			center: map.getCenter(),
-			zoom:
-				command.zoomDelta === undefined
-					? map.getZoom()
-					: map.getZoom() + command.zoomDelta,
+			zoom: command.zoomDelta === undefined ? map.getZoom() : map.getZoom() + command.zoomDelta,
 			bearing:
 				command.bearingDelta === undefined
 					? map.getBearing()
@@ -518,8 +514,6 @@
 		});
 
 		mapInstance.on('moveend', () => {
-			const center = mapInstance.getCenter();
-			console.log('Kaart gestopt op:', center.lng, center.lat, 'zoom:', mapInstance.getZoom());
 			updateAnnotationsInView();
 			checkSelectedMapVisibility(actieveAnnotation, false);
 
@@ -579,6 +573,7 @@
 {#if mapReady && map}
 	<MapControls
 		{map}
+		{config}
 		bind:opacity
 		bind:rotateToMapOrientation
 		bind:focusActiveMap
@@ -599,7 +594,7 @@
 		<div
 			role="dialog"
 			aria-modal="true"
-			aria-label="Waarschuwing kaartlaag"
+			aria-label={config.mapWarnings.label}
 			tabindex="-1"
 			class="pointer-events-auto w-full max-w-sm rounded-lg border border-gray-200 bg-white p-4 text-gray-900 shadow-2xl"
 			onkeydown={handleVisibilityWarningKeydown}
@@ -616,13 +611,13 @@
 				<div class="min-w-0">
 					<h2 class="font-heading text-base font-bold">
 						{selectedMapVisibility === 'not-visible'
-							? 'Kaartlaag buiten beeld'
-							: 'Kaartlaag deels zichtbaar'}
+							? config.mapWarnings.outsideTitle
+							: config.mapWarnings.partialTitle}
 					</h2>
 					<p class="mt-1 text-sm leading-5 text-gray-600">
 						{selectedMapVisibility === 'not-visible'
-							? 'De geselecteerde kaartlaag ligt niet in de huidige kaartuitsnede.'
-							: 'De geselecteerde kaartlaag is maar gedeeltelijk zichtbaar in de huidige kaartuitsnede.'}
+							? config.mapWarnings.outsideDescription
+							: config.mapWarnings.partialDescription}
 					</p>
 				</div>
 			</div>
@@ -633,7 +628,7 @@
 					class="rounded-md border border-gray-200 px-3 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-700"
 					onclick={dismissVisibilityWarning}
 				>
-					Laat zo
+					{config.mapWarnings.dismiss}
 				</button>
 				<button
 					bind:this={visibilityWarningPrimaryButton}
@@ -642,7 +637,7 @@
 					onclick={zoomToActiveMapFromWarning}
 				>
 					<Focus class="h-4 w-4" />
-					Zoom naar kaartlaag
+					{config.mapWarnings.zoomToLayer}
 				</button>
 			</div>
 		</div>

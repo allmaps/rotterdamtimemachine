@@ -1,34 +1,35 @@
 <script lang="ts">
 	import { Slider as BitsSlider } from 'bits-ui';
 	import { ChevronsUpDown } from '@lucide/svelte';
-	import { MapCollection } from '$lib/models/MapCollection';
+	import type { MapMetadata } from '$lib/types';
 
 	let {
+		maps,
 		selectedYear = $bindable(),
 		inViewOnly = $bindable(false),
 		navPosition = 'left',
 		showMapYearTicks = false,
 		snapToAvailableYear = true,
+		scaleInterval = 25,
 		enableKeyboardShortcut = false,
 		annotationsInView = []
 	}: {
+		maps: MapMetadata[];
 		selectedYear: number;
 		inViewOnly?: boolean;
 		navPosition?: 'left' | 'right';
 		showMapYearTicks?: boolean;
 		snapToAvailableYear?: boolean;
+		scaleInterval?: number;
 		enableKeyboardShortcut?: boolean;
 		annotationsInView?: string[];
 	} = $props();
 
-	const collection = new MapCollection();
-	const maps = collection.getAllMaps();
-	const availableYears = [...new Set(maps.map((map) => map.metadata.year))].sort((a, b) => a - b);
-	const earliestYear = availableYears[0] ?? selectedYear;
-	const latestYear = availableYears.at(-1) ?? selectedYear;
-	const scaleInterval = 25;
-	const sliderMinYear = Math.floor(earliestYear / scaleInterval) * scaleInterval;
-	const sliderMaxYear = Math.ceil(latestYear / scaleInterval) * scaleInterval;
+	let availableYears = $derived([...new Set(maps.map((map) => map.year))].sort((a, b) => a - b));
+	let earliestYear = $derived(availableYears[0] ?? selectedYear);
+	let latestYear = $derived(availableYears.at(-1) ?? selectedYear);
+	let sliderMinYear = $derived(Math.floor(earliestYear / scaleInterval) * scaleInterval);
+	let sliderMaxYear = $derived(Math.ceil(latestYear / scaleInterval) * scaleInterval);
 
 	let thumbClass = $derived(
 		navPosition === 'right' ? 'right-0 rounded-l-sm border-r-0' : 'left-0 rounded-r-sm border-l-0'
@@ -40,9 +41,7 @@
 	let inViewAvailableYears = $derived(
 		[
 			...new Set(
-				maps
-					.filter((map) => annotationsInViewSet.has(map.metadata.annotation))
-					.map((map) => map.metadata.year)
+				maps.filter((map) => annotationsInViewSet.has(map.annotation)).map((map) => map.year)
 			)
 		].sort((a, b) => a - b)
 	);

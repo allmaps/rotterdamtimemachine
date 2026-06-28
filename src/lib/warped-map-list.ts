@@ -1,16 +1,16 @@
-import { MapCollection } from '$lib/models/MapCollection';
 import { WarpedMapList } from '@allmaps/render';
 import { parseAnnotation } from '@allmaps/annotation';
+import collection from '../../collection.yml';
 
 import type { WebGL2WarpedMap } from '@allmaps/render/webgl2';
+import type { MapMetadata } from '$lib/types';
 
 export const mapIdsByAnnotation = new Map<string, Set<string>>();
 export const annotationsByMapId = new Map<string, string>();
 
-const collection = new MapCollection();
-const annotationUrls = collection.getAllMaps().map((map) => map.metadata.annotation);
+const maps = collection as MapMetadata[];
+const annotationUrls = maps.map((map) => map.annotation);
 
-// Fetch and parse annotations
 const georeferencedMaps = await Promise.all(
 	annotationUrls.map(async (url) => {
 		try {
@@ -20,20 +20,19 @@ const georeferencedMaps = await Promise.all(
 				const parsedAnnotations = parseAnnotation(data);
 				const ids = parsedAnnotations.flatMap(({ id }) => (id ? [id] : []));
 				mapIdsByAnnotation.set(url, new Set(ids));
-				ids.forEach((ids) => annotationsByMapId.set(ids, url));
+				ids.forEach((id) => annotationsByMapId.set(id, url));
 				return parsedAnnotations;
-			} else {
-				console.log('Fetch failed for', url, resp);
-				return [];
 			}
+
+			console.warn('Fetch failed for', url, resp);
+			return [];
 		} catch {
-			console.log('Fetch failed for', url);
+			console.warn('Fetch failed for', url);
 			return [];
 		}
 	})
 );
 
-// Function to create a warpedMapList with maps added
 export const getWarpedMapList = () => {
 	const warpedMapList = new WarpedMapList<WebGL2WarpedMap>();
 	warpedMapList.addGeoreferencedMaps(georeferencedMaps.flat());

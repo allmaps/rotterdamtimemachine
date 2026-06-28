@@ -3,29 +3,55 @@
 	import Header from '$lib/components/Header.svelte';
 	import About from '$lib/components/About.svelte';
 	import Share from '$lib/components/Share.svelte';
-	import { onMount } from 'svelte';
-	import data from '$lib/content/data';
-	import { comparison, mapView, viewState } from '$lib/store.svelte';
+	import { onMount, untrack } from 'svelte';
+	import { comparison, mapView, viewState } from '$lib/app-state.svelte.js';
 	import type {
+		AppConfig,
 		GeocoderBounds,
 		MapKeyboardCommand,
 		MapLocation,
+		MapMetadata,
 		MapToolbarCommand
 	} from '$lib/types';
 
-	const DEFAULT_YEAR = 1897;
-	const KEYBOARD_PAN_PIXELS = 100;
-	const KEYBOARD_BEARING_STEP = 15;
-	const defaultMap = mapForYear(DEFAULT_YEAR) ?? data[0];
-	const defaultLocation = {
-		center: [...mapView.center] as [number, number],
-		zoom: mapView.zoom,
-		bearing: mapView.bearing
-	};
+	let {
+		data: pageData
+	}: {
+		data: {
+			config: AppConfig;
+			collection: MapMetadata[];
+		};
+	} = $props();
+
+	let config = $derived(pageData.config);
+	let collection = $derived(pageData.collection);
+	let DEFAULT_YEAR = $derived(config.map.defaultYear);
+	let KEYBOARD_PAN_PIXELS = $derived(config.map.keyboard.panPixels);
+	let KEYBOARD_BEARING_STEP = $derived(config.map.keyboard.bearingStep);
+	let defaultMap = $derived(mapForYear(DEFAULT_YEAR) ?? collection[0]);
+	const initial = untrack(() => {
+		const defaultYear = pageData.config.map.defaultYear;
+		const initialMap =
+			pageData.collection.find((map) => map.year === defaultYear) ?? pageData.collection[0];
+		const rightMap = pageData.collection[1];
+		const defaultLocation = {
+			center: [...pageData.config.map.initialView.center] as [number, number],
+			zoom: pageData.config.map.initialView.zoom,
+			bearing: pageData.config.map.initialView.bearing
+		};
+
+		return {
+			defaultYear,
+			defaultLocation,
+			initialMap,
+			rightAnnotation: rightMap?.annotation ?? '',
+			rightYear: rightMap?.year ?? defaultYear
+		};
+	});
 
 	let overOpen = $state(false);
 	let shareOpen = $state(false);
-	let currentLocation = $state<MapLocation>(defaultLocation);
+	let currentLocation = $state<MapLocation>(initial.defaultLocation);
 	let geocoderBounds = $state<GeocoderBounds>();
 	let compareStacked = $state(false);
 	let panesReady = $state(false);
@@ -40,11 +66,11 @@
 		  }
 		| undefined;
 
-	if (defaultMap) viewState.annotation = defaultMap.annotation;
-	if (!comparison.rightAnnotation) comparison.rightAnnotation = data[1]?.annotation ?? '';
-	let selectedYear = $state(defaultMap?.year ?? DEFAULT_YEAR);
+	if (initial.initialMap) viewState.annotation = initial.initialMap.annotation;
+	if (!comparison.rightAnnotation) comparison.rightAnnotation = initial.rightAnnotation;
+	let selectedYear = $state(initial.initialMap?.year ?? initial.defaultYear);
 	let rightSelectedYear = $state(
-		yearForAnnotation(comparison.rightAnnotation) ?? data[1]?.year ?? DEFAULT_YEAR
+		yearForAnnotation(comparison.rightAnnotation) ?? initial.rightYear
 	);
 	let leftNavPosition: 'left' | 'right' = $derived(
 		comparison.active && compareStacked ? 'right' : 'left'
@@ -57,17 +83,17 @@
 	});
 
 	function yearForAnnotation(annotation: string) {
-		return data.find((map) => map.annotation === annotation)?.year;
+		return collection.find((map) => map.annotation === annotation)?.year;
 	}
 
 	function mapForYear(year: number) {
-		return data.find((map) => map.year === year);
+		return collection.find((map) => map.year === year);
 	}
 
 	function mapForYearParam(value: string | null) {
 		if (!value) return undefined;
 
-		const mapForAnnotation = data.find((map) => map.annotation === value);
+		const mapForAnnotation = collection.find((map) => map.annotation === value);
 		if (mapForAnnotation) return mapForAnnotation;
 
 		const numericYear = Number(value);
@@ -89,8 +115,8 @@
 
 		return {
 			center: [lng, lat],
-			zoom: numberParam(params, 'zoom') ?? mapView.zoom,
-			bearing: numberParam(params, 'bearing') ?? mapView.bearing
+			zoom: numberParam(params, 'zoom') ?? config.map.initialView.zoom,
+			bearing: numberParam(params, 'bearing') ?? config.map.initialView.bearing
 		};
 	}
 
@@ -101,7 +127,7 @@
 			selectedYear = initialMap.year;
 		}
 
-		currentLocation = locationFromParams(params) ?? defaultLocation;
+		currentLocation = locationFromParams(params) ?? initial.defaultLocation;
 	}
 
 	function dispatchMapKeyboardCommand(command: Omit<MapKeyboardCommand, 'id'>) {
@@ -275,6 +301,7 @@
 
 <div class="flex h-[100dvh] flex-col">
 	<Header
+		{config}
 		searchBounds={geocoderBounds}
 		onOverOpen={() => (overOpen = true)}
 		onShareOpen={() => (shareOpen = true)}
@@ -291,6 +318,8 @@
 				paneSide="left"
 				layersId="map-layers-left"
 				bordered={comparison.active}
+				maps={collection}
+				{config}
 				bind:annotation={viewState.annotation}
 				bind:opacity={viewState.opacity}
 				bind:selectedYear
@@ -310,6 +339,8 @@
 					navPosition="right"
 					paneSide="right"
 					layersId="map-layers-right"
+					maps={collection}
+					{config}
 					bind:annotation={comparison.rightAnnotation}
 					bind:opacity={comparison.rightOpacity}
 					bind:selectedYear={rightSelectedYear}
@@ -322,10 +353,10 @@
 	</div>
 
 	{#if overOpen}
-		<About onClose={() => (overOpen = false)} />
+		<About {config} onClose={() => (overOpen = false)} />
 	{/if}
 
 	{#if shareOpen}
-		<Share onClose={() => (shareOpen = false)} />
+		<Share {config} onClose={() => (shareOpen = false)} />
 	{/if}
 </div>
