@@ -260,68 +260,72 @@
 
 {#if activeMap}
 	<div
-		class="map-layers-panel absolute z-30 flex min-h-14 items-center gap-1 overflow-hidden rounded-md border border-gray-200 bg-white p-1 text-gray-900 shadow-lg"
+		class="absolute right-2 bottom-2 left-2 grid grid-flow-col items-center justify-items-center"
 	>
-		<div class="min-w-0 flex-1 rounded">
+		<div
+			class="z-30 flex min-h-14 w-full max-w-xl items-center gap-3 overflow-hidden rounded-md border border-gray-200 bg-white p-1 text-gray-900 shadow-lg"
+		>
+			<div class="min-w-0 flex-1 rounded">
+				<button
+					type="button"
+					aria-haspopup="dialog"
+					aria-controls={modalId}
+					onclick={openLayers}
+					class="flex w-full min-w-0 items-center gap-2 rounded px-2 pt-1 pb-0.5 text-left hover:bg-gray-50"
+				>
+					<span
+						class="flex-none rounded bg-gray-900 px-1.5 py-0.5 font-heading text-[0.65rem] text-white"
+					>
+						{activeMap.metadata.year}
+					</span>
+					<span class="min-w-0 flex-1 truncate text-sm leading-4 font-semibold">
+						{activeMap.metadata.label}
+					</span>
+				</button>
+				<div class="px-2 pt-1 pb-1">
+					<a
+						href={activeMap.metadata.url}
+						target="_blank"
+						rel="external noopener noreferrer"
+						class="inline-flex max-w-full items-center gap-1 text-xs font-medium text-gray-500 hover:text-green-700"
+						aria-label="Bekijk item bij {activeMap.metadata.institution}"
+					>
+						<span class="min-w-0 truncate">{activeMap.metadata.institution}</span>
+						<ExternalLink class="h-3 w-3 flex-none" />
+					</a>
+				</div>
+			</div>
+
+			{#if hasMultipleMaps}
+				<button
+					type="button"
+					aria-label="Vorige kaart"
+					onclick={() => selectRelativeMap(-1)}
+					class="flex h-10 w-8 flex-none items-center justify-center rounded text-gray-500 hover:bg-gray-100 hover:text-gray-900"
+				>
+					<ChevronLeft class="h-4 w-4" />
+				</button>
+				<button
+					type="button"
+					aria-label="Volgende kaart"
+					onclick={() => selectRelativeMap(1)}
+					class="flex h-10 w-8 flex-none items-center justify-center rounded text-gray-500 hover:bg-gray-100 hover:text-gray-900"
+				>
+					<ChevronRight class="h-4 w-4" />
+				</button>
+			{/if}
+
 			<button
 				type="button"
+				aria-label="Open kaartlagen"
 				aria-haspopup="dialog"
 				aria-controls={modalId}
 				onclick={openLayers}
-				class="flex w-full min-w-0 items-center gap-2 rounded px-2 pt-1 pb-0.5 text-left hover:bg-gray-50"
+				class="flex h-10 w-10 flex-none items-center justify-center rounded text-gray-500 hover:bg-gray-100 hover:text-gray-900"
 			>
-				<span
-					class="flex-none rounded bg-gray-900 px-1.5 py-0.5 font-heading text-[0.65rem] text-white"
-				>
-					{activeMap.metadata.year}
-				</span>
-				<span class="min-w-0 flex-1 truncate text-sm leading-4 font-semibold">
-					{activeMap.metadata.label}
-				</span>
+				<Layers class="h-4 w-4" />
 			</button>
-			<div class="px-2 pt-1 pb-1">
-				<a
-					href={activeMap.metadata.url}
-					target="_blank"
-					rel="external noopener noreferrer"
-					class="inline-flex max-w-full items-center gap-1 text-xs font-medium text-gray-500 hover:text-green-700"
-					aria-label="Bekijk item bij {activeMap.metadata.institution}"
-				>
-					<span class="min-w-0 truncate">{activeMap.metadata.institution}</span>
-					<ExternalLink class="h-3 w-3 flex-none" />
-				</a>
-			</div>
 		</div>
-
-		{#if hasMultipleMaps}
-			<button
-				type="button"
-				aria-label="Vorige kaart"
-				onclick={() => selectRelativeMap(-1)}
-				class="flex h-10 w-8 flex-none items-center justify-center rounded text-gray-500 hover:bg-gray-100 hover:text-gray-900"
-			>
-				<ChevronLeft class="h-4 w-4" />
-			</button>
-			<button
-				type="button"
-				aria-label="Volgende kaart"
-				onclick={() => selectRelativeMap(1)}
-				class="flex h-10 w-8 flex-none items-center justify-center rounded text-gray-500 hover:bg-gray-100 hover:text-gray-900"
-			>
-				<ChevronRight class="h-4 w-4" />
-			</button>
-		{/if}
-
-		<button
-			type="button"
-			aria-label="Open kaartlagen"
-			aria-haspopup="dialog"
-			aria-controls={modalId}
-			onclick={openLayers}
-			class="flex h-10 w-10 flex-none items-center justify-center rounded text-gray-500 hover:bg-gray-100 hover:text-gray-900"
-		>
-			<Layers class="h-4 w-4" />
-		</button>
 	</div>
 
 	{#if layersOpen}
@@ -337,9 +341,10 @@
 					<h2 id={modalTitleId} class="text-lg leading-6 font-semibold">Kaartlagen</h2>
 					<p class="truncate text-xs font-medium text-gray-500">
 						{resultLabel}
-						{#if showCollection}
-							in collectie
-						{:else}
+						{#if searchTerm}
+							gevonden
+						{/if}
+						{#if !showCollection}
 							voor {resolvedYear}
 						{/if}
 					</p>
@@ -563,20 +568,5 @@
 	input[type='search']::-webkit-search-cancel-button {
 		-webkit-appearance: none;
 		appearance: none;
-	}
-
-	.map-layers-panel {
-		right: 0.5rem;
-		bottom: 0.5rem;
-		left: 0.5rem;
-	}
-
-	@container map-pane (min-width: 48rem) {
-		.map-layers-panel {
-			right: auto;
-			left: 50%;
-			width: 20rem;
-			transform: translateX(-50%);
-		}
 	}
 </style>
