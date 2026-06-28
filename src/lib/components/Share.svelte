@@ -52,7 +52,7 @@
 <Modal {onClose} ariaLabelledby="share-title">
 	<div class="flex items-center justify-between gap-4 border-b border-gray-200 px-5 py-4">
 		<Share2 class="h-5 w-5 flex-none text-green-700" />
-		<h2 id="share-title" class="text-xl leading-none font-bold md:text-2xl">Deel jouw tijdreis</h2>
+		<h2 id="share-title" class="text-xl leading-none font-bold md:text-xl">Deel jouw tijdreis</h2>
 		<button
 			type="button"
 			onclick={onClose}
