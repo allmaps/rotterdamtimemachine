@@ -452,10 +452,15 @@
 			return;
 		}
 
-		const center = map.getCenter();
-		const geoPoint: [number, number] = [center.lng, center.lat];
+		const bounds = map.getBounds();
+		const geoBbox: [number, number, number, number] = [
+			bounds.getWest(),
+			bounds.getSouth(),
+			bounds.getEast(),
+			bounds.getNorth()
+		];
 		const mapIds = warpedMapLayer.getWarpedMapList().getMapIds({
-			geoPoint,
+			geoBbox,
 			onlyVisible: false
 		});
 		const nextAnnotationsInView = [
