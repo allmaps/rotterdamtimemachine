@@ -16,3 +16,10 @@ export type MapLocation = {
 	zoom: number;
 	bearing: number;
 };
+
+export type MapKeyboardCommand = {
+	id: number;
+	offset?: [number, number];
+	zoomDelta?: number;
+	bearingDelta?: number;
+};

@@ -28,7 +28,7 @@
 				onclick={toggleCompare}
 				aria-label="Vergelijkmodus"
 				aria-pressed={comparison.active}
-				class="flex h-8 items-center gap-2 rounded border border-white/40 px-2 text-sm font-semibold hover:bg-green-800 md:px-3 {comparison.active
+				class="flex h-8 items-center gap-2 rounded px-2 text-sm font-semibold hover:bg-green-800 md:px-3 {comparison.active
 					? 'bg-green-800'
 					: ''}"
 			>

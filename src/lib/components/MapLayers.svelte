@@ -25,7 +25,8 @@
 		paneSide = 'left',
 		showPaneIndicator = false,
 		enableKeyboardShortcut = false,
-		annotationsInView = []
+		annotationsInView = [],
+		preferInViewMaps = false
 	}: {
 		annotation?: string;
 		selectedYear: number;
@@ -34,6 +35,7 @@
 		showPaneIndicator?: boolean;
 		enableKeyboardShortcut?: boolean;
 		annotationsInView?: string[];
+		preferInViewMaps?: boolean;
 	} = $props();
 
 	const collection = new MapCollection();
@@ -52,8 +54,19 @@
 	let modalId = $derived(`${layersId}-modal`);
 	let modalTitleId = $derived(`${modalId}-title`);
 	let paneIndicatorLabel = $derived(paneSide === 'left' ? 'Linker kaart' : 'Rechter kaart');
-	let resolvedYear = $derived(resolveAvailableYear(selectedYear));
-	let mapsForResolvedYear = $derived(maps.filter((map) => map.metadata.year === resolvedYear));
+	let annotationsInViewSet = $derived(new Set(annotationsInView));
+	let inViewMaps = $derived(
+		maps.filter((map) => annotationsInViewSet.has(map.metadata.annotation))
+	);
+	let selectionMaps = $derived(preferInViewMaps && inViewMaps.length > 0 ? inViewMaps : maps);
+	let selectionAvailableYears = $derived(
+		[...new Set(selectionMaps.map((map) => map.metadata.year))].sort((a, b) => a - b)
+	);
+	let resolvedYear = $derived(resolveAvailableYear(selectedYear, selectionAvailableYears));
+	let mapsForResolvedYear = $derived(
+		selectionMaps.filter((map) => map.metadata.year === resolvedYear)
+	);
+	let mapsForVisibleYear = $derived(maps.filter((map) => map.metadata.year === resolvedYear));
 	let activeMap = $derived(
 		mapsForResolvedYear.find((map) => map.metadata.annotation === annotation) ??
 			mapsForResolvedYear[0]
@@ -63,11 +76,11 @@
 			(map) => map.metadata.annotation === activeMap?.metadata.annotation
 		)
 	);
+	let activeMapPosition = $derived(activeMapIndex >= 0 ? activeMapIndex + 1 : 1);
 	let hasMultipleMaps = $derived(mapsForResolvedYear.length > 1);
-	let annotationsInViewSet = $derived(new Set(annotationsInView));
 	let normalizedSearchTerm = $derived(normalizeSearchTerm(searchTerm));
 	let visibleMaps = $derived(
-		(showCollection ? maps : mapsForResolvedYear).filter(
+		(showCollection ? maps : mapsForVisibleYear).filter(
 			(map) =>
 				(showFavoritesOnly ? favorites.includes(map.metadata.annotation) : true) &&
 				(showInViewOnly ? annotationsInViewSet.has(map.metadata.annotation) : true) &&
@@ -99,9 +112,9 @@
 		}
 	});
 
-	function resolveAvailableYear(year: number) {
-		let resolved = availableYears[0] ?? year;
-		for (const availableYear of availableYears) {
+	function resolveAvailableYear(year: number, years = availableYears) {
+		let resolved = years[0] ?? year;
+		for (const availableYear of years) {
 			if (availableYear <= year) {
 				resolved = availableYear;
 			}
@@ -134,24 +147,51 @@
 		layersOpen = false;
 	}
 
+	function isEditableTarget(target: EventTarget | null) {
+		if (!(target instanceof HTMLElement)) return false;
+
+		const tagName = target.tagName.toLowerCase();
+		return (
+			tagName === 'input' ||
+			tagName === 'textarea' ||
+			tagName === 'select' ||
+			target.isContentEditable
+		);
+	}
+
 	function handleGlobalKeydown(event: KeyboardEvent) {
 		if (!enableKeyboardShortcut || event.repeat) return;
-		if (!(event.metaKey || event.ctrlKey) || event.key.toLowerCase() !== 'k') return;
 
-		event.preventDefault();
-		event.stopPropagation();
+		if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k') {
+			event.preventDefault();
+			event.stopPropagation();
 
-		if (layersOpen) {
-			searchInputElement?.focus();
-		} else {
-			openLayers();
+			if (layersOpen) {
+				searchInputElement?.focus();
+			} else {
+				openLayers();
+			}
+			return;
+		}
+
+		if (event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) return;
+		if (isEditableTarget(event.target)) return;
+
+		if (event.key === '[') {
+			event.preventDefault();
+			selectRelativeMap(-1);
+		}
+
+		if (event.key === ']') {
+			event.preventDefault();
+			selectRelativeMap(1);
 		}
 	}
 
 	function resetModalState() {
 		showCollection = false;
 		showFavoritesOnly = false;
-		showInViewOnly = false;
+		showInViewOnly = preferInViewMaps && annotationsInViewSet.size > 0;
 		searchTerm = '';
 		selectedIndex = Math.max(
 			0,
@@ -271,7 +311,7 @@
 					aria-haspopup="dialog"
 					aria-controls={modalId}
 					onclick={openLayers}
-					class="flex w-full min-w-0 items-center gap-2 rounded px-2 pt-1 pb-0.5 text-left hover:bg-gray-50"
+					class="flex w-full min-w-0 cursor-pointer items-center gap-2 rounded px-2 pt-1 pb-0.5 text-left hover:bg-gray-50"
 				>
 					<span
 						class="flex-none rounded bg-gray-900 px-1.5 py-0.5 font-heading text-[0.65rem] text-white"
@@ -299,15 +339,22 @@
 			{#if hasMultipleMaps}
 				<button
 					type="button"
-					aria-label="Vorige kaart"
+					aria-label="Vorige kaart ({activeMapPosition} van {mapsForResolvedYear.length})"
 					onclick={() => selectRelativeMap(-1)}
 					class="flex h-10 w-8 flex-none items-center justify-center rounded text-gray-500 hover:bg-gray-100 hover:text-gray-900"
 				>
 					<ChevronLeft class="h-4 w-4" />
 				</button>
+				<span
+					aria-label="Kaart {activeMapPosition} van {mapsForResolvedYear.length}"
+					title="Kaart {activeMapPosition} van {mapsForResolvedYear.length}"
+					class="flex h-10 min-w-10 flex-none items-center justify-center rounded bg-gray-50 px-2 font-heading text-xs font-bold tabular-nums text-gray-700"
+				>
+					{activeMapPosition}/{mapsForResolvedYear.length}
+				</span>
 				<button
 					type="button"
-					aria-label="Volgende kaart"
+					aria-label="Volgende kaart ({activeMapPosition} van {mapsForResolvedYear.length})"
 					onclick={() => selectRelativeMap(1)}
 					class="flex h-10 w-8 flex-none items-center justify-center rounded text-gray-500 hover:bg-gray-100 hover:text-gray-900"
 				>
@@ -321,7 +368,7 @@
 				aria-haspopup="dialog"
 				aria-controls={modalId}
 				onclick={openLayers}
-				class="flex h-10 w-10 flex-none items-center justify-center rounded text-gray-500 hover:bg-gray-100 hover:text-gray-900"
+				class="flex h-10 w-10 flex-none cursor-pointer items-center justify-center rounded text-gray-500 hover:bg-gray-100 hover:text-gray-900"
 			>
 				<Layers class="h-4 w-4" />
 			</button>

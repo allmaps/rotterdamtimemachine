@@ -5,12 +5,20 @@
 
 	let {
 		selectedYear = $bindable(),
+		inViewOnly = $bindable(false),
 		navPosition = 'left',
-		showMapYearTicks = false
+		showMapYearTicks = false,
+		snapToAvailableYear = true,
+		enableKeyboardShortcut = false,
+		annotationsInView = []
 	}: {
 		selectedYear: number;
+		inViewOnly?: boolean;
 		navPosition?: 'left' | 'right';
 		showMapYearTicks?: boolean;
+		snapToAvailableYear?: boolean;
+		enableKeyboardShortcut?: boolean;
+		annotationsInView?: string[];
 	} = $props();
 
 	const collection = new MapCollection();
@@ -28,9 +36,33 @@
 	let sliderSurfaceClass = $derived(navPosition === 'right' ? 'right-0' : 'left-0');
 	let tickClass = $derived(navPosition === 'right' ? 'right-3' : 'left-3');
 	let yearLabelClass = $derived(navPosition === 'right' ? 'mr-10' : 'ml-10');
+	let annotationsInViewSet = $derived(new Set(annotationsInView));
+	let inViewAvailableYears = $derived(
+		[
+			...new Set(
+				maps
+					.filter((map) => annotationsInViewSet.has(map.metadata.annotation))
+					.map((map) => map.metadata.year)
+			)
+		].sort((a, b) => a - b)
+	);
+	let selectableYears = $derived(
+		inViewOnly && inViewAvailableYears.length > 0 ? inViewAvailableYears : availableYears
+	);
+	let mapYearTickYears = $derived(inViewOnly ? inViewAvailableYears : availableYears);
+
+	$effect(() => {
+		if (
+			snapToAvailableYear &&
+			selectableYears.length > 0 &&
+			!selectableYears.includes(selectedYear)
+		) {
+			selectedYear = closestYear(selectedYear, selectableYears);
+		}
+	});
 
 	function isAvailableYear(year: number) {
-		return availableYears.includes(year);
+		return mapYearTickYears.includes(year);
 	}
 
 	function isScaleYear(year: number) {
@@ -40,7 +72,57 @@
 	function isCenturyYear(year: number) {
 		return year % 100 === 0;
 	}
+
+	function isEditableTarget(target: EventTarget | null) {
+		if (!(target instanceof HTMLElement)) return false;
+
+		const tagName = target.tagName.toLowerCase();
+		return (
+			tagName === 'input' ||
+			tagName === 'textarea' ||
+			tagName === 'select' ||
+			target.isContentEditable
+		);
+	}
+
+	function selectRelativeYear(direction: -1 | 1) {
+		if (selectableYears.length === 0) return;
+
+		const nextYear =
+			direction === 1
+				? (selectableYears.find((year) => year > selectedYear) ?? selectableYears.at(-1))
+				: ([...selectableYears].reverse().find((year) => year < selectedYear) ??
+					selectableYears[0]);
+
+		if (nextYear !== undefined) {
+			selectedYear = nextYear;
+		}
+	}
+
+	function closestYear(year: number, years: number[]) {
+		return years.reduce((closest, candidate) =>
+			Math.abs(candidate - year) < Math.abs(closest - year) ? candidate : closest
+		);
+	}
+
+	function handleGlobalKeydown(event: KeyboardEvent) {
+		if (!enableKeyboardShortcut || event.repeat) return;
+		if (!event.shiftKey || event.metaKey || event.ctrlKey || event.altKey) return;
+		if (isEditableTarget(event.target)) return;
+
+		if (event.key === 'ArrowUp') {
+			event.preventDefault();
+			selectRelativeYear(1);
+		}
+
+		if (event.key === 'ArrowDown') {
+			event.preventDefault();
+			selectRelativeYear(-1);
+		}
+	}
 </script>
+
+<svelte:window onkeydown={handleGlobalKeydown} />
 
 <aside class="time-slider z-20 flex h-full flex-none flex-col pb-20 font-bolder text-gray-800">
 	<div class="relative min-h-0 flex-1">

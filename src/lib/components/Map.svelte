@@ -5,7 +5,7 @@
 	import { AlertTriangle, Focus } from '@lucide/svelte';
 	import 'maplibre-gl/dist/maplibre-gl.css';
 	import { viewState, flyTo, selectedLocation, mapView } from '$lib/store.svelte';
-	import { afterNavigate, replaceState } from '$app/navigation';
+	import { replaceState } from '$app/navigation';
 	import { resolve } from '$app/paths';
 	import { getProtomapsLayers, getProtomapsStyle } from '$lib/basemap';
 	import {
@@ -14,33 +14,37 @@
 		mapIdsByAnnotation
 	} from '$lib/shared/warped-map-list';
 	import MapControls from '$lib/components/MapControls.svelte';
-	import type { MapLocation } from '$lib/types';
+	import type { MapKeyboardCommand, MapLocation } from '$lib/types';
 
 	let {
 		annotation = $bindable(viewState.annotation),
 		opacity = $bindable(viewState.opacity),
 		rotateToMapOrientation = $bindable(false),
+		focusActiveMap = $bindable(false),
+		inViewOnly = $bindable(false),
 		currentLocation = $bindable({
 			center: [...mapView.center] as [number, number],
 			zoom: mapView.zoom,
 			bearing: mapView.bearing
 		}),
 		annotationsInView = $bindable<string[]>([]),
+		mapKeyboardCommand,
 		syncUrl = false,
 		enableFlyTo = false,
 		enableLocationMarker = false,
-		enableKeyboardToggle = false,
 		controlsPosition = 'top-right'
 	}: {
 		annotation?: string;
 		opacity?: number;
 		rotateToMapOrientation?: boolean;
+		focusActiveMap?: boolean;
+		inViewOnly?: boolean;
 		currentLocation?: MapLocation;
 		annotationsInView?: string[];
+		mapKeyboardCommand?: MapKeyboardCommand;
 		syncUrl?: boolean;
 		enableFlyTo?: boolean;
 		enableLocationMarker?: boolean;
-		enableKeyboardToggle?: boolean;
 		controlsPosition?: 'top-left' | 'top-right';
 	} = $props();
 
@@ -59,9 +63,13 @@
 	let dismissedVisibilityWarningAnnotation: string | undefined;
 	let previousAnnotationForVisibility: string | undefined;
 	let previousAnnotationForOrientation: string | undefined;
+	let previousAnnotationForFocus: string | undefined;
 	let previousRotateToMapOrientation = rotateToMapOrientation;
+	let previousRotateToMapOrientationForFocus = rotateToMapOrientation;
+	let previousFocusActiveMap = focusActiveMap;
+	let previousKeyboardCommandId = 0;
 	let visibilityCheckFrame: number | undefined;
-	let routerReady = false;
+	let urlSyncFrame: number | undefined;
 	let isSyncing = false;
 	let warpedMapList = getWarpedMapList();
 	let warpedMapLayer = new WarpedMapLayer({ visible: false, warpedMapList });
@@ -73,10 +81,6 @@
 		loaded && !!actieveAnnotation && (mapIdsByAnnotation.get(actieveAnnotation)?.size ?? 0) > 0
 	);
 
-	afterNavigate(() => {
-		routerReady = true;
-	});
-
 	// Laad de kaartlaag als de annotatie verandert
 	$effect(() => {
 		if (loaded && actieveAnnotation && mapIdsByAnnotation.size > 0) {
@@ -84,6 +88,12 @@
 			warpedMapLayer.setMapsOptions((id: string) =>
 				idsToShow.has(id) ? { visible: true } : { visible: false }
 			);
+		}
+	});
+
+	$effect(() => {
+		if (syncUrl && mapReady && map && actieveAnnotation) {
+			queueBrowserUrlUpdate();
 		}
 	});
 
@@ -168,6 +178,47 @@
 		}
 	});
 
+	$effect(() => {
+		const shouldFocus = focusActiveMap;
+		const shouldRotate = rotateToMapOrientation;
+		const annotationForFocus = actieveAnnotation;
+		if (!loaded || !mapReady || !map) return;
+
+		const focusChanged = shouldFocus !== previousFocusActiveMap;
+		const orientationChanged = shouldRotate !== previousRotateToMapOrientationForFocus;
+		const annotationChanged = annotationForFocus !== previousAnnotationForFocus;
+		previousFocusActiveMap = shouldFocus;
+		previousRotateToMapOrientationForFocus = shouldRotate;
+		previousAnnotationForFocus = annotationForFocus;
+
+		if (!shouldFocus || !annotationForFocus) return;
+		if (focusChanged || orientationChanged || annotationChanged) {
+			focusSelectedMap(annotationForFocus);
+		}
+	});
+
+	$effect(() => {
+		const command = mapKeyboardCommand;
+		if (!mapReady || !map || !command || command.id === previousKeyboardCommandId) return;
+
+		previousKeyboardCommandId = command.id;
+		map.easeTo({
+			duration: 300,
+			easeId: 'keyboardHandler',
+			center: map.getCenter(),
+			zoom:
+				command.zoomDelta === undefined
+					? map.getZoom()
+					: map.getZoom() + command.zoomDelta,
+			bearing:
+				command.bearingDelta === undefined
+					? map.getBearing()
+					: map.getBearing() + command.bearingDelta,
+			pitch: 0,
+			offset: command.offset ?? [0, 0]
+		});
+	});
+
 	function mapMatchesLocation(center: [number, number], zoom: number, bearing: number) {
 		if (!map) return false;
 		const c = map.getCenter();
@@ -180,42 +231,69 @@
 	}
 
 	function bearingDifference(a: number, b: number) {
-		return Math.abs((((a - b + 540) % 360) - 180));
+		return Math.abs(((a - b + 540) % 360) - 180);
 	}
 
 	function updateBrowserUrl() {
-		if (!routerReady || !map) return;
+		if (!map) return;
 
 		const center = map.getCenter();
 		const params = new URLSearchParams({
 			lat: center.lat.toFixed(5),
 			lng: center.lng.toFixed(5),
 			zoom: map.getZoom().toFixed(2),
-			year: String(annotation)
+			year: String(actieveAnnotation)
 		});
 		const bearing = map.getBearing();
 		if (bearingDifference(bearing, 0) >= 0.005) {
 			params.set('bearing', bearing.toFixed(2));
 		}
-		replaceState(resolve(`/?${params.toString()}`), {});
+		replaceBrowserUrl(resolve(`/?${params.toString()}`));
+	}
+
+	function queueBrowserUrlUpdate() {
+		if (urlSyncFrame !== undefined) {
+			cancelAnimationFrame(urlSyncFrame);
+		}
+
+		urlSyncFrame = requestAnimationFrame(() => {
+			urlSyncFrame = undefined;
+			updateBrowserUrl();
+		});
+	}
+
+	function replaceBrowserUrl(url: string, retry = true) {
+		try {
+			replaceState(url, {});
+		} catch (error) {
+			if (
+				retry &&
+				error instanceof Error &&
+				error.message.includes('before router is initialized')
+			) {
+				requestAnimationFrame(() => replaceBrowserUrl(url, false));
+			} else {
+				console.warn('Kon URL niet bijwerken:', error);
+			}
+		}
 	}
 
 	function isImageUrl(id: string) {
 		return /^https?:\/\//.test(id) || id.startsWith('/') || id.startsWith('data:');
 	}
 
-	function zoomToActiveMap() {
-		if (!map || !actieveAnnotation) return;
+	function focusSelectedMap(annotationForFocus = actieveAnnotation) {
+		if (!map || !annotationForFocus) return;
 
 		if (rotateToMapOrientation) {
-			const camera = getSelectedMapCamera(actieveAnnotation);
+			const camera = getSelectedMapCamera(annotationForFocus);
 			if (camera) {
 				map.easeTo({ ...camera, pitch: 0, duration: 350 });
 				return;
 			}
 		}
 
-		const bounds = getSelectedMapBounds(actieveAnnotation);
+		const bounds = getSelectedMapBounds(annotationForFocus);
 		if (bounds) {
 			map.fitBounds(bounds, { padding: 40 });
 		}
@@ -316,7 +394,7 @@
 
 	function zoomToActiveMapFromWarning() {
 		dismissVisibilityWarning();
-		zoomToActiveMap();
+		focusSelectedMap();
 	}
 
 	function handleVisibilityWarningKeydown(event: KeyboardEvent) {
@@ -358,7 +436,9 @@
 			maxPitch: 0,
 			center: currentLocation.center,
 			zoom: currentLocation.zoom,
-			bearing: currentLocation.bearing ?? 0
+			bearing: currentLocation.bearing ?? 0,
+			bearingSnap: 0,
+			keyboard: false
 		});
 		map = mapInstance;
 		mapReady = true;
@@ -410,6 +490,9 @@
 			if (visibilityCheckFrame !== undefined) {
 				cancelAnimationFrame(visibilityCheckFrame);
 			}
+			if (urlSyncFrame !== undefined) {
+				cancelAnimationFrame(urlSyncFrame);
+			}
 			mapInstance.remove();
 			annotationsInView = [];
 			map = undefined;
@@ -417,27 +500,14 @@
 		};
 	});
 
-	let previousOpacity: number | undefined;
-	function toggleMap(event: KeyboardEvent) {
+	function handleGlobalKeydown(event: KeyboardEvent) {
 		if (event.key === 'Escape' && visibilityWarningOpen) {
 			dismissVisibilityWarning();
-			return;
-		}
-
-		if (!enableKeyboardToggle || event.repeat) return;
-		if (event.code === 'Space') {
-			if (previousOpacity === undefined) {
-				previousOpacity = opacity;
-				opacity = 0;
-			} else {
-				opacity = previousOpacity;
-				previousOpacity = undefined;
-			}
 		}
 	}
 </script>
 
-<svelte:window on:keydown={toggleMap} on:keyup={toggleMap} />
+<svelte:window onkeydown={handleGlobalKeydown} />
 
 <div bind:this={mapElement} class="absolute inset-0 h-full w-full"></div>
 {#if mapReady && map}
@@ -445,9 +515,11 @@
 		{map}
 		bind:opacity
 		bind:rotateToMapOrientation
+		bind:focusActiveMap
+		bind:inViewOnly
 		position={controlsPosition}
 		canZoomToMap={canZoomToActiveMap}
-		onZoomToMap={zoomToActiveMap}
+		canFilterInView={annotationsInView.length > 0}
 	/>
 {/if}
 

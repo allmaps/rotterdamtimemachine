@@ -6,6 +6,10 @@
 	let { onClose }: { onClose: () => void } = $props();
 
 	let closeButton: HTMLButtonElement | undefined = $state();
+	const keyClass =
+		'inline-flex min-w-7 items-center justify-center rounded border border-gray-300 bg-gray-50 px-1.5 py-0.5 font-heading text-xs font-bold text-gray-800 shadow-sm';
+	const wideKeyClass =
+		'inline-flex min-w-16 items-center justify-center rounded border border-gray-300 bg-gray-50 px-1.5 py-0.5 font-heading text-xs font-bold text-gray-800 shadow-sm';
 
 	$effect(() => {
 		tick().then(() => {
@@ -45,5 +49,73 @@
 			Deze cultuurhistorische tijdreis geeft inzicht in de keuzes die hebben geleid tot het
 			Rotterdam van nu, en kan inspireren om historische kennis opnieuw te benutten.
 		</p>
+
+		<section class="mt-6 border-t border-gray-200 pt-5">
+			<h3 class="mb-3 text-sm font-bold text-gray-900">Sneltoetsen</h3>
+			<dl class="space-y-3 text-sm text-gray-700">
+				<div class="grid grid-cols-[auto_1fr] items-center gap-3">
+					<dt class="flex flex-wrap items-center gap-1.5">
+						<kbd class={keyClass}>⌘</kbd>
+						<kbd class={keyClass}>K</kbd>
+						<span class="text-xs text-gray-400">/</span>
+						<kbd class={keyClass}>Ctrl</kbd>
+						<kbd class={keyClass}>K</kbd>
+					</dt>
+					<dd>Kaartlagen openen</dd>
+				</div>
+
+				<div class="grid grid-cols-[auto_1fr] items-center gap-3">
+					<dt class="flex items-center gap-1.5">
+						<kbd class={keyClass}>[</kbd>
+						<kbd class={keyClass}>]</kbd>
+					</dt>
+					<dd>Door kaarten van hetzelfde jaar bladeren</dd>
+				</div>
+
+				<div class="grid grid-cols-[auto_1fr] items-center gap-3">
+					<dt class="flex items-center gap-1.5">
+						<kbd class={keyClass}>Shift</kbd>
+						<kbd class={keyClass}>↑</kbd>
+						<kbd class={keyClass}>↓</kbd>
+					</dt>
+					<dd>Naar het volgende of vorige beschikbare kaartjaar</dd>
+				</div>
+
+				<div class="grid grid-cols-[auto_1fr] items-center gap-3">
+					<dt class="flex items-center gap-1.5">
+						<kbd class={keyClass}>←</kbd>
+						<kbd class={keyClass}>↑</kbd>
+						<kbd class={keyClass}>↓</kbd>
+						<kbd class={keyClass}>→</kbd>
+					</dt>
+					<dd>Kaartbeeld verschuiven</dd>
+				</div>
+
+				<div class="grid grid-cols-[auto_1fr] items-center gap-3">
+					<dt class="flex items-center gap-1.5">
+						<kbd class={keyClass}>+</kbd>
+						<kbd class={keyClass}>=</kbd>
+						<kbd class={keyClass}>-</kbd>
+					</dt>
+					<dd>In- en uitzoomen</dd>
+				</div>
+
+				<div class="grid grid-cols-[auto_1fr] items-center gap-3">
+					<dt class="flex items-center gap-1.5">
+						<kbd class={keyClass}>Shift</kbd>
+						<kbd class={keyClass}>←</kbd>
+						<kbd class={keyClass}>→</kbd>
+					</dt>
+					<dd>Kaartbeeld draaien</dd>
+				</div>
+
+				<div class="grid grid-cols-[auto_1fr] items-center gap-3">
+					<dt class="flex items-center gap-1.5">
+						<kbd class={wideKeyClass}>Spatie</kbd>
+					</dt>
+					<dd>Historische kaartlagen tijdelijk verbergen</dd>
+				</div>
+			</dl>
+		</section>
 	</div>
 </Modal>

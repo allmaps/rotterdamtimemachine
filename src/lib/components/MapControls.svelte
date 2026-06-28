@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Compass, Focus, Minus, Plus, SlidersHorizontal } from '@lucide/svelte';
+	import { Compass, Focus, MapPinned, Minus, Plus, SlidersHorizontal } from '@lucide/svelte';
 	import type maplibregl from 'maplibre-gl';
 
 	type ControlPosition = 'top-left' | 'top-right';
@@ -8,20 +8,27 @@
 		map,
 		opacity = $bindable(100),
 		rotateToMapOrientation = $bindable(false),
+		focusActiveMap = $bindable(false),
+		inViewOnly = $bindable(false),
 		position = 'top-right',
 		canZoomToMap = false,
-		onZoomToMap = () => {}
+		canFilterInView = false
 	}: {
 		map: maplibregl.Map;
 		opacity?: number;
 		rotateToMapOrientation?: boolean;
+		focusActiveMap?: boolean;
+		inViewOnly?: boolean;
 		position?: ControlPosition;
 		canZoomToMap?: boolean;
-		onZoomToMap?: () => void;
+		canFilterInView?: boolean;
 	} = $props();
 
 	const positionClass = $derived(position === 'top-left' ? 'top-2 left-2' : 'top-2 right-2');
 	const opacityPanelClass = $derived(position === 'top-left' ? 'left-0' : 'right-0');
+	const inViewTitle = $derived(
+		inViewOnly ? 'Toon alle jaren' : canFilterInView ? 'Filter op kaarten in beeld' : 'Geen kaarten in beeld'
+	);
 	let opacityOpen = $state(false);
 
 	const zoomControls = [
@@ -49,6 +56,16 @@
 
 	function toggleMapOrientation() {
 		rotateToMapOrientation = !rotateToMapOrientation;
+	}
+
+	function toggleMapFocus() {
+		focusActiveMap = !focusActiveMap;
+	}
+
+	function toggleInViewOnly() {
+		if (!inViewOnly && !canFilterInView) return;
+
+		inViewOnly = !inViewOnly;
 	}
 </script>
 
@@ -97,13 +114,30 @@
 
 		<button
 			type="button"
-			aria-label="Zoom naar kaartlaag"
-			title="Zoom naar kaartlaag"
+			aria-label={focusActiveMap ? 'Kaartlaagfocus uitschakelen' : 'Kaartlaagfocus volgen'}
+			title={focusActiveMap ? 'Kaartlaagfocus uitschakelen' : 'Kaartlaagfocus volgen'}
+			aria-pressed={focusActiveMap}
 			disabled={!canZoomToMap}
-			onclick={onZoomToMap}
-			class="flex h-9 w-9 items-center justify-center border-r border-gray-200 hover:bg-gray-100 focus-visible:z-10 focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-green-700 disabled:cursor-not-allowed disabled:text-gray-300 disabled:hover:bg-white"
+			onclick={toggleMapFocus}
+			class="flex h-9 w-9 items-center justify-center border-r border-gray-200 hover:bg-gray-100 focus-visible:z-10 focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-green-700 disabled:cursor-not-allowed disabled:text-gray-300 disabled:hover:bg-white {focusActiveMap
+				? 'bg-green-700 text-white hover:bg-green-800'
+				: ''}"
 		>
 			<Focus class="h-4 w-4" />
+		</button>
+
+		<button
+			type="button"
+			aria-label={inViewTitle}
+			title={inViewTitle}
+			aria-pressed={inViewOnly}
+			disabled={!inViewOnly && !canFilterInView}
+			onclick={toggleInViewOnly}
+			class="flex h-9 w-9 items-center justify-center border-r border-gray-200 hover:bg-gray-100 focus-visible:z-10 focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-green-700 disabled:cursor-not-allowed disabled:text-gray-300 disabled:hover:bg-white {inViewOnly
+				? 'bg-green-700 text-white hover:bg-green-800'
+				: ''}"
+		>
+			<MapPinned class="h-4 w-4" />
 		</button>
 
 		<button
