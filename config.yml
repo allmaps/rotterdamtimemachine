@@ -4,6 +4,8 @@ site:
   description: Verken historische kaarten van Rotterdam door de tijd en vergelijk kaartlagen met de huidige stad.
   locale: nl
 
+collection: collection.yml
+
 theme:
   color: green
   fonts:

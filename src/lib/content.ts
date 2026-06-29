@@ -8,11 +8,13 @@ const yamlModules = import.meta.glob<unknown>(
 	}
 );
 
-export const config = getYamlFile<AppConfig>(__APP_CONFIG_FILE__, 'config.yml', 'CONFIG');
+const configFileName = normalizeYamlFileName(__APP_CONFIG_FILE__, 'config.yml');
+
+export const config = getYamlFile<AppConfig>(configFileName, 'config.yml', 'CONFIG');
 export const collection = getYamlFile<MapMetadata[]>(
-	__APP_COLLECTION_FILE__,
+	resolveReferencedYamlFile(config.collection, 'collection.yml', configFileName),
 	'collection.yml',
-	'COLLECTION'
+	'collection'
 );
 
 function getYamlFile<T>(fileName: string | undefined, fallback: string, envName: string): T {
@@ -45,4 +47,21 @@ function normalizeYamlFileName(fileName: string | undefined, fallback: string) {
 	}
 
 	return normalized;
+}
+
+function resolveReferencedYamlFile(
+	fileName: string | undefined,
+	fallback: string,
+	referenceFileName: string
+) {
+	const normalized = normalizeYamlFileName(fileName, fallback);
+	if (!fileName?.trim() || normalized.includes('/')) return normalized;
+
+	const referenceDirectory = getDirectoryName(referenceFileName);
+	return referenceDirectory ? `${referenceDirectory}/${normalized}` : normalized;
+}
+
+function getDirectoryName(fileName: string) {
+	const lastSlashIndex = fileName.lastIndexOf('/');
+	return lastSlashIndex === -1 ? '' : fileName.slice(0, lastSlashIndex);
 }

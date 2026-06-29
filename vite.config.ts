@@ -8,8 +8,7 @@ export default defineConfig(({ mode }) => {
 
 	return {
 		define: {
-			__APP_CONFIG_FILE__: JSON.stringify(env.CONFIG || 'config.yml'),
-			__APP_COLLECTION_FILE__: JSON.stringify(env.COLLECTION || 'collection.yml')
+			__APP_CONFIG_FILE__: JSON.stringify(env.CONFIG || 'config.yml')
 		},
 		plugins: [ViteYaml(), tailwindcss(), sveltekit()],
 		server: {

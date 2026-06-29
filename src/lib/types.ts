@@ -12,6 +12,7 @@ export type MapMetadata = {
 };
 
 export type AppConfig = {
+	collection?: string;
 	site: {
 		name: string;
 		url: string;

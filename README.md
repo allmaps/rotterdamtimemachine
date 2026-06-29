@@ -51,11 +51,11 @@ For deployment under a subpath, set the SvelteKit base path with `BASE_PATH`:
 BASE_PATH=/rotterdam-tijdmachine npm run build
 ```
 
-To run or build with alternate content files, set `CONFIG` and optionally `COLLECTION`:
+To run or build with alternate content files, set `CONFIG`:
 
 ```bash
-CONFIG=config-gouda.yml COLLECTION=collection-gouda.yml pnpm run dev
-CONFIG=content/config-gouda.yml COLLECTION=content/collection-gouda.yml pnpm run build
+CONFIG=config-gouda.yml pnpm run dev
+CONFIG=content/config-gouda.yml pnpm run build
 ```
 
 ## Reusing the app with different content
@@ -67,19 +67,20 @@ The app is structured so the most important content lives outside the components
 
 The YAML files are loaded through `src/lib/content.ts` and `@modyfi/vite-plugin-yaml`. If you extend the YAML structure, also update the shared types in `src/lib/types.ts`.
 
-By default, the app uses `config.yml` and `collection.yml`. To keep multiple configurations in one repository, add alternate YAML files either in the project root or in a `content/` folder and select them with environment variables:
+By default, the app uses `config.yml`, which points to `collection.yml`. To keep multiple configurations in one repository, add alternate YAML files either in the project root or in a `content/` folder and select the configuration file with `CONFIG`:
 
 ```bash
-CONFIG=config-gouda.yml COLLECTION=collection-gouda.yml pnpm run dev
-CONFIG=content/config-gouda.yml COLLECTION=content/collection-gouda.yml pnpm run build
+CONFIG=config-gouda.yml pnpm run dev
+CONFIG=content/config-gouda.yml pnpm run build
 ```
 
-`CONFIG` selects the app configuration file. `COLLECTION` selects the map collection file. If either variable is omitted, the app falls back to `config.yml` or `collection.yml`.
+`CONFIG` selects the app configuration file. If it is omitted, the app falls back to `config.yml`. The selected config file then points to the collection with its top-level `collection` field. Bare collection filenames are resolved relative to the config file, so `content/config-gouda.yml` can use `collection: collection-gouda.yml`.
 
 ### `config.yml`
 
 Important sections:
 
+- `collection`: YAML file with map records; bare filenames are resolved relative to the config file
 - `site`: name, URL, description, and locale for metadata
 - `theme.color`: Tailwind palette name, hex value, or RGB value used for the primary UI color
 - `theme.shade`: main shade for the primary UI color; supported values are `400`, `500`, `600`, `700`, and `800`

@@ -4,7 +4,6 @@
 
 declare global {
 	const __APP_CONFIG_FILE__: string;
-	const __APP_COLLECTION_FILE__: string;
 
 	namespace App {
 		// interface Error {}
