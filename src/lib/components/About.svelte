@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Modal from '$lib/components/Modal.svelte';
-	import { X, Info } from '@lucide/svelte';
+	import { ExternalLink, X, Info } from '@lucide/svelte';
 	import { tick } from 'svelte';
 	import type { AppConfig, MapMetadata } from '$lib/types';
 
@@ -76,6 +76,24 @@
 						</li>
 					{/each}
 				</ul>
+			</section>
+		{/if}
+
+		{#if config.about.source?.url}
+			<section class="mt-6 border-t border-gray-200 pt-5">
+				<h3 class="mb-2 text-sm font-bold text-gray-900">{config.about.source.title}</h3>
+				<p class="text-sm leading-relaxed text-gray-700">
+					{config.about.source.description}
+				</p>
+				<a
+					href={config.about.source.url}
+					target="_blank"
+					rel="external noopener noreferrer"
+					class="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-main hover:text-brand-hover"
+				>
+					<span>{config.about.source.linkLabel}</span>
+					<ExternalLink class="h-3.5 w-3.5 flex-none" />
+				</a>
 			</section>
 		{/if}
 

@@ -76,6 +76,11 @@ about:
     - De historische kaarten laten zien hoe Rotterdam groeide van een kleine handelsstad tot een van de grootste havens ter wereld. Je ziet hoe wijken verschoven, nieuwe gebieden werden aangelegd en oude structuren verdwenen.
     - Deze cultuurhistorische tijdreis geeft inzicht in de keuzes die hebben geleid tot het Rotterdam van nu, en kan inspireren om historische kennis opnieuw te benutten.
   institutionsTitle: Kaartbronnen
+  source:
+    title: Open source
+    description: Rotterdam Tijdmachine is een open-source project. De broncode is beschikbaar op GitHub.
+    linkLabel: Bekijk de code op GitHub
+    url: https://github.com/allmaps/rotterdam-tijdmachine
   shortcutsTitle: Sneltoetsen
   shortcuts:
     - keys: ["⌘", K, "/", Ctrl, K]

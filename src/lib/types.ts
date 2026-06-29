@@ -73,6 +73,12 @@ export type AppConfig = {
 		closeLabel: string;
 		paragraphs: string[];
 		institutionsTitle: string;
+		source?: {
+			title: string;
+			description: string;
+			linkLabel: string;
+			url: string;
+		};
 		shortcutsTitle: string;
 		shortcuts: Array<{
 			keys: string[];
