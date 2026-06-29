@@ -6,6 +6,7 @@
 	import { onMount, untrack } from 'svelte';
 	import { comparison, mapView, viewState } from '$lib/app-state.svelte.js';
 	import { getMapStartYear, mapIncludesYear } from '$lib/map-years';
+	import { LoaderCircle } from '@lucide/svelte';
 	import type {
 		AppConfig,
 		GeocoderBounds,
@@ -378,6 +379,12 @@
 					showLayersPaneIndicator
 				/>
 			{/if}
+		{:else}
+			<div class="grid min-h-0 flex-1 place-items-center">
+				<div role="status" aria-label="Loading map">
+					<LoaderCircle class="h-8 w-8 animate-spin text-brand-main" />
+				</div>
+			</div>
 		{/if}
 	</div>
 
