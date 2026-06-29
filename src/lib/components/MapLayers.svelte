@@ -401,7 +401,7 @@
 					>
 						{getMapYearLabel(activeMap)}
 					</span>
-					<span class="min-w-0 flex-1 truncate text-sm leading-4 font-semibold">
+					<span class="min-w-0 flex-1 truncate text-sm leading-5 font-semibold">
 						{activeMap.label}
 					</span>
 				</div>
