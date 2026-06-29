@@ -31,3 +31,86 @@
 	--color-brand-main: oklch(52.7% 0.154 150.069);
 	--color-brand-hover: oklch(44.8% 0.119 151.328);
 }
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		color-scheme: dark;
+		--app-surface: rgb(17 24 39);
+		--app-surface-raised: rgb(31 41 55);
+		--app-surface-hover: rgb(55 65 81);
+		--app-border: rgb(75 85 99);
+		--app-text: rgb(249 250 251);
+		--app-text-muted: rgb(209 213 219);
+		--app-text-subtle: rgb(156 163 175);
+		--app-brand-soft: color-mix(in srgb, var(--color-brand-main) 34%, var(--app-surface));
+		--app-brand-muted: color-mix(in srgb, var(--color-brand-main) 48%, var(--app-surface));
+	}
+
+	:is(.bg-white) {
+		background-color: var(--app-surface) !important;
+	}
+
+	:is(.bg-gray-50, .bg-gray-100) {
+		background-color: var(--app-surface-raised) !important;
+	}
+
+	:is(.bg-brand-soft, .hover\:bg-brand-soft:hover) {
+		background-color: var(--app-brand-soft) !important;
+	}
+
+	:is(.bg-brand-muted) {
+		background-color: var(--app-brand-muted) !important;
+	}
+
+	:is(.bg-yellow-50) {
+		background-color: rgb(113 63 18 / 0.35) !important;
+	}
+
+	:is(.bg-amber-100) {
+		background-color: rgb(120 53 15 / 0.45) !important;
+	}
+
+	:is(.hover\:bg-white:hover, .hover\:bg-gray-50:hover, .hover\:bg-gray-100:hover) {
+		background-color: var(--app-surface-hover) !important;
+	}
+
+	:is(.disabled\:hover\:bg-white:disabled:hover) {
+		background-color: var(--app-surface) !important;
+	}
+
+	:is(.border-gray-100, .border-gray-200, .border-gray-300) {
+		border-color: var(--app-border) !important;
+	}
+
+	:is(.border-gray-900) {
+		border-color: var(--app-text) !important;
+	}
+
+	:is(.text-gray-950, .text-gray-900, .text-gray-800, .text-gray-700) {
+		color: var(--app-text) !important;
+	}
+
+	:is(.text-gray-600, .text-gray-500) {
+		color: var(--app-text-muted) !important;
+	}
+
+	:is(.text-gray-400, .text-gray-300) {
+		color: var(--app-text-subtle) !important;
+	}
+
+	:is(.hover\:text-gray-900:hover, .hover\:text-gray-800:hover) {
+		color: var(--app-text) !important;
+	}
+
+	.placeholder\:text-gray-400::placeholder {
+		color: var(--app-text-subtle) !important;
+	}
+
+	:is(.text-red-700) {
+		color: rgb(252 165 165) !important;
+	}
+
+	:is(.text-amber-700) {
+		color: rgb(252 211 77) !important;
+	}
+}
