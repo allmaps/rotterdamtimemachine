@@ -111,7 +111,7 @@ SvelteKit is configured with `@sveltejs/adapter-static` and `fallback: '404.html
 The app is structured so the most important content lives outside the components. To reuse it for another city, region, or map collection, you mainly need to edit these two files:
 
 - `config.yml`: app settings, text, metadata, and UI labels
-- `collection.yml`: historical map records and Allmaps annotation URLs
+- `collection.yml`: historical map records and Georeference Annotation URLs or local annotation paths
 
 The YAML files are loaded through `src/lib/content.ts` and `@modyfi/vite-plugin-yaml`. If you extend the YAML structure, also update the shared types in `src/lib/types.ts`.
 
@@ -212,7 +212,7 @@ Required fields:
 - `year`: year used for sorting on the slider; this can be a single year such as `1897` or an inclusive range such as `1811/1832`
 - `institution`: collection holder or institution
 - `url`: public item page
-- `annotation`: Allmaps annotation URL
+- `annotation`: Georeference Annotation URL, or a path to a bundled annotation file in `static/`
 
 Optional fields:
 
@@ -223,12 +223,26 @@ Multiple maps can share the same year. The app will show previous/next buttons a
 
 ### Georeference Annotations
 
-The app expects each map to have a valid Georeference Annotations. The helper in `src/lib/warped-map-list.ts` fetches these annotations, builds a `WarpedMapList`, and uses that list for:
+The app expects each map to have valid Georeference Annotations. The helper in `src/lib/warped-map-list.ts` fetches these annotations, builds a `WarpedMapList`, and uses that list for:
 
 - displaying historical map layers
 - the "in view" filter
 - map bounds and visibility checks
 - linking Georeference Annotations IDs back to records in `collection.yml`
+
+Annotations can be referenced as full external URLs:
+
+```yaml
+annotation: https://annotations.allmaps.org/manifests/example
+```
+
+They can also be bundled with the app by placing JSON files in `static/annotations` and using the served path in `collection.yml`. Files in `static` are served from the site root, so omit the `static/` prefix:
+
+```yaml
+annotation: annotations/rotterdam-1897.json
+```
+
+Relative annotation paths are resolved with the SvelteKit base path, so they continue to work when the app is deployed under a subpath such as `/rotterdam-tijdmachine`. Links generated for Allmaps Viewer and copied XYZ tile URLs use the full public URL for bundled annotations, for example `https://example.org/time-machine/annotations/rotterdam-1897.json`.
 
 ### Basemap and search bounds
 
@@ -250,10 +264,16 @@ You can link to a year with the `year` parameter. This parameter only accepts a 
 https://example.org/time-machine/?year=1897
 ```
 
-You can link to a specific map with the `map` parameter. This parameter only accepts an annotation URL that exists in `collection.yml`:
+You can link to a specific map with the `map` parameter. This parameter accepts an annotation value that exists in `collection.yml`:
 
 ```text
 https://example.org/time-machine/?map=https%3A%2F%2Fannotations.allmaps.org%2Fmanifests%2Fexample
+```
+
+For bundled annotations, use the same relative value as `collection.yml`:
+
+```text
+https://example.org/time-machine/?map=annotations%2Frotterdam-1897.json
 ```
 
 If `year` and `map` are both present, `map` takes preference. To link to a specific view, add `lat`, `lng`, and optionally `zoom` and `bearing`:

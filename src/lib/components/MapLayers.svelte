@@ -24,6 +24,7 @@
 		getMapYearLabel,
 		mapIncludesYear
 	} from '$lib/map-years';
+	import { getAnnotationPublicUrl } from '$lib/annotation-urls';
 	import type { AppConfig, MapMetadata } from '$lib/types';
 
 	let {
@@ -247,13 +248,22 @@
 
 	function getAllmapsViewerUrl(annotationUrl: string) {
 		const url = new URL('https://viewer.allmaps.org/');
-		url.searchParams.set('url', annotationUrl);
+		url.searchParams.set('url', getPublicAnnotationUrl(annotationUrl));
 
 		return url.href;
 	}
 
 	function getXyzTileUrl(annotationUrl: string) {
-		return `https://allmaps.xyz/{z}/{x}/{y}.png?url=${encodeURIComponent(annotationUrl)}`;
+		return `https://allmaps.xyz/{z}/{x}/{y}.png?url=${encodeURIComponent(
+			getPublicAnnotationUrl(annotationUrl)
+		)}`;
+	}
+
+	function getPublicAnnotationUrl(annotationUrl: string) {
+		const origin =
+			typeof window === 'undefined' ? new URL(config.site.url).origin : window.location.origin;
+
+		return getAnnotationPublicUrl(annotationUrl, origin);
 	}
 
 	async function copyXyzTileUrl(annotationUrl: string) {
