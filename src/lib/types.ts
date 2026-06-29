@@ -11,6 +11,29 @@ export type MapMetadata = {
 	annotation: string;
 };
 
+export type WelcomeConfig =
+	| {
+			enabled: false;
+			storageKey?: string;
+	  }
+	| {
+			enabled?: true;
+			title: string;
+			description: string;
+			closeLabel: string;
+			dismissLabel: string;
+			storageKey?: string;
+			sections: Array<{
+				title: string;
+				description: string;
+			}>;
+			shortcutsTitle: string;
+			shortcuts: Array<{
+				keys: string[];
+				description: string;
+			}>;
+	  };
+
 export type AppConfig = {
 	collection?: string;
 	site: {
@@ -68,6 +91,7 @@ export type AppConfig = {
 		about: string;
 		share: string;
 	};
+	welcome?: WelcomeConfig;
 	about: {
 		title: string;
 		closeLabel: string;

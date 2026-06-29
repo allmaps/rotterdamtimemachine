@@ -68,6 +68,21 @@ header:
   about: Over
   share: Delen
 
+welcome:
+  enabled: true
+  title: Welkom bij de Rotterdam Tijdmachine
+  description: Ontdek hoe Rotterdam door de tijd veranderde met historische kaarten uit verschillende collecties.
+  closeLabel: Sluit introductie
+  dismissLabel: Ga op reis
+  storageKey: rotterdam-tijdmachine-welcome-v1
+  sections:
+    - title: Tijdslider
+      description: Sleep of klik op de verticale slider om naar een ander jaar te gaan. Jaren met beschikbare kaarten zijn gemarkeerd naast de schaal.
+    - title: Kaartlagen
+      description: Gebruik de kaartlagenknop onderin om de collectie te doorzoeken en favorieten te bewaren.
+    - title: Vergelijken
+      description: Open de vergelijk-modus om twee kaarten uit verschillende jaren naast elkaar te bekijken.
+
 about:
   title: Over Rotterdam Tijdmachine
   closeLabel: Sluit over

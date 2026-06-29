@@ -1,6 +1,7 @@
 <script lang="ts">
 	import MapPane from '$lib/components/MapPane.svelte';
 	import Header from '$lib/components/Header.svelte';
+	import Welcome from '$lib/components/Welcome.svelte';
 	import About from '$lib/components/About.svelte';
 	import Share from '$lib/components/Share.svelte';
 	import { onMount, untrack } from 'svelte';
@@ -327,6 +328,8 @@
 />
 
 <div class="flex h-[100dvh] flex-col">
+	<Welcome {config} />
+
 	<Header
 		{config}
 		searchBounds={geocoderBounds}

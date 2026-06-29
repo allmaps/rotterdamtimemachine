@@ -138,6 +138,7 @@ Important sections:
 - `map.keyboard`: panning distance for keyboard map movement
 - `basemap.protomapsApiKey`: API key used for Protomaps hosted basemap tiles
 - `slider.scaleInterval`: year scale interval
+- `welcome.enabled`: set to `false` to disable the one-time landing modal
 - `header`, `about`, `share`, `search`, `layers`, `controls`, `mapWarnings`: visible labels and modal text
 
 For a new use case, usually start with:
@@ -147,7 +148,7 @@ For a new use case, usually start with:
 3. Set `map.initialView.center` to `[longitude, latitude]` for your area.
 4. Set `theme.color` and `theme.shade` for the primary UI color, for example `color: blue` and `shade: 700`. The app derives five semantic brand shades from that value: soft, muted, secondary, main, and hover. You can also write the shade in `theme.color`, such as `blue-700`, if `theme.shade` is omitted. Custom colors are supported too, for example `color: "#006d2c"` or `color: rgb(0, 109, 44)`. Quote hex values in YAML. For custom colors, the provided color is always used as `brand-main`, so `theme.shade` only applies to Tailwind palette names.
 5. Request your own free Protomaps API key at [protomaps.com/api](https://protomaps.com/api) and set it as `basemap.protomapsApiKey`.
-6. Rewrite or translate the text under `about`, `search`, `layers`, and `controls`.
+6. Rewrite or translate the text under `welcome`, `about`, `search`, `layers`, and `controls`.
 7. Check `search.countryCodes` if the app is used outside the Netherlands.
 
 ### Custom fonts
