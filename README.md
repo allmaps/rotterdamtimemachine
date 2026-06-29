@@ -15,7 +15,7 @@ _This project was initially developed as a student project in collaboration betw
 - Share the current map view through the URL
 - Mobile layout with the same map and layer controls
 
-## Local Development
+## Local development
 
 ### Requirements
 
@@ -38,7 +38,7 @@ pnpm run dev
 
 Then open [http://localhost:5173](http://localhost:5173).
 
-### Check And Build
+### Check And build
 
 ```bash
 pnpm run check
@@ -151,14 +151,14 @@ Optional fields:
 
 Multiple maps can share the same year. The app will show previous/next buttons and a position indicator, for example `1/3`. Maps with a year range appear for every year in that range.
 
-### Allmaps Annotations
+### Georeference Annotations
 
-The app expects each map to have a valid Allmaps annotation. The helper in `src/lib/warped-map-list.ts` fetches these annotations, builds a `WarpedMapList`, and uses that list for:
+The app expects each map to have a valid Georeference Annotations. The helper in `src/lib/warped-map-list.ts` fetches these annotations, builds a `WarpedMapList`, and uses that list for:
 
 - displaying historical map layers
 - the "in view" filter
 - map bounds and visibility checks
-- linking Allmaps map IDs back to records in `collection.yml`
+- linking Georeference Annotations IDs back to records in `collection.yml`
 
 ### Basemap and search bounds
 
@@ -194,7 +194,7 @@ https://example.org/time-machine/?lat=51.92146&lng=4.48488&zoom=14.00&map=https%
 
 The sharing modal keeps the default link simple and only includes view parameters when the current-view option is selected.
 
-## Project Structure
+## Project structure
 
 - `config.yml`: app settings, text, and metadata
 - `collection.yml`: map collection
@@ -218,13 +218,13 @@ The sharing modal keeps the default link simple and only includes view parameter
 - [Lucide icons](https://lucide.dev/)
 - [Nominatim](https://nominatim.org/)
 
-## Examples And Inspiration
+## Examples and inspiration
 
 - [Topotijdreis Netherlands](https://www.topotijdreis.nl/)
-- [Topotijdreis Belgium](https://topotijdreis.be/) (Open source Belgian version of the Dutch original, [source code](https://github.com/mclaeysb/topotijdreis/))
+- [Topotijdreis Belgium](https://topotijdreis.be/) (Open source Belgian version of the Dutch original by Manuel Claeys Bouuaert, [source code](https://github.com/mclaeysb/topotijdreis/))
 - [Watertijdreis](https://watertijdreis.nl/), [source code](https://github.com/allmaps/watertijdreis)
 
-## Credits And Attribution
+## Credits and attribution
 
 - Historical map records link to their source institutions through `institution` and `url` in `collection.yml`.
 - Georeferencing and map warping are handled through [Allmaps](https://allmaps.org/).
