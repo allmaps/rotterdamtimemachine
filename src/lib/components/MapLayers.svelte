@@ -18,6 +18,12 @@
 	} from '@lucide/svelte';
 	import { tick } from 'svelte';
 	import { slide } from 'svelte/transition';
+	import {
+		getExpandedMapYears,
+		getMapStartYear,
+		getMapYearLabel,
+		mapIncludesYear
+	} from '$lib/map-years';
 	import type { AppConfig, MapMetadata } from '$lib/types';
 
 	let {
@@ -45,7 +51,7 @@
 	} = $props();
 
 	let maps = $derived(mapMetadata);
-	let availableYears = $derived([...new Set(maps.map((map) => map.year))].sort((a, b) => a - b));
+	let availableYears = $derived(getExpandedMapYears(maps));
 
 	let layersOpen = $state(false);
 	let showCollection = $state(false);
@@ -67,11 +73,11 @@
 	let inViewMaps = $derived(maps.filter((map) => annotationsInViewSet.has(map.annotation)));
 	let selectionMaps = $derived(preferInViewMaps && inViewMaps.length > 0 ? inViewMaps : maps);
 	let selectionAvailableYears = $derived(
-		[...new Set(selectionMaps.map((map) => map.year))].sort((a, b) => a - b)
+		getExpandedMapYears(selectionMaps)
 	);
 	let resolvedYear = $derived(resolveAvailableYear(selectedYear, selectionAvailableYears));
-	let mapsForResolvedYear = $derived(selectionMaps.filter((map) => map.year === resolvedYear));
-	let mapsForVisibleYear = $derived(maps.filter((map) => map.year === resolvedYear));
+	let mapsForResolvedYear = $derived(selectionMaps.filter((map) => mapIncludesYear(map, resolvedYear)));
+	let mapsForVisibleYear = $derived(maps.filter((map) => mapIncludesYear(map, resolvedYear)));
 	let activeMap = $derived(
 		mapsForResolvedYear.find((map) => map.annotation === annotation) ?? mapsForResolvedYear[0]
 	);
@@ -137,7 +143,9 @@
 	}
 
 	function getSearchText(map: (typeof maps)[0]) {
-		return normalizeSearchTerm([map.label, map.title, map.year, map.institution].join(' '));
+		return normalizeSearchTerm(
+			[map.label, map.title, getMapYearLabel(map), map.institution].join(' ')
+		);
 	}
 
 	function openLayers() {
@@ -220,7 +228,7 @@
 
 	function selectMap(map: (typeof maps)[0]) {
 		annotation = map.annotation;
-		selectedYear = map.year;
+		selectedYear = mapIncludesYear(map, selectedYear) ? selectedYear : getMapStartYear(map);
 		closeLayers();
 	}
 
@@ -391,7 +399,7 @@
 					<span
 						class="flex-none rounded bg-gray-900 px-1.5 py-0.5 font-heading text-[0.65rem] text-white"
 					>
-						{activeMap.year}
+						{getMapYearLabel(activeMap)}
 					</span>
 					<span class="min-w-0 flex-1 truncate text-sm leading-4 font-semibold">
 						{activeMap.label}
@@ -588,7 +596,7 @@
 							<button
 								type="button"
 								aria-label="{config.layers
-									.selectMap} {map.label} ({map.year}, {map.institution})"
+									.selectMap} {map.label} ({getMapYearLabel(map)}, {map.institution})"
 								onclick={() => selectMap(map)}
 								onmouseenter={() => (selectedIndex = index)}
 								class="absolute inset-0 z-0 cursor-pointer text-left transition focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-brand-main {index === selectedIndex
@@ -609,7 +617,7 @@
 											<span
 												class="flex-none rounded bg-gray-900 px-1.5 py-0.5 font-heading text-[0.65rem] text-white"
 											>
-												{map.year}
+												{getMapYearLabel(map)}
 											</span>
 											{#if annotation === map.annotation}
 												<span
@@ -671,8 +679,8 @@
 								<button
 									type="button"
 									aria-label={favorites.includes(map.annotation)
-										? `${config.layers.removeFavorite} ${map.label} (${map.year}, ${map.institution})`
-										: `${config.layers.addFavorite} ${map.label} (${map.year}, ${map.institution})`}
+										? `${config.layers.removeFavorite} ${map.label} (${getMapYearLabel(map)}, ${map.institution})`
+										: `${config.layers.addFavorite} ${map.label} (${getMapYearLabel(map)}, ${map.institution})`}
 									aria-pressed={favorites.includes(map.annotation)}
 									onclick={() => toggleFavorite(map.annotation)}
 									onmouseenter={() => (selectedIndex = index)}

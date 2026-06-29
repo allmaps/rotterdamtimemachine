@@ -5,6 +5,7 @@
 	import Share from '$lib/components/Share.svelte';
 	import { onMount, untrack } from 'svelte';
 	import { comparison, mapView, viewState } from '$lib/app-state.svelte.js';
+	import { getMapStartYear, mapIncludesYear } from '$lib/map-years';
 	import type {
 		AppConfig,
 		GeocoderBounds,
@@ -31,7 +32,8 @@
 	const initial = untrack(() => {
 		const defaultYear = pageData.config.map.defaultYear;
 		const initialMap =
-			pageData.collection.find((map) => map.year === defaultYear) ?? pageData.collection[0];
+			pageData.collection.find((map) => mapIncludesYear(map, defaultYear)) ??
+			pageData.collection[0];
 		const rightMap = pageData.collection[1];
 		const defaultLocation = {
 			center: [...pageData.config.map.initialView.center] as [number, number],
@@ -43,8 +45,14 @@
 			defaultYear,
 			defaultLocation,
 			initialMap,
+			selectedYear:
+				initialMap && mapIncludesYear(initialMap, defaultYear)
+					? defaultYear
+					: initialMap
+						? getMapStartYear(initialMap)
+						: defaultYear,
 			rightAnnotation: rightMap?.annotation ?? '',
-			rightYear: rightMap?.year ?? defaultYear
+			rightYear: rightMap ? getMapStartYear(rightMap) : defaultYear
 		};
 	});
 
@@ -67,7 +75,7 @@
 
 	if (initial.initialMap) viewState.annotation = initial.initialMap.annotation;
 	if (!comparison.rightAnnotation) comparison.rightAnnotation = initial.rightAnnotation;
-	let selectedYear = $state(initial.initialMap?.year ?? initial.defaultYear);
+	let selectedYear = $state(initial.selectedYear);
 	let rightSelectedYear = $state(
 		yearForAnnotation(comparison.rightAnnotation) ?? initial.rightYear
 	);
@@ -82,11 +90,12 @@
 	});
 
 	function yearForAnnotation(annotation: string) {
-		return collection.find((map) => map.annotation === annotation)?.year;
+		const map = collection.find((map) => map.annotation === annotation);
+		return map ? getMapStartYear(map) : undefined;
 	}
 
 	function mapForYear(year: number) {
-		return collection.find((map) => map.year === year);
+		return collection.find((map) => mapIncludesYear(map, year));
 	}
 
 	function mapForAnnotationParam(value: string | null) {
@@ -95,11 +104,11 @@
 		return collection.find((map) => map.annotation === value);
 	}
 
-	function mapForYearParam(value: string | null) {
+	function yearFromParam(value: string | null) {
 		if (!value) return undefined;
 		const numericYear = Number(value);
 
-		return Number.isInteger(numericYear) ? mapForYear(numericYear) : undefined;
+		return Number.isInteger(numericYear) ? numericYear : undefined;
 	}
 
 	function numberParam(params: URLSearchParams, key: string) {
@@ -123,12 +132,16 @@
 	}
 
 	function applyInitialParams(params: URLSearchParams) {
+		const yearParam = yearFromParam(params.get('year'));
 		const initialMap = params.has('map')
 			? (mapForAnnotationParam(params.get('map')) ?? defaultMap)
-			: (mapForYearParam(params.get('year')) ?? defaultMap);
+			: (yearParam !== undefined ? mapForYear(yearParam) : undefined) ?? defaultMap;
 		if (initialMap) {
 			viewState.annotation = initialMap.annotation;
-			selectedYear = initialMap.year;
+			selectedYear =
+				yearParam !== undefined && !params.has('map') && mapIncludesYear(initialMap, yearParam)
+					? yearParam
+					: getMapStartYear(initialMap);
 		}
 
 		currentLocation = locationFromParams(params) ?? initial.defaultLocation;

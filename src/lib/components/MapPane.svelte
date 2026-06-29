@@ -29,7 +29,7 @@
 		paneSide = 'left',
 		layersId = `map-layers-${navPosition}`,
 		bordered = false,
-		showMapYearTicks = true,
+		showMapYearTicks = false,
 		enableFlyTo = false,
 		enableLocationMarker = false,
 		enableLayersShortcut = false,

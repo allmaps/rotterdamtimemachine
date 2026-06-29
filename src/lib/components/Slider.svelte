@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { Slider as BitsSlider } from 'bits-ui';
 	import { ChevronsUpDown } from '@lucide/svelte';
+	import { getExpandedMapYears } from '$lib/map-years';
 	import type { MapMetadata } from '$lib/types';
 
 	let {
@@ -9,7 +10,7 @@
 		inViewOnly = $bindable(false),
 		navPosition = 'left',
 		showMapYearTicks = false,
-		snapToAvailableYear = true,
+		snapToAvailableYear = false,
 		scaleInterval = 25,
 		enableKeyboardShortcut = false,
 		annotationsInView = []
@@ -25,7 +26,7 @@
 		annotationsInView?: string[];
 	} = $props();
 
-	let availableYears = $derived([...new Set(maps.map((map) => map.year))].sort((a, b) => a - b));
+	let availableYears = $derived(getExpandedMapYears(maps));
 	let earliestYear = $derived(availableYears[0] ?? selectedYear);
 	let latestYear = $derived(availableYears.at(-1) ?? selectedYear);
 	let sliderMinYear = $derived(Math.floor(earliestYear / scaleInterval) * scaleInterval);
@@ -39,11 +40,7 @@
 	let yearLabelClass = $derived(navPosition === 'right' ? 'mr-10' : 'ml-10');
 	let annotationsInViewSet = $derived(new Set(annotationsInView));
 	let inViewAvailableYears = $derived(
-		[
-			...new Set(
-				maps.filter((map) => annotationsInViewSet.has(map.annotation)).map((map) => map.year)
-			)
-		].sort((a, b) => a - b)
+		getExpandedMapYears(maps.filter((map) => annotationsInViewSet.has(map.annotation)))
 	);
 	let selectableYears = $derived(
 		inViewOnly && inViewAvailableYears.length > 0 ? inViewAvailableYears : availableYears

@@ -104,7 +104,7 @@ Required fields:
 
 - `label`: short name used in the slider, layer panel, and search results
 - `title`: full title
-- `year`: year used for sorting on the slider
+- `year`: year used for sorting on the slider; this can be a single year such as `1897` or an inclusive range such as `1811/1832`
 - `institution`: collection holder or institution
 - `url`: public item page
 - `annotation`: Allmaps annotation URL
@@ -114,7 +114,7 @@ Optional fields:
 - `iiif.url`: IIIF Image API `info.json` or IIIF Presentation manifest
 - `iiif.type`: `image` or `manifest`
 
-Multiple maps can share the same year. The app will show previous/next buttons and a position indicator, for example `1/3`.
+Multiple maps can share the same year. The app will show previous/next buttons and a position indicator, for example `1/3`. Maps with a year range appear for every year in that range.
 
 ### Allmaps Annotations
 

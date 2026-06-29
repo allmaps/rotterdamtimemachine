@@ -1,7 +1,7 @@
 export type MapMetadata = {
 	label: string;
 	title: string;
-	year: number;
+	year: number | string;
 	institution: string;
 	url: string;
 	iiif?: {
