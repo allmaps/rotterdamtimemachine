@@ -17,7 +17,7 @@
 	let siteName = $derived(config.site.name);
 	let siteUrl = $derived(config.site.url);
 	let description = $derived(config.site.description);
-	let faviconHref = $derived(`${base}/favicon.svg`);
+	let faviconHref = $derived(config.site.favicon ?? `${base}/favicon.svg`);
 	let themeColor = $derived(getThemeColor(config.theme));
 	let themeStyle = $derived(getThemeHeadStyle(config.theme, base));
 </script>

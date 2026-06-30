@@ -40,6 +40,7 @@ export type AppConfig = {
 		url: string;
 		description: string;
 		locale: string;
+		favicon?: string;
 	};
 	theme: {
 		color: string;
