@@ -4,15 +4,19 @@ on:
   workflow_dispatch:
     inputs:
       base_path:
-        description: 'SvelteKit base path. Leave empty for auto, use / for a root-domain deployment.'
+        description: "SvelteKit base path. Leave empty for auto, use / for a root-domain deployment."
         required: false
-        default: ''
+        default: ""
       config:
-        description: 'Optional config YAML file to build with.'
+        description: "Optional config YAML file to build with."
         required: false
-        default: ''
+        default: ""
   push:
-    branches: 'main'
+    branches: "main"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build_site:
@@ -22,14 +26,14 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Install pnpm
-        uses: pnpm/action-setup@v3
+        uses: pnpm/action-setup@v6
         with:
-          version: 8
+          version: 10
 
       - name: Install Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
-          node-version: 20
+          node-version: 24
           cache: pnpm
 
       - name: Install dependencies
@@ -77,9 +81,9 @@ jobs:
         run: pnpm run build
 
       - name: Upload Artifacts
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v5
         with:
-          path: 'build/'
+          path: "build/"
 
   deploy:
     needs: build_site
@@ -96,4 +100,4 @@ jobs:
     steps:
       - name: Deploy
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
