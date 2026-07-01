@@ -2,6 +2,7 @@
 	import './layout.css';
 	import '../app.css';
 	import { base } from '$app/paths';
+	import { resolvePublicAssetUrl } from '$lib/asset-urls';
 	import { getThemeColor, getThemeHeadStyle } from '$lib/theme';
 	import type { AppConfig } from '$lib/types';
 
@@ -17,7 +18,7 @@
 	let siteName = $derived(config.site.name);
 	let siteUrl = $derived(config.site.url);
 	let description = $derived(config.site.description);
-	let faviconHref = $derived(config.site.favicon ?? `${base}/favicon.svg`);
+	let faviconHref = $derived(resolvePublicAssetUrl(config.site.favicon ?? 'favicon.svg', base));
 	let themeColor = $derived(getThemeColor(config.theme));
 	let themeStyle = $derived(getThemeHeadStyle(config.theme, base));
 </script>
