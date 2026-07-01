@@ -12,7 +12,7 @@
 
 	const yearRowHeight = 40;
 	const scrollSettleDelay = 140;
-	const snapScrollDuration = 640;
+	const snapScrollDuration = 260;
 	const keyboardScrollDuration = 260;
 	const programmaticScrollReleaseDelay = scrollSettleDelay + 40;
 	const dragClickThreshold = 4;
@@ -55,6 +55,7 @@
 	let pendingTargetYear: number | undefined;
 	let pendingSelectionId = 0;
 	let scrollAnimationFrame: number | undefined;
+	let finishInteractionFrame: number | undefined;
 	let scrollSettleTimeout: ReturnType<typeof setTimeout> | undefined;
 	let programmaticScrollTimeout: ReturnType<typeof setTimeout> | undefined;
 
@@ -96,6 +97,7 @@
 		return () => {
 			resizeObserver.disconnect();
 			clearScrollAnimation();
+			clearFinishInteractionFrame();
 			clearScrollSettleTimeout();
 			clearProgrammaticScrollTimeout();
 		};
@@ -234,7 +236,7 @@
 
 				selectedYear = year;
 				pendingTargetYear = undefined;
-				isInteracting = false;
+				finishPickerInteraction();
 			},
 			duration
 		);
@@ -317,11 +319,17 @@
 		onComplete?: () => void,
 		duration = snapScrollDuration
 	) {
-		if (!container || pickerYears.length === 0) return;
+		if (!container || pickerYears.length === 0) {
+			onComplete?.();
+			return;
+		}
 
 		const targetYear = getClosestPickerYear(year);
 		const index = pickerYears.indexOf(targetYear);
-		if (index < 0) return;
+		if (index < 0) {
+			onComplete?.();
+			return;
+		}
 
 		const top = index * yearRowHeight;
 
@@ -394,8 +402,31 @@
 		pendingSelectionId += 1;
 		isInteracting = true;
 		isProgrammaticScroll = false;
+		clearFinishInteractionFrame();
 		clearScrollAnimation();
 		clearProgrammaticScrollTimeout();
+	}
+
+	function finishPickerInteraction() {
+		clearFinishInteractionFrame();
+		finishInteractionFrame = requestAnimationFrame(() => {
+			isInteracting = false;
+			finishInteractionFrame = undefined;
+		});
+	}
+
+	function queueScrollSettled() {
+		clearScrollSettleTimeout();
+		scrollSettleTimeout = setTimeout(handleScrollSettled, scrollSettleDelay);
+	}
+
+	function handlePickerWheel() {
+		handlePickerInteraction();
+		queueScrollSettled();
+	}
+
+	function handlePickerTouchEnd() {
+		queueScrollSettled();
 	}
 
 	function handlePickerPointerDown(event: PointerEvent) {
@@ -450,12 +481,11 @@
 		}, 0);
 
 		clearScrollSettleTimeout();
-		scrollSettleTimeout = setTimeout(handleScrollSettled, scrollSettleDelay);
+		queueScrollSettled();
 	}
 
 	function handleScroll() {
-		clearScrollSettleTimeout();
-		scrollSettleTimeout = setTimeout(handleScrollSettled, scrollSettleDelay);
+		queueScrollSettled();
 	}
 
 	function handleScrollSettled() {
@@ -467,10 +497,9 @@
 				? closestYear(centeredYear, selectableYears)
 				: centeredYear;
 
-		isInteracting = false;
 		selectSettledYear(nextYear);
 
-		scrollToYear(nextYear, 'smooth');
+		scrollToYear(nextYear, 'smooth', finishPickerInteraction);
 	}
 
 	function clearScrollAnimation() {
@@ -478,6 +507,13 @@
 
 		cancelAnimationFrame(scrollAnimationFrame);
 		scrollAnimationFrame = undefined;
+	}
+
+	function clearFinishInteractionFrame() {
+		if (finishInteractionFrame === undefined) return;
+
+		cancelAnimationFrame(finishInteractionFrame);
+		finishInteractionFrame = undefined;
 	}
 
 	function clearScrollSettleTimeout() {
@@ -545,8 +581,10 @@
 			onpointermove={handlePickerPointerMove}
 			onpointerup={handlePickerPointerEnd}
 			onpointercancel={handlePickerPointerEnd}
-			onwheel={handlePickerInteraction}
+			onwheel={handlePickerWheel}
 			ontouchstart={handlePickerInteraction}
+			ontouchend={handlePickerTouchEnd}
+			ontouchcancel={handlePickerTouchEnd}
 		>
 			<div class="year-picker-content relative">
 				<div style:height={`${spacerHeight}px`} aria-hidden="true"></div>
