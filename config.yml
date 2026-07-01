@@ -61,11 +61,18 @@ slider:
   scaleInterval: 25
   showOnlyAvailableYears: true
 
+autoplay:
+  intervalSeconds: 4
+  flyToDurationMs: 1000
+
 header:
   search: Zoeken
   compare: Vergelijken
   closeCompare: Sluiten
   compareMode: Vergelijkmodus
+  play: Presentatie
+  pause: Presentatie pauzeren
+  stop: Presentatie stoppen
   about: Over
   share: Delen
 
@@ -146,6 +153,8 @@ about:
       description: Kaartoriëntatie volgen aan- of uitzetten
     - keys: [Z]
       description: Kaartlaagfocus volgen aan- of uitzetten
+    - keys: [P]
+      description: Presentatie starten
     - keys: [Spatie]
       wide: true
       description: Historische kaartlagen tijdelijk verbergen
@@ -231,8 +240,6 @@ controls:
   disableFocus: Kaartlaagfocus uitschakelen
   followFocus: Kaartlaagfocus volgen
   opacity: Transparantie
-  play: Automatisch afspelen
-  stopPlay: Afspelen stoppen
   adjustOpacity: Transparantie aanpassen
   layerOpacity: Transparantie kaartlaag
 

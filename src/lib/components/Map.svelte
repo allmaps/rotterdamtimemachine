@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount, tick, untrack } from 'svelte';
+	import { fly } from 'svelte/transition';
 	import maplibregl from 'maplibre-gl';
 	import { WarpedMapLayer } from '@allmaps/maplibre';
 	import { AlertTriangle, Focus } from '@lucide/svelte';
@@ -40,7 +41,6 @@
 		opacity = $bindable(viewState.opacity),
 		rotateToMapOrientation = $bindable(false),
 		focusActiveMap = $bindable(false),
-		isPlaying = $bindable(false),
 		inViewOnly = $bindable(false),
 		currentLocation = $bindable({
 			center: [...config.map.initialView.center] as [number, number],
@@ -56,14 +56,14 @@
 		enableLocationMarker = false,
 		navPosition = 'left',
 		controlsPosition = 'top-right',
-		showInViewControl = false
+		showInViewControl = false,
+		autoplayActive = false
 	}: {
 		config: AppConfig;
 		annotation?: string;
 		opacity?: number;
 		rotateToMapOrientation?: boolean;
 		focusActiveMap?: boolean;
-		isPlaying?: boolean;
 		inViewOnly?: boolean;
 		currentLocation?: MapLocation;
 		annotationsInView?: string[];
@@ -75,6 +75,7 @@
 		navPosition?: 'left' | 'right';
 		controlsPosition?: 'top-left' | 'top-right';
 		showInViewControl?: boolean;
+		autoplayActive?: boolean;
 	} = $props();
 
 	let activeAnnotation = $derived(annotation);
@@ -370,15 +371,14 @@
 	function focusSelectedMap(annotationForFocus = activeAnnotation) {
 		if (!map || !annotationForFocus) return;
 
-		const cameraPadding = getCameraPadding();
+		const cameraPadding = getFocusCameraPadding();
 
 		if (rotateToMapOrientation) {
 			const camera = getSelectedMapCamera(annotationForFocus, cameraPadding);
 			if (camera) {
 				map.flyTo({
 					...camera,
-					pitch: 0,
-					offset: getCameraOffset(cameraPadding)
+					...getFocusFlyToOptions(cameraPadding, true)
 				});
 				return;
 			}
@@ -388,7 +388,7 @@
 		if (bounds) {
 			const camera = map.cameraForBounds(bounds, { padding: cameraPadding });
 			if (camera) {
-				map.flyTo({ ...camera, pitch: 0 });
+				map.flyTo({ ...camera, ...getFocusFlyToOptions(cameraPadding, false) });
 			}
 		}
 	}
@@ -481,6 +481,33 @@
 			right: CAMERA_BASE_PADDING + (navPosition === 'right' ? sliderInset : 0),
 			bottom: Math.max(CAMERA_BASE_PADDING, bottomInset + CAMERA_PANEL_GAP),
 			left: CAMERA_BASE_PADDING + (navPosition === 'left' ? sliderInset : 0)
+		};
+	}
+
+	function getBaseCameraPadding(): CameraPadding {
+		return {
+			top: CAMERA_BASE_PADDING,
+			right: CAMERA_BASE_PADDING,
+			bottom: CAMERA_BASE_PADDING,
+			left: CAMERA_BASE_PADDING
+		};
+	}
+
+	function getFocusCameraPadding(): CameraPadding {
+		return autoplayActive ? getBaseCameraPadding() : getCameraPadding();
+	}
+
+	function getFocusFlyToOptions(padding: CameraPadding, includeOffset: boolean) {
+		if (autoplayActive) {
+			return {
+				pitch: 0,
+				duration: config.autoplay?.flyToDurationMs ?? 100
+			};
+		}
+
+		return {
+			pitch: 0,
+			...(includeOffset ? { offset: getCameraOffset(padding) } : {})
 		};
 	}
 
@@ -669,20 +696,21 @@
 <svelte:window onkeydown={handleGlobalKeydown} />
 
 <div bind:this={mapElement} class="absolute inset-0 h-full w-full"></div>
-{#if mapReady && map}
-	<MapControls
-		{map}
-		{config}
-		bind:opacity
-		bind:rotateToMapOrientation
-		bind:focusActiveMap
-		bind:isPlaying
-		bind:inViewOnly
-		position={controlsPosition}
-		canZoomToMap={canZoomToActiveMap}
-		canFilterInView={annotationsInView.length > 0}
-		{showInViewControl}
-	/>
+{#if mapReady && map && !autoplayActive}
+	<div transition:fly={{ x: controlsPosition === 'top-left' ? -64 : 64, duration: 180 }}>
+		<MapControls
+			{map}
+			{config}
+			bind:opacity
+			bind:rotateToMapOrientation
+			bind:focusActiveMap
+			bind:inViewOnly
+			position={controlsPosition}
+			canZoomToMap={canZoomToActiveMap}
+			canFilterInView={annotationsInView.length > 0}
+			{showInViewControl}
+		/>
+	</div>
 {/if}
 
 {#if visibilityWarningOpen}

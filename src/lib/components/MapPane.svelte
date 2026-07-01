@@ -2,6 +2,7 @@
 	import Map from '$lib/components/Map.svelte';
 	import MapLayers from '$lib/components/MapLayers.svelte';
 	import Slider from '$lib/components/Slider.svelte';
+	import { fly } from 'svelte/transition';
 	import type {
 		AppConfig,
 		GeocoderBounds,
@@ -35,7 +36,8 @@
 		enableLocationMarker = false,
 		enableLayersShortcut = false,
 		showLayersPaneIndicator = false,
-		showInViewControl = false
+		showInViewControl = false,
+		autoplayActive = false
 	}: {
 		maps: MapMetadata[];
 		config: AppConfig;
@@ -57,6 +59,7 @@
 		enableLayersShortcut?: boolean;
 		showLayersPaneIndicator?: boolean;
 		showInViewControl?: boolean;
+		autoplayActive?: boolean;
 	} = $props();
 
 	let mapOrderClass = $derived(navPosition === 'right' ? 'md:order-1' : 'md:order-2');
@@ -66,8 +69,35 @@
 	let annotationsInView = $state<string[]>([]);
 	let rotateToMapOrientation = $state(false);
 	let focusActiveMap = $state(false);
-	let isPlaying = $state(false);
 	let sliderInViewOnly = $state(false);
+	let presentationModeSnapshot = $state<
+		| {
+				rotateToMapOrientation: boolean;
+				focusActiveMap: boolean;
+		  }
+		| undefined
+	>();
+
+	$effect(() => {
+		if (autoplayActive) {
+			if (!presentationModeSnapshot) {
+				presentationModeSnapshot = {
+					rotateToMapOrientation,
+					focusActiveMap
+				};
+			}
+
+			if (!rotateToMapOrientation) rotateToMapOrientation = true;
+			if (!focusActiveMap) focusActiveMap = true;
+			return;
+		}
+
+		if (presentationModeSnapshot) {
+			rotateToMapOrientation = presentationModeSnapshot.rotateToMapOrientation;
+			focusActiveMap = presentationModeSnapshot.focusActiveMap;
+			presentationModeSnapshot = undefined;
+		}
+	});
 </script>
 
 <section
@@ -75,21 +105,24 @@
 		? 'md:border-r-2 md:border-gray-300'
 		: ''}"
 >
-	<div class="absolute inset-y-0 z-20 flex-none {navPosition === 'right' ? 'right-0' : 'left-0'}">
-		<Slider
-			bind:selectedYear
-			bind:inViewOnly={sliderInViewOnly}
-			bind:isPlaying
-			{maps}
-			scaleInterval={config.slider.scaleInterval}
-			play={config.slider.play}
-			{navPosition}
-			{showMapYearTicks}
-			{showOnlyAvailableYears}
-			{annotationsInView}
-			enableKeyboardShortcut={enableLayersShortcut}
-		/>
-	</div>
+	{#if !autoplayActive}
+		<div
+			class="absolute inset-y-0 z-20 flex-none {navPosition === 'right' ? 'right-0' : 'left-0'}"
+			transition:fly={{ x: navPosition === 'right' ? 96 : -96, duration: 180 }}
+		>
+			<Slider
+				bind:selectedYear
+				bind:inViewOnly={sliderInViewOnly}
+				{maps}
+				scaleInterval={config.slider.scaleInterval}
+				{navPosition}
+				{showMapYearTicks}
+				{showOnlyAvailableYears}
+				{annotationsInView}
+				enableKeyboardShortcut={enableLayersShortcut}
+			/>
+		</div>
+	{/if}
 
 	<div class="relative flex-1 grow {mapOrderClass}">
 		<Map
@@ -97,7 +130,6 @@
 			bind:opacity
 			bind:rotateToMapOrientation
 			bind:focusActiveMap
-			bind:isPlaying
 			bind:inViewOnly={sliderInViewOnly}
 			bind:currentLocation
 			bind:annotationsInView
@@ -110,6 +142,7 @@
 			{navPosition}
 			{controlsPosition}
 			{showInViewControl}
+			{autoplayActive}
 		/>
 		<MapLayers
 			bind:annotation
@@ -122,6 +155,7 @@
 			preferInViewMaps={sliderInViewOnly}
 			enableKeyboardShortcut={enableLayersShortcut}
 			showPaneIndicator={showLayersPaneIndicator}
+			{autoplayActive}
 		/>
 	</div>
 </section>

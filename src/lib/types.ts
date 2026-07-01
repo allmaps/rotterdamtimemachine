@@ -81,14 +81,20 @@ export type AppConfig = {
 	};
 	slider: {
 		scaleInterval: number;
-		play?: number;
 		showOnlyAvailableYears?: boolean;
+	};
+	autoplay?: {
+		intervalSeconds: number;
+		flyToDurationMs?: number;
 	};
 	header: {
 		search: string;
 		compare: string;
 		closeCompare: string;
 		compareMode: string;
+		play: string;
+		pause: string;
+		stop: string;
 		about: string;
 		share: string;
 	};
@@ -200,8 +206,6 @@ export type AppConfig = {
 		followOrientation: string;
 		disableFocus: string;
 		followFocus: string;
-		play?: string;
-		stopPlay?: string;
 		opacity: string;
 		adjustOpacity: string;
 		layerOpacity: string;

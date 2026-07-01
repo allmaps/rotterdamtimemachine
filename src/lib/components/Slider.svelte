@@ -21,26 +21,22 @@
 		maps,
 		selectedYear = $bindable(),
 		inViewOnly = $bindable(false),
-		isPlaying = $bindable(false),
 		navPosition = 'left',
 		showMapYearTicks = false,
 		showOnlyAvailableYears = false,
 		snapToAvailableYear = false,
 		scaleInterval = 25,
-		play,
 		enableKeyboardShortcut = false,
 		annotationsInView = []
 	}: {
 		maps: MapMetadata[];
 		selectedYear: number;
 		inViewOnly?: boolean;
-		isPlaying?: boolean;
 		navPosition?: 'left' | 'right';
 		showMapYearTicks?: boolean;
 		showOnlyAvailableYears?: boolean;
 		snapToAvailableYear?: boolean;
 		scaleInterval?: number;
-		play?: number;
 		enableKeyboardShortcut?: boolean;
 		annotationsInView?: string[];
 	} = $props();
@@ -118,13 +114,6 @@
 	});
 
 	$effect(() => {
-		if (!isPlaying || !play || play <= 0) return;
-
-		const intervalId = setInterval(advancePlayback, play * 1000);
-		return () => clearInterval(intervalId);
-	});
-
-	$effect(() => {
 		if (pickerYears.length === 0) return;
 
 		const targetYear = getClosestPickerYear(selectedYear);
@@ -182,13 +171,6 @@
 			document.body.classList.contains('driver-active') ||
 			!!document.querySelector('[role="dialog"][aria-modal="true"]')
 		);
-	}
-
-	function advancePlayback() {
-		if (selectableYears.length === 0) return;
-
-		const nextYear = selectableYears.find((year) => year > selectedYear);
-		selectedYear = nextYear ?? selectableYears[0];
 	}
 
 	function getRelativeYear(year: number, direction: -1 | 1) {

@@ -138,8 +138,9 @@ Important sections:
 - `map.keyboard`: panning distance for keyboard map movement
 - `basemap.protomapsApiKey`: API key used for Protomaps hosted basemap tiles
 - `slider.scaleInterval`: year scale interval
-- `slider.play`: seconds between steps when the play button auto-advances the slider; when this value is omitted, the play button is not shown
 - `slider.showOnlyAvailableYears`: show only years with available maps in the year picker
+- `autoplay.intervalSeconds`: seconds per map slide in presentation mode; omit `autoplay` to hide the header play button
+- `autoplay.flyToDurationMs`: camera animation duration when presentation mode focuses on a map
 - `tour.enabled`: set to `false` to disable the one-time guided tour
 - `header`, `about`, `share`, `search`, `layers`, `controls`, `mapWarnings`: visible labels and modal text
 

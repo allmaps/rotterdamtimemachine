@@ -3,7 +3,7 @@ site:
   url: https://www.goudatijdmachine.nl/kaarten-kabinet/
   description: Verken historische kaarten van Gouda door de tijd en vergelijk kaartlagen met de huidige stad.
   locale: nl_NL
-  themeColor: "#3891b1"
+  themeColor: '#3891b1'
   favicon: https://www.goudatijdmachine.nl/wp-content/gtm-logo/gtm-logo-2025.svg
 
 header:
@@ -11,6 +11,9 @@ header:
   compare: Vergelijken
   closeCompare: Sluiten
   compareMode: Vergelijkmodus
+  play: Presentatie starten
+  pause: Presentatie pauzeren
+  stop: Presentatie stoppen
   about: Over
   share: Delen
 
@@ -27,7 +30,7 @@ map:
 collection: collection-gouda.yml
 
 theme:
-  color: "#3891b1"
+  color: '#3891b1'
   fonts:
     families:
       - name: Bolder
@@ -70,7 +73,10 @@ basemap:
 
 slider:
   scaleInterval: 25
-  play: 5
+
+autoplay:
+  intervalSeconds: 4
+  flyToDurationMs: 100
 
 tour:
   enabled: true
@@ -78,7 +84,7 @@ tour:
   nextLabel: Volgende
   previousLabel: Vorige
   doneLabel: Klaar
-  progressText: "{{current}} van {{total}}"
+  progressText: '{{current}} van {{total}}'
   storageKey: rotterdam-tijdmachine-tour-v1
   steps:
     - target: time-slider
@@ -132,15 +138,15 @@ about:
     url: https://github.com/allmaps/rotterdam-tijdmachine
   shortcutsTitle: Sneltoetsen
   shortcuts:
-    - keys: ["⌘", K, "/", Ctrl, K]
+    - keys: ['⌘', K, '/', Ctrl, K]
       description: Kaartlagen openen
-    - keys: ["↑", "↓"]
+    - keys: ['↑', '↓']
       description: Naar het volgende of vorige beschikbare kaartjaar
-    - keys: ["←", "→"]
+    - keys: ['←', '→']
       description: Door kaarten van hetzelfde jaar bladeren
-    - keys: ["+", "=", "-"]
+    - keys: ['+', '=', '-']
       description: In- en uitzoomen
-    - keys: [Shift, "←", "↑", "↓", "→"]
+    - keys: [Shift, '←', '↑', '↓', '→']
       description: Kaartbeeld verschuiven
     - keys: [F]
       description: Filter op kaarten in beeld aan- of uitzetten
@@ -148,6 +154,8 @@ about:
       description: Kaartoriëntatie volgen aan- of uitzetten
     - keys: [Z]
       description: Kaartlaagfocus volgen aan- of uitzetten
+    - keys: [P]
+      description: Presentatie starten
     - keys: [Spatie]
       wide: true
       description: Historische kaartlagen tijdelijk verbergen
@@ -232,8 +240,6 @@ controls:
   followOrientation: Kaartoriëntatie volgen
   disableFocus: Kaartlaagfocus uitschakelen
   followFocus: Kaartlaagfocus volgen
-  play: Automatisch afspelen
-  stopPlay: Afspelen stoppen
   opacity: Transparantie
   adjustOpacity: Transparantie aanpassen
   layerOpacity: Transparantie kaartlaag
