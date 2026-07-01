@@ -244,10 +244,18 @@ annotation: annotations/rotterdam-1897.json
 
 Relative annotation paths are resolved with the SvelteKit base path, so they continue to work when the app is deployed under a subpath such as `/rotterdam-tijdmachine`. Links generated for Allmaps Viewer and copied XYZ tile URLs use the full public URL for bundled annotations, for example `https://example.org/time-machine/annotations/rotterdam-1897.json`.
 
-Remote annotations are cached in `.cache/annotations` after a successful fetch, so later builds can fall back to cached data if a remote annotation service is temporarily unavailable. The generated JSON and cache directory are ignored by Git. To refresh the generated annotation asset manually, run:
+Remote annotations are cached in `.cache/annotations` after a successful fetch. When the cache contains an annotation, local development and builds reuse that cached copy instead of requesting it again, which keeps startup fast when switching between multiple configs. If no cache exists, the script fetches the remote annotation and stores it for later. The generated JSON and cache directory are ignored by Git.
+
+To rebuild the generated annotation asset from the current cache, run:
 
 ```bash
-npm run generate:annotations
+pnpm run generate:annotations
+```
+
+To force fresh remote annotation requests and update the cache, run:
+
+```bash
+REFRESH_ANNOTATIONS=1 pnpm run generate:annotations
 ```
 
 ### Basemap and search bounds

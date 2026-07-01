@@ -18,6 +18,7 @@ const FETCH_CONCURRENCY = 6;
 type GenerateAnnotationsOptions = {
 	root?: string;
 	configFile?: string;
+	refreshRemoteAnnotations?: boolean;
 };
 
 type AppConfig = {
@@ -50,6 +51,8 @@ export async function generateAnnotations(
 	options: GenerateAnnotationsOptions = {}
 ): Promise<GenerateAnnotationsResult> {
 	const root = options.root ? path.resolve(options.root) : process.cwd();
+	const refreshRemoteAnnotations =
+		options.refreshRemoteAnnotations ?? isTruthy(process.env.REFRESH_ANNOTATIONS);
 	const configFileName = normalizeContentFileName(
 		options.configFile ?? process.env.CONFIG,
 		DEFAULT_CONFIG_FILE
@@ -72,7 +75,7 @@ export async function generateAnnotations(
 		...new Set(collection.map((map) => String(map?.annotation ?? '').trim()).filter(Boolean))
 	];
 	const entries = await mapWithConcurrency(annotationUrls, FETCH_CONCURRENCY, async (annotation) =>
-		generateAnnotationEntry(annotation, root)
+		generateAnnotationEntry(annotation, root, refreshRemoteAnnotations)
 	);
 	const generatedPath = path.join(root, GENERATED_FILE);
 	const output: GeneratedAnnotations = {
@@ -107,9 +110,10 @@ export async function generateAnnotations(
 
 async function generateAnnotationEntry(
 	annotation: string,
-	root: string
+	root: string,
+	refreshRemoteAnnotations: boolean
 ): Promise<GeneratedAnnotationEntry> {
-	const data = await loadAnnotation(annotation, root);
+	const data = await loadAnnotation(annotation, root, refreshRemoteAnnotations);
 	const maps = parseAnnotation(data);
 
 	return {
@@ -118,7 +122,11 @@ async function generateAnnotationEntry(
 	};
 }
 
-async function loadAnnotation(annotation: string, root: string): Promise<unknown> {
+async function loadAnnotation(
+	annotation: string,
+	root: string,
+	refreshRemoteAnnotations: boolean
+): Promise<unknown> {
 	const localPath = getLocalAnnotationPath(annotation, root);
 	if (localPath) {
 		return JSON.parse(await readFile(localPath, 'utf8'));
@@ -130,11 +138,20 @@ async function loadAnnotation(annotation: string, root: string): Promise<unknown
 		);
 	}
 
-	return loadRemoteAnnotation(annotation, root);
+	return loadRemoteAnnotation(annotation, root, refreshRemoteAnnotations);
 }
 
-async function loadRemoteAnnotation(url: string, root: string): Promise<unknown> {
+async function loadRemoteAnnotation(
+	url: string,
+	root: string,
+	refreshRemoteAnnotations: boolean
+): Promise<unknown> {
 	const cachePath = getCachePath(url, root);
+
+	if (!refreshRemoteAnnotations) {
+		const cachedData = await readCachedJson(cachePath, url);
+		if (cachedData) return cachedData;
+	}
 
 	try {
 		const data = await fetchJsonWithRetry(url);
@@ -142,12 +159,30 @@ async function loadRemoteAnnotation(url: string, root: string): Promise<unknown>
 		await writeFile(cachePath, JSON.stringify(data));
 		return data;
 	} catch (error) {
-		if (existsSync(cachePath)) {
+		const cachedData = await readCachedJson(cachePath, url, false);
+		if (cachedData) {
 			console.warn(`Fetch failed for ${url}; using cached annotation`);
-			return JSON.parse(await readFile(cachePath, 'utf8'));
+			return cachedData;
 		}
 
 		throw error;
+	}
+}
+
+async function readCachedJson(
+	cachePath: string,
+	url: string,
+	warnOnFailure = true
+): Promise<unknown | undefined> {
+	if (!existsSync(cachePath)) return undefined;
+
+	try {
+		return JSON.parse(await readFile(cachePath, 'utf8'));
+	} catch {
+		if (warnOnFailure) {
+			console.warn(`Could not read cached annotation for ${url}; fetching it again`);
+		}
+		return undefined;
 	}
 }
 
@@ -247,6 +282,10 @@ function normalizePublicPath(value: string): string {
 function isAbsoluteUrl(value: string): boolean {
 	const url = value.trim();
 	return /^[a-z][a-z\d+.-]*:/i.test(url) || url.startsWith('//');
+}
+
+function isTruthy(value: string | undefined): boolean {
+	return value === '1' || value?.toLowerCase() === 'true';
 }
 
 async function mapWithConcurrency<T, U>(
