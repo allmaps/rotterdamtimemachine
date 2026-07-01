@@ -14,8 +14,15 @@
 		GeocoderBounds,
 		MapKeyboardCommand,
 		MapLocation,
+		MapMetadata,
 		MapToolbarCommand
 	} from '$lib/types';
+
+	type AutoplayItem = {
+		annotation: string;
+		year: number;
+		order: number;
+	};
 
 	let {
 		data: pageData
@@ -64,6 +71,8 @@
 	let panesError = $state<string>();
 	let mapKeyboardCommand = $state<MapKeyboardCommand>();
 	let mapToolbarCommand = $state<MapToolbarCommand>();
+	let autoplayActive = $state(false);
+	let autoplayPlaying = $state(false);
 	let keyboardCommandId = 0;
 	let toolbarCommandId = 0;
 	let opacityShortcutSnapshot:
@@ -82,11 +91,36 @@
 	let leftNavPosition: 'left' | 'right' = $derived(
 		comparison.active && compareStacked ? 'right' : 'left'
 	);
+	let autoplayInterval = $derived(config.autoplay?.intervalSeconds);
+	let autoplayItems = $derived(getAutoplayItems(collection));
+	let autoplayCurrentIndex = $derived(getAutoplayCurrentIndex());
+	let autoplayCurrentPosition = $derived(autoplayCurrentIndex >= 0 ? autoplayCurrentIndex + 1 : 0);
+	let autoplayTotal = $derived(autoplayItems.length);
+	let autoplayDisabled = $derived(
+		comparison.active ||
+			!panesReady ||
+			!autoplayInterval ||
+			autoplayInterval <= 0 ||
+			autoplayTotal === 0
+	);
 
 	$effect(() => {
 		mapView.center = currentLocation.center;
 		mapView.zoom = currentLocation.zoom;
 		mapView.bearing = currentLocation.bearing;
+	});
+
+	$effect(() => {
+		if (comparison.active && autoplayActive) {
+			stopAutoplay();
+		}
+	});
+
+	$effect(() => {
+		if (!autoplayActive || !autoplayPlaying || !autoplayInterval || autoplayInterval <= 0) return;
+
+		const intervalId = setInterval(advanceAutoplay, autoplayInterval * 1000);
+		return () => clearInterval(intervalId);
 	});
 
 	function yearForAnnotation(annotation: string) {
@@ -96,6 +130,16 @@
 
 	function mapForYear(year: number) {
 		return collection.find((map) => mapIncludesYear(map, year));
+	}
+
+	function getAutoplayItems(maps: MapMetadata[]): AutoplayItem[] {
+		return maps
+			.map((map, order) => ({
+				annotation: map.annotation,
+				year: getMapStartYear(map),
+				order
+			}))
+			.sort((left, right) => left.year - right.year || left.order - right.order);
 	}
 
 	function mapForAnnotationParam(value: string | null) {
@@ -161,6 +205,85 @@
 		};
 	}
 
+	function startAutoplay() {
+		if (autoplayDisabled) return;
+
+		autoplayActive = true;
+		autoplayPlaying = true;
+		aboutOpen = false;
+		shareOpen = false;
+		ensureAutoplaySelection();
+	}
+
+	function toggleAutoplayPlayback() {
+		if (!autoplayActive) {
+			startAutoplay();
+			return;
+		}
+
+		autoplayPlaying = !autoplayPlaying;
+	}
+
+	function stopAutoplay() {
+		autoplayActive = false;
+		autoplayPlaying = false;
+	}
+
+	function ensureAutoplaySelection() {
+		if (autoplayCurrentIndex >= 0) return;
+
+		const firstItem = autoplayItems.find((item) => item.year >= selectedYear) ?? autoplayItems[0];
+		if (!firstItem) return;
+
+		selectedYear = firstItem.year;
+		viewState.annotation = firstItem.annotation;
+	}
+
+	function advanceAutoplay() {
+		const nextItem = getRelativeAutoplayItem(1);
+		if (!nextItem) return;
+
+		selectAutoplayItem(nextItem);
+	}
+
+	function getAutoplayCurrentIndex() {
+		const annotationIndex = autoplayItems.findIndex(
+			(item) => item.annotation === viewState.annotation
+		);
+		if (annotationIndex >= 0) return annotationIndex;
+
+		return autoplayItems.findIndex((item) => item.year >= selectedYear);
+	}
+
+	function getRelativeAutoplayItem(direction: -1 | 1) {
+		if (autoplayItems.length === 0) return undefined;
+
+		const currentIndex = autoplayCurrentIndex;
+
+		if (currentIndex >= 0) {
+			const nextIndex = (currentIndex + direction + autoplayItems.length) % autoplayItems.length;
+			return autoplayItems[nextIndex];
+		}
+
+		if (direction === 1) {
+			return autoplayItems.find((item) => item.year > selectedYear) ?? autoplayItems[0];
+		}
+
+		return (
+			[...autoplayItems].reverse().find((item) => item.year < selectedYear) ?? autoplayItems.at(-1)
+		);
+	}
+
+	function selectRelativeAutoplaySlide(direction: -1 | 1) {
+		const item = getRelativeAutoplayItem(direction);
+		if (item) selectAutoplayItem(item);
+	}
+
+	function selectAutoplayItem(item: AutoplayItem) {
+		selectedYear = item.year;
+		viewState.annotation = item.annotation;
+	}
+
 	function hasOpenModal() {
 		return (
 			document.body.classList.contains('driver-active') ||
@@ -183,7 +306,66 @@
 	}
 
 	function handleGlobalKeydown(event: KeyboardEvent) {
-		if (hasOpenModal() || isInteractiveTarget(event.target)) return;
+		if (hasOpenModal()) return;
+
+		if (autoplayActive) {
+			if (event.key === 'Escape') {
+				event.preventDefault();
+				event.stopImmediatePropagation();
+				stopAutoplay();
+				return;
+			}
+
+			if (event.code === 'Space') {
+				if (event.repeat) return;
+
+				event.preventDefault();
+				event.stopImmediatePropagation();
+				toggleAutoplayPlayback();
+				return;
+			}
+
+			if (
+				!event.shiftKey &&
+				!event.metaKey &&
+				!event.ctrlKey &&
+				!event.altKey &&
+				(event.key === 'ArrowLeft' || event.key === 'ArrowRight')
+			) {
+				event.preventDefault();
+				event.stopImmediatePropagation();
+				selectRelativeAutoplaySlide(event.key === 'ArrowLeft' ? -1 : 1);
+				return;
+			}
+
+			if (
+				!event.shiftKey &&
+				!event.metaKey &&
+				!event.ctrlKey &&
+				!event.altKey &&
+				(event.key === 'ArrowUp' || event.key === 'ArrowDown')
+			) {
+				event.preventDefault();
+				event.stopImmediatePropagation();
+				return;
+			}
+		}
+
+		if (isInteractiveTarget(event.target)) return;
+
+		if (
+			!event.repeat &&
+			!event.shiftKey &&
+			!event.metaKey &&
+			!event.ctrlKey &&
+			!event.altKey &&
+			event.key.toLowerCase() === 'p'
+		) {
+			event.preventDefault();
+			event.stopImmediatePropagation();
+			startAutoplay();
+			return;
+		}
 
 		if (event.code === 'Space') {
 			if (event.repeat) return;
@@ -205,7 +387,8 @@
 	}
 
 	function handleGlobalKeydownCapture(event: KeyboardEvent) {
-		if (hasOpenModal() || isInteractiveTarget(event.target)) return;
+		if (hasOpenModal()) return;
+		if (!autoplayActive && isInteractiveTarget(event.target)) return;
 		if (!event.shiftKey || event.metaKey || event.ctrlKey || event.altKey) return;
 		if (!isArrowKey(event.key)) return;
 
@@ -343,14 +526,23 @@
 	onblur={restoreOpacityShortcut}
 />
 
-<div class="flex h-[100dvh] flex-col">
+<div class="relative flex h-[100dvh] flex-col">
 	<AppTour {config} enabled={panesReady} />
 
 	<Header
 		{config}
 		searchBounds={geocoderBounds}
+		{autoplayActive}
+		{autoplayPlaying}
+		{autoplayDisabled}
+		{autoplayCurrentPosition}
+		{autoplayTotal}
+		autoplayIntervalSeconds={autoplayInterval ?? 0}
 		onAboutOpen={() => (aboutOpen = true)}
 		onShareOpen={() => (shareOpen = true)}
+		onAutoplayStart={startAutoplay}
+		onAutoplayPauseToggle={toggleAutoplayPlayback}
+		onAutoplayStop={stopAutoplay}
 	/>
 
 	<div
@@ -377,6 +569,7 @@
 				enableLocationMarker
 				enableLayersShortcut
 				showLayersPaneIndicator={comparison.active}
+				{autoplayActive}
 			/>
 
 			{#if comparison.active}
