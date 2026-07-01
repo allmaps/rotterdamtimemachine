@@ -673,18 +673,11 @@
 								</span>
 							</div>
 							<div class="pointer-events-none pt-1">
-								<a
-									href={map.url}
-									target="_blank"
-									rel="external noopener noreferrer"
-									class="pointer-events-auto relative z-20 inline-flex max-w-full cursor-pointer items-center gap-1 text-xs font-medium text-gray-500 hover:text-brand-main"
-									aria-label="{config.layers.viewItemAt} {map.institution}"
-									onclick={(event) => event.stopPropagation()}
-									onkeydown={(event) => event.stopPropagation()}
+								<span
+									class="inline-flex max-w-full items-center gap-1 text-xs font-medium text-gray-500"
 								>
 									<span class="min-w-0 truncate">{map.institution}</span>
-									<ExternalLink class="h-3 w-3 flex-none" />
-								</a>
+								</span>
 							</div>
 						</div>
 					</div>
