@@ -40,6 +40,7 @@ export type AppConfig = {
 		url: string;
 		description: string;
 		locale: string;
+		favicon?: string;
 	};
 	theme: {
 		color: string;
@@ -82,11 +83,18 @@ export type AppConfig = {
 		scaleInterval: number;
 		showOnlyAvailableYears?: boolean;
 	};
+	autoplay?: {
+		intervalSeconds: number;
+		flyToDurationMs?: number;
+	};
 	header: {
 		search: string;
 		compare: string;
 		closeCompare: string;
 		compareMode: string;
+		play: string;
+		pause: string;
+		stop: string;
 		about: string;
 		share: string;
 	};

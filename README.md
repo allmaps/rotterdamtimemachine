@@ -54,8 +54,8 @@ BASE_PATH=/rotterdam-tijdmachine pnpm run build
 To run or build with alternate content files, set `CONFIG`:
 
 ```bash
-CONFIG=config-gouda.yml pnpm run dev
-CONFIG=content/config-gouda.yml pnpm run build
+CONFIG=content/gouda/config.yml pnpm run dev
+CONFIG=content/gouda/config.yml pnpm run build
 ```
 
 ## Deploying to GitHub Pages
@@ -102,7 +102,7 @@ For example:
 | `https://pages.allmaps.org/rotterdam-tijdmachine/` | `/rotterdam-tijdmachine` or unset |
 | `https://tijdmachine.example.org/`                 | `/`                               |
 
-To deploy an alternate configuration, set the repository variable `CONFIG` to a file such as `content/config-gouda.yml`, or fill in the `config` input when manually running the workflow.
+To deploy an alternate configuration, set the repository variable `CONFIG` to a file such as `content/gouda/config.yml`, or fill in the `config` input when manually running the workflow.
 
 SvelteKit is configured with `@sveltejs/adapter-static` and `fallback: '404.html'`, so direct links with query parameters keep working on GitHub Pages.
 
@@ -115,14 +115,16 @@ The app is structured so the most important content lives outside the components
 
 The YAML files are loaded through `src/lib/content.ts` and `@modyfi/vite-plugin-yaml`. If you extend the YAML structure, also update the shared types in `src/lib/types.ts`.
 
-By default, the app uses `config.yml`, which points to `collection.yml`. To keep multiple configurations in one repository, add alternate YAML files either in the project root or in a `content/` folder and select the configuration file with `CONFIG`:
+By default, the app uses `config.yml`, which points to `collection.yml`. To keep multiple configurations in one repository, place alternate content packages in `content/` folders and select the configuration file with `CONFIG`:
 
 ```bash
-CONFIG=config-gouda.yml pnpm run dev
-CONFIG=content/config-gouda.yml pnpm run build
+CONFIG=content/gouda/config.yml pnpm run dev
+CONFIG=content/gouda/config.yml pnpm run build
 ```
 
-`CONFIG` selects the app configuration file. If it is omitted, the app falls back to `config.yml`. The selected config file then points to the collection with its top-level `collection` field. Bare collection filenames are resolved relative to the config file, so `content/config-gouda.yml` can use `collection: collection-gouda.yml`.
+`CONFIG` selects the app configuration file. If it is omitted, the app falls back to `config.yml`. The selected config file then points to the collection with its top-level `collection` field. Bare collection filenames are resolved relative to the config file, so `content/gouda/config.yml` can use `collection: collection.yml`.
+
+`CONFIG` is read when the Vite dev server starts. Stop and restart the dev server after switching to another config file; hot module replacement does not switch a running server from one content package to another.
 
 ### `config.yml`
 
@@ -130,6 +132,7 @@ Important sections:
 
 - `collection`: YAML file with map records; bare filenames are resolved relative to the config file
 - `site`: name, URL, description, and locale for metadata
+- `site.favicon`: optional favicon URL or path; overrides the bundled `static/favicon.svg`
 - `theme.color`: hex or RGB value used for the primary UI color
 - `theme.fonts`: optional custom font files and semantic font roles
 - `map.defaultYear`: the year the app opens with by default
@@ -138,6 +141,8 @@ Important sections:
 - `basemap.protomapsApiKey`: API key used for Protomaps hosted basemap tiles
 - `slider.scaleInterval`: year scale interval
 - `slider.showOnlyAvailableYears`: show only years with available maps in the year picker
+- `autoplay.intervalSeconds`: seconds per map slide in presentation mode; omit `autoplay` to hide the header play button
+- `autoplay.flyToDurationMs`: camera animation duration when presentation mode focuses on a map
 - `tour.enabled`: set to `false` to disable the one-time guided tour
 - `header`, `about`, `share`, `search`, `layers`, `controls`, `mapWarnings`: visible labels and modal text
 
@@ -188,6 +193,8 @@ Each role can be a single family name or a list, for example `heading: [Example 
 ### Favicon
 
 The favicon is served from `static/favicon.svg`. To reuse the app with another brand, replace that file with your own SVG favicon. The layout references it through SvelteKit's base path, so it also works when the app is deployed under a subpath.
+
+Alternatively, set `site.favicon` in `config.yml` to point at a different favicon without replacing the bundled file. The value is used as-is, so it can be a relative path or an absolute URL, for example `favicon: https://example.org/logo.svg`. When `site.favicon` is omitted, the app falls back to `static/favicon.svg`.
 
 ### `collection.yml`
 
