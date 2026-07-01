@@ -30,6 +30,8 @@
 
 	const CAROUSEL_SCROLL_SETTLE_MS = 140;
 	const CAROUSEL_SCROLL_FALLBACK_MS = 640;
+	const CAROUSEL_USER_SCROLL_SETTLE_MS = 70;
+	const CAROUSEL_POINTER_SETTLE_MS = 40;
 
 	let {
 		maps: mapMetadata,
@@ -493,11 +495,15 @@
 			return;
 		}
 
+		queueNearestCarouselSelection(CAROUSEL_USER_SCROLL_SETTLE_MS);
+	}
+
+	function queueNearestCarouselSelection(delay = CAROUSEL_USER_SCROLL_SETTLE_MS) {
 		if (carouselScrollTimer) clearTimeout(carouselScrollTimer);
 		carouselScrollTimer = setTimeout(() => {
 			carouselScrollTimer = undefined;
 			selectNearestCarouselMap();
-		}, 120);
+		}, delay);
 	}
 
 	function selectNearestCarouselMap() {
@@ -537,7 +543,19 @@
 		selectCarouselMap(index);
 	}
 
+	function handleCarouselInteractionStart() {
+		if (isProgrammaticCarouselScroll) {
+			isProgrammaticCarouselScroll = false;
+		}
+
+		if (carouselProgrammaticScrollTimer) {
+			clearTimeout(carouselProgrammaticScrollTimer);
+			carouselProgrammaticScrollTimer = undefined;
+		}
+	}
+
 	function handleCarouselPointerDown(event: PointerEvent) {
+		handleCarouselInteractionStart();
 		carouselPointerStart = { x: event.clientX, y: event.clientY };
 		suppressCarouselClick = false;
 	}
@@ -555,6 +573,9 @@
 
 	function handleCarouselPointerEnd() {
 		carouselPointerStart = undefined;
+		if (!isProgrammaticCarouselScroll) {
+			queueNearestCarouselSelection(CAROUSEL_POINTER_SETTLE_MS);
+		}
 		setTimeout(() => (suppressCarouselClick = false), 0);
 	}
 
@@ -624,6 +645,7 @@
 				onpointermove={handleCarouselPointerMove}
 				onpointerup={handleCarouselPointerEnd}
 				onpointercancel={handleCarouselPointerEnd}
+				onwheel={handleCarouselInteractionStart}
 			>
 				{#each mapsForResolvedYear as map, index (map.annotation)}
 					<div class="w-full flex-none snap-center">
