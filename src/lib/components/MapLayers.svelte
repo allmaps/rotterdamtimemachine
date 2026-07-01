@@ -18,7 +18,7 @@
 		Star,
 		X
 	} from '@lucide/svelte';
-	import { tick } from 'svelte';
+	import { onDestroy, tick } from 'svelte';
 	import { slide } from 'svelte/transition';
 	import {
 		getExpandedMapYears,
@@ -27,6 +27,9 @@
 		mapIncludesYear
 	} from '$lib/map-years';
 	import type { AppConfig, MapMetadata } from '$lib/types';
+
+	const CAROUSEL_SCROLL_SETTLE_MS = 140;
+	const CAROUSEL_SCROLL_FALLBACK_MS = 640;
 
 	let {
 		maps: mapMetadata,
@@ -68,7 +71,16 @@
 	let copiedXyzAnnotation = $state<string | undefined>();
 	let listElement = $state<HTMLUListElement>();
 	let searchInputElement = $state<HTMLInputElement>();
+	let carouselTrackElement = $state<HTMLDivElement>();
+	let carouselDotsElement = $state<HTMLDivElement>();
 	let copiedXyzTimer: ReturnType<typeof setTimeout> | undefined;
+	let carouselScrollTimer: ReturnType<typeof setTimeout> | undefined;
+	let carouselProgrammaticScrollTimer: ReturnType<typeof setTimeout> | undefined;
+	let carouselPointerStart: { x: number; y: number } | undefined;
+	let suppressCarouselClick = false;
+	let hasSyncedCarousel = false;
+	let hasSyncedCarouselDots = false;
+	let isProgrammaticCarouselScroll = false;
 	const filterButtonClass =
 		'relative flex min-w-0 items-center justify-center gap-1 rounded border px-2 py-1.5 transition';
 	const activeFilterClass = 'border-brand-main bg-brand-soft text-gray-900 shadow-sm';
@@ -97,6 +109,10 @@
 	);
 	let activeMapPosition = $derived(activeMapIndex >= 0 ? activeMapIndex + 1 : 1);
 	let hasMultipleMaps = $derived(mapsForResolvedYear.length > 1);
+	let canSelectPreviousMap = $derived(hasMultipleMaps && activeMapIndex > 0);
+	let canSelectNextMap = $derived(
+		hasMultipleMaps && activeMapIndex >= 0 && activeMapIndex < mapsForResolvedYear.length - 1
+	);
 	let normalizedSearchTerm = $derived(normalizeSearchTerm(searchTerm));
 	let visibleMaps = $derived(
 		(showCurrentYearOnly ? mapsForVisibleYear : maps).filter(
@@ -123,6 +139,36 @@
 	});
 
 	$effect(() => {
+		const trackElement = carouselTrackElement;
+		const index = activeMapIndex;
+		const mapCount = mapsForResolvedYear.length;
+
+		if (!trackElement || index < 0 || mapCount < 1) return;
+
+		tick().then(() => {
+			if (carouselTrackElement !== trackElement) return;
+
+			scrollCarouselToIndex(index, hasSyncedCarousel ? 'smooth' : 'auto');
+			hasSyncedCarousel = true;
+		});
+	});
+
+	$effect(() => {
+		const dotsElement = carouselDotsElement;
+		const index = activeMapIndex;
+		const mapCount = mapsForResolvedYear.length;
+
+		if (!dotsElement || index < 0 || mapCount < 2) return;
+
+		tick().then(() => {
+			if (carouselDotsElement !== dotsElement) return;
+
+			scrollCarouselDotToIndex(index, hasSyncedCarouselDots ? 'smooth' : 'auto');
+			hasSyncedCarouselDots = true;
+		});
+	});
+
+	$effect(() => {
 		if (layersOpen) {
 			tick().then(() => {
 				focusSearchInput();
@@ -137,6 +183,12 @@
 		} else if (selectedIndex > visibleMaps.length - 1) {
 			selectedIndex = visibleMaps.length - 1;
 		}
+	});
+
+	onDestroy(() => {
+		if (copiedXyzTimer) clearTimeout(copiedXyzTimer);
+		if (carouselScrollTimer) clearTimeout(carouselScrollTimer);
+		if (carouselProgrammaticScrollTimer) clearTimeout(carouselProgrammaticScrollTimer);
 	});
 
 	function resolveAvailableYear(year: number, years = availableYears) {
@@ -386,12 +438,161 @@
 		}
 	}
 
+	function scrollCarouselToIndex(index: number, behavior: ScrollBehavior = 'smooth') {
+		const trackElement = carouselTrackElement;
+		const slideElement = trackElement?.children[index] as HTMLElement | undefined;
+		if (!trackElement || !slideElement) return;
+
+		const targetLeft = slideElement.offsetLeft;
+		if (Math.abs(trackElement.scrollLeft - targetLeft) < 1) return;
+
+		isProgrammaticCarouselScroll = true;
+		if (carouselScrollTimer) {
+			clearTimeout(carouselScrollTimer);
+			carouselScrollTimer = undefined;
+		}
+		if (carouselProgrammaticScrollTimer) clearTimeout(carouselProgrammaticScrollTimer);
+
+		trackElement.scrollTo({ left: targetLeft, behavior });
+		carouselProgrammaticScrollTimer = setTimeout(
+			() => {
+				isProgrammaticCarouselScroll = false;
+				carouselProgrammaticScrollTimer = undefined;
+			},
+			behavior === 'smooth' ? CAROUSEL_SCROLL_FALLBACK_MS : 0
+		);
+	}
+
+	function scrollCarouselDotToIndex(index: number, behavior: ScrollBehavior = 'smooth') {
+		const dotsElement = carouselDotsElement;
+		const dotElement = dotsElement?.querySelectorAll<HTMLElement>('[data-carousel-dot]')[index];
+		if (!dotsElement || !dotElement) return;
+
+		const dotsRect = dotsElement.getBoundingClientRect();
+		const dotRect = dotElement.getBoundingClientRect();
+		const targetLeft =
+			dotsElement.scrollLeft +
+			(dotRect.left + dotRect.width / 2 - (dotsRect.left + dotsRect.width / 2));
+		const maxScrollLeft = dotsElement.scrollWidth - dotsElement.clientWidth;
+		const nextScrollLeft = Math.max(0, Math.min(targetLeft, maxScrollLeft));
+
+		if (Math.abs(dotsElement.scrollLeft - nextScrollLeft) < 1) return;
+
+		dotsElement.scrollTo({ left: nextScrollLeft, behavior });
+	}
+
+	function handleCarouselScroll() {
+		if (!carouselTrackElement) return;
+
+		if (isProgrammaticCarouselScroll) {
+			if (carouselProgrammaticScrollTimer) clearTimeout(carouselProgrammaticScrollTimer);
+			carouselProgrammaticScrollTimer = setTimeout(() => {
+				isProgrammaticCarouselScroll = false;
+				carouselProgrammaticScrollTimer = undefined;
+			}, CAROUSEL_SCROLL_SETTLE_MS);
+			return;
+		}
+
+		if (carouselScrollTimer) clearTimeout(carouselScrollTimer);
+		carouselScrollTimer = setTimeout(() => {
+			carouselScrollTimer = undefined;
+			selectNearestCarouselMap();
+		}, 120);
+	}
+
+	function selectNearestCarouselMap() {
+		const trackElement = carouselTrackElement;
+		if (!trackElement || mapsForResolvedYear.length < 1) return;
+
+		const center = trackElement.scrollLeft + trackElement.clientWidth / 2;
+		const slides = Array.from(trackElement.children) as HTMLElement[];
+		let nearestIndex = 0;
+		let nearestDistance = Number.POSITIVE_INFINITY;
+
+		for (const [index, slideElement] of slides.entries()) {
+			const slideCenter = slideElement.offsetLeft + slideElement.offsetWidth / 2;
+			const distance = Math.abs(center - slideCenter);
+
+			if (distance < nearestDistance) {
+				nearestIndex = index;
+				nearestDistance = distance;
+			}
+		}
+
+		selectCarouselMap(nearestIndex);
+	}
+
+	function selectCarouselMap(index: number) {
+		const map = mapsForResolvedYear[index];
+		if (map && map.annotation !== annotation) {
+			annotation = map.annotation;
+		}
+	}
+
+	function handleCarouselDotClick(event: MouseEvent, index: number) {
+		event.stopPropagation();
+		if (event.currentTarget instanceof HTMLElement) {
+			event.currentTarget.blur();
+		}
+		selectCarouselMap(index);
+	}
+
+	function handleCarouselPointerDown(event: PointerEvent) {
+		carouselPointerStart = { x: event.clientX, y: event.clientY };
+		suppressCarouselClick = false;
+	}
+
+	function handleCarouselPointerMove(event: PointerEvent) {
+		if (!carouselPointerStart) return;
+
+		const deltaX = Math.abs(event.clientX - carouselPointerStart.x);
+		const deltaY = Math.abs(event.clientY - carouselPointerStart.y);
+
+		if (deltaX > 8 || deltaY > 8) {
+			suppressCarouselClick = true;
+		}
+	}
+
+	function handleCarouselPointerEnd() {
+		carouselPointerStart = undefined;
+		setTimeout(() => (suppressCarouselClick = false), 0);
+	}
+
+	function handleCarouselSlideClick(event: MouseEvent) {
+		if (suppressCarouselClick) {
+			event.preventDefault();
+			return;
+		}
+
+		openLayers();
+	}
+
+	function handleCarouselSlideKeydown(event: KeyboardEvent) {
+		if (event.key === 'Enter' || event.key === ' ') {
+			event.preventDefault();
+			event.stopPropagation();
+			openLayers();
+			return;
+		}
+
+		if (event.key === 'ArrowLeft') {
+			event.preventDefault();
+			event.stopPropagation();
+			selectRelativeMap(-1);
+		}
+
+		if (event.key === 'ArrowRight') {
+			event.preventDefault();
+			event.stopPropagation();
+			selectRelativeMap(1);
+		}
+	}
+
 	function selectRelativeMap(direction: -1 | 1) {
 		if (!hasMultipleMaps) return;
 
 		const currentIndex = activeMapIndex >= 0 ? activeMapIndex : 0;
-		const nextIndex =
-			(currentIndex + direction + mapsForResolvedYear.length) % mapsForResolvedYear.length;
+		const nextIndex = currentIndex + direction;
 		const nextMap = mapsForResolvedYear[nextIndex];
 		if (nextMap) {
 			annotation = nextMap.annotation;
@@ -408,82 +609,127 @@
 		<div
 			data-tour="layers"
 			data-map-layers-panel
-			class="z-30 flex min-h-14 w-full max-w-xl items-center gap-3 overflow-hidden rounded-md border border-gray-200 bg-white p-1 text-gray-900 shadow-lg"
+			class="relative z-30 w-full max-w-xl overflow-hidden rounded-md border border-gray-200 bg-white p-1 text-gray-900 shadow-lg {hasMultipleMaps
+				? 'min-h-16'
+				: 'min-h-14'}"
 		>
-			<div class="relative min-w-0 flex-1 rounded hover:bg-gray-50">
-				<button
-					type="button"
-					aria-label={config.layers.openLabel}
-					aria-haspopup="dialog"
-					aria-controls={modalId}
-					onclick={openLayers}
-					class="absolute inset-0 z-0 cursor-pointer rounded focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-brand-main"
-				></button>
-				<div
-					class="pointer-events-none relative z-10 flex min-w-0 items-center gap-2 px-2 pt-1 pb-0.5"
-				>
-					<span
-						class="flex-none rounded bg-gray-900 px-1.5 py-0.5 font-heading text-[0.65rem] text-white"
-					>
-						{getMapYearLabel(activeMap)}
-					</span>
-					<span class="min-w-0 flex-1 truncate text-sm leading-5 font-semibold">
-						{activeMap.label}
-					</span>
-				</div>
-				<div class="pointer-events-none relative z-10 px-2 pt-1 pb-1">
-					<a
-						href={activeMap.url}
-						target="_blank"
-						rel="external noopener noreferrer"
-						class="pointer-events-auto relative z-20 inline-flex max-w-full cursor-pointer items-center gap-1 text-xs font-medium text-gray-500 hover:text-brand-main"
-						aria-label="{config.layers.viewItemAt} {activeMap.institution}"
-					>
-						<span class="min-w-0 truncate">{activeMap.institution}</span>
-						<ExternalLink class="h-3 w-3 flex-none" />
-					</a>
-				</div>
+			<div
+				bind:this={carouselTrackElement}
+				role="group"
+				aria-label={config.layers.openLabel}
+				aria-roledescription="carousel"
+				class="layers-carousel-track flex snap-x snap-mandatory overflow-x-auto"
+				onscroll={handleCarouselScroll}
+				onpointerdown={handleCarouselPointerDown}
+				onpointermove={handleCarouselPointerMove}
+				onpointerup={handleCarouselPointerEnd}
+				onpointercancel={handleCarouselPointerEnd}
+			>
+				{#each mapsForResolvedYear as map, index (map.annotation)}
+					<div class="w-full flex-none snap-center">
+						<div
+							role="button"
+							tabindex={index === activeMapIndex ? 0 : -1}
+							aria-current={index === activeMapIndex ? 'true' : undefined}
+							aria-label="{config.layers.openLabel}: {map.label} ({getMapYearLabel(
+								map
+							)}, {map.institution})"
+							aria-haspopup="dialog"
+							aria-controls={modalId}
+							onclick={handleCarouselSlideClick}
+							onkeydown={handleCarouselSlideKeydown}
+							class="relative min-h-12 min-w-0 cursor-pointer rounded px-2 py-1.5 transition hover:bg-gray-50 focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-brand-main"
+						>
+							<div class="pointer-events-none flex min-w-0 items-center gap-2 pb-0.5">
+								<span
+									class="flex-none rounded bg-gray-900 px-1.5 py-0.5 font-heading text-[0.65rem] text-white"
+								>
+									{getMapYearLabel(map)}
+								</span>
+								<span class="min-w-0 flex-1 truncate text-sm leading-5 font-semibold">
+									{map.label}
+								</span>
+							</div>
+							<div class="pointer-events-none pt-1">
+								<a
+									href={map.url}
+									target="_blank"
+									rel="external noopener noreferrer"
+									class="pointer-events-auto relative z-20 inline-flex max-w-full cursor-pointer items-center gap-1 text-xs font-medium text-gray-500 hover:text-brand-main"
+									aria-label="{config.layers.viewItemAt} {map.institution}"
+									onclick={(event) => event.stopPropagation()}
+									onkeydown={(event) => event.stopPropagation()}
+								>
+									<span class="min-w-0 truncate">{map.institution}</span>
+									<ExternalLink class="h-3 w-3 flex-none" />
+								</a>
+							</div>
+						</div>
+					</div>
+				{/each}
 			</div>
 
 			{#if hasMultipleMaps}
-				<button
-					type="button"
-					aria-label="{config.layers
-						.previousMap} ({activeMapPosition} van {mapsForResolvedYear.length})"
-					onclick={() => selectRelativeMap(-1)}
-					class="flex h-10 w-8 flex-none items-center justify-center rounded text-gray-500 hover:bg-gray-100 hover:text-gray-900"
-				>
-					<ChevronLeft class="h-4 w-4" />
-				</button>
-				<span
+				<div
 					aria-label="{config.layers
 						.mapPosition} {activeMapPosition} van {mapsForResolvedYear.length}"
-					title="{config.layers.mapPosition} {activeMapPosition} van {mapsForResolvedYear.length}"
-					class="flex h-10 min-w-10 flex-none items-center justify-center rounded bg-gray-50 px-2 font-heading text-xs font-bold text-gray-700 tabular-nums"
+					transition:slide={{ duration: 140 }}
+					class="grid h-5 grid-cols-[2rem_1fr_2rem] items-center gap-1 px-1 pb-0.5"
 				>
-					{activeMapPosition}/{mapsForResolvedYear.length}
-				</span>
-				<button
-					type="button"
-					aria-label="{config.layers
-						.nextMap} ({activeMapPosition} van {mapsForResolvedYear.length})"
-					onclick={() => selectRelativeMap(1)}
-					class="flex h-10 w-8 flex-none items-center justify-center rounded text-gray-500 hover:bg-gray-100 hover:text-gray-900"
-				>
-					<ChevronRight class="h-4 w-4" />
-				</button>
-			{/if}
+					<button
+						type="button"
+						aria-label="{config.layers
+							.previousMap} ({activeMapPosition} van {mapsForResolvedYear.length})"
+						disabled={!canSelectPreviousMap}
+						onclick={(event) => {
+							event.stopPropagation();
+							selectRelativeMap(-1);
+						}}
+						class="flex h-5 w-8 cursor-pointer items-center justify-center rounded text-gray-500 hover:bg-gray-100 hover:text-gray-900 focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-brand-main disabled:cursor-default disabled:text-gray-300 disabled:hover:bg-transparent disabled:hover:text-gray-300"
+					>
+						<ChevronLeft class="h-4 w-4" />
+					</button>
 
-			<button
-				type="button"
-				aria-label={config.layers.openLabel}
-				aria-haspopup="dialog"
-				aria-controls={modalId}
-				onclick={openLayers}
-				class="flex h-10 w-10 flex-none cursor-pointer items-center justify-center rounded text-gray-900 hover:bg-gray-100"
-			>
-				<AllmapsLogo class="h-6 w-6" />
-			</button>
+					<div
+						bind:this={carouselDotsElement}
+						class="layers-carousel-dots min-w-0 overflow-x-auto px-1"
+					>
+						<div class="flex w-max min-w-full items-center justify-center gap-1">
+							{#each mapsForResolvedYear as map, index (map.annotation)}
+								<button
+									type="button"
+									data-carousel-dot
+									aria-label="{config.layers.mapPosition} {index +
+										1} van {mapsForResolvedYear.length}: {map.label}"
+									aria-current={index === activeMapIndex ? 'true' : undefined}
+									onclick={(event) => handleCarouselDotClick(event, index)}
+									class="h-4 w-4 flex-none cursor-pointer rounded-full p-1 focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-brand-main"
+								>
+									<span
+										class="block h-1.5 w-1.5 rounded-full transition {index === activeMapIndex
+											? 'bg-brand-main'
+											: 'bg-gray-300 hover:bg-gray-500'}"
+									></span>
+								</button>
+							{/each}
+						</div>
+					</div>
+
+					<button
+						type="button"
+						aria-label="{config.layers
+							.nextMap} ({activeMapPosition} van {mapsForResolvedYear.length})"
+						disabled={!canSelectNextMap}
+						onclick={(event) => {
+							event.stopPropagation();
+							selectRelativeMap(1);
+						}}
+						class="flex h-5 w-8 cursor-pointer items-center justify-center justify-self-end rounded text-gray-500 hover:bg-gray-100 hover:text-gray-900 focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-brand-main disabled:cursor-default disabled:text-gray-300 disabled:hover:bg-transparent disabled:hover:text-gray-300"
+					>
+						<ChevronRight class="h-4 w-4" />
+					</button>
+				</div>
+			{/if}
 		</div>
 	</div>
 
@@ -761,5 +1007,19 @@
 	input[type='search']::-webkit-search-cancel-button {
 		-webkit-appearance: none;
 		appearance: none;
+	}
+
+	.layers-carousel-track,
+	.layers-carousel-dots {
+		scrollbar-width: none;
+	}
+
+	.layers-carousel-track {
+		touch-action: pan-x;
+	}
+
+	.layers-carousel-track::-webkit-scrollbar,
+	.layers-carousel-dots::-webkit-scrollbar {
+		display: none;
 	}
 </style>
