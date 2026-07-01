@@ -8,9 +8,12 @@
 		end: number;
 	};
 
+	type ScrollMode = 'auto' | 'smooth';
+
 	const yearRowHeight = 40;
 	const scrollSettleDelay = 140;
-	const programmaticScrollDelay = 420;
+	const snapScrollDuration = 640;
+	const programmaticScrollReleaseDelay = scrollSettleDelay + 40;
 
 	let {
 		maps,
@@ -43,6 +46,7 @@
 	let isProgrammaticScroll = false;
 	let hasInitializedScroll = false;
 	let scrollFrame: number | undefined;
+	let scrollAnimationFrame: number | undefined;
 	let scrollSettleTimeout: ReturnType<typeof setTimeout> | undefined;
 	let programmaticScrollTimeout: ReturnType<typeof setTimeout> | undefined;
 
@@ -84,6 +88,7 @@
 		return () => {
 			resizeObserver.disconnect();
 			clearScrollFrame();
+			clearScrollAnimation();
 			clearScrollSettleTimeout();
 			clearProgrammaticScrollTimeout();
 		};
@@ -246,7 +251,15 @@
 		return pickerYears[clampedIndex] ?? selectedYear;
 	}
 
-	function scrollToYear(year: number, behavior: ScrollBehavior) {
+	function prefersReducedMotion() {
+		return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+	}
+
+	function easeOutCubic(progress: number) {
+		return 1 - Math.pow(1 - progress, 3);
+	}
+
+	function scrollToYear(year: number, behavior: ScrollMode) {
 		if (!container || pickerYears.length === 0) return;
 
 		const targetYear = getClosestPickerYear(year);
@@ -259,14 +272,54 @@
 		if (Math.abs(container.scrollTop - top) < 1) return;
 
 		isProgrammaticScroll = true;
+		clearScrollAnimation();
 		clearProgrammaticScrollTimeout();
-		container.scrollTo({ top, behavior });
-		programmaticScrollTimeout = setTimeout(
-			() => {
+
+		if (behavior === 'auto' || prefersReducedMotion()) {
+			container.scrollTop = top;
+			releaseProgrammaticScroll();
+			return;
+		}
+
+		animateScrollTo(top);
+	}
+
+	function animateScrollTo(targetTop: number) {
+		if (!container) return;
+
+		const startTop = container.scrollTop;
+		const distance = targetTop - startTop;
+		const startTime = performance.now();
+
+		const step = (timestamp: number) => {
+			if (!container) {
+				scrollAnimationFrame = undefined;
 				isProgrammaticScroll = false;
-			},
-			behavior === 'smooth' ? programmaticScrollDelay : 0
-		);
+				return;
+			}
+
+			const progress = Math.min((timestamp - startTime) / snapScrollDuration, 1);
+
+			container.scrollTop = startTop + distance * easeOutCubic(progress);
+
+			if (progress < 1) {
+				scrollAnimationFrame = requestAnimationFrame(step);
+				return;
+			}
+
+			container.scrollTop = targetTop;
+			scrollAnimationFrame = undefined;
+			releaseProgrammaticScroll();
+		};
+
+		scrollAnimationFrame = requestAnimationFrame(step);
+	}
+
+	function releaseProgrammaticScroll() {
+		clearProgrammaticScrollTimeout();
+		programmaticScrollTimeout = setTimeout(() => {
+			isProgrammaticScroll = false;
+		}, programmaticScrollReleaseDelay);
 	}
 
 	function updatePreviewYearFromScroll() {
@@ -281,6 +334,7 @@
 		isInteracting = true;
 		previewYear = getCenteredYear();
 		isProgrammaticScroll = false;
+		clearScrollAnimation();
 		clearProgrammaticScrollTimeout();
 	}
 
@@ -322,6 +376,13 @@
 
 		cancelAnimationFrame(scrollFrame);
 		scrollFrame = undefined;
+	}
+
+	function clearScrollAnimation() {
+		if (scrollAnimationFrame === undefined) return;
+
+		cancelAnimationFrame(scrollAnimationFrame);
+		scrollAnimationFrame = undefined;
 	}
 
 	function clearScrollSettleTimeout() {
@@ -438,7 +499,6 @@
 	}
 
 	.year-picker-scroll {
-		scroll-snap-type: y mandatory;
 		scrollbar-width: none;
 		-webkit-overflow-scrolling: touch;
 		touch-action: pan-y;
@@ -450,7 +510,6 @@
 	}
 
 	.year-picker-row {
-		scroll-snap-align: center;
 		font-family: var(--font-noto);
 		font-size: 0.75rem;
 		font-weight: 600;
