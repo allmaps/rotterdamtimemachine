@@ -1,7 +1,7 @@
 import type { AppConfig, MapMetadata } from '$lib/types';
 
 const yamlModules = import.meta.glob<unknown>(
-	['../../*.yml', '../../*.yaml', '../../content/*.yml', '../../content/*.yaml'],
+	['../../*.yml', '../../*.yaml', '../../content/**/*.yml', '../../content/**/*.yaml'],
 	{
 		eager: true,
 		import: 'default'

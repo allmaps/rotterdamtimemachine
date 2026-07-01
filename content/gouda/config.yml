@@ -2,8 +2,8 @@ site:
   name: Goudse Kaarten Kabinet
   url: https://www.goudatijdmachine.nl/kaarten-kabinet/
   description: Verken historische kaarten van Gouda door de tijd en vergelijk kaartlagen met de huidige stad.
-  locale: nl_NL
-  themeColor: '#3891b1'
+  locale: nl
+  themeColor: "#3891b1"
   favicon: https://www.goudatijdmachine.nl/wp-content/gtm-logo/gtm-logo-2025.svg
 
 header:
@@ -27,10 +27,10 @@ map:
     panPixels: 100
     bearingStep: 13
 
-collection: collection-gouda.yml
+collection: collection.yml
 
 theme:
-  color: '#3891b1'
+  color: "#3891b1"
   fonts:
     families:
       - name: Bolder
@@ -84,8 +84,8 @@ tour:
   nextLabel: Volgende
   previousLabel: Vorige
   doneLabel: Klaar
-  progressText: '{{current}} van {{total}}'
-  storageKey: rotterdam-tijdmachine-tour-v1
+  progressText: "{{current}} van {{total}}"
+  storageKey: goudse-kaarten-kabinet-tour-v1
   steps:
     - target: time-slider
       title: Reis door de tijd
@@ -104,7 +104,7 @@ tour:
       align: start
     - target: search
       title: Zoek een plek
-      description: Zoek een adres in Rotterdam of toon je eigen locatie op de kaart.
+      description: Zoek een adres in Gouda of toon je eigen locatie op de kaart.
       side: bottom
       align: start
     - target: compare
@@ -133,20 +133,20 @@ about:
   institutionsTitle: Kaartbronnen
   source:
     title: Open source
-    description: Rotterdam Tijdmachine is een open-source project. De broncode is beschikbaar op GitHub.
+    description: Het Goudse Kaarten Kabinet gebruikt de open-source code van Rotterdam Tijdmachine. De broncode is beschikbaar op GitHub en kan worden hergebruikt voor andere kaartcollecties.
     linkLabel: Bekijk de code op GitHub
     url: https://github.com/allmaps/rotterdam-tijdmachine
   shortcutsTitle: Sneltoetsen
   shortcuts:
-    - keys: ['⌘', K, '/', Ctrl, K]
+    - keys: ["⌘", K, "/", Ctrl, K]
       description: Kaartlagen openen
-    - keys: ['↑', '↓']
+    - keys: ["↑", "↓"]
       description: Naar het volgende of vorige beschikbare kaartjaar
-    - keys: ['←', '→']
+    - keys: ["←", "→"]
       description: Door kaarten van hetzelfde jaar bladeren
-    - keys: ['+', '=', '-']
+    - keys: ["+", "=", "-"]
       description: In- en uitzoomen
-    - keys: [Shift, '←', '↑', '↓', '→']
+    - keys: [Shift, "←", "↑", "↓", "→"]
       description: Kaartbeeld verschuiven
     - keys: [F]
       description: Filter op kaarten in beeld aan- of uitzetten

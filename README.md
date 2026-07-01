@@ -54,8 +54,8 @@ BASE_PATH=/rotterdam-tijdmachine pnpm run build
 To run or build with alternate content files, set `CONFIG`:
 
 ```bash
-CONFIG=config-gouda.yml pnpm run dev
-CONFIG=content/config-gouda.yml pnpm run build
+CONFIG=content/gouda/config.yml pnpm run dev
+CONFIG=content/gouda/config.yml pnpm run build
 ```
 
 ## Deploying to GitHub Pages
@@ -102,7 +102,7 @@ For example:
 | `https://pages.allmaps.org/rotterdam-tijdmachine/` | `/rotterdam-tijdmachine` or unset |
 | `https://tijdmachine.example.org/`                 | `/`                               |
 
-To deploy an alternate configuration, set the repository variable `CONFIG` to a file such as `content/config-gouda.yml`, or fill in the `config` input when manually running the workflow.
+To deploy an alternate configuration, set the repository variable `CONFIG` to a file such as `content/gouda/config.yml`, or fill in the `config` input when manually running the workflow.
 
 SvelteKit is configured with `@sveltejs/adapter-static` and `fallback: '404.html'`, so direct links with query parameters keep working on GitHub Pages.
 
@@ -115,14 +115,16 @@ The app is structured so the most important content lives outside the components
 
 The YAML files are loaded through `src/lib/content.ts` and `@modyfi/vite-plugin-yaml`. If you extend the YAML structure, also update the shared types in `src/lib/types.ts`.
 
-By default, the app uses `config.yml`, which points to `collection.yml`. To keep multiple configurations in one repository, add alternate YAML files either in the project root or in a `content/` folder and select the configuration file with `CONFIG`:
+By default, the app uses `config.yml`, which points to `collection.yml`. To keep multiple configurations in one repository, place alternate content packages in `content/` folders and select the configuration file with `CONFIG`:
 
 ```bash
-CONFIG=config-gouda.yml pnpm run dev
-CONFIG=content/config-gouda.yml pnpm run build
+CONFIG=content/gouda/config.yml pnpm run dev
+CONFIG=content/gouda/config.yml pnpm run build
 ```
 
-`CONFIG` selects the app configuration file. If it is omitted, the app falls back to `config.yml`. The selected config file then points to the collection with its top-level `collection` field. Bare collection filenames are resolved relative to the config file, so `content/config-gouda.yml` can use `collection: collection-gouda.yml`.
+`CONFIG` selects the app configuration file. If it is omitted, the app falls back to `config.yml`. The selected config file then points to the collection with its top-level `collection` field. Bare collection filenames are resolved relative to the config file, so `content/gouda/config.yml` can use `collection: collection.yml`.
+
+`CONFIG` is read when the Vite dev server starts. Stop and restart the dev server after switching to another config file; hot module replacement does not switch a running server from one content package to another.
 
 ### `config.yml`
 
