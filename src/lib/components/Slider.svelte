@@ -14,6 +14,7 @@
 	const scrollSettleDelay = 140;
 	const snapScrollDuration = 640;
 	const programmaticScrollReleaseDelay = scrollSettleDelay + 40;
+	const dragClickThreshold = 4;
 
 	let {
 		maps,
@@ -42,8 +43,14 @@
 	let container = $state<HTMLDivElement>();
 	let containerHeight = $state(0);
 	let isInteracting = $state(false);
+	let isDraggingScale = $state(false);
 	let isProgrammaticScroll = false;
 	let hasInitializedScroll = false;
+	let activeDragPointerId: number | undefined;
+	let dragStartY = 0;
+	let dragStartScrollTop = 0;
+	let hasDraggedScale = false;
+	let suppressNextYearClick = false;
 	let scrollAnimationFrame: number | undefined;
 	let scrollSettleTimeout: ReturnType<typeof setTimeout> | undefined;
 	let programmaticScrollTimeout: ReturnType<typeof setTimeout> | undefined;
@@ -180,7 +187,14 @@
 		}
 	}
 
-	function selectYear(year: number) {
+	function selectYear(year: number, event?: MouseEvent) {
+		if (suppressNextYearClick) {
+			event?.preventDefault();
+			event?.stopPropagation();
+			suppressNextYearClick = false;
+			return;
+		}
+
 		isInteracting = false;
 		selectedYear =
 			(snapToAvailableYear || showOnlyAvailableYears) && selectableYears.length > 0
@@ -324,6 +338,58 @@
 		clearProgrammaticScrollTimeout();
 	}
 
+	function handlePickerPointerDown(event: PointerEvent) {
+		handlePickerInteraction();
+
+		if (!container || event.pointerType === 'touch' || event.button !== 0) return;
+
+		activeDragPointerId = event.pointerId;
+		dragStartY = event.clientY;
+		dragStartScrollTop = container.scrollTop;
+		hasDraggedScale = false;
+		isDraggingScale = true;
+		container.setPointerCapture(event.pointerId);
+	}
+
+	function handlePickerPointerMove(event: PointerEvent) {
+		if (!container || activeDragPointerId !== event.pointerId) return;
+
+		const offsetY = event.clientY - dragStartY;
+		if (Math.abs(offsetY) > dragClickThreshold) {
+			hasDraggedScale = true;
+		}
+
+		if (!hasDraggedScale) return;
+
+		event.preventDefault();
+		container.scrollTop = dragStartScrollTop - offsetY;
+	}
+
+	function handlePickerPointerEnd(event: PointerEvent) {
+		if (activeDragPointerId !== event.pointerId) return;
+
+		if (container?.hasPointerCapture(event.pointerId)) {
+			container.releasePointerCapture(event.pointerId);
+		}
+
+		activeDragPointerId = undefined;
+		isDraggingScale = false;
+
+		if (!hasDraggedScale) {
+			isInteracting = false;
+			return;
+		}
+
+		event.preventDefault();
+		suppressNextYearClick = true;
+		window.setTimeout(() => {
+			suppressNextYearClick = false;
+		}, 0);
+
+		clearScrollSettleTimeout();
+		scrollSettleTimeout = setTimeout(handleScrollSettled, scrollSettleDelay);
+	}
+
 	function handleScroll() {
 		clearScrollSettleTimeout();
 		scrollSettleTimeout = setTimeout(handleScrollSettled, scrollSettleDelay);
@@ -406,12 +472,17 @@
 		<div
 			bind:this={container}
 			data-tour="time-slider"
-			class="year-picker-scroll relative z-20 h-full overflow-y-auto overscroll-contain pr-1 pl-1 select-none"
+			class="year-picker-scroll relative z-20 h-full overflow-y-auto overscroll-contain pr-1 pl-1 select-none {isDraggingScale
+				? 'year-picker-dragging'
+				: ''}"
 			role="listbox"
 			aria-label="Year picker"
 			tabindex="-1"
 			onscroll={handleScroll}
-			onpointerdown={handlePickerInteraction}
+			onpointerdown={handlePickerPointerDown}
+			onpointermove={handlePickerPointerMove}
+			onpointerup={handlePickerPointerEnd}
+			onpointercancel={handlePickerPointerEnd}
 			onwheel={handlePickerInteraction}
 			ontouchstart={handlePickerInteraction}
 		>
@@ -438,7 +509,7 @@
 						aria-selected={year === selectedYear}
 						aria-label={`${year}${availableYearSet.has(year) ? ', map available' : ''}`}
 						tabindex={year === selectedYear ? 0 : -1}
-						onclick={() => selectYear(year)}
+						onclick={(event) => selectYear(year, event)}
 						class="year-picker-row relative z-10 flex w-full cursor-pointer items-center justify-center rounded-sm px-3 text-center leading-none transition {year ===
 						visuallySelectedYear
 							? 'text-white'
@@ -471,7 +542,12 @@
 		scrollbar-width: none;
 		-webkit-overflow-scrolling: touch;
 		touch-action: pan-y;
+		cursor: grab;
 		mask-image: linear-gradient(to bottom, transparent 0%, black 26%, black 74%, transparent 100%);
+	}
+
+	.year-picker-scroll.year-picker-dragging {
+		cursor: grabbing;
 	}
 
 	.year-picker-scroll::-webkit-scrollbar {
@@ -483,6 +559,7 @@
 		font-size: 0.75rem;
 		font-weight: 600;
 		letter-spacing: 0;
+		cursor: inherit;
 		transition:
 			color 160ms ease,
 			font-size 160ms ease,
