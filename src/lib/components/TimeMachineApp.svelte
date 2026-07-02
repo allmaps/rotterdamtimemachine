@@ -477,7 +477,7 @@
 			return;
 		}
 
-		if (handleMapToolbarKeydown(event) || handleMapNavigationKeydown(event)) {
+		if ((!autoplayActive && handleMapToolbarKeydown(event)) || handleMapNavigationKeydown(event)) {
 			event.preventDefault();
 			event.stopImmediatePropagation();
 		}
@@ -501,11 +501,6 @@
 		}
 
 		const key = event.key.toLowerCase();
-
-		if (key === 'f') {
-			dispatchMapToolbarCommand('toggle-in-view');
-			return true;
-		}
 
 		if (key === 'r') {
 			dispatchMapToolbarCommand('toggle-rotation');
