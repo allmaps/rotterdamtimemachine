@@ -39,7 +39,8 @@
 		showInViewControl = false,
 		autoplayActive = false,
 		autoplayFollowMap = false,
-		annotationsInView = $bindable<string[]>([])
+		annotationsInView = $bindable<string[]>([]),
+		annotationsAtCenter = $bindable<string[]>([])
 	}: {
 		maps: MapMetadata[];
 		config: AppConfig;
@@ -64,6 +65,7 @@
 		autoplayActive?: boolean;
 		autoplayFollowMap?: boolean;
 		annotationsInView?: string[];
+		annotationsAtCenter?: string[];
 	} = $props();
 
 	let mapOrderClass = $derived(navPosition === 'right' ? 'md:order-1' : 'md:order-2');
@@ -136,6 +138,7 @@
 			bind:inViewOnly={sliderInViewOnly}
 			bind:currentLocation
 			bind:annotationsInView
+			bind:annotationsAtCenter
 			bind:geocoderBounds
 			{config}
 			{mapKeyboardCommand}

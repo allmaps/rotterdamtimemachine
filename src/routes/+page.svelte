@@ -79,6 +79,7 @@
 	let autoplayTimerStartedAt = 0;
 	let autoplayTimeout: ReturnType<typeof setTimeout> | undefined;
 	let leftAnnotationsInView = $state<string[]>([]);
+	let leftAnnotationsAtCenter = $state<string[]>([]);
 	let keyboardCommandId = 0;
 	let toolbarCommandId = 0;
 	let opacityShortcutSnapshot:
@@ -99,7 +100,7 @@
 	);
 	let autoplayInterval = $derived(config.autoplay?.intervalSeconds);
 	let autoplayIntervalMs = $derived(Math.max(0, (autoplayInterval ?? 0) * 1000));
-	let autoplayViewportMaps = $derived(getMapsInView(collection, leftAnnotationsInView));
+	let autoplayViewportMaps = $derived(getMapsInView(collection, leftAnnotationsAtCenter));
 	let autoplaySourceMaps = $derived(autoplayFollowMap ? collection : autoplayViewportMaps);
 	let autoplayItems = $derived(getAutoplayItems(autoplaySourceMaps));
 	let allAutoplayItems = $derived(getAutoplayItems(collection));
@@ -650,6 +651,7 @@
 				bind:currentLocation
 				bind:geocoderBounds
 				bind:annotationsInView={leftAnnotationsInView}
+				bind:annotationsAtCenter={leftAnnotationsAtCenter}
 				{mapKeyboardCommand}
 				{mapToolbarCommand}
 				enableFlyTo
