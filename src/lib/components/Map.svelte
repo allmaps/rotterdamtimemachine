@@ -189,7 +189,7 @@
 	});
 
 	$effect(() => {
-		if (focusActiveMap) {
+		if (autoplayActive || focusActiveMap) {
 			visibilityWarningOpen = false;
 		}
 	});
@@ -542,7 +542,7 @@
 
 		selectedMapVisibility = getSelectedMapVisibility(annotationForCheck);
 
-		if (focusActiveMap || selectedMapVisibility === 'fully-visible') {
+		if (autoplayActive || focusActiveMap || selectedMapVisibility === 'fully-visible') {
 			visibilityWarningOpen = false;
 			return;
 		}

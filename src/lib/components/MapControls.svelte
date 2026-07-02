@@ -52,6 +52,8 @@
 			action: () => map.zoomOut({ duration: 250 })
 		}
 	]);
+	const controlButtonClass =
+		'flex h-9 w-9 shrink-0 cursor-pointer items-center justify-center hover:bg-gray-100 focus-visible:z-10 focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-brand-main disabled:cursor-not-allowed disabled:text-gray-300 disabled:hover:bg-white';
 
 	function handleOpacity(event: Event) {
 		opacity = Number((event.target as HTMLInputElement).value);
@@ -79,7 +81,7 @@
 
 	function getToggleButtonClass(active: boolean) {
 		return [
-			'flex h-9 w-9 cursor-pointer items-center justify-center border-r border-gray-200 focus-visible:z-10 focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-brand-main disabled:cursor-not-allowed disabled:text-gray-300',
+			controlButtonClass,
 			active ? 'bg-brand-main text-white' : 'hover:bg-gray-100 disabled:hover:bg-white'
 		].join(' ');
 	}
@@ -96,7 +98,7 @@
 	ondblclick={(event) => event.stopPropagation()}
 >
 	<div
-		class="flex overflow-hidden rounded-md border border-gray-200 bg-white text-gray-800 shadow-lg"
+		class="inline-grid auto-cols-[2.25rem] grid-flow-col divide-x divide-gray-200 overflow-hidden rounded-md border border-gray-200 bg-white text-gray-800 shadow-lg"
 	>
 		{#each zoomControls as control (control.label)}
 			{@const Icon = control.icon}
@@ -105,7 +107,7 @@
 				aria-label={control.label}
 				title={control.label}
 				onclick={control.action}
-				class="flex h-9 w-9 cursor-pointer items-center justify-center border-r border-gray-200 last:border-r-0 hover:bg-gray-100 focus-visible:z-10 focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-brand-main disabled:cursor-not-allowed disabled:text-gray-300 disabled:hover:bg-white"
+				class={controlButtonClass}
 			>
 				<Icon class="h-4 w-4" />
 			</button>
@@ -159,9 +161,7 @@
 			title={config.controls.adjustOpacity}
 			aria-expanded={opacityOpen}
 			onclick={() => (opacityOpen = !opacityOpen)}
-			class="flex h-9 w-9 cursor-pointer items-center justify-center border-r border-gray-200 last:border-r-0 hover:bg-gray-100 focus-visible:z-10 focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-brand-main {opacityOpen
-				? 'bg-gray-100'
-				: ''}"
+			class="{controlButtonClass} {opacityOpen ? 'bg-gray-100' : ''}"
 		>
 			<SlidersHorizontal class="h-4 w-4" />
 		</button>

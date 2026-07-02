@@ -37,7 +37,9 @@
 		enableLayersShortcut = false,
 		showLayersPaneIndicator = false,
 		showInViewControl = false,
-		autoplayActive = false
+		autoplayActive = false,
+		autoplayFollowMap = false,
+		annotationsInView = $bindable<string[]>([])
 	}: {
 		maps: MapMetadata[];
 		config: AppConfig;
@@ -60,13 +62,14 @@
 		showLayersPaneIndicator?: boolean;
 		showInViewControl?: boolean;
 		autoplayActive?: boolean;
+		autoplayFollowMap?: boolean;
+		annotationsInView?: string[];
 	} = $props();
 
 	let mapOrderClass = $derived(navPosition === 'right' ? 'md:order-1' : 'md:order-2');
 	let controlsPosition: 'top-left' | 'top-right' = $derived(
 		navPosition === 'right' ? 'top-left' : 'top-right'
 	);
-	let annotationsInView = $state<string[]>([]);
 	let rotateToMapOrientation = $state(false);
 	let focusActiveMap = $state(false);
 	let sliderInViewOnly = $state(false);
@@ -87,8 +90,8 @@
 				};
 			}
 
-			if (!rotateToMapOrientation) rotateToMapOrientation = true;
-			if (!focusActiveMap) focusActiveMap = true;
+			rotateToMapOrientation = autoplayFollowMap;
+			focusActiveMap = autoplayFollowMap;
 			return;
 		}
 
@@ -152,7 +155,8 @@
 			{layersId}
 			{paneSide}
 			{annotationsInView}
-			preferInViewMaps={sliderInViewOnly}
+			preferInViewMaps={sliderInViewOnly || (autoplayActive && !autoplayFollowMap)}
+			requirePreferredMaps={autoplayActive && !autoplayFollowMap}
 			enableKeyboardShortcut={enableLayersShortcut}
 			showPaneIndicator={showLayersPaneIndicator}
 			{autoplayActive}

@@ -2,6 +2,7 @@
 	import { base } from '$app/paths';
 	import AllmapsLogo from '$lib/components/AllmapsLogo.svelte';
 	import Modal from '$lib/components/Modal.svelte';
+	import PresentationCaption from '$lib/components/PresentationCaption.svelte';
 	import { configureFavoritesStorage, favorites, toggleFavorite } from '$lib/app-state.svelte.js';
 	import { resolveAbsolutePublicAssetUrl } from '$lib/asset-urls';
 	import {
@@ -19,7 +20,7 @@
 		X
 	} from '@lucide/svelte';
 	import { onDestroy, tick } from 'svelte';
-	import { fade, fly, slide } from 'svelte/transition';
+	import { fade, slide } from 'svelte/transition';
 	import {
 		getExpandedMapYears,
 		getMapStartYear,
@@ -44,6 +45,7 @@
 		enableKeyboardShortcut = false,
 		annotationsInView = [],
 		preferInViewMaps = false,
+		requirePreferredMaps = false,
 		autoplayActive = false
 	}: {
 		maps: MapMetadata[];
@@ -56,6 +58,7 @@
 		enableKeyboardShortcut?: boolean;
 		annotationsInView?: string[];
 		preferInViewMaps?: boolean;
+		requirePreferredMaps?: boolean;
 		autoplayActive?: boolean;
 	} = $props();
 
@@ -104,7 +107,9 @@
 	);
 	let annotationsInViewSet = $derived(new Set(annotationsInView));
 	let inViewMaps = $derived(maps.filter((map) => annotationsInViewSet.has(map.annotation)));
-	let selectionMaps = $derived(preferInViewMaps && inViewMaps.length > 0 ? inViewMaps : maps);
+	let selectionMaps = $derived(
+		preferInViewMaps && (requirePreferredMaps || inViewMaps.length > 0) ? inViewMaps : maps
+	);
 	let selectionAvailableYears = $derived(getExpandedMapYears(selectionMaps));
 	let resolvedYear = $derived(resolveAvailableYear(selectedYear, selectionAvailableYears));
 	let mapsForResolvedYear = $derived(
@@ -817,43 +822,14 @@
 		<div
 			class="pointer-events-none absolute right-0 bottom-0 left-0 z-30 px-4 pb-[calc(env(safe-area-inset-bottom)+1rem)] md:px-6 md:pb-[calc(env(safe-area-inset-bottom)+1.5rem)]"
 		>
-			<div data-map-layers-panel class="w-full overflow-visible text-white">
-				<div class="relative min-h-10 overflow-visible md:min-h-16">
-					{#key activeMapYearLabel}
-						<span
-							in:fly={{
-								x: presentationSlideDirection > 0 ? 44 : -44,
-								duration: presentationTransitionDuration
-							}}
-							out:fly={{
-								x: presentationSlideDirection > 0 ? -44 : 44,
-								duration: presentationTransitionDuration
-							}}
-							class="layers-autoplay-text absolute inset-x-0 top-0 block font-heading text-4xl leading-[1.05] font-bold text-white md:text-6xl"
-						>
-							{activeMapYearLabel}
-						</span>
-					{/key}
-				</div>
-				<div class="relative mt-2 min-h-10 overflow-visible md:min-h-16">
-					{#key activeMap.annotation}
-						<span
-							in:fly={{
-								x: presentationSlideDirection > 0 ? 44 : -44,
-								duration: presentationTransitionDuration
-							}}
-							out:fly={{
-								x: presentationSlideDirection > 0 ? -44 : 44,
-								duration: presentationTransitionDuration
-							}}
-							class="layers-autoplay-text absolute inset-x-0 top-0 -my-1 block w-full max-w-none truncate py-1 text-2xl leading-[1.18] font-bold whitespace-nowrap text-white md:text-5xl"
-							title={activeMap.label}
-						>
-							{activeMap.label}
-						</span>
-					{/key}
-				</div>
-			</div>
+			{#if activeMap}
+				<PresentationCaption
+					yearLabel={activeMapYearLabel}
+					title={activeMap.label}
+					slideDirection={presentationSlideDirection}
+					transitionDuration={presentationTransitionDuration}
+				/>
+			{/if}
 		</div>
 	{/if}
 
@@ -1140,12 +1116,6 @@
 
 	.layers-carousel-track {
 		touch-action: pan-x;
-	}
-
-	.layers-autoplay-text {
-		text-shadow:
-			0 2px 6px rgb(0 0 0 / 0.68),
-			0 0 8px rgb(0 0 0 / 0.32);
 	}
 
 	.layers-carousel-track::-webkit-scrollbar,

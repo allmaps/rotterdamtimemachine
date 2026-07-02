@@ -1,9 +1,29 @@
 <script lang="ts">
 	import { comparison } from '$lib/app-state.svelte.js';
 	import Search from '$lib/components/Search.svelte';
-	import { Columns2, Info, Pause, Play, Share2, Square } from '@lucide/svelte';
+	import {
+		Columns2,
+		Focus,
+		Info,
+		Maximize2,
+		Minimize2,
+		Pause,
+		Play,
+		Share2,
+		Square
+	} from '@lucide/svelte';
+	import { onMount } from 'svelte';
 	import { fly } from 'svelte/transition';
 	import type { AppConfig, GeocoderBounds } from '$lib/types';
+
+	type FullscreenDocument = Document & {
+		webkitExitFullscreen?: () => Promise<void> | void;
+		webkitFullscreenElement?: Element | null;
+		webkitFullscreenEnabled?: boolean;
+	};
+	type FullscreenElement = HTMLElement & {
+		webkitRequestFullscreen?: () => Promise<void> | void;
+	};
 
 	let {
 		searchBounds,
@@ -14,11 +34,13 @@
 		autoplayCurrentPosition = 0,
 		autoplayTotal = 0,
 		autoplayIntervalSeconds = 0,
+		autoplayFollowMap = false,
 		onAboutOpen,
 		onShareOpen,
 		onAutoplayStart,
 		onAutoplayPauseToggle,
-		onAutoplayStop
+		onAutoplayStop,
+		onAutoplayFollowMapToggle
 	}: {
 		searchBounds?: GeocoderBounds;
 		config: AppConfig;
@@ -28,24 +50,90 @@
 		autoplayCurrentPosition?: number;
 		autoplayTotal?: number;
 		autoplayIntervalSeconds?: number;
+		autoplayFollowMap?: boolean;
 		onAboutOpen: () => void;
 		onShareOpen: () => void;
 		onAutoplayStart: () => void;
 		onAutoplayPauseToggle: () => void;
 		onAutoplayStop: () => void;
+		onAutoplayFollowMapToggle: () => void;
 	} = $props();
 
 	let autoplayEnabled = $derived(
 		!!config.autoplay?.intervalSeconds && config.autoplay.intervalSeconds > 0
 	);
 	let autoplayProgressDuration = $derived(Math.max(0.1, autoplayIntervalSeconds));
+	let headerElement = $state<HTMLElement>();
+	let fullscreenActive = $state(false);
+	let fullscreenSupported = $state(false);
+	const presentationControlButtonClass =
+		'flex h-9 w-9 shrink-0 cursor-pointer items-center justify-center transition hover:bg-gray-100 focus-visible:z-10 focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-brand-main disabled:cursor-not-allowed disabled:opacity-45';
+
+	onMount(() => {
+		fullscreenSupported = getFullscreenSupported();
+		syncFullscreenState();
+
+		document.addEventListener('fullscreenchange', syncFullscreenState);
+		document.addEventListener('webkitfullscreenchange', syncFullscreenState);
+
+		return () => {
+			document.removeEventListener('fullscreenchange', syncFullscreenState);
+			document.removeEventListener('webkitfullscreenchange', syncFullscreenState);
+		};
+	});
 
 	function toggleCompare() {
 		comparison.active = !comparison.active;
 	}
+
+	function getFullscreenSupported() {
+		const fullscreenDocument = document as FullscreenDocument;
+		return !!(document.fullscreenEnabled || fullscreenDocument.webkitFullscreenEnabled);
+	}
+
+	function getFullscreenElement() {
+		return (
+			(headerElement?.closest('[data-app-shell]') as FullscreenElement | null) ??
+			(document.documentElement as FullscreenElement)
+		);
+	}
+
+	function getCurrentFullscreenElement() {
+		const fullscreenDocument = document as FullscreenDocument;
+		return document.fullscreenElement ?? fullscreenDocument.webkitFullscreenElement ?? null;
+	}
+
+	function syncFullscreenState() {
+		fullscreenActive = getCurrentFullscreenElement() === getFullscreenElement();
+		requestAnimationFrame(() => window.dispatchEvent(new Event('resize')));
+	}
+
+	async function toggleFullscreen() {
+		if (!fullscreenSupported) return;
+
+		if (fullscreenActive) {
+			const fullscreenDocument = document as FullscreenDocument;
+			if (document.exitFullscreen) {
+				await document.exitFullscreen();
+			} else {
+				await fullscreenDocument.webkitExitFullscreen?.();
+			}
+			return;
+		}
+
+		const fullscreenElement = getFullscreenElement();
+		if (fullscreenElement.requestFullscreen) {
+			await fullscreenElement.requestFullscreen();
+		} else {
+			await fullscreenElement.webkitRequestFullscreen?.();
+		}
+	}
 </script>
 
-<header class="font-bolder {autoplayActive ? 'absolute inset-x-0 top-0 z-50' : ''}">
+<header
+	bind:this={headerElement}
+	class="font-bolder {autoplayActive ? 'absolute inset-x-0 top-0 z-50' : ''}"
+>
 	<nav
 		aria-label="Global"
 		class="relative flex flex-none items-center justify-between gap-2 border-b text-white transition-colors {autoplayActive
@@ -118,7 +206,7 @@
 			</div>
 		{:else if autoplayEnabled}
 			<div
-				class="ml-auto flex h-9 overflow-hidden rounded-md border border-gray-200 bg-white text-gray-800 shadow-lg"
+				class="ml-auto grid h-9 grid-cols-[repeat(4,2.25rem)_4rem] divide-x divide-gray-200 overflow-hidden rounded-md border border-gray-200 bg-white text-gray-800 shadow-lg"
 			>
 				<button
 					onclick={onAutoplayPauseToggle}
@@ -126,7 +214,7 @@
 					aria-label={autoplayPlaying ? config.header.pause : config.header.play}
 					title={autoplayPlaying ? config.header.pause : config.header.play}
 					aria-pressed={autoplayPlaying}
-					class="flex h-9 w-9 cursor-pointer items-center justify-center border-r border-gray-200 transition hover:bg-gray-100 focus-visible:z-10 focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-brand-main disabled:cursor-not-allowed disabled:opacity-45"
+					class={presentationControlButtonClass}
 				>
 					{#if autoplayPlaying}
 						<Pause class="h-4 w-4" />
@@ -139,28 +227,57 @@
 					onclick={onAutoplayStop}
 					aria-label={config.header.stop}
 					title={config.header.stop}
-					class="flex h-9 w-9 cursor-pointer items-center justify-center border-r border-gray-200 transition hover:bg-gray-100 focus-visible:z-10 focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-brand-main"
+					class={presentationControlButtonClass}
 				>
 					<Square class="h-3.5 w-3.5 fill-current" />
 				</button>
 
-				{#if autoplayTotal > 0}
-					<span
-						aria-live="polite"
-						class="flex h-9 min-w-14 flex-col items-center justify-center gap-0.5 px-2 font-heading text-xs font-bold tabular-nums"
+				<button
+					onclick={onAutoplayFollowMapToggle}
+					aria-label={autoplayFollowMap ? config.header.filterViewport : config.header.followMap}
+					title={autoplayFollowMap ? config.header.filterViewport : config.header.followMap}
+					aria-pressed={autoplayFollowMap}
+					class="{presentationControlButtonClass} {autoplayFollowMap
+						? 'bg-brand-main text-white'
+						: 'hover:bg-gray-100'}"
+				>
+					<Focus class="h-4 w-4" />
+				</button>
+
+				<button
+					onclick={toggleFullscreen}
+					disabled={!fullscreenSupported}
+					aria-label={fullscreenActive
+						? config.header.exitFullscreen
+						: config.header.enterFullscreen}
+					title={fullscreenActive ? config.header.exitFullscreen : config.header.enterFullscreen}
+					aria-pressed={fullscreenActive}
+					class={presentationControlButtonClass}
+				>
+					{#if fullscreenActive}
+						<Minimize2 class="h-4 w-4" />
+					{:else}
+						<Maximize2 class="h-4 w-4" />
+					{/if}
+				</button>
+
+				<span
+					aria-live="polite"
+					class="flex h-9 w-full flex-col items-center justify-center gap-0.5 px-2 font-heading text-xs font-bold tabular-nums"
+				>
+					<span class="leading-4"
+						>{autoplayTotal > 0 ? autoplayCurrentPosition : 0}/{autoplayTotal}</span
 					>
-						<span class="leading-4">{autoplayCurrentPosition}/{autoplayTotal}</span>
-						<span class="block h-0.5 w-full overflow-hidden rounded-full bg-gray-200">
-							{#key autoplayCurrentPosition}
-								<span
-									class="autoplay-progress block h-full origin-left bg-brand-main"
-									class:autoplay-progress-paused={!autoplayPlaying}
-									style:animation-duration={`${autoplayProgressDuration}s`}
-								></span>
-							{/key}
-						</span>
+					<span class="block h-0.5 w-full overflow-hidden rounded-full bg-gray-200">
+						{#key autoplayCurrentPosition}
+							<span
+								class="autoplay-progress block h-full origin-left bg-brand-main"
+								class:autoplay-progress-paused={!autoplayPlaying || autoplayTotal === 0}
+								style:animation-duration={`${autoplayProgressDuration}s`}
+							></span>
+						{/key}
 					</span>
-				{/if}
+				</span>
 			</div>
 		{/if}
 	</nav>

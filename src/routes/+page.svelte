@@ -73,6 +73,12 @@
 	let mapToolbarCommand = $state<MapToolbarCommand>();
 	let autoplayActive = $state(false);
 	let autoplayPlaying = $state(false);
+	let autoplayFollowMap = $state(false);
+	let autoplayRemainingMs = $state(0);
+	let autoplayTimerCycle = $state(0);
+	let autoplayTimerStartedAt = 0;
+	let autoplayTimeout: ReturnType<typeof setTimeout> | undefined;
+	let leftAnnotationsInView = $state<string[]>([]);
 	let keyboardCommandId = 0;
 	let toolbarCommandId = 0;
 	let opacityShortcutSnapshot:
@@ -92,16 +98,20 @@
 		comparison.active && compareStacked ? 'right' : 'left'
 	);
 	let autoplayInterval = $derived(config.autoplay?.intervalSeconds);
-	let autoplayItems = $derived(getAutoplayItems(collection));
+	let autoplayIntervalMs = $derived(Math.max(0, (autoplayInterval ?? 0) * 1000));
+	let autoplayViewportMaps = $derived(getMapsInView(collection, leftAnnotationsInView));
+	let autoplaySourceMaps = $derived(autoplayFollowMap ? collection : autoplayViewportMaps);
+	let autoplayItems = $derived(getAutoplayItems(autoplaySourceMaps));
+	let allAutoplayItems = $derived(getAutoplayItems(collection));
 	let autoplayCurrentIndex = $derived(getAutoplayCurrentIndex());
 	let autoplayCurrentPosition = $derived(autoplayCurrentIndex >= 0 ? autoplayCurrentIndex + 1 : 0);
 	let autoplayTotal = $derived(autoplayItems.length);
 	let autoplayDisabled = $derived(
 		comparison.active ||
 			!panesReady ||
-			!autoplayInterval ||
-			autoplayInterval <= 0 ||
-			autoplayTotal === 0
+			!autoplayIntervalMs ||
+			autoplayIntervalMs <= 0 ||
+			allAutoplayItems.length === 0
 	);
 
 	$effect(() => {
@@ -117,10 +127,29 @@
 	});
 
 	$effect(() => {
-		if (!autoplayActive || !autoplayPlaying || !autoplayInterval || autoplayInterval <= 0) return;
+		if (!autoplayActive || !autoplayPlaying || autoplayIntervalMs <= 0 || autoplayTotal === 0) {
+			clearAutoplayTimer();
+			return;
+		}
 
-		const intervalId = setInterval(advanceAutoplay, autoplayInterval * 1000);
-		return () => clearInterval(intervalId);
+		const timerCycle = autoplayTimerCycle;
+		const remainingMs = getAutoplayTimerDuration();
+		autoplayTimerStartedAt = performance.now();
+		autoplayTimeout = setTimeout(() => {
+			if (timerCycle !== autoplayTimerCycle) return;
+
+			clearAutoplayTimer();
+			advanceAutoplay();
+		}, remainingMs);
+
+		return clearAutoplayTimer;
+	});
+
+	$effect(() => {
+		if (!autoplayActive || autoplayTotal === 0) return;
+		if (autoplayCurrentIndex >= 0) return;
+
+		ensureAutoplaySelection();
 	});
 
 	function yearForAnnotation(annotation: string) {
@@ -140,6 +169,13 @@
 				order
 			}))
 			.sort((left, right) => left.year - right.year || left.order - right.order);
+	}
+
+	function getMapsInView(maps: MapMetadata[], annotationsInView: string[]) {
+		const annotationsInViewSet = new Set(annotationsInView);
+		if (annotationsInViewSet.size === 0) return [];
+
+		return maps.filter((map) => annotationsInViewSet.has(map.annotation));
 	}
 
 	function mapForAnnotationParam(value: string | null) {
@@ -208,6 +244,8 @@
 	function startAutoplay() {
 		if (autoplayDisabled) return;
 
+		autoplayFollowMap = false;
+		resetAutoplayTimer();
 		autoplayActive = true;
 		autoplayPlaying = true;
 		aboutOpen = false;
@@ -221,11 +259,28 @@
 			return;
 		}
 
-		autoplayPlaying = !autoplayPlaying;
+		if (autoplayPlaying) {
+			pauseAutoplay();
+		} else {
+			autoplayPlaying = true;
+		}
+	}
+
+	function toggleAutoplayFollowMap() {
+		autoplayFollowMap = !autoplayFollowMap;
+		ensureAutoplaySelection();
 	}
 
 	function stopAutoplay() {
+		clearAutoplayTimer();
 		autoplayActive = false;
+		autoplayPlaying = false;
+		autoplayFollowMap = false;
+		resetAutoplayTimer();
+	}
+
+	function pauseAutoplay() {
+		autoplayRemainingMs = getCurrentAutoplayRemainingMs();
 		autoplayPlaying = false;
 	}
 
@@ -235,8 +290,7 @@
 		const firstItem = autoplayItems.find((item) => item.year >= selectedYear) ?? autoplayItems[0];
 		if (!firstItem) return;
 
-		selectedYear = firstItem.year;
-		viewState.annotation = firstItem.annotation;
+		selectAutoplayItem(firstItem);
 	}
 
 	function advanceAutoplay() {
@@ -280,8 +334,38 @@
 	}
 
 	function selectAutoplayItem(item: AutoplayItem) {
+		resetAutoplayTimer();
 		selectedYear = item.year;
 		viewState.annotation = item.annotation;
+	}
+
+	function resetAutoplayTimer() {
+		autoplayRemainingMs = autoplayIntervalMs;
+		autoplayTimerCycle += 1;
+		autoplayTimerStartedAt = 0;
+	}
+
+	function clearAutoplayTimer() {
+		if (autoplayTimeout) {
+			clearTimeout(autoplayTimeout);
+			autoplayTimeout = undefined;
+		}
+		autoplayTimerStartedAt = 0;
+	}
+
+	function getAutoplayTimerDuration() {
+		if (autoplayRemainingMs <= 0 || autoplayRemainingMs > autoplayIntervalMs) {
+			autoplayRemainingMs = autoplayIntervalMs;
+		}
+
+		return autoplayRemainingMs;
+	}
+
+	function getCurrentAutoplayRemainingMs() {
+		if (!autoplayPlaying || !autoplayTimerStartedAt) return getAutoplayTimerDuration();
+
+		const elapsedMs = performance.now() - autoplayTimerStartedAt;
+		return Math.max(0, getAutoplayTimerDuration() - elapsedMs);
 	}
 
 	function hasOpenModal() {
@@ -526,7 +610,7 @@
 	onblur={restoreOpacityShortcut}
 />
 
-<div class="relative flex h-[100dvh] flex-col">
+<div data-app-shell class="relative flex h-[100dvh] flex-col">
 	<AppTour {config} enabled={panesReady} />
 
 	<Header
@@ -538,11 +622,13 @@
 		{autoplayCurrentPosition}
 		{autoplayTotal}
 		autoplayIntervalSeconds={autoplayInterval ?? 0}
+		{autoplayFollowMap}
 		onAboutOpen={() => (aboutOpen = true)}
 		onShareOpen={() => (shareOpen = true)}
 		onAutoplayStart={startAutoplay}
 		onAutoplayPauseToggle={toggleAutoplayPlayback}
 		onAutoplayStop={stopAutoplay}
+		onAutoplayFollowMapToggle={toggleAutoplayFollowMap}
 	/>
 
 	<div
@@ -563,6 +649,7 @@
 				bind:selectedYear
 				bind:currentLocation
 				bind:geocoderBounds
+				bind:annotationsInView={leftAnnotationsInView}
 				{mapKeyboardCommand}
 				{mapToolbarCommand}
 				enableFlyTo
@@ -570,6 +657,7 @@
 				enableLayersShortcut
 				showLayersPaneIndicator={comparison.active}
 				{autoplayActive}
+				{autoplayFollowMap}
 			/>
 
 			{#if comparison.active}
