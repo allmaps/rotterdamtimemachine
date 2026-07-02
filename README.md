@@ -139,6 +139,7 @@ Important sections:
 - `map.initialView`: default map view with `center`, `zoom`, and `bearing`
 - `map.autoZoomOutThreshold`: zoom-level margin before the app zooms out to a selected map's native maximum zoom
 - `map.visibilityPaddingPixels`: inset used when checking whether the selected map is meaningfully visible in the viewport
+- `map.tinyVisibilityAreaRatio`: minimum screen-area ratio before a visible selected map is treated as too small to study
 - `map.keyboard`: panning distance for keyboard map movement
 - `basemap.protomapsApiKey`: API key used for Protomaps hosted basemap tiles
 - `slider.scaleInterval`: year scale interval

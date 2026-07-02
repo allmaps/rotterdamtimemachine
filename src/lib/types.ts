@@ -73,6 +73,7 @@ export type AppConfig = {
 		defaultYear: number;
 		autoZoomOutThreshold?: number;
 		visibilityPaddingPixels?: number;
+		tinyVisibilityAreaRatio?: number;
 		initialView: MapLocation;
 		keyboard: {
 			panPixels: number;
@@ -221,8 +222,10 @@ export type AppConfig = {
 		label: string;
 		outsideTitle: string;
 		partialTitle: string;
+		tinyTitle: string;
 		outsideDescription: string;
 		partialDescription: string;
+		tinyDescription: string;
 		dismiss: string;
 		zoomToLayer: string;
 	};

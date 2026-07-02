@@ -4,7 +4,12 @@
 	import type maplibregl from 'maplibre-gl';
 	import type { AppConfig } from '$lib/types';
 
-	type MapVisibility = 'fully-visible' | 'partly-visible' | 'not-visible' | 'unknown';
+	type MapVisibility =
+		| 'fully-visible'
+		| 'partly-visible'
+		| 'tiny-visible'
+		| 'not-visible'
+		| 'unknown';
 
 	type Placement = {
 		panelStyle: string;
@@ -80,6 +85,17 @@
 	});
 
 	$effect(() => {
+		const placementKey = [
+			selectedMapVisibility,
+			selectedMapCenter?.[0],
+			selectedMapCenter?.[1],
+			navPosition
+		].join(':');
+
+		if (open && placementKey) schedulePlacementUpdate();
+	});
+
+	$effect(() => {
 		const element = panelElement;
 		if (!open || !element) return;
 
@@ -140,22 +156,24 @@
 		const target = map.project(selectedMapCenter);
 		const viewportCenter = map.project(map.getCenter());
 		const baseSafeRect = getBaseSafeRect();
-		const edge = getEdge(target.x, target.y, viewportCenter, baseSafeRect);
-		const quadrant = getQuadrant(target.x, target.y, viewportCenter, baseSafeRect);
-		const panelSafeRect = getPanelSafeRect(baseSafeRect, quadrant);
+		const useFloatingPlacement = selectedMapVisibility === 'tiny-visible';
+		const edge = useFloatingPlacement
+			? undefined
+			: getEdge(target.x, target.y, viewportCenter, baseSafeRect);
+		const quadrant = useFloatingPlacement
+			? undefined
+			: getQuadrant(target.x, target.y, viewportCenter, baseSafeRect);
+		const panelSafeRect =
+			useFloatingPlacement || !quadrant ? baseSafeRect : getPanelSafeRect(baseSafeRect, quadrant);
 		const panelWidth = getPanelWidth(panelSafeRect);
 		const panelHeight = Math.min(
 			panelSize.height || FALLBACK_HEIGHT,
 			panelSafeRect.bottom - panelSafeRect.top
 		);
-		const position = getPanelPosition(
-			edge,
-			target.x,
-			target.y,
-			panelSafeRect,
-			panelWidth,
-			panelHeight
-		);
+		const position =
+			useFloatingPlacement || !edge
+				? getFloatingPanelPosition(target.x, target.y, panelSafeRect, panelWidth, panelHeight)
+				: getPanelPosition(edge, target.x, target.y, panelSafeRect, panelWidth, panelHeight);
 		const pointerStyle = getPointerStyle(
 			target.x,
 			target.y,
@@ -361,6 +379,61 @@
 		};
 	}
 
+	function getFloatingPanelPosition(
+		targetX: number,
+		targetY: number,
+		safeRect: SafeRect,
+		panelWidth: number,
+		panelHeight: number
+	) {
+		const clearance = POINTER_SIZE + POINTER_GAP;
+		const maxLeft = Math.max(safeRect.left, safeRect.right - panelWidth);
+		const maxTop = Math.max(safeRect.top, safeRect.bottom - panelHeight);
+		const candidates = [
+			{
+				left: targetX + clearance,
+				top: clamp(targetY - panelHeight / 2, safeRect.top, maxTop),
+				score: safeRect.right - (targetX + clearance + panelWidth)
+			},
+			{
+				left: targetX - clearance - panelWidth,
+				top: clamp(targetY - panelHeight / 2, safeRect.top, maxTop),
+				score: targetX - clearance - panelWidth - safeRect.left
+			},
+			{
+				left: clamp(targetX - panelWidth / 2, safeRect.left, maxLeft),
+				top: targetY + clearance,
+				score: safeRect.bottom - (targetY + clearance + panelHeight)
+			},
+			{
+				left: clamp(targetX - panelWidth / 2, safeRect.left, maxLeft),
+				top: targetY - clearance - panelHeight,
+				score: targetY - clearance - panelHeight - safeRect.top
+			}
+		];
+		const fittingCandidates = candidates.filter(
+			(candidate) =>
+				candidate.left >= safeRect.left &&
+				candidate.left + panelWidth <= safeRect.right &&
+				candidate.top >= safeRect.top &&
+				candidate.top + panelHeight <= safeRect.bottom
+		);
+
+		if (fittingCandidates.length > 0) {
+			return fittingCandidates.sort((a, b) => b.score - a.score)[0];
+		}
+
+		const fallback = candidates
+			.map((candidate) => ({
+				left: clamp(candidate.left, safeRect.left, maxLeft),
+				top: clamp(candidate.top, safeRect.top, maxTop),
+				score: Math.hypot(candidate.left - targetX, candidate.top - targetY)
+			}))
+			.sort((a, b) => b.score - a.score)[0];
+
+		return fallback ?? { left: safeRect.left, top: safeRect.top };
+	}
+
 	function getPointerStyle(
 		targetX: number,
 		targetY: number,
@@ -463,6 +536,20 @@
 
 		return clamp(value, min, max);
 	}
+
+	function getWarningTitle() {
+		if (selectedMapVisibility === 'not-visible') return config.mapWarnings.outsideTitle;
+		if (selectedMapVisibility === 'tiny-visible') return config.mapWarnings.tinyTitle;
+
+		return config.mapWarnings.partialTitle;
+	}
+
+	function getWarningDescription() {
+		if (selectedMapVisibility === 'not-visible') return config.mapWarnings.outsideDescription;
+		if (selectedMapVisibility === 'tiny-visible') return config.mapWarnings.tinyDescription;
+
+		return config.mapWarnings.partialDescription;
+	}
 </script>
 
 {#if open}
@@ -483,9 +570,7 @@
 			</span>
 			<div class="flex items-start gap-2">
 				<h2 class="min-w-0 flex-1 pr-1 font-heading text-sm leading-5 font-bold">
-					{selectedMapVisibility === 'not-visible'
-						? config.mapWarnings.outsideTitle
-						: config.mapWarnings.partialTitle}
+					{getWarningTitle()}
 				</h2>
 				<button
 					type="button"
@@ -498,9 +583,7 @@
 				</button>
 			</div>
 			<p class="mt-1 text-xs leading-5 text-gray-600">
-				{selectedMapVisibility === 'not-visible'
-					? config.mapWarnings.outsideDescription
-					: config.mapWarnings.partialDescription}
+				{getWarningDescription()}
 			</p>
 
 			<div class="mt-3 flex justify-start gap-2">

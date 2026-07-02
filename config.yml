@@ -49,6 +49,7 @@ map:
   defaultYear: 1897
   autoZoomOutThreshold: 0.5
   visibilityPaddingPixels: 60
+  tinyVisibilityAreaRatio: 0.03
   initialView:
     center: [4.484882, 51.921456]
     zoom: 14
@@ -252,9 +253,11 @@ controls:
 
 mapWarnings:
   label: Waarschuwing kaartlaag
-  outsideTitle: Kaartlaag buiten beeld
+  outsideTitle: Buiten beeld
   partialTitle: Kaartlaag deels zichtbaar
+  tinyTitle: Te klein
   outsideDescription: De geselecteerde kaartlaag ligt niet in de huidige kaartuitsnede.
   partialDescription: De geselecteerde kaartlaag is maar gedeeltelijk zichtbaar in de huidige kaartuitsnede.
+  tinyDescription: De geselecteerde kaartlaag is zichtbaar, maar te klein om goed te bekijken.
   dismiss: Laat zo
   zoomToLayer: Zoom naar kaartlaag

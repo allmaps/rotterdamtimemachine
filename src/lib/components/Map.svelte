@@ -24,6 +24,18 @@
 		bottom: number;
 		left: number;
 	};
+	type ScreenRect = {
+		left: number;
+		right: number;
+		top: number;
+		bottom: number;
+	};
+	type SelectedMapVisibility =
+		| 'fully-visible'
+		| 'partly-visible'
+		| 'tiny-visible'
+		| 'not-visible'
+		| 'unknown';
 
 	const CAMERA_BASE_PADDING = 40;
 	const CAMERA_PANEL_GAP = 16;
@@ -33,6 +45,7 @@
 	const ZOOM_EPSILON = 0.001;
 	const DEFAULT_AUTO_ZOOM_OUT_THRESHOLD = 0.25;
 	const DEFAULT_VISIBILITY_PADDING = 48;
+	const DEFAULT_TINY_VISIBILITY_AREA_RATIO = 0.03;
 	const ZOOM_LIMIT_MAX_ATTEMPTS = 8;
 	const ZOOM_LIMIT_RETRY_DELAY_MS = 50;
 	const DEFAULT_OVERVIEW_TILES_RESOLUTION = 2048 * 2048;
@@ -98,9 +111,7 @@
 	let map = $state<maplibregl.Map>();
 	let mapReady: boolean = $state(false);
 	let loaded: boolean = $state(false);
-	let selectedMapVisibility = $state<
-		'fully-visible' | 'partly-visible' | 'not-visible' | 'unknown'
-	>('unknown');
+	let selectedMapVisibility = $state<SelectedMapVisibility>('unknown');
 	let visibilityWarningOpen = $state(false);
 	let dismissedVisibilityWarningAnnotation: string | undefined;
 	let previousAnnotationForVisibility: string | undefined;
@@ -749,40 +760,102 @@
 			selectedBounds.getSouthEast()
 		];
 		const fullyVisible = selectedBoundsCorners.every((corner) => viewportBounds.contains(corner));
+		const intersects = viewportBounds.intersects(selectedBounds);
 
+		if (!intersects) return 'not-visible';
+		if (isSelectedMapTiny(annotationForCheck)) return 'tiny-visible';
 		if (fullyVisible) return 'fully-visible';
-		if (viewportBounds.intersects(selectedBounds)) return 'partly-visible';
 
-		return 'not-visible';
+		return 'partly-visible';
+	}
+
+	function isSelectedMapTiny(annotationForCheck: string) {
+		const selectedRect = getSelectedMapScreenRect(annotationForCheck);
+		if (!selectedRect) return false;
+
+		const selectedArea = getRectArea(selectedRect);
+		const viewportArea = getRectArea(getVisibilityScreenRect());
+		if (selectedArea <= 0 || viewportArea <= 0) return false;
+
+		return selectedArea / viewportArea <= getTinyVisibilityAreaRatio();
+	}
+
+	function getSelectedMapScreenRect(annotationForCheck: string): ScreenRect | undefined {
+		if (!map) return undefined;
+
+		const bounds = getSelectedMapBounds(annotationForCheck);
+		if (!bounds) return undefined;
+
+		const mapInstance = map;
+		if (!mapInstance) return undefined;
+
+		const selectedBounds = maplibregl.LngLatBounds.convert(bounds);
+		const points = [
+			selectedBounds.getSouthWest(),
+			selectedBounds.getNorthWest(),
+			selectedBounds.getNorthEast(),
+			selectedBounds.getSouthEast()
+		].map((corner) => mapInstance.project(corner));
+		const xs = points.map((point) => point.x);
+		const ys = points.map((point) => point.y);
+
+		return {
+			left: Math.min(...xs),
+			right: Math.max(...xs),
+			top: Math.min(...ys),
+			bottom: Math.max(...ys)
+		};
 	}
 
 	function getVisibilityBounds() {
 		const mapInstance = map;
 		if (!mapInstance) return new maplibregl.LngLatBounds();
 
-		const canvas = mapInstance.getCanvas();
-		const width = canvas.clientWidth;
-		const height = canvas.clientHeight;
-		const padding = getVisibilityPadding();
-		const leftPadding = Math.min(padding.left, Math.max(0, (width - 1) / 2));
-		const rightPadding = Math.min(padding.right, Math.max(0, width - leftPadding - 1));
-		const topPadding = Math.min(padding.top, Math.max(0, (height - 1) / 2));
-		const bottomPadding = Math.min(padding.bottom, Math.max(0, height - topPadding - 1));
+		const rect = getVisibilityScreenRect();
+		const leftPadding = rect.left;
+		const rightPadding = mapInstance.getCanvas().clientWidth - rect.right;
+		const topPadding = rect.top;
+		const bottomPadding = mapInstance.getCanvas().clientHeight - rect.bottom;
 
 		if (leftPadding <= 0 && rightPadding <= 0 && topPadding <= 0 && bottomPadding <= 0) {
 			return mapInstance.getBounds();
 		}
 
 		const corners: Array<[number, number]> = [
-			[leftPadding, topPadding],
-			[width - rightPadding, topPadding],
-			[width - rightPadding, height - bottomPadding],
-			[leftPadding, height - bottomPadding]
+			[rect.left, rect.top],
+			[rect.right, rect.top],
+			[rect.right, rect.bottom],
+			[rect.left, rect.bottom]
 		];
 		const bounds = new maplibregl.LngLatBounds();
 		corners.forEach((point) => bounds.extend(mapInstance.unproject(point)));
 
 		return bounds;
+	}
+
+	function getVisibilityScreenRect(): ScreenRect {
+		const mapInstance = map;
+		if (!mapInstance) return { left: 0, right: 0, top: 0, bottom: 0 };
+
+		const canvas = mapInstance.getCanvas();
+		const width = canvas.clientWidth;
+		const height = canvas.clientHeight;
+		const padding = getVisibilityPadding();
+		const left = Math.min(padding.left, Math.max(0, (width - 1) / 2));
+		const rightPadding = Math.min(padding.right, Math.max(0, width - left - 1));
+		const top = Math.min(padding.top, Math.max(0, (height - 1) / 2));
+		const bottomPadding = Math.min(padding.bottom, Math.max(0, height - top - 1));
+
+		return {
+			left,
+			right: width - rightPadding,
+			top,
+			bottom: height - bottomPadding
+		};
+	}
+
+	function getRectArea(rect: ScreenRect) {
+		return Math.max(0, rect.right - rect.left) * Math.max(0, rect.bottom - rect.top);
 	}
 
 	function getVisibilityPadding(): CameraPadding {
@@ -803,23 +876,34 @@
 		return Number.isFinite(padding) ? Math.max(0, padding) : DEFAULT_VISIBILITY_PADDING;
 	}
 
+	function getTinyVisibilityAreaRatio() {
+		const ratio = config.map.tinyVisibilityAreaRatio ?? DEFAULT_TINY_VISIBILITY_AREA_RATIO;
+		return Number.isFinite(ratio)
+			? Math.min(1, Math.max(0, ratio))
+			: DEFAULT_TINY_VISIBILITY_AREA_RATIO;
+	}
+
 	function checkSelectedMapVisibility(annotationForCheck = activeAnnotation, showWarning = false) {
 		if (!annotationForCheck || annotationForCheck !== activeAnnotation) return;
 
 		selectedMapVisibility = getSelectedMapVisibility(annotationForCheck);
 
-		if (autoplayActive || focusActiveMap || selectedMapVisibility !== 'not-visible') {
+		if (autoplayActive || focusActiveMap || !shouldShowVisibilityWarning(selectedMapVisibility)) {
 			visibilityWarningOpen = false;
 			return;
 		}
 
 		if (
 			showWarning &&
-			selectedMapVisibility === 'not-visible' &&
+			shouldShowVisibilityWarning(selectedMapVisibility) &&
 			dismissedVisibilityWarningAnnotation !== annotationForCheck
 		) {
 			visibilityWarningOpen = true;
 		}
+	}
+
+	function shouldShowVisibilityWarning(visibility: SelectedMapVisibility) {
+		return visibility === 'not-visible' || visibility === 'tiny-visible';
 	}
 
 	function dismissVisibilityWarning() {
