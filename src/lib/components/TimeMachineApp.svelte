@@ -23,6 +23,15 @@
 		year: number;
 		order: number;
 	};
+	type PresentationTouch = {
+		x: number;
+		y: number;
+		time: number;
+	};
+
+	const PRESENTATION_SWIPE_THRESHOLD = 48;
+	const PRESENTATION_SWIPE_MAX_DURATION_MS = 900;
+	const PRESENTATION_SWIPE_AXIS_RATIO = 1.25;
 
 	let {
 		config,
@@ -86,6 +95,8 @@
 	let autoplayTimeout: ReturnType<typeof setTimeout> | undefined;
 	let leftAnnotationsInView = $state<string[]>([]);
 	let leftAnnotationsAtCenter = $state<string[]>([]);
+	let appShellElement = $state<HTMLDivElement>();
+	let presentationTouch: PresentationTouch | undefined;
 	let keyboardCommandId = 0;
 	let toolbarCommandId = 0;
 	let opacityShortcutSnapshot:
@@ -346,6 +357,78 @@
 		if (item) selectAutoplayItem(item);
 	}
 
+	function handlePresentationTouchStart(event: TouchEvent) {
+		if (!autoplayActive || hasOpenModal() || event.touches.length !== 1) {
+			presentationTouch = undefined;
+			return;
+		}
+
+		if (isInteractiveTarget(event.target)) {
+			presentationTouch = undefined;
+			return;
+		}
+
+		const touch = event.touches[0];
+		presentationTouch = {
+			x: touch.clientX,
+			y: touch.clientY,
+			time: performance.now()
+		};
+	}
+
+	function handlePresentationTouchMove(event: TouchEvent) {
+		if (!presentationTouch || !autoplayActive || event.touches.length !== 1) return;
+
+		const touch = event.touches[0];
+		const dx = touch.clientX - presentationTouch.x;
+		const dy = touch.clientY - presentationTouch.y;
+
+		if (isHorizontalPresentationSwipe(dx, dy, 12)) {
+			event.preventDefault();
+		}
+	}
+
+	function handlePresentationTouchEnd(event: TouchEvent) {
+		if (!presentationTouch || !autoplayActive) {
+			presentationTouch = undefined;
+			return;
+		}
+
+		const touch = event.changedTouches[0];
+		if (!touch) {
+			presentationTouch = undefined;
+			return;
+		}
+
+		const dx = touch.clientX - presentationTouch.x;
+		const dy = touch.clientY - presentationTouch.y;
+		const duration = performance.now() - presentationTouch.time;
+		presentationTouch = undefined;
+
+		if (
+			duration <= PRESENTATION_SWIPE_MAX_DURATION_MS &&
+			isHorizontalPresentationSwipe(dx, dy, PRESENTATION_SWIPE_THRESHOLD)
+		) {
+			event.preventDefault();
+			event.stopPropagation();
+			selectRelativeAutoplaySlide(dx < 0 ? 1 : -1);
+		}
+	}
+
+	function handlePresentationTouchCancel() {
+		presentationTouch = undefined;
+	}
+
+	function isHorizontalPresentationSwipe(dx: number, dy: number, threshold: number) {
+		const horizontalDistance = Math.abs(dx);
+		const verticalDistance = Math.abs(dy);
+
+		return (
+			horizontalDistance >= threshold &&
+			horizontalDistance >= verticalDistance * PRESENTATION_SWIPE_AXIS_RATIO
+		);
+	}
+
 	function selectAutoplayItem(item: AutoplayItem) {
 		resetAutoplayTimer();
 		selectedYear = item.year;
@@ -580,6 +663,7 @@
 	onMount(() => {
 		const compareStackQuery = window.matchMedia('(max-width: 767px)');
 		let cancelled = false;
+		const appShell = appShellElement;
 
 		function syncCompareStacked(event: MediaQueryList | MediaQueryListEvent) {
 			compareStacked = event.matches;
@@ -608,10 +692,18 @@
 
 		initializePanes();
 		compareStackQuery.addEventListener('change', syncCompareStacked);
+		appShell?.addEventListener('touchstart', handlePresentationTouchStart, { passive: true });
+		appShell?.addEventListener('touchmove', handlePresentationTouchMove, { passive: false });
+		appShell?.addEventListener('touchend', handlePresentationTouchEnd, { passive: false });
+		appShell?.addEventListener('touchcancel', handlePresentationTouchCancel, { passive: true });
 
 		return () => {
 			cancelled = true;
 			compareStackQuery.removeEventListener('change', syncCompareStacked);
+			appShell?.removeEventListener('touchstart', handlePresentationTouchStart);
+			appShell?.removeEventListener('touchmove', handlePresentationTouchMove);
+			appShell?.removeEventListener('touchend', handlePresentationTouchEnd);
+			appShell?.removeEventListener('touchcancel', handlePresentationTouchCancel);
 		};
 	});
 </script>
@@ -623,7 +715,11 @@
 	onblur={restoreOpacityShortcut}
 />
 
-<div data-app-shell class="relative flex h-[100dvh] min-h-0 flex-col overflow-hidden">
+<div
+	bind:this={appShellElement}
+	data-app-shell
+	class="relative flex h-[100dvh] min-h-0 flex-col overflow-hidden"
+>
 	<AppTour {config} enabled={panesReady && !startsInPresentation} />
 
 	<Header

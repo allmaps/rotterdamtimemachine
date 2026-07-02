@@ -36,6 +36,10 @@
 		| 'tiny-visible'
 		| 'not-visible'
 		| 'unknown';
+	type MapTouchInteractionState = {
+		dragPan: boolean;
+		touchZoomRotate: boolean;
+	};
 
 	const CAMERA_BASE_PADDING = 40;
 	const CAMERA_PANEL_GAP = 16;
@@ -124,6 +128,7 @@
 	let previousKeyboardCommandId = 0;
 	let previousToolbarCommandId = 0;
 	let commandIdsInitialized = false;
+	let mapTouchInteractionState: MapTouchInteractionState | undefined;
 	let preferredSelectionZoom: number | undefined;
 	let pendingZoomLimitAnnotation: string | undefined;
 	let pendingZoomLimitAttempt = 0;
@@ -311,6 +316,12 @@
 	});
 
 	$effect(() => {
+		if (!mapReady || !map) return;
+
+		setPresentationTouchMapInteractionsDisabled(autoplayActive && isTouchInteractionDevice());
+	});
+
+	$effect(() => {
 		const command = mapKeyboardCommand;
 		if (!mapReady || !map || !command || command.id === previousKeyboardCommandId) return;
 
@@ -439,6 +450,34 @@
 
 	function getBrandMainColor() {
 		return getThemeColor(config.theme);
+	}
+
+	function isTouchInteractionDevice() {
+		if (typeof window === 'undefined') return false;
+
+		return window.matchMedia('(pointer: coarse), (hover: none)').matches;
+	}
+
+	function setPresentationTouchMapInteractionsDisabled(disabled: boolean) {
+		if (!map) return;
+
+		if (disabled) {
+			if (mapTouchInteractionState) return;
+
+			mapTouchInteractionState = {
+				dragPan: map.dragPan.isEnabled(),
+				touchZoomRotate: map.touchZoomRotate.isEnabled()
+			};
+			map.dragPan.disable();
+			map.touchZoomRotate.disable();
+			return;
+		}
+
+		if (!mapTouchInteractionState) return;
+
+		if (mapTouchInteractionState.dragPan) map.dragPan.enable();
+		if (mapTouchInteractionState.touchZoomRotate) map.touchZoomRotate.enable();
+		mapTouchInteractionState = undefined;
 	}
 
 	function clearPreferredSelectionZoom() {
@@ -1037,6 +1076,7 @@
 		});
 
 		return () => {
+			setPresentationTouchMapInteractionsDisabled(false);
 			cancelPendingSelectedMapZoomLimit();
 			if (visibilityCheckFrame !== undefined) {
 				cancelAnimationFrame(visibilityCheckFrame);
