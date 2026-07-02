@@ -1,9 +1,9 @@
 <script lang="ts">
-	import { onMount, tick, untrack } from 'svelte';
+	import { onMount, untrack } from 'svelte';
 	import { fly } from 'svelte/transition';
 	import maplibregl from 'maplibre-gl';
 	import { WarpedMapLayer } from '@allmaps/maplibre';
-	import { AlertTriangle, Focus } from '@lucide/svelte';
+	import { Focus } from '@lucide/svelte';
 	import 'maplibre-gl/dist/maplibre-gl.css';
 	import { viewState, flyTo, selectedLocation } from '$lib/app-state.svelte.js';
 	import { getProtomapsLayers, getProtomapsStyle } from '$lib/basemap';
@@ -97,7 +97,7 @@
 		'fully-visible' | 'partly-visible' | 'not-visible' | 'unknown'
 	>('unknown');
 	let visibilityWarningOpen = $state(false);
-	let visibilityWarningPrimaryButton: HTMLButtonElement | undefined = $state();
+	let visibilityWarningPadding = $state({ left: 0, right: 0 });
 	let dismissedVisibilityWarningAnnotation: string | undefined;
 	let previousAnnotationForVisibility: string | undefined;
 	let previousAnnotationForOrientation: string | undefined;
@@ -194,15 +194,18 @@
 	});
 
 	$effect(() => {
-		if (visibilityWarningOpen) {
-			tick().then(() => visibilityWarningPrimaryButton?.focus());
+		if (autoplayActive || focusActiveMap) {
+			visibilityWarningOpen = false;
 		}
 	});
 
 	$effect(() => {
-		if (autoplayActive || focusActiveMap) {
-			visibilityWarningOpen = false;
-		}
+		if (!visibilityWarningOpen) return;
+
+		updateVisibilityWarningPadding();
+		window.addEventListener('resize', updateVisibilityWarningPadding);
+
+		return () => window.removeEventListener('resize', updateVisibilityWarningPadding);
 	});
 
 	$effect(() => {
@@ -598,6 +601,36 @@
 		return 0;
 	}
 
+	function getVisualSliderInset() {
+		const pane = getMapPaneElement();
+		const surface = pane?.querySelector<HTMLElement>('[data-time-slider-surface]');
+
+		if (surface) {
+			const surfaceStyle = getComputedStyle(surface);
+			if (surfaceStyle.display !== 'none') {
+				return Math.ceil(surface.getBoundingClientRect().width || DESKTOP_SLIDER_INSET);
+			}
+		}
+
+		return 0;
+	}
+
+	function updateVisibilityWarningPadding() {
+		const sliderInset = getVisualSliderInset();
+
+		visibilityWarningPadding = {
+			left: navPosition === 'left' ? sliderInset : 0,
+			right: navPosition === 'right' ? sliderInset : 0
+		};
+	}
+
+	function getVisibilityWarningStyle() {
+		return [
+			`padding-left: ${visibilityWarningPadding.left + 16}px`,
+			`padding-right: ${visibilityWarningPadding.right + 16}px`
+		].join('; ');
+	}
+
 	function getCameraPadding(): CameraPadding {
 		const bottomInset = getBottomPanelInset();
 		const sliderInset = getSliderInset();
@@ -690,14 +723,6 @@
 	function zoomToActiveMapFromWarning() {
 		dismissVisibilityWarning();
 		focusSelectedMap();
-	}
-
-	function handleVisibilityWarningKeydown(event: KeyboardEvent) {
-		event.stopPropagation();
-
-		if (event.key === 'Escape') {
-			dismissVisibilityWarning();
-		}
 	}
 
 	function updateAnnotationsInView() {
@@ -855,54 +880,36 @@
 
 {#if visibilityWarningOpen}
 	<div
-		role="presentation"
-		class="absolute inset-0 z-40 flex items-center justify-center bg-black/25 p-4"
-		onpointerdown={(event) => event.stopPropagation()}
-		ondblclick={(event) => event.stopPropagation()}
+		class="pointer-events-none absolute inset-0 z-40 flex items-center justify-center p-4"
+		style={getVisibilityWarningStyle()}
 	>
 		<div
-			role="dialog"
-			aria-modal="true"
+			role="alert"
 			aria-label={config.mapWarnings.label}
-			tabindex="-1"
-			class="pointer-events-auto w-full max-w-sm rounded-lg border border-gray-200 bg-white p-4 text-gray-900 shadow-2xl"
-			onkeydown={handleVisibilityWarningKeydown}
-			onkeyup={(event) => event.stopPropagation()}
-			onpointerdown={(event) => event.stopPropagation()}
-			ondblclick={(event) => event.stopPropagation()}
+			class="pointer-events-auto w-full max-w-xs rounded-lg border border-gray-200 bg-white p-3 text-gray-900 shadow-xl"
 		>
-			<div class="flex items-start gap-3">
-				<div
-					class="mt-0.5 flex h-9 w-9 flex-none items-center justify-center rounded-full bg-amber-100 text-amber-700"
-				>
-					<AlertTriangle class="h-5 w-5" />
-				</div>
-				<div class="min-w-0">
-					<h2 class="font-heading text-base font-bold">
-						{selectedMapVisibility === 'not-visible'
-							? config.mapWarnings.outsideTitle
-							: config.mapWarnings.partialTitle}
-					</h2>
-					<p class="mt-1 text-sm leading-5 text-gray-600">
-						{selectedMapVisibility === 'not-visible'
-							? config.mapWarnings.outsideDescription
-							: config.mapWarnings.partialDescription}
-					</p>
-				</div>
-			</div>
+			<h2 class="font-heading text-sm font-bold">
+				{selectedMapVisibility === 'not-visible'
+					? config.mapWarnings.outsideTitle
+					: config.mapWarnings.partialTitle}
+			</h2>
+			<p class="mt-1 text-xs leading-5 text-gray-600">
+				{selectedMapVisibility === 'not-visible'
+					? config.mapWarnings.outsideDescription
+					: config.mapWarnings.partialDescription}
+			</p>
 
-			<div class="mt-4 flex justify-end gap-2">
+			<div class="mt-3 flex justify-end gap-2">
 				<button
 					type="button"
-					class="rounded-md border border-gray-200 px-3 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-main"
+					class="rounded-md border border-gray-200 px-2.5 py-1.5 text-xs font-semibold text-gray-700 hover:bg-gray-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-main"
 					onclick={dismissVisibilityWarning}
 				>
 					{config.mapWarnings.dismiss}
 				</button>
 				<button
-					bind:this={visibilityWarningPrimaryButton}
 					type="button"
-					class="inline-flex items-center gap-2 rounded-md bg-brand-main px-3 py-2 text-sm font-semibold text-white hover:bg-brand-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-main"
+					class="inline-flex items-center gap-1.5 rounded-md bg-brand-main px-2.5 py-1.5 text-xs font-semibold text-white hover:bg-brand-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-main"
 					onclick={zoomToActiveMapFromWarning}
 				>
 					<Focus class="h-4 w-4" />
