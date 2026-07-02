@@ -192,10 +192,6 @@
 				class="m-0 w-full accent-brand-main"
 				aria-label={config.controls.layerOpacity}
 			/>
-			<div class="mt-1 flex justify-between text-[0.65rem] font-semibold text-gray-400">
-				<span>0%</span>
-				<span>100%</span>
-			</div>
 		</div>
 	{/if}
 </div>

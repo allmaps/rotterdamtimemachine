@@ -247,9 +247,9 @@ controls:
   followOrientation: Kaartoriëntatie volgen
   disableFocus: Kaartlaagfocus uitschakelen
   followFocus: Kaartlaagfocus volgen
-  opacity: Transparantie
-  adjustOpacity: Transparantie aanpassen
-  layerOpacity: Transparantie kaartlaag
+  opacity: Opacity
+  adjustOpacity: Opacity aanpassen
+  layerOpacity: Opacity kaartlaag
 
 mapWarnings:
   label: Waarschuwing kaartlaag
