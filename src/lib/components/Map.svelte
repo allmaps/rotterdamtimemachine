@@ -31,6 +31,10 @@
 	const MAPLIBRE_TILE_SIZE = 512;
 	const WEB_MERCATOR_WORLD_WIDTH = 40075016.68557849;
 	const ZOOM_EPSILON = 0.001;
+	const DEFAULT_AUTO_ZOOM_OUT_THRESHOLD = 0.25;
+	const DEFAULT_VISIBILITY_PADDING = 48;
+	const ZOOM_LIMIT_MAX_ATTEMPTS = 8;
+	const ZOOM_LIMIT_RETRY_DELAY_MS = 50;
 	const DEFAULT_OVERVIEW_TILES_RESOLUTION = 2048 * 2048;
 	const LOCATION_SOURCE_ID = 'selected-location-source';
 	const LOCATION_LAYER_ID = 'selected-location-circle';
@@ -64,7 +68,6 @@
 		controlsPosition = 'top-right',
 		showInViewControl = false,
 		autoplayActive = false,
-		autoplayFollowMap = false,
 		autoplayNextAnnotation
 	}: {
 		config: AppConfig;
@@ -85,7 +88,6 @@
 		controlsPosition?: 'top-left' | 'top-right';
 		showInViewControl?: boolean;
 		autoplayActive?: boolean;
-		autoplayFollowMap?: boolean;
 		autoplayNextAnnotation?: string;
 	} = $props();
 
@@ -102,6 +104,7 @@
 	let visibilityWarningOpen = $state(false);
 	let dismissedVisibilityWarningAnnotation: string | undefined;
 	let previousAnnotationForVisibility: string | undefined;
+	let previousAnnotationForZoomLimit: string | undefined;
 	let previousAnnotationForOrientation: string | undefined;
 	let previousAnnotationForFocus: string | undefined;
 	let previousRotateToMapOrientation = rotateToMapOrientation;
@@ -110,9 +113,13 @@
 	let previousKeyboardCommandId = 0;
 	let previousToolbarCommandId = 0;
 	let commandIdsInitialized = false;
-	let autoplayReferenceZoom: number | undefined;
-	let autoplayUserMoveStartZoom: number | undefined;
-	let autoplayZoomLimitWasActive = false;
+	let preferredSelectionZoom: number | undefined;
+	let pendingZoomLimitAnnotation: string | undefined;
+	let pendingZoomLimitAttempt = 0;
+	let zoomLimitVisibilityCheckAnnotation: string | undefined;
+	let deferredVisibilityWarningAnnotation: string | undefined;
+	let zoomLimitFrame: number | undefined;
+	let zoomLimitRetryTimer: ReturnType<typeof setTimeout> | undefined;
 	let visibilityCheckFrame: number | undefined;
 	let selectedLocationTimer: ReturnType<typeof setTimeout> | undefined;
 	let isSyncing = false;
@@ -167,6 +174,7 @@
 	$effect(() => {
 		if (enableFlyTo && mapReady && map && flyTo.center) {
 			const cameraPadding = getCameraPadding();
+			clearPreferredSelectionZoom();
 			map.flyTo({
 				center: flyTo.center,
 				zoom: 14,
@@ -189,6 +197,7 @@
 			const zoom = currentLocation.zoom;
 			const bearing = currentLocation.bearing ?? 0;
 			if (!mapMatchesLocation(center, zoom, bearing)) {
+				clearPreferredSelectionZoom();
 				isSyncing = true;
 				map.jumpTo({ center, zoom, bearing });
 				isSyncing = false;
@@ -220,25 +229,26 @@
 	});
 
 	$effect(() => {
-		const shouldLimitZoom = autoplayActive && !autoplayFollowMap;
 		const annotationForLimit = activeAnnotation;
+		const zoomLimitEnabled = !focusActiveMap;
 
-		if (!loaded || !mapReady || !map) {
-			if (!shouldLimitZoom) resetAutoplayZoomLimit(false);
+		if (!annotationForLimit) {
+			previousAnnotationForZoomLimit = undefined;
+			cancelPendingSelectedMapZoomLimit();
+			clearPreferredSelectionZoom();
 			return;
 		}
 
-		if (!shouldLimitZoom) {
-			resetAutoplayZoomLimit(autoplayZoomLimitWasActive && !autoplayActive);
+		if (!loaded || !mapReady || !map) return;
+		if (!zoomLimitEnabled) {
+			previousAnnotationForZoomLimit = annotationForLimit;
+			cancelPendingSelectedMapZoomLimit();
 			return;
 		}
+		if (annotationForLimit === previousAnnotationForZoomLimit) return;
 
-		autoplayZoomLimitWasActive = true;
-		autoplayReferenceZoom ??= map.getZoom();
-
-		if (annotationForLimit) {
-			applyAutoplayZoomLimit(annotationForLimit);
-		}
+		previousAnnotationForZoomLimit = annotationForLimit;
+		queueSelectedMapZoomLimit(annotationForLimit);
 	});
 
 	$effect(() => {
@@ -252,6 +262,7 @@
 		previousAnnotationForOrientation = annotationForOrientation;
 
 		if (!orientationChanged && !annotationChanged) return;
+		if (orientationChanged && !autoplayActive) clearPreferredSelectionZoom();
 
 		if (shouldRotate && annotationForOrientation) {
 			rotateToSelectedMapOrientation(annotationForOrientation);
@@ -273,6 +284,7 @@
 		previousRotateToMapOrientationForFocus = shouldRotate;
 		previousAnnotationForFocus = annotationForFocus;
 
+		if (focusChanged && !autoplayActive) clearPreferredSelectionZoom();
 		if (!shouldFocus || !annotationForFocus) return;
 		if (focusChanged || orientationChanged || annotationChanged) {
 			focusSelectedMap(annotationForFocus);
@@ -294,13 +306,7 @@
 		previousKeyboardCommandId = command.id;
 		let zoom = command.zoomDelta === undefined ? map.getZoom() : map.getZoom() + command.zoomDelta;
 
-		if (command.zoomDelta !== undefined && autoplayActive && !autoplayFollowMap) {
-			autoplayReferenceZoom = clampZoomToMapLimits(
-				(autoplayReferenceZoom ?? map.getZoom()) + command.zoomDelta
-			);
-			zoom = getAutoplayLimitedZoom(activeAnnotation, autoplayReferenceZoom);
-		}
-
+		clearPreferredSelectionZoom();
 		map.easeTo({
 			duration: 300,
 			easeId: 'keyboardHandler',
@@ -424,36 +430,90 @@
 		return getThemeColor(config.theme);
 	}
 
-	function resetAutoplayZoomLimit(restoreReferenceZoom: boolean) {
-		const referenceZoom = autoplayReferenceZoom;
+	function clearPreferredSelectionZoom() {
+		preferredSelectionZoom = undefined;
+	}
 
-		autoplayReferenceZoom = undefined;
-		autoplayZoomLimitWasActive = false;
+	function queueSelectedMapZoomLimit(annotationForLimit: string) {
+		if (!map) return;
 
-		if (restoreReferenceZoom && referenceZoom !== undefined) {
-			easeToAutoplayZoom(referenceZoom);
+		preferredSelectionZoom ??= map.getZoom();
+		pendingZoomLimitAnnotation = annotationForLimit;
+		pendingZoomLimitAttempt = 0;
+		requestSelectedMapZoomLimit();
+	}
+
+	function requestSelectedMapZoomLimit() {
+		cancelPendingSelectedMapZoomLimitFrame();
+
+		zoomLimitFrame = requestAnimationFrame(() => {
+			zoomLimitFrame = undefined;
+			applyPendingSelectedMapZoomLimit();
+		});
+	}
+
+	function applyPendingSelectedMapZoomLimit() {
+		if (!map || !pendingZoomLimitAnnotation) return;
+
+		const annotationForLimit = pendingZoomLimitAnnotation;
+		if (focusActiveMap) {
+			pendingZoomLimitAnnotation = undefined;
+			return;
+		}
+
+		if (annotationForLimit !== activeAnnotation) {
+			pendingZoomLimitAnnotation = undefined;
+			return;
+		}
+
+		const maxZoom = getSelectedMapNativeMaxZoom(annotationForLimit);
+		if (maxZoom === undefined) {
+			if (pendingZoomLimitAttempt < ZOOM_LIMIT_MAX_ATTEMPTS) {
+				pendingZoomLimitAttempt += 1;
+				zoomLimitRetryTimer = setTimeout(requestSelectedMapZoomLimit, ZOOM_LIMIT_RETRY_DELAY_MS);
+			} else {
+				pendingZoomLimitAnnotation = undefined;
+				finishSelectedMapZoomLimit(annotationForLimit);
+			}
+			return;
+		}
+
+		preferredSelectionZoom ??= map.getZoom();
+		const targetZoom = getSelectedMapLimitedZoom(maxZoom, preferredSelectionZoom);
+		pendingZoomLimitAnnotation = undefined;
+
+		if (Math.abs(map.getZoom() - targetZoom) <= ZOOM_EPSILON) {
+			finishSelectedMapZoomLimit(annotationForLimit);
+			return;
+		}
+
+		easeToSelectedMapZoomLimit(targetZoom, annotationForLimit);
+	}
+
+	function cancelPendingSelectedMapZoomLimit() {
+		pendingZoomLimitAnnotation = undefined;
+		zoomLimitVisibilityCheckAnnotation = undefined;
+		deferredVisibilityWarningAnnotation = undefined;
+		cancelPendingSelectedMapZoomLimitFrame();
+	}
+
+	function cancelPendingSelectedMapZoomLimitFrame() {
+		if (zoomLimitFrame !== undefined) {
+			cancelAnimationFrame(zoomLimitFrame);
+			zoomLimitFrame = undefined;
+		}
+
+		if (zoomLimitRetryTimer) {
+			clearTimeout(zoomLimitRetryTimer);
+			zoomLimitRetryTimer = undefined;
 		}
 	}
 
-	function applyAutoplayZoomLimit(annotationForLimit: string) {
-		if (!map) return;
+	function getSelectedMapLimitedZoom(maxZoom: number, preferredZoom: number) {
+		const preferred = clampZoomToMapLimits(preferredZoom);
+		const limit = clampZoomToMapLimits(maxZoom);
 
-		const referenceZoom = autoplayReferenceZoom ?? map.getZoom();
-		autoplayReferenceZoom = referenceZoom;
-
-		const zoom = getAutoplayLimitedZoom(annotationForLimit, referenceZoom);
-		if (Math.abs(map.getZoom() - zoom) <= ZOOM_EPSILON) return;
-
-		easeToAutoplayZoom(zoom);
-	}
-
-	function getAutoplayLimitedZoom(annotationForLimit: string | undefined, referenceZoom: number) {
-		const maxZoom = annotationForLimit
-			? getSelectedMapNativeMaxZoom(annotationForLimit)
-			: undefined;
-		const zoom = maxZoom === undefined ? referenceZoom : Math.min(referenceZoom, maxZoom);
-
-		return clampZoomToMapLimits(zoom);
+		return preferred > limit + getAutoZoomOutThreshold() ? limit : preferred;
 	}
 
 	function getSelectedMapNativeMaxZoom(annotationForLimit: string) {
@@ -470,8 +530,16 @@
 		return maxZooms.length > 0 ? Math.min(...maxZooms) : undefined;
 	}
 
-	function easeToAutoplayZoom(zoom: number) {
+	function easeToSelectedMapZoomLimit(zoom: number, annotationForLimit: string) {
 		if (!map) return;
+
+		zoomLimitVisibilityCheckAnnotation = annotationForLimit;
+		map.once('moveend', () => {
+			if (zoomLimitVisibilityCheckAnnotation !== annotationForLimit) return;
+
+			zoomLimitVisibilityCheckAnnotation = undefined;
+			finishSelectedMapZoomLimit(annotationForLimit);
+		});
 
 		map.easeTo({
 			center: map.getCenter(),
@@ -482,30 +550,24 @@
 		});
 	}
 
+	function finishSelectedMapZoomLimit(annotationForLimit: string) {
+		if (annotationForLimit !== activeAnnotation) return;
+
+		if (deferredVisibilityWarningAnnotation === annotationForLimit) {
+			deferredVisibilityWarningAnnotation = undefined;
+		}
+		queueSelectedMapVisibilityCheck(annotationForLimit, true);
+	}
+
 	function clampZoomToMapLimits(zoom: number) {
 		if (!map) return zoom;
 
 		return Math.min(map.getMaxZoom(), Math.max(map.getMinZoom(), zoom));
 	}
 
-	function beginAutoplayUserMove(event: { originalEvent?: Event }) {
-		if (!map || !autoplayActive || autoplayFollowMap || !event.originalEvent) return;
-
-		autoplayUserMoveStartZoom = map.getZoom();
-	}
-
-	function finishAutoplayUserMove(mapInstance: maplibregl.Map) {
-		if (autoplayUserMoveStartZoom === undefined) return;
-
-		const zoom = mapInstance.getZoom();
-		if (Math.abs(zoom - autoplayUserMoveStartZoom) > ZOOM_EPSILON) {
-			autoplayReferenceZoom = Math.min(
-				mapInstance.getMaxZoom(),
-				Math.max(mapInstance.getMinZoom(), zoom)
-			);
-		}
-
-		autoplayUserMoveStartZoom = undefined;
+	function getAutoZoomOutThreshold() {
+		const threshold = config.map.autoZoomOutThreshold ?? DEFAULT_AUTO_ZOOM_OUT_THRESHOLD;
+		return Number.isFinite(threshold) ? Math.max(0, threshold) : DEFAULT_AUTO_ZOOM_OUT_THRESHOLD;
 	}
 
 	function focusSelectedMap(annotationForFocus = activeAnnotation) {
@@ -549,8 +611,19 @@
 
 		visibilityCheckFrame = requestAnimationFrame(() => {
 			visibilityCheckFrame = undefined;
+			if (showWarning && shouldDeferVisibilityWarning(annotationForCheck)) {
+				deferredVisibilityWarningAnnotation = annotationForCheck;
+				return;
+			}
 			checkSelectedMapVisibility(annotationForCheck, showWarning);
 		});
+	}
+
+	function shouldDeferVisibilityWarning(annotationForCheck: string) {
+		return (
+			pendingZoomLimitAnnotation === annotationForCheck ||
+			zoomLimitVisibilityCheckAnnotation === annotationForCheck
+		);
 	}
 
 	function getSelectedMapBounds(annotationForCheck: string) {
@@ -667,7 +740,7 @@
 		const bounds = getSelectedMapBounds(annotationForCheck);
 		if (!bounds) return 'unknown';
 
-		const viewportBounds = map.getBounds();
+		const viewportBounds = getVisibilityBounds();
 		const selectedBounds = maplibregl.LngLatBounds.convert(bounds);
 		const selectedBoundsCorners = [
 			selectedBounds.getSouthWest(),
@@ -681,6 +754,53 @@
 		if (viewportBounds.intersects(selectedBounds)) return 'partly-visible';
 
 		return 'not-visible';
+	}
+
+	function getVisibilityBounds() {
+		const mapInstance = map;
+		if (!mapInstance) return new maplibregl.LngLatBounds();
+
+		const canvas = mapInstance.getCanvas();
+		const width = canvas.clientWidth;
+		const height = canvas.clientHeight;
+		const padding = getVisibilityPadding();
+		const leftPadding = Math.min(padding.left, Math.max(0, (width - 1) / 2));
+		const rightPadding = Math.min(padding.right, Math.max(0, width - leftPadding - 1));
+		const topPadding = Math.min(padding.top, Math.max(0, (height - 1) / 2));
+		const bottomPadding = Math.min(padding.bottom, Math.max(0, height - topPadding - 1));
+
+		if (leftPadding <= 0 && rightPadding <= 0 && topPadding <= 0 && bottomPadding <= 0) {
+			return mapInstance.getBounds();
+		}
+
+		const corners: Array<[number, number]> = [
+			[leftPadding, topPadding],
+			[width - rightPadding, topPadding],
+			[width - rightPadding, height - bottomPadding],
+			[leftPadding, height - bottomPadding]
+		];
+		const bounds = new maplibregl.LngLatBounds();
+		corners.forEach((point) => bounds.extend(mapInstance.unproject(point)));
+
+		return bounds;
+	}
+
+	function getVisibilityPadding(): CameraPadding {
+		const basePadding = getVisibilityBasePadding();
+		const sliderInset = getSliderInset();
+		const bottomPanelInset = getBottomPanelInset();
+
+		return {
+			top: basePadding,
+			right: basePadding + (navPosition === 'right' ? sliderInset : 0),
+			bottom: basePadding + bottomPanelInset,
+			left: basePadding + (navPosition === 'left' ? sliderInset : 0)
+		};
+	}
+
+	function getVisibilityBasePadding() {
+		const padding = config.map.visibilityPaddingPixels ?? DEFAULT_VISIBILITY_PADDING;
+		return Number.isFinite(padding) ? Math.max(0, padding) : DEFAULT_VISIBILITY_PADDING;
 	}
 
 	function checkSelectedMapVisibility(annotationForCheck = activeAnnotation, showWarning = false) {
@@ -709,6 +829,7 @@
 
 	function zoomToActiveMapFromWarning() {
 		dismissVisibilityWarning();
+		clearPreferredSelectionZoom();
 		focusSelectedMap();
 	}
 
@@ -785,7 +906,9 @@
 		map = mapInstance;
 		mapReady = true;
 
-		mapInstance.on('movestart', beginAutoplayUserMove);
+		mapInstance.on('movestart', (event) => {
+			if (event.originalEvent) clearPreferredSelectionZoom();
+		});
 
 		mapInstance.on('move', () => {
 			if (!isSyncing) {
@@ -802,7 +925,6 @@
 		});
 
 		mapInstance.on('moveend', () => {
-			finishAutoplayUserMove(mapInstance);
 			updateAnnotationsInView();
 			checkSelectedMapVisibility(activeAnnotation, false);
 		});
@@ -831,6 +953,7 @@
 		});
 
 		return () => {
+			cancelPendingSelectedMapZoomLimit();
 			if (visibilityCheckFrame !== undefined) {
 				cancelAnimationFrame(visibilityCheckFrame);
 			}
@@ -867,6 +990,7 @@
 			canZoomToMap={canZoomToActiveMap}
 			canFilterInView={annotationsInView.length > 0}
 			{showInViewControl}
+			onUserCameraAction={clearPreferredSelectionZoom}
 		/>
 	</div>
 {/if}

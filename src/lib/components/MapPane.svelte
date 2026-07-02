@@ -151,7 +151,6 @@
 			{controlsPosition}
 			{showInViewControl}
 			{autoplayActive}
-			{autoplayFollowMap}
 			{autoplayNextAnnotation}
 		/>
 		<MapLayers

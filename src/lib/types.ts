@@ -71,6 +71,8 @@ export type AppConfig = {
 	};
 	map: {
 		defaultYear: number;
+		autoZoomOutThreshold?: number;
+		visibilityPaddingPixels?: number;
 		initialView: MapLocation;
 		keyboard: {
 			panPixels: number;

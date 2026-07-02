@@ -47,6 +47,8 @@ theme:
 
 map:
   defaultYear: 1897
+  autoZoomOutThreshold: 0.5
+  visibilityPaddingPixels: 60
   initialView:
     center: [4.484882, 51.921456]
     zoom: 14
