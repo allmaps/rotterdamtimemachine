@@ -28,6 +28,9 @@
 	const CAMERA_BASE_PADDING = 40;
 	const CAMERA_PANEL_GAP = 16;
 	const DESKTOP_SLIDER_INSET = 96;
+	const MAPLIBRE_TILE_SIZE = 512;
+	const WEB_MERCATOR_WORLD_WIDTH = 40075016.68557849;
+	const ZOOM_EPSILON = 0.001;
 	const LOCATION_SOURCE_ID = 'selected-location-source';
 	const LOCATION_LAYER_ID = 'selected-location-circle';
 	const EMPTY_LOCATION_DATA: GeoJSON.FeatureCollection<GeoJSON.Point> = {
@@ -59,7 +62,8 @@
 		navPosition = 'left',
 		controlsPosition = 'top-right',
 		showInViewControl = false,
-		autoplayActive = false
+		autoplayActive = false,
+		autoplayFollowMap = false
 	}: {
 		config: AppConfig;
 		annotation?: string;
@@ -79,6 +83,7 @@
 		controlsPosition?: 'top-left' | 'top-right';
 		showInViewControl?: boolean;
 		autoplayActive?: boolean;
+		autoplayFollowMap?: boolean;
 	} = $props();
 
 	let activeAnnotation = $derived(annotation);
@@ -103,6 +108,9 @@
 	let previousKeyboardCommandId = 0;
 	let previousToolbarCommandId = 0;
 	let commandIdsInitialized = false;
+	let autoplayReferenceZoom: number | undefined;
+	let autoplayUserMoveStartZoom: number | undefined;
+	let autoplayZoomLimitWasActive = false;
 	let visibilityCheckFrame: number | undefined;
 	let selectedLocationTimer: ReturnType<typeof setTimeout> | undefined;
 	let isSyncing = false;
@@ -198,6 +206,28 @@
 	});
 
 	$effect(() => {
+		const shouldLimitZoom = autoplayActive && !autoplayFollowMap;
+		const annotationForLimit = activeAnnotation;
+
+		if (!loaded || !mapReady || !map) {
+			if (!shouldLimitZoom) resetAutoplayZoomLimit(false);
+			return;
+		}
+
+		if (!shouldLimitZoom) {
+			resetAutoplayZoomLimit(autoplayZoomLimitWasActive && !autoplayActive);
+			return;
+		}
+
+		autoplayZoomLimitWasActive = true;
+		autoplayReferenceZoom ??= map.getZoom();
+
+		if (annotationForLimit) {
+			applyAutoplayZoomLimit(annotationForLimit);
+		}
+	});
+
+	$effect(() => {
 		const shouldRotate = rotateToMapOrientation;
 		const annotationForOrientation = activeAnnotation;
 		if (!loaded || !mapReady || !map) return;
@@ -248,11 +278,20 @@
 		if (!mapReady || !map || !command || command.id === previousKeyboardCommandId) return;
 
 		previousKeyboardCommandId = command.id;
+		let zoom = command.zoomDelta === undefined ? map.getZoom() : map.getZoom() + command.zoomDelta;
+
+		if (command.zoomDelta !== undefined && autoplayActive && !autoplayFollowMap) {
+			autoplayReferenceZoom = clampZoomToMapLimits(
+				(autoplayReferenceZoom ?? map.getZoom()) + command.zoomDelta
+			);
+			zoom = getAutoplayLimitedZoom(activeAnnotation, autoplayReferenceZoom);
+		}
+
 		map.easeTo({
 			duration: 300,
 			easeId: 'keyboardHandler',
 			center: map.getCenter(),
-			zoom: command.zoomDelta === undefined ? map.getZoom() : map.getZoom() + command.zoomDelta,
+			zoom,
 			pitch: 0,
 			offset: command.offset ?? [0, 0]
 		});
@@ -369,6 +408,90 @@
 
 	function getBrandMainColor() {
 		return getThemeColor(config.theme);
+	}
+
+	function resetAutoplayZoomLimit(restoreReferenceZoom: boolean) {
+		const referenceZoom = autoplayReferenceZoom;
+
+		autoplayReferenceZoom = undefined;
+		autoplayZoomLimitWasActive = false;
+
+		if (restoreReferenceZoom && referenceZoom !== undefined) {
+			easeToAutoplayZoom(referenceZoom);
+		}
+	}
+
+	function applyAutoplayZoomLimit(annotationForLimit: string) {
+		if (!map) return;
+
+		const referenceZoom = autoplayReferenceZoom ?? map.getZoom();
+		autoplayReferenceZoom = referenceZoom;
+
+		const zoom = getAutoplayLimitedZoom(annotationForLimit, referenceZoom);
+		if (Math.abs(map.getZoom() - zoom) <= ZOOM_EPSILON) return;
+
+		easeToAutoplayZoom(zoom);
+	}
+
+	function getAutoplayLimitedZoom(annotationForLimit: string | undefined, referenceZoom: number) {
+		const maxZoom = annotationForLimit
+			? getSelectedMapNativeMaxZoom(annotationForLimit)
+			: undefined;
+		const zoom = maxZoom === undefined ? referenceZoom : Math.min(referenceZoom, maxZoom);
+
+		return clampZoomToMapLimits(zoom);
+	}
+
+	function getSelectedMapNativeMaxZoom(annotationForLimit: string) {
+		const ids = getSelectedMapIds(annotationForLimit);
+		if (!ids) return undefined;
+
+		const maxZooms = ids
+			.map((id) => warpedMapLayer.getWarpedMap(id)?.resourceToProjectedGeoScale)
+			.filter(
+				(scale): scale is number => typeof scale === 'number' && Number.isFinite(scale) && scale > 0
+			)
+			.map((scale) => Math.log2((scale * WEB_MERCATOR_WORLD_WIDTH) / MAPLIBRE_TILE_SIZE));
+
+		return maxZooms.length > 0 ? Math.min(...maxZooms) : undefined;
+	}
+
+	function easeToAutoplayZoom(zoom: number) {
+		if (!map) return;
+
+		map.easeTo({
+			center: map.getCenter(),
+			zoom: clampZoomToMapLimits(zoom),
+			bearing: map.getBearing(),
+			pitch: 0,
+			duration: config.autoplay?.flyToDurationMs ?? 100
+		});
+	}
+
+	function clampZoomToMapLimits(zoom: number) {
+		if (!map) return zoom;
+
+		return Math.min(map.getMaxZoom(), Math.max(map.getMinZoom(), zoom));
+	}
+
+	function beginAutoplayUserMove(event: { originalEvent?: Event }) {
+		if (!map || !autoplayActive || autoplayFollowMap || !event.originalEvent) return;
+
+		autoplayUserMoveStartZoom = map.getZoom();
+	}
+
+	function finishAutoplayUserMove(mapInstance: maplibregl.Map) {
+		if (autoplayUserMoveStartZoom === undefined) return;
+
+		const zoom = mapInstance.getZoom();
+		if (Math.abs(zoom - autoplayUserMoveStartZoom) > ZOOM_EPSILON) {
+			autoplayReferenceZoom = Math.min(
+				mapInstance.getMaxZoom(),
+				Math.max(mapInstance.getMinZoom(), zoom)
+			);
+		}
+
+		autoplayUserMoveStartZoom = undefined;
 	}
 
 	function focusSelectedMap(annotationForFocus = activeAnnotation) {
@@ -648,6 +771,8 @@
 		map = mapInstance;
 		mapReady = true;
 
+		mapInstance.on('movestart', beginAutoplayUserMove);
+
 		mapInstance.on('move', () => {
 			if (!isSyncing) {
 				currentLocation = {
@@ -659,6 +784,7 @@
 		});
 
 		mapInstance.on('moveend', () => {
+			finishAutoplayUserMove(mapInstance);
 			updateAnnotationsInView();
 			checkSelectedMapVisibility(activeAnnotation, false);
 		});

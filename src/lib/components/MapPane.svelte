@@ -149,6 +149,7 @@
 			{controlsPosition}
 			{showInViewControl}
 			{autoplayActive}
+			{autoplayFollowMap}
 		/>
 		<MapLayers
 			bind:annotation
