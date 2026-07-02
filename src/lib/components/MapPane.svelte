@@ -39,6 +39,7 @@
 		showInViewControl = false,
 		autoplayActive = false,
 		autoplayFollowMap = false,
+		autoplayNextAnnotation,
 		annotationsInView = $bindable<string[]>([]),
 		annotationsAtCenter = $bindable<string[]>([])
 	}: {
@@ -64,6 +65,7 @@
 		showInViewControl?: boolean;
 		autoplayActive?: boolean;
 		autoplayFollowMap?: boolean;
+		autoplayNextAnnotation?: string;
 		annotationsInView?: string[];
 		annotationsAtCenter?: string[];
 	} = $props();
@@ -150,6 +152,7 @@
 			{showInViewControl}
 			{autoplayActive}
 			{autoplayFollowMap}
+			{autoplayNextAnnotation}
 		/>
 		<MapLayers
 			bind:annotation

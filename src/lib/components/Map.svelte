@@ -31,6 +31,7 @@
 	const MAPLIBRE_TILE_SIZE = 512;
 	const WEB_MERCATOR_WORLD_WIDTH = 40075016.68557849;
 	const ZOOM_EPSILON = 0.001;
+	const DEFAULT_OVERVIEW_TILES_RESOLUTION = 2048 * 2048;
 	const LOCATION_SOURCE_ID = 'selected-location-source';
 	const LOCATION_LAYER_ID = 'selected-location-circle';
 	const EMPTY_LOCATION_DATA: GeoJSON.FeatureCollection<GeoJSON.Point> = {
@@ -63,7 +64,8 @@
 		controlsPosition = 'top-right',
 		showInViewControl = false,
 		autoplayActive = false,
-		autoplayFollowMap = false
+		autoplayFollowMap = false,
+		autoplayNextAnnotation
 	}: {
 		config: AppConfig;
 		annotation?: string;
@@ -84,6 +86,7 @@
 		showInViewControl?: boolean;
 		autoplayActive?: boolean;
 		autoplayFollowMap?: boolean;
+		autoplayNextAnnotation?: string;
 	} = $props();
 
 	let activeAnnotation = $derived(annotation);
@@ -114,7 +117,12 @@
 	let selectedLocationTimer: ReturnType<typeof setTimeout> | undefined;
 	let isSyncing = false;
 	let warpedMapList = getWarpedMapList();
-	let warpedMapLayer = new WarpedMapLayer({ visible: false, warpedMapList });
+	let warpedMapLayer = new WarpedMapLayer({
+		visible: false,
+		overviewTilesMaxResolution: DEFAULT_OVERVIEW_TILES_RESOLUTION,
+		overviewTilesSelection: 'lowest',
+		warpedMapList
+	});
 
 	const basemapLayers = untrack(() =>
 		getProtomapsLayers('light', undefined, { lang: config.site.locale })
@@ -130,11 +138,21 @@
 
 	// Load the warped map layer when the selected annotation changes.
 	$effect(() => {
-		if (loaded && activeAnnotation && mapIdsByAnnotation.size > 0) {
-			const idsToShow = mapIdsByAnnotation.get(activeAnnotation) ?? new Set();
-			warpedMapLayer.setMapsOptions((id: string) =>
-				idsToShow.has(id) ? { visible: true } : { visible: false }
-			);
+		const annotationToShow = activeAnnotation;
+		const annotationToAnticipate = autoplayActive ? autoplayNextAnnotation : undefined;
+
+		if (loaded && mapIdsByAnnotation.size > 0) {
+			const idsToShow = annotationToShow
+				? (mapIdsByAnnotation.get(annotationToShow) ?? new Set<string>())
+				: new Set<string>();
+			const idsToAnticipate = annotationToAnticipate
+				? (mapIdsByAnnotation.get(annotationToAnticipate) ?? new Set<string>())
+				: new Set<string>();
+
+			warpedMapLayer.setMapsOptions((id: string) => ({
+				visible: idsToShow.has(id),
+				anticipateVisibility: idsToAnticipate.has(id)
+			}));
 		}
 	});
 

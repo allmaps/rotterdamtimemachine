@@ -113,6 +113,9 @@
 	let autoplayCurrentIndex = $derived(getAutoplayCurrentIndex());
 	let autoplayCurrentPosition = $derived(autoplayCurrentIndex >= 0 ? autoplayCurrentIndex + 1 : 0);
 	let autoplayTotal = $derived(autoplayItems.length);
+	let autoplayNextAnnotation = $derived(
+		autoplayActive && autoplayTotal > 1 ? getRelativeAutoplayItem(1)?.annotation : undefined
+	);
 	let autoplayDisabled = $derived(
 		comparison.active ||
 			!panesReady ||
@@ -674,6 +677,7 @@
 				showLayersPaneIndicator={comparison.active}
 				{autoplayActive}
 				{autoplayFollowMap}
+				{autoplayNextAnnotation}
 			/>
 
 			{#if comparison.active}
