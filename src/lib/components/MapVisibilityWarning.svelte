@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { fade } from 'svelte/transition';
-	import { Focus, MousePointer2 } from '@lucide/svelte';
+	import { Focus, MousePointer2, X } from '@lucide/svelte';
 	import type maplibregl from 'maplibre-gl';
 	import type { AppConfig } from '$lib/types';
 
@@ -20,8 +20,8 @@
 
 	const DESKTOP_SLIDER_INSET = 96;
 	const MARGIN = 16;
-	const MAX_WIDTH = 280;
-	const MIN_WIDTH = 200;
+	const MAX_WIDTH = 220;
+	const MIN_WIDTH = 220;
 	const FALLBACK_HEIGHT = 132;
 	const POINTER_SIZE = 30;
 	const POINTER_GAP = 12;
@@ -481,11 +481,22 @@
 			>
 				<MousePointer2 class="h-full w-full fill-brand-main text-white" />
 			</span>
-			<h2 class="font-heading text-sm font-bold">
-				{selectedMapVisibility === 'not-visible'
-					? config.mapWarnings.outsideTitle
-					: config.mapWarnings.partialTitle}
-			</h2>
+			<div class="flex items-start gap-2">
+				<h2 class="min-w-0 flex-1 pr-1 font-heading text-sm leading-5 font-bold">
+					{selectedMapVisibility === 'not-visible'
+						? config.mapWarnings.outsideTitle
+						: config.mapWarnings.partialTitle}
+				</h2>
+				<button
+					type="button"
+					class="-mt-1 -mr-1 flex h-7 w-7 shrink-0 cursor-pointer items-center justify-center rounded text-gray-500 hover:bg-gray-100 hover:text-gray-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-main"
+					aria-label={config.mapWarnings.dismiss}
+					title={config.mapWarnings.dismiss}
+					onclick={onDismiss}
+				>
+					<X class="h-4 w-4" />
+				</button>
+			</div>
 			<p class="mt-1 text-xs leading-5 text-gray-600">
 				{selectedMapVisibility === 'not-visible'
 					? config.mapWarnings.outsideDescription
@@ -493,13 +504,6 @@
 			</p>
 
 			<div class="mt-3 flex justify-start gap-2">
-				<button
-					type="button"
-					class="rounded-md border border-gray-200 px-2.5 py-1.5 text-xs font-semibold text-gray-700 hover:bg-gray-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-main"
-					onclick={onDismiss}
-				>
-					{config.mapWarnings.dismiss}
-				</button>
 				<button
 					type="button"
 					class="inline-flex items-center gap-1.5 rounded-md bg-brand-main px-2.5 py-1.5 text-xs font-semibold text-white hover:bg-brand-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-main"
