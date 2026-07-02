@@ -3,13 +3,13 @@
 	import { fly } from 'svelte/transition';
 	import maplibregl from 'maplibre-gl';
 	import { WarpedMapLayer } from '@allmaps/maplibre';
-	import { Focus } from '@lucide/svelte';
 	import 'maplibre-gl/dist/maplibre-gl.css';
 	import { viewState, flyTo, selectedLocation } from '$lib/app-state.svelte.js';
 	import { getProtomapsLayers, getProtomapsStyle } from '$lib/basemap';
 	import { getThemeColor } from '$lib/theme';
 	import { annotationsByMapId, getWarpedMapList, mapIdsByAnnotation } from '$lib/warped-map-list';
 	import MapControls from '$lib/components/MapControls.svelte';
+	import MapVisibilityWarning from '$lib/components/MapVisibilityWarning.svelte';
 	import type {
 		AppConfig,
 		GeocoderBounds,
@@ -89,7 +89,7 @@
 	let activeAnnotation = $derived(annotation);
 	let activeOpacity = $derived((opacity ?? 100) / 100);
 
-	let mapElement: HTMLDivElement;
+	let mapElement = $state<HTMLDivElement>();
 	let map = $state<maplibregl.Map>();
 	let mapReady: boolean = $state(false);
 	let loaded: boolean = $state(false);
@@ -97,7 +97,6 @@
 		'fully-visible' | 'partly-visible' | 'not-visible' | 'unknown'
 	>('unknown');
 	let visibilityWarningOpen = $state(false);
-	let visibilityWarningPadding = $state({ left: 0, right: 0 });
 	let dismissedVisibilityWarningAnnotation: string | undefined;
 	let previousAnnotationForVisibility: string | undefined;
 	let previousAnnotationForOrientation: string | undefined;
@@ -124,6 +123,9 @@
 	const loadedStyleImages = new Set<string>();
 	let canZoomToActiveMap = $derived(
 		loaded && !!activeAnnotation && (mapIdsByAnnotation.get(activeAnnotation)?.size ?? 0) > 0
+	);
+	let selectedMapCenter = $derived(
+		loaded && activeAnnotation ? getSelectedMapCenter(activeAnnotation) : undefined
 	);
 
 	// Load the warped map layer when the selected annotation changes.
@@ -197,15 +199,6 @@
 		if (autoplayActive || focusActiveMap) {
 			visibilityWarningOpen = false;
 		}
-	});
-
-	$effect(() => {
-		if (!visibilityWarningOpen) return;
-
-		updateVisibilityWarningPadding();
-		window.addEventListener('resize', updateVisibilityWarningPadding);
-
-		return () => window.removeEventListener('resize', updateVisibilityWarningPadding);
 	});
 
 	$effect(() => {
@@ -549,6 +542,13 @@
 		return warpedMapLayer.getMapsBounds(ids);
 	}
 
+	function getSelectedMapCenter(annotationForCheck: string) {
+		const ids = getSelectedMapIds(annotationForCheck);
+		if (!ids) return undefined;
+
+		return warpedMapLayer.getMapsCenter(ids);
+	}
+
 	function getSelectedMapIds(annotationForCheck: string) {
 		const ids = mapIdsByAnnotation.get(annotationForCheck);
 		if (!ids?.size) return undefined;
@@ -578,7 +578,7 @@
 	function getBottomPanelInset() {
 		const pane = getMapPaneElement();
 		const panel = pane?.querySelector<HTMLElement>('[data-map-layers-panel]');
-		if (!panel) return 0;
+		if (!panel || !mapElement) return 0;
 
 		const mapRect = mapElement.getBoundingClientRect();
 		const panelRect = panel.getBoundingClientRect();
@@ -600,37 +600,6 @@
 
 		return 0;
 	}
-
-	function getVisualSliderInset() {
-		const pane = getMapPaneElement();
-		const surface = pane?.querySelector<HTMLElement>('[data-time-slider-surface]');
-
-		if (surface) {
-			const surfaceStyle = getComputedStyle(surface);
-			if (surfaceStyle.display !== 'none') {
-				return Math.ceil(surface.getBoundingClientRect().width || DESKTOP_SLIDER_INSET);
-			}
-		}
-
-		return 0;
-	}
-
-	function updateVisibilityWarningPadding() {
-		const sliderInset = getVisualSliderInset();
-
-		visibilityWarningPadding = {
-			left: navPosition === 'left' ? sliderInset : 0,
-			right: navPosition === 'right' ? sliderInset : 0
-		};
-	}
-
-	function getVisibilityWarningStyle() {
-		return [
-			`padding-left: ${visibilityWarningPadding.left + 16}px`,
-			`padding-right: ${visibilityWarningPadding.right + 16}px`
-		].join('; ');
-	}
-
 	function getCameraPadding(): CameraPadding {
 		const bottomInset = getBottomPanelInset();
 		const sliderInset = getSliderInset();
@@ -701,7 +670,7 @@
 
 		selectedMapVisibility = getSelectedMapVisibility(annotationForCheck);
 
-		if (autoplayActive || focusActiveMap || selectedMapVisibility === 'fully-visible') {
+		if (autoplayActive || focusActiveMap || selectedMapVisibility !== 'not-visible') {
 			visibilityWarningOpen = false;
 			return;
 		}
@@ -782,6 +751,8 @@
 	}
 
 	onMount(() => {
+		if (!mapElement) return;
+
 		const mapInstance = new maplibregl.Map({
 			style: getProtomapsStyle('light', config.basemap.protomapsApiKey),
 			container: mapElement,
@@ -805,6 +776,10 @@
 					zoom: mapInstance.getZoom(),
 					bearing: mapInstance.getBearing()
 				};
+			}
+
+			if (visibilityWarningOpen) {
+				checkSelectedMapVisibility(activeAnnotation, false);
 			}
 		});
 
@@ -877,45 +852,14 @@
 		/>
 	</div>
 {/if}
-
-{#if visibilityWarningOpen}
-	<div
-		class="pointer-events-none absolute inset-0 z-40 flex items-center justify-center p-4"
-		style={getVisibilityWarningStyle()}
-	>
-		<div
-			role="alert"
-			aria-label={config.mapWarnings.label}
-			class="pointer-events-auto w-full max-w-xs rounded-lg border border-gray-200 bg-white p-3 text-gray-900 shadow-xl"
-		>
-			<h2 class="font-heading text-sm font-bold">
-				{selectedMapVisibility === 'not-visible'
-					? config.mapWarnings.outsideTitle
-					: config.mapWarnings.partialTitle}
-			</h2>
-			<p class="mt-1 text-xs leading-5 text-gray-600">
-				{selectedMapVisibility === 'not-visible'
-					? config.mapWarnings.outsideDescription
-					: config.mapWarnings.partialDescription}
-			</p>
-
-			<div class="mt-3 flex justify-end gap-2">
-				<button
-					type="button"
-					class="rounded-md border border-gray-200 px-2.5 py-1.5 text-xs font-semibold text-gray-700 hover:bg-gray-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-main"
-					onclick={dismissVisibilityWarning}
-				>
-					{config.mapWarnings.dismiss}
-				</button>
-				<button
-					type="button"
-					class="inline-flex items-center gap-1.5 rounded-md bg-brand-main px-2.5 py-1.5 text-xs font-semibold text-white hover:bg-brand-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-main"
-					onclick={zoomToActiveMapFromWarning}
-				>
-					<Focus class="h-4 w-4" />
-					{config.mapWarnings.zoomToLayer}
-				</button>
-			</div>
-		</div>
-	</div>
-{/if}
+<MapVisibilityWarning
+	open={visibilityWarningOpen}
+	{config}
+	{map}
+	{mapElement}
+	{selectedMapCenter}
+	{selectedMapVisibility}
+	{navPosition}
+	onDismiss={dismissVisibilityWarning}
+	onZoomToLayer={zoomToActiveMapFromWarning}
+/>
