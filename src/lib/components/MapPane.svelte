@@ -129,7 +129,7 @@
 		</div>
 	{/if}
 
-	<div class="relative flex-1 grow {mapOrderClass}">
+	<div class="relative min-h-0 flex-1 grow {mapOrderClass}">
 		<Map
 			bind:annotation
 			bind:opacity

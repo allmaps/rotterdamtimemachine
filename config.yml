@@ -169,6 +169,7 @@ share:
   description: Kies of je de algemene pagina of de huidige kaartuitsnede wilt delen.
   simpleLink: Eenvoudige link
   viewLink: Huidige uitsnede
+  presentationLink: Presentatiemodus
   copy: Kopieer
   copied: Gekopieerd
 

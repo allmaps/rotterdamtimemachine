@@ -9,4 +9,4 @@
 	} = $props();
 </script>
 
-<TimeMachineApp config={data.config} collection={data.collection} />
+<TimeMachineApp config={data.config} collection={data.collection} startInPresentation />

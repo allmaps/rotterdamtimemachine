@@ -135,6 +135,7 @@ export type AppConfig = {
 		description: string;
 		simpleLink: string;
 		viewLink: string;
+		presentationLink: string;
 		copy: string;
 		copied: string;
 	};

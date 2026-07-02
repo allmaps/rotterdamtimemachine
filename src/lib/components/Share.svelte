@@ -17,6 +17,7 @@
 	type ShareMode = 'simple' | 'view';
 
 	let shareMode = $state<ShareMode>('simple');
+	let sharePresentation = $state(isPresentationRoute());
 	let url = $derived(shareMode === 'view' ? getViewUrl() : getSimpleUrl());
 	let copied = $state(false);
 	let inputElement: HTMLInputElement | undefined = $state();
@@ -39,14 +40,31 @@
 		return window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 	}
 
-	function getSimpleUrl() {
-		if (typeof window === 'undefined') return config.site.url;
+	function isPresentationRoute() {
+		if (typeof window === 'undefined') return false;
 
-		return new URL(resolve('/'), window.location.origin).href;
+		const presentationPath = resolve('/presentation/').replace(/\/$/, '');
+		const currentPath = window.location.pathname.replace(/\/$/, '');
+
+		return currentPath === presentationPath;
+	}
+
+	function getShareBaseUrl() {
+		const path = sharePresentation ? '/presentation/' : '/';
+
+		if (typeof window === 'undefined') {
+			return new URL(resolve(path), config.site.url).href;
+		}
+
+		return new URL(resolve(path), window.location.origin).href;
+	}
+
+	function getSimpleUrl() {
+		return getShareBaseUrl();
 	}
 
 	function getViewUrl() {
-		const viewUrl = new URL(getSimpleUrl());
+		const viewUrl = new URL(getShareBaseUrl());
 		const [lng, lat] = mapView.center;
 
 		if (Number.isFinite(lat) && Number.isFinite(lng)) {
@@ -71,6 +89,12 @@
 
 	function selectShareMode(mode: ShareMode) {
 		shareMode = mode;
+		if (copiedTimer) clearTimeout(copiedTimer);
+		copied = false;
+	}
+
+	function togglePresentationMode() {
+		sharePresentation = !sharePresentation;
 		if (copiedTimer) clearTimeout(copiedTimer);
 		copied = false;
 	}
@@ -129,6 +153,28 @@
 				{config.share.viewLink}
 			</button>
 		</div>
+		<button
+			type="button"
+			aria-pressed={sharePresentation}
+			onclick={togglePresentationMode}
+			class="mb-3 flex w-full cursor-pointer items-center justify-between gap-3 rounded border px-3 py-2 text-left text-sm font-semibold transition-colors {sharePresentation
+				? 'border-brand-main bg-brand-soft text-gray-900'
+				: 'border-gray-200 bg-white text-gray-700 hover:bg-gray-100'}"
+		>
+			<span>{config.share.presentationLink}</span>
+			<span
+				aria-hidden="true"
+				class="relative h-5 w-9 rounded-full transition-colors {sharePresentation
+					? 'bg-brand-main'
+					: 'bg-gray-300'}"
+			>
+				<span
+					class="absolute top-0.5 h-4 w-4 rounded-full bg-white shadow transition-transform {sharePresentation
+						? 'translate-x-4'
+						: 'translate-x-0.5'}"
+				></span>
+			</span>
+		</button>
 		<div class="flex flex-col gap-2 sm:flex-row">
 			<input
 				bind:this={inputElement}
