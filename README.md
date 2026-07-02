@@ -285,22 +285,22 @@ You can link to a year with the `year` parameter. This parameter only accepts a 
 https://example.org/time-machine/?year=1897
 ```
 
-You can link to a specific map with the `map` parameter. This parameter accepts an annotation value that exists in `collection.yml`:
+You can link to a specific map with the `map` parameter. This parameter accepts the generated annotation ID from `src/lib/generated/maps.json`; full annotation URLs are not accepted. For Allmaps annotations this is the hash in the annotation URL; any version hash after `@` is ignored:
 
 ```text
-https://example.org/time-machine/?map=https%3A%2F%2Fannotations.allmaps.org%2Fmanifests%2Fexample
+https://example.org/time-machine/?map=7256050d27d1f599
 ```
 
-For bundled annotations, use the same relative value as `collection.yml`:
+For bundled annotations in `static/annotations`, the generated ID is the first 16 characters of a SHA-1 hash of the normalized static path. The sharing modal creates these URLs automatically.
 
 ```text
-https://example.org/time-machine/?map=annotations%2Frotterdam-1897.json
+https://example.org/time-machine/?map=ee371ce2fd6f97fa
 ```
 
 If `year` and `map` are both present, `map` takes preference. To link to a specific view, add `lat`, `lng`, and optionally `zoom` and `bearing`:
 
 ```text
-https://example.org/time-machine/?lat=51.92146&lng=4.48488&zoom=14.00&map=https%3A%2F%2Fannotations.allmaps.org%2Fmanifests%2Fexample
+https://example.org/time-machine/?lat=51.92146&lng=4.48488&zoom=14.00&map=7256050d27d1f599
 ```
 
 The sharing modal keeps the default link simple and only includes view parameters when the current-view option is selected.

@@ -3,6 +3,7 @@
 	import { Check, Copy, X, Share2 } from '@lucide/svelte';
 	import { resolve } from '$app/paths';
 	import { mapView, viewState } from '$lib/app-state.svelte.js';
+	import { idByAnnotation } from '$lib/warped-map-list';
 	import { tick } from 'svelte';
 	import type { AppConfig } from '$lib/types';
 
@@ -76,8 +77,9 @@
 			viewUrl.searchParams.set('zoom', mapView.zoom.toFixed(2));
 		}
 
-		if (viewState.annotation) {
-			viewUrl.searchParams.set('map', viewState.annotation);
+		const annotationId = idByAnnotation.get(viewState.annotation);
+		if (annotationId) {
+			viewUrl.searchParams.set('map', annotationId);
 		}
 
 		if (Number.isFinite(mapView.bearing) && Math.abs(mapView.bearing) >= 0.005) {

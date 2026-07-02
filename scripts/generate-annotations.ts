@@ -30,6 +30,7 @@ type MapRecord = {
 };
 
 type GeneratedAnnotationEntry = {
+	id: string;
 	annotation: string;
 	maps: GeoreferencedMap[];
 };
@@ -77,6 +78,7 @@ export async function generateAnnotations(
 	const entries = await mapWithConcurrency(annotationUrls, FETCH_CONCURRENCY, async (annotation) =>
 		generateAnnotationEntry(annotation, root, refreshRemoteAnnotations)
 	);
+	validateUniqueAnnotationIds(entries);
 	const generatedPath = path.join(root, GENERATED_FILE);
 	const output: GeneratedAnnotations = {
 		config: configFileName,
@@ -117,6 +119,7 @@ async function generateAnnotationEntry(
 	const maps = parseAnnotation(data);
 
 	return {
+		id: getAnnotationId(annotation),
 		annotation,
 		maps
 	};
@@ -238,6 +241,50 @@ function getLocalAnnotationPath(annotation: string, root: string): string | unde
 function getCachePath(url: string, root: string): string {
 	const hash = createHash('sha256').update(url).digest('hex');
 	return path.join(root, CACHE_DIRECTORY, `${hash}.json`);
+}
+
+function getAnnotationId(annotation: string): string {
+	const value = annotation.trim();
+
+	if (isAbsoluteUrl(value)) {
+		const allmapsId = getAllmapsAnnotationId(value);
+		return allmapsId ?? createHash('sha1').update(value).digest('hex');
+	}
+
+	return createHash('sha1').update(normalizePublicPath(value)).digest('hex').slice(0, 16);
+}
+
+function getAllmapsAnnotationId(value: string): string | undefined {
+	try {
+		const url = new URL(value);
+		if (url.hostname !== 'annotations.allmaps.org') return undefined;
+
+		const segments = url.pathname.split('/').filter(Boolean);
+		const typeIndex = segments.findIndex((segment) =>
+			['maps', 'manifests', 'images'].includes(segment)
+		);
+		const idSegment = typeIndex >= 0 ? segments[typeIndex + 1] : undefined;
+		const id = idSegment?.split('@')[0];
+
+		return id || undefined;
+	} catch {
+		return undefined;
+	}
+}
+
+function validateUniqueAnnotationIds(entries: GeneratedAnnotationEntry[]) {
+	const seenIds = new Map<string, string>();
+
+	for (const entry of entries) {
+		const existingAnnotation = seenIds.get(entry.id);
+		if (existingAnnotation) {
+			throw new Error(
+				`Annotation identifier collision for "${entry.id}": ${existingAnnotation} and ${entry.annotation}`
+			);
+		}
+
+		seenIds.set(entry.id, entry.annotation);
+	}
 }
 
 async function readYamlFile(filePath: string): Promise<unknown> {

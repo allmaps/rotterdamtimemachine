@@ -7,7 +7,7 @@
 	import { onMount, tick, untrack } from 'svelte';
 	import { comparison, mapView, viewState } from '$lib/app-state.svelte.js';
 	import { getMapStartYear, mapIncludesYear } from '$lib/map-years';
-	import { loadWarpedMapData } from '$lib/warped-map-list';
+	import { annotationById, loadWarpedMapData } from '$lib/warped-map-list';
 	import { LoaderCircle } from '@lucide/svelte';
 	import type {
 		AppConfig,
@@ -188,7 +188,10 @@
 	function mapForAnnotationParam(value: string | null) {
 		if (!value) return undefined;
 
-		return collection.find((map) => map.annotation === value);
+		const annotation = annotationById.get(value);
+		if (!annotation) return undefined;
+
+		return collection.find((map) => map.annotation === annotation);
 	}
 
 	function yearFromParam(value: string | null) {
@@ -586,11 +589,11 @@
 
 		async function initializePanes() {
 			syncCompareStacked(compareStackQuery);
-			applyInitialParams(new URLSearchParams(window.location.search));
 
 			try {
 				await loadWarpedMapData();
 				if (!cancelled) {
+					applyInitialParams(new URLSearchParams(window.location.search));
 					panesReady = true;
 					if (startsInPresentation) {
 						await tick();
