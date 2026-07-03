@@ -1,13 +1,13 @@
 site:
-  name: Rotterdam Tijdmachine
-  url: https://pages.allmaps.org/rotterdam-tijdmachine/
+  name: Rotterdam Time Machine
+  url: https://rotterdamtimemachine.nl/
   description: Verken historische kaarten van Rotterdam door de tijd en vergelijk kaartlagen met de huidige stad.
   locale: nl
 
 collection: collection.yml
 
 theme:
-  color: '#00811f'
+  color: "#00811f"
   fonts:
     families:
       - name: Bolder
@@ -89,8 +89,8 @@ tour:
   nextLabel: Volgende
   previousLabel: Vorige
   doneLabel: Klaar
-  progressText: '{{current}} van {{total}}'
-  storageKey: rotterdam-tijdmachine-tour-v1
+  progressText: "{{current}} van {{total}}"
+  storageKey: rotterdamtimemachine-tour-v1
   steps:
     - target: time-slider
       title: Reis door de tijd
@@ -119,17 +119,17 @@ tour:
       align: start
 
 about:
-  title: Over Rotterdam Tijdmachine
+  title: Over Rotterdam Time Machine
   closeLabel: Sluit over
   paragraphs:
-    - Rotterdam Tijdmachine maakt het mogelijk om ruim 150 jaar aan stadsgeschiedenis te ontdekken. Historische kaarten laten zien hoe Rotterdam zich ontwikkelde van compacte handelsstad aan de Maas tot moderne havenstad met wijken, infrastructuur en haventerreinen die steeds opnieuw werden aangepast.
-    - 'Een belangrijk kantelpunt is het bombardement van 14 mei 1940, waarbij grote delen van de binnenstad werden verwoest. De wederopbouw veranderde het centrum ingrijpend: oude stratenpatronen verdwenen, nieuwe verkeersroutes en pleinen ontstonden, en de stad kreeg een ander ritme.'
+    - Rotterdam Time Machine maakt het mogelijk om ruim 300 jaar aan stadsgeschiedenis te ontdekken. Historische kaarten, luchtfoto's en plattegronden laten zien hoe Rotterdam zich ontwikkelde van compacte handelsstad aan de Maas tot moderne havenstad met wijken, infrastructuur en haventerreinen die steeds opnieuw werden aangepast.
+    - "Een belangrijk kantelpunt is het bombardement van 14 mei 1940, waarbij grote delen van de binnenstad werden verwoest. De wederopbouw veranderde het centrum ingrijpend: oude stratenpatronen verdwenen, nieuwe verkeersroutes en pleinen ontstonden, en de stad kreeg een ander ritme."
     - Ook buiten het centrum veranderde Rotterdam voortdurend. Havenuitbreidingen, spoorlijnen, waterwerken, industriegebieden en nieuwe woonwijken verschoven de grenzen van de stad. Door kaarten uit verschillende jaren over elkaar te leggen, worden deze veranderingen zichtbaar en vergelijkbaar.
     - Deze cultuurhistorische tijdreis helpt om het Rotterdam van nu beter te begrijpen. Ze laat zien welke structuren verdwenen, welke lijnen juist bleven bestaan, en hoe historische kennis opnieuw kan inspireren bij het kijken naar de stad.
   standards:
     title: Kaarten verbinden
     paragraphs:
-      - De kaarten in deze tijdmachine komen uit collecties van verschillende instellingen. Dankzij de open standaard IIIF kunnen kaartbeelden en metadata op een uniforme manier worden gepubliceerd, opgehaald en hergebruikt.
+      - De kaarten in deze time machine komen uit collecties van verschillende instellingen. Dankzij de open standaarden van IIIF kunnen beelden en metadata op een uniforme manier worden gepubliceerd, opgehaald en hergebruikt.
       - Met de open-source tooling van Allmaps worden historische kaartbeelden gekoppeld aan geografische coördinaten. Daardoor kunnen kaarten uit verschillende bronnen als lagen op dezelfde moderne kaart worden gelegd, vergeleken en gedeeld.
     links:
       - label: IIIF
@@ -139,20 +139,25 @@ about:
   institutionsTitle: Kaartbronnen
   source:
     title: Open source
-    description: Rotterdam Tijdmachine is een open-source project. De broncode is beschikbaar op GitHub.
-    linkLabel: Bekijk de code op GitHub
-    url: https://github.com/allmaps/rotterdam-tijdmachine
+    description: Rotterdam Time Machine is een open-source project geïnitieerd en beheerd door Allmaps, in samenwerking met het Stadsarchief Rotterdam. De broncode is beschikbaar op GitHub en kan hergebruikt worden voor een tijdreis van een andere stad, zie bijvoorbeeld het Kaartenkabinet van de Gouda Tijdmachine.
+    links:
+      - label: Bekijk de broncode op GitHub
+        url: https://github.com/allmaps/rotterdamtimemachine
+      - label: Gouda Tijdmachine
+        url: https://www.goudatijdmachine.nl/kaarten-kabinet/
+    linkLabel:
+    url:
   shortcutsTitle: Sneltoetsen
   shortcuts:
-    - keys: ['⌘', K, '/', Ctrl, K]
+    - keys: ["⌘", K, "/", Ctrl, K]
       description: Kaartlagen openen
-    - keys: ['↑', '↓']
+    - keys: ["↑", "↓"]
       description: ↑ naar het vorige, ↓ naar het volgende beschikbare kaartjaar
-    - keys: ['←', '→']
+    - keys: ["←", "→"]
       description: Door kaarten van hetzelfde jaar bladeren
-    - keys: ['+', '=', '-']
+    - keys: ["+", "=", "-"]
       description: In- en uitzoomen
-    - keys: [Shift, '←', '↑', '↓', '→']
+    - keys: [Shift, "←", "↑", "↓", "→"]
       description: Kaartbeeld verschuiven
     - keys: [R]
       description: Kaartoriëntatie volgen aan- of uitzetten

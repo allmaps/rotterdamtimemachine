@@ -122,8 +122,10 @@ export type AppConfig = {
 		source?: {
 			title: string;
 			description: string;
-			linkLabel: string;
-			url: string;
+			links?: Array<{
+				label: string;
+				url: string;
+			}>;
 		};
 		shortcutsTitle: string;
 		shortcuts: Array<{

@@ -110,21 +110,27 @@
 			</section>
 		{/if}
 
-		{#if config.about.source?.url}
+		{#if config.about.source}
 			<section class="mt-6 border-t border-gray-200 pt-5">
 				<h3 class="mb-2 text-sm font-bold text-gray-900">{config.about.source.title}</h3>
 				<p class="text-sm leading-relaxed text-gray-700">
 					{config.about.source.description}
 				</p>
-				<a
-					href={config.about.source.url}
-					target="_blank"
-					rel="external noopener noreferrer"
-					class="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-main hover:text-brand-hover"
-				>
-					<span>{config.about.source.linkLabel}</span>
-					<ExternalLink class="h-3.5 w-3.5 flex-none" />
-				</a>
+				{#if config.about.source.links?.length}
+					<div class="mt-3 flex flex-wrap gap-2">
+						{#each config.about.source.links as link (link.url)}
+							<a
+								href={link.url}
+								target="_blank"
+								rel="external noopener noreferrer"
+								class="inline-flex items-center gap-1 rounded bg-gray-100 px-2 py-1 text-xs font-semibold text-gray-600 hover:bg-brand-soft hover:text-brand-main"
+							>
+								<span>{link.label}</span>
+								<ExternalLink class="h-3 w-3 flex-none" />
+							</a>
+						{/each}
+					</div>
+				{/if}
 			</section>
 		{/if}
 
