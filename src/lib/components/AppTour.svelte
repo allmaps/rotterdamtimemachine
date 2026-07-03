@@ -2,6 +2,7 @@
 	import { onMount, tick } from 'svelte';
 	import { driver } from 'driver.js';
 	import 'driver.js/dist/driver.css';
+	import Modal from '$lib/components/Modal.svelte';
 	import type { AppConfig, TourConfig } from '$lib/types';
 	import type { Driver, DriveStep } from 'driver.js';
 
@@ -20,8 +21,18 @@
 	);
 	let tourDriver: Driver | undefined;
 	let startTimeout: number | undefined;
+	let introVisible = $state(false);
+	let introStartButton: HTMLButtonElement | undefined = $state();
+	let hasPrompted = false;
 	let hasStarted = false;
 	let persistOnDestroy = true;
+	let introTitle = $derived(tour?.introTitle ?? 'Rondleiding');
+	let introDescription = $derived(
+		tour?.introDescription ??
+			'Maak kort kennis met de belangrijkste onderdelen van deze applicatie.'
+	);
+	let startLabel = $derived(tour?.startLabel ?? tour?.nextLabel ?? 'Start');
+	let dismissLabel = $derived(tour?.dismissLabel ?? tour?.closeLabel ?? 'Overslaan');
 
 	onMount(() => {
 		mounted = true;
@@ -34,18 +45,59 @@
 	});
 
 	$effect(() => {
-		if (!mounted || !enabled || !tour || hasStarted || wasDismissed(storageKey)) return;
+		if (!mounted || !enabled || !tour || hasPrompted || wasDismissed(storageKey)) return;
 
-		scheduleStart();
+		scheduleIntro();
 	});
 
-	function scheduleStart(delay = 180) {
+	function scheduleIntro(delay = 180) {
+		if (startTimeout !== undefined) return;
+
+		startTimeout = window.setTimeout(() => {
+			startTimeout = undefined;
+			showIntro();
+		}, delay);
+	}
+
+	function scheduleTourStart(delay = 500) {
 		if (startTimeout !== undefined) return;
 
 		startTimeout = window.setTimeout(() => {
 			startTimeout = undefined;
 			startTour();
 		}, delay);
+	}
+
+	async function showIntro() {
+		if (!tour || hasPrompted || wasDismissed(storageKey)) return;
+
+		await tick();
+		await nextFrame();
+
+		if (hasBlockingOverlay()) {
+			scheduleIntro(500);
+			return;
+		}
+
+		hasPrompted = true;
+		introVisible = true;
+
+		await tick();
+		introStartButton?.focus({ preventScroll: true });
+	}
+
+	async function beginTour() {
+		introVisible = false;
+
+		await tick();
+		await nextFrame();
+		startTour();
+	}
+
+	function dismissTour() {
+		introVisible = false;
+		hasPrompted = true;
+		markDismissed(storageKey);
 	}
 
 	async function startTour() {
@@ -55,7 +107,7 @@
 		await nextFrame();
 
 		if (hasBlockingOverlay()) {
-			scheduleStart(500);
+			scheduleTourStart();
 			return;
 		}
 
@@ -161,6 +213,39 @@
 		return !!tourConfig && tourConfig.enabled !== false;
 	}
 </script>
+
+{#if introVisible}
+	<Modal
+		onClose={dismissTour}
+		ariaLabelledby="app-tour-intro-title"
+		placement="center"
+		panelClass="max-w-sm p-5"
+	>
+		<h2 id="app-tour-intro-title" class="font-heading text-lg leading-tight font-bold">
+			{introTitle}
+		</h2>
+		<p class="mt-2 text-sm leading-6 text-gray-600">
+			{introDescription}
+		</p>
+		<div class="mt-5 flex items-center justify-end gap-2">
+			<button
+				type="button"
+				class="cursor-pointer rounded border border-gray-300 bg-white px-3 py-2 text-sm font-bold text-gray-700 hover:border-brand-main hover:bg-gray-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-main"
+				onclick={dismissTour}
+			>
+				{dismissLabel}
+			</button>
+			<button
+				bind:this={introStartButton}
+				type="button"
+				class="cursor-pointer rounded border border-brand-main bg-brand-main px-3 py-2 text-sm font-bold text-white hover:border-brand-hover hover:bg-brand-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-main"
+				onclick={beginTour}
+			>
+				{startLabel}
+			</button>
+		</div>
+	</Modal>
+{/if}
 
 <style>
 	:global(.driver-popover.time-machine-tour),

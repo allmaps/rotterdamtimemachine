@@ -2,11 +2,14 @@
 	import { tick, type Snippet } from 'svelte';
 	import { fly } from 'svelte/transition';
 
+	type ModalPlacement = 'top' | 'center';
+
 	let {
 		onClose,
 		ariaLabel,
 		ariaLabelledby,
 		panelClass = '',
+		placement = 'top',
 		onKeydown,
 		children
 	}: {
@@ -14,6 +17,7 @@
 		ariaLabel?: string;
 		ariaLabelledby?: string;
 		panelClass?: string;
+		placement?: ModalPlacement;
 		onKeydown?: (event: KeyboardEvent) => void;
 		children: Snippet;
 	} = $props();
@@ -65,7 +69,9 @@
 
 <div
 	bind:this={dialogElement}
-	class="fixed inset-0 z-[1000] flex items-start justify-center bg-black/45 px-3 pt-14 md:pt-24"
+	class="fixed inset-0 z-[1000] flex justify-center bg-black/45 {placement === 'center'
+		? 'items-center p-4'
+		: 'items-start px-3 pt-14 md:pt-24'}"
 	role="dialog"
 	aria-modal="true"
 	aria-label={ariaLabel}
@@ -84,7 +90,7 @@
 
 	<div
 		class="relative z-10 flex w-full max-w-xl touch-auto flex-col overflow-hidden overscroll-contain rounded-lg border border-gray-200 bg-white text-gray-900 shadow-2xl {panelClass}"
-		transition:fly={{ y: -16, duration: 180 }}
+		transition:fly={{ y: placement === 'center' ? 12 : -16, duration: 180 }}
 	>
 		{@render children()}
 	</div>

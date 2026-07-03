@@ -91,6 +91,10 @@ tour:
   nextLabel: Volgende
   previousLabel: Vorige
   doneLabel: Klaar
+  introTitle: Ontdek het Goudse Kaarten Kabinet
+  introDescription: Volg een korte rondleiding langs de tijdslider, kaartlagen, zoekfunctie en vergelijkmodus.
+  startLabel: Start tour
+  dismissLabel: Niet nu
   progressText: "{{current}} van {{total}}"
   storageKey: goudse-kaarten-kabinet-tour-v1
   steps:

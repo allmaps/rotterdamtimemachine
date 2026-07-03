@@ -22,6 +22,10 @@ export type TourConfig =
 			nextLabel: string;
 			previousLabel: string;
 			doneLabel: string;
+			introTitle?: string;
+			introDescription?: string;
+			startLabel?: string;
+			dismissLabel?: string;
 			progressText: string;
 			storageKey?: string;
 			steps: Array<{

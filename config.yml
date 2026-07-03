@@ -89,6 +89,10 @@ tour:
   nextLabel: Volgende
   previousLabel: Vorige
   doneLabel: Klaar
+  introTitle: Ontdek Rotterdam Time Machine
+  introDescription: Volg een korte rondleiding langs de tijdslider, kaartlagen, zoekfunctie en vergelijkmodus.
+  startLabel: Start tour
+  dismissLabel: Niet nu
   progressText: "{{current}} van {{total}}"
   storageKey: rotterdamtimemachine-tour-v1
   steps:
