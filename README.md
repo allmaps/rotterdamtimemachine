@@ -45,12 +45,6 @@ pnpm run check
 pnpm run build
 ```
 
-For deployment under a subpath, set the SvelteKit base path with `BASE_PATH`:
-
-```bash
-BASE_PATH=/rotterdam-tijdmachine pnpm run build
-```
-
 To run or build with alternate content files, set `CONFIG`:
 
 ```bash
@@ -68,39 +62,20 @@ To enable deployment:
 2. Set **Build and deployment > Source** to **GitHub Actions**.
 3. Push to the `main` branch, or run **Deploy to GitHub Pages** manually from the **Actions** tab.
 
-The workflow resolves `BASE_PATH` before building. By default, it uses the repository name, which is correct for a GitHub Pages project site, such as:
+SvelteKit derives its base path from `site.url` in the selected config file. A root URL builds with no base path, while a URL with a path builds with that path:
 
 ```text
-https://allmaps.github.io/rotterdam-tijdmachine/
-https://pages.allmaps.org/rotterdam-tijdmachine/
+https://rotterdamtimemachine.nl/         -> BASE_PATH=<root>
+https://pages.allmaps.org/time-machine/ -> BASE_PATH=/time-machine
 ```
 
-`BASE_PATH` must match the subpath where the app is served. The workflow automatically uses an empty base path when:
-
-- the repository is an organization/user Pages repository, such as `allmaps.github.io`
-- the repository contains `static/CNAME`, which indicates a root custom-domain deployment
-
-You can also override this behavior without editing the workflow:
-
-- Set a repository variable named `PAGES_BASE_PATH` to a path such as `/rotterdam-tijdmachine`
-- Set `PAGES_BASE_PATH` to `/` for a root-domain deployment
-- Use the manual **Deploy to GitHub Pages** workflow input `base_path` for one-off deployments
-
-The manual workflow input and repository variable both accept values with or without a leading slash. The workflow normalizes `rotterdam-tijdmachine` to `/rotterdam-tijdmachine`.
+`site.url` must match the final public URL, including any subpath. For custom domains, configure the domain in GitHub Pages settings; the app does not need a committed or generated `CNAME` file.
 
 Before deploying a reused version of the app, update:
 
 - `site.url` in `config.yml` to the final public URL, including the trailing slash
 - `basemap.protomapsApiKey` to your own key, and allow the GitHub Pages origin in the Protomaps dashboard
 - `CONFIG` as a repository variable, or the manual workflow input `config`, if you want to deploy an alternate config file
-
-For example:
-
-| Deployment target                                  | `PAGES_BASE_PATH`                 |
-| -------------------------------------------------- | --------------------------------- |
-| `https://allmaps.github.io/rotterdam-tijdmachine/` | `/rotterdam-tijdmachine` or unset |
-| `https://pages.allmaps.org/rotterdam-tijdmachine/` | `/rotterdam-tijdmachine` or unset |
-| `https://tijdmachine.example.org/`                 | `/`                               |
 
 To deploy an alternate configuration, set the repository variable `CONFIG` to a file such as `content/gouda/config.yml`, or fill in the `config` input when manually running the workflow.
 
