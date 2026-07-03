@@ -33,6 +33,7 @@
 		autoplayCurrentPosition = 0,
 		autoplayTotal = 0,
 		autoplayIntervalSeconds = 0,
+		searchOpen = $bindable(false),
 		onAboutOpen,
 		onShareOpen,
 		onAutoplayStart,
@@ -47,6 +48,7 @@
 		autoplayCurrentPosition?: number;
 		autoplayTotal?: number;
 		autoplayIntervalSeconds?: number;
+		searchOpen?: boolean;
 		onAboutOpen: () => void;
 		onShareOpen: () => void;
 		onAutoplayStart: () => void;
@@ -153,7 +155,7 @@
 				class="flex min-w-0 flex-1 items-center gap-2"
 				transition:fly={{ x: -48, duration: 180 }}
 			>
-				<Search bounds={searchBounds} {config} />
+				<Search bounds={searchBounds} {config} bind:open={searchOpen} />
 
 				<button
 					onclick={toggleCompare}

@@ -21,15 +21,16 @@
 
 	let {
 		bounds,
-		config
+		config,
+		open = $bindable(false)
 	}: {
 		bounds?: GeocoderBounds;
 		config: AppConfig;
+		open?: boolean;
 	} = $props();
 
 	const search = untrack(() => new GeocoderService(config.search));
 
-	let open = $state(false);
 	let selectedIndex = $state(0);
 	let locating = $state(false);
 	let locationError = $state('');

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount, tick } from 'svelte';
 	import { getExpandedMapYears, mapIncludesYear } from '$lib/map-years';
-	import type { MapMetadata } from '$lib/types';
+	import type { MapMetadata, SliderKeyboardCommand } from '$lib/types';
 
 	type AvailabilitySegment = {
 		start: number;
@@ -27,6 +27,7 @@
 		snapToAvailableYear = false,
 		scaleInterval = 25,
 		enableKeyboardShortcut = false,
+		keyboardCommand,
 		annotationsInView = []
 	}: {
 		maps: MapMetadata[];
@@ -38,6 +39,7 @@
 		snapToAvailableYear?: boolean;
 		scaleInterval?: number;
 		enableKeyboardShortcut?: boolean;
+		keyboardCommand?: SliderKeyboardCommand;
 		annotationsInView?: string[];
 	} = $props();
 
@@ -54,6 +56,8 @@
 	let suppressNextYearClick = false;
 	let pendingTargetYear: number | undefined;
 	let pendingSelectionId = 0;
+	let previousKeyboardCommandId: number | undefined;
+	let keyboardCommandInitialized = false;
 	let scrollAnimationFrame: number | undefined;
 	let finishInteractionFrame: number | undefined;
 	let scrollSettleTimeout: ReturnType<typeof setTimeout> | undefined;
@@ -85,6 +89,22 @@
 		showMapYearTicks && !showOnlyAvailableYears && mapYearAvailabilitySegments.length > 0
 	);
 	let visuallySelectedYear = $derived(isInteracting ? undefined : selectedYear);
+
+	$effect(() => {
+		const command = keyboardCommand;
+		if (!keyboardCommandInitialized) {
+			previousKeyboardCommandId = command?.id;
+			keyboardCommandInitialized = true;
+			return;
+		}
+		if (!command || command.id === previousKeyboardCommandId) return;
+
+		previousKeyboardCommandId = command.id;
+		if (!enableKeyboardShortcut) return;
+
+		blurFocusedYear();
+		selectRelativeYear(command.direction);
+	});
 
 	onMount(() => {
 		updateContainerHeight();
@@ -143,18 +163,6 @@
 		return year % 100 === 0;
 	}
 
-	function isEditableTarget(target: EventTarget | null) {
-		if (!(target instanceof HTMLElement)) return false;
-
-		const tagName = target.tagName.toLowerCase();
-		return (
-			tagName === 'input' ||
-			tagName === 'textarea' ||
-			tagName === 'select' ||
-			target.isContentEditable
-		);
-	}
-
 	function updateContainerHeight() {
 		containerHeight = container?.clientHeight ?? 0;
 	}
@@ -164,13 +172,6 @@
 		const end = Math.max(minYear, maxYear);
 
 		return Array.from({ length: end - start + 1 }, (_, index) => start + index);
-	}
-
-	function hasOpenModal() {
-		return (
-			document.body.classList.contains('driver-active') ||
-			!!document.querySelector('[role="dialog"][aria-modal="true"]')
-		);
 	}
 
 	function getRelativeYear(year: number, direction: -1 | 1) {
@@ -531,30 +532,7 @@
 		clearTimeout(programmaticScrollTimeout);
 		programmaticScrollTimeout = undefined;
 	}
-
-	function handleGlobalKeydown(event: KeyboardEvent) {
-		if (!enableKeyboardShortcut) return;
-		if (hasOpenModal()) return;
-		if (event.shiftKey || event.metaKey || event.ctrlKey || event.altKey) return;
-		if (isEditableTarget(event.target)) return;
-
-		if (event.key === 'ArrowUp') {
-			event.preventDefault();
-			event.stopImmediatePropagation();
-			blurFocusedYear();
-			selectRelativeYear(-1);
-		}
-
-		if (event.key === 'ArrowDown') {
-			event.preventDefault();
-			event.stopImmediatePropagation();
-			blurFocusedYear();
-			selectRelativeYear(1);
-		}
-	}
 </script>
-
-<svelte:window onkeydowncapture={handleGlobalKeydown} />
 
 <aside class="time-slider z-20 flex h-full flex-none flex-col font-bolder text-gray-800">
 	<div class="year-picker-shell relative min-h-0 w-28 flex-1">

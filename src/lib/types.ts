@@ -262,3 +262,17 @@ export type MapToolbarCommand = {
 	id: number;
 	action: 'toggle-in-view' | 'toggle-rotation' | 'toggle-focus';
 };
+
+export type SliderKeyboardCommand = {
+	id: number;
+	direction: -1 | 1;
+};
+
+export type MapLayersKeyboardCommand = {
+	id: number;
+	direction: -1 | 1;
+};
+
+export type MapLayersOpenCommand = {
+	id: number;
+};

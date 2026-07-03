@@ -1,6 +1,7 @@
 <script lang="ts">
 	import MapPane from '$lib/components/MapPane.svelte';
 	import Header from '$lib/components/Header.svelte';
+	import KeyboardShortcuts from '$lib/components/KeyboardShortcuts.svelte';
 	import AppTour from '$lib/components/AppTour.svelte';
 	import About from '$lib/components/About.svelte';
 	import Share from '$lib/components/Share.svelte';
@@ -11,16 +12,20 @@
 		mapView,
 		viewState
 	} from '$lib/app-state.svelte.js';
+	import { hasOpenModal, isInteractiveTarget } from '$lib/keyboard';
 	import { getMapStartYear, mapIncludesYear } from '$lib/map-years';
 	import { annotationById, loadWarpedMapData } from '$lib/warped-map-list';
 	import { LoaderCircle } from '@lucide/svelte';
 	import type {
 		AppConfig,
 		GeocoderBounds,
+		MapLayersKeyboardCommand,
+		MapLayersOpenCommand,
 		MapKeyboardCommand,
 		MapLocation,
 		MapMetadata,
-		MapToolbarCommand
+		MapToolbarCommand,
+		SliderKeyboardCommand
 	} from '$lib/types';
 
 	type AutoplayItem = {
@@ -86,11 +91,15 @@
 	let shareOpen = $state(false);
 	let currentLocation = $state<MapLocation>(initial.defaultLocation);
 	let geocoderBounds = $state<GeocoderBounds>();
+	let searchOpen = $state(false);
 	let compareStacked = $state(false);
 	let panesReady = $state(false);
 	let panesError = $state<string>();
 	let mapKeyboardCommand = $state<MapKeyboardCommand>();
 	let mapToolbarCommand = $state<MapToolbarCommand>();
+	let sliderKeyboardCommand = $state<SliderKeyboardCommand>();
+	let mapLayersKeyboardCommand = $state<MapLayersKeyboardCommand>();
+	let mapLayersOpenCommand = $state<MapLayersOpenCommand>();
 	let rotateToMapOrientation = $state(false);
 	let focusActiveMap = $state(false);
 	let autoplayActive = $state(startsInPresentation);
@@ -104,14 +113,6 @@
 	let leftAnnotationsAtCenter = $state<string[]>([]);
 	let appShellElement = $state<HTMLDivElement>();
 	let presentationTouch: PresentationTouch | undefined;
-	let keyboardCommandId = 0;
-	let toolbarCommandId = 0;
-	let opacityShortcutSnapshot:
-		| {
-				left: number;
-				right: number;
-		  }
-		| undefined;
 
 	if (initial.initialMap) viewState.annotation = initial.initialMap.annotation;
 	if (!comparison.rightAnnotation) comparison.rightAnnotation = initial.rightAnnotation;
@@ -273,20 +274,6 @@
 		}
 
 		currentLocation = locationFromParams(params) ?? initial.defaultLocation;
-	}
-
-	function dispatchMapKeyboardCommand(command: Omit<MapKeyboardCommand, 'id'>) {
-		mapKeyboardCommand = {
-			id: ++keyboardCommandId,
-			...command
-		};
-	}
-
-	function dispatchMapToolbarCommand(action: MapToolbarCommand['action']) {
-		mapToolbarCommand = {
-			id: ++toolbarCommandId,
-			action
-		};
 	}
 
 	function startAutoplay() {
@@ -508,202 +495,6 @@
 		return Math.max(0, getAutoplayTimerDuration() - elapsedMs);
 	}
 
-	function hasOpenModal() {
-		return (
-			document.body.classList.contains('driver-active') ||
-			!!document.querySelector('[role="dialog"][aria-modal="true"]')
-		);
-	}
-
-	function isInteractiveTarget(target: EventTarget | null) {
-		if (!(target instanceof HTMLElement)) return false;
-
-		const tagName = target.tagName.toLowerCase();
-		return (
-			tagName === 'input' ||
-			tagName === 'textarea' ||
-			tagName === 'select' ||
-			tagName === 'button' ||
-			tagName === 'a' ||
-			target.isContentEditable
-		);
-	}
-
-	function handleGlobalKeydown(event: KeyboardEvent) {
-		if (hasOpenModal()) return;
-
-		if (autoplayActive) {
-			if (event.key === 'Escape') {
-				event.preventDefault();
-				event.stopImmediatePropagation();
-				stopAutoplay();
-				return;
-			}
-
-			if (event.code === 'Space') {
-				if (event.repeat) return;
-
-				event.preventDefault();
-				event.stopImmediatePropagation();
-				toggleAutoplayPlayback();
-				return;
-			}
-
-			if (
-				!event.shiftKey &&
-				!event.metaKey &&
-				!event.ctrlKey &&
-				!event.altKey &&
-				(event.key === 'ArrowLeft' || event.key === 'ArrowRight')
-			) {
-				event.preventDefault();
-				event.stopImmediatePropagation();
-				selectRelativeAutoplaySlide(event.key === 'ArrowLeft' ? -1 : 1);
-				return;
-			}
-
-			if (
-				!event.shiftKey &&
-				!event.metaKey &&
-				!event.ctrlKey &&
-				!event.altKey &&
-				(event.key === 'ArrowUp' || event.key === 'ArrowDown')
-			) {
-				event.preventDefault();
-				event.stopImmediatePropagation();
-				return;
-			}
-		}
-
-		if (isInteractiveTarget(event.target)) return;
-
-		if (
-			!event.repeat &&
-			!event.shiftKey &&
-			!event.metaKey &&
-			!event.ctrlKey &&
-			!event.altKey &&
-			event.key.toLowerCase() === 'p'
-		) {
-			event.preventDefault();
-			event.stopImmediatePropagation();
-			startAutoplay();
-			return;
-		}
-
-		if (event.code === 'Space') {
-			if (event.repeat) return;
-
-			event.preventDefault();
-			opacityShortcutSnapshot = {
-				left: viewState.opacity,
-				right: comparison.rightOpacity
-			};
-			viewState.opacity = 0;
-			comparison.rightOpacity = 0;
-			return;
-		}
-
-		if ((!autoplayActive && handleMapToolbarKeydown(event)) || handleMapNavigationKeydown(event)) {
-			event.preventDefault();
-			event.stopImmediatePropagation();
-		}
-	}
-
-	function handleGlobalKeydownCapture(event: KeyboardEvent) {
-		if (hasOpenModal()) return;
-		if (!autoplayActive && isInteractiveTarget(event.target)) return;
-		if (!event.shiftKey || event.metaKey || event.ctrlKey || event.altKey) return;
-		if (!isArrowKey(event.key)) return;
-
-		if (handleMapNavigationKeydown(event)) {
-			event.preventDefault();
-			event.stopImmediatePropagation();
-		}
-	}
-
-	function handleMapToolbarKeydown(event: KeyboardEvent) {
-		if (event.repeat || event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) {
-			return false;
-		}
-
-		const key = event.key.toLowerCase();
-
-		if (key === 'r') {
-			dispatchMapToolbarCommand('toggle-rotation');
-			return true;
-		}
-
-		if (key === 'z') {
-			dispatchMapToolbarCommand('toggle-focus');
-			return true;
-		}
-
-		return false;
-	}
-
-	function isArrowKey(key: string) {
-		return key === 'ArrowLeft' || key === 'ArrowRight' || key === 'ArrowUp' || key === 'ArrowDown';
-	}
-
-	function handleMapNavigationKeydown(event: KeyboardEvent) {
-		if (event.metaKey || event.ctrlKey || event.altKey) return false;
-
-		if (
-			event.key === '+' ||
-			event.key === '=' ||
-			event.code === 'Equal' ||
-			event.code === 'NumpadAdd'
-		) {
-			dispatchMapKeyboardCommand({ zoomDelta: event.shiftKey ? 2 : 1 });
-			return true;
-		}
-
-		if (event.key === '-' || event.code === 'Minus' || event.code === 'NumpadSubtract') {
-			dispatchMapKeyboardCommand({ zoomDelta: event.shiftKey ? -2 : -1 });
-			return true;
-		}
-
-		if (!event.shiftKey) return false;
-
-		if (event.key === 'ArrowLeft') {
-			dispatchMapKeyboardCommand({ offset: [KEYBOARD_PAN_PIXELS, 0] });
-			return true;
-		}
-
-		if (event.key === 'ArrowRight') {
-			dispatchMapKeyboardCommand({ offset: [-KEYBOARD_PAN_PIXELS, 0] });
-			return true;
-		}
-
-		if (event.key === 'ArrowUp') {
-			dispatchMapKeyboardCommand({ offset: [0, KEYBOARD_PAN_PIXELS] });
-			return true;
-		}
-
-		if (event.key === 'ArrowDown') {
-			dispatchMapKeyboardCommand({ offset: [0, -KEYBOARD_PAN_PIXELS] });
-			return true;
-		}
-
-		return false;
-	}
-
-	function restoreOpacityShortcut() {
-		if (!opacityShortcutSnapshot) return;
-
-		viewState.opacity = opacityShortcutSnapshot.left;
-		comparison.rightOpacity = opacityShortcutSnapshot.right;
-		opacityShortcutSnapshot = undefined;
-	}
-
-	function handleGlobalKeyup(event: KeyboardEvent) {
-		if (event.code !== 'Space' || !opacityShortcutSnapshot) return;
-
-		event.preventDefault();
-		restoreOpacityShortcut();
-	}
-
 	onMount(() => {
 		const compareStackQuery = window.matchMedia('(max-width: 767px)');
 		let cancelled = false;
@@ -752,11 +543,23 @@
 	});
 </script>
 
-<svelte:window
-	onkeydowncapture={handleGlobalKeydownCapture}
-	onkeydown={handleGlobalKeydown}
-	onkeyup={handleGlobalKeyup}
-	onblur={restoreOpacityShortcut}
+<KeyboardShortcuts
+	bind:searchOpen
+	bind:compareActive={comparison.active}
+	bind:leftOpacity={viewState.opacity}
+	bind:rightOpacity={comparison.rightOpacity}
+	bind:mapKeyboardCommand
+	bind:mapToolbarCommand
+	bind:sliderKeyboardCommand
+	bind:mapLayersKeyboardCommand
+	bind:mapLayersOpenCommand
+	{autoplayActive}
+	keyboardPanPixels={KEYBOARD_PAN_PIXELS}
+	onAutoplayStart={startAutoplay}
+	onAutoplayStop={stopAutoplay}
+	onAutoplayPauseToggle={toggleAutoplayPlayback}
+	onAutoplayPrevious={() => selectRelativeAutoplaySlide(-1)}
+	onAutoplayNext={() => selectRelativeAutoplaySlide(1)}
 />
 
 <div
@@ -775,6 +578,7 @@
 		{autoplayCurrentPosition}
 		{autoplayTotal}
 		autoplayIntervalSeconds={autoplayInterval ?? 0}
+		bind:searchOpen
 		onAboutOpen={() => (aboutOpen = true)}
 		onShareOpen={() => (shareOpen = true)}
 		onAutoplayStart={startAutoplay}
@@ -806,6 +610,9 @@
 				bind:annotationsAtCenter={leftAnnotationsAtCenter}
 				{mapKeyboardCommand}
 				{mapToolbarCommand}
+				{sliderKeyboardCommand}
+				{mapLayersKeyboardCommand}
+				{mapLayersOpenCommand}
 				enableFlyTo
 				enableLocationMarker
 				enableLayersShortcut

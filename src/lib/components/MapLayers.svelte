@@ -27,7 +27,12 @@
 		getMapYearLabel,
 		mapIncludesYear
 	} from '$lib/map-years';
-	import type { AppConfig, MapMetadata } from '$lib/types';
+	import type {
+		AppConfig,
+		MapLayersKeyboardCommand,
+		MapLayersOpenCommand,
+		MapMetadata
+	} from '$lib/types';
 
 	const CAROUSEL_SCROLL_SETTLE_MS = 140;
 	const CAROUSEL_SCROLL_FALLBACK_MS = 640;
@@ -43,6 +48,8 @@
 		paneSide = 'left',
 		showPaneIndicator = false,
 		enableKeyboardShortcut = false,
+		keyboardCommand,
+		openCommand,
 		annotationsInView = [],
 		preferInViewMaps = false,
 		requirePreferredMaps = false,
@@ -56,6 +63,8 @@
 		paneSide?: 'left' | 'right';
 		showPaneIndicator?: boolean;
 		enableKeyboardShortcut?: boolean;
+		keyboardCommand?: MapLayersKeyboardCommand;
+		openCommand?: MapLayersOpenCommand;
 		annotationsInView?: string[];
 		preferInViewMaps?: boolean;
 		requirePreferredMaps?: boolean;
@@ -88,6 +97,10 @@
 	let hasSyncedCarousel = false;
 	let hasSyncedCarouselDots = false;
 	let isProgrammaticCarouselScroll = false;
+	let previousKeyboardCommandId: number | undefined;
+	let previousOpenCommandId: number | undefined;
+	let keyboardCommandInitialized = false;
+	let openCommandInitialized = false;
 	let previousPresentationAnnotation: string | undefined;
 	let presentationSlideDirection = $state<1 | -1>(1);
 	let presentationTransitionsEnabled = $state(false);
@@ -203,6 +216,40 @@
 		}
 	});
 
+	$effect(() => {
+		const command = openCommand;
+		if (!openCommandInitialized) {
+			previousOpenCommandId = command?.id;
+			openCommandInitialized = true;
+			return;
+		}
+		if (!command || command.id === previousOpenCommandId) return;
+
+		previousOpenCommandId = command.id;
+		if (!enableKeyboardShortcut || autoplayActive) return;
+
+		if (layersOpen) {
+			searchInputElement?.focus();
+		} else {
+			openLayers();
+		}
+	});
+
+	$effect(() => {
+		const command = keyboardCommand;
+		if (!keyboardCommandInitialized) {
+			previousKeyboardCommandId = command?.id;
+			keyboardCommandInitialized = true;
+			return;
+		}
+		if (!command || command.id === previousKeyboardCommandId) return;
+
+		previousKeyboardCommandId = command.id;
+		if (!enableKeyboardShortcut || autoplayActive) return;
+
+		selectRelativeMap(command.direction);
+	});
+
 	$effect.pre(() => {
 		if (!autoplayActive) {
 			previousPresentationAnnotation = activeMap?.annotation;
@@ -281,25 +328,6 @@
 		layersOpen = false;
 	}
 
-	function isEditableTarget(target: EventTarget | null) {
-		if (!(target instanceof HTMLElement)) return false;
-
-		const tagName = target.tagName.toLowerCase();
-		return (
-			tagName === 'input' ||
-			tagName === 'textarea' ||
-			tagName === 'select' ||
-			target.isContentEditable
-		);
-	}
-
-	function hasOpenModal() {
-		return (
-			document.body.classList.contains('driver-active') ||
-			!!document.querySelector('[role="dialog"][aria-modal="true"]')
-		);
-	}
-
 	function shouldAutoFocusSearch() {
 		if (typeof window === 'undefined') return false;
 
@@ -309,38 +337,6 @@
 	function focusSearchInput() {
 		if (shouldAutoFocusSearch()) {
 			searchInputElement?.focus({ preventScroll: true });
-		}
-	}
-
-	function handleGlobalKeydown(event: KeyboardEvent) {
-		if (!enableKeyboardShortcut || event.repeat) return;
-		if (document.body.classList.contains('driver-active')) return;
-		if (autoplayActive) return;
-
-		if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k') {
-			event.preventDefault();
-			event.stopPropagation();
-
-			if (layersOpen) {
-				searchInputElement?.focus();
-			} else {
-				openLayers();
-			}
-			return;
-		}
-
-		if (hasOpenModal()) return;
-		if (event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) return;
-		if (isEditableTarget(event.target)) return;
-
-		if (event.key === 'ArrowLeft') {
-			event.preventDefault();
-			selectRelativeMap(-1);
-		}
-
-		if (event.key === 'ArrowRight') {
-			event.preventDefault();
-			selectRelativeMap(1);
 		}
 	}
 
@@ -690,8 +686,6 @@
 		}
 	}
 </script>
-
-<svelte:window onkeydown={handleGlobalKeydown} />
 
 {#if activeMap}
 	{#if !autoplayActive}

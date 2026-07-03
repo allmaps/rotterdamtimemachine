@@ -6,10 +6,13 @@
 	import type {
 		AppConfig,
 		GeocoderBounds,
+		MapLayersKeyboardCommand,
+		MapLayersOpenCommand,
 		MapKeyboardCommand,
 		MapLocation,
 		MapMetadata,
-		MapToolbarCommand
+		MapToolbarCommand,
+		SliderKeyboardCommand
 	} from '$lib/types';
 
 	let {
@@ -19,6 +22,9 @@
 		opacity = $bindable(100),
 		selectedYear = $bindable(),
 		mapKeyboardCommand,
+		sliderKeyboardCommand,
+		mapLayersKeyboardCommand,
+		mapLayersOpenCommand,
 		currentLocation = $bindable({
 			center: [...config.map.initialView.center] as [number, number],
 			zoom: config.map.initialView.zoom,
@@ -50,6 +56,9 @@
 		opacity?: number;
 		selectedYear: number;
 		mapKeyboardCommand?: MapKeyboardCommand;
+		sliderKeyboardCommand?: SliderKeyboardCommand;
+		mapLayersKeyboardCommand?: MapLayersKeyboardCommand;
+		mapLayersOpenCommand?: MapLayersOpenCommand;
 		currentLocation?: MapLocation;
 		geocoderBounds?: GeocoderBounds;
 		navPosition?: 'left' | 'right';
@@ -99,6 +108,7 @@
 				{showOnlyAvailableYears}
 				{annotationsInView}
 				enableKeyboardShortcut={enableLayersShortcut}
+				keyboardCommand={sliderKeyboardCommand}
 			/>
 		</div>
 	{/if}
@@ -136,6 +146,8 @@
 			preferInViewMaps={sliderInViewOnly || autoplayActive}
 			requirePreferredMaps={autoplayActive}
 			enableKeyboardShortcut={enableLayersShortcut}
+			keyboardCommand={mapLayersKeyboardCommand}
+			openCommand={mapLayersOpenCommand}
 			showPaneIndicator={showLayersPaneIndicator}
 			{autoplayActive}
 		/>

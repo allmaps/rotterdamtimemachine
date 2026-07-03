@@ -153,6 +153,10 @@ about:
   shortcuts:
     - keys: ["⌘", K, "/", Ctrl, K]
       description: Kaartlagen openen
+    - keys: [S]
+      description: Zoek locatie openen
+    - keys: [C]
+      description: Vergelijkmodus aan- of uitzetten
     - keys: ["↑", "↓"]
       description: Naar het volgende of vorige beschikbare kaartjaar
     - keys: ["←", "→"]
