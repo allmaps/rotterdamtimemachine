@@ -318,12 +318,10 @@
 	}
 
 	function ensureAutoplaySelection() {
-		if (autoplayCurrentIndex >= 0) return;
+		const item = getAutoplayStartItem();
+		if (!item || item.annotation === viewState.annotation) return;
 
-		const firstItem = autoplayItems.find((item) => item.year >= selectedYear) ?? autoplayItems[0];
-		if (!firstItem) return;
-
-		selectAutoplayItem(firstItem);
+		selectAutoplayItem(item);
 	}
 
 	function advanceAutoplay() {
@@ -334,12 +332,29 @@
 	}
 
 	function getAutoplayCurrentIndex() {
-		const annotationIndex = autoplayItems.findIndex(
-			(item) => item.annotation === viewState.annotation
-		);
-		if (annotationIndex >= 0) return annotationIndex;
+		return autoplayItems.findIndex((item) => item.annotation === viewState.annotation);
+	}
 
-		return autoplayItems.findIndex((item) => item.year >= selectedYear);
+	function getAutoplayStartItem() {
+		if (autoplayItems.length === 0) return undefined;
+
+		const currentItem = autoplayItems.find((item) => item.annotation === viewState.annotation);
+		if (currentItem) return currentItem;
+
+		return getNearestAutoplayItem(selectedYear);
+	}
+
+	function getNearestAutoplayItem(year: number) {
+		return autoplayItems.reduce((best, item) => {
+			const bestDistance = Math.abs(best.year - year);
+			const itemDistance = Math.abs(item.year - year);
+
+			if (itemDistance < bestDistance) return item;
+			if (itemDistance > bestDistance) return best;
+			if (item.year >= year && best.year < year) return item;
+
+			return best;
+		}, autoplayItems[0]);
 	}
 
 	function getRelativeAutoplayItem(direction: -1 | 1) {
