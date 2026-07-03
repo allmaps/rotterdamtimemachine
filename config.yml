@@ -69,7 +69,7 @@ autoplay:
   flyToDurationMs: 2000
 
 header:
-  search: Zoeken
+  search: Ga naar
   compare: Vergelijken
   closeCompare: Sluiten
   compareMode: Vergelijkmodus
@@ -184,12 +184,14 @@ share:
   copied: Gekopieerd
 
 search:
-  buttonLabel: Zoeken
+  buttonLabel: Ga naar
   modalLabel: Zoek locatie
   submitLabel: Zoek
   closeLabel: Sluit zoeken
   placeholder: Zoek locatie...
   useLocation: Gebruik mijn locatie
+  userLocationLabel: Mijn locatie
+  clearLocations: Wis opgeslagen locaties
   locating: Locatie bepalen...
   loading: Aan het zoeken...
   noResults: Geen resultaten gevonden.
@@ -201,6 +203,7 @@ search:
   locationTimeout: Locatiebepaling duurde te lang.
   locationUnavailable: Je locatie kon niet worden bepaald.
   countryCodes: nl
+  appendPlaceName: Rotterdam
   minLength: 3
   limit: 8
   debounceMs: 350

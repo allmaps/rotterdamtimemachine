@@ -4,7 +4,7 @@
 	import maplibregl from 'maplibre-gl';
 	import { WarpedMapLayer } from '@allmaps/maplibre';
 	import 'maplibre-gl/dist/maplibre-gl.css';
-	import { viewState, flyTo, selectedLocation } from '$lib/app-state.svelte.js';
+	import { viewState, flyTo, storedLocations } from '$lib/app-state.svelte.js';
 	import { getProtomapsLayers, getProtomapsStyle } from '$lib/basemap';
 	import { getThemeColor } from '$lib/theme';
 	import { annotationsByMapId, getWarpedMapList, mapIdsByAnnotation } from '$lib/warped-map-list';
@@ -44,6 +44,8 @@
 	const CAMERA_BASE_PADDING = 40;
 	const CAMERA_PANEL_GAP = 16;
 	const DESKTOP_SLIDER_INSET = 96;
+	const DEFAULT_LOCATION_FLY_TO_ZOOM = 16;
+	const MAX_LOCATION_FLY_TO_ZOOM = 17;
 	const MAPLIBRE_TILE_SIZE = 512;
 	const WEB_MERCATOR_WORLD_WIDTH = 40075016.68557849;
 	const ZOOM_EPSILON = 0.001;
@@ -54,7 +56,8 @@
 	const ZOOM_LIMIT_RETRY_DELAY_MS = 50;
 	const DEFAULT_OVERVIEW_TILES_RESOLUTION = 2048 * 2048;
 	const LOCATION_SOURCE_ID = 'selected-location-source';
-	const LOCATION_LAYER_ID = 'selected-location-circle';
+	const LOCATION_CIRCLE_LAYER_ID = 'selected-location-circle';
+	const LOCATION_LABEL_LAYER_ID = 'selected-location-label';
 	const EMPTY_LOCATION_DATA: GeoJSON.FeatureCollection<GeoJSON.Point> = {
 		type: 'FeatureCollection',
 		features: []
@@ -137,7 +140,6 @@
 	let zoomLimitFrame: number | undefined;
 	let zoomLimitRetryTimer: ReturnType<typeof setTimeout> | undefined;
 	let visibilityCheckFrame: number | undefined;
-	let selectedLocationTimer: ReturnType<typeof setTimeout> | undefined;
 	let isSyncing = false;
 	let warpedMapList = getWarpedMapList();
 	let warpedMapLayer = new WarpedMapLayer({
@@ -190,19 +192,22 @@
 	$effect(() => {
 		if (enableFlyTo && mapReady && map && flyTo.center) {
 			const cameraPadding = getCameraPadding();
+			const zoom = untrack(getLocationFlyToZoom);
 			clearPreferredSelectionZoom();
 			map.flyTo({
 				center: flyTo.center,
-				zoom: 14,
+				zoom,
 				offset: getCameraOffset(cameraPadding)
 			});
 		}
 	});
 
-	// Show a temporary location circle.
+	// Show saved search and locator points.
 	$effect(() => {
-		if (enableLocationMarker && loaded && map && selectedLocation.center) {
-			showSelectedLocationCircle(selectedLocation.center);
+		const locations = storedLocations.map((location) => ({ ...location }));
+
+		if (enableLocationMarker && loaded && map) {
+			updateStoredLocationLayer(locations);
 		}
 	});
 
@@ -380,35 +385,33 @@
 		return /^https?:\/\//.test(id) || id.startsWith('/') || id.startsWith('data:');
 	}
 
-	function createLocationData(center: [number, number]): GeoJSON.FeatureCollection<GeoJSON.Point> {
+	function createLocationData(
+		locations = storedLocations
+	): GeoJSON.FeatureCollection<GeoJSON.Point> {
 		return {
 			type: 'FeatureCollection',
-			features: [
-				{
-					type: 'Feature',
-					geometry: {
-						type: 'Point',
-						coordinates: center
-					},
-					properties: {}
+			features: locations.map((location) => ({
+				type: 'Feature',
+				geometry: {
+					type: 'Point',
+					coordinates: location.center
+				},
+				properties: {
+					id: location.id,
+					label: location.label,
+					source: location.source
 				}
-			]
+			}))
 		};
 	}
 
-	function showSelectedLocationCircle(center: [number, number]) {
+	function updateStoredLocationLayer(locations = storedLocations) {
 		if (!map) return;
 
 		ensureSelectedLocationLayer();
 		const source = map.getSource(LOCATION_SOURCE_ID) as maplibregl.GeoJSONSource | undefined;
-		source?.setData(createLocationData(center));
-		map.setPaintProperty(LOCATION_LAYER_ID, 'circle-color', getBrandMainColor());
-
-		if (selectedLocationTimer) clearTimeout(selectedLocationTimer);
-		selectedLocationTimer = setTimeout(() => {
-			clearSelectedLocationCircle();
-			selectedLocation.center = null;
-		}, 3000);
+		source?.setData(createLocationData(locations));
+		map.setPaintProperty(LOCATION_CIRCLE_LAYER_ID, 'circle-color', getBrandMainColor());
 	}
 
 	function ensureSelectedLocationLayer() {
@@ -421,13 +424,13 @@
 			});
 		}
 
-		if (!map.getLayer(LOCATION_LAYER_ID)) {
+		if (!map.getLayer(LOCATION_CIRCLE_LAYER_ID)) {
 			map.addLayer({
-				id: LOCATION_LAYER_ID,
+				id: LOCATION_CIRCLE_LAYER_ID,
 				type: 'circle',
 				source: LOCATION_SOURCE_ID,
 				paint: {
-					'circle-radius': ['interpolate', ['linear'], ['zoom'], 10, 7, 15, 13, 18, 18],
+					'circle-radius': ['interpolate', ['linear'], ['zoom'], 10, 4, 15, 7, 18, 10],
 					'circle-color': getBrandMainColor(),
 					'circle-opacity': 0.82,
 					'circle-stroke-color': '#ffffff',
@@ -436,14 +439,30 @@
 				}
 			});
 		}
+
+		if (!map.getLayer(LOCATION_LABEL_LAYER_ID)) {
+			map.addLayer({
+				id: LOCATION_LABEL_LAYER_ID,
+				type: 'symbol',
+				source: LOCATION_SOURCE_ID,
+				layout: {
+					'text-field': ['get', 'label'],
+					'text-font': ['Noto Sans Medium'],
+					'text-size': 13,
+					'text-anchor': 'top',
+					'text-offset': [0, 1.3],
+					'text-optional': true
+				},
+				paint: {
+					'text-color': '#111827',
+					'text-halo-color': '#ffffff',
+					'text-halo-width': 1.6
+				}
+			});
+		}
 	}
 
 	function clearSelectedLocationCircle() {
-		if (selectedLocationTimer) {
-			clearTimeout(selectedLocationTimer);
-			selectedLocationTimer = undefined;
-		}
-
 		const source = map?.getSource(LOCATION_SOURCE_ID) as maplibregl.GeoJSONSource | undefined;
 		source?.setData(EMPTY_LOCATION_DATA);
 	}
@@ -613,6 +632,16 @@
 		if (!map) return zoom;
 
 		return Math.min(map.getMaxZoom(), Math.max(map.getMinZoom(), zoom));
+	}
+
+	function getLocationFlyToZoom() {
+		const selectedMaxZoom = activeAnnotation
+			? getSelectedMapNativeMaxZoom(activeAnnotation)
+			: undefined;
+
+		return clampZoomToMapLimits(
+			Math.min(selectedMaxZoom ?? DEFAULT_LOCATION_FLY_TO_ZOOM, MAX_LOCATION_FLY_TO_ZOOM)
+		);
 	}
 
 	function getAutoZoomOutThreshold() {

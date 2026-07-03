@@ -155,6 +155,8 @@ export type AppConfig = {
 		closeLabel: string;
 		placeholder: string;
 		useLocation: string;
+		userLocationLabel: string;
+		clearLocations: string;
 		locating: string;
 		loading: string;
 		noResults: string;
@@ -166,6 +168,7 @@ export type AppConfig = {
 		locationTimeout: string;
 		locationUnavailable: string;
 		countryCodes: string;
+		appendPlaceName?: string;
 		minLength: number;
 		limit: number;
 		debounceMs: number;

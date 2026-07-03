@@ -1,10 +1,24 @@
 const FAVORITES_STORAGE_PREFIX = 'favorites';
 const FAVORITES_STORAGE_VERSION = 1;
+const STORED_LOCATIONS_STORAGE_PREFIX = 'locations';
+const STORED_LOCATIONS_STORAGE_VERSION = 1;
+const STORED_LOCATIONS_LIMIT = 25;
 
 let favoritesStorageKey = getFavoritesStorageKey('default');
 let allowedFavoriteAnnotations: string[] | undefined;
 let favoritesConfigSignature = '';
-let storageListenerReady = false;
+let favoritesStorageListenerReady = false;
+let storedLocationsStorageKey = getStoredLocationsStorageKey('default');
+let storedLocationsConfigSignature = '';
+let storedLocationsStorageListenerReady = false;
+
+export type StoredLocation = {
+	id: string;
+	label: string;
+	center: [number, number];
+	source: 'search' | 'user';
+	createdAt: number;
+};
 
 function getLocalStorage() {
 	return typeof localStorage === 'undefined' ? undefined : localStorage;
@@ -121,21 +135,148 @@ function sameFavorites(left: readonly string[], right: readonly string[]) {
 }
 
 function ensureStorageListener() {
-	if (storageListenerReady || typeof window === 'undefined') return;
+	if (favoritesStorageListenerReady || typeof window === 'undefined') return;
 
 	window.addEventListener('storage', (event) => {
 		if (event.key !== favoritesStorageKey) return;
 		replaceFavorites(normalizeFavorites(parseFavoritesValue(event.newValue)));
 	});
 
-	storageListenerReady = true;
+	favoritesStorageListenerReady = true;
+}
+
+function readStoredLocations(key = storedLocationsStorageKey) {
+	const storage = getLocalStorage();
+	if (!storage) return [];
+
+	return parseStoredLocationsValue(storage.getItem(key));
+}
+
+function parseStoredLocationsValue(value: string | null) {
+	if (!value) return [];
+
+	try {
+		const parsed = JSON.parse(value);
+		const items = parsed?.items;
+
+		return Array.isArray(items)
+			? items
+					.map(normalizeStoredLocation)
+					.filter((location): location is StoredLocation => !!location)
+			: [];
+	} catch {
+		return [];
+	}
+}
+
+function normalizeStoredLocation(value: unknown): StoredLocation | undefined {
+	if (!value || typeof value !== 'object') return undefined;
+
+	const location = value as Partial<StoredLocation>;
+	const center = location.center;
+	if (!Array.isArray(center) || center.length < 2) return undefined;
+
+	const lng = Number(center[0]);
+	const lat = Number(center[1]);
+	if (!Number.isFinite(lng) || !Number.isFinite(lat)) return undefined;
+
+	const id = typeof location.id === 'string' && location.id.trim() ? location.id : undefined;
+	const label =
+		typeof location.label === 'string' && location.label.trim() ? location.label.trim() : undefined;
+	const source = location.source === 'user' ? 'user' : 'search';
+	const createdAt = Number(location.createdAt);
+
+	if (!id || !label) return undefined;
+
+	return {
+		id,
+		label,
+		center: [lng, lat],
+		source,
+		createdAt: Number.isFinite(createdAt) ? createdAt : Date.now()
+	};
+}
+
+function saveStoredLocations() {
+	const storage = getLocalStorage();
+	if (!storage) return;
+
+	try {
+		storage.setItem(
+			storedLocationsStorageKey,
+			JSON.stringify({
+				version: STORED_LOCATIONS_STORAGE_VERSION,
+				items: [...storedLocations]
+			})
+		);
+	} catch (error) {
+		console.warn('Could not persist stored locations:', error);
+	}
+}
+
+export const storedLocations = $state<StoredLocation[]>(readStoredLocations());
+
+export function configureStoredLocationsStorage(scope: string) {
+	const nextStorageKey = getStoredLocationsStorageKey(scope);
+	const nextSignature = nextStorageKey;
+
+	storedLocationsStorageKey = nextStorageKey;
+	ensureStoredLocationsStorageListener();
+
+	if (nextSignature === storedLocationsConfigSignature) return;
+
+	storedLocationsConfigSignature = nextSignature;
+	replaceStoredLocations(readStoredLocations(nextStorageKey));
+}
+
+export function addStoredLocation(
+	location: Omit<StoredLocation, 'createdAt'> & { createdAt?: number }
+) {
+	const normalized = normalizeStoredLocation({
+		...location,
+		createdAt: location.createdAt ?? Date.now()
+	});
+	if (!normalized) return;
+
+	const nextLocations = [
+		normalized,
+		...storedLocations.filter((item) => item.id !== normalized.id)
+	].slice(0, STORED_LOCATIONS_LIMIT);
+
+	replaceStoredLocations(nextLocations);
+	saveStoredLocations();
+}
+
+export function clearStoredLocations() {
+	if (storedLocations.length === 0) return;
+
+	replaceStoredLocations([]);
+	saveStoredLocations();
+}
+
+function getStoredLocationsStorageKey(scope: string) {
+	const normalizedScope = scope.trim() || 'default';
+	return `${STORED_LOCATIONS_STORAGE_PREFIX}:${normalizedScope}`;
+}
+
+function replaceStoredLocations(items: StoredLocation[]) {
+	storedLocations.splice(0, storedLocations.length, ...items);
+}
+
+function ensureStoredLocationsStorageListener() {
+	if (storedLocationsStorageListenerReady || typeof window === 'undefined') return;
+
+	window.addEventListener('storage', (event) => {
+		if (event.key !== storedLocationsStorageKey) return;
+		replaceStoredLocations(parseStoredLocationsValue(event.newValue));
+	});
+
+	storedLocationsStorageListenerReady = true;
 }
 
 export const viewState = $state({ annotation: '', opacity: 100 });
 
 export const flyTo = $state<{ center: [number, number] | null }>({ center: null });
-
-export const selectedLocation = $state<{ center: [number, number] | null }>({ center: null });
 
 export const mapView = $state({
 	center: [0, 0] as [number, number],

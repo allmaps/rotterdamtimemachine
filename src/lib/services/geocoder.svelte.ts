@@ -5,6 +5,7 @@ const NOMINATIM_ENDPOINT = 'https://nominatim.openstreetmap.org/search';
 export type GeocoderResult = {
 	place_id: number | string;
 	display_name: string;
+	name?: string;
 	lat: string;
 	lon: string;
 	type?: string;
@@ -61,7 +62,8 @@ export class GeocoderService {
 			return;
 		}
 
-		const cacheKey = this.cacheKey(normalizedTerm);
+		const searchQuery = this.searchQuery(normalizedTerm);
+		const cacheKey = this.cacheKey(searchQuery);
 		const cachedResults = GeocoderService.cache.get(cacheKey);
 		if (cachedResults) {
 			this.results = cachedResults;
@@ -78,7 +80,7 @@ export class GeocoderService {
 		// eslint-disable-next-line svelte/prefer-svelte-reactivity -- Local URL builder for a single request.
 		const searchParams = new URLSearchParams({
 			format: 'jsonv2',
-			q: normalizedTerm,
+			q: searchQuery,
 			limit: String(this.config.limit),
 			countrycodes: this.config.countryCodes,
 			viewbox: this.viewboxParam(this.bounds),
@@ -153,7 +155,12 @@ export class GeocoderService {
 		return [parseFloat(result.lon), parseFloat(result.lat)];
 	}
 
-	private cacheKey(normalizedTerm: string) {
+	private searchQuery(normalizedTerm: string) {
+		const placeName = this.config.appendPlaceName?.trim();
+		return placeName ? `${normalizedTerm}, ${placeName}` : normalizedTerm;
+	}
+
+	private cacheKey(searchQuery: string) {
 		const bounds = this.bounds;
 		const normalizedBounds = bounds
 			? [bounds.west, bounds.south, bounds.east, bounds.north]
@@ -161,7 +168,7 @@ export class GeocoderService {
 					.join(',')
 			: 'no-bounds';
 
-		return `${normalizedTerm.toLocaleLowerCase('nl-NL')}|${normalizedBounds}`;
+		return `${searchQuery.toLocaleLowerCase('nl-NL')}|${normalizedBounds}`;
 	}
 
 	private viewboxParam(bounds: GeocoderBounds) {

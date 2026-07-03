@@ -1,8 +1,20 @@
 <script lang="ts">
-	import { flyTo, selectedLocation } from '$lib/app-state.svelte.js';
+	import {
+		addStoredLocation,
+		clearStoredLocations,
+		flyTo,
+		storedLocations
+	} from '$lib/app-state.svelte.js';
 	import { GeocoderService, type GeocoderResult } from '$lib/services/geocoder.svelte.js';
 	import Modal from '$lib/components/Modal.svelte';
-	import { CornerDownLeft, LocateFixed, MapPin, Search as SearchIcon, X } from '@lucide/svelte';
+	import {
+		CornerDownLeft,
+		LocateFixed,
+		MapPin,
+		Search as SearchIcon,
+		Trash2,
+		X
+	} from '@lucide/svelte';
 	import { tick, untrack } from 'svelte';
 	import { slide } from 'svelte/transition';
 	import type { AppConfig, GeocoderBounds } from '$lib/types';
@@ -74,9 +86,46 @@
 	}
 
 	function selectResult(result: GeocoderResult) {
-		flyTo.center = search.selectLocation(result);
-		selectedLocation.center = flyTo.center;
+		const center = search.selectLocation(result);
+		flyTo.center = center;
+		addStoredLocation({
+			id: getResultLocationId(result),
+			label: getResultLabel(result),
+			center,
+			source: 'search'
+		});
 		open = false;
+	}
+
+	function getResultLabel(result: GeocoderResult) {
+		return result.name?.trim() || getCompactDisplayName(result.display_name);
+	}
+
+	function getCompactDisplayName(displayName: string) {
+		const parts = displayName
+			.split(',')
+			.map((part) => part.trim())
+			.filter(Boolean);
+		if (parts.length === 0) return displayName;
+
+		const [firstPart, secondPart] = parts;
+		if (secondPart && looksLikeHouseNumber(firstPart)) {
+			return `${secondPart} ${formatHouseNumber(firstPart)}`;
+		}
+
+		return firstPart;
+	}
+
+	function looksLikeHouseNumber(value: string) {
+		return /^\d+\s*[a-zA-Z]?(?:\s*[-/]\s*\d+\s*[a-zA-Z]?)?$/.test(value);
+	}
+
+	function formatHouseNumber(value: string) {
+		return value.replace(/\s+/g, '').replace(/([-/])/g, '$1');
+	}
+
+	function getResultLocationId(result: GeocoderResult) {
+		return `search:${result.place_id}:${result.lon}:${result.lat}`;
 	}
 
 	function useUserLocation() {
@@ -94,7 +143,12 @@
 				const center: [number, number] = [position.coords.longitude, position.coords.latitude];
 
 				flyTo.center = center;
-				selectedLocation.center = center;
+				addStoredLocation({
+					id: 'user:current',
+					label: config.search.userLocationLabel,
+					center,
+					source: 'user'
+				});
 				locating = false;
 				open = false;
 			},
@@ -153,10 +207,10 @@
 	onclick={showSearch}
 	data-tour="search"
 	aria-label={config.search.modalLabel}
-	class="flex h-8 cursor-pointer items-center gap-1 rounded px-2 text-sm font-semibold hover:bg-brand-hover md:px-3"
+	class="flex h-8 cursor-pointer items-center gap-1 rounded px-2 text-sm font-semibold hover:bg-brand-hover lg:px-3"
 >
 	<SearchIcon class="h-4 w-4" />
-	<span class="hidden sm:inline">{config.search.buttonLabel}</span>
+	<span class="hidden lg:inline">{config.search.buttonLabel}</span>
 </button>
 
 {#if open}
@@ -195,6 +249,16 @@
 				onclick={useUserLocation}
 			>
 				<LocateFixed class="h-5 w-5 {locating ? 'animate-pulse text-brand-main' : ''}" />
+			</button>
+			<button
+				type="button"
+				aria-label={config.search.clearLocations}
+				title={config.search.clearLocations}
+				disabled={storedLocations.length === 0}
+				class="cursor-pointer rounded p-1 text-gray-500 hover:bg-gray-100 hover:text-brand-main disabled:cursor-default disabled:opacity-35"
+				onclick={clearStoredLocations}
+			>
+				<Trash2 class="h-5 w-5" />
 			</button>
 			<button
 				type="button"

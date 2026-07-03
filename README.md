@@ -147,6 +147,7 @@ Important sections:
 - `autoplay.intervalSeconds`: seconds per map slide in presentation mode; omit `autoplay` to hide the header play button
 - `autoplay.flyToDurationMs`: camera animation duration when presentation mode focuses on a map
 - `tour.enabled`: set to `false` to disable the one-time guided tour
+- `search.appendPlaceName`: optional place name appended to Nominatim queries, for example `Rotterdam`
 - `header`, `about`, `share`, `search`, `layers`, `controls`, `mapWarnings`: visible labels and modal text
 
 For a new use case, usually start with:
@@ -157,7 +158,7 @@ For a new use case, usually start with:
 4. Set `theme.color` for the primary UI color, for example `color: "#006d2c"` or `color: rgb(0, 109, 44)`. Quote hex values in YAML. The app derives five semantic brand colors from that value: soft, muted, secondary, main, and hover.
 5. Request your own free Protomaps API key at [protomaps.com/api](https://protomaps.com/api) and set it as `basemap.protomapsApiKey`.
 6. Rewrite or translate the text under `tour`, `about`, `search`, `layers`, and `controls`.
-7. Check `search.countryCodes` if the app is used outside the Netherlands.
+7. Check `search.countryCodes` and `search.appendPlaceName` for the intended search area.
 
 ### Custom fonts
 

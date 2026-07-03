@@ -5,7 +5,12 @@
 	import About from '$lib/components/About.svelte';
 	import Share from '$lib/components/Share.svelte';
 	import { onMount, tick, untrack } from 'svelte';
-	import { comparison, mapView, viewState } from '$lib/app-state.svelte.js';
+	import {
+		comparison,
+		configureStoredLocationsStorage,
+		mapView,
+		viewState
+	} from '$lib/app-state.svelte.js';
 	import { getMapStartYear, mapIncludesYear } from '$lib/map-years';
 	import { annotationById, loadWarpedMapData } from '$lib/warped-map-list';
 	import { LoaderCircle } from '@lucide/svelte';
@@ -139,6 +144,10 @@
 		mapView.center = currentLocation.center;
 		mapView.zoom = currentLocation.zoom;
 		mapView.bearing = currentLocation.bearing;
+	});
+
+	$effect(() => {
+		configureStoredLocationsStorage(config.site.url || config.site.name);
 	});
 
 	$effect(() => {
@@ -783,6 +792,7 @@
 					bind:selectedYear={rightSelectedYear}
 					bind:currentLocation
 					{mapKeyboardCommand}
+					enableLocationMarker
 					showLayersPaneIndicator
 				/>
 			{/if}
