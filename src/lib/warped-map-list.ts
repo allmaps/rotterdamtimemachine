@@ -1,40 +1,70 @@
 import { WarpedMapList } from '@allmaps/render';
-import { parseAnnotation } from '@allmaps/annotation';
-import collection from '../../collection.yml';
+import annotationsUrl from '$lib/generated/maps.json?url';
 
+import type { GeoreferencedMap } from '@allmaps/annotation';
 import type { WebGL2WarpedMap } from '@allmaps/render/webgl2';
-import type { MapMetadata } from '$lib/types';
+
+type GeneratedAnnotationEntry = {
+	id: string;
+	annotation: string;
+	maps: GeoreferencedMap[];
+};
+
+type GeneratedAnnotations = {
+	annotations: GeneratedAnnotationEntry[];
+};
 
 export const mapIdsByAnnotation = new Map<string, Set<string>>();
 export const annotationsByMapId = new Map<string, string>();
+export const annotationById = new Map<string, string>();
+export const idByAnnotation = new Map<string, string>();
 
-const maps = collection as MapMetadata[];
-const annotationUrls = maps.map((map) => map.annotation);
+let georeferencedMaps: GeoreferencedMap[] = [];
+let loaded = false;
+let loadPromise: Promise<void> | undefined;
 
-const georeferencedMaps = await Promise.all(
-	annotationUrls.map(async (url) => {
-		try {
-			const resp = await fetch(url);
-			if (resp.ok) {
-				const data = await resp.json();
-				const parsedAnnotations = parseAnnotation(data);
-				const ids = parsedAnnotations.flatMap(({ id }) => (id ? [id] : []));
-				mapIdsByAnnotation.set(url, new Set(ids));
-				ids.forEach((id) => annotationsByMapId.set(id, url));
-				return parsedAnnotations;
-			}
+export function loadWarpedMapData() {
+	loadPromise ??= loadGeneratedAnnotations();
+	return loadPromise;
+}
 
-			console.warn('Fetch failed for', url, resp);
-			return [];
-		} catch {
-			console.warn('Fetch failed for', url);
-			return [];
-		}
-	})
-);
+export function isWarpedMapDataLoaded() {
+	return loaded;
+}
 
 export const getWarpedMapList = () => {
+	if (!loaded) {
+		throw new Error('Warped map data has not been loaded yet');
+	}
+
 	const warpedMapList = new WarpedMapList<WebGL2WarpedMap>();
-	warpedMapList.addGeoreferencedMaps(georeferencedMaps.flat());
+	warpedMapList.addGeoreferencedMaps(georeferencedMaps);
 	return warpedMapList;
 };
+
+async function loadGeneratedAnnotations() {
+	const response = await fetch(annotationsUrl);
+	if (!response.ok) {
+		throw new Error(`Generated annotations request failed with status ${response.status}`);
+	}
+
+	const data = (await response.json()) as GeneratedAnnotations;
+	const entries = data.annotations ?? [];
+
+	mapIdsByAnnotation.clear();
+	annotationsByMapId.clear();
+	annotationById.clear();
+	idByAnnotation.clear();
+
+	georeferencedMaps = entries.flatMap((entry) => {
+		const ids = entry.maps.flatMap(({ id }) => (id ? [id] : []));
+
+		annotationById.set(entry.id, entry.annotation);
+		idByAnnotation.set(entry.annotation, entry.id);
+		mapIdsByAnnotation.set(entry.annotation, new Set(ids));
+		ids.forEach((id) => annotationsByMapId.set(id, entry.annotation));
+		return entry.maps;
+	});
+
+	loaded = true;
+}

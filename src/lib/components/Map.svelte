@@ -1,18 +1,15 @@
 <script lang="ts">
-	import { onMount, tick, untrack } from 'svelte';
+	import { onMount, untrack } from 'svelte';
+	import { fly } from 'svelte/transition';
 	import maplibregl from 'maplibre-gl';
 	import { WarpedMapLayer } from '@allmaps/maplibre';
-	import { AlertTriangle, Focus } from '@lucide/svelte';
 	import 'maplibre-gl/dist/maplibre-gl.css';
 	import { viewState, flyTo, selectedLocation } from '$lib/app-state.svelte.js';
 	import { getProtomapsLayers, getProtomapsStyle } from '$lib/basemap';
-	import {
-		cssColorToRgbaExpression,
-		FALLBACK_BRAND_COLOR,
-		type RgbaExpression
-	} from '$lib/maplibre-color';
+	import { getThemeColor } from '$lib/theme';
 	import { annotationsByMapId, getWarpedMapList, mapIdsByAnnotation } from '$lib/warped-map-list';
 	import MapControls from '$lib/components/MapControls.svelte';
+	import MapVisibilityWarning from '$lib/components/MapVisibilityWarning.svelte';
 	import type {
 		AppConfig,
 		GeocoderBounds,
@@ -27,10 +24,35 @@
 		bottom: number;
 		left: number;
 	};
+	type ScreenRect = {
+		left: number;
+		right: number;
+		top: number;
+		bottom: number;
+	};
+	type SelectedMapVisibility =
+		| 'fully-visible'
+		| 'partly-visible'
+		| 'tiny-visible'
+		| 'not-visible'
+		| 'unknown';
+	type MapTouchInteractionState = {
+		dragPan: boolean;
+		touchZoomRotate: boolean;
+	};
 
 	const CAMERA_BASE_PADDING = 40;
 	const CAMERA_PANEL_GAP = 16;
 	const DESKTOP_SLIDER_INSET = 96;
+	const MAPLIBRE_TILE_SIZE = 512;
+	const WEB_MERCATOR_WORLD_WIDTH = 40075016.68557849;
+	const ZOOM_EPSILON = 0.001;
+	const DEFAULT_AUTO_ZOOM_OUT_THRESHOLD = 0.25;
+	const DEFAULT_VISIBILITY_PADDING = 48;
+	const DEFAULT_TINY_VISIBILITY_AREA_RATIO = 0.03;
+	const ZOOM_LIMIT_MAX_ATTEMPTS = 8;
+	const ZOOM_LIMIT_RETRY_DELAY_MS = 50;
+	const DEFAULT_OVERVIEW_TILES_RESOLUTION = 2048 * 2048;
 	const LOCATION_SOURCE_ID = 'selected-location-source';
 	const LOCATION_LAYER_ID = 'selected-location-circle';
 	const EMPTY_LOCATION_DATA: GeoJSON.FeatureCollection<GeoJSON.Point> = {
@@ -51,13 +73,19 @@
 			bearing: config.map.initialView.bearing
 		}),
 		annotationsInView = $bindable<string[]>([]),
+		// eslint-disable-next-line no-useless-assignment -- This bindable prop is written back to the parent.
+		annotationsAtCenter = $bindable<string[]>([]),
+		// eslint-disable-next-line no-useless-assignment -- This bindable prop is written back to the parent.
 		geocoderBounds = $bindable(),
 		mapKeyboardCommand,
 		mapToolbarCommand,
 		enableFlyTo = false,
 		enableLocationMarker = false,
 		navPosition = 'left',
-		controlsPosition = 'top-right'
+		controlsPosition = 'top-right',
+		showInViewControl = false,
+		autoplayActive = false,
+		autoplayNextAnnotation
 	}: {
 		config: AppConfig;
 		annotation?: string;
@@ -67,6 +95,7 @@
 		inViewOnly?: boolean;
 		currentLocation?: MapLocation;
 		annotationsInView?: string[];
+		annotationsAtCenter?: string[];
 		geocoderBounds?: GeocoderBounds;
 		mapKeyboardCommand?: MapKeyboardCommand;
 		mapToolbarCommand?: MapToolbarCommand;
@@ -74,22 +103,23 @@
 		enableLocationMarker?: boolean;
 		navPosition?: 'left' | 'right';
 		controlsPosition?: 'top-left' | 'top-right';
+		showInViewControl?: boolean;
+		autoplayActive?: boolean;
+		autoplayNextAnnotation?: string;
 	} = $props();
 
 	let activeAnnotation = $derived(annotation);
 	let activeOpacity = $derived((opacity ?? 100) / 100);
 
-	let mapElement: HTMLDivElement;
+	let mapElement = $state<HTMLDivElement>();
 	let map = $state<maplibregl.Map>();
 	let mapReady: boolean = $state(false);
 	let loaded: boolean = $state(false);
-	let selectedMapVisibility = $state<
-		'fully-visible' | 'partly-visible' | 'not-visible' | 'unknown'
-	>('unknown');
+	let selectedMapVisibility = $state<SelectedMapVisibility>('unknown');
 	let visibilityWarningOpen = $state(false);
-	let visibilityWarningPrimaryButton: HTMLButtonElement | undefined = $state();
 	let dismissedVisibilityWarningAnnotation: string | undefined;
 	let previousAnnotationForVisibility: string | undefined;
+	let previousAnnotationForZoomLimit: string | undefined;
 	let previousAnnotationForOrientation: string | undefined;
 	let previousAnnotationForFocus: string | undefined;
 	let previousRotateToMapOrientation = rotateToMapOrientation;
@@ -98,27 +128,54 @@
 	let previousKeyboardCommandId = 0;
 	let previousToolbarCommandId = 0;
 	let commandIdsInitialized = false;
+	let mapTouchInteractionState: MapTouchInteractionState | undefined;
+	let preferredSelectionZoom: number | undefined;
+	let pendingZoomLimitAnnotation: string | undefined;
+	let pendingZoomLimitAttempt = 0;
+	let zoomLimitVisibilityCheckAnnotation: string | undefined;
+	let deferredVisibilityWarningAnnotation: string | undefined;
+	let zoomLimitFrame: number | undefined;
+	let zoomLimitRetryTimer: ReturnType<typeof setTimeout> | undefined;
 	let visibilityCheckFrame: number | undefined;
 	let selectedLocationTimer: ReturnType<typeof setTimeout> | undefined;
 	let isSyncing = false;
 	let warpedMapList = getWarpedMapList();
-	let warpedMapLayer = new WarpedMapLayer({ visible: false, warpedMapList });
+	let warpedMapLayer = new WarpedMapLayer({
+		visible: false,
+		overviewTilesMaxResolution: DEFAULT_OVERVIEW_TILES_RESOLUTION,
+		overviewTilesSelection: 'lowest',
+		warpedMapList
+	});
 
 	const basemapLayers = untrack(() =>
 		getProtomapsLayers('light', undefined, { lang: config.site.locale })
 	);
+	// eslint-disable-next-line svelte/prefer-svelte-reactivity -- Internal MapLibre image loading cache, not UI state.
 	const loadedStyleImages = new Set<string>();
 	let canZoomToActiveMap = $derived(
 		loaded && !!activeAnnotation && (mapIdsByAnnotation.get(activeAnnotation)?.size ?? 0) > 0
 	);
+	let selectedMapCenter = $derived(
+		loaded && activeAnnotation ? getSelectedMapCenter(activeAnnotation) : undefined
+	);
 
 	// Load the warped map layer when the selected annotation changes.
 	$effect(() => {
-		if (loaded && activeAnnotation && mapIdsByAnnotation.size > 0) {
-			const idsToShow = mapIdsByAnnotation.get(activeAnnotation) ?? new Set();
-			warpedMapLayer.setMapsOptions((id: string) =>
-				idsToShow.has(id) ? { visible: true } : { visible: false }
-			);
+		const annotationToShow = activeAnnotation;
+		const annotationToAnticipate = autoplayActive ? autoplayNextAnnotation : undefined;
+
+		if (loaded && mapIdsByAnnotation.size > 0) {
+			const idsToShow = annotationToShow
+				? (mapIdsByAnnotation.get(annotationToShow) ?? new Set<string>())
+				: new Set<string>();
+			const idsToAnticipate = annotationToAnticipate
+				? (mapIdsByAnnotation.get(annotationToAnticipate) ?? new Set<string>())
+				: new Set<string>();
+
+			warpedMapLayer.setMapsOptions((id: string) => ({
+				visible: idsToShow.has(id),
+				anticipateVisibility: idsToAnticipate.has(id)
+			}));
 		}
 	});
 
@@ -133,6 +190,7 @@
 	$effect(() => {
 		if (enableFlyTo && mapReady && map && flyTo.center) {
 			const cameraPadding = getCameraPadding();
+			clearPreferredSelectionZoom();
 			map.flyTo({
 				center: flyTo.center,
 				zoom: 14,
@@ -155,6 +213,7 @@
 			const zoom = currentLocation.zoom;
 			const bearing = currentLocation.bearing ?? 0;
 			if (!mapMatchesLocation(center, zoom, bearing)) {
+				clearPreferredSelectionZoom();
 				isSyncing = true;
 				map.jumpTo({ center, zoom, bearing });
 				isSyncing = false;
@@ -180,15 +239,32 @@
 	});
 
 	$effect(() => {
-		if (visibilityWarningOpen) {
-			tick().then(() => visibilityWarningPrimaryButton?.focus());
+		if (autoplayActive || focusActiveMap) {
+			visibilityWarningOpen = false;
 		}
 	});
 
 	$effect(() => {
-		if (focusActiveMap) {
-			visibilityWarningOpen = false;
+		const annotationForLimit = activeAnnotation;
+		const zoomLimitEnabled = !focusActiveMap;
+
+		if (!annotationForLimit) {
+			previousAnnotationForZoomLimit = undefined;
+			cancelPendingSelectedMapZoomLimit();
+			clearPreferredSelectionZoom();
+			return;
 		}
+
+		if (!loaded || !mapReady || !map) return;
+		if (!zoomLimitEnabled) {
+			previousAnnotationForZoomLimit = annotationForLimit;
+			cancelPendingSelectedMapZoomLimit();
+			return;
+		}
+		if (annotationForLimit === previousAnnotationForZoomLimit) return;
+
+		previousAnnotationForZoomLimit = annotationForLimit;
+		queueSelectedMapZoomLimit(annotationForLimit);
 	});
 
 	$effect(() => {
@@ -202,6 +278,7 @@
 		previousAnnotationForOrientation = annotationForOrientation;
 
 		if (!orientationChanged && !annotationChanged) return;
+		if (orientationChanged && !autoplayActive) clearPreferredSelectionZoom();
 
 		if (shouldRotate && annotationForOrientation) {
 			rotateToSelectedMapOrientation(annotationForOrientation);
@@ -223,6 +300,7 @@
 		previousRotateToMapOrientationForFocus = shouldRotate;
 		previousAnnotationForFocus = annotationForFocus;
 
+		if (focusChanged && !autoplayActive) clearPreferredSelectionZoom();
 		if (!shouldFocus || !annotationForFocus) return;
 		if (focusChanged || orientationChanged || annotationChanged) {
 			focusSelectedMap(annotationForFocus);
@@ -238,15 +316,24 @@
 	});
 
 	$effect(() => {
+		if (!mapReady || !map) return;
+
+		setPresentationTouchMapInteractionsDisabled(autoplayActive && isTouchInteractionDevice());
+	});
+
+	$effect(() => {
 		const command = mapKeyboardCommand;
 		if (!mapReady || !map || !command || command.id === previousKeyboardCommandId) return;
 
 		previousKeyboardCommandId = command.id;
+		let zoom = command.zoomDelta === undefined ? map.getZoom() : map.getZoom() + command.zoomDelta;
+
+		clearPreferredSelectionZoom();
 		map.easeTo({
 			duration: 300,
 			easeId: 'keyboardHandler',
 			center: map.getCenter(),
-			zoom: command.zoomDelta === undefined ? map.getZoom() : map.getZoom() + command.zoomDelta,
+			zoom,
 			pitch: 0,
 			offset: command.offset ?? [0, 0]
 		});
@@ -315,11 +402,7 @@
 		ensureSelectedLocationLayer();
 		const source = map.getSource(LOCATION_SOURCE_ID) as maplibregl.GeoJSONSource | undefined;
 		source?.setData(createLocationData(center));
-		map.setPaintProperty(
-			LOCATION_LAYER_ID,
-			'circle-color',
-			getBrandMainColorExpression()
-		);
+		map.setPaintProperty(LOCATION_LAYER_ID, 'circle-color', getBrandMainColor());
 
 		if (selectedLocationTimer) clearTimeout(selectedLocationTimer);
 		selectedLocationTimer = setTimeout(() => {
@@ -344,18 +427,8 @@
 				type: 'circle',
 				source: LOCATION_SOURCE_ID,
 				paint: {
-					'circle-radius': [
-						'interpolate',
-						['linear'],
-						['zoom'],
-						10,
-						7,
-						15,
-						13,
-						18,
-						18
-					],
-					'circle-color': getBrandMainColorExpression(),
+					'circle-radius': ['interpolate', ['linear'], ['zoom'], 10, 7, 15, 13, 18, 18],
+					'circle-color': getBrandMainColor(),
 					'circle-opacity': 0.82,
 					'circle-stroke-color': '#ffffff',
 					'circle-stroke-opacity': 0.95,
@@ -375,28 +448,189 @@
 		source?.setData(EMPTY_LOCATION_DATA);
 	}
 
-	function getBrandMainColorExpression(): RgbaExpression {
-		if (typeof window === 'undefined') return FALLBACK_BRAND_COLOR;
+	function getBrandMainColor() {
+		return getThemeColor(config.theme);
+	}
 
-		const cssColor = getComputedStyle(document.documentElement)
-			.getPropertyValue('--color-brand-main')
-			.trim();
+	function isTouchInteractionDevice() {
+		if (typeof window === 'undefined') return false;
 
-		return cssColorToRgbaExpression(cssColor) ?? FALLBACK_BRAND_COLOR;
+		return window.matchMedia('(pointer: coarse), (hover: none)').matches;
+	}
+
+	function setPresentationTouchMapInteractionsDisabled(disabled: boolean) {
+		if (!map) return;
+
+		if (disabled) {
+			if (mapTouchInteractionState) return;
+
+			mapTouchInteractionState = {
+				dragPan: map.dragPan.isEnabled(),
+				touchZoomRotate: map.touchZoomRotate.isEnabled()
+			};
+			map.dragPan.disable();
+			map.touchZoomRotate.disable();
+			return;
+		}
+
+		if (!mapTouchInteractionState) return;
+
+		if (mapTouchInteractionState.dragPan) map.dragPan.enable();
+		if (mapTouchInteractionState.touchZoomRotate) map.touchZoomRotate.enable();
+		mapTouchInteractionState = undefined;
+	}
+
+	function clearPreferredSelectionZoom() {
+		preferredSelectionZoom = undefined;
+	}
+
+	function queueSelectedMapZoomLimit(annotationForLimit: string) {
+		if (!map) return;
+
+		preferredSelectionZoom ??= map.getZoom();
+		pendingZoomLimitAnnotation = annotationForLimit;
+		pendingZoomLimitAttempt = 0;
+		requestSelectedMapZoomLimit();
+	}
+
+	function requestSelectedMapZoomLimit() {
+		cancelPendingSelectedMapZoomLimitFrame();
+
+		zoomLimitFrame = requestAnimationFrame(() => {
+			zoomLimitFrame = undefined;
+			applyPendingSelectedMapZoomLimit();
+		});
+	}
+
+	function applyPendingSelectedMapZoomLimit() {
+		if (!map || !pendingZoomLimitAnnotation) return;
+
+		const annotationForLimit = pendingZoomLimitAnnotation;
+		if (focusActiveMap) {
+			pendingZoomLimitAnnotation = undefined;
+			return;
+		}
+
+		if (annotationForLimit !== activeAnnotation) {
+			pendingZoomLimitAnnotation = undefined;
+			return;
+		}
+
+		const maxZoom = getSelectedMapNativeMaxZoom(annotationForLimit);
+		if (maxZoom === undefined) {
+			if (pendingZoomLimitAttempt < ZOOM_LIMIT_MAX_ATTEMPTS) {
+				pendingZoomLimitAttempt += 1;
+				zoomLimitRetryTimer = setTimeout(requestSelectedMapZoomLimit, ZOOM_LIMIT_RETRY_DELAY_MS);
+			} else {
+				pendingZoomLimitAnnotation = undefined;
+				finishSelectedMapZoomLimit(annotationForLimit);
+			}
+			return;
+		}
+
+		preferredSelectionZoom ??= map.getZoom();
+		const targetZoom = getSelectedMapLimitedZoom(maxZoom, preferredSelectionZoom);
+		pendingZoomLimitAnnotation = undefined;
+
+		if (Math.abs(map.getZoom() - targetZoom) <= ZOOM_EPSILON) {
+			finishSelectedMapZoomLimit(annotationForLimit);
+			return;
+		}
+
+		easeToSelectedMapZoomLimit(targetZoom, annotationForLimit);
+	}
+
+	function cancelPendingSelectedMapZoomLimit() {
+		pendingZoomLimitAnnotation = undefined;
+		zoomLimitVisibilityCheckAnnotation = undefined;
+		deferredVisibilityWarningAnnotation = undefined;
+		cancelPendingSelectedMapZoomLimitFrame();
+	}
+
+	function cancelPendingSelectedMapZoomLimitFrame() {
+		if (zoomLimitFrame !== undefined) {
+			cancelAnimationFrame(zoomLimitFrame);
+			zoomLimitFrame = undefined;
+		}
+
+		if (zoomLimitRetryTimer) {
+			clearTimeout(zoomLimitRetryTimer);
+			zoomLimitRetryTimer = undefined;
+		}
+	}
+
+	function getSelectedMapLimitedZoom(maxZoom: number, preferredZoom: number) {
+		const preferred = clampZoomToMapLimits(preferredZoom);
+		const limit = clampZoomToMapLimits(maxZoom);
+
+		return preferred > limit + getAutoZoomOutThreshold() ? limit : preferred;
+	}
+
+	function getSelectedMapNativeMaxZoom(annotationForLimit: string) {
+		const ids = getSelectedMapIds(annotationForLimit);
+		if (!ids) return undefined;
+
+		const maxZooms = ids
+			.map((id) => warpedMapLayer.getWarpedMap(id)?.resourceToProjectedGeoScale)
+			.filter(
+				(scale): scale is number => typeof scale === 'number' && Number.isFinite(scale) && scale > 0
+			)
+			.map((scale) => Math.log2((scale * WEB_MERCATOR_WORLD_WIDTH) / MAPLIBRE_TILE_SIZE));
+
+		return maxZooms.length > 0 ? Math.min(...maxZooms) : undefined;
+	}
+
+	function easeToSelectedMapZoomLimit(zoom: number, annotationForLimit: string) {
+		if (!map) return;
+
+		zoomLimitVisibilityCheckAnnotation = annotationForLimit;
+		map.once('moveend', () => {
+			if (zoomLimitVisibilityCheckAnnotation !== annotationForLimit) return;
+
+			zoomLimitVisibilityCheckAnnotation = undefined;
+			finishSelectedMapZoomLimit(annotationForLimit);
+		});
+
+		map.easeTo({
+			center: map.getCenter(),
+			zoom: clampZoomToMapLimits(zoom),
+			bearing: map.getBearing(),
+			pitch: 0,
+			duration: config.autoplay?.flyToDurationMs ?? 100
+		});
+	}
+
+	function finishSelectedMapZoomLimit(annotationForLimit: string) {
+		if (annotationForLimit !== activeAnnotation) return;
+
+		if (deferredVisibilityWarningAnnotation === annotationForLimit) {
+			deferredVisibilityWarningAnnotation = undefined;
+		}
+		queueSelectedMapVisibilityCheck(annotationForLimit, true);
+	}
+
+	function clampZoomToMapLimits(zoom: number) {
+		if (!map) return zoom;
+
+		return Math.min(map.getMaxZoom(), Math.max(map.getMinZoom(), zoom));
+	}
+
+	function getAutoZoomOutThreshold() {
+		const threshold = config.map.autoZoomOutThreshold ?? DEFAULT_AUTO_ZOOM_OUT_THRESHOLD;
+		return Number.isFinite(threshold) ? Math.max(0, threshold) : DEFAULT_AUTO_ZOOM_OUT_THRESHOLD;
 	}
 
 	function focusSelectedMap(annotationForFocus = activeAnnotation) {
 		if (!map || !annotationForFocus) return;
 
-		const cameraPadding = getCameraPadding();
+		const cameraPadding = getFocusCameraPadding();
 
 		if (rotateToMapOrientation) {
 			const camera = getSelectedMapCamera(annotationForFocus, cameraPadding);
 			if (camera) {
 				map.flyTo({
 					...camera,
-					pitch: 0,
-					offset: getCameraOffset(cameraPadding)
+					...getFocusFlyToOptions(cameraPadding, true)
 				});
 				return;
 			}
@@ -406,7 +640,7 @@
 		if (bounds) {
 			const camera = map.cameraForBounds(bounds, { padding: cameraPadding });
 			if (camera) {
-				map.flyTo({ ...camera, pitch: 0 });
+				map.flyTo({ ...camera, ...getFocusFlyToOptions(cameraPadding, false) });
 			}
 		}
 	}
@@ -427,8 +661,19 @@
 
 		visibilityCheckFrame = requestAnimationFrame(() => {
 			visibilityCheckFrame = undefined;
+			if (showWarning && shouldDeferVisibilityWarning(annotationForCheck)) {
+				deferredVisibilityWarningAnnotation = annotationForCheck;
+				return;
+			}
 			checkSelectedMapVisibility(annotationForCheck, showWarning);
 		});
+	}
+
+	function shouldDeferVisibilityWarning(annotationForCheck: string) {
+		return (
+			pendingZoomLimitAnnotation === annotationForCheck ||
+			zoomLimitVisibilityCheckAnnotation === annotationForCheck
+		);
 	}
 
 	function getSelectedMapBounds(annotationForCheck: string) {
@@ -436,6 +681,13 @@
 		if (!ids) return undefined;
 
 		return warpedMapLayer.getMapsBounds(ids);
+	}
+
+	function getSelectedMapCenter(annotationForCheck: string) {
+		const ids = getSelectedMapIds(annotationForCheck);
+		if (!ids) return undefined;
+
+		return warpedMapLayer.getMapsCenter(ids);
 	}
 
 	function getSelectedMapIds(annotationForCheck: string) {
@@ -467,7 +719,7 @@
 	function getBottomPanelInset() {
 		const pane = getMapPaneElement();
 		const panel = pane?.querySelector<HTMLElement>('[data-map-layers-panel]');
-		if (!panel) return 0;
+		if (!panel || !mapElement) return 0;
 
 		const mapRect = mapElement.getBoundingClientRect();
 		const panelRect = panel.getBoundingClientRect();
@@ -489,7 +741,6 @@
 
 		return 0;
 	}
-
 	function getCameraPadding(): CameraPadding {
 		const bottomInset = getBottomPanelInset();
 		const sliderInset = getSliderInset();
@@ -499,6 +750,33 @@
 			right: CAMERA_BASE_PADDING + (navPosition === 'right' ? sliderInset : 0),
 			bottom: Math.max(CAMERA_BASE_PADDING, bottomInset + CAMERA_PANEL_GAP),
 			left: CAMERA_BASE_PADDING + (navPosition === 'left' ? sliderInset : 0)
+		};
+	}
+
+	function getBaseCameraPadding(): CameraPadding {
+		return {
+			top: CAMERA_BASE_PADDING,
+			right: CAMERA_BASE_PADDING,
+			bottom: CAMERA_BASE_PADDING,
+			left: CAMERA_BASE_PADDING
+		};
+	}
+
+	function getFocusCameraPadding(): CameraPadding {
+		return autoplayActive ? getBaseCameraPadding() : getCameraPadding();
+	}
+
+	function getFocusFlyToOptions(padding: CameraPadding, includeOffset: boolean) {
+		if (autoplayActive) {
+			return {
+				pitch: 0,
+				duration: config.autoplay?.flyToDurationMs ?? 100
+			};
+		}
+
+		return {
+			pitch: 0,
+			...(includeOffset ? { offset: getCameraOffset(padding) } : {})
 		};
 	}
 
@@ -512,7 +790,7 @@
 		const bounds = getSelectedMapBounds(annotationForCheck);
 		if (!bounds) return 'unknown';
 
-		const viewportBounds = map.getBounds();
+		const viewportBounds = getVisibilityBounds();
 		const selectedBounds = maplibregl.LngLatBounds.convert(bounds);
 		const selectedBoundsCorners = [
 			selectedBounds.getSouthWest(),
@@ -521,11 +799,127 @@
 			selectedBounds.getSouthEast()
 		];
 		const fullyVisible = selectedBoundsCorners.every((corner) => viewportBounds.contains(corner));
+		const intersects = viewportBounds.intersects(selectedBounds);
 
+		if (!intersects) return 'not-visible';
+		if (isSelectedMapTiny(annotationForCheck)) return 'tiny-visible';
 		if (fullyVisible) return 'fully-visible';
-		if (viewportBounds.intersects(selectedBounds)) return 'partly-visible';
 
-		return 'not-visible';
+		return 'partly-visible';
+	}
+
+	function isSelectedMapTiny(annotationForCheck: string) {
+		const selectedRect = getSelectedMapScreenRect(annotationForCheck);
+		if (!selectedRect) return false;
+
+		const selectedArea = getRectArea(selectedRect);
+		const viewportArea = getRectArea(getVisibilityScreenRect());
+		if (selectedArea <= 0 || viewportArea <= 0) return false;
+
+		return selectedArea / viewportArea <= getTinyVisibilityAreaRatio();
+	}
+
+	function getSelectedMapScreenRect(annotationForCheck: string): ScreenRect | undefined {
+		if (!map) return undefined;
+
+		const bounds = getSelectedMapBounds(annotationForCheck);
+		if (!bounds) return undefined;
+
+		const mapInstance = map;
+		if (!mapInstance) return undefined;
+
+		const selectedBounds = maplibregl.LngLatBounds.convert(bounds);
+		const points = [
+			selectedBounds.getSouthWest(),
+			selectedBounds.getNorthWest(),
+			selectedBounds.getNorthEast(),
+			selectedBounds.getSouthEast()
+		].map((corner) => mapInstance.project(corner));
+		const xs = points.map((point) => point.x);
+		const ys = points.map((point) => point.y);
+
+		return {
+			left: Math.min(...xs),
+			right: Math.max(...xs),
+			top: Math.min(...ys),
+			bottom: Math.max(...ys)
+		};
+	}
+
+	function getVisibilityBounds() {
+		const mapInstance = map;
+		if (!mapInstance) return new maplibregl.LngLatBounds();
+
+		const rect = getVisibilityScreenRect();
+		const leftPadding = rect.left;
+		const rightPadding = mapInstance.getCanvas().clientWidth - rect.right;
+		const topPadding = rect.top;
+		const bottomPadding = mapInstance.getCanvas().clientHeight - rect.bottom;
+
+		if (leftPadding <= 0 && rightPadding <= 0 && topPadding <= 0 && bottomPadding <= 0) {
+			return mapInstance.getBounds();
+		}
+
+		const corners: Array<[number, number]> = [
+			[rect.left, rect.top],
+			[rect.right, rect.top],
+			[rect.right, rect.bottom],
+			[rect.left, rect.bottom]
+		];
+		const bounds = new maplibregl.LngLatBounds();
+		corners.forEach((point) => bounds.extend(mapInstance.unproject(point)));
+
+		return bounds;
+	}
+
+	function getVisibilityScreenRect(): ScreenRect {
+		const mapInstance = map;
+		if (!mapInstance) return { left: 0, right: 0, top: 0, bottom: 0 };
+
+		const canvas = mapInstance.getCanvas();
+		const width = canvas.clientWidth;
+		const height = canvas.clientHeight;
+		const padding = getVisibilityPadding();
+		const left = Math.min(padding.left, Math.max(0, (width - 1) / 2));
+		const rightPadding = Math.min(padding.right, Math.max(0, width - left - 1));
+		const top = Math.min(padding.top, Math.max(0, (height - 1) / 2));
+		const bottomPadding = Math.min(padding.bottom, Math.max(0, height - top - 1));
+
+		return {
+			left,
+			right: width - rightPadding,
+			top,
+			bottom: height - bottomPadding
+		};
+	}
+
+	function getRectArea(rect: ScreenRect) {
+		return Math.max(0, rect.right - rect.left) * Math.max(0, rect.bottom - rect.top);
+	}
+
+	function getVisibilityPadding(): CameraPadding {
+		const basePadding = getVisibilityBasePadding();
+		const sliderInset = getSliderInset();
+		const bottomPanelInset = getBottomPanelInset();
+
+		return {
+			top: basePadding,
+			right: basePadding + (navPosition === 'right' ? sliderInset : 0),
+			bottom: basePadding + bottomPanelInset,
+			left: basePadding + (navPosition === 'left' ? sliderInset : 0)
+		};
+	}
+
+	function getVisibilityBasePadding() {
+		const padding = config.map.visibilityPaddingPixels ?? DEFAULT_VISIBILITY_PADDING;
+		return Number.isFinite(padding) ? Math.max(0, padding) : DEFAULT_VISIBILITY_PADDING;
+	}
+
+	function getTinyVisibilityAreaRatio() {
+		const ratio = config.map.tinyVisibilityAreaRatio ?? DEFAULT_TINY_VISIBILITY_AREA_RATIO;
+		return Number.isFinite(ratio)
+			? Math.min(1, Math.max(0, ratio))
+			: DEFAULT_TINY_VISIBILITY_AREA_RATIO;
 	}
 
 	function checkSelectedMapVisibility(annotationForCheck = activeAnnotation, showWarning = false) {
@@ -533,18 +927,22 @@
 
 		selectedMapVisibility = getSelectedMapVisibility(annotationForCheck);
 
-		if (focusActiveMap || selectedMapVisibility === 'fully-visible') {
+		if (autoplayActive || focusActiveMap || !shouldShowVisibilityWarning(selectedMapVisibility)) {
 			visibilityWarningOpen = false;
 			return;
 		}
 
 		if (
 			showWarning &&
-			selectedMapVisibility === 'not-visible' &&
+			shouldShowVisibilityWarning(selectedMapVisibility) &&
 			dismissedVisibilityWarningAnnotation !== annotationForCheck
 		) {
 			visibilityWarningOpen = true;
 		}
+	}
+
+	function shouldShowVisibilityWarning(visibility: SelectedMapVisibility) {
+		return visibility === 'not-visible' || visibility === 'tiny-visible';
 	}
 
 	function dismissVisibilityWarning() {
@@ -554,20 +952,14 @@
 
 	function zoomToActiveMapFromWarning() {
 		dismissVisibilityWarning();
+		clearPreferredSelectionZoom();
 		focusSelectedMap();
-	}
-
-	function handleVisibilityWarningKeydown(event: KeyboardEvent) {
-		event.stopPropagation();
-
-		if (event.key === 'Escape') {
-			dismissVisibilityWarning();
-		}
 	}
 
 	function updateAnnotationsInView() {
 		if (!map || !loaded) {
 			annotationsInView = [];
+			annotationsAtCenter = [];
 			return;
 		}
 
@@ -582,15 +974,24 @@
 			geoBbox,
 			onlyVisible: false
 		});
-		const nextAnnotationsInView = [
+		const center = map.getCenter();
+		const mapIdsAtCenter = warpedMapLayer.getWarpedMapList().getMapIds({
+			geoPoint: [center.lng, center.lat],
+			onlyVisible: false
+		});
+
+		annotationsInView = getAnnotationsForMapIds(mapIds);
+		annotationsAtCenter = getAnnotationsForMapIds(mapIdsAtCenter);
+	}
+
+	function getAnnotationsForMapIds(mapIds: string[]) {
+		return [
 			...new Set(
 				mapIds
 					.map((mapId) => annotationsByMapId.get(mapId))
 					.filter((annotationUrl): annotationUrl is string => !!annotationUrl)
 			)
 		];
-
-		annotationsInView = nextAnnotationsInView;
 	}
 
 	function updateGeocoderBounds() {
@@ -612,6 +1013,8 @@
 	}
 
 	onMount(() => {
+		if (!mapElement) return;
+
 		const mapInstance = new maplibregl.Map({
 			style: getProtomapsStyle('light', config.basemap.protomapsApiKey),
 			container: mapElement,
@@ -626,6 +1029,10 @@
 		map = mapInstance;
 		mapReady = true;
 
+		mapInstance.on('movestart', (event) => {
+			if (event.originalEvent) clearPreferredSelectionZoom();
+		});
+
 		mapInstance.on('move', () => {
 			if (!isSyncing) {
 				currentLocation = {
@@ -633,6 +1040,10 @@
 					zoom: mapInstance.getZoom(),
 					bearing: mapInstance.getBearing()
 				};
+			}
+
+			if (visibilityWarningOpen) {
+				checkSelectedMapVisibility(activeAnnotation, false);
 			}
 		});
 
@@ -665,12 +1076,15 @@
 		});
 
 		return () => {
+			setPresentationTouchMapInteractionsDisabled(false);
+			cancelPendingSelectedMapZoomLimit();
 			if (visibilityCheckFrame !== undefined) {
 				cancelAnimationFrame(visibilityCheckFrame);
 			}
 			clearSelectedLocationCircle();
 			mapInstance.remove();
 			annotationsInView = [];
+			annotationsAtCenter = [];
 			geocoderBounds = undefined;
 			map = undefined;
 			mapReady = false;
@@ -687,76 +1101,31 @@
 <svelte:window onkeydown={handleGlobalKeydown} />
 
 <div bind:this={mapElement} class="absolute inset-0 h-full w-full"></div>
-{#if mapReady && map}
-	<MapControls
-		{map}
-		{config}
-		bind:opacity
-		bind:rotateToMapOrientation
-		bind:focusActiveMap
-		bind:inViewOnly
-		position={controlsPosition}
-		canZoomToMap={canZoomToActiveMap}
-		canFilterInView={annotationsInView.length > 0}
-	/>
-{/if}
-
-{#if visibilityWarningOpen}
-	<div
-		role="presentation"
-		class="absolute inset-0 z-40 flex items-center justify-center bg-black/25 p-4"
-		onpointerdown={(event) => event.stopPropagation()}
-		ondblclick={(event) => event.stopPropagation()}
-	>
-		<div
-			role="dialog"
-			aria-modal="true"
-			aria-label={config.mapWarnings.label}
-			tabindex="-1"
-			class="pointer-events-auto w-full max-w-sm rounded-lg border border-gray-200 bg-white p-4 text-gray-900 shadow-2xl"
-			onkeydown={handleVisibilityWarningKeydown}
-			onkeyup={(event) => event.stopPropagation()}
-			onpointerdown={(event) => event.stopPropagation()}
-			ondblclick={(event) => event.stopPropagation()}
-		>
-			<div class="flex items-start gap-3">
-				<div
-					class="mt-0.5 flex h-9 w-9 flex-none items-center justify-center rounded-full bg-amber-100 text-amber-700"
-				>
-					<AlertTriangle class="h-5 w-5" />
-				</div>
-				<div class="min-w-0">
-					<h2 class="font-heading text-base font-bold">
-						{selectedMapVisibility === 'not-visible'
-							? config.mapWarnings.outsideTitle
-							: config.mapWarnings.partialTitle}
-					</h2>
-					<p class="mt-1 text-sm leading-5 text-gray-600">
-						{selectedMapVisibility === 'not-visible'
-							? config.mapWarnings.outsideDescription
-							: config.mapWarnings.partialDescription}
-					</p>
-				</div>
-			</div>
-
-			<div class="mt-4 flex justify-end gap-2">
-				<button
-					type="button"
-					class="rounded-md border border-gray-200 px-3 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-main"
-					onclick={dismissVisibilityWarning}
-				>
-					{config.mapWarnings.dismiss}
-				</button>
-				<button
-					bind:this={visibilityWarningPrimaryButton}
-					type="button"
-					class="inline-flex items-center gap-2 rounded-md bg-brand-main px-3 py-2 text-sm font-semibold text-white hover:bg-brand-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-main"
-					onclick={zoomToActiveMapFromWarning}
-				>
-					<Focus class="h-4 w-4" />
-					{config.mapWarnings.zoomToLayer}
-				</button>
-			</div>
-		</div>
+{#if mapReady && map && !autoplayActive}
+	<div transition:fly={{ x: controlsPosition === 'top-left' ? -64 : 64, duration: 180 }}>
+		<MapControls
+			{map}
+			{config}
+			bind:opacity
+			bind:rotateToMapOrientation
+			bind:focusActiveMap
+			bind:inViewOnly
+			position={controlsPosition}
+			canZoomToMap={canZoomToActiveMap}
+			canFilterInView={annotationsInView.length > 0}
+			{showInViewControl}
+			onUserCameraAction={clearPreferredSelectionZoom}
+		/>
 	</div>
 {/if}
+<MapVisibilityWarning
+	open={visibilityWarningOpen}
+	{config}
+	{map}
+	{mapElement}
+	{selectedMapCenter}
+	{selectedMapVisibility}
+	{navPosition}
+	onDismiss={dismissVisibilityWarning}
+	onZoomToLayer={zoomToActiveMapFromWarning}
+/>

@@ -2,6 +2,7 @@
 	import Map from '$lib/components/Map.svelte';
 	import MapLayers from '$lib/components/MapLayers.svelte';
 	import Slider from '$lib/components/Slider.svelte';
+	import { fly } from 'svelte/transition';
 	import type {
 		AppConfig,
 		GeocoderBounds,
@@ -30,10 +31,17 @@
 		layersId = `map-layers-${navPosition}`,
 		bordered = false,
 		showMapYearTicks = true,
+		showOnlyAvailableYears = config.slider.showOnlyAvailableYears ?? false,
 		enableFlyTo = false,
 		enableLocationMarker = false,
 		enableLayersShortcut = false,
-		showLayersPaneIndicator = false
+		showLayersPaneIndicator = false,
+		showInViewControl = false,
+		autoplayActive = false,
+		autoplayFollowMap = false,
+		autoplayNextAnnotation,
+		annotationsInView = $bindable<string[]>([]),
+		annotationsAtCenter = $bindable<string[]>([])
 	}: {
 		maps: MapMetadata[];
 		config: AppConfig;
@@ -49,20 +57,54 @@
 		layersId?: string;
 		bordered?: boolean;
 		showMapYearTicks?: boolean;
+		showOnlyAvailableYears?: boolean;
 		enableFlyTo?: boolean;
 		enableLocationMarker?: boolean;
 		enableLayersShortcut?: boolean;
 		showLayersPaneIndicator?: boolean;
+		showInViewControl?: boolean;
+		autoplayActive?: boolean;
+		autoplayFollowMap?: boolean;
+		autoplayNextAnnotation?: string;
+		annotationsInView?: string[];
+		annotationsAtCenter?: string[];
 	} = $props();
 
 	let mapOrderClass = $derived(navPosition === 'right' ? 'md:order-1' : 'md:order-2');
 	let controlsPosition: 'top-left' | 'top-right' = $derived(
 		navPosition === 'right' ? 'top-left' : 'top-right'
 	);
-	let annotationsInView = $state<string[]>([]);
 	let rotateToMapOrientation = $state(false);
 	let focusActiveMap = $state(false);
 	let sliderInViewOnly = $state(false);
+	let presentationModeSnapshot = $state<
+		| {
+				rotateToMapOrientation: boolean;
+				focusActiveMap: boolean;
+		  }
+		| undefined
+	>();
+
+	$effect(() => {
+		if (autoplayActive) {
+			if (!presentationModeSnapshot) {
+				presentationModeSnapshot = {
+					rotateToMapOrientation,
+					focusActiveMap
+				};
+			}
+
+			rotateToMapOrientation = autoplayFollowMap;
+			focusActiveMap = autoplayFollowMap;
+			return;
+		}
+
+		if (presentationModeSnapshot) {
+			rotateToMapOrientation = presentationModeSnapshot.rotateToMapOrientation;
+			focusActiveMap = presentationModeSnapshot.focusActiveMap;
+			presentationModeSnapshot = undefined;
+		}
+	});
 </script>
 
 <section
@@ -70,20 +112,26 @@
 		? 'md:border-r-2 md:border-gray-300'
 		: ''}"
 >
-	<div class="absolute inset-y-0 z-20 flex-none {navPosition === 'right' ? 'right-0' : 'left-0'}">
-		<Slider
-			bind:selectedYear
-			bind:inViewOnly={sliderInViewOnly}
-			{maps}
-			scaleInterval={config.slider.scaleInterval}
-			{navPosition}
-			{showMapYearTicks}
-			{annotationsInView}
-			enableKeyboardShortcut={enableLayersShortcut}
-		/>
-	</div>
+	{#if !autoplayActive}
+		<div
+			class="absolute inset-y-0 z-20 flex-none {navPosition === 'right' ? 'right-0' : 'left-0'}"
+			transition:fly={{ x: navPosition === 'right' ? 96 : -96, duration: 180 }}
+		>
+			<Slider
+				bind:selectedYear
+				bind:inViewOnly={sliderInViewOnly}
+				{maps}
+				scaleInterval={config.slider.scaleInterval}
+				{navPosition}
+				{showMapYearTicks}
+				{showOnlyAvailableYears}
+				{annotationsInView}
+				enableKeyboardShortcut={enableLayersShortcut}
+			/>
+		</div>
+	{/if}
 
-	<div class="relative flex-1 grow {mapOrderClass}">
+	<div class="relative min-h-0 flex-1 grow {mapOrderClass}">
 		<Map
 			bind:annotation
 			bind:opacity
@@ -92,6 +140,7 @@
 			bind:inViewOnly={sliderInViewOnly}
 			bind:currentLocation
 			bind:annotationsInView
+			bind:annotationsAtCenter
 			bind:geocoderBounds
 			{config}
 			{mapKeyboardCommand}
@@ -100,6 +149,9 @@
 			{enableLocationMarker}
 			{navPosition}
 			{controlsPosition}
+			{showInViewControl}
+			{autoplayActive}
+			{autoplayNextAnnotation}
 		/>
 		<MapLayers
 			bind:annotation
@@ -109,9 +161,11 @@
 			{layersId}
 			{paneSide}
 			{annotationsInView}
-			preferInViewMaps={sliderInViewOnly}
+			preferInViewMaps={sliderInViewOnly || (autoplayActive && !autoplayFollowMap)}
+			requirePreferredMaps={autoplayActive && !autoplayFollowMap}
 			enableKeyboardShortcut={enableLayersShortcut}
 			showPaneIndicator={showLayersPaneIndicator}
+			{autoplayActive}
 		/>
 	</div>
 </section>

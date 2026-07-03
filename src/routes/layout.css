@@ -1,24 +1,6 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
 
-@font-face {
-	font-family: 'Noto Sans';
-	src: url('/fonts/NotoSans-VariableFont_wdth,wght.ttf') format('truetype');
-	font-display: swap;
-	font-stretch: 62.5% 100%;
-	font-style: normal;
-	font-weight: 100 900;
-}
-
-@font-face {
-	font-family: 'Noto Sans';
-	src: url('/fonts/NotoSans-Italic-VariableFont_wdth,wght.ttf') format('truetype');
-	font-display: swap;
-	font-stretch: 62.5% 100%;
-	font-style: italic;
-	font-weight: 100 900;
-}
-
 @theme {
 	--font-sans: 'Noto Sans', ui-sans-serif, system-ui, sans-serif;
 	--font-noto: 'Noto Sans', ui-sans-serif, system-ui, sans-serif;

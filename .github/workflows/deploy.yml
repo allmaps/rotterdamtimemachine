@@ -1,9 +1,22 @@
 name: Deploy to GitHub Pages
 
 on:
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      base_path:
+        description: "SvelteKit base path. Leave empty for auto, use / for a root-domain deployment."
+        required: false
+        default: ""
+      config:
+        description: "Optional config YAML file to build with."
+        required: false
+        default: ""
   push:
-    branches: 'main'
+    branches: "main"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build_site:
@@ -13,28 +26,64 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Install pnpm
-        uses: pnpm/action-setup@v3
+        uses: pnpm/action-setup@v6
         with:
-          version: 8
+          version: 10
 
       - name: Install Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
-          node-version: 20
+          node-version: 24
           cache: pnpm
 
       - name: Install dependencies
         run: pnpm install
 
+      - name: Resolve build options
+        id: build_options
+        shell: bash
+        env:
+          REQUESTED_BASE_PATH: ${{ github.event.inputs.base_path || vars.PAGES_BASE_PATH || 'auto' }}
+          REQUESTED_CONFIG: ${{ github.event.inputs.config || vars.CONFIG || '' }}
+        run: |
+          requested_base_path="${REQUESTED_BASE_PATH:-auto}"
+          repository_name="${GITHUB_REPOSITORY#*/}"
+          owner_name="${GITHUB_REPOSITORY_OWNER,,}"
+          repository_name_lower="${repository_name,,}"
+
+          if [[ "$requested_base_path" == "auto" ]]; then
+            if [[ "$repository_name_lower" == "$owner_name.github.io" || -f static/CNAME ]]; then
+              base_path=""
+            else
+              base_path="/$repository_name"
+            fi
+          elif [[ -z "$requested_base_path" || "$requested_base_path" == "/" ]]; then
+            base_path=""
+          else
+            base_path="$requested_base_path"
+
+            if [[ "$base_path" != /* ]]; then
+              base_path="/$base_path"
+            fi
+
+            base_path="${base_path%/}"
+          fi
+
+          echo "base_path=$base_path" >> "$GITHUB_OUTPUT"
+          echo "config=${REQUESTED_CONFIG:-}" >> "$GITHUB_OUTPUT"
+          echo "Resolved BASE_PATH: ${base_path:-<root>}"
+          echo "Resolved CONFIG: ${REQUESTED_CONFIG:-config.yml}"
+
       - name: Build
         env:
-          BASE_PATH: '/${{ github.event.repository.name }}'
+          BASE_PATH: ${{ steps.build_options.outputs.base_path }}
+          CONFIG: ${{ steps.build_options.outputs.config }}
         run: pnpm run build
 
       - name: Upload Artifacts
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v5
         with:
-          path: 'build/'
+          path: "build/"
 
   deploy:
     needs: build_site
@@ -51,4 +100,4 @@ jobs:
     steps:
       - name: Deploy
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5

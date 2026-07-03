@@ -28,7 +28,10 @@ export function getExpandedMapYears(maps: Array<Pick<MapMetadata, 'year'>>) {
 		...new Set(
 			maps.flatMap((map) => {
 				const range = getMapYearRange(map);
-				return Array.from({ length: range.end - range.start + 1 }, (_, index) => range.start + index);
+				return Array.from(
+					{ length: range.end - range.start + 1 },
+					(_, index) => range.start + index
+				);
 			})
 		)
 	].sort((a, b) => a - b);

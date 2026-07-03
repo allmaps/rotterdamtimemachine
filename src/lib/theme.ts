@@ -1,33 +1,10 @@
-import colors from 'tailwindcss/colors';
+import { resolvePublicAssetUrl } from '$lib/asset-urls';
 import type { AppConfig } from '$lib/types';
 
-const tailwindShades = [
-	'50',
-	'100',
-	'200',
-	'300',
-	'400',
-	'500',
-	'600',
-	'700',
-	'800',
-	'900',
-	'950'
-] as const;
-const supportedMainShades = ['400', '500', '600', '700', '800'] as const;
-const themeRoles = {
-	soft: -7,
-	muted: -6,
-	secondary: -1,
-	main: 0,
-	hover: 1
-} as const;
-const minimumRoleIndices: Partial<Record<keyof typeof themeRoles, number>> = {
-	muted: 1
-};
+const fallbackThemeColor = '#15803d';
 const white = '#ffffff';
 const black = '#000000';
-const customThemeRoleMixes = {
+const themeRoleMixes = {
 	soft: { color: white, amount: 0.94 },
 	muted: { color: white, amount: 0.8 },
 	secondary: { color: white, amount: 0.14 },
@@ -68,77 +45,49 @@ const formatByExtension: Record<string, string> = {
 	otf: 'opentype'
 };
 
-type ThemeShade = (typeof tailwindShades)[number];
-type ThemePalette = Record<ThemeShade, string>;
-type SupportedMainShade = (typeof supportedMainShades)[number];
-type ThemeRole = keyof typeof themeRoles;
+type ThemeRole = keyof typeof themeRoleMixes | 'main';
 type FontRole = keyof typeof fontRoleVariables;
 type ThemeFonts = NonNullable<AppConfig['theme']['fonts']>;
 type ThemeFontFamily = NonNullable<ThemeFonts['families']>[number];
 type ThemeFontFace = ThemeFontFamily['faces'][number];
 type ThemeFontFile = ThemeFontFace['files'][number];
-type ParsedTheme =
-	| {
-			type: 'custom';
-			color: string;
-	  }
-	| {
-			type: 'palette';
-			color: string;
-			shade: SupportedMainShade;
-	  };
 
-function isThemePalette(value: unknown): value is ThemePalette {
-	if (!value || typeof value !== 'object') return false;
-
-	return tailwindShades.every(
-		(shade) => typeof (value as Record<string, unknown>)[shade] === 'string'
-	);
-}
-
-function parseTheme(theme: AppConfig['theme']): ParsedTheme {
-	const colorValue = String(theme.color ?? '')
-		.trim()
-		.toLowerCase();
-	const colorMatch = colorValue.match(/^([a-z]+)-(\d{2,3})$/);
-	const customColor = normalizeCustomColor(colorValue);
-	const color = colorMatch?.[1] ?? colorValue;
-	const shade = normalizeShade(theme.shade) ?? normalizeShade(colorMatch?.[2]) ?? '700';
-
-	if (customColor) {
-		return { type: 'custom', color: customColor };
+const bundledFontFamilies: ThemeFontFamily[] = [
+	{
+		name: 'Noto Sans',
+		faces: [
+			{
+				weight: '100 900',
+				style: 'normal',
+				display: 'swap',
+				stretch: '62.5% 100%',
+				files: ['/fonts/NotoSans-VariableFont_wdth,wght.ttf']
+			},
+			{
+				weight: '100 900',
+				style: 'italic',
+				display: 'swap',
+				stretch: '62.5% 100%',
+				files: ['/fonts/NotoSans-Italic-VariableFont_wdth,wght.ttf']
+			}
+		]
 	}
-
-	return { type: 'palette', color: color || 'green', shade };
-}
-
-function normalizeShade(shade: number | string | undefined): SupportedMainShade | undefined {
-	const normalized = String(shade ?? '').trim();
-	return supportedMainShades.includes(normalized as SupportedMainShade)
-		? (normalized as SupportedMainShade)
-		: undefined;
-}
-
-function getThemePalette(color: string | undefined) {
-	const palette = (colors as Record<string, unknown>)[color || 'green'];
-	return isThemePalette(palette) ? palette : (colors.green as ThemePalette);
-}
+];
 
 export function getThemeStyle(theme: AppConfig['theme']) {
-	const parsedTheme = parseTheme(theme);
-
-	const colorDeclarations = Object.entries(
-		parsedTheme.type === 'custom'
-			? getCustomThemeRoles(parsedTheme.color)
-			: getPaletteThemeRoles(parsedTheme.color, parsedTheme.shade)
-	)
-		.map(([role, color]) => `--color-brand-${role}: ${color} !important;`);
+	const colorDeclarations = Object.entries(getThemeRoles(getThemeColor(theme))).map(
+		([role, color]) => `--color-brand-${role}: ${color} !important;`
+	);
 
 	return [...colorDeclarations, ...getFontRoleDeclarations(theme.fonts)].join(' ');
 }
 
-export function getThemeHeadStyle(theme: AppConfig['theme']) {
-	return `${getThemeFontFaceStyle(theme.fonts)}\n:root { ${getThemeStyle(theme)} }`;
+export function getThemeColor(theme: AppConfig['theme']) {
+	return normalizeThemeColor(theme.color) ?? fallbackThemeColor;
+}
+
+export function getThemeHeadStyle(theme: AppConfig['theme'], basePath = '') {
+	return `${getThemeFontFaceStyle(theme.fonts, basePath)}\n:root { ${getThemeStyle(theme)} }`;
 }
 
 function getFontRoleDeclarations(fonts: ThemeFonts | undefined) {
@@ -152,16 +101,20 @@ function getFontRoleDeclarations(fonts: ThemeFonts | undefined) {
 	);
 }
 
-function getThemeFontFaceStyle(fonts: ThemeFonts | undefined) {
-	return (fonts?.families ?? [])
+function getThemeFontFaceStyle(fonts: ThemeFonts | undefined, basePath: string) {
+	return [...bundledFontFamilies, ...(fonts?.families ?? [])]
 		.flatMap((family) =>
-			(family.faces ?? []).map((face) => getFontFaceRule(family.name, face)).filter(Boolean)
+			(family.faces ?? [])
+				.map((face) => getFontFaceRule(family.name, face, basePath))
+				.filter(Boolean)
 		)
 		.join('\n\n');
 }
 
-function getFontFaceRule(familyName: string, face: ThemeFontFace) {
-	const sources = (face.files ?? []).map(getFontFileSource).filter(Boolean);
+function getFontFaceRule(familyName: string, face: ThemeFontFace, basePath: string) {
+	const sources = (face.files ?? [])
+		.map((file) => getFontFileSource(file, basePath))
+		.filter(Boolean);
 	if (!familyName || sources.length === 0) return '';
 
 	const declarations = [
@@ -179,7 +132,7 @@ function getFontFaceRule(familyName: string, face: ThemeFontFace) {
 	return `@font-face {\n\t${declarations.join('\n\t')}\n}`;
 }
 
-function getFontFileSource(file: ThemeFontFile) {
+function getFontFileSource(file: ThemeFontFile, basePath: string) {
 	const path = typeof file === 'string' ? file : file.path;
 	if (!path) return '';
 
@@ -187,7 +140,7 @@ function getFontFileSource(file: ThemeFontFile) {
 		typeof file === 'string' ? inferFontFormat(file) : (file.format ?? inferFontFormat(path));
 	const formatPart = format ? ` format(${quoteCssString(format)})` : '';
 
-	return `url(${quoteCssString(path)})${formatPart}`;
+	return `url(${quoteCssString(resolvePublicAssetUrl(path, basePath))})${formatPart}`;
 }
 
 function inferFontFormat(path: string) {
@@ -232,40 +185,17 @@ function safeFontDisplay(value: string | undefined) {
 		: 'swap';
 }
 
-function getPaletteThemeRoles(color: string, shade: SupportedMainShade): Record<ThemeRole, string> {
-	const palette = getThemePalette(color);
-	const roleEntries = Object.entries(themeRoles) as Array<[ThemeRole, number]>;
-
-	return Object.fromEntries(
-		roleEntries.map(([role, offset]) => {
-			const roleShade = getRelativeShade(shade, offset, minimumRoleIndices[role]);
-			return [role, palette[roleShade]];
-		})
-	) as Record<ThemeRole, string>;
-}
-
-function getCustomThemeRoles(color: string): Record<ThemeRole, string> {
+function getThemeRoles(color: string): Record<ThemeRole, string> {
 	return {
-		soft: mixHexColors(color, customThemeRoleMixes.soft.color, customThemeRoleMixes.soft.amount),
-		muted: mixHexColors(color, customThemeRoleMixes.muted.color, customThemeRoleMixes.muted.amount),
-		secondary: mixHexColors(
-			color,
-			customThemeRoleMixes.secondary.color,
-			customThemeRoleMixes.secondary.amount
-		),
+		soft: mixHexColors(color, themeRoleMixes.soft.color, themeRoleMixes.soft.amount),
+		muted: mixHexColors(color, themeRoleMixes.muted.color, themeRoleMixes.muted.amount),
+		secondary: mixHexColors(color, themeRoleMixes.secondary.color, themeRoleMixes.secondary.amount),
 		main: color,
-		hover: mixHexColors(color, customThemeRoleMixes.hover.color, customThemeRoleMixes.hover.amount)
+		hover: mixHexColors(color, themeRoleMixes.hover.color, themeRoleMixes.hover.amount)
 	};
 }
 
-function getRelativeShade(shade: SupportedMainShade, offset: number, minimumIndex = 0) {
-	const index = tailwindShades.indexOf(shade);
-	const nextIndex = Math.max(minimumIndex, Math.min(tailwindShades.length - 1, index + offset));
-
-	return tailwindShades[nextIndex];
-}
-
-function normalizeCustomColor(color: string) {
+function normalizeThemeColor(color: string) {
 	return normalizeHexColor(color) ?? normalizeRgbColor(color);
 }
 

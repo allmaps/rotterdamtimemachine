@@ -48,31 +48,105 @@ pnpm run build
 For deployment under a subpath, set the SvelteKit base path with `BASE_PATH`:
 
 ```bash
-BASE_PATH=/rotterdam-tijdmachine npm run build
+BASE_PATH=/rotterdam-tijdmachine pnpm run build
 ```
+
+To run or build with alternate content files, set `CONFIG`:
+
+```bash
+CONFIG=content/gouda/config.yml pnpm run dev
+CONFIG=content/gouda/config.yml pnpm run build
+```
+
+## Deploying to GitHub Pages
+
+This repository is configured for GitHub Pages through [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml). The workflow builds the static SvelteKit site and deploys the generated `build/` directory with GitHub's official Pages actions.
+
+To enable deployment:
+
+1. In GitHub, open **Settings > Pages** for the repository.
+2. Set **Build and deployment > Source** to **GitHub Actions**.
+3. Push to the `main` branch, or run **Deploy to GitHub Pages** manually from the **Actions** tab.
+
+The workflow resolves `BASE_PATH` before building. By default, it uses the repository name, which is correct for a GitHub Pages project site, such as:
+
+```text
+https://allmaps.github.io/rotterdam-tijdmachine/
+https://pages.allmaps.org/rotterdam-tijdmachine/
+```
+
+`BASE_PATH` must match the subpath where the app is served. The workflow automatically uses an empty base path when:
+
+- the repository is an organization/user Pages repository, such as `allmaps.github.io`
+- the repository contains `static/CNAME`, which indicates a root custom-domain deployment
+
+You can also override this behavior without editing the workflow:
+
+- Set a repository variable named `PAGES_BASE_PATH` to a path such as `/rotterdam-tijdmachine`
+- Set `PAGES_BASE_PATH` to `/` for a root-domain deployment
+- Use the manual **Deploy to GitHub Pages** workflow input `base_path` for one-off deployments
+
+The manual workflow input and repository variable both accept values with or without a leading slash. The workflow normalizes `rotterdam-tijdmachine` to `/rotterdam-tijdmachine`.
+
+Before deploying a reused version of the app, update:
+
+- `site.url` in `config.yml` to the final public URL, including the trailing slash
+- `basemap.protomapsApiKey` to your own key, and allow the GitHub Pages origin in the Protomaps dashboard
+- `CONFIG` as a repository variable, or the manual workflow input `config`, if you want to deploy an alternate config file
+
+For example:
+
+| Deployment target                                  | `PAGES_BASE_PATH`                 |
+| -------------------------------------------------- | --------------------------------- |
+| `https://allmaps.github.io/rotterdam-tijdmachine/` | `/rotterdam-tijdmachine` or unset |
+| `https://pages.allmaps.org/rotterdam-tijdmachine/` | `/rotterdam-tijdmachine` or unset |
+| `https://tijdmachine.example.org/`                 | `/`                               |
+
+To deploy an alternate configuration, set the repository variable `CONFIG` to a file such as `content/gouda/config.yml`, or fill in the `config` input when manually running the workflow.
+
+SvelteKit is configured with `@sveltejs/adapter-static` and `fallback: '404.html'`, so direct links with query parameters keep working on GitHub Pages.
 
 ## Reusing the app with different content
 
 The app is structured so the most important content lives outside the components. To reuse it for another city, region, or map collection, you mainly need to edit these two files:
 
 - `config.yml`: app settings, text, metadata, and UI labels
-- `collection.yml`: historical map records and Allmaps annotation URLs
+- `collection.yml`: historical map records and Georeference Annotation URLs or local annotation paths
 
-The YAML files are imported in `src/routes/+page.ts` and `src/routes/+layout.ts` through `@modyfi/vite-plugin-yaml`. If you extend the YAML structure, also update the shared types in `src/lib/types.ts`.
+The YAML files are loaded through `src/lib/content.ts` and `@modyfi/vite-plugin-yaml`. If you extend the YAML structure, also update the shared types in `src/lib/types.ts`.
+
+By default, the app uses `config.yml`, which points to `collection.yml`. To keep multiple configurations in one repository, place alternate content packages in `content/` folders and select the configuration file with `CONFIG`:
+
+```bash
+CONFIG=content/gouda/config.yml pnpm run dev
+CONFIG=content/gouda/config.yml pnpm run build
+```
+
+`CONFIG` selects the app configuration file. If it is omitted, the app falls back to `config.yml`. The selected config file then points to the collection with its top-level `collection` field. Bare collection filenames are resolved relative to the config file, so `content/gouda/config.yml` can use `collection: collection.yml`.
+
+`CONFIG` is read when the Vite dev server starts. Stop and restart the dev server after switching to another config file; hot module replacement does not switch a running server from one content package to another.
 
 ### `config.yml`
 
 Important sections:
 
+- `collection`: YAML file with map records; bare filenames are resolved relative to the config file
 - `site`: name, URL, description, and locale for metadata
-- `theme.color`: Tailwind palette name, hex value, or RGB value used for the primary UI color
-- `theme.shade`: main shade for the primary UI color; supported values are `400`, `500`, `600`, `700`, and `800`
+- `site.favicon`: optional favicon URL or path; overrides the bundled `static/favicon.svg`
+- `theme.color`: hex or RGB value used for the primary UI color
 - `theme.fonts`: optional custom font files and semantic font roles
 - `map.defaultYear`: the year the app opens with by default
 - `map.initialView`: default map view with `center`, `zoom`, and `bearing`
+- `map.autoZoomOutThreshold`: zoom-level margin before the app zooms out to a selected map's native maximum zoom
+- `map.visibilityPaddingPixels`: inset used when checking whether the selected map is meaningfully visible in the viewport
+- `map.tinyVisibilityAreaRatio`: minimum screen-area ratio before a visible selected map is treated as too small to study
 - `map.keyboard`: panning distance for keyboard map movement
 - `basemap.protomapsApiKey`: API key used for Protomaps hosted basemap tiles
 - `slider.scaleInterval`: year scale interval
+- `slider.showOnlyAvailableYears`: show only years with available maps in the year picker
+- `autoplay.intervalSeconds`: seconds per map slide in presentation mode; omit `autoplay` to hide the header play button
+- `autoplay.flyToDurationMs`: camera animation duration when presentation mode focuses on a map
+- `tour.enabled`: set to `false` to disable the one-time guided tour
 - `header`, `about`, `share`, `search`, `layers`, `controls`, `mapWarnings`: visible labels and modal text
 
 For a new use case, usually start with:
@@ -80,14 +154,14 @@ For a new use case, usually start with:
 1. Update `site.name`, `site.url`, and `site.description`.
 2. Set `map.defaultYear` to a year that exists in your collection.
 3. Set `map.initialView.center` to `[longitude, latitude]` for your area.
-4. Set `theme.color` and `theme.shade` for the primary UI color, for example `color: blue` and `shade: 700`. The app derives five semantic brand shades from that value: soft, muted, secondary, main, and hover. You can also write the shade in `theme.color`, such as `blue-700`, if `theme.shade` is omitted. Custom colors are supported too, for example `color: "#006d2c"` or `color: rgb(0, 109, 44)`. Quote hex values in YAML. For custom colors, the provided color is always used as `brand-main`, so `theme.shade` only applies to Tailwind palette names.
+4. Set `theme.color` for the primary UI color, for example `color: "#006d2c"` or `color: rgb(0, 109, 44)`. Quote hex values in YAML. The app derives five semantic brand colors from that value: soft, muted, secondary, main, and hover.
 5. Request your own free Protomaps API key at [protomaps.com/api](https://protomaps.com/api) and set it as `basemap.protomapsApiKey`.
-6. Rewrite or translate the text under `about`, `search`, `layers`, and `controls`.
+6. Rewrite or translate the text under `tour`, `about`, `search`, `layers`, and `controls`.
 7. Check `search.countryCodes` if the app is used outside the Netherlands.
 
 ### Custom fonts
 
-Noto Sans is bundled with the app and is always used as the fallback font. To use a custom font, place the font files in `static/fonts` and define them under `theme.fonts` in `config.yml`.
+Noto Sans is bundled with the app and is always used as the fallback font. To use a custom font, place the font files in `static/fonts` and define them under `theme.fonts` in `config.yml`. Font paths are resolved through SvelteKit's base path, so both `fonts/ExampleSans-Regular.woff2` and `/fonts/ExampleSans-Regular.woff2` work when deploying under a subpath. Absolute font URLs, such as CDN-hosted `https://...` URLs, can also be used.
 
 ```yaml
 theme:
@@ -98,11 +172,11 @@ theme:
           - weight: 400
             style: normal
             files:
-              - /fonts/ExampleSans-Regular.woff2
+              - fonts/ExampleSans-Regular.woff2
           - weight: 700
             style: normal
             files:
-              - /fonts/ExampleSans-Bold.woff2
+              - fonts/ExampleSans-Bold.woff2
     roles:
       body: Noto Sans
       accent: Example Sans
@@ -118,6 +192,12 @@ Font roles map to the app's internal Tailwind font classes:
 - `display`: reserved for larger display text
 
 Each role can be a single family name or a list, for example `heading: [Example Heading, Example Sans]`. The app automatically appends `Noto Sans, ui-sans-serif, system-ui, sans-serif` as fallback fonts. If `theme.fonts` is omitted, all roles use Noto Sans.
+
+### Favicon
+
+The favicon is served from `static/favicon.svg`. To reuse the app with another brand, replace that file with your own SVG favicon. The layout references it through SvelteKit's base path, so it also works when the app is deployed under a subpath.
+
+Alternatively, set `site.favicon` in `config.yml` to point at a different favicon without replacing the bundled file. The value is used as-is, so it can be a relative path or an absolute URL, for example `favicon: https://example.org/logo.svg`. When `site.favicon` is omitted, the app falls back to `static/favicon.svg`.
 
 ### `collection.yml`
 
@@ -142,7 +222,7 @@ Required fields:
 - `year`: year used for sorting on the slider; this can be a single year such as `1897` or an inclusive range such as `1811/1832`
 - `institution`: collection holder or institution
 - `url`: public item page
-- `annotation`: Allmaps annotation URL
+- `annotation`: Georeference Annotation URL, or a path to a bundled annotation file in `static/`
 
 Optional fields:
 
@@ -153,12 +233,40 @@ Multiple maps can share the same year. The app will show previous/next buttons a
 
 ### Georeference Annotations
 
-The app expects each map to have a valid Georeference Annotations. The helper in `src/lib/warped-map-list.ts` fetches these annotations, builds a `WarpedMapList`, and uses that list for:
+The app expects each map to have valid Georeference Annotations. During development and production builds, `scripts/generate-annotations.ts` reads the configured collection, fetches or reads every annotation, parses the annotations with Allmaps, and writes a generated JSON asset to `src/lib/generated/maps.json`. The app then loads that local generated asset and builds a `WarpedMapList` from it for:
 
 - displaying historical map layers
 - the "in view" filter
 - map bounds and visibility checks
 - linking Georeference Annotations IDs back to records in `collection.yml`
+
+Annotations can be referenced as full external URLs:
+
+```yaml
+annotation: https://annotations.allmaps.org/manifests/example
+```
+
+They can also be bundled with the app by placing JSON files in `static/annotations` and using the served path in `collection.yml`. Files in `static` are served from the site root, so omit the `static/` prefix:
+
+```yaml
+annotation: annotations/rotterdam-1897.json
+```
+
+Relative annotation paths are resolved with the SvelteKit base path, so they continue to work when the app is deployed under a subpath such as `/rotterdam-tijdmachine`. Links generated for Allmaps Viewer and copied XYZ tile URLs use the full public URL for bundled annotations, for example `https://example.org/time-machine/annotations/rotterdam-1897.json`.
+
+Remote annotations are cached in `.cache/annotations` after a successful fetch. When the cache contains an annotation, local development and builds reuse that cached copy instead of requesting it again, which keeps startup fast when switching between multiple configs. If no cache exists, the script fetches the remote annotation and stores it for later. The generated JSON and cache directory are ignored by Git.
+
+To rebuild the generated annotation asset from the current cache, run:
+
+```bash
+pnpm run generate:annotations
+```
+
+To force fresh remote annotation requests and update the cache, run:
+
+```bash
+REFRESH_ANNOTATIONS=1 pnpm run generate:annotations
+```
 
 ### Basemap and search bounds
 
@@ -180,16 +288,22 @@ You can link to a year with the `year` parameter. This parameter only accepts a 
 https://example.org/time-machine/?year=1897
 ```
 
-You can link to a specific map with the `map` parameter. This parameter only accepts an annotation URL that exists in `collection.yml`:
+You can link to a specific map with the `map` parameter. This parameter accepts the generated annotation ID from `src/lib/generated/maps.json`; full annotation URLs are not accepted. For Allmaps annotations this is the hash in the annotation URL; any version hash after `@` is ignored:
 
 ```text
-https://example.org/time-machine/?map=https%3A%2F%2Fannotations.allmaps.org%2Fmanifests%2Fexample
+https://example.org/time-machine/?map=7256050d27d1f599
+```
+
+For bundled annotations in `static/annotations`, the generated ID is the first 16 characters of a SHA-1 hash of the normalized static path. The sharing modal creates these URLs automatically.
+
+```text
+https://example.org/time-machine/?map=ee371ce2fd6f97fa
 ```
 
 If `year` and `map` are both present, `map` takes preference. To link to a specific view, add `lat`, `lng`, and optionally `zoom` and `bearing`:
 
 ```text
-https://example.org/time-machine/?lat=51.92146&lng=4.48488&zoom=14.00&map=https%3A%2F%2Fannotations.allmaps.org%2Fmanifests%2Fexample
+https://example.org/time-machine/?lat=51.92146&lng=4.48488&zoom=14.00&map=7256050d27d1f599
 ```
 
 The sharing modal keeps the default link simple and only includes view parameters when the current-view option is selected.
@@ -198,13 +312,15 @@ The sharing modal keeps the default link simple and only includes view parameter
 
 - `config.yml`: app settings, text, and metadata
 - `collection.yml`: map collection
-- `src/routes/+page.ts`: loads config and collection for the main page
-- `src/routes/+layout.ts`: loads config for metadata
+- `src/lib/content.ts`: selects and loads config and collection YAML files
+- `src/routes/+page.ts`: exposes config and collection to the main page
+- `src/routes/+layout.ts`: exposes config for metadata
 - `src/lib/components`: Svelte components for the map, layers, header, modals, and slider
 - `src/lib/app-state.svelte.ts`: shared UI state, favorites, and map pane state
 - `src/lib/services/geocoder.svelte.ts`: Nominatim search service
 - `src/lib/warped-map-list.ts`: Allmaps annotation and warped map helper
 - `src/lib/types.ts`: shared TypeScript types for config, collection, and UI events
+- `static/favicon.svg`: replaceable favicon
 
 ## Technology
 
@@ -214,9 +330,10 @@ The sharing modal keeps the default link simple and only includes view parameter
 - [Allmaps](https://allmaps.org/)
 - [Protomaps Basemaps](https://github.com/protomaps/basemaps)
 - [Tailwind CSS](https://tailwindcss.com/)
-- [Bits UI](https://bits-ui.com/)
 - [Lucide icons](https://lucide.dev/)
 - [Nominatim](https://nominatim.org/)
+- [driver.js](https://driverjs.com/)
+- [svelte-scroll-input-date-picker](https://github.com/abufahimkhan/svelte-scroll-input-date-picker)
 
 ## Examples and inspiration
 

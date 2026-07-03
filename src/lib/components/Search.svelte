@@ -151,6 +151,7 @@
 <button
 	type="button"
 	onclick={showSearch}
+	data-tour="search"
 	aria-label={config.search.modalLabel}
 	class="flex h-8 cursor-pointer items-center gap-1 rounded px-2 text-sm font-semibold hover:bg-brand-hover md:px-3"
 >
@@ -252,6 +253,7 @@
 
 		<p class="border-t border-gray-100 px-4 py-2 text-xs font-light text-gray-500">
 			{config.search.attribution.prefix}
+			<!-- eslint-disable svelte/no-navigation-without-resolve -->
 			<a
 				href={config.search.attribution.providerUrl}
 				target="_blank"
@@ -265,6 +267,7 @@
 				rel="noopener noreferrer"
 				class="hover:text-brand-main">{config.search.attribution.copyright}</a
 			>
+			<!-- eslint-enable svelte/no-navigation-without-resolve -->
 		</p>
 	</Modal>
 {/if}

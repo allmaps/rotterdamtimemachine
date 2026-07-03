@@ -1,6 +1,5 @@
 import type { AppConfig, MapMetadata } from '$lib/types';
-import config from '../../config.yml';
-import collection from '../../collection.yml';
+import { collection, config } from '$lib/content';
 
 export function load() {
 	return {

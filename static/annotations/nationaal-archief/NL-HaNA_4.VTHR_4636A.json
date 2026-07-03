@@ -1,0 +1,554 @@
+{
+  "type": "AnnotationPage",
+  "@context": "http://www.w3.org/ns/anno.jsonld",
+  "items": [
+    {
+      "id": "https://annotations.allmaps.org/maps/af11c31fee5f9a0e/attach",
+      "type": "Annotation",
+      "@context": [
+        "http://iiif.io/api/extension/georef/1/context.json",
+        "http://iiif.io/api/presentation/3/context.json"
+      ],
+      "created": "2026-06-29T18:27:41.967Z",
+      "modified": "2026-06-29T18:27:41.967Z",
+      "motivation": "georeferencing",
+      "target": {
+        "type": "SpecificResource",
+        "source": {
+          "id": "https://service.archief.nl/iipsrv?IIIF=/c5/68/ca/9a/59/ff/4c/e4/9d/25/1a/94/14/cf/29/82/8b428d18-6e78-4c06-a427-8991dc29f7de.jp2",
+          "type": "ImageService2",
+          "height": 7984,
+          "width": 10330,
+          "partOf": [
+            {
+              "id": "https://service.archief.nl/iipsrv?IIIF=/c5/68/ca/9a/59/ff/4c/e4/9d/25/1a/94/14/cf/29/82/8b428d18-6e78-4c06-a427-8991dc29f7de.jp2/info.json",
+              "type": "Canvas",
+              "partOf": [
+                {
+                  "id": "https://sammeltassen.nl/iiif-manifests/nationaal-archief/NL-HaNA_4.VTHR_4636.json",
+                  "type": "Manifest",
+                  "label": {
+                    "nl": [
+                      "Nieuwe plattegrond der stad Rotterdam. 1796 & 1797 (NL-HaNA_4.VTHR_4636)"
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "selector": {
+          "type": "SvgSelector",
+          "value": "<svg width=\"10330\" height=\"7984\"><polygon points=\"300,237 5840,257 10057,297 9993,7655 253,7592 282,5882 290,3430\" /></svg>"
+        }
+      },
+      "body": {
+        "type": "FeatureCollection",
+        "transformation": {
+          "type": "thinPlateSpline"
+        },
+        "features": [
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                300,
+                237
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.48397361160102,
+                51.92009869888007
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                10057,
+                297
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.497565715631442,
+                51.927419495579144
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                5840,
+                257
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.491687199641489,
+                51.92425523887495
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                290,
+                3430
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.487833256888957,
+                51.91736245862324
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                282,
+                5882
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.490782986326489,
+                51.91527216757585
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                253,
+                7592
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.492835090970573,
+                51.913805398641514
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://annotations.allmaps.org/maps/1fb3d3d1f8f1e8f8/attach",
+      "type": "Annotation",
+      "@context": [
+        "http://iiif.io/api/extension/georef/1/context.json",
+        "http://iiif.io/api/presentation/3/context.json"
+      ],
+      "created": "2026-06-29T18:27:34.016Z",
+      "modified": "2026-06-29T18:27:34.016Z",
+      "motivation": "georeferencing",
+      "target": {
+        "type": "SpecificResource",
+        "source": {
+          "id": "https://service.archief.nl/iipsrv?IIIF=/ee/54/99/de/d0/c6/4d/a0/8e/38/95/cf/1b/96/a1/17/8acea444-bd03-440d-a9b8-95ba147c03a8.jp2",
+          "type": "ImageService2",
+          "height": 7968,
+          "width": 10617,
+          "partOf": [
+            {
+              "id": "https://service.archief.nl/iipsrv?IIIF=/ee/54/99/de/d0/c6/4d/a0/8e/38/95/cf/1b/96/a1/17/8acea444-bd03-440d-a9b8-95ba147c03a8.jp2/info.json",
+              "type": "Canvas",
+              "partOf": [
+                {
+                  "id": "https://sammeltassen.nl/iiif-manifests/nationaal-archief/NL-HaNA_4.VTHR_4636.json",
+                  "type": "Manifest",
+                  "label": {
+                    "nl": [
+                      "Nieuwe plattegrond der stad Rotterdam. 1796 & 1797 (NL-HaNA_4.VTHR_4636)"
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "selector": {
+          "type": "SvgSelector",
+          "value": "<svg width=\"10617\" height=\"7968\"><polygon points=\"483,255 7283,230 10224,238 10209,3457 10196,5910 10196,7629 461,7623\" /></svg>"
+        }
+      },
+      "body": {
+        "type": "FeatureCollection",
+        "transformation": {
+          "type": "thinPlateSpline"
+        },
+        "features": [
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                10224,
+                238
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.48397361160102,
+                51.92009869888007
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                10209,
+                3457
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.487833256888957,
+                51.91736245862324
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                10196,
+                5910
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.490782986326489,
+                51.91527216757585
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                10196,
+                7629
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.492835090970573,
+                51.913805398641514
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                7283,
+                230
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.479939431393142,
+                51.917893700673304
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                483,
+                255
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.470627521092056,
+                51.912785453347354
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://annotations.allmaps.org/maps/05b435b0b78854f4/attach",
+      "type": "Annotation",
+      "@context": [
+        "http://iiif.io/api/extension/georef/1/context.json",
+        "http://iiif.io/api/presentation/3/context.json"
+      ],
+      "created": "2026-06-29T18:26:10.634Z",
+      "modified": "2026-06-29T18:26:10.634Z",
+      "motivation": "georeferencing",
+      "target": {
+        "type": "SpecificResource",
+        "source": {
+          "id": "https://service.archief.nl/iipsrv?IIIF=/06/96/a2/da/49/76/47/f5/92/12/5a/33/1b/a5/a5/51/95a9798e-d5ba-4972-ab73-ac023d583b55.jp2",
+          "type": "ImageService2",
+          "height": 7840,
+          "width": 10473,
+          "partOf": [
+            {
+              "id": "https://service.archief.nl/iipsrv?IIIF=/06/96/a2/da/49/76/47/f5/92/12/5a/33/1b/a5/a5/51/95a9798e-d5ba-4972-ab73-ac023d583b55.jp2/info.json",
+              "type": "Canvas",
+              "partOf": [
+                {
+                  "id": "https://sammeltassen.nl/iiif-manifests/nationaal-archief/NL-HaNA_4.VTHR_4636.json",
+                  "type": "Manifest",
+                  "label": {
+                    "nl": [
+                      "Nieuwe plattegrond der stad Rotterdam. 1796 & 1797 (NL-HaNA_4.VTHR_4636)"
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "selector": {
+          "type": "SvgSelector",
+          "value": "<svg width=\"10473\" height=\"7840\"><polygon points=\"321,254 10108,231 10123,7627 5891,7648 348,7643 334,3042\" /></svg>"
+        }
+      },
+      "body": {
+        "type": "FeatureCollection",
+        "transformation": {
+          "type": "thinPlateSpline"
+        },
+        "features": [
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                348,
+                7643
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.48397361160102,
+                51.92009869888007
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                10123,
+                7627
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.497565715631442,
+                51.927419495579144
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                5891,
+                7648
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.491687199641489,
+                51.92425523887495
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                321,
+                254
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.475092056014273,
+                51.92640969778249
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                334,
+                3042
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.47843903866356,
+                51.92403412865689
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://annotations.allmaps.org/maps/09cc5514cecc155c/attach",
+      "type": "Annotation",
+      "@context": [
+        "http://iiif.io/api/extension/georef/1/context.json",
+        "http://iiif.io/api/presentation/3/context.json"
+      ],
+      "created": "2026-06-29T18:25:53.116Z",
+      "modified": "2026-06-29T18:25:53.116Z",
+      "motivation": "georeferencing",
+      "target": {
+        "type": "SpecificResource",
+        "source": {
+          "id": "https://service.archief.nl/iipsrv?IIIF=/69/2a/42/e9/4d/4d/4a/7a/9d/b2/c4/06/2a/6f/91/dd/d4b55124-3131-416a-8a89-f3f60619b717.jp2",
+          "type": "ImageService2",
+          "height": 7872,
+          "width": 10249,
+          "partOf": [
+            {
+              "id": "https://service.archief.nl/iipsrv?IIIF=/69/2a/42/e9/4d/4d/4a/7a/9d/b2/c4/06/2a/6f/91/dd/d4b55124-3131-416a-8a89-f3f60619b717.jp2/info.json",
+              "type": "Canvas",
+              "partOf": [
+                {
+                  "id": "https://sammeltassen.nl/iiif-manifests/nationaal-archief/NL-HaNA_4.VTHR_4636.json",
+                  "type": "Manifest",
+                  "label": {
+                    "nl": [
+                      "Nieuwe plattegrond der stad Rotterdam. 1796 & 1797 (NL-HaNA_4.VTHR_4636)"
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "selector": {
+          "type": "SvgSelector",
+          "value": "<svg width=\"10249\" height=\"7872\"><polygon points=\"281,220 10013,283 9994,3059 9966,7660 7029,7650 220,7620\" /></svg>"
+        }
+      },
+      "body": {
+        "type": "FeatureCollection",
+        "transformation": {
+          "type": "thinPlateSpline"
+        },
+        "features": [
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                9966,
+                7660
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.48397361160102,
+                51.92009869888007
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                7029,
+                7650
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.479939431393142,
+                51.917893700673304
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                220,
+                7620
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.470627521092056,
+                51.912785453347354
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                10013,
+                283
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.475092056014273,
+                51.92640969778249
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                9994,
+                3059
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.47843903866356,
+                51.92403412865689
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

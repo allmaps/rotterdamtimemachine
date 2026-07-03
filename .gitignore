@@ -7,6 +7,9 @@ node_modules
 .wrangler
 /.svelte-kit
 /build
+/src/lib/generated/*.json
+/.cache
+/.pnpm-store
 
 # OS
 .DS_Store

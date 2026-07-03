@@ -1,13 +1,43 @@
 site:
-  name: Rotterdam Time Machine
-  url: https://rotterdamtimemachine.nl/
-  description: Verken historische kaarten van Rotterdam door de tijd en vergelijk kaartlagen met de huidige stad.
+  name: Goudse Kaarten Kabinet
+  url: https://www.goudatijdmachine.nl/kaarten-kabinet/
+  description: Verken historische kaarten van Gouda door de tijd en vergelijk kaartlagen met de huidige stad.
   locale: nl
+  themeColor: "#3891b1"
+  favicon: https://www.goudatijdmachine.nl/wp-content/gtm-logo/gtm-logo-2025.svg
+
+header:
+  search: Zoeken
+  compare: Vergelijken
+  closeCompare: Sluiten
+  compareMode: Vergelijkmodus
+  play: Presentatie starten
+  pause: Presentatie pauzeren
+  stop: Presentatie stoppen
+  followMap: Kaartlaag volgen
+  filterViewport: Kaartuitsnede gebruiken
+  enterFullscreen: Volledig scherm
+  exitFullscreen: Volledig scherm sluiten
+  about: Over
+  share: Delen
+
+map:
+  defaultYear: 1710
+  autoZoomOutThreshold: 0.5
+  visibilityPaddingPixels: 60
+  tinyVisibilityAreaRatio: 0.03
+  initialView:
+    center: [4.7068, 52.0104]
+    zoom: 14.5
+    bearing: 0
+  keyboard:
+    panPixels: 100
+    bearingStep: 13
 
 collection: collection.yml
 
 theme:
-  color: "#00811f"
+  color: "#3891b1"
   fonts:
     families:
       - name: Bolder
@@ -45,43 +75,15 @@ theme:
       heading: [Bolder Heading, Bolder]
       display: [Bolder Heading, Bolder]
 
-map:
-  defaultYear: 1897
-  autoZoomOutThreshold: 0.5
-  visibilityPaddingPixels: 60
-  tinyVisibilityAreaRatio: 0.03
-  initialView:
-    center: [4.484882, 51.921456]
-    zoom: 14
-    bearing: 0
-  keyboard:
-    panPixels: 100
-
 basemap:
-  protomapsApiKey: ca7652ec836f269a
+  protomapsApiKey: 8a4b1d9342ca6e89
 
 slider:
   scaleInterval: 25
-  showOnlyAvailableYears: true
 
 autoplay:
   intervalSeconds: 4
-  flyToDurationMs: 1000
-
-header:
-  search: Zoeken
-  compare: Vergelijken
-  closeCompare: Sluiten
-  compareMode: Vergelijkmodus
-  play: Presentatie
-  pause: Presentatie pauzeren
-  stop: Presentatie stoppen
-  followMap: Kaartlaag volgen
-  filterViewport: Kaartuitsnede gebruiken
-  enterFullscreen: Volledig scherm
-  exitFullscreen: Volledig scherm sluiten
-  about: Over
-  share: Delen
+  flyToDurationMs: 100
 
 tour:
   enabled: true
@@ -90,16 +92,16 @@ tour:
   previousLabel: Vorige
   doneLabel: Klaar
   progressText: "{{current}} van {{total}}"
-  storageKey: rotterdamtimemachine-tour-v1
+  storageKey: goudse-kaarten-kabinet-tour-v1
   steps:
     - target: time-slider
       title: Reis door de tijd
-      description: Swipe of scroll de verticale slider om naar een ander jaar te gaan.
+      description: Sleep of klik op de verticale slider om naar een ander jaar te gaan.
       side: right
       align: center
     - target: layers
       title: Kies kaartlagen
-      description: Klik voor meer informatie over de beschikbare kaartlagen. Swipe indien er meerdere kaarten beschikbaar zijn voor het huidige jaar.
+      description: Open de kaartlagen om kaarten te zoeken, te filteren en favorieten te bewaren.
       side: top
       align: center
     - target: map-toolbar
@@ -109,7 +111,7 @@ tour:
       align: start
     - target: search
       title: Zoek een plek
-      description: Zoek een adres of toon je eigen locatie op de kaart.
+      description: Zoek een adres in Gouda of toon je eigen locatie op de kaart.
       side: bottom
       align: start
     - target: compare
@@ -119,17 +121,16 @@ tour:
       align: start
 
 about:
-  title: Over Rotterdam Time Machine
+  title: Over Goudse Kaarten Kabinet
   closeLabel: Sluit over
   paragraphs:
-    - Rotterdam Time Machine maakt het mogelijk om ruim 300 jaar aan stadsgeschiedenis te ontdekken. Historische kaarten, luchtfoto's en plattegronden laten zien hoe Rotterdam zich ontwikkelde van compacte handelsstad aan de Maas tot moderne havenstad met wijken, infrastructuur en haventerreinen die steeds opnieuw werden aangepast.
-    - "Een belangrijk kantelpunt is het bombardement van 14 mei 1940, waarbij grote delen van de binnenstad werden verwoest. De wederopbouw veranderde het centrum ingrijpend: oude stratenpatronen verdwenen, nieuwe verkeersroutes en pleinen ontstonden, en de stad kreeg een ander ritme."
-    - Ook buiten het centrum veranderde Rotterdam voortdurend. Havenuitbreidingen, spoorlijnen, waterwerken, industriegebieden en nieuwe woonwijken verschoven de grenzen van de stad. Door kaarten uit verschillende jaren over elkaar te leggen, worden deze veranderingen zichtbaar en vergelijkbaar.
-    - Deze cultuurhistorische tijdreis helpt om het Rotterdam van nu beter te begrijpen. Ze laat zien welke structuren verdwenen, welke lijnen juist bleven bestaan, en hoe historische kennis opnieuw kan inspireren bij het kijken naar de stad.
+    - De Gouda Tijdmachine verzamelt ook kaarten van Gouda om de stadsgeschiedenis te ontdekken. Vanaf de zestiende eeuw zijn er kaarten beschikbaar van deze havenstad.
+    - De historische Goudse kaarten zijn afkomstig uit de collectie van het Streekarchief Midden-Holland en andere erfgoedinstellingen. Vrijwilligers van de Gouda Tijdmachine hebben deze kaarten gegeorefereerd met behulp van Allmaps, zodat ze in de tijdmachine kunnen worden bekeken.
+    - Deze cultuurhistorische tijdreis geeft inzicht in de keuzes die hebben geleid tot het Gouda van nu, en kan inspireren om historische kennis opnieuw te benutten.
   standards:
     title: Kaarten verbinden
     paragraphs:
-      - De kaarten in deze time machine komen uit collecties van verschillende instellingen. Dankzij de open standaarden van IIIF kunnen beelden en metadata op een uniforme manier worden gepubliceerd, opgehaald en hergebruikt.
+      - De kaarten in deze tijdmachine komen uit collecties van verschillende instellingen. Dankzij de open standaard IIIF kunnen kaartbeelden en metadata op een uniforme manier worden gepubliceerd, opgehaald en hergebruikt.
       - Met de open-source tooling van Allmaps worden historische kaartbeelden gekoppeld aan geografische coördinaten. Daardoor kunnen kaarten uit verschillende bronnen als lagen op dezelfde moderne kaart worden gelegd, vergeleken en gedeeld.
     links:
       - label: IIIF
@@ -139,20 +140,18 @@ about:
   institutionsTitle: Kaartbronnen
   source:
     title: Open source
-    description: Rotterdam Time Machine is een open-source project geïnitieerd en beheerd door Allmaps, in samenwerking met het Stadsarchief Rotterdam. De broncode is beschikbaar op GitHub en kan hergebruikt worden voor een tijdreis van een andere stad, zie bijvoorbeeld het Kaartenkabinet van de Gouda Tijdmachine.
+    description: Het Goudse Kaarten Kabinet gebruikt de open-source code van Rotterdam Time Machine. De broncode is beschikbaar op GitHub en kan worden hergebruikt voor andere kaartcollecties.
     links:
       - label: Bekijk de broncode op GitHub
         url: https://github.com/allmaps/rotterdamtimemachine
-      - label: Gouda Tijdmachine
-        url: https://www.goudatijdmachine.nl/kaarten-kabinet/
-    linkLabel:
-    url:
+      - label: Rotterdam Time Machine
+        url: https://rotterdamtimemachine.nl/
   shortcutsTitle: Sneltoetsen
   shortcuts:
     - keys: ["⌘", K, "/", Ctrl, K]
       description: Kaartlagen openen
     - keys: ["↑", "↓"]
-      description: ↑ naar het vorige, ↓ naar het volgende beschikbare kaartjaar
+      description: Naar het volgende of vorige beschikbare kaartjaar
     - keys: ["←", "→"]
       description: Door kaarten van hetzelfde jaar bladeren
     - keys: ["+", "=", "-"]

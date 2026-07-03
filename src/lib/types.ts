@@ -11,16 +11,39 @@ export type MapMetadata = {
 	annotation: string;
 };
 
+export type TourConfig =
+	| {
+			enabled: false;
+			storageKey?: string;
+	  }
+	| {
+			enabled?: true;
+			closeLabel: string;
+			nextLabel: string;
+			previousLabel: string;
+			doneLabel: string;
+			progressText: string;
+			storageKey?: string;
+			steps: Array<{
+				target: string;
+				title: string;
+				description: string;
+				side?: 'top' | 'right' | 'bottom' | 'left';
+				align?: 'start' | 'center' | 'end';
+			}>;
+	  };
+
 export type AppConfig = {
+	collection?: string;
 	site: {
 		name: string;
 		url: string;
 		description: string;
 		locale: string;
+		favicon?: string;
 	};
 	theme: {
 		color: string;
-		shade?: number | string;
 		fonts?: {
 			families?: Array<{
 				name: string;
@@ -48,6 +71,9 @@ export type AppConfig = {
 	};
 	map: {
 		defaultYear: number;
+		autoZoomOutThreshold?: number;
+		visibilityPaddingPixels?: number;
+		tinyVisibilityAreaRatio?: number;
 		initialView: MapLocation;
 		keyboard: {
 			panPixels: number;
@@ -58,19 +84,49 @@ export type AppConfig = {
 	};
 	slider: {
 		scaleInterval: number;
+		showOnlyAvailableYears?: boolean;
+	};
+	autoplay?: {
+		intervalSeconds: number;
+		flyToDurationMs?: number;
 	};
 	header: {
 		search: string;
 		compare: string;
 		closeCompare: string;
 		compareMode: string;
+		play: string;
+		pause: string;
+		stop: string;
+		followMap: string;
+		filterViewport: string;
+		enterFullscreen: string;
+		exitFullscreen: string;
 		about: string;
 		share: string;
 	};
+	tour?: TourConfig;
 	about: {
 		title: string;
 		closeLabel: string;
 		paragraphs: string[];
+		standards?: {
+			title: string;
+			paragraphs: string[];
+			links?: Array<{
+				label: string;
+				url: string;
+			}>;
+		};
+		institutionsTitle: string;
+		source?: {
+			title: string;
+			description: string;
+			links?: Array<{
+				label: string;
+				url: string;
+			}>;
+		};
 		shortcutsTitle: string;
 		shortcuts: Array<{
 			keys: string[];
@@ -84,6 +140,7 @@ export type AppConfig = {
 		description: string;
 		simpleLink: string;
 		viewLink: string;
+		presentationLink: string;
 		copy: string;
 		copied: string;
 	};
@@ -124,7 +181,6 @@ export type AppConfig = {
 		closeLabel: string;
 		searchPlaceholder: string;
 		current: string;
-		collection: string;
 		favorite: string;
 		inView: string;
 		noResults: string;
@@ -168,8 +224,10 @@ export type AppConfig = {
 		label: string;
 		outsideTitle: string;
 		partialTitle: string;
+		tinyTitle: string;
 		outsideDescription: string;
 		partialDescription: string;
+		tinyDescription: string;
 		dismiss: string;
 		zoomToLayer: string;
 	};

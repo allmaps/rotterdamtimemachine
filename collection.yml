@@ -1,3 +1,9 @@
+- label: "Plattegrond van Rotterdam"
+  title: "Plattegrond van Rotterdam, 1:2.500. Topografische seriekaarten vervaardigd door Gemeentewerken Rotterdam"
+  year: 1886
+  institution: Stadsarchief Rotterdam
+  annotation: annotations/stadsarchief-rotterdam/gemeentewerken-1886.json
+  url: https://proxy.archieven.nl/0/241957241E934F8EB818A83C04EDB445
 - label: Plattegrond van Rotterdam
   title: Plattegrond van Rotterdam (Stadsdriehoek). Rechtsboven opdracht aan burgemeesters en kompasroos; linksonder verwijzing naar straten, gebouwen enz.; midden onder mythologische figuren. Links en rechts van de kaart 12 stadsgezichten; onder de kaart een profiel van de stad vanaf de Maaszijde; boven de kaart en langs de linker en rechter zijde wapens van stedelijke regenten en ambtsdragers.
   year: 1694
@@ -15,7 +21,7 @@
   iiif:
     url: https://sammeltassen.nl/iiif-manifests/nationaal-archief/NL-HaNA_4.VTHR_4636.json
     type: manifest
-  annotation: https://annotations.allmaps.org/manifests/a63721386cfbf035
+  annotation: annotations/nationaal-archief/NL-HaNA_4.VTHR_4636A.json
 - label: Nieuwe plattegrond der stad Rotterdam
   title: Nieuwe platte grond der stad Rotterdam, gelegen aan de rivieren de Maas en de Rotte, met al de publique en kerkelijke gebouwen binnen dezelve staande ...
   year: 1800
@@ -27,7 +33,7 @@
   annotation: https://annotations.allmaps.org/images/4d92f2b7fa90e49d
 - label: Kadastrale kaart
   title: "Kadastrale kaart 1811-1832: verzamelplan Rotterdam, Zuid Holland (MIN08176VK1)"
-  year: 1811/1832
+  year: 1832
   institution: Rijksdienst voor Cultureel Erfgoed
   url: https://beeldbank.cultureelerfgoed.nl/rce-mediabank/detail/997b860c-94d7-11e5-ab73-537ceda9f6ff/media/18995fd8-5a34-ee7a-31d6-c1bb0b610186?mode=detail&view=horizontal&q=MIN08176VK1&rows=1&page=1&fq%5B%5D=search_s_entity_name:%22Kadastrale%20kaarten%22&filterAction
   iiif:
@@ -132,7 +138,7 @@
   iiif:
     url: https://sammeltassen.nl/iiif-manifests/stadsarchief-rotterdam/NL-RtSA_4201_I-118.json
     type: manifest
-  annotation: https://annotations.allmaps.org/manifests/631b96e4d6d3f421
+  annotation: annotations/stadsarchief-rotterdam/gemeentewerken-1897.json
 - label: Plattegrond van Rotterdam in 12 bladen
   title: "Plattegrond van Rotterdam in 12 bladen. Blad 5: Middelland; Oude Westen; Cool; Stadsdriehoek; Provenierswijk; Oude Noorden; Rubroek"
   year: 1903
@@ -205,6 +211,15 @@
     url: https://sammeltassen.nl/iiif-images/stadsarchief-rotterdam/NL-RtSA_4001_1979-176/info.json
     type: image
   annotation: https://annotations.allmaps.org/images/d1bbb5cff7284676
+- label: Plattegrond van Rotterdam in 20 bladen
+  title: Plattegrond van Rotterdam in 20 bladen, schaal 1:1000
+  year: 1940
+  institution: Stadsarchief Rotterdam
+  url: https://hdl.handle.net/21.12133/6DADF46043BB49E9A027D4FCA66B0293
+  iiif:
+    url: https://sammeltassen.nl/iiif-manifests/stadsarchief-rotterdam/NL-RtSA_4201_2006-886.json
+    type: manifest
+  annotation: annotations/stadsarchief-rotterdam/gemeentewerken-1940.json
 - label: Kaart van het centrum van Rotterdam van voor mei 1940
   title: Kaart van het centrum van Rotterdam van voor mei 1940
   year: 1940
@@ -214,15 +229,6 @@
     url: https://rotterdamspubliek.nl/iiif/NL-RtSA_4001_1972-755-1/info.json
     type: image
   annotation: https://annotations.allmaps.org/images/3429af1e1e579426
-- label: Stratenplan van Blijdorp en de Bergpolder
-  title: Stratenplan van Blijdorp en de Bergpolder, met aanduiding van de bebouwing en het voormalige tracé van de Rotterdamse Schie.
-  year: 1940
-  institution: Stadsarchief Rotterdam
-  url: https://hdl.handle.net/21.12133/124F20222F6C4EBE881C363E606AAC50
-  iiif:
-    url: https://sammeltassen.nl/iiif-images/stadsarchief-rotterdam/NL-RtSA_4001_1978-1554/info.json
-    type: image
-  annotation: https://annotations.allmaps.org/images/82d92121bcc091a1
 - label: Brandgrens
   title: Plattegrond van het middendeel van Rotterdam met aanduiding van het gebied dat is verwoest door het bombardement van 14 mei 1940 en de daarop volgende brand
   year: 1940
@@ -241,15 +247,15 @@
     url: https://sammeltassen.nl/iiif-images/stadsarchief-rotterdam/NL-RtSA_4201_I-210-1/info.json
     type: image
   annotation: https://annotations.allmaps.org/images/dfeeddb75af3d46d
-- label: Plattegrond van Rotterdam in 20 bladen
-  title: Plattegrond van Rotterdam in 20 bladen, schaal 1:1000
+- label: Stratenplan van Blijdorp en de Bergpolder
+  title: Stratenplan van Blijdorp en de Bergpolder, met aanduiding van de bebouwing en het voormalige tracé van de Rotterdamse Schie.
   year: 1940
   institution: Stadsarchief Rotterdam
-  url: https://hdl.handle.net/21.12133/6DADF46043BB49E9A027D4FCA66B0293
+  url: https://hdl.handle.net/21.12133/124F20222F6C4EBE881C363E606AAC50
   iiif:
-    url: https://sammeltassen.nl/iiif-manifests/stadsarchief-rotterdam/NL-RtSA_4201_2006-886.json
-    type: manifest
-  annotation: https://annotations.allmaps.org/manifests/e3560dd03de181a6
+    url: https://sammeltassen.nl/iiif-images/stadsarchief-rotterdam/NL-RtSA_4001_1978-1554/info.json
+    type: image
+  annotation: https://annotations.allmaps.org/images/82d92121bcc091a1
 - label: Plan-Witteveen
   title: Plattegrond van het middendeel van Rotterdam met aanduiding van een plan voor wederopbouw van het verwoeste gebied.
   year: 1941

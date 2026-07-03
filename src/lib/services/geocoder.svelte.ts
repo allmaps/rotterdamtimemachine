@@ -21,6 +21,7 @@ export class GeocoderService {
 	private config: AppConfig['search'];
 	private timer: ReturnType<typeof setTimeout> | null = null;
 	private requestId = 0;
+	// eslint-disable-next-line svelte/prefer-svelte-reactivity -- Static request cache, not Svelte UI state.
 	private static cache = new Map<string, GeocoderResult[]>();
 	private static nextRequestAt = 0;
 	private static requestQueue = Promise.resolve();
@@ -74,6 +75,7 @@ export class GeocoderService {
 		this.loading = true;
 		this.error = null;
 
+		// eslint-disable-next-line svelte/prefer-svelte-reactivity -- Local URL builder for a single request.
 		const searchParams = new URLSearchParams({
 			format: 'jsonv2',
 			q: normalizedTerm,
@@ -173,12 +175,7 @@ export class GeocoderService {
 		const lon = Number(result.lon);
 		if (!Number.isFinite(lat) || !Number.isFinite(lon)) return false;
 
-		return (
-			lon >= bounds.west &&
-			lon <= bounds.east &&
-			lat >= bounds.south &&
-			lat <= bounds.north
-		);
+		return lon >= bounds.west && lon <= bounds.east && lat >= bounds.south && lat <= bounds.north;
 	}
 
 	private static setCachedResults(key: string, results: GeocoderResult[], cacheLimit: number) {

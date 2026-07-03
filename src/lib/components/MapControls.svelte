@@ -14,7 +14,9 @@
 		inViewOnly = $bindable(false),
 		position = 'top-right',
 		canZoomToMap = false,
-		canFilterInView = false
+		canFilterInView = false,
+		showInViewControl = false,
+		onUserCameraAction
 	}: {
 		config: AppConfig;
 		map: maplibregl.Map;
@@ -25,6 +27,8 @@
 		position?: ControlPosition;
 		canZoomToMap?: boolean;
 		canFilterInView?: boolean;
+		showInViewControl?: boolean;
+		onUserCameraAction?: () => void;
 	} = $props();
 
 	const positionClass = $derived(position === 'top-left' ? 'top-2 left-2' : 'top-2 right-2');
@@ -42,14 +46,22 @@
 		{
 			label: config.controls.zoomIn,
 			icon: Plus,
-			action: () => map.zoomIn({ duration: 250 })
+			action: () => {
+				onUserCameraAction?.();
+				map.zoomIn({ duration: 250 });
+			}
 		},
 		{
 			label: config.controls.zoomOut,
 			icon: Minus,
-			action: () => map.zoomOut({ duration: 250 })
+			action: () => {
+				onUserCameraAction?.();
+				map.zoomOut({ duration: 250 });
+			}
 		}
 	]);
+	const controlButtonClass =
+		'flex h-9 w-9 shrink-0 cursor-pointer items-center justify-center hover:bg-gray-100 focus-visible:z-10 focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-brand-main disabled:cursor-not-allowed disabled:text-gray-300 disabled:hover:bg-white';
 
 	function handleOpacity(event: Event) {
 		opacity = Number((event.target as HTMLInputElement).value);
@@ -77,7 +89,7 @@
 
 	function getToggleButtonClass(active: boolean) {
 		return [
-			'flex h-9 w-9 cursor-pointer items-center justify-center border-r border-gray-200 focus-visible:z-10 focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-brand-main disabled:cursor-not-allowed disabled:text-gray-300',
+			controlButtonClass,
 			active ? 'bg-brand-main text-white' : 'hover:bg-gray-100 disabled:hover:bg-white'
 		].join(' ');
 	}
@@ -86,6 +98,7 @@
 <svelte:window onkeydown={handleKeydown} />
 
 <div
+	data-tour="map-toolbar"
 	class="absolute z-30 {positionClass}"
 	role="group"
 	aria-label={config.controls.groupLabel}
@@ -93,16 +106,16 @@
 	ondblclick={(event) => event.stopPropagation()}
 >
 	<div
-		class="flex overflow-hidden rounded-md border border-gray-200 bg-white text-gray-800 shadow-lg"
+		class="inline-grid auto-cols-[2.25rem] grid-flow-col divide-x divide-gray-200 overflow-hidden rounded-md border border-gray-200 bg-white text-gray-800 shadow-lg"
 	>
-		{#each zoomControls as control}
+		{#each zoomControls as control (control.label)}
 			{@const Icon = control.icon}
 			<button
 				type="button"
 				aria-label={control.label}
 				title={control.label}
 				onclick={control.action}
-				class="flex h-9 w-9 cursor-pointer items-center justify-center border-r border-gray-200 last:border-r-0 hover:bg-gray-100 focus-visible:z-10 focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-brand-main disabled:cursor-not-allowed disabled:text-gray-300 disabled:hover:bg-white"
+				class={controlButtonClass}
 			>
 				<Icon class="h-4 w-4" />
 			</button>
@@ -136,17 +149,19 @@
 			<Focus class="h-4 w-4" />
 		</button>
 
-		<button
-			type="button"
-			aria-label={inViewTitle}
-			title={inViewTitle}
-			aria-pressed={inViewOnly}
-			disabled={!inViewOnly && !canFilterInView}
-			onclick={toggleInViewOnly}
-			class={getToggleButtonClass(inViewOnly)}
-		>
-			<MapPinned class="h-4 w-4" />
-		</button>
+		{#if showInViewControl}
+			<button
+				type="button"
+				aria-label={inViewTitle}
+				title={inViewTitle}
+				aria-pressed={inViewOnly}
+				disabled={!inViewOnly && !canFilterInView}
+				onclick={toggleInViewOnly}
+				class={getToggleButtonClass(inViewOnly)}
+			>
+				<MapPinned class="h-4 w-4" />
+			</button>
+		{/if}
 
 		<button
 			type="button"
@@ -154,9 +169,7 @@
 			title={config.controls.adjustOpacity}
 			aria-expanded={opacityOpen}
 			onclick={() => (opacityOpen = !opacityOpen)}
-			class="flex h-9 w-9 cursor-pointer items-center justify-center border-r border-gray-200 last:border-r-0 hover:bg-gray-100 focus-visible:z-10 focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-brand-main {opacityOpen
-				? 'bg-gray-100'
-				: ''}"
+			class="{controlButtonClass} {opacityOpen ? 'bg-gray-100' : ''}"
 		>
 			<SlidersHorizontal class="h-4 w-4" />
 		</button>
@@ -179,10 +192,6 @@
 				class="m-0 w-full accent-brand-main"
 				aria-label={config.controls.layerOpacity}
 			/>
-			<div class="mt-1 flex justify-between text-[0.65rem] font-semibold text-gray-400">
-				<span>0%</span>
-				<span>100%</span>
-			</div>
 		</div>
 	{/if}
 </div>

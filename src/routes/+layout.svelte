@@ -1,8 +1,9 @@
 <script lang="ts">
 	import './layout.css';
 	import '../app.css';
-	import favicon from '$lib/assets/favicon.svg';
-	import { getThemeHeadStyle } from '$lib/theme';
+	import { base } from '$app/paths';
+	import { resolvePublicAssetUrl } from '$lib/asset-urls';
+	import { getThemeColor, getThemeHeadStyle } from '$lib/theme';
 	import type { AppConfig } from '$lib/types';
 
 	let {
@@ -17,7 +18,9 @@
 	let siteName = $derived(config.site.name);
 	let siteUrl = $derived(config.site.url);
 	let description = $derived(config.site.description);
-	let themeStyle = $derived(getThemeHeadStyle(config.theme));
+	let faviconHref = $derived(resolvePublicAssetUrl(config.site.favicon ?? 'favicon.svg', base));
+	let themeColor = $derived(getThemeColor(config.theme));
+	let themeStyle = $derived(getThemeHeadStyle(config.theme, base));
 </script>
 
 <svelte:head>
@@ -26,6 +29,7 @@
 	<meta name="application-name" content={siteName} />
 	<meta name="apple-mobile-web-app-title" content={siteName} />
 	<meta name="color-scheme" content="light dark" />
+	<meta name="theme-color" content={themeColor} />
 	<meta name="robots" content="index, follow" />
 	<meta name="format-detection" content="telephone=no" />
 
@@ -41,7 +45,8 @@
 	<meta name="twitter:description" content={description} />
 
 	<link rel="canonical" href={siteUrl} />
-	<link rel="icon" href={favicon} />
+	<link rel="icon" href={faviconHref} />
+	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 	{@html `<style>${themeStyle}</style>`}
 </svelte:head>
 

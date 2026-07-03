@@ -1,5 +1,5 @@
 import type { AppConfig } from '$lib/types';
-import config from '../../config.yml';
+import { config } from '$lib/content';
 
 export const prerender = true;
 export const trailingSlash = 'always';

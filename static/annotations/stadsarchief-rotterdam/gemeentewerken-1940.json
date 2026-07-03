@@ -1,0 +1,1706 @@
+{
+	"type": "AnnotationPage",
+	"@context": "http://www.w3.org/ns/anno.jsonld",
+	"items": [
+		{
+			"id": "https://annotations.allmaps.org/maps/8a85e8e31be9b216/attach",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"created": "2026-06-29T18:51:30.875Z",
+			"modified": "2026-06-29T18:51:30.875Z",
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://sammeltassen.nl/iiif-images/stadsarchief-rotterdam/NL-RtSA_4201_2006-886-15",
+					"type": "ImageService2",
+					"height": 4963,
+					"width": 6673,
+					"partOf": [
+						{
+							"id": "https://sammeltassen.nl/iiif-images/stadsarchief-rotterdam/NL-RtSA_4201_2006-886-15/info.json",
+							"type": "Canvas",
+							"partOf": [
+								{
+									"id": "https://sammeltassen.nl/iiif-manifests/stadsarchief-rotterdam/NL-RtSA_4201_2006-886.json",
+									"type": "Manifest",
+									"label": {
+										"en": ["Plattegrond van Rotterdam in 20 bladen, schaal 1:1000 (1940)"]
+									}
+								}
+							]
+						}
+					]
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"6673\" height=\"4963\"><polygon points=\"347,323 6333,331 6331,4072 346,4076\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6331, 4072]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.503479809526669, 51.91368613172638]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [347, 323]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.491810902882381, 51.918070828585414]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6333, 331]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.503426178577255, 51.91816108730841]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [346, 4076]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.491882690386352, 51.91358027074495]
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "https://annotations.allmaps.org/maps/21303a8cbcd2e3f7/attach",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"created": "2026-06-29T18:47:48.994Z",
+			"modified": "2026-06-29T18:47:48.994Z",
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://sammeltassen.nl/iiif-images/stadsarchief-rotterdam/NL-RtSA_4201_2006-886-3",
+					"type": "ImageService2",
+					"height": 5043,
+					"width": 6740,
+					"partOf": [
+						{
+							"id": "https://sammeltassen.nl/iiif-images/stadsarchief-rotterdam/NL-RtSA_4201_2006-886-3/info.json",
+							"type": "Canvas",
+							"partOf": [
+								{
+									"id": "https://sammeltassen.nl/iiif-manifests/stadsarchief-rotterdam/NL-RtSA_4201_2006-886.json",
+									"type": "Manifest",
+									"label": {
+										"en": ["Plattegrond van Rotterdam in 20 bladen, schaal 1:1000 (1940)"]
+									}
+								}
+							]
+						}
+					]
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"6740\" height=\"5043\"><polygon points=\"326,337 6378,331 6397,4103 348,4153\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6397, 4103]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.503240676690792, 51.92719455377652]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6378, 331]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.503183231161999, 51.93164186384433]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [326, 337]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.4914749237414195, 51.93153983859932]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [348, 4153]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.491553315360042, 51.92705999777298]
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "https://annotations.allmaps.org/maps/c4873eefb554e42f/attach",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"created": "2026-06-29T18:41:55.165Z",
+			"modified": "2026-06-29T18:41:55.165Z",
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://sammeltassen.nl/iiif-images/stadsarchief-rotterdam/NL-RtSA_4201_2006-886-20",
+					"type": "ImageService2",
+					"height": 4954,
+					"width": 6627,
+					"partOf": [
+						{
+							"id": "https://sammeltassen.nl/iiif-images/stadsarchief-rotterdam/NL-RtSA_4201_2006-886-20/info.json",
+							"type": "Canvas",
+							"partOf": [
+								{
+									"id": "https://sammeltassen.nl/iiif-manifests/stadsarchief-rotterdam/NL-RtSA_4201_2006-886.json",
+									"type": "Manifest",
+									"label": {
+										"en": ["Plattegrond van Rotterdam in 20 bladen, schaal 1:1000 (1940)"]
+									}
+								}
+							]
+						}
+					]
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"6627\" height=\"4954\"><polygon points=\"323,319 6306,314 6311,4053 333,4070\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [323, 319]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.503479809526669, 51.91368613172638]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6306, 314]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.514967479236046, 51.91379750854318]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [333, 4070]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.503615802131713, 51.9091946396532]
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "https://annotations.allmaps.org/maps/07f6735942ed3a87/attach",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"created": "2026-06-29T18:41:26.176Z",
+			"modified": "2026-06-29T18:41:26.176Z",
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://sammeltassen.nl/iiif-images/stadsarchief-rotterdam/NL-RtSA_4201_2006-886-18",
+					"type": "ImageService2",
+					"height": 4975,
+					"width": 6686,
+					"partOf": [
+						{
+							"id": "https://sammeltassen.nl/iiif-images/stadsarchief-rotterdam/NL-RtSA_4201_2006-886-18/info.json",
+							"type": "Canvas",
+							"partOf": [
+								{
+									"id": "https://sammeltassen.nl/iiif-manifests/stadsarchief-rotterdam/NL-RtSA_4201_2006-886.json",
+									"type": "Manifest",
+									"label": {
+										"en": ["Plattegrond van Rotterdam in 20 bladen, schaal 1:1000 (1940)"]
+									}
+								}
+							]
+						}
+					]
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"6686\" height=\"4975\"><polygon points=\"356,346 6350,356 6349,4098 359,4099\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6350, 356]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.491882690386352, 51.91358027074495]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6349, 4098]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.491990480374642, 51.9090909897641]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [356, 346]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.480264376387279, 51.91348845037054]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [359, 4099]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.4803560323748775, 51.90899511889345]
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "https://annotations.allmaps.org/maps/ce73be01090150ac/attach",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"created": "2026-06-29T18:40:28.238Z",
+			"modified": "2026-06-29T18:40:28.238Z",
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://sammeltassen.nl/iiif-images/stadsarchief-rotterdam/NL-RtSA_4201_2006-886-14",
+					"type": "ImageService2",
+					"height": 4978,
+					"width": 6676,
+					"partOf": [
+						{
+							"id": "https://sammeltassen.nl/iiif-images/stadsarchief-rotterdam/NL-RtSA_4201_2006-886-14/info.json",
+							"type": "Canvas",
+							"partOf": [
+								{
+									"id": "https://sammeltassen.nl/iiif-manifests/stadsarchief-rotterdam/NL-RtSA_4201_2006-886.json",
+									"type": "Manifest",
+									"label": {
+										"en": ["Plattegrond van Rotterdam in 20 bladen, schaal 1:1000 (1940)"]
+									}
+								}
+							]
+						}
+					]
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"6676\" height=\"4978\"><polygon points=\"322,335 333,4077 6329,4061 6324,326\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6324, 326]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.491810902882381, 51.918070828585414]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6329, 4061]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.491882690386352, 51.91358027074495]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [333, 4077]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.480264376387279, 51.91348845037054]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [322, 335]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.480188469259962, 51.91798356876054]
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "https://annotations.allmaps.org/maps/0d14e7e99a8188e2/attach",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"created": "2026-06-29T18:38:41.202Z",
+			"modified": "2026-06-29T18:38:41.202Z",
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://sammeltassen.nl/iiif-images/stadsarchief-rotterdam/NL-RtSA_4201_2006-886-13",
+					"type": "ImageService2",
+					"height": 4992,
+					"width": 6656,
+					"partOf": [
+						{
+							"id": "https://sammeltassen.nl/iiif-images/stadsarchief-rotterdam/NL-RtSA_4201_2006-886-13/info.json",
+							"type": "Canvas",
+							"partOf": [
+								{
+									"id": "https://sammeltassen.nl/iiif-manifests/stadsarchief-rotterdam/NL-RtSA_4201_2006-886.json",
+									"type": "Manifest",
+									"label": {
+										"en": ["Plattegrond van Rotterdam in 20 bladen, schaal 1:1000 (1940)"]
+									}
+								}
+							]
+						}
+					]
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"6656\" height=\"4992\"><polygon points=\"324,339 6313,326 6326,4067 339,4093\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6326, 4067]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.480264376387279, 51.91348845037054]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6313, 326]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.480188469259962, 51.91798356876054]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [324, 339]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.468549516889063, 51.91790016837448]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [339, 4093]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.46863404275141, 51.913396389698065]
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "https://annotations.allmaps.org/maps/f4319070bfb3ef86/attach",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"created": "2026-06-29T18:38:16.451Z",
+			"modified": "2026-06-29T18:38:16.451Z",
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://sammeltassen.nl/iiif-images/stadsarchief-rotterdam/NL-RtSA_4201_2006-886-10",
+					"type": "ImageService2",
+					"height": 4978,
+					"width": 6702,
+					"partOf": [
+						{
+							"id": "https://sammeltassen.nl/iiif-images/stadsarchief-rotterdam/NL-RtSA_4201_2006-886-10/info.json",
+							"type": "Canvas",
+							"partOf": [
+								{
+									"id": "https://sammeltassen.nl/iiif-manifests/stadsarchief-rotterdam/NL-RtSA_4201_2006-886.json",
+									"type": "Manifest",
+									"label": {
+										"en": ["Plattegrond van Rotterdam in 20 bladen, schaal 1:1000 (1940)"]
+									}
+								}
+							]
+						}
+					]
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"6702\" height=\"4978\"><polygon points=\"353,321 6355,334 6347,4069 350,4065\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6347, 4069]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.491810902882381, 51.918070828585414]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [350, 4065]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.480188469259962, 51.91798356876054]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6355, 334]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.491678782865748, 51.92256228767201]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [353, 321]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.480083114049104, 51.92247305581301]
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "https://annotations.allmaps.org/maps/8a5d1648e4173ee7/attach",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"created": "2026-06-29T18:37:24.778Z",
+			"modified": "2026-06-29T18:37:24.778Z",
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://sammeltassen.nl/iiif-images/stadsarchief-rotterdam/NL-RtSA_4201_2006-886-8",
+					"type": "ImageService2",
+					"height": 5041,
+					"width": 6764,
+					"partOf": [
+						{
+							"id": "https://sammeltassen.nl/iiif-images/stadsarchief-rotterdam/NL-RtSA_4201_2006-886-8/info.json",
+							"type": "Canvas",
+							"partOf": [
+								{
+									"id": "https://sammeltassen.nl/iiif-manifests/stadsarchief-rotterdam/NL-RtSA_4201_2006-886.json",
+									"type": "Manifest",
+									"label": {
+										"en": ["Plattegrond van Rotterdam in 20 bladen, schaal 1:1000 (1940)"]
+									}
+								}
+							]
+						}
+					]
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"6764\" height=\"5041\"><polygon points=\"356,319 6418,340 6416,4119 359,4140\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [356, 319]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.503240676690792, 51.92719455377652]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6418, 340]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.514891258383379, 51.92722172377692]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [359, 4140]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.503322272964269, 51.92267468830087]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6416, 4119]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.514959037143112, 51.922732260457245]
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "https://annotations.allmaps.org/maps/6ca7fdf2488badeb/attach",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"created": "2026-06-29T18:36:24.119Z",
+			"modified": "2026-06-29T18:36:24.119Z",
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://sammeltassen.nl/iiif-images/stadsarchief-rotterdam/NL-RtSA_4201_2006-886-4",
+					"type": "ImageService2",
+					"height": 5066,
+					"width": 6740,
+					"partOf": [
+						{
+							"id": "https://sammeltassen.nl/iiif-images/stadsarchief-rotterdam/NL-RtSA_4201_2006-886-4/info.json",
+							"type": "Canvas",
+							"partOf": [
+								{
+									"id": "https://sammeltassen.nl/iiif-manifests/stadsarchief-rotterdam/NL-RtSA_4201_2006-886.json",
+									"type": "Manifest",
+									"label": {
+										"en": ["Plattegrond van Rotterdam in 20 bladen, schaal 1:1000 (1940)"]
+									}
+								}
+							]
+						}
+					]
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"6740\" height=\"5066\"><polygon points=\"338,322 6400,337 6406,4118 346,4148\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [346, 4148]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.503240676690792, 51.92719455377652]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [338, 322]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.503183231161999, 51.93164186384433]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6406, 4118]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.514891258383379, 51.92722172377692]
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "https://annotations.allmaps.org/maps/117240c6b4eed898/attach",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"created": "2026-06-29T18:36:02.550Z",
+			"modified": "2026-06-29T18:36:02.550Z",
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://sammeltassen.nl/iiif-images/stadsarchief-rotterdam/NL-RtSA_4201_2006-886-2",
+					"type": "ImageService2",
+					"height": 5051,
+					"width": 6798,
+					"partOf": [
+						{
+							"id": "https://sammeltassen.nl/iiif-images/stadsarchief-rotterdam/NL-RtSA_4201_2006-886-2/info.json",
+							"type": "Canvas",
+							"partOf": [
+								{
+									"id": "https://sammeltassen.nl/iiif-manifests/stadsarchief-rotterdam/NL-RtSA_4201_2006-886.json",
+									"type": "Manifest",
+									"label": {
+										"en": ["Plattegrond van Rotterdam in 20 bladen, schaal 1:1000 (1940)"]
+									}
+								}
+							]
+						}
+					]
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"6798\" height=\"5051\"><polygon points=\"347,341 6402,341 6414,4118 359,4155\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6402, 341]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.4914749237414195, 51.93153983859932]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6414, 4118]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.491553315360042, 51.92705999777298]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [359, 4155]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.4799974148875545, 51.92695644756199]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [347, 341]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.479928689668379, 51.931455060425016]
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "https://annotations.allmaps.org/maps/d200bab8c565edbf/attach",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"created": "2026-06-29T18:35:46.077Z",
+			"modified": "2026-06-29T18:35:46.077Z",
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://sammeltassen.nl/iiif-images/stadsarchief-rotterdam/NL-RtSA_4201_2006-886-1",
+					"type": "ImageService2",
+					"height": 5030,
+					"width": 6710,
+					"partOf": [
+						{
+							"id": "https://sammeltassen.nl/iiif-images/stadsarchief-rotterdam/NL-RtSA_4201_2006-886-1/info.json",
+							"type": "Canvas",
+							"partOf": [
+								{
+									"id": "https://sammeltassen.nl/iiif-manifests/stadsarchief-rotterdam/NL-RtSA_4201_2006-886.json",
+									"type": "Manifest",
+									"label": {
+										"en": ["Plattegrond van Rotterdam in 20 bladen, schaal 1:1000 (1940)"]
+									}
+								}
+							]
+						}
+					]
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"6710\" height=\"5030\"><polygon points=\"319,335 6387,337 6401,4103 332,4142\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6401, 4103]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.4799974148875545, 51.92695644756199]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6387, 337]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.479928689668379, 51.931455060425016]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [332, 4142]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.468340252503031, 51.92687621501777]
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "https://annotations.allmaps.org/maps/1febf1db9864327a/attach",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"created": "2025-04-08T20:02:48.060Z",
+			"modified": "2025-04-08T20:02:48.060Z",
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://sammeltassen.nl/iiif-images/stadsarchief-rotterdam/NL-RtSA_4201_2006-886-19",
+					"type": "ImageService2",
+					"height": 4964,
+					"width": 6679,
+					"partOf": [
+						{
+							"id": "https://sammeltassen.nl/iiif-images/stadsarchief-rotterdam/NL-RtSA_4201_2006-886-19/info.json",
+							"type": "Canvas",
+							"partOf": [
+								{
+									"id": "https://sammeltassen.nl/iiif-manifests/stadsarchief-rotterdam/NL-RtSA_4201_2006-886.json",
+									"type": "Manifest",
+									"label": {
+										"en": ["Plattegrond van Rotterdam in 20 bladen, schaal 1:1000 (1940)"]
+									}
+								}
+							]
+						}
+					]
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"6679\" height=\"4964\"><polygon points=\"342,332 6346,336 6345,4074 348,4079\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6346, 336]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.503479809526669, 51.91368613172638]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [342, 332]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.491882690386352, 51.91358027074495]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6345, 4074]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.503615802131713, 51.9091946396532]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [348, 4079]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.491990480374642, 51.9090909897641]
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "https://annotations.allmaps.org/maps/39cc2926d3618b17/attach",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"created": "2025-04-08T20:02:39.010Z",
+			"modified": "2025-04-08T20:02:39.010Z",
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://sammeltassen.nl/iiif-images/stadsarchief-rotterdam/NL-RtSA_4201_2006-886-12",
+					"type": "ImageService2",
+					"height": 4964,
+					"width": 6678,
+					"partOf": [
+						{
+							"id": "https://sammeltassen.nl/iiif-images/stadsarchief-rotterdam/NL-RtSA_4201_2006-886-12/info.json",
+							"type": "Canvas",
+							"partOf": [
+								{
+									"id": "https://sammeltassen.nl/iiif-manifests/stadsarchief-rotterdam/NL-RtSA_4201_2006-886.json",
+									"type": "Manifest",
+									"label": {
+										"en": ["Plattegrond van Rotterdam in 20 bladen, schaal 1:1000 (1940)"]
+									}
+								}
+							]
+						}
+					]
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"6678\" height=\"4964\"><polygon points=\"340,332 6342,353 6331,4086 337,4080\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [337, 4080]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.503426178577255, 51.91816108730841]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [340, 332]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.503322272964269, 51.92267468830087]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6342, 353]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.514959037143112, 51.922732260457245]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6331, 4086]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.515012106559041, 51.91824087496688]
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "https://annotations.allmaps.org/maps/b201eae5d6652271/attach",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"created": "2025-04-08T20:02:38.018Z",
+			"modified": "2025-04-08T20:02:38.018Z",
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://sammeltassen.nl/iiif-images/stadsarchief-rotterdam/NL-RtSA_4201_2006-886-11",
+					"type": "ImageService2",
+					"height": 5003,
+					"width": 6750,
+					"partOf": [
+						{
+							"id": "https://sammeltassen.nl/iiif-images/stadsarchief-rotterdam/NL-RtSA_4201_2006-886-11/info.json",
+							"type": "Canvas",
+							"partOf": [
+								{
+									"id": "https://sammeltassen.nl/iiif-manifests/stadsarchief-rotterdam/NL-RtSA_4201_2006-886.json",
+									"type": "Manifest",
+									"label": {
+										"en": ["Plattegrond van Rotterdam in 20 bladen, schaal 1:1000 (1940)"]
+									}
+								}
+							]
+						}
+					]
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"6750\" height=\"5003\"><polygon points=\"367,310 6396,322 6385,4085 360,4068\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [360, 4068]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.491810902882381, 51.918070828585414]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6385, 4085]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.503426178577255, 51.91816108730841]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [367, 310]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.491678782865748, 51.92256228767201]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6396, 322]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.503322272964269, 51.92267468830087]
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "https://annotations.allmaps.org/maps/921a465fab9ee051/attach",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"created": "2025-04-08T20:02:32.473Z",
+			"modified": "2025-04-08T20:02:32.473Z",
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://sammeltassen.nl/iiif-images/stadsarchief-rotterdam/NL-RtSA_4201_2006-886-9",
+					"type": "ImageService2",
+					"height": 4941,
+					"width": 6617,
+					"partOf": [
+						{
+							"id": "https://sammeltassen.nl/iiif-images/stadsarchief-rotterdam/NL-RtSA_4201_2006-886-9/info.json",
+							"type": "Canvas",
+							"partOf": [
+								{
+									"id": "https://sammeltassen.nl/iiif-manifests/stadsarchief-rotterdam/NL-RtSA_4201_2006-886.json",
+									"type": "Manifest",
+									"label": {
+										"en": ["Plattegrond van Rotterdam in 20 bladen, schaal 1:1000 (1940)"]
+									}
+								}
+							]
+						}
+					]
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"6617\" height=\"4941\"><polygon points=\"354,331 6278,345 6271,4035 351,4026\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6271, 4035]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.480188469259962, 51.91798356876054]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [351, 4026]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.468549516889063, 51.91790016837448]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6278, 345]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.480083114049104, 51.92247305581301]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [354, 331]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.468431108088923, 51.9223724129172]
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "https://annotations.allmaps.org/maps/df519a1d323e976c/attach",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"created": "2025-04-08T20:02:30.849Z",
+			"modified": "2025-04-08T20:02:30.849Z",
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://sammeltassen.nl/iiif-images/stadsarchief-rotterdam/NL-RtSA_4201_2006-886-7",
+					"type": "ImageService2",
+					"height": 5019,
+					"width": 6759,
+					"partOf": [
+						{
+							"id": "https://sammeltassen.nl/iiif-images/stadsarchief-rotterdam/NL-RtSA_4201_2006-886-7/info.json",
+							"type": "Canvas",
+							"partOf": [
+								{
+									"id": "https://sammeltassen.nl/iiif-manifests/stadsarchief-rotterdam/NL-RtSA_4201_2006-886.json",
+									"type": "Manifest",
+									"label": {
+										"en": ["Plattegrond van Rotterdam in 20 bladen, schaal 1:1000 (1940)"]
+									}
+								}
+							]
+						}
+					]
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"6759\" height=\"5019\"><polygon points=\"336,305 6399,312 6409,4089 350,4125\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6399, 312]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.503240676690792, 51.92719455377652]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [336, 305]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.491553315360042, 51.92705999777298]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [350, 4125]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.491678782865748, 51.92256228767201]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6409, 4089]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.503322272964269, 51.92267468830087]
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "https://annotations.allmaps.org/maps/ff3ca2bc125be027/attach",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"created": "2025-04-08T20:02:22.559Z",
+			"modified": "2025-04-08T20:02:22.559Z",
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://sammeltassen.nl/iiif-images/stadsarchief-rotterdam/NL-RtSA_4201_2006-886-6",
+					"type": "ImageService2",
+					"height": 5054,
+					"width": 6752,
+					"partOf": [
+						{
+							"id": "https://sammeltassen.nl/iiif-images/stadsarchief-rotterdam/NL-RtSA_4201_2006-886-6/info.json",
+							"type": "Canvas",
+							"partOf": [
+								{
+									"id": "https://sammeltassen.nl/iiif-manifests/stadsarchief-rotterdam/NL-RtSA_4201_2006-886.json",
+									"type": "Manifest",
+									"label": {
+										"en": ["Plattegrond van Rotterdam in 20 bladen, schaal 1:1000 (1940)"]
+									}
+								}
+							]
+						}
+					]
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"6752\" height=\"5054\"><polygon points=\"318,314 6407,317 6420,4087 331,4128\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6407, 317]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.491553315360042, 51.92705999777298]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6420, 4087]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.491678782865748, 51.92256228767201]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [331, 4128]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.480083114049104, 51.92247305581301]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [318, 314]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.4799974148875545, 51.92695644756199]
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "https://annotations.allmaps.org/maps/868dab9da891a0e6/attach",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"created": "2025-04-08T20:02:20.887Z",
+			"modified": "2025-04-08T20:02:20.887Z",
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://sammeltassen.nl/iiif-images/stadsarchief-rotterdam/NL-RtSA_4201_2006-886-5",
+					"type": "ImageService2",
+					"height": 5058,
+					"width": 6799,
+					"partOf": [
+						{
+							"id": "https://sammeltassen.nl/iiif-images/stadsarchief-rotterdam/NL-RtSA_4201_2006-886-5/info.json",
+							"type": "Canvas",
+							"partOf": [
+								{
+									"id": "https://sammeltassen.nl/iiif-manifests/stadsarchief-rotterdam/NL-RtSA_4201_2006-886.json",
+									"type": "Manifest",
+									"label": {
+										"en": ["Plattegrond van Rotterdam in 20 bladen, schaal 1:1000 (1940)"]
+									}
+								}
+							]
+						}
+					]
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"6799\" height=\"5058\"><polygon points=\"373,355 6440,353 6457,4130 391,4176\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6457, 4130]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.480083114049104, 51.92247305581301]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6440, 353]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.4799974148875545, 51.92695644756199]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [373, 355]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.468340252503031, 51.92687621501777]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [391, 4176]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.468431108088923, 51.9223724129172]
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "https://annotations.allmaps.org/maps/6b40eaf80ca5aef3/attach",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"created": "2025-04-08T19:59:56.895Z",
+			"modified": "2025-04-08T19:59:56.895Z",
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://sammeltassen.nl/iiif-images/stadsarchief-rotterdam/NL-RtSA_4201_2006-886-16",
+					"type": "ImageService2",
+					"height": 4976,
+					"width": 6683,
+					"partOf": [
+						{
+							"id": "https://sammeltassen.nl/iiif-images/stadsarchief-rotterdam/NL-RtSA_4201_2006-886-16/info.json",
+							"type": "Canvas",
+							"partOf": [
+								{
+									"id": "https://sammeltassen.nl/iiif-manifests/stadsarchief-rotterdam/NL-RtSA_4201_2006-886.json",
+									"type": "Manifest",
+									"label": {
+										"en": ["Plattegrond van Rotterdam in 20 bladen, schaal 1:1000 (1940)"]
+									}
+								}
+							]
+						}
+					]
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"6683\" height=\"4976\"><polygon points=\"344,326 6340,326 6342,4059 351,4070\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [351, 4070]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.503479809526669, 51.91368613172638]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [344, 326]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.503426178577255, 51.91816108730841]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6342, 4059]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.514967479236046, 51.91379750854318]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6340, 326]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.515012106559041, 51.91824087496688]
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "https://annotations.allmaps.org/maps/3e9ee2b2cc2232fe/attach",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"created": "2025-04-08T19:59:51.015Z",
+			"modified": "2025-04-08T19:59:51.015Z",
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://sammeltassen.nl/iiif-images/stadsarchief-rotterdam/NL-RtSA_4201_2006-886-17",
+					"type": "ImageService2",
+					"height": 5014,
+					"width": 6680,
+					"partOf": [
+						{
+							"id": "https://sammeltassen.nl/iiif-images/stadsarchief-rotterdam/NL-RtSA_4201_2006-886-17/info.json",
+							"type": "Canvas",
+							"partOf": [
+								{
+									"id": "https://sammeltassen.nl/iiif-manifests/stadsarchief-rotterdam/NL-RtSA_4201_2006-886.json",
+									"type": "Manifest",
+									"label": {
+										"en": ["Plattegrond van Rotterdam in 20 bladen, schaal 1:1000 (1940)"]
+									}
+								}
+							]
+						}
+					]
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"6680\" height=\"5014\"><polygon points=\"356,360 6337,370 6334,4111 357,4113\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6337, 370]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.480264376387279, 51.91348845037054]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6334, 4111]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.4803560323748775, 51.90899511889345]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [356, 360]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.46863404275141, 51.913396389698065]
+						}
+					}
+				]
+			}
+		}
+	]
+}

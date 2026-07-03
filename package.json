@@ -9,8 +9,12 @@
 		"build": "vite build",
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync || echo ''",
+		"generate:annotations": "node scripts/generate-annotations.ts",
+		"precheck": "node scripts/generate-annotations.ts",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"precheck:watch": "node scripts/generate-annotations.ts",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"prelint": "node scripts/generate-annotations.ts",
 		"lint": "prettier --check . && eslint .",
 		"format": "prettier --write ."
 	},
@@ -22,11 +26,13 @@
 		"@sveltejs/kit": "^2.57.0",
 		"@sveltejs/vite-plugin-svelte": "^7.0.0",
 		"@tailwindcss/vite": "^4.2.2",
+		"@types/js-yaml": "^4.0.9",
 		"@types/node": "^24",
 		"eslint": "^10.2.0",
 		"eslint-config-prettier": "^10.1.8",
 		"eslint-plugin-svelte": "^3.17.0",
 		"globals": "^17.4.0",
+		"js-yaml": "^4.1.0",
 		"prettier": "^3.8.1",
 		"prettier-plugin-svelte": "^3.5.1",
 		"prettier-plugin-tailwindcss": "^0.7.2",
@@ -44,7 +50,7 @@
 		"@lucide/svelte": "^1.21.0",
 		"@protomaps/basemaps": "^5.7.2",
 		"@tailwindcss/typography": "^0.5.19",
-		"bits-ui": "^2.18.1",
+		"driver.js": "^1.6.0",
 		"maplibre-gl": "^5.24.0"
 	}
 }
