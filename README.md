@@ -348,6 +348,7 @@ The sharing modal keeps the default link simple and only includes view parameter
 - Georeferencing and map warping are handled through [Allmaps](https://allmaps.org/).
 - The modern basemap uses [Protomaps](https://protomaps.com/) and data from [OpenStreetMap](https://www.openstreetmap.org/).
 - Location search uses [Nominatim](https://nominatim.org/); when reusing the app, follow the [Nominatim Usage Policy](https://operations.osmfoundation.org/policies/nominatim/).
+- Development from commit `095bedc` onward was carried out with assistance from OpenAI Codex. Architectural decisions, review, testing, and final responsibility remain with the project maintainers.
 
 ## License
 
