@@ -102,8 +102,6 @@ export type AppConfig = {
 		play: string;
 		pause: string;
 		stop: string;
-		followMap: string;
-		filterViewport: string;
 		enterFullscreen: string;
 		exitFullscreen: string;
 		about: string;

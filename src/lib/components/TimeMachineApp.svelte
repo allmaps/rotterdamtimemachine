@@ -91,9 +91,10 @@
 	let panesError = $state<string>();
 	let mapKeyboardCommand = $state<MapKeyboardCommand>();
 	let mapToolbarCommand = $state<MapToolbarCommand>();
+	let rotateToMapOrientation = $state(false);
+	let focusActiveMap = $state(false);
 	let autoplayActive = $state(startsInPresentation);
 	let autoplayPlaying = $state(startsInPresentation);
-	let autoplayFollowMap = $state(false);
 	let autoplayRepairSelection = $state(false);
 	let autoplayRemainingMs = $state(0);
 	let autoplayTimerCycle = $state(0);
@@ -124,8 +125,9 @@
 	let autoplayInterval = $derived(config.autoplay?.intervalSeconds);
 	let autoplayIntervalMs = $derived(Math.max(0, (autoplayInterval ?? 0) * 1000));
 	let autoplayViewportMaps = $derived(getMapsInView(collection, leftAnnotationsAtCenter));
-	let autoplaySourceMaps = $derived(autoplayFollowMap ? collection : autoplayViewportMaps);
-	let autoplayItems = $derived(getAutoplayItems(autoplaySourceMaps));
+	let autoplayItems = $derived(
+		getAutoplayItems(focusActiveMap ? collection : autoplayViewportMaps)
+	);
 	let allAutoplayItems = $derived(getAutoplayItems(collection));
 	let autoplayCurrentIndex = $derived(getAutoplayCurrentIndex());
 	let autoplayCurrentPosition = $derived(autoplayCurrentIndex >= 0 ? autoplayCurrentIndex + 1 : 0);
@@ -290,7 +292,6 @@
 	function startAutoplay() {
 		if (autoplayDisabled) return;
 
-		autoplayFollowMap = false;
 		setAutoplayRepairSelection(
 			!autoplayItems.some((item) => item.annotation === viewState.annotation)
 		);
@@ -315,18 +316,11 @@
 		}
 	}
 
-	function toggleAutoplayFollowMap() {
-		setAutoplayRepairSelection(true);
-		autoplayFollowMap = !autoplayFollowMap;
-		ensureAutoplaySelection();
-	}
-
 	function stopAutoplay() {
 		clearAutoplayTimer();
 		syncSelectedYearToAnnotation(viewState.annotation);
 		autoplayActive = false;
 		autoplayPlaying = false;
-		autoplayFollowMap = false;
 		setAutoplayRepairSelection(false);
 		resetAutoplayTimer();
 	}
@@ -781,13 +775,11 @@
 		{autoplayCurrentPosition}
 		{autoplayTotal}
 		autoplayIntervalSeconds={autoplayInterval ?? 0}
-		{autoplayFollowMap}
 		onAboutOpen={() => (aboutOpen = true)}
 		onShareOpen={() => (shareOpen = true)}
 		onAutoplayStart={startAutoplay}
 		onAutoplayPauseToggle={toggleAutoplayPlayback}
 		onAutoplayStop={stopAutoplay}
-		onAutoplayFollowMapToggle={toggleAutoplayFollowMap}
 	/>
 
 	<div
@@ -806,6 +798,8 @@
 				bind:annotation={viewState.annotation}
 				bind:opacity={viewState.opacity}
 				bind:selectedYear
+				bind:rotateToMapOrientation
+				bind:focusActiveMap
 				bind:currentLocation
 				bind:geocoderBounds
 				bind:annotationsInView={leftAnnotationsInView}
@@ -817,7 +811,6 @@
 				enableLayersShortcut
 				showLayersPaneIndicator={comparison.active}
 				{autoplayActive}
-				{autoplayFollowMap}
 				{autoplayNextAnnotation}
 			/>
 

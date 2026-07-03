@@ -90,7 +90,9 @@
 	function getToggleButtonClass(active: boolean) {
 		return [
 			controlButtonClass,
-			active ? 'bg-brand-main text-white' : 'hover:bg-gray-100 disabled:hover:bg-white'
+			active
+				? 'text-brand-main bg-gray-100 disabled:hover:bg-white'
+				: 'hover:bg-gray-100 disabled:hover:bg-white'
 		].join(' ');
 	}
 </script>
@@ -169,7 +171,7 @@
 			title={config.controls.adjustOpacity}
 			aria-expanded={opacityOpen}
 			onclick={() => (opacityOpen = !opacityOpen)}
-			class="{controlButtonClass} {opacityOpen ? 'bg-gray-100' : ''}"
+			class={getToggleButtonClass(opacityOpen)}
 		>
 			<SlidersHorizontal class="h-4 w-4" />
 		</button>

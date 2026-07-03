@@ -14,8 +14,6 @@ header:
   play: Presentatie starten
   pause: Presentatie pauzeren
   stop: Presentatie stoppen
-  followMap: Kaartlaag volgen
-  filterViewport: Kaartuitsnede gebruiken
   enterFullscreen: Volledig scherm
   exitFullscreen: Volledig scherm sluiten
   about: Over

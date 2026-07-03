@@ -37,8 +37,9 @@
 		enableLayersShortcut = false,
 		showLayersPaneIndicator = false,
 		showInViewControl = false,
+		rotateToMapOrientation = $bindable(false),
+		focusActiveMap = $bindable(false),
 		autoplayActive = false,
-		autoplayFollowMap = false,
 		autoplayNextAnnotation,
 		annotationsInView = $bindable<string[]>([]),
 		annotationsAtCenter = $bindable<string[]>([])
@@ -63,8 +64,9 @@
 		enableLayersShortcut?: boolean;
 		showLayersPaneIndicator?: boolean;
 		showInViewControl?: boolean;
+		rotateToMapOrientation?: boolean;
+		focusActiveMap?: boolean;
 		autoplayActive?: boolean;
-		autoplayFollowMap?: boolean;
 		autoplayNextAnnotation?: string;
 		annotationsInView?: string[];
 		annotationsAtCenter?: string[];
@@ -74,37 +76,7 @@
 	let controlsPosition: 'top-left' | 'top-right' = $derived(
 		navPosition === 'right' ? 'top-left' : 'top-right'
 	);
-	let rotateToMapOrientation = $state(false);
-	let focusActiveMap = $state(false);
 	let sliderInViewOnly = $state(false);
-	let presentationModeSnapshot = $state<
-		| {
-				rotateToMapOrientation: boolean;
-				focusActiveMap: boolean;
-		  }
-		| undefined
-	>();
-
-	$effect(() => {
-		if (autoplayActive) {
-			if (!presentationModeSnapshot) {
-				presentationModeSnapshot = {
-					rotateToMapOrientation,
-					focusActiveMap
-				};
-			}
-
-			rotateToMapOrientation = autoplayFollowMap;
-			focusActiveMap = autoplayFollowMap;
-			return;
-		}
-
-		if (presentationModeSnapshot) {
-			rotateToMapOrientation = presentationModeSnapshot.rotateToMapOrientation;
-			focusActiveMap = presentationModeSnapshot.focusActiveMap;
-			presentationModeSnapshot = undefined;
-		}
-	});
 </script>
 
 <section
@@ -161,8 +133,8 @@
 			{layersId}
 			{paneSide}
 			{annotationsInView}
-			preferInViewMaps={sliderInViewOnly || (autoplayActive && !autoplayFollowMap)}
-			requirePreferredMaps={autoplayActive && !autoplayFollowMap}
+			preferInViewMaps={sliderInViewOnly || autoplayActive}
+			requirePreferredMaps={autoplayActive}
 			enableKeyboardShortcut={enableLayersShortcut}
 			showPaneIndicator={showLayersPaneIndicator}
 			{autoplayActive}

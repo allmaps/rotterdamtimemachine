@@ -3,7 +3,6 @@
 	import Search from '$lib/components/Search.svelte';
 	import {
 		Columns2,
-		Focus,
 		Info,
 		Maximize2,
 		Minimize2,
@@ -34,13 +33,11 @@
 		autoplayCurrentPosition = 0,
 		autoplayTotal = 0,
 		autoplayIntervalSeconds = 0,
-		autoplayFollowMap = false,
 		onAboutOpen,
 		onShareOpen,
 		onAutoplayStart,
 		onAutoplayPauseToggle,
-		onAutoplayStop,
-		onAutoplayFollowMapToggle
+		onAutoplayStop
 	}: {
 		searchBounds?: GeocoderBounds;
 		config: AppConfig;
@@ -50,13 +47,11 @@
 		autoplayCurrentPosition?: number;
 		autoplayTotal?: number;
 		autoplayIntervalSeconds?: number;
-		autoplayFollowMap?: boolean;
 		onAboutOpen: () => void;
 		onShareOpen: () => void;
 		onAutoplayStart: () => void;
 		onAutoplayPauseToggle: () => void;
 		onAutoplayStop: () => void;
-		onAutoplayFollowMapToggle: () => void;
 	} = $props();
 
 	let autoplayEnabled = $derived(
@@ -66,6 +61,11 @@
 	let headerElement = $state<HTMLElement>();
 	let fullscreenActive = $state(false);
 	let fullscreenSupported = $state(false);
+	let presentationToolbarClass = $derived(
+		fullscreenSupported
+			? 'grid-cols-[repeat(3,2.25rem)_4rem]'
+			: 'grid-cols-[repeat(2,2.25rem)_4rem]'
+	);
 	const presentationControlButtonClass =
 		'flex h-9 w-9 shrink-0 cursor-pointer items-center justify-center transition hover:bg-gray-100 focus-visible:z-10 focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-brand-main disabled:cursor-not-allowed disabled:opacity-45';
 
@@ -88,7 +88,14 @@
 
 	function getFullscreenSupported() {
 		const fullscreenDocument = document as FullscreenDocument;
-		return !!(document.fullscreenEnabled || fullscreenDocument.webkitFullscreenEnabled);
+		const fullscreenElement = getFullscreenElement();
+		const supportsStandardFullscreen =
+			document.fullscreenEnabled && typeof fullscreenElement.requestFullscreen === 'function';
+		const supportsWebkitFullscreen =
+			fullscreenDocument.webkitFullscreenEnabled &&
+			typeof fullscreenElement.webkitRequestFullscreen === 'function';
+
+		return !!(supportsStandardFullscreen || supportsWebkitFullscreen);
 	}
 
 	function getFullscreenElement() {
@@ -208,7 +215,7 @@
 			</div>
 		{:else if autoplayEnabled}
 			<div
-				class="ml-auto grid h-9 grid-cols-[repeat(4,2.25rem)_4rem] divide-x divide-gray-200 overflow-hidden rounded-md border border-gray-200 bg-white text-gray-800 shadow-lg"
+				class="ml-auto grid h-9 {presentationToolbarClass} divide-x divide-gray-200 overflow-hidden rounded-md border border-gray-200 bg-white text-gray-800 shadow-lg"
 			>
 				<button
 					onclick={onAutoplayPauseToggle}
@@ -234,34 +241,23 @@
 					<Square class="h-3.5 w-3.5 fill-current" />
 				</button>
 
-				<button
-					onclick={onAutoplayFollowMapToggle}
-					aria-label={autoplayFollowMap ? config.header.filterViewport : config.header.followMap}
-					title={autoplayFollowMap ? config.header.filterViewport : config.header.followMap}
-					aria-pressed={autoplayFollowMap}
-					class="{presentationControlButtonClass} {autoplayFollowMap
-						? 'bg-brand-main text-white'
-						: 'hover:bg-gray-100'}"
-				>
-					<Focus class="h-4 w-4" />
-				</button>
-
-				<button
-					onclick={toggleFullscreen}
-					disabled={!fullscreenSupported}
-					aria-label={fullscreenActive
-						? config.header.exitFullscreen
-						: config.header.enterFullscreen}
-					title={fullscreenActive ? config.header.exitFullscreen : config.header.enterFullscreen}
-					aria-pressed={fullscreenActive}
-					class={presentationControlButtonClass}
-				>
-					{#if fullscreenActive}
-						<Minimize2 class="h-4 w-4" />
-					{:else}
-						<Maximize2 class="h-4 w-4" />
-					{/if}
-				</button>
+				{#if fullscreenSupported}
+					<button
+						onclick={toggleFullscreen}
+						aria-label={fullscreenActive
+							? config.header.exitFullscreen
+							: config.header.enterFullscreen}
+						title={fullscreenActive ? config.header.exitFullscreen : config.header.enterFullscreen}
+						aria-pressed={fullscreenActive}
+						class={presentationControlButtonClass}
+					>
+						{#if fullscreenActive}
+							<Minimize2 class="h-4 w-4" />
+						{:else}
+							<Maximize2 class="h-4 w-4" />
+						{/if}
+					</button>
+				{/if}
 
 				<span
 					aria-live="polite"
