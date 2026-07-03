@@ -6,6 +6,7 @@
 	"license": "GPL-3.0-or-later",
 	"scripts": {
 		"dev": "vite dev",
+		"prebuild": "node scripts/generate-annotations.ts",
 		"build": "vite build",
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync || echo ''",

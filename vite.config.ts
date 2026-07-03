@@ -44,9 +44,7 @@ function generateAnnotationsPlugin(configFile: string): Plugin {
 
 	return {
 		name: 'rotterdam-tijdmachine:generate-annotations',
-		async buildStart() {
-			await runGenerator();
-		},
+		apply: 'serve',
 		async configureServer(server: ViteDevServer) {
 			await runGenerator();
 			server.watcher.add([...watchedFiles]);
