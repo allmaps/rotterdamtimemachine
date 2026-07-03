@@ -138,7 +138,7 @@
 		aria-label="Global"
 		class="relative flex flex-none items-center justify-between gap-2 border-b text-white transition-colors {autoplayActive
 			? 'border-transparent bg-transparent p-2'
-			: 'border-brand-hover/20 bg-brand-main p-2 md:px-8'}"
+			: 'border-brand-hover/20 bg-brand-main p-2 lg:px-8'}"
 	>
 		{#if !autoplayActive}
 			<div
@@ -152,34 +152,36 @@
 					data-tour="compare"
 					aria-label={config.header.compareMode}
 					aria-pressed={comparison.active}
-					class="flex h-8 cursor-pointer items-center gap-2 rounded px-2 text-sm font-semibold hover:bg-brand-hover md:px-3 {comparison.active
+					class="flex h-8 cursor-pointer items-center gap-2 rounded px-2 text-sm font-semibold hover:bg-brand-hover lg:px-3 {comparison.active
 						? 'bg-brand-hover'
 						: ''}"
 				>
 					<Columns2 class="h-4 w-4" />
-					<span class="hidden md:inline"
+					<span class="hidden lg:inline"
 						>{comparison.active ? config.header.closeCompare : config.header.compare}</span
 					>
 				</button>
 			</div>
 
 			<div
-				class="relative flex flex-none justify-center px-1 text-center"
+				class="relative flex min-w-0 flex-none justify-center px-1 text-center"
 				transition:fly={{ y: -48, duration: 180 }}
 			>
-				<h1 class="font-heading text-lg leading-none font-bold select-none md:text-2xl">
+				<h1
+					class="max-w-[44vw] truncate font-heading text-lg leading-none font-bold select-none lg:max-w-none lg:text-2xl"
+				>
 					{config.site.name}
 				</h1>
 			</div>
 
-			<div class="flex flex-1 justify-end gap-1 md:gap-2" transition:fly={{ x: 48, duration: 180 }}>
+			<div class="flex flex-1 justify-end gap-1 lg:gap-2" transition:fly={{ x: 48, duration: 180 }}>
 				<button
 					onclick={onAboutOpen}
 					aria-label={config.header.about}
-					class="flex h-8 cursor-pointer items-center gap-1 rounded px-2 text-sm font-semibold hover:bg-brand-hover md:px-3"
+					class="flex h-8 cursor-pointer items-center gap-1 rounded px-2 text-sm font-semibold hover:bg-brand-hover lg:px-3"
 				>
 					<Info class="h-4 w-4" />
-					<span class="hidden sm:inline">{config.header.about}</span>
+					<span class="hidden lg:inline">{config.header.about}</span>
 				</button>
 
 				{#if autoplayEnabled}
@@ -188,20 +190,20 @@
 						disabled={autoplayDisabled}
 						aria-label={config.header.play}
 						title={config.header.play}
-						class="flex h-8 cursor-pointer items-center gap-1 rounded px-2 text-sm font-semibold hover:bg-brand-hover disabled:cursor-not-allowed disabled:opacity-45 md:px-3"
+						class="flex h-8 cursor-pointer items-center gap-1 rounded px-2 text-sm font-semibold hover:bg-brand-hover disabled:cursor-not-allowed disabled:opacity-45 lg:px-3"
 					>
 						<Play class="h-4 w-4" />
-						<span class="hidden sm:inline">{config.header.play}</span>
+						<span class="hidden lg:inline">{config.header.play}</span>
 					</button>
 				{/if}
 
 				<button
 					onclick={onShareOpen}
 					aria-label={config.header.share}
-					class="flex h-8 cursor-pointer items-center gap-1 rounded px-2 text-sm font-semibold hover:bg-brand-hover md:px-3"
+					class="flex h-8 cursor-pointer items-center gap-1 rounded px-2 text-sm font-semibold hover:bg-brand-hover lg:px-3"
 				>
 					<Share2 class="h-4 w-4" />
-					<span class="hidden sm:inline">{config.header.share}</span>
+					<span class="hidden lg:inline">{config.header.share}</span>
 				</button>
 			</div>
 		{:else if autoplayEnabled}
