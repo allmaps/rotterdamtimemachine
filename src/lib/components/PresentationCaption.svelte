@@ -5,11 +5,13 @@
 	let {
 		yearLabel,
 		title,
+		slideKey,
 		slideDirection = 1,
 		transitionDuration = 0
 	}: {
 		yearLabel: string;
 		title: string;
+		slideKey: string;
 		slideDirection?: 1 | -1;
 		transitionDuration?: number;
 	} = $props();
@@ -107,7 +109,7 @@
 	</div>
 
 	<div class="relative mt-1 min-h-10 overflow-visible md:min-h-16">
-		{#key title}
+		{#key slideKey}
 			<span
 				bind:this={titleViewport}
 				in:fly={{

@@ -416,6 +416,8 @@
 	}
 
 	function queueScrollSettled() {
+		if (!hasInitializedScroll) return;
+
 		clearScrollSettleTimeout();
 		scrollSettleTimeout = setTimeout(handleScrollSettled, scrollSettleDelay);
 	}

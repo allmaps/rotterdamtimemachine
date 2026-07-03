@@ -94,6 +94,7 @@
 	let autoplayActive = $state(startsInPresentation);
 	let autoplayPlaying = $state(startsInPresentation);
 	let autoplayFollowMap = $state(false);
+	let autoplayRepairSelection = $state(false);
 	let autoplayRemainingMs = $state(0);
 	let autoplayTimerCycle = $state(0);
 	let autoplayTimerStartedAt = 0;
@@ -177,14 +178,26 @@
 
 	$effect(() => {
 		if (!autoplayActive || autoplayTotal === 0) return;
-		if (autoplayCurrentIndex >= 0) return;
+		if (autoplayCurrentIndex >= 0) {
+			setAutoplayRepairSelection(false);
+			return;
+		}
+		if (!autoplayRepairSelection) return;
 
 		ensureAutoplaySelection();
+		setAutoplayRepairSelection(false);
 	});
 
 	function yearForAnnotation(annotation: string) {
 		const map = collection.find((map) => map.annotation === annotation);
 		return map ? getMapStartYear(map) : undefined;
+	}
+
+	function syncSelectedYearToAnnotation(annotation: string) {
+		const map = collection.find((map) => map.annotation === annotation);
+		if (!map) return;
+
+		selectedYear = mapIncludesYear(map, selectedYear) ? selectedYear : getMapStartYear(map);
 	}
 
 	function mapForYear(year: number) {
@@ -278,6 +291,9 @@
 		if (autoplayDisabled) return;
 
 		autoplayFollowMap = false;
+		setAutoplayRepairSelection(
+			!autoplayItems.some((item) => item.annotation === viewState.annotation)
+		);
 		resetAutoplayTimer();
 		autoplayActive = true;
 		autoplayPlaying = true;
@@ -300,15 +316,18 @@
 	}
 
 	function toggleAutoplayFollowMap() {
+		setAutoplayRepairSelection(true);
 		autoplayFollowMap = !autoplayFollowMap;
 		ensureAutoplaySelection();
 	}
 
 	function stopAutoplay() {
 		clearAutoplayTimer();
+		syncSelectedYearToAnnotation(viewState.annotation);
 		autoplayActive = false;
 		autoplayPlaying = false;
 		autoplayFollowMap = false;
+		setAutoplayRepairSelection(false);
 		resetAutoplayTimer();
 	}
 
@@ -455,6 +474,7 @@
 
 	function selectAutoplayItem(item: AutoplayItem) {
 		resetAutoplayTimer();
+		setAutoplayRepairSelection(false);
 		selectedYear = item.year;
 		viewState.annotation = item.annotation;
 	}
@@ -463,6 +483,12 @@
 		autoplayRemainingMs = autoplayIntervalMs;
 		autoplayTimerCycle += 1;
 		autoplayTimerStartedAt = 0;
+	}
+
+	function setAutoplayRepairSelection(repair: boolean) {
+		if (untrack(() => autoplayRepairSelection) !== repair) {
+			autoplayRepairSelection = repair;
+		}
 	}
 
 	function clearAutoplayTimer() {

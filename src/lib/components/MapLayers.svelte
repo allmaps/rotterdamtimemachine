@@ -117,7 +117,9 @@
 	);
 	let mapsForVisibleYear = $derived(maps.filter((map) => mapIncludesYear(map, resolvedYear)));
 	let activeMap = $derived(
-		mapsForResolvedYear.find((map) => map.annotation === annotation) ?? mapsForResolvedYear[0]
+		mapsForResolvedYear.find((map) => map.annotation === annotation) ??
+			(autoplayActive ? maps.find((map) => map.annotation === annotation) : undefined) ??
+			mapsForResolvedYear[0]
 	);
 	let activeMapYearLabel = $derived(activeMap ? getMapYearLabel(activeMap) : '');
 	let activeMapIndex = $derived(
@@ -149,6 +151,7 @@
 	});
 
 	$effect(() => {
+		if (autoplayActive) return;
 		if (activeMap && !mapsForResolvedYear.some((map) => map.annotation === annotation)) {
 			annotation = activeMap.annotation;
 		}
@@ -826,6 +829,7 @@
 				<PresentationCaption
 					yearLabel={activeMapYearLabel}
 					title={activeMap.label}
+					slideKey={activeMap.annotation}
 					slideDirection={presentationSlideDirection}
 					transitionDuration={presentationTransitionDuration}
 				/>
