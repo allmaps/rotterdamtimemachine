@@ -66,7 +66,7 @@ slider:
 
 autoplay:
   intervalSeconds: 4
-  flyToDurationMs: 1000
+  flyToDurationMs: 2000
 
 header:
   search: Zoeken

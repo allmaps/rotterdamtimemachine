@@ -83,7 +83,7 @@ slider:
 
 autoplay:
   intervalSeconds: 4
-  flyToDurationMs: 100
+  flyToDurationMs: 2000
 
 tour:
   enabled: true
