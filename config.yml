@@ -58,7 +58,7 @@ map:
     panPixels: 100
 
 basemap:
-  protomapsApiKey: ca7652ec836f269a
+  protomapsApiKey: 31869d781d1653f3
 
 slider:
   scaleInterval: 25
