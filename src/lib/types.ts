@@ -70,11 +70,11 @@ export type AppConfig = {
 		};
 	};
 	map: {
-		defaultYear: number;
+		defaultYear?: number;
 		autoZoomOutThreshold?: number;
 		visibilityPaddingPixels?: number;
 		tinyVisibilityAreaRatio?: number;
-		initialView: MapLocation;
+		initialView?: InitialMapView;
 		keyboard: {
 			panPixels: number;
 		};
@@ -138,9 +138,9 @@ export type AppConfig = {
 		title: string;
 		closeLabel: string;
 		description: string;
-		simpleLink: string;
-		viewLink: string;
-		presentationLink: string;
+		location: string;
+		currentMap: string;
+		presentationMode: string;
 		copy: string;
 		copied: string;
 	};
@@ -237,6 +237,12 @@ export type MapLocation = {
 	center: [number, number];
 	zoom: number;
 	bearing: number;
+};
+
+export type InitialMapView = {
+	center?: [number, number];
+	zoom?: number;
+	bearing?: number;
 };
 
 export type GeocoderBounds = {

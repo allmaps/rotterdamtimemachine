@@ -11,6 +11,7 @@
 		MapMetadata,
 		MapToolbarCommand
 	} from '$lib/types';
+	import type { Bbox } from '@allmaps/types';
 
 	let {
 		maps,
@@ -19,11 +20,8 @@
 		opacity = $bindable(100),
 		selectedYear = $bindable(),
 		mapKeyboardCommand,
-		currentLocation = $bindable({
-			center: [...config.map.initialView.center] as [number, number],
-			zoom: config.map.initialView.zoom,
-			bearing: config.map.initialView.bearing
-		}),
+		currentLocation = $bindable(getConfiguredInitialLocation(config)),
+		initialBounds,
 		geocoderBounds = $bindable(),
 		navPosition = 'left',
 		mapToolbarCommand,
@@ -50,6 +48,7 @@
 		selectedYear: number;
 		mapKeyboardCommand?: MapKeyboardCommand;
 		currentLocation?: MapLocation;
+		initialBounds?: Bbox;
 		geocoderBounds?: GeocoderBounds;
 		navPosition?: 'left' | 'right';
 		mapToolbarCommand?: MapToolbarCommand;
@@ -84,6 +83,14 @@
 		  }
 		| undefined
 	>();
+
+	function getConfiguredInitialLocation(config: AppConfig): MapLocation {
+		return {
+			center: [...(config.map.initialView?.center ?? [0, 0])] as [number, number],
+			zoom: config.map.initialView?.zoom ?? 1,
+			bearing: config.map.initialView?.bearing ?? 0
+		};
+	}
 
 	$effect(() => {
 		if (autoplayActive) {
@@ -139,6 +146,7 @@
 			bind:focusActiveMap
 			bind:inViewOnly={sliderInViewOnly}
 			bind:currentLocation
+			{initialBounds}
 			bind:annotationsInView
 			bind:annotationsAtCenter
 			bind:geocoderBounds

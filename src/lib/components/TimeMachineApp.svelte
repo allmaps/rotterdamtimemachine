@@ -7,7 +7,12 @@
 	import { onMount, tick, untrack } from 'svelte';
 	import { comparison, mapView, viewState } from '$lib/app-state.svelte.js';
 	import { getMapStartYear, mapIncludesYear } from '$lib/map-years';
-	import { annotationById, loadWarpedMapData } from '$lib/warped-map-list';
+	import {
+		annotationById,
+		getWarpedMapList,
+		loadWarpedMapData,
+		mapIdsByAnnotation
+	} from '$lib/warped-map-list';
 	import { LoaderCircle } from '@lucide/svelte';
 	import type {
 		AppConfig,
@@ -17,6 +22,7 @@
 		MapMetadata,
 		MapToolbarCommand
 	} from '$lib/types';
+	import type { Bbox } from '@allmaps/types';
 
 	type AutoplayItem = {
 		annotation: string;
@@ -28,10 +34,20 @@
 		y: number;
 		time: number;
 	};
+	type ParsedInitialView = {
+		center?: [number, number];
+		zoom?: number;
+		bearing?: number;
+	};
 
 	const PRESENTATION_SWIPE_THRESHOLD = 48;
 	const PRESENTATION_SWIPE_MAX_DURATION_MS = 900;
 	const PRESENTATION_SWIPE_AXIS_RATIO = 1.25;
+	const FALLBACK_LOCATION: MapLocation = {
+		center: [0, 0],
+		zoom: 1,
+		bearing: 0
+	};
 
 	let {
 		config,
@@ -49,37 +65,40 @@
 		comparison.active = false;
 	}
 
-	let DEFAULT_YEAR = $derived(config.map.defaultYear);
 	let KEYBOARD_PAN_PIXELS = $derived(config.map.keyboard.panPixels);
-	let defaultMap = $derived(mapForYear(DEFAULT_YEAR) ?? collection[0]);
 	const initial = untrack(() => {
 		const defaultYear = config.map.defaultYear;
-		const initialMap = collection.find((map) => mapIncludesYear(map, defaultYear)) ?? collection[0];
+		const randomMap = getRandomMap(collection);
+		const initialMap =
+			defaultYear !== undefined
+				? (collection.find((map) => mapIncludesYear(map, defaultYear)) ?? randomMap)
+				: randomMap;
 		const rightMap = collection[1];
-		const defaultLocation = {
-			center: [...config.map.initialView.center] as [number, number],
-			zoom: config.map.initialView.zoom,
-			bearing: config.map.initialView.bearing
-		};
+		const configuredView = getConfiguredInitialView(config);
+		const fallbackYear = initialMap ? getMapStartYear(initialMap) : new Date().getFullYear();
 
 		return {
 			defaultYear,
-			defaultLocation,
+			configuredView,
+			defaultLocation: mergeLocation(FALLBACK_LOCATION, configuredView),
+			hasConfiguredLocation: !!configuredView.center,
 			initialMap,
 			selectedYear:
-				initialMap && mapIncludesYear(initialMap, defaultYear)
+				defaultYear !== undefined && initialMap && mapIncludesYear(initialMap, defaultYear)
 					? defaultYear
 					: initialMap
 						? getMapStartYear(initialMap)
-						: defaultYear,
-			rightAnnotation: rightMap?.annotation ?? '',
-			rightYear: rightMap ? getMapStartYear(rightMap) : defaultYear
+						: fallbackYear,
+			rightAnnotation: rightMap?.annotation ?? initialMap?.annotation ?? '',
+			rightYear: rightMap ? getMapStartYear(rightMap) : fallbackYear
 		};
 	});
+	let defaultMap = $derived(initial.initialMap ?? collection[0]);
 
 	let aboutOpen = $state(false);
 	let shareOpen = $state(false);
 	let currentLocation = $state<MapLocation>(initial.defaultLocation);
+	let initialBounds = $state<Bbox>();
 	let geocoderBounds = $state<GeocoderBounds>();
 	let compareStacked = $state(false);
 	let panesReady = $state(false);
@@ -173,6 +192,40 @@
 		ensureAutoplaySelection();
 	});
 
+	function getRandomMap(maps: MapMetadata[]) {
+		if (maps.length === 0) return undefined;
+
+		return maps[Math.floor(Math.random() * maps.length)];
+	}
+
+	function getConfiguredInitialView(appConfig: AppConfig): ParsedInitialView {
+		const initialView = appConfig.map.initialView;
+		if (!initialView) return {};
+
+		const center = initialView.center;
+		const parsedView: ParsedInitialView = {};
+
+		if (Array.isArray(center) && center.length >= 2) {
+			const [lng, lat] = center;
+			if (Number.isFinite(lng) && Number.isFinite(lat)) {
+				parsedView.center = [lng, lat];
+			}
+		}
+
+		if (Number.isFinite(initialView.zoom)) parsedView.zoom = initialView.zoom;
+		if (Number.isFinite(initialView.bearing)) parsedView.bearing = initialView.bearing;
+
+		return parsedView;
+	}
+
+	function mergeLocation(location: MapLocation, overrides: ParsedInitialView): MapLocation {
+		return {
+			center: overrides.center ?? location.center,
+			zoom: overrides.zoom ?? location.zoom,
+			bearing: overrides.bearing ?? location.bearing
+		};
+	}
+
 	function yearForAnnotation(annotation: string) {
 		const map = collection.find((map) => map.annotation === annotation);
 		return map ? getMapStartYear(map) : undefined;
@@ -223,20 +276,37 @@
 		return Number.isFinite(number) ? number : undefined;
 	}
 
-	function locationFromParams(params: URLSearchParams): MapLocation | undefined {
+	function locationFromParams(
+		params: URLSearchParams,
+		fallbackLocation = initial.defaultLocation
+	): MapLocation | undefined {
 		const lat = numberParam(params, 'lat');
 		const lng = numberParam(params, 'lng');
-		if (lat === undefined || lng === undefined) return undefined;
+		const zoom = numberParam(params, 'zoom');
+		const bearing = numberParam(params, 'bearing');
+		const hasCenter = lat !== undefined && lng !== undefined;
+		if (!hasCenter && zoom === undefined && bearing === undefined) return undefined;
 
 		return {
-			center: [lng, lat],
-			zoom: numberParam(params, 'zoom') ?? config.map.initialView.zoom,
-			bearing: numberParam(params, 'bearing') ?? config.map.initialView.bearing
+			center: hasCenter ? [lng, lat] : fallbackLocation.center,
+			zoom: zoom ?? fallbackLocation.zoom,
+			bearing: bearing ?? fallbackLocation.bearing
 		};
+	}
+
+	function hasLocationCenterParam(params: URLSearchParams) {
+		return numberParam(params, 'lat') !== undefined && numberParam(params, 'lng') !== undefined;
+	}
+
+	function hasBearingParam(params: URLSearchParams) {
+		return numberParam(params, 'bearing') !== undefined;
 	}
 
 	function applyInitialParams(params: URLSearchParams) {
 		const yearParam = yearFromParam(params.get('year'));
+		const hasMapParam = params.has('map');
+		const hasParamCenter = hasLocationCenterParam(params);
+		const hasParamBearing = hasBearingParam(params);
 		const initialMap = params.has('map')
 			? (mapForAnnotationParam(params.get('map')) ?? defaultMap)
 			: ((yearParam !== undefined ? mapForYear(yearParam) : undefined) ?? defaultMap);
@@ -248,7 +318,41 @@
 					: getMapStartYear(initialMap);
 		}
 
-		currentLocation = locationFromParams(params) ?? initial.defaultLocation;
+		const mapBounds = initialMap ? getMapBounds(initialMap) : undefined;
+		const shouldUseInitialBounds =
+			!!mapBounds &&
+			!hasParamCenter &&
+			(hasMapParam || !initial.hasConfiguredLocation || hasParamBearing);
+
+		initialBounds = shouldUseInitialBounds ? mapBounds : undefined;
+
+		const boundsFallbackLocation = shouldUseInitialBounds
+			? {
+					...initial.defaultLocation,
+					bearing:
+						numberParam(params, 'bearing') ??
+						(!initial.hasConfiguredLocation ? initial.configuredView.bearing : undefined) ??
+						initial.defaultLocation.bearing
+				}
+			: initial.defaultLocation;
+
+		currentLocation = locationFromParams(params, boundsFallbackLocation) ?? boundsFallbackLocation;
+	}
+
+	function getMapBounds(map: MapMetadata): Bbox | undefined {
+		const mapIds = mapIdsByAnnotation.get(map.annotation);
+		if (!mapIds?.size) return undefined;
+
+		const bbox = getWarpedMapList().getMapsBbox({
+			mapIds,
+			onlyVisible: false
+		});
+		if (!bbox) return undefined;
+
+		const [west, south, east, north] = bbox;
+		if (![west, south, east, north].every(Number.isFinite)) return undefined;
+
+		return bbox;
 	}
 
 	function dispatchMapKeyboardCommand(command: Omit<MapKeyboardCommand, 'id'>) {
@@ -757,6 +861,7 @@
 				bind:opacity={viewState.opacity}
 				bind:selectedYear
 				bind:currentLocation
+				{initialBounds}
 				bind:geocoderBounds
 				bind:annotationsInView={leftAnnotationsInView}
 				bind:annotationsAtCenter={leftAnnotationsAtCenter}

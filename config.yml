@@ -172,10 +172,10 @@ about:
 share:
   title: Deel jouw tijdreis
   closeLabel: Sluit delen
-  description: Kies of je de algemene pagina of de huidige kaartuitsnede wilt delen.
-  simpleLink: Eenvoudige link
-  viewLink: Huidige uitsnede
-  presentationLink: Presentatiemodus
+  description: Voeg optioneel de huidige locatie, kaartlaag of presentatiemodus toe aan de link.
+  location: Locatie
+  currentMap: Huidige kaart
+  presentationMode: Presentatiemodus
   copy: Kopieer
   copied: Gekopieerd
 

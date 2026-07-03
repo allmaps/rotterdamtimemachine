@@ -17,6 +17,7 @@
 		MapLocation,
 		MapToolbarCommand
 	} from '$lib/types';
+	import type { Bbox } from '@allmaps/types';
 
 	type CameraPadding = {
 		top: number;
@@ -44,6 +45,7 @@
 	const CAMERA_BASE_PADDING = 40;
 	const CAMERA_PANEL_GAP = 16;
 	const DESKTOP_SLIDER_INSET = 96;
+	const INITIAL_FIT_BOUNDS_PADDING = 64;
 	const MAPLIBRE_TILE_SIZE = 512;
 	const WEB_MERCATOR_WORLD_WIDTH = 40075016.68557849;
 	const ZOOM_EPSILON = 0.001;
@@ -67,11 +69,8 @@
 		rotateToMapOrientation = $bindable(false),
 		focusActiveMap = $bindable(false),
 		inViewOnly = $bindable(false),
-		currentLocation = $bindable({
-			center: [...config.map.initialView.center] as [number, number],
-			zoom: config.map.initialView.zoom,
-			bearing: config.map.initialView.bearing
-		}),
+		currentLocation = $bindable(getConfiguredInitialLocation(config)),
+		initialBounds,
 		annotationsInView = $bindable<string[]>([]),
 		// eslint-disable-next-line no-useless-assignment -- This bindable prop is written back to the parent.
 		annotationsAtCenter = $bindable<string[]>([]),
@@ -94,6 +93,7 @@
 		focusActiveMap?: boolean;
 		inViewOnly?: boolean;
 		currentLocation?: MapLocation;
+		initialBounds?: Bbox;
 		annotationsInView?: string[];
 		annotationsAtCenter?: string[];
 		geocoderBounds?: GeocoderBounds;
@@ -450,6 +450,14 @@
 
 	function getBrandMainColor() {
 		return getThemeColor(config.theme);
+	}
+
+	function getConfiguredInitialLocation(config: AppConfig): MapLocation {
+		return {
+			center: [...(config.map.initialView?.center ?? [0, 0])] as [number, number],
+			zoom: config.map.initialView?.zoom ?? 1,
+			bearing: config.map.initialView?.bearing ?? 0
+		};
 	}
 
 	function isTouchInteractionDevice() {
@@ -1012,20 +1020,49 @@
 		geocoderBounds = Object.values(nextBounds).every(Number.isFinite) ? nextBounds : undefined;
 	}
 
+	function getInitialMapOptions(): maplibregl.MapOptions {
+		const location = currentLocation ?? getConfiguredInitialLocation(config);
+		const options: maplibregl.MapOptions = {
+			style: getProtomapsStyle('light', config.basemap.protomapsApiKey),
+			container: mapElement as HTMLDivElement,
+			attributionControl: false,
+			maxPitch: 0,
+			bearing: location.bearing ?? 0,
+			bearingSnap: 0,
+			keyboard: false
+		};
+
+		if (initialBounds) {
+			return {
+				...options,
+				bounds: initialBounds,
+				fitBoundsOptions: {
+					bearing: location.bearing ?? 0,
+					padding: INITIAL_FIT_BOUNDS_PADDING
+				}
+			};
+		}
+
+		return {
+			...options,
+			center: location.center,
+			zoom: location.zoom
+		};
+	}
+
+	function syncCurrentLocationFromMap(mapInstance: maplibregl.Map) {
+		currentLocation = {
+			center: mapInstance.getCenter().toArray() as [number, number],
+			zoom: mapInstance.getZoom(),
+			bearing: mapInstance.getBearing()
+		};
+	}
+
 	onMount(() => {
 		if (!mapElement) return;
 
-		const mapInstance = new maplibregl.Map({
-			style: getProtomapsStyle('light', config.basemap.protomapsApiKey),
-			container: mapElement,
-			attributionControl: false,
-			maxPitch: 0,
-			center: currentLocation.center,
-			zoom: currentLocation.zoom,
-			bearing: currentLocation.bearing ?? 0,
-			bearingSnap: 0,
-			keyboard: false
-		});
+		const mapInstance = new maplibregl.Map(getInitialMapOptions());
+		syncCurrentLocationFromMap(mapInstance);
 		map = mapInstance;
 		mapReady = true;
 
@@ -1035,11 +1072,7 @@
 
 		mapInstance.on('move', () => {
 			if (!isSyncing) {
-				currentLocation = {
-					center: mapInstance.getCenter().toArray() as [number, number],
-					zoom: mapInstance.getZoom(),
-					bearing: mapInstance.getBearing()
-				};
+				syncCurrentLocationFromMap(mapInstance);
 			}
 
 			if (visibilityWarningOpen) {

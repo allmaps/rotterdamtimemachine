@@ -135,8 +135,8 @@ Important sections:
 - `site.favicon`: optional favicon URL or path; overrides the bundled `static/favicon.svg`
 - `theme.color`: hex or RGB value used for the primary UI color
 - `theme.fonts`: optional custom font files and semantic font roles
-- `map.defaultYear`: the year the app opens with by default
-- `map.initialView`: default map view with `center`, `zoom`, and `bearing`
+- `map.defaultYear`: optional year the app opens with by default; when omitted, the app opens with a random map year
+- `map.initialView`: optional default map view with `center`, `zoom`, and `bearing`; when `center` is omitted, the app fits the opening map bounds and can still apply `bearing`
 - `map.autoZoomOutThreshold`: zoom-level margin before the app zooms out to a selected map's native maximum zoom
 - `map.visibilityPaddingPixels`: inset used when checking whether the selected map is meaningfully visible in the viewport
 - `map.tinyVisibilityAreaRatio`: minimum screen-area ratio before a visible selected map is treated as too small to study
@@ -152,8 +152,8 @@ Important sections:
 For a new use case, usually start with:
 
 1. Update `site.name`, `site.url`, and `site.description`.
-2. Set `map.defaultYear` to a year that exists in your collection.
-3. Set `map.initialView.center` to `[longitude, latitude]` for your area.
+2. Optionally set `map.defaultYear` to a year that exists in your collection. Omit it to open with a random map year.
+3. Optionally set `map.initialView.center` to `[longitude, latitude]` for your area. Omit `map.initialView.center` to fit the initially selected map bounds. `map.initialView.zoom` is used together with a configured center; `map.initialView.bearing` can also be used with bounds.
 4. Set `theme.color` for the primary UI color, for example `color: "#006d2c"` or `color: rgb(0, 109, 44)`. Quote hex values in YAML. The app derives five semantic brand colors from that value: soft, muted, secondary, main, and hover.
 5. Request your own free Protomaps API key at [protomaps.com/api](https://protomaps.com/api) and set it as `basemap.protomapsApiKey`.
 6. Rewrite or translate the text under `tour`, `about`, `search`, `layers`, and `controls`.
@@ -276,7 +276,7 @@ The Nominatim search bounds are derived from the bounds of the Allmaps layer. Fo
 
 ### Constructing URLs
 
-The app opens with the default map and view from `config.yml` when no query parameters are provided:
+The app opens with the default map and view from `config.yml` when no query parameters are provided. If `map.defaultYear` is omitted, it selects a random map year. If `map.initialView` is omitted, it fits the selected map bounds:
 
 ```text
 https://example.org/time-machine/
@@ -294,6 +294,8 @@ You can link to a specific map with the `map` parameter. This parameter accepts 
 https://example.org/time-machine/?map=7256050d27d1f599
 ```
 
+When a link only includes a `map` parameter and no location parameters, the app derives the initial view from that map's bounds before the map pane is created. `bearing` can also be supplied without `lat`/`lng`; in that case the map bounds provide the center and zoom.
+
 For bundled annotations in `static/annotations`, the generated ID is the first 16 characters of a SHA-1 hash of the normalized static path. The sharing modal creates these URLs automatically.
 
 ```text
@@ -306,7 +308,7 @@ If `year` and `map` are both present, `map` takes preference. To link to a speci
 https://example.org/time-machine/?lat=51.92146&lng=4.48488&zoom=14.00&map=7256050d27d1f599
 ```
 
-The sharing modal keeps the default link simple and only includes view parameters when the current-view option is selected.
+The sharing modal keeps the default link simple. Its toggles independently add the current location, current map, and presentation-mode route.
 
 ## Project structure
 
