@@ -4,11 +4,11 @@ on:
   workflow_dispatch:
     inputs:
       config:
-        description: 'Optional config YAML file to build with.'
+        description: "Optional config YAML file to build with."
         required: false
-        default: ''
+        default: ""
   push:
-    branches: 'main'
+    branches: "main"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Install pnpm
         uses: pnpm/action-setup@v6
@@ -43,7 +43,7 @@ jobs:
       - name: Upload Artifacts
         uses: actions/upload-pages-artifact@v5
         with:
-          path: 'build/'
+          path: "build/"
 
   deploy:
     needs: build_site
