@@ -41,6 +41,7 @@ export type AppConfig = {
 	collection?: string;
 	site: {
 		name: string;
+		shortName?: string;
 		url: string;
 		description: string;
 		locale: string;
