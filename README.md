@@ -132,6 +132,7 @@ Important sections:
 
 - `collection`: YAML file with map records; bare filenames are resolved relative to the config file
 - `site`: name, URL, description, and locale for metadata
+- `site.shortName`: optional compact title used in the header on phone-sized screens
 - `site.favicon`: optional favicon URL or path; overrides the bundled `static/favicon.svg`
 - `theme.color`: hex or RGB value used for the primary UI color
 - `theme.fonts`: optional custom font files and semantic font roles
@@ -152,7 +153,7 @@ Important sections:
 
 For a new use case, usually start with:
 
-1. Update `site.name`, `site.url`, and `site.description`.
+1. Update `site.name`, `site.shortName`, `site.url`, and `site.description`.
 2. Set `map.defaultYear` to a year that exists in your collection.
 3. Set `map.initialView.center` to `[longitude, latitude]` for your area.
 4. Set `theme.color` for the primary UI color, for example `color: "#006d2c"` or `color: rgb(0, 109, 44)`. Quote hex values in YAML. The app derives five semantic brand colors from that value: soft, muted, secondary, main, and hover.

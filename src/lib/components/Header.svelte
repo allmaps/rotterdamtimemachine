@@ -58,6 +58,7 @@
 		!!config.autoplay?.intervalSeconds && config.autoplay.intervalSeconds > 0
 	);
 	let autoplayProgressDuration = $derived(Math.max(0.1, autoplayIntervalSeconds));
+	let shortSiteName = $derived(config.site.shortName ?? config.site.name);
 	let headerElement = $state<HTMLElement>();
 	let fullscreenActive = $state(false);
 	let fullscreenSupported = $state(false);
@@ -175,9 +176,11 @@
 				transition:fly={{ y: -48, duration: 180 }}
 			>
 				<h1
+					title={config.site.name}
 					class="max-w-[44vw] truncate font-heading text-lg leading-none font-bold select-none lg:max-w-none lg:text-2xl"
 				>
-					{config.site.name}
+					<span class="min-[480px]:hidden">{shortSiteName}</span>
+					<span class="hidden min-[480px]:inline">{config.site.name}</span>
 				</h1>
 			</div>
 

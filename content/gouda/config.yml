@@ -1,5 +1,6 @@
 site:
   name: Goudse Kaarten Kabinet
+  shortName: Kaarten Kabinet
   url: https://www.goudatijdmachine.nl/kaarten-kabinet/
   description: Verken historische kaarten van Gouda door de tijd en vergelijk kaartlagen met de huidige stad.
   locale: nl

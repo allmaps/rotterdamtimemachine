@@ -1,5 +1,6 @@
 site:
   name: Rotterdam Time Machine
+  shortName: RTM
   url: https://rotterdamtimemachine.nl/
   description: Verken historische kaarten van Rotterdam door de tijd en vergelijk kaartlagen met de huidige stad.
   locale: nl
