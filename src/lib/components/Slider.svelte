@@ -656,7 +656,7 @@
 
 	.year-picker-row {
 		font-family: var(--font-noto);
-		font-size: 0.75rem;
+		font-size: 0.82rem;
 		font-weight: 600;
 		letter-spacing: 0;
 		cursor: inherit;
@@ -672,13 +672,19 @@
 
 	.year-picker-row.year-picker-scale-year {
 		font-family: var(--font-noto);
-		font-size: 0.82rem;
+		font-size: 0.9rem;
 	}
 
 	.year-picker-row.year-picker-century {
 		font-family: var(--font-heading);
-		font-size: 0.95rem;
+		font-size: 1rem;
 		font-weight: 700;
+	}
+
+	.year-picker-row:not(.year-picker-selected) {
+		text-shadow:
+			0 0 2px rgb(255 255 255 / 0.95),
+			0 1px 4px rgb(255 255 255 / 0.75);
 	}
 
 	.year-picker-row.year-picker-selected {
@@ -714,6 +720,10 @@
 
 		.year-picker-availability-rail {
 			display: block;
+		}
+
+		.year-picker-row:not(.year-picker-selected) {
+			text-shadow: none;
 		}
 	}
 
