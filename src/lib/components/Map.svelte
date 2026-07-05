@@ -88,7 +88,8 @@
 		controlsPosition = 'top-right',
 		showInViewControl = false,
 		autoplayActive = false,
-		autoplayNextAnnotation
+		autoplayNextAnnotation,
+		loaded = $bindable(false)
 	}: {
 		config: AppConfig;
 		annotation?: string;
@@ -109,6 +110,7 @@
 		showInViewControl?: boolean;
 		autoplayActive?: boolean;
 		autoplayNextAnnotation?: string;
+		loaded?: boolean;
 	} = $props();
 
 	let activeAnnotation = $derived(annotation);
@@ -117,7 +119,6 @@
 	let mapElement = $state<HTMLDivElement>();
 	let map = $state<maplibregl.Map>();
 	let mapReady: boolean = $state(false);
-	let loaded: boolean = $state(false);
 	let selectedMapVisibility = $state<SelectedMapVisibility>('unknown');
 	let visibilityWarningOpen = $state(false);
 	let dismissedVisibilityWarningAnnotation: string | undefined;
@@ -1044,6 +1045,8 @@
 	onMount(() => {
 		if (!mapElement) return;
 
+		loaded = false;
+
 		const mapInstance = new maplibregl.Map({
 			style: getProtomapsStyle('light', config.basemap.protomapsApiKey),
 			container: mapElement,
@@ -1057,6 +1060,8 @@
 		});
 		map = mapInstance;
 		mapReady = true;
+		const blurMapCanvas = () => mapInstance.getCanvas().blur();
+		disableMapCanvasFocus(mapInstance, blurMapCanvas);
 
 		mapInstance.on('movestart', (event) => {
 			if (event.originalEvent) clearPreferredSelectionZoom();
@@ -1111,14 +1116,27 @@
 				cancelAnimationFrame(visibilityCheckFrame);
 			}
 			clearSelectedLocationCircle();
+			mapInstance.getCanvas().removeEventListener('focus', blurMapCanvas);
 			mapInstance.remove();
 			annotationsInView = [];
 			annotationsAtCenter = [];
 			geocoderBounds = undefined;
 			map = undefined;
 			mapReady = false;
+			loaded = false;
 		};
 	});
+
+	function disableMapCanvasFocus(mapInstance: maplibregl.Map, blurMapCanvas: () => void) {
+		const canvas = mapInstance.getCanvas();
+		const canvasContainer = mapInstance.getCanvasContainer();
+
+		canvas.tabIndex = -1;
+		canvas.setAttribute('tabindex', '-1');
+		canvasContainer.tabIndex = -1;
+		canvasContainer.setAttribute('tabindex', '-1');
+		canvas.addEventListener('focus', blurMapCanvas);
+	}
 
 	function handleGlobalKeydown(event: KeyboardEvent) {
 		if (event.key === 'Escape' && visibilityWarningOpen) {
@@ -1158,3 +1176,10 @@
 	onDismiss={dismissVisibilityWarning}
 	onZoomToLayer={zoomToActiveMapFromWarning}
 />
+
+<style>
+	:global(.maplibregl-canvas:focus),
+	:global(.maplibregl-canvas:focus-visible) {
+		outline: none;
+	}
+</style>

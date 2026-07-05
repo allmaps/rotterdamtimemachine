@@ -20,7 +20,7 @@
 		X
 	} from '@lucide/svelte';
 	import { onDestroy, tick } from 'svelte';
-	import { fade, slide } from 'svelte/transition';
+	import { fade, fly, slide } from 'svelte/transition';
 	import {
 		getExpandedMapYears,
 		getMapStartYear,
@@ -38,6 +38,8 @@
 	const CAROUSEL_SCROLL_FALLBACK_MS = 640;
 	const CAROUSEL_USER_SCROLL_SETTLE_MS = 70;
 	const CAROUSEL_POINTER_SETTLE_MS = 40;
+	const CAROUSEL_HINT_DELAY_MS = 520;
+	const CAROUSEL_HINT_DURATION_MS = 900;
 
 	let {
 		maps: mapMetadata,
@@ -92,11 +94,17 @@
 	let copiedXyzTimer: ReturnType<typeof setTimeout> | undefined;
 	let carouselScrollTimer: ReturnType<typeof setTimeout> | undefined;
 	let carouselProgrammaticScrollTimer: ReturnType<typeof setTimeout> | undefined;
+	let carouselHintDelayTimer: ReturnType<typeof setTimeout> | undefined;
+	let carouselHintTimer: ReturnType<typeof setTimeout> | undefined;
 	let carouselPointerStart: { x: number; y: number } | undefined;
 	let suppressCarouselClick = false;
 	let hasSyncedCarousel = false;
 	let hasSyncedCarouselDots = false;
+	let pendingCarouselHintKey: string | undefined;
+	let previousCarouselHintKey: string | undefined;
 	let isProgrammaticCarouselScroll = false;
+	let carouselHintActive = $state(false);
+	let carouselHintDirection = $state<1 | -1>(1);
 	let previousKeyboardCommandId: number | undefined;
 	let previousOpenCommandId: number | undefined;
 	let keyboardCommandInitialized = false;
@@ -143,6 +151,9 @@
 	let canSelectPreviousMap = $derived(hasMultipleMaps && activeMapIndex > 0);
 	let canSelectNextMap = $derived(
 		hasMultipleMaps && activeMapIndex >= 0 && activeMapIndex < mapsForResolvedYear.length - 1
+	);
+	let carouselHintKey = $derived(
+		hasMultipleMaps ? mapsForResolvedYear.map((map) => map.annotation).join('\n') : undefined
 	);
 	let normalizedSearchTerm = $derived(normalizeSearchTerm(searchTerm));
 	let visibleMaps = $derived(
@@ -202,6 +213,71 @@
 	});
 
 	$effect(() => {
+		const index = activeMapIndex;
+
+		if (index < 0 || !isCarouselFocusActive()) return;
+
+		tick().then(() => {
+			if (activeMapIndex === index && isCarouselFocusActive()) {
+				focusCarouselSlide(index);
+			}
+		});
+	});
+
+	$effect(() => {
+		const trackElement = carouselTrackElement;
+		const dotsElement = carouselDotsElement;
+		const index = activeMapIndex;
+		const mapCount = mapsForResolvedYear.length;
+		const hintKey = carouselHintKey;
+
+		if (hintKey && mapCount >= 2 && index > 0) {
+			previousCarouselHintKey = hintKey;
+		}
+
+		const cannotShowHint =
+			autoplayActive ||
+			layersOpen ||
+			!trackElement ||
+			!dotsElement ||
+			!hintKey ||
+			index !== 0 ||
+			mapCount < 2;
+
+		if (cannotShowHint) {
+			if (!hintKey) {
+				previousCarouselHintKey = undefined;
+			}
+
+			stopCarouselHint();
+			return;
+		}
+
+		if (hintKey === previousCarouselHintKey || hintKey === pendingCarouselHintKey) {
+			return;
+		}
+
+		tick().then(() => {
+			if (
+				carouselTrackElement !== trackElement ||
+				carouselDotsElement !== dotsElement ||
+				autoplayActive ||
+				layersOpen ||
+				hintKey !== carouselHintKey ||
+				hintKey === previousCarouselHintKey ||
+				activeMapIndex !== 0 ||
+				mapsForResolvedYear.length < 2
+			) {
+				return;
+			}
+
+			if (prefersReducedMotion()) return;
+
+			queueCarouselHint(hintKey);
+		});
+	});
+
+	$effect(() => {
 		if (layersOpen) {
 			tick().then(() => {
 				focusSearchInput();
@@ -247,7 +323,7 @@
 		previousKeyboardCommandId = command.id;
 		if (!enableKeyboardShortcut || autoplayActive) return;
 
-		selectRelativeMap(command.direction);
+		selectRelativeMap(command.direction, isCarouselFocusActive());
 	});
 
 	$effect.pre(() => {
@@ -293,6 +369,8 @@
 		if (copiedXyzTimer) clearTimeout(copiedXyzTimer);
 		if (carouselScrollTimer) clearTimeout(carouselScrollTimer);
 		if (carouselProgrammaticScrollTimer) clearTimeout(carouselProgrammaticScrollTimer);
+		if (carouselHintDelayTimer) clearTimeout(carouselHintDelayTimer);
+		if (carouselHintTimer) clearTimeout(carouselHintTimer);
 	});
 
 	function resolveAvailableYear(year: number, years = availableYears) {
@@ -320,6 +398,7 @@
 	}
 
 	function openLayers() {
+		stopCarouselHint();
 		resetModalState();
 		layersOpen = true;
 	}
@@ -332,6 +411,10 @@
 		if (typeof window === 'undefined') return false;
 
 		return window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+	}
+
+	function prefersReducedMotion() {
+		return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 	}
 
 	function focusSearchInput() {
@@ -577,13 +660,19 @@
 			}
 		}
 
-		selectCarouselMap(nearestIndex);
+		selectCarouselMap(nearestIndex, isCarouselFocusActive());
 	}
 
-	function selectCarouselMap(index: number) {
+	function selectCarouselMap(index: number, focusAfterSelection = false) {
 		const map = mapsForResolvedYear[index];
-		if (map && map.annotation !== annotation) {
+		if (!map) return;
+
+		if (map.annotation !== annotation) {
 			annotation = map.annotation;
+		}
+
+		if (focusAfterSelection) {
+			queueCarouselSlideFocus(map.annotation);
 		}
 	}
 
@@ -592,10 +681,50 @@
 		if (event.currentTarget instanceof HTMLElement) {
 			event.currentTarget.blur();
 		}
-		selectCarouselMap(index);
+		selectCarouselMap(index, true);
+	}
+
+	function handleCarouselPreviousClick(event: MouseEvent) {
+		event.stopPropagation();
+		if (event.currentTarget instanceof HTMLElement) {
+			event.currentTarget.blur();
+		}
+		selectRelativeMap(-1, true);
+	}
+
+	function handleCarouselNextClick(event: MouseEvent) {
+		event.stopPropagation();
+		if (event.currentTarget instanceof HTMLElement) {
+			event.currentTarget.blur();
+		}
+		selectRelativeMap(1, true);
+	}
+
+	function isCarouselFocusActive() {
+		const activeElement = document.activeElement;
+
+		return activeElement instanceof HTMLElement && !!carouselTrackElement?.contains(activeElement);
+	}
+
+	function focusCarouselSlide(index = activeMapIndex) {
+		const slideElement =
+			carouselTrackElement?.querySelectorAll<HTMLElement>('[data-carousel-slide]')[index];
+
+		slideElement?.focus({ preventScroll: true });
+	}
+
+	function queueCarouselSlideFocus(annotationToFocus: string) {
+		tick().then(() => {
+			const index = mapsForResolvedYear.findIndex((map) => map.annotation === annotationToFocus);
+			if (index >= 0 && annotation === annotationToFocus) {
+				focusCarouselSlide(index);
+			}
+		});
 	}
 
 	function handleCarouselInteractionStart() {
+		stopCarouselHint();
+
 		if (isProgrammaticCarouselScroll) {
 			isProgrammaticCarouselScroll = false;
 		}
@@ -603,6 +732,51 @@
 		if (carouselProgrammaticScrollTimer) {
 			clearTimeout(carouselProgrammaticScrollTimer);
 			carouselProgrammaticScrollTimer = undefined;
+		}
+	}
+
+	function queueCarouselHint(hintKey: string) {
+		stopCarouselHint();
+		if (activeMapIndex !== 0 || mapsForResolvedYear.length < 2) return;
+
+		pendingCarouselHintKey = hintKey;
+		carouselHintDirection = activeMapIndex < mapsForResolvedYear.length - 1 ? 1 : -1;
+
+		carouselHintDelayTimer = setTimeout(() => {
+			carouselHintDelayTimer = undefined;
+			if (
+				autoplayActive ||
+				layersOpen ||
+				!carouselTrackElement ||
+				!carouselDotsElement ||
+				carouselHintKey !== hintKey ||
+				activeMapIndex !== 0 ||
+				mapsForResolvedYear.length < 2
+			) {
+				pendingCarouselHintKey = undefined;
+				return;
+			}
+
+			pendingCarouselHintKey = undefined;
+			previousCarouselHintKey = hintKey;
+			carouselHintActive = true;
+			carouselHintTimer = setTimeout(() => {
+				carouselHintActive = false;
+				carouselHintTimer = undefined;
+			}, CAROUSEL_HINT_DURATION_MS);
+		}, CAROUSEL_HINT_DELAY_MS);
+	}
+
+	function stopCarouselHint() {
+		carouselHintActive = false;
+		pendingCarouselHintKey = undefined;
+		if (carouselHintDelayTimer) {
+			clearTimeout(carouselHintDelayTimer);
+			carouselHintDelayTimer = undefined;
+		}
+		if (carouselHintTimer) {
+			clearTimeout(carouselHintTimer);
+			carouselHintTimer = undefined;
 		}
 	}
 
@@ -651,13 +825,13 @@
 		if (event.key === 'ArrowLeft') {
 			event.preventDefault();
 			event.stopPropagation();
-			selectRelativeMap(-1);
+			selectRelativeMap(-1, true);
 		}
 
 		if (event.key === 'ArrowRight') {
 			event.preventDefault();
 			event.stopPropagation();
-			selectRelativeMap(1);
+			selectRelativeMap(1, true);
 		}
 	}
 
@@ -675,7 +849,7 @@
 		return nextIndex > previousIndex ? 1 : -1;
 	}
 
-	function selectRelativeMap(direction: -1 | 1) {
+	function selectRelativeMap(direction: -1 | 1, focusAfterSelection = false) {
 		if (!hasMultipleMaps) return;
 
 		const currentIndex = activeMapIndex >= 0 ? activeMapIndex : 0;
@@ -683,6 +857,9 @@
 		const nextMap = mapsForResolvedYear[nextIndex];
 		if (nextMap) {
 			annotation = nextMap.annotation;
+			if (focusAfterSelection) {
+				queueCarouselSlideFocus(nextMap.annotation);
+			}
 		}
 	}
 </script>
@@ -691,6 +868,7 @@
 	{#if !autoplayActive}
 		<div
 			class="absolute right-2 bottom-2 left-2 grid grid-flow-col items-center justify-items-center"
+			transition:fly={{ y: 32, duration: 180 }}
 		>
 			<div
 				data-tour="layers"
@@ -705,7 +883,14 @@
 					role="group"
 					aria-label={config.layers.openLabel}
 					aria-roledescription="carousel"
-					class="layers-carousel-track flex snap-x snap-mandatory overflow-x-auto"
+					style={`--layers-carousel-hint-offset: ${
+						carouselHintDirection === 1 ? '-25%' : '25%'
+					}; --layers-carousel-hint-rebound: ${
+						carouselHintDirection === 1 ? '5%' : '-5%'
+					}; --layers-carousel-hint-settle: ${carouselHintDirection === 1 ? '-1.25%' : '1.25%'};`}
+					class="layers-carousel-track flex snap-x snap-mandatory overflow-x-auto {carouselHintActive
+						? 'layers-carousel-hint-active'
+						: ''}"
 					onscroll={handleCarouselScroll}
 					onpointerdown={handleCarouselPointerDown}
 					onpointermove={handleCarouselPointerMove}
@@ -714,8 +899,9 @@
 					onwheel={handleCarouselInteractionStart}
 				>
 					{#each mapsForResolvedYear as map, index (map.annotation)}
-						<div class="w-full flex-none snap-center">
+						<div class="layers-carousel-slide w-full flex-none snap-center">
 							<div
+								data-carousel-slide
 								role="button"
 								tabindex={index === activeMapIndex ? 0 : -1}
 								aria-current={index === activeMapIndex ? 'true' : undefined}
@@ -759,13 +945,11 @@
 					>
 						<button
 							type="button"
+							tabindex="-1"
 							aria-label="{config.layers
 								.previousMap} ({activeMapPosition} van {mapsForResolvedYear.length})"
 							disabled={!canSelectPreviousMap}
-							onclick={(event) => {
-								event.stopPropagation();
-								selectRelativeMap(-1);
-							}}
+							onclick={handleCarouselPreviousClick}
 							class="flex h-5 w-8 cursor-pointer items-center justify-center rounded text-gray-500 hover:bg-gray-100 hover:text-gray-900 focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-brand-main disabled:cursor-default disabled:text-gray-300 disabled:hover:bg-transparent disabled:hover:text-gray-300"
 						>
 							<ChevronLeft class="h-4 w-4" />
@@ -779,6 +963,7 @@
 								{#each mapsForResolvedYear as map, index (map.annotation)}
 									<button
 										type="button"
+										tabindex="-1"
 										data-carousel-dot
 										aria-label="{config.layers.mapPosition} {index +
 											1} van {mapsForResolvedYear.length}: {map.label}"
@@ -798,13 +983,11 @@
 
 						<button
 							type="button"
+							tabindex="-1"
 							aria-label="{config.layers
 								.nextMap} ({activeMapPosition} van {mapsForResolvedYear.length})"
 							disabled={!canSelectNextMap}
-							onclick={(event) => {
-								event.stopPropagation();
-								selectRelativeMap(1);
-							}}
+							onclick={handleCarouselNextClick}
 							class="flex h-5 w-8 cursor-pointer items-center justify-center justify-self-end rounded text-gray-500 hover:bg-gray-100 hover:text-gray-900 focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-brand-main disabled:cursor-default disabled:text-gray-300 disabled:hover:bg-transparent disabled:hover:text-gray-300"
 						>
 							<ChevronRight class="h-4 w-4" />
@@ -1116,8 +1299,42 @@
 		touch-action: pan-x;
 	}
 
+	.layers-carousel-slide {
+		transform: translateX(0);
+	}
+
+	.layers-carousel-hint-active .layers-carousel-slide {
+		animation: layers-carousel-bounce-hint 900ms cubic-bezier(0.28, 0.84, 0.42, 1);
+		will-change: transform;
+	}
+
 	.layers-carousel-track::-webkit-scrollbar,
 	.layers-carousel-dots::-webkit-scrollbar {
 		display: none;
+	}
+
+	@keyframes layers-carousel-bounce-hint {
+		0%,
+		100% {
+			transform: translateX(0);
+		}
+
+		32% {
+			transform: translateX(var(--layers-carousel-hint-offset));
+		}
+
+		56% {
+			transform: translateX(var(--layers-carousel-hint-rebound));
+		}
+
+		74% {
+			transform: translateX(var(--layers-carousel-hint-settle));
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.layers-carousel-hint-active .layers-carousel-slide {
+			animation: none;
+		}
 	}
 </style>

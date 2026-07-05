@@ -86,6 +86,19 @@
 		navPosition === 'right' ? 'top-left' : 'top-right'
 	);
 	let sliderInViewOnly = $state(false);
+	let mapLoaded = $state(false);
+	let sliderInitialScrollComplete = $state(false);
+	let animateSliderInitialScroll = $derived(
+		enableLayersShortcut && !autoplayActive && !sliderInitialScrollComplete
+	);
+
+	$effect(() => {
+		if (!mapLoaded) {
+			sliderInitialScrollComplete = false;
+		} else if (!enableLayersShortcut || autoplayActive) {
+			sliderInitialScrollComplete = true;
+		}
+	});
 </script>
 
 <section
@@ -93,7 +106,7 @@
 		? 'md:border-r-2 md:border-gray-300'
 		: ''}"
 >
-	{#if !autoplayActive}
+	{#if !autoplayActive && mapLoaded}
 		<div
 			class="absolute inset-y-0 z-20 flex-none {navPosition === 'right' ? 'right-0' : 'left-0'}"
 			transition:fly={{ x: navPosition === 'right' ? 96 : -96, duration: 180 }}
@@ -107,6 +120,8 @@
 				{showMapYearTicks}
 				{showOnlyAvailableYears}
 				{annotationsInView}
+				animateInitialScroll={animateSliderInitialScroll}
+				bind:initialScrollComplete={sliderInitialScrollComplete}
 				enableKeyboardShortcut={enableLayersShortcut}
 				keyboardCommand={sliderKeyboardCommand}
 			/>
@@ -124,6 +139,7 @@
 			bind:annotationsInView
 			bind:annotationsAtCenter
 			bind:geocoderBounds
+			bind:loaded={mapLoaded}
 			{config}
 			{mapKeyboardCommand}
 			{mapToolbarCommand}
@@ -135,22 +151,24 @@
 			{autoplayActive}
 			{autoplayNextAnnotation}
 		/>
-		<MapLayers
-			bind:annotation
-			bind:selectedYear
-			{maps}
-			{config}
-			{layersId}
-			{paneSide}
-			{annotationsInView}
-			preferInViewMaps={sliderInViewOnly || autoplayActive}
-			requirePreferredMaps={autoplayActive}
-			enableKeyboardShortcut={enableLayersShortcut}
-			keyboardCommand={mapLayersKeyboardCommand}
-			openCommand={mapLayersOpenCommand}
-			showPaneIndicator={showLayersPaneIndicator}
-			{autoplayActive}
-		/>
+		{#if mapLoaded && sliderInitialScrollComplete}
+			<MapLayers
+				bind:annotation
+				bind:selectedYear
+				{maps}
+				{config}
+				{layersId}
+				{paneSide}
+				{annotationsInView}
+				preferInViewMaps={sliderInViewOnly || autoplayActive}
+				requirePreferredMaps={autoplayActive}
+				enableKeyboardShortcut={enableLayersShortcut}
+				keyboardCommand={mapLayersKeyboardCommand}
+				openCommand={mapLayersOpenCommand}
+				showPaneIndicator={showLayersPaneIndicator}
+				{autoplayActive}
+			/>
+		{/if}
 	</div>
 </section>
 

@@ -14,6 +14,9 @@
 	const scrollSettleDelay = 140;
 	const snapScrollDuration = 260;
 	const keyboardScrollDuration = 260;
+	const initialScrollMinDuration = 700;
+	const initialScrollMaxDuration = 3200;
+	const initialScrollMsPerPixel = 2;
 	const programmaticScrollReleaseDelay = scrollSettleDelay + 40;
 	const dragClickThreshold = 4;
 
@@ -27,6 +30,8 @@
 		snapToAvailableYear = false,
 		scaleInterval = 25,
 		enableKeyboardShortcut = false,
+		animateInitialScroll = false,
+		initialScrollComplete = $bindable(false),
 		keyboardCommand,
 		annotationsInView = []
 	}: {
@@ -39,6 +44,8 @@
 		snapToAvailableYear?: boolean;
 		scaleInterval?: number;
 		enableKeyboardShortcut?: boolean;
+		animateInitialScroll?: boolean;
+		initialScrollComplete?: boolean;
 		keyboardCommand?: SliderKeyboardCommand;
 		annotationsInView?: string[];
 	} = $props();
@@ -49,6 +56,7 @@
 	let isDraggingScale = $state(false);
 	let isProgrammaticScroll = false;
 	let hasInitializedScroll = false;
+	let hasPlayedInitialScroll = false;
 	let activeDragPointerId: number | undefined;
 	let dragStartY = 0;
 	let dragStartScrollTop = 0;
@@ -79,6 +87,7 @@
 	let selectableYears = $derived(
 		inViewOnly && inViewAvailableYears.length > 0 ? inViewAvailableYears : availableYears
 	);
+	let initialScrollStartYear = $derived(selectableYears.at(-1) ?? latestYear);
 	let pickerYears = $derived(
 		showOnlyAvailableYears ? selectableYears : getPickerYears(sliderMinYear, sliderMaxYear)
 	);
@@ -88,7 +97,9 @@
 	let showAvailabilityRail = $derived(
 		showMapYearTicks && !showOnlyAvailableYears && mapYearAvailabilitySegments.length > 0
 	);
-	let visuallySelectedYear = $derived(isInteracting ? undefined : selectedYear);
+	let visuallySelectedYear = $derived(
+		isInteracting || (animateInitialScroll && !hasPlayedInitialScroll) ? undefined : selectedYear
+	);
 
 	$effect(() => {
 		const command = keyboardCommand;
@@ -107,6 +118,7 @@
 	});
 
 	onMount(() => {
+		initialScrollComplete = !animateInitialScroll;
 		updateContainerHeight();
 
 		const resizeObserver = new ResizeObserver(updateContainerHeight);
@@ -147,9 +159,54 @@
 
 		const yearToScroll = selectedYear;
 		const currentSpacerHeight = spacerHeight;
+		const shouldAnimateInitialScroll = animateInitialScroll && !hasPlayedInitialScroll;
 
 		tick().then(() => {
 			if (currentSpacerHeight !== spacerHeight || yearToScroll !== selectedYear) return;
+
+			if (shouldAnimateInitialScroll) {
+				hasPlayedInitialScroll = true;
+				initialScrollComplete = false;
+				isInteracting = true;
+
+				const selectionId = ++pendingSelectionId;
+
+				scrollToYear(initialScrollStartYear, 'auto', () => {
+					if (
+						selectionId !== pendingSelectionId ||
+						currentSpacerHeight !== spacerHeight ||
+						yearToScroll !== selectedYear
+					) {
+						if (selectionId === pendingSelectionId) {
+							finishPickerInteraction();
+						}
+
+						return;
+					}
+
+					scrollToYear(
+						yearToScroll,
+						'smooth',
+						() => {
+							if (
+								selectionId !== pendingSelectionId ||
+								currentSpacerHeight !== spacerHeight ||
+								yearToScroll !== selectedYear
+							) {
+								if (selectionId === pendingSelectionId) {
+									finishPickerInteraction();
+								}
+
+								return;
+							}
+
+							finishPickerInteraction();
+						},
+						getInitialScrollDuration(initialScrollStartYear, yearToScroll)
+					);
+				});
+				return;
+			}
 
 			scrollToYear(yearToScroll, hasInitializedScroll ? 'smooth' : 'auto');
 		});
@@ -191,13 +248,19 @@
 		);
 	}
 
-	function selectRelativeYear(direction: -1 | 1) {
+	function selectRelativeYear(direction: -1 | 1, focusAfterScroll = false) {
 		const currentYear = pendingTargetYear ?? selectedYear;
 		const nextYear = getRelativeYear(currentYear, direction);
 
 		if (nextYear !== undefined && nextYear !== currentYear) {
-			selectYearAfterScroll(nextYear, keyboardScrollDuration);
+			selectYearAfterScroll(nextYear, keyboardScrollDuration, focusAfterScroll);
 		}
+	}
+
+	function isSliderFocusActive() {
+		const activeElement = document.activeElement;
+
+		return activeElement instanceof HTMLElement && !!container?.contains(activeElement);
 	}
 
 	function blurFocusedYear() {
@@ -206,6 +269,20 @@
 		if (activeElement instanceof HTMLElement && container?.contains(activeElement)) {
 			activeElement.blur();
 		}
+	}
+
+	function focusYear(year: number) {
+		const yearButton = container?.querySelector<HTMLButtonElement>(`[data-year="${year}"]`);
+
+		yearButton?.focus({ preventScroll: true });
+	}
+
+	function queueYearFocus(year: number) {
+		tick().then(() => {
+			if (selectedYear === year) {
+				focusYear(year);
+			}
+		});
 	}
 
 	function selectYear(year: number, event?: MouseEvent) {
@@ -221,10 +298,10 @@
 				? closestYear(year, selectableYears)
 				: year;
 
-		selectYearAfterScroll(targetYear, snapScrollDuration);
+		selectYearAfterScroll(targetYear, snapScrollDuration, true);
 	}
 
-	function selectYearAfterScroll(year: number, duration: number) {
+	function selectYearAfterScroll(year: number, duration: number, focusAfterScroll = false) {
 		const selectionId = ++pendingSelectionId;
 
 		pendingTargetYear = year;
@@ -237,6 +314,9 @@
 
 				selectedYear = year;
 				pendingTargetYear = undefined;
+				if (focusAfterScroll) {
+					queueYearFocus(year);
+				}
 				finishPickerInteraction();
 			},
 			duration
@@ -304,6 +384,24 @@
 		const clampedIndex = Math.min(Math.max(index, 0), pickerYears.length - 1);
 
 		return pickerYears[clampedIndex] ?? selectedYear;
+	}
+
+	function getYearScrollTop(year: number) {
+		const targetYear = getClosestPickerYear(year);
+		const index = pickerYears.indexOf(targetYear);
+
+		return index < 0 ? undefined : index * yearRowHeight;
+	}
+
+	function getInitialScrollDuration(startYear: number, endYear: number) {
+		const startTop = getYearScrollTop(startYear);
+		const endTop = getYearScrollTop(endYear);
+
+		if (startTop === undefined || endTop === undefined) return initialScrollMinDuration;
+
+		const duration = Math.round(Math.abs(endTop - startTop) * initialScrollMsPerPixel);
+
+		return Math.min(initialScrollMaxDuration, Math.max(initialScrollMinDuration, duration));
 	}
 
 	function prefersReducedMotion() {
@@ -412,6 +510,9 @@
 		clearFinishInteractionFrame();
 		finishInteractionFrame = requestAnimationFrame(() => {
 			isInteracting = false;
+			if (hasPlayedInitialScroll) {
+				initialScrollComplete = true;
+			}
 			finishInteractionFrame = undefined;
 		});
 	}
@@ -494,6 +595,7 @@
 	function handleScrollSettled() {
 		if (isProgrammaticScroll) return;
 
+		const focusAfterScroll = isSliderFocusActive();
 		const centeredYear = getCenteredYear();
 		const nextYear =
 			(snapToAvailableYear || showOnlyAvailableYears) && selectableYears.length > 0
@@ -502,7 +604,29 @@
 
 		selectSettledYear(nextYear);
 
-		scrollToYear(nextYear, 'smooth', finishPickerInteraction);
+		scrollToYear(nextYear, 'smooth', () => {
+			if (focusAfterScroll) {
+				queueYearFocus(nextYear);
+			}
+			finishPickerInteraction();
+		});
+	}
+
+	function handlePickerKeydown(event: KeyboardEvent) {
+		if (event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) return;
+
+		if (event.key === 'ArrowUp') {
+			event.preventDefault();
+			event.stopPropagation();
+			selectRelativeYear(-1, true);
+			return;
+		}
+
+		if (event.key === 'ArrowDown') {
+			event.preventDefault();
+			event.stopPropagation();
+			selectRelativeYear(1, true);
+		}
 	}
 
 	function clearScrollAnimation() {
@@ -561,6 +685,7 @@
 			onpointermove={handlePickerPointerMove}
 			onpointerup={handlePickerPointerEnd}
 			onpointercancel={handlePickerPointerEnd}
+			onkeydown={handlePickerKeydown}
 			onwheel={handlePickerWheel}
 			ontouchstart={handlePickerInteraction}
 			ontouchend={handlePickerTouchEnd}
@@ -586,6 +711,7 @@
 					<button
 						type="button"
 						role="option"
+						data-year={year}
 						aria-selected={year === selectedYear}
 						aria-label={`${year}${availableYearSet.has(year) ? ', map available' : ''}`}
 						tabindex={year === selectedYear ? 0 : -1}
