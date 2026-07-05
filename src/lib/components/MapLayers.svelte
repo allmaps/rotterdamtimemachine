@@ -664,6 +664,8 @@
 	}
 
 	function selectCarouselMap(index: number, focusAfterSelection = false) {
+		stopCarouselHint();
+
 		const map = mapsForResolvedYear[index];
 		if (!map) return;
 
@@ -850,6 +852,8 @@
 	}
 
 	function selectRelativeMap(direction: -1 | 1, focusAfterSelection = false) {
+		stopCarouselHint();
+
 		if (!hasMultipleMaps) return;
 
 		const currentIndex = activeMapIndex >= 0 ? activeMapIndex : 0;
@@ -949,6 +953,7 @@
 							aria-label="{config.layers
 								.previousMap} ({activeMapPosition} van {mapsForResolvedYear.length})"
 							disabled={!canSelectPreviousMap}
+							onpointerdown={stopCarouselHint}
 							onclick={handleCarouselPreviousClick}
 							class="flex h-5 w-8 cursor-pointer items-center justify-center rounded text-gray-500 hover:bg-gray-100 hover:text-gray-900 focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-brand-main disabled:cursor-default disabled:text-gray-300 disabled:hover:bg-transparent disabled:hover:text-gray-300"
 						>
@@ -968,6 +973,7 @@
 										aria-label="{config.layers.mapPosition} {index +
 											1} van {mapsForResolvedYear.length}: {map.label}"
 										aria-current={index === activeMapIndex ? 'true' : undefined}
+										onpointerdown={stopCarouselHint}
 										onclick={(event) => handleCarouselDotClick(event, index)}
 										class="h-4 w-4 flex-none cursor-pointer rounded-full p-1 focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-brand-main"
 									>
@@ -987,6 +993,7 @@
 							aria-label="{config.layers
 								.nextMap} ({activeMapPosition} van {mapsForResolvedYear.length})"
 							disabled={!canSelectNextMap}
+							onpointerdown={stopCarouselHint}
 							onclick={handleCarouselNextClick}
 							class="flex h-5 w-8 cursor-pointer items-center justify-center justify-self-end rounded text-gray-500 hover:bg-gray-100 hover:text-gray-900 focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-brand-main disabled:cursor-default disabled:text-gray-300 disabled:hover:bg-transparent disabled:hover:text-gray-300"
 						>
