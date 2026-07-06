@@ -1,372 +1,400 @@
 {
-  "@context": "http://iiif.io/api/presentation/3/context.json",
-  "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json",
-  "type": "Manifest",
-  "label": {
-    "en": [
-      "Plattegrond van Rotterdam in 10 bladen"
-    ]
-  },
-  "items": [
-    {
-      "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json/canvas/0",
-      "type": "Canvas",
-      "height": 10536,
-      "width": 5434,
-      "items": [
-        {
-          "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json/canvas/0/annotation-page",
-          "type": "AnnotationPage",
-          "items": [
-            {
-              "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json/canvas/0/annotation-page/image",
-              "type": "Annotation",
-              "motivation": "painting",
-              "target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json/canvas/0",
-              "body": {
-                "id": "https://proxy.archieven.nl/iiif-image/184/7528BFC7C2E14C8FBD57734088C27DFC/full/max/0/default.jpg",
-                "type": "Image",
-                "format": "image/jpeg",
-                "height": 10536,
-                "width": 5434,
-                "service": [
-                  {
-                    "profile": "level2",
-                    "width": 5434,
-                    "height": 10536,
-                    "type": "ImageService3",
-                    "id": "https://proxy.archieven.nl/iiif-image/184/7528BFC7C2E14C8FBD57734088C27DFC"
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json/canvas/1",
-      "type": "Canvas",
-      "height": 10476,
-      "width": 5410,
-      "items": [
-        {
-          "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json/canvas/1/annotation-page",
-          "type": "AnnotationPage",
-          "items": [
-            {
-              "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json/canvas/1/annotation-page/image",
-              "type": "Annotation",
-              "motivation": "painting",
-              "target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json/canvas/1",
-              "body": {
-                "id": "https://proxy.archieven.nl/iiif-image/184/525FFDCC5386424E9FDDBF51D99AEDD5/full/max/0/default.jpg",
-                "type": "Image",
-                "format": "image/jpeg",
-                "height": 10476,
-                "width": 5410,
-                "service": [
-                  {
-                    "profile": "level2",
-                    "width": 5410,
-                    "height": 10476,
-                    "type": "ImageService3",
-                    "id": "https://proxy.archieven.nl/iiif-image/184/525FFDCC5386424E9FDDBF51D99AEDD5"
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json/canvas/2",
-      "type": "Canvas",
-      "height": 7900,
-      "width": 4121,
-      "items": [
-        {
-          "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json/canvas/2/annotation-page",
-          "type": "AnnotationPage",
-          "items": [
-            {
-              "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json/canvas/2/annotation-page/image",
-              "type": "Annotation",
-              "motivation": "painting",
-              "target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json/canvas/2",
-              "body": {
-                "id": "https://proxy.archieven.nl/iiif-image/184/2CBA507CF44142019E1B9FEEDD9A3E1C/full/max/0/default.jpg",
-                "type": "Image",
-                "format": "image/jpeg",
-                "height": 7900,
-                "width": 4121,
-                "service": [
-                  {
-                    "profile": "level2",
-                    "width": 4121,
-                    "height": 7900,
-                    "type": "ImageService3",
-                    "id": "https://proxy.archieven.nl/iiif-image/184/2CBA507CF44142019E1B9FEEDD9A3E1C"
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json/canvas/3",
-      "type": "Canvas",
-      "height": 10498,
-      "width": 5554,
-      "items": [
-        {
-          "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json/canvas/3/annotation-page",
-          "type": "AnnotationPage",
-          "items": [
-            {
-              "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json/canvas/3/annotation-page/image",
-              "type": "Annotation",
-              "motivation": "painting",
-              "target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json/canvas/3",
-              "body": {
-                "id": "https://proxy.archieven.nl/iiif-image/184/F2F7477E04454C6DAEF1780CA6E1003F/full/max/0/default.jpg",
-                "type": "Image",
-                "format": "image/jpeg",
-                "height": 10498,
-                "width": 5554,
-                "service": [
-                  {
-                    "profile": "level2",
-                    "width": 5554,
-                    "height": 10498,
-                    "type": "ImageService3",
-                    "id": "https://proxy.archieven.nl/iiif-image/184/F2F7477E04454C6DAEF1780CA6E1003F"
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json/canvas/4",
-      "type": "Canvas",
-      "height": 10617,
-      "width": 5374,
-      "items": [
-        {
-          "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json/canvas/4/annotation-page",
-          "type": "AnnotationPage",
-          "items": [
-            {
-              "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json/canvas/4/annotation-page/image",
-              "type": "Annotation",
-              "motivation": "painting",
-              "target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json/canvas/4",
-              "body": {
-                "id": "https://proxy.archieven.nl/iiif-image/184/1500FBC335FE4462A0A7F912C0524EC2/full/max/0/default.jpg",
-                "type": "Image",
-                "format": "image/jpeg",
-                "height": 10617,
-                "width": 5374,
-                "service": [
-                  {
-                    "profile": "level2",
-                    "width": 5374,
-                    "height": 10617,
-                    "type": "ImageService3",
-                    "id": "https://proxy.archieven.nl/iiif-image/184/1500FBC335FE4462A0A7F912C0524EC2"
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json/canvas/5",
-      "type": "Canvas",
-      "height": 10833,
-      "width": 5530,
-      "items": [
-        {
-          "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json/canvas/5/annotation-page",
-          "type": "AnnotationPage",
-          "items": [
-            {
-              "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json/canvas/5/annotation-page/image",
-              "type": "Annotation",
-              "motivation": "painting",
-              "target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json/canvas/5",
-              "body": {
-                "id": "https://proxy.archieven.nl/iiif-image/184/4A6394EFCF254C039F15A57F562B92E7/full/max/0/default.jpg",
-                "type": "Image",
-                "format": "image/jpeg",
-                "height": 10833,
-                "width": 5530,
-                "service": [
-                  {
-                    "profile": "level2",
-                    "width": 5530,
-                    "height": 10833,
-                    "type": "ImageService3",
-                    "id": "https://proxy.archieven.nl/iiif-image/184/4A6394EFCF254C039F15A57F562B92E7"
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json/canvas/6",
-      "type": "Canvas",
-      "height": 10558,
-      "width": 5530,
-      "items": [
-        {
-          "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json/canvas/6/annotation-page",
-          "type": "AnnotationPage",
-          "items": [
-            {
-              "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json/canvas/6/annotation-page/image",
-              "type": "Annotation",
-              "motivation": "painting",
-              "target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json/canvas/6",
-              "body": {
-                "id": "https://proxy.archieven.nl/iiif-image/184/15FF52D99B184B3B9DEB1DBAAD5AB4AF/full/max/0/default.jpg",
-                "type": "Image",
-                "format": "image/jpeg",
-                "height": 10558,
-                "width": 5530,
-                "service": [
-                  {
-                    "profile": "level2",
-                    "width": 5530,
-                    "height": 10558,
-                    "type": "ImageService3",
-                    "id": "https://proxy.archieven.nl/iiif-image/184/15FF52D99B184B3B9DEB1DBAAD5AB4AF"
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json/canvas/7",
-      "type": "Canvas",
-      "height": 10581,
-      "width": 5506,
-      "items": [
-        {
-          "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json/canvas/7/annotation-page",
-          "type": "AnnotationPage",
-          "items": [
-            {
-              "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json/canvas/7/annotation-page/image",
-              "type": "Annotation",
-              "motivation": "painting",
-              "target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json/canvas/7",
-              "body": {
-                "id": "https://proxy.archieven.nl/iiif-image/184/2361852576DD41F6BF89545CC1E9E364/full/max/0/default.jpg",
-                "type": "Image",
-                "format": "image/jpeg",
-                "height": 10581,
-                "width": 5506,
-                "service": [
-                  {
-                    "profile": "level2",
-                    "width": 5506,
-                    "height": 10581,
-                    "type": "ImageService3",
-                    "id": "https://proxy.archieven.nl/iiif-image/184/2361852576DD41F6BF89545CC1E9E364"
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json/canvas/8",
-      "type": "Canvas",
-      "height": 10534,
-      "width": 5530,
-      "items": [
-        {
-          "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json/canvas/8/annotation-page",
-          "type": "AnnotationPage",
-          "items": [
-            {
-              "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json/canvas/8/annotation-page/image",
-              "type": "Annotation",
-              "motivation": "painting",
-              "target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json/canvas/8",
-              "body": {
-                "id": "https://proxy.archieven.nl/iiif-image/184/8F7BC7482A9C47AD92A928B65D34D3B6/full/max/0/default.jpg",
-                "type": "Image",
-                "format": "image/jpeg",
-                "height": 10534,
-                "width": 5530,
-                "service": [
-                  {
-                    "profile": "level2",
-                    "width": 5530,
-                    "height": 10534,
-                    "type": "ImageService3",
-                    "id": "https://proxy.archieven.nl/iiif-image/184/8F7BC7482A9C47AD92A928B65D34D3B6"
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json/canvas/9",
-      "type": "Canvas",
-      "height": 10534,
-      "width": 5206,
-      "items": [
-        {
-          "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json/canvas/9/annotation-page",
-          "type": "AnnotationPage",
-          "items": [
-            {
-              "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json/canvas/9/annotation-page/image",
-              "type": "Annotation",
-              "motivation": "painting",
-              "target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json/canvas/9",
-              "body": {
-                "id": "https://proxy.archieven.nl/iiif-image/184/874FE8F5E83B4A4185413FA99E148D02/full/max/0/default.jpg",
-                "type": "Image",
-                "format": "image/jpeg",
-                "height": 10534,
-                "width": 5206,
-                "service": [
-                  {
-                    "profile": "level2",
-                    "width": 5206,
-                    "height": 10534,
-                    "type": "ImageService3",
-                    "id": "https://proxy.archieven.nl/iiif-image/184/874FE8F5E83B4A4185413FA99E148D02"
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      ]
-    }
-  ]
+	"@context": "http://iiif.io/api/presentation/3/context.json",
+	"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json",
+	"type": "Manifest",
+	"label": {
+		"en": ["Plattegrond van Rotterdam in 10 bladen"]
+	},
+	"items": [
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json/canvas/0",
+			"type": "Canvas",
+			"height": 10536,
+			"width": 5434,
+			"label": {
+				"en": ["Blad 1 (1897)"]
+			},
+			"items": [
+				{
+					"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json/canvas/0/annotation-page",
+					"type": "AnnotationPage",
+					"items": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json/canvas/0/annotation-page/image",
+							"type": "Annotation",
+							"motivation": "painting",
+							"target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json/canvas/0",
+							"body": {
+								"id": "https://proxy.archieven.nl/iiif-image/184/7528BFC7C2E14C8FBD57734088C27DFC/full/max/0/default.jpg",
+								"type": "Image",
+								"format": "image/jpeg",
+								"height": 10536,
+								"width": 5434,
+								"service": [
+									{
+										"id": "https://proxy.archieven.nl/iiif-image/184/7528BFC7C2E14C8FBD57734088C27DFC",
+										"type": "ImageService3",
+										"profile": "level2",
+										"height": 10536,
+										"width": 5434
+									}
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json/canvas/1",
+			"type": "Canvas",
+			"height": 10476,
+			"width": 5410,
+			"label": {
+				"en": ["Blad 2 (1897)"]
+			},
+			"items": [
+				{
+					"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json/canvas/1/annotation-page",
+					"type": "AnnotationPage",
+					"items": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json/canvas/1/annotation-page/image",
+							"type": "Annotation",
+							"motivation": "painting",
+							"target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json/canvas/1",
+							"body": {
+								"id": "https://proxy.archieven.nl/iiif-image/184/525FFDCC5386424E9FDDBF51D99AEDD5/full/max/0/default.jpg",
+								"type": "Image",
+								"format": "image/jpeg",
+								"height": 10476,
+								"width": 5410,
+								"service": [
+									{
+										"id": "https://proxy.archieven.nl/iiif-image/184/525FFDCC5386424E9FDDBF51D99AEDD5",
+										"type": "ImageService3",
+										"profile": "level2",
+										"height": 10476,
+										"width": 5410
+									}
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json/canvas/2",
+			"type": "Canvas",
+			"height": 7900,
+			"width": 4121,
+			"label": {
+				"en": ["Blad 3 (1897)"]
+			},
+			"items": [
+				{
+					"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json/canvas/2/annotation-page",
+					"type": "AnnotationPage",
+					"items": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json/canvas/2/annotation-page/image",
+							"type": "Annotation",
+							"motivation": "painting",
+							"target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json/canvas/2",
+							"body": {
+								"id": "https://proxy.archieven.nl/iiif-image/184/2CBA507CF44142019E1B9FEEDD9A3E1C/full/max/0/default.jpg",
+								"type": "Image",
+								"format": "image/jpeg",
+								"height": 7900,
+								"width": 4121,
+								"service": [
+									{
+										"id": "https://proxy.archieven.nl/iiif-image/184/2CBA507CF44142019E1B9FEEDD9A3E1C",
+										"type": "ImageService3",
+										"profile": "level2",
+										"height": 7900,
+										"width": 4121
+									}
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json/canvas/3",
+			"type": "Canvas",
+			"height": 10498,
+			"width": 5554,
+			"label": {
+				"en": ["Blad 4 (1897)"]
+			},
+			"items": [
+				{
+					"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json/canvas/3/annotation-page",
+					"type": "AnnotationPage",
+					"items": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json/canvas/3/annotation-page/image",
+							"type": "Annotation",
+							"motivation": "painting",
+							"target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json/canvas/3",
+							"body": {
+								"id": "https://proxy.archieven.nl/iiif-image/184/F2F7477E04454C6DAEF1780CA6E1003F/full/max/0/default.jpg",
+								"type": "Image",
+								"format": "image/jpeg",
+								"height": 10498,
+								"width": 5554,
+								"service": [
+									{
+										"id": "https://proxy.archieven.nl/iiif-image/184/F2F7477E04454C6DAEF1780CA6E1003F",
+										"type": "ImageService3",
+										"profile": "level2",
+										"height": 10498,
+										"width": 5554
+									}
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json/canvas/4",
+			"type": "Canvas",
+			"height": 10617,
+			"width": 5374,
+			"label": {
+				"en": ["Blad 5 (1897)"]
+			},
+			"items": [
+				{
+					"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json/canvas/4/annotation-page",
+					"type": "AnnotationPage",
+					"items": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json/canvas/4/annotation-page/image",
+							"type": "Annotation",
+							"motivation": "painting",
+							"target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json/canvas/4",
+							"body": {
+								"id": "https://proxy.archieven.nl/iiif-image/184/1500FBC335FE4462A0A7F912C0524EC2/full/max/0/default.jpg",
+								"type": "Image",
+								"format": "image/jpeg",
+								"height": 10617,
+								"width": 5374,
+								"service": [
+									{
+										"id": "https://proxy.archieven.nl/iiif-image/184/1500FBC335FE4462A0A7F912C0524EC2",
+										"type": "ImageService3",
+										"profile": "level2",
+										"height": 10617,
+										"width": 5374
+									}
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json/canvas/5",
+			"type": "Canvas",
+			"height": 10833,
+			"width": 5530,
+			"label": {
+				"en": ["Blad 6 (1895)"]
+			},
+			"items": [
+				{
+					"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json/canvas/5/annotation-page",
+					"type": "AnnotationPage",
+					"items": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json/canvas/5/annotation-page/image",
+							"type": "Annotation",
+							"motivation": "painting",
+							"target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json/canvas/5",
+							"body": {
+								"id": "https://proxy.archieven.nl/iiif-image/184/4A6394EFCF254C039F15A57F562B92E7/full/max/0/default.jpg",
+								"type": "Image",
+								"format": "image/jpeg",
+								"height": 10833,
+								"width": 5530,
+								"service": [
+									{
+										"id": "https://proxy.archieven.nl/iiif-image/184/4A6394EFCF254C039F15A57F562B92E7",
+										"type": "ImageService3",
+										"profile": "level2",
+										"height": 10833,
+										"width": 5530
+									}
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json/canvas/6",
+			"type": "Canvas",
+			"height": 10558,
+			"width": 5530,
+			"label": {
+				"en": ["Blad 7 (1895)"]
+			},
+			"items": [
+				{
+					"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json/canvas/6/annotation-page",
+					"type": "AnnotationPage",
+					"items": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json/canvas/6/annotation-page/image",
+							"type": "Annotation",
+							"motivation": "painting",
+							"target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json/canvas/6",
+							"body": {
+								"id": "https://proxy.archieven.nl/iiif-image/184/15FF52D99B184B3B9DEB1DBAAD5AB4AF/full/max/0/default.jpg",
+								"type": "Image",
+								"format": "image/jpeg",
+								"height": 10558,
+								"width": 5530,
+								"service": [
+									{
+										"id": "https://proxy.archieven.nl/iiif-image/184/15FF52D99B184B3B9DEB1DBAAD5AB4AF",
+										"type": "ImageService3",
+										"profile": "level2",
+										"height": 10558,
+										"width": 5530
+									}
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json/canvas/7",
+			"type": "Canvas",
+			"height": 10581,
+			"width": 5506,
+			"label": {
+				"en": ["Blad 8 (1895)"]
+			},
+			"items": [
+				{
+					"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json/canvas/7/annotation-page",
+					"type": "AnnotationPage",
+					"items": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json/canvas/7/annotation-page/image",
+							"type": "Annotation",
+							"motivation": "painting",
+							"target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json/canvas/7",
+							"body": {
+								"id": "https://proxy.archieven.nl/iiif-image/184/2361852576DD41F6BF89545CC1E9E364/full/max/0/default.jpg",
+								"type": "Image",
+								"format": "image/jpeg",
+								"height": 10581,
+								"width": 5506,
+								"service": [
+									{
+										"id": "https://proxy.archieven.nl/iiif-image/184/2361852576DD41F6BF89545CC1E9E364",
+										"type": "ImageService3",
+										"profile": "level2",
+										"height": 10581,
+										"width": 5506
+									}
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json/canvas/8",
+			"type": "Canvas",
+			"height": 10534,
+			"width": 5530,
+			"label": {
+				"en": ["Blad 9 (1896)"]
+			},
+			"items": [
+				{
+					"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json/canvas/8/annotation-page",
+					"type": "AnnotationPage",
+					"items": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json/canvas/8/annotation-page/image",
+							"type": "Annotation",
+							"motivation": "painting",
+							"target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json/canvas/8",
+							"body": {
+								"id": "https://proxy.archieven.nl/iiif-image/184/8F7BC7482A9C47AD92A928B65D34D3B6/full/max/0/default.jpg",
+								"type": "Image",
+								"format": "image/jpeg",
+								"height": 10534,
+								"width": 5530,
+								"service": [
+									{
+										"id": "https://proxy.archieven.nl/iiif-image/184/8F7BC7482A9C47AD92A928B65D34D3B6",
+										"type": "ImageService3",
+										"profile": "level2",
+										"height": 10534,
+										"width": 5530
+									}
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json/canvas/9",
+			"type": "Canvas",
+			"height": 10534,
+			"width": 5206,
+			"label": {
+				"en": ["Blad 10 (1896)"]
+			},
+			"items": [
+				{
+					"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json/canvas/9/annotation-page",
+					"type": "AnnotationPage",
+					"items": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json/canvas/9/annotation-page/image",
+							"type": "Annotation",
+							"motivation": "painting",
+							"target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1895-1897.json/canvas/9",
+							"body": {
+								"id": "https://proxy.archieven.nl/iiif-image/184/874FE8F5E83B4A4185413FA99E148D02/full/max/0/default.jpg",
+								"type": "Image",
+								"format": "image/jpeg",
+								"height": 10534,
+								"width": 5206,
+								"service": [
+									{
+										"id": "https://proxy.archieven.nl/iiif-image/184/874FE8F5E83B4A4185413FA99E148D02",
+										"type": "ImageService3",
+										"profile": "level2",
+										"height": 10534,
+										"width": 5206
+									}
+								]
+							}
+						}
+					]
+				}
+			]
+		}
+	]
 }

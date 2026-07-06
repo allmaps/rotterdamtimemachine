@@ -1,1525 +1,1648 @@
-
 {
-  "@context": "http://iiif.io/api/presentation/3/context.json",
-  "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json",
-  "type": "Manifest",
-  "label": {
-    "en": [
-      "Kaart van Rotterdam en omgeving; bestaande uit 24 bladen"
-    ]
-  },
-  "items": [
-    {
-      "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/0",
-      "type": "Canvas",
-      "height": 7980,
-      "width": 6610,
-      "items": [
-        {
-          "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/0/annotation-page",
-          "type": "AnnotationPage",
-          "items": [
-            {
-              "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/0/annotation-page/image",
-              "type": "Annotation",
-              "motivation": "painting",
-              "target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/0",
-              "body": {
-                "id": "https://proxy.archieven.nl/iiif-image/184/0B0C8E3BB8FB415E960588345B2CAD44/full/max/0/default.jpg",
-                "type": "Image",
-                "format": "image/jpeg",
-                "height": 7980,
-                "width": 6610,
-                "service": [
-                  {
-                    "profile": "level2",
-                    "width": 6610,
-                    "height": 7980,
-                    "type": "ImageService3",
-                    "id": "https://proxy.archieven.nl/iiif-image/184/0B0C8E3BB8FB415E960588345B2CAD44"
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/1",
-      "type": "Canvas",
-      "height": 7900,
-      "width": 6219,
-      "items": [
-        {
-          "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/1/annotation-page",
-          "type": "AnnotationPage",
-          "items": [
-            {
-              "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/1/annotation-page/image",
-              "type": "Annotation",
-              "motivation": "painting",
-              "target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/1",
-              "body": {
-                "id": "https://proxy.archieven.nl/iiif-image/184/BE4D137089164DE3869C7CA7FCCD6B63/full/max/0/default.jpg",
-                "type": "Image",
-                "format": "image/jpeg",
-                "height": 7900,
-                "width": 6219,
-                "service": [
-                  {
-                    "profile": "level2",
-                    "width": 6219,
-                    "height": 7900,
-                    "type": "ImageService3",
-                    "id": "https://proxy.archieven.nl/iiif-image/184/BE4D137089164DE3869C7CA7FCCD6B63"
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/2",
-      "type": "Canvas",
-      "height": 8034,
-      "width": 6526,
-      "items": [
-        {
-          "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/2/annotation-page",
-          "type": "AnnotationPage",
-          "items": [
-            {
-              "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/2/annotation-page/image",
-              "type": "Annotation",
-              "motivation": "painting",
-              "target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/2",
-              "body": {
-                "id": "https://proxy.archieven.nl/iiif-image/184/5E1285BEB6ED4B51B7D8331F397CF750/full/max/0/default.jpg",
-                "type": "Image",
-                "format": "image/jpeg",
-                "height": 8034,
-                "width": 6526,
-                "service": [
-                  {
-                    "profile": "level2",
-                    "width": 6526,
-                    "height": 8034,
-                    "type": "ImageService3",
-                    "id": "https://proxy.archieven.nl/iiif-image/184/5E1285BEB6ED4B51B7D8331F397CF750"
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/3",
-      "type": "Canvas",
-      "height": 7900,
-      "width": 6046,
-      "items": [
-        {
-          "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/3/annotation-page",
-          "type": "AnnotationPage",
-          "items": [
-            {
-              "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/3/annotation-page/image",
-              "type": "Annotation",
-              "motivation": "painting",
-              "target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/3",
-              "body": {
-                "id": "https://proxy.archieven.nl/iiif-image/184/B0510BB497A4403D8C08155E997A511D/full/max/0/default.jpg",
-                "type": "Image",
-                "format": "image/jpeg",
-                "height": 7900,
-                "width": 6046,
-                "service": [
-                  {
-                    "profile": "level2",
-                    "width": 6046,
-                    "height": 7900,
-                    "type": "ImageService3",
-                    "id": "https://proxy.archieven.nl/iiif-image/184/B0510BB497A4403D8C08155E997A511D"
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/4",
-      "type": "Canvas",
-      "height": 8026,
-      "width": 6526,
-      "items": [
-        {
-          "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/4/annotation-page",
-          "type": "AnnotationPage",
-          "items": [
-            {
-              "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/4/annotation-page/image",
-              "type": "Annotation",
-              "motivation": "painting",
-              "target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/4",
-              "body": {
-                "id": "https://proxy.archieven.nl/iiif-image/184/7D27A37186AB436E83AEE2771091F597/full/max/0/default.jpg",
-                "type": "Image",
-                "format": "image/jpeg",
-                "height": 8026,
-                "width": 6526,
-                "service": [
-                  {
-                    "profile": "level2",
-                    "width": 6526,
-                    "height": 8026,
-                    "type": "ImageService3",
-                    "id": "https://proxy.archieven.nl/iiif-image/184/7D27A37186AB436E83AEE2771091F597"
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/5",
-      "type": "Canvas",
-      "height": 7900,
-      "width": 6178,
-      "items": [
-        {
-          "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/5/annotation-page",
-          "type": "AnnotationPage",
-          "items": [
-            {
-              "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/5/annotation-page/image",
-              "type": "Annotation",
-              "motivation": "painting",
-              "target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/5",
-              "body": {
-                "id": "https://proxy.archieven.nl/iiif-image/184/D145C9F034814CC1A7E6329F0F6AC49A/full/max/0/default.jpg",
-                "type": "Image",
-                "format": "image/jpeg",
-                "height": 7900,
-                "width": 6178,
-                "service": [
-                  {
-                    "profile": "level2",
-                    "width": 6178,
-                    "height": 7900,
-                    "type": "ImageService3",
-                    "id": "https://proxy.archieven.nl/iiif-image/184/D145C9F034814CC1A7E6329F0F6AC49A"
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/6",
-      "type": "Canvas",
-      "height": 3953,
-      "width": 3054,
-      "items": [
-        {
-          "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/6/annotation-page",
-          "type": "AnnotationPage",
-          "items": [
-            {
-              "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/6/annotation-page/image",
-              "type": "Annotation",
-              "motivation": "painting",
-              "target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/6",
-              "body": {
-                "id": "https://proxy.archieven.nl/iiif-image/184/526394B58BAE4E32AC21A006EF6EA85C/full/max/0/default.jpg",
-                "type": "Image",
-                "format": "image/jpeg",
-                "height": 3953,
-                "width": 3054,
-                "service": [
-                  {
-                    "profile": "level2",
-                    "width": 3054,
-                    "height": 3953,
-                    "type": "ImageService3",
-                    "id": "https://proxy.archieven.nl/iiif-image/184/526394B58BAE4E32AC21A006EF6EA85C"
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/7",
-      "type": "Canvas",
-      "height": 7998,
-      "width": 6502,
-      "items": [
-        {
-          "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/7/annotation-page",
-          "type": "AnnotationPage",
-          "items": [
-            {
-              "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/7/annotation-page/image",
-              "type": "Annotation",
-              "motivation": "painting",
-              "target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/7",
-              "body": {
-                "id": "https://proxy.archieven.nl/iiif-image/184/BA42683C714C4DACBCB7B9DE5BE97E61/full/max/0/default.jpg",
-                "type": "Image",
-                "format": "image/jpeg",
-                "height": 7998,
-                "width": 6502,
-                "service": [
-                  {
-                    "profile": "level2",
-                    "width": 6502,
-                    "height": 7998,
-                    "type": "ImageService3",
-                    "id": "https://proxy.archieven.nl/iiif-image/184/BA42683C714C4DACBCB7B9DE5BE97E61"
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/8",
-      "type": "Canvas",
-      "height": 8014,
-      "width": 6490,
-      "items": [
-        {
-          "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/8/annotation-page",
-          "type": "AnnotationPage",
-          "items": [
-            {
-              "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/8/annotation-page/image",
-              "type": "Annotation",
-              "motivation": "painting",
-              "target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/8",
-              "body": {
-                "id": "https://proxy.archieven.nl/iiif-image/184/FF8E791A6DD24D61AAEA47BBFF0D56D5/full/max/0/default.jpg",
-                "type": "Image",
-                "format": "image/jpeg",
-                "height": 8014,
-                "width": 6490,
-                "service": [
-                  {
-                    "profile": "level2",
-                    "width": 6490,
-                    "height": 8014,
-                    "type": "ImageService3",
-                    "id": "https://proxy.archieven.nl/iiif-image/184/FF8E791A6DD24D61AAEA47BBFF0D56D5"
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/9",
-      "type": "Canvas",
-      "height": 7990,
-      "width": 6514,
-      "items": [
-        {
-          "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/9/annotation-page",
-          "type": "AnnotationPage",
-          "items": [
-            {
-              "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/9/annotation-page/image",
-              "type": "Annotation",
-              "motivation": "painting",
-              "target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/9",
-              "body": {
-                "id": "https://proxy.archieven.nl/iiif-image/184/BEAB99DBC8064151B8E3E6DBC61FAE6D/full/max/0/default.jpg",
-                "type": "Image",
-                "format": "image/jpeg",
-                "height": 7990,
-                "width": 6514,
-                "service": [
-                  {
-                    "profile": "level2",
-                    "width": 6514,
-                    "height": 7990,
-                    "type": "ImageService3",
-                    "id": "https://proxy.archieven.nl/iiif-image/184/BEAB99DBC8064151B8E3E6DBC61FAE6D"
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/10",
-      "type": "Canvas",
-      "height": 8002,
-      "width": 6526,
-      "items": [
-        {
-          "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/10/annotation-page",
-          "type": "AnnotationPage",
-          "items": [
-            {
-              "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/10/annotation-page/image",
-              "type": "Annotation",
-              "motivation": "painting",
-              "target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/10",
-              "body": {
-                "id": "https://proxy.archieven.nl/iiif-image/184/4D871230B029440C9F9648882D0E1299/full/max/0/default.jpg",
-                "type": "Image",
-                "format": "image/jpeg",
-                "height": 8002,
-                "width": 6526,
-                "service": [
-                  {
-                    "profile": "level2",
-                    "width": 6526,
-                    "height": 8002,
-                    "type": "ImageService3",
-                    "id": "https://proxy.archieven.nl/iiif-image/184/4D871230B029440C9F9648882D0E1299"
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/11",
-      "type": "Canvas",
-      "height": 8026,
-      "width": 6610,
-      "items": [
-        {
-          "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/11/annotation-page",
-          "type": "AnnotationPage",
-          "items": [
-            {
-              "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/11/annotation-page/image",
-              "type": "Annotation",
-              "motivation": "painting",
-              "target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/11",
-              "body": {
-                "id": "https://proxy.archieven.nl/iiif-image/184/2E194DE133804A2297CE8F9A3AE15D4A/full/max/0/default.jpg",
-                "type": "Image",
-                "format": "image/jpeg",
-                "height": 8026,
-                "width": 6610,
-                "service": [
-                  {
-                    "profile": "level2",
-                    "width": 6610,
-                    "height": 8026,
-                    "type": "ImageService3",
-                    "id": "https://proxy.archieven.nl/iiif-image/184/2E194DE133804A2297CE8F9A3AE15D4A"
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/12",
-      "type": "Canvas",
-      "height": 8014,
-      "width": 6538,
-      "items": [
-        {
-          "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/12/annotation-page",
-          "type": "AnnotationPage",
-          "items": [
-            {
-              "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/12/annotation-page/image",
-              "type": "Annotation",
-              "motivation": "painting",
-              "target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/12",
-              "body": {
-                "id": "https://proxy.archieven.nl/iiif-image/184/3483A5C328E5430880185610180DBE83/full/max/0/default.jpg",
-                "type": "Image",
-                "format": "image/jpeg",
-                "height": 8014,
-                "width": 6538,
-                "service": [
-                  {
-                    "profile": "level2",
-                    "width": 6538,
-                    "height": 8014,
-                    "type": "ImageService3",
-                    "id": "https://proxy.archieven.nl/iiif-image/184/3483A5C328E5430880185610180DBE83"
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/13",
-      "type": "Canvas",
-      "height": 8002,
-      "width": 6514,
-      "items": [
-        {
-          "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/13/annotation-page",
-          "type": "AnnotationPage",
-          "items": [
-            {
-              "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/13/annotation-page/image",
-              "type": "Annotation",
-              "motivation": "painting",
-              "target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/13",
-              "body": {
-                "id": "https://proxy.archieven.nl/iiif-image/184/6C1D0ED38BB04672B07C3EEACE6B08D4/full/max/0/default.jpg",
-                "type": "Image",
-                "format": "image/jpeg",
-                "height": 8002,
-                "width": 6514,
-                "service": [
-                  {
-                    "profile": "level2",
-                    "width": 6514,
-                    "height": 8002,
-                    "type": "ImageService3",
-                    "id": "https://proxy.archieven.nl/iiif-image/184/6C1D0ED38BB04672B07C3EEACE6B08D4"
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/14",
-      "type": "Canvas",
-      "height": 8026,
-      "width": 6514,
-      "items": [
-        {
-          "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/14/annotation-page",
-          "type": "AnnotationPage",
-          "items": [
-            {
-              "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/14/annotation-page/image",
-              "type": "Annotation",
-              "motivation": "painting",
-              "target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/14",
-              "body": {
-                "id": "https://proxy.archieven.nl/iiif-image/184/F291044171094875B3A062BE9A72292F/full/max/0/default.jpg",
-                "type": "Image",
-                "format": "image/jpeg",
-                "height": 8026,
-                "width": 6514,
-                "service": [
-                  {
-                    "profile": "level2",
-                    "width": 6514,
-                    "height": 8026,
-                    "type": "ImageService3",
-                    "id": "https://proxy.archieven.nl/iiif-image/184/F291044171094875B3A062BE9A72292F"
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/15",
-      "type": "Canvas",
-      "height": 8086,
-      "width": 6622,
-      "items": [
-        {
-          "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/15/annotation-page",
-          "type": "AnnotationPage",
-          "items": [
-            {
-              "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/15/annotation-page/image",
-              "type": "Annotation",
-              "motivation": "painting",
-              "target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/15",
-              "body": {
-                "id": "https://proxy.archieven.nl/iiif-image/184/7F31A1A44BBF4677B8DE474D36900C71/full/max/0/default.jpg",
-                "type": "Image",
-                "format": "image/jpeg",
-                "height": 8086,
-                "width": 6622,
-                "service": [
-                  {
-                    "profile": "level2",
-                    "width": 6622,
-                    "height": 8086,
-                    "type": "ImageService3",
-                    "id": "https://proxy.archieven.nl/iiif-image/184/7F31A1A44BBF4677B8DE474D36900C71"
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/16",
-      "type": "Canvas",
-      "height": 7990,
-      "width": 6502,
-      "items": [
-        {
-          "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/16/annotation-page",
-          "type": "AnnotationPage",
-          "items": [
-            {
-              "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/16/annotation-page/image",
-              "type": "Annotation",
-              "motivation": "painting",
-              "target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/16",
-              "body": {
-                "id": "https://proxy.archieven.nl/iiif-image/184/EF11CAEAC04643C5A580961EDD8D9EF7/full/max/0/default.jpg",
-                "type": "Image",
-                "format": "image/jpeg",
-                "height": 7990,
-                "width": 6502,
-                "service": [
-                  {
-                    "profile": "level2",
-                    "width": 6502,
-                    "height": 7990,
-                    "type": "ImageService3",
-                    "id": "https://proxy.archieven.nl/iiif-image/184/EF11CAEAC04643C5A580961EDD8D9EF7"
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/17",
-      "type": "Canvas",
-      "height": 7990,
-      "width": 6502,
-      "items": [
-        {
-          "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/17/annotation-page",
-          "type": "AnnotationPage",
-          "items": [
-            {
-              "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/17/annotation-page/image",
-              "type": "Annotation",
-              "motivation": "painting",
-              "target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/17",
-              "body": {
-                "id": "https://proxy.archieven.nl/iiif-image/184/616C13ABA37E4FF2AB2B43B8F2AD8835/full/max/0/default.jpg",
-                "type": "Image",
-                "format": "image/jpeg",
-                "height": 7990,
-                "width": 6502,
-                "service": [
-                  {
-                    "profile": "level2",
-                    "width": 6502,
-                    "height": 7990,
-                    "type": "ImageService3",
-                    "id": "https://proxy.archieven.nl/iiif-image/184/616C13ABA37E4FF2AB2B43B8F2AD8835"
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/18",
-      "type": "Canvas",
-      "height": 7990,
-      "width": 6526,
-      "items": [
-        {
-          "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/18/annotation-page",
-          "type": "AnnotationPage",
-          "items": [
-            {
-              "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/18/annotation-page/image",
-              "type": "Annotation",
-              "motivation": "painting",
-              "target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/18",
-              "body": {
-                "id": "https://proxy.archieven.nl/iiif-image/184/77E7F10E589440C1A06649246C5598FD/full/max/0/default.jpg",
-                "type": "Image",
-                "format": "image/jpeg",
-                "height": 7990,
-                "width": 6526,
-                "service": [
-                  {
-                    "profile": "level2",
-                    "width": 6526,
-                    "height": 7990,
-                    "type": "ImageService3",
-                    "id": "https://proxy.archieven.nl/iiif-image/184/77E7F10E589440C1A06649246C5598FD"
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/19",
-      "type": "Canvas",
-      "height": 8014,
-      "width": 6514,
-      "items": [
-        {
-          "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/19/annotation-page",
-          "type": "AnnotationPage",
-          "items": [
-            {
-              "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/19/annotation-page/image",
-              "type": "Annotation",
-              "motivation": "painting",
-              "target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/19",
-              "body": {
-                "id": "https://proxy.archieven.nl/iiif-image/184/0AA159F6779D40F6AC2B3C78917D6ACE/full/max/0/default.jpg",
-                "type": "Image",
-                "format": "image/jpeg",
-                "height": 8014,
-                "width": 6514,
-                "service": [
-                  {
-                    "profile": "level2",
-                    "width": 6514,
-                    "height": 8014,
-                    "type": "ImageService3",
-                    "id": "https://proxy.archieven.nl/iiif-image/184/0AA159F6779D40F6AC2B3C78917D6ACE"
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/20",
-      "type": "Canvas",
-      "height": 8002,
-      "width": 6502,
-      "items": [
-        {
-          "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/20/annotation-page",
-          "type": "AnnotationPage",
-          "items": [
-            {
-              "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/20/annotation-page/image",
-              "type": "Annotation",
-              "motivation": "painting",
-              "target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/20",
-              "body": {
-                "id": "https://proxy.archieven.nl/iiif-image/184/2F17DE4B2E504A43B7A862E7FC76DFBE/full/max/0/default.jpg",
-                "type": "Image",
-                "format": "image/jpeg",
-                "height": 8002,
-                "width": 6502,
-                "service": [
-                  {
-                    "profile": "level2",
-                    "width": 6502,
-                    "height": 8002,
-                    "type": "ImageService3",
-                    "id": "https://proxy.archieven.nl/iiif-image/184/2F17DE4B2E504A43B7A862E7FC76DFBE"
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/21",
-      "type": "Canvas",
-      "height": 3953,
-      "width": 3259,
-      "items": [
-        {
-          "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/21/annotation-page",
-          "type": "AnnotationPage",
-          "items": [
-            {
-              "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/21/annotation-page/image",
-              "type": "Annotation",
-              "motivation": "painting",
-              "target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/21",
-              "body": {
-                "id": "https://proxy.archieven.nl/iiif-image/184/4C3CC48BF7244AAAA539E5A3E20DFA0E/full/max/0/default.jpg",
-                "type": "Image",
-                "format": "image/jpeg",
-                "height": 3953,
-                "width": 3259,
-                "service": [
-                  {
-                    "profile": "level2",
-                    "width": 3259,
-                    "height": 3953,
-                    "type": "ImageService3",
-                    "id": "https://proxy.archieven.nl/iiif-image/184/4C3CC48BF7244AAAA539E5A3E20DFA0E"
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/22",
-      "type": "Canvas",
-      "height": 7978,
-      "width": 6526,
-      "items": [
-        {
-          "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/22/annotation-page",
-          "type": "AnnotationPage",
-          "items": [
-            {
-              "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/22/annotation-page/image",
-              "type": "Annotation",
-              "motivation": "painting",
-              "target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/22",
-              "body": {
-                "id": "https://proxy.archieven.nl/iiif-image/184/92A178A580A445CFA07629E770C93D04/full/max/0/default.jpg",
-                "type": "Image",
-                "format": "image/jpeg",
-                "height": 7978,
-                "width": 6526,
-                "service": [
-                  {
-                    "profile": "level2",
-                    "width": 6526,
-                    "height": 7978,
-                    "type": "ImageService3",
-                    "id": "https://proxy.archieven.nl/iiif-image/184/92A178A580A445CFA07629E770C93D04"
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/23",
-      "type": "Canvas",
-      "height": 8050,
-      "width": 6586,
-      "items": [
-        {
-          "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/23/annotation-page",
-          "type": "AnnotationPage",
-          "items": [
-            {
-              "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/23/annotation-page/image",
-              "type": "Annotation",
-              "motivation": "painting",
-              "target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/23",
-              "body": {
-                "id": "https://proxy.archieven.nl/iiif-image/184/D1345D35E17D4A0EB7F35EFB8A057753/full/max/0/default.jpg",
-                "type": "Image",
-                "format": "image/jpeg",
-                "height": 8050,
-                "width": 6586,
-                "service": [
-                  {
-                    "profile": "level2",
-                    "width": 6586,
-                    "height": 8050,
-                    "type": "ImageService3",
-                    "id": "https://proxy.archieven.nl/iiif-image/184/D1345D35E17D4A0EB7F35EFB8A057753"
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/24",
-      "type": "Canvas",
-      "height": 7978,
-      "width": 6538,
-      "items": [
-        {
-          "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/24/annotation-page",
-          "type": "AnnotationPage",
-          "items": [
-            {
-              "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/24/annotation-page/image",
-              "type": "Annotation",
-              "motivation": "painting",
-              "target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/24",
-              "body": {
-                "id": "https://proxy.archieven.nl/iiif-image/184/5F399B82E2834170A09C40F849F388E2/full/max/0/default.jpg",
-                "type": "Image",
-                "format": "image/jpeg",
-                "height": 7978,
-                "width": 6538,
-                "service": [
-                  {
-                    "profile": "level2",
-                    "width": 6538,
-                    "height": 7978,
-                    "type": "ImageService3",
-                    "id": "https://proxy.archieven.nl/iiif-image/184/5F399B82E2834170A09C40F849F388E2"
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/25",
-      "type": "Canvas",
-      "height": 8086,
-      "width": 6610,
-      "items": [
-        {
-          "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/25/annotation-page",
-          "type": "AnnotationPage",
-          "items": [
-            {
-              "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/25/annotation-page/image",
-              "type": "Annotation",
-              "motivation": "painting",
-              "target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/25",
-              "body": {
-                "id": "https://proxy.archieven.nl/iiif-image/184/B75C358496D9417FA088E61DAF74AB3E/full/max/0/default.jpg",
-                "type": "Image",
-                "format": "image/jpeg",
-                "height": 8086,
-                "width": 6610,
-                "service": [
-                  {
-                    "profile": "level2",
-                    "width": 6610,
-                    "height": 8086,
-                    "type": "ImageService3",
-                    "id": "https://proxy.archieven.nl/iiif-image/184/B75C358496D9417FA088E61DAF74AB3E"
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/26",
-      "type": "Canvas",
-      "height": 7978,
-      "width": 6490,
-      "items": [
-        {
-          "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/26/annotation-page",
-          "type": "AnnotationPage",
-          "items": [
-            {
-              "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/26/annotation-page/image",
-              "type": "Annotation",
-              "motivation": "painting",
-              "target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/26",
-              "body": {
-                "id": "https://proxy.archieven.nl/iiif-image/184/BEE436A743D1481EA923C1004FBCD7DE/full/max/0/default.jpg",
-                "type": "Image",
-                "format": "image/jpeg",
-                "height": 7978,
-                "width": 6490,
-                "service": [
-                  {
-                    "profile": "level2",
-                    "width": 6490,
-                    "height": 7978,
-                    "type": "ImageService3",
-                    "id": "https://proxy.archieven.nl/iiif-image/184/BEE436A743D1481EA923C1004FBCD7DE"
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/27",
-      "type": "Canvas",
-      "height": 7990,
-      "width": 6490,
-      "items": [
-        {
-          "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/27/annotation-page",
-          "type": "AnnotationPage",
-          "items": [
-            {
-              "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/27/annotation-page/image",
-              "type": "Annotation",
-              "motivation": "painting",
-              "target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/27",
-              "body": {
-                "id": "https://proxy.archieven.nl/iiif-image/184/71C16F94D6A1412489F07FD2AD18E024/full/max/0/default.jpg",
-                "type": "Image",
-                "format": "image/jpeg",
-                "height": 7990,
-                "width": 6490,
-                "service": [
-                  {
-                    "profile": "level2",
-                    "width": 6490,
-                    "height": 7990,
-                    "type": "ImageService3",
-                    "id": "https://proxy.archieven.nl/iiif-image/184/71C16F94D6A1412489F07FD2AD18E024"
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/28",
-      "type": "Canvas",
-      "height": 8182,
-      "width": 6610,
-      "items": [
-        {
-          "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/28/annotation-page",
-          "type": "AnnotationPage",
-          "items": [
-            {
-              "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/28/annotation-page/image",
-              "type": "Annotation",
-              "motivation": "painting",
-              "target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/28",
-              "body": {
-                "id": "https://proxy.archieven.nl/iiif-image/184/1DD6087ACFF94820BBDDDD39EF6C8C0A/full/max/0/default.jpg",
-                "type": "Image",
-                "format": "image/jpeg",
-                "height": 8182,
-                "width": 6610,
-                "service": [
-                  {
-                    "profile": "level2",
-                    "width": 6610,
-                    "height": 8182,
-                    "type": "ImageService3",
-                    "id": "https://proxy.archieven.nl/iiif-image/184/1DD6087ACFF94820BBDDDD39EF6C8C0A"
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/29",
-      "type": "Canvas",
-      "height": 8002,
-      "width": 6514,
-      "items": [
-        {
-          "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/29/annotation-page",
-          "type": "AnnotationPage",
-          "items": [
-            {
-              "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/29/annotation-page/image",
-              "type": "Annotation",
-              "motivation": "painting",
-              "target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/29",
-              "body": {
-                "id": "https://proxy.archieven.nl/iiif-image/184/DD20BD58FDE443B793F87AF53EE78457/full/max/0/default.jpg",
-                "type": "Image",
-                "format": "image/jpeg",
-                "height": 8002,
-                "width": 6514,
-                "service": [
-                  {
-                    "profile": "level2",
-                    "width": 6514,
-                    "height": 8002,
-                    "type": "ImageService3",
-                    "id": "https://proxy.archieven.nl/iiif-image/184/DD20BD58FDE443B793F87AF53EE78457"
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/30",
-      "type": "Canvas",
-      "height": 8002,
-      "width": 6490,
-      "items": [
-        {
-          "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/30/annotation-page",
-          "type": "AnnotationPage",
-          "items": [
-            {
-              "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/30/annotation-page/image",
-              "type": "Annotation",
-              "motivation": "painting",
-              "target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/30",
-              "body": {
-                "id": "https://proxy.archieven.nl/iiif-image/184/25D1FEAF7D19439A9F88CD9C92EF38F3/full/max/0/default.jpg",
-                "type": "Image",
-                "format": "image/jpeg",
-                "height": 8002,
-                "width": 6490,
-                "service": [
-                  {
-                    "profile": "level2",
-                    "width": 6490,
-                    "height": 8002,
-                    "type": "ImageService3",
-                    "id": "https://proxy.archieven.nl/iiif-image/184/25D1FEAF7D19439A9F88CD9C92EF38F3"
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/31",
-      "type": "Canvas",
-      "height": 8026,
-      "width": 6562,
-      "items": [
-        {
-          "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/31/annotation-page",
-          "type": "AnnotationPage",
-          "items": [
-            {
-              "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/31/annotation-page/image",
-              "type": "Annotation",
-              "motivation": "painting",
-              "target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/31",
-              "body": {
-                "id": "https://proxy.archieven.nl/iiif-image/184/ADA91A2EC6614190B489CC89C9635F5C/full/max/0/default.jpg",
-                "type": "Image",
-                "format": "image/jpeg",
-                "height": 8026,
-                "width": 6562,
-                "service": [
-                  {
-                    "profile": "level2",
-                    "width": 6562,
-                    "height": 8026,
-                    "type": "ImageService3",
-                    "id": "https://proxy.archieven.nl/iiif-image/184/ADA91A2EC6614190B489CC89C9635F5C"
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/32",
-      "type": "Canvas",
-      "height": 8002,
-      "width": 6478,
-      "items": [
-        {
-          "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/32/annotation-page",
-          "type": "AnnotationPage",
-          "items": [
-            {
-              "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/32/annotation-page/image",
-              "type": "Annotation",
-              "motivation": "painting",
-              "target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/32",
-              "body": {
-                "id": "https://proxy.archieven.nl/iiif-image/184/D8F4F2EA092C4CB0AB8A3DC704AC200F/full/max/0/default.jpg",
-                "type": "Image",
-                "format": "image/jpeg",
-                "height": 8002,
-                "width": 6478,
-                "service": [
-                  {
-                    "profile": "level2",
-                    "width": 6478,
-                    "height": 8002,
-                    "type": "ImageService3",
-                    "id": "https://proxy.archieven.nl/iiif-image/184/D8F4F2EA092C4CB0AB8A3DC704AC200F"
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/33",
-      "type": "Canvas",
-      "height": 8038,
-      "width": 6598,
-      "items": [
-        {
-          "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/33/annotation-page",
-          "type": "AnnotationPage",
-          "items": [
-            {
-              "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/33/annotation-page/image",
-              "type": "Annotation",
-              "motivation": "painting",
-              "target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/33",
-              "body": {
-                "id": "https://proxy.archieven.nl/iiif-image/184/2D358EF7F15D4DD69450689EC46C65AA/full/max/0/default.jpg",
-                "type": "Image",
-                "format": "image/jpeg",
-                "height": 8038,
-                "width": 6598,
-                "service": [
-                  {
-                    "profile": "level2",
-                    "width": 6598,
-                    "height": 8038,
-                    "type": "ImageService3",
-                    "id": "https://proxy.archieven.nl/iiif-image/184/2D358EF7F15D4DD69450689EC46C65AA"
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/34",
-      "type": "Canvas",
-      "height": 7990,
-      "width": 6490,
-      "items": [
-        {
-          "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/34/annotation-page",
-          "type": "AnnotationPage",
-          "items": [
-            {
-              "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/34/annotation-page/image",
-              "type": "Annotation",
-              "motivation": "painting",
-              "target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/34",
-              "body": {
-                "id": "https://proxy.archieven.nl/iiif-image/184/40D0472C99224792A9A08CD683B1B64F/full/max/0/default.jpg",
-                "type": "Image",
-                "format": "image/jpeg",
-                "height": 7990,
-                "width": 6490,
-                "service": [
-                  {
-                    "profile": "level2",
-                    "width": 6490,
-                    "height": 7990,
-                    "type": "ImageService3",
-                    "id": "https://proxy.archieven.nl/iiif-image/184/40D0472C99224792A9A08CD683B1B64F"
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/35",
-      "type": "Canvas",
-      "height": 7990,
-      "width": 6598,
-      "items": [
-        {
-          "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/35/annotation-page",
-          "type": "AnnotationPage",
-          "items": [
-            {
-              "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/35/annotation-page/image",
-              "type": "Annotation",
-              "motivation": "painting",
-              "target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/35",
-              "body": {
-                "id": "https://proxy.archieven.nl/iiif-image/184/D21066FCEA644DE4A3FB0A742551EC43/full/max/0/default.jpg",
-                "type": "Image",
-                "format": "image/jpeg",
-                "height": 7990,
-                "width": 6598,
-                "service": [
-                  {
-                    "profile": "level2",
-                    "width": 6598,
-                    "height": 7990,
-                    "type": "ImageService3",
-                    "id": "https://proxy.archieven.nl/iiif-image/184/D21066FCEA644DE4A3FB0A742551EC43"
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/36",
-      "type": "Canvas",
-      "height": 8014,
-      "width": 6502,
-      "items": [
-        {
-          "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/36/annotation-page",
-          "type": "AnnotationPage",
-          "items": [
-            {
-              "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/36/annotation-page/image",
-              "type": "Annotation",
-              "motivation": "painting",
-              "target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/36",
-              "body": {
-                "id": "https://proxy.archieven.nl/iiif-image/184/B77C1D1EAEE54DCF927B57AA50367D72/full/max/0/default.jpg",
-                "type": "Image",
-                "format": "image/jpeg",
-                "height": 8014,
-                "width": 6502,
-                "service": [
-                  {
-                    "profile": "level2",
-                    "width": 6502,
-                    "height": 8014,
-                    "type": "ImageService3",
-                    "id": "https://proxy.archieven.nl/iiif-image/184/B77C1D1EAEE54DCF927B57AA50367D72"
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/37",
-      "type": "Canvas",
-      "height": 7990,
-      "width": 6610,
-      "items": [
-        {
-          "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/37/annotation-page",
-          "type": "AnnotationPage",
-          "items": [
-            {
-              "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/37/annotation-page/image",
-              "type": "Annotation",
-              "motivation": "painting",
-              "target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/37",
-              "body": {
-                "id": "https://proxy.archieven.nl/iiif-image/184/E49358CF478342E0AD6FC2382B68926A/full/max/0/default.jpg",
-                "type": "Image",
-                "format": "image/jpeg",
-                "height": 7990,
-                "width": 6610,
-                "service": [
-                  {
-                    "profile": "level2",
-                    "width": 6610,
-                    "height": 7990,
-                    "type": "ImageService3",
-                    "id": "https://proxy.archieven.nl/iiif-image/184/E49358CF478342E0AD6FC2382B68926A"
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/38",
-      "type": "Canvas",
-      "height": 8040,
-      "width": 6502,
-      "items": [
-        {
-          "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/38/annotation-page",
-          "type": "AnnotationPage",
-          "items": [
-            {
-              "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/38/annotation-page/image",
-              "type": "Annotation",
-              "motivation": "painting",
-              "target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/38",
-              "body": {
-                "id": "https://proxy.archieven.nl/iiif-image/184/C7BF982CAB5A40019A8F15AC2776993A/full/max/0/default.jpg",
-                "type": "Image",
-                "format": "image/jpeg",
-                "height": 8040,
-                "width": 6502,
-                "service": [
-                  {
-                    "profile": "level2",
-                    "width": 6502,
-                    "height": 8040,
-                    "type": "ImageService3",
-                    "id": "https://proxy.archieven.nl/iiif-image/184/C7BF982CAB5A40019A8F15AC2776993A"
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/39",
-      "type": "Canvas",
-      "height": 8004,
-      "width": 6610,
-      "items": [
-        {
-          "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/39/annotation-page",
-          "type": "AnnotationPage",
-          "items": [
-            {
-              "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/39/annotation-page/image",
-              "type": "Annotation",
-              "motivation": "painting",
-              "target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/39",
-              "body": {
-                "id": "https://proxy.archieven.nl/iiif-image/184/EB148CC519834CD3BC1F20D9C527D096/full/max/0/default.jpg",
-                "type": "Image",
-                "format": "image/jpeg",
-                "height": 8004,
-                "width": 6610,
-                "service": [
-                  {
-                    "profile": "level2",
-                    "width": 6610,
-                    "height": 8004,
-                    "type": "ImageService3",
-                    "id": "https://proxy.archieven.nl/iiif-image/184/EB148CC519834CD3BC1F20D9C527D096"
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/40",
-      "type": "Canvas",
-      "height": 7900,
-      "width": 6173,
-      "items": [
-        {
-          "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/40/annotation-page",
-          "type": "AnnotationPage",
-          "items": [
-            {
-              "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/40/annotation-page/image",
-              "type": "Annotation",
-              "motivation": "painting",
-              "target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/40",
-              "body": {
-                "id": "https://proxy.archieven.nl/iiif-image/184/460436E453494BFDBF8BC174A8AF9F53/full/max/0/default.jpg",
-                "type": "Image",
-                "format": "image/jpeg",
-                "height": 7900,
-                "width": 6173,
-                "service": [
-                  {
-                    "profile": "level2",
-                    "width": 6173,
-                    "height": 7900,
-                    "type": "ImageService3",
-                    "id": "https://proxy.archieven.nl/iiif-image/184/460436E453494BFDBF8BC174A8AF9F53"
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/41",
-      "type": "Canvas",
-      "height": 8076,
-      "width": 6598,
-      "items": [
-        {
-          "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/41/annotation-page",
-          "type": "AnnotationPage",
-          "items": [
-            {
-              "id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/41/annotation-page/image",
-              "type": "Annotation",
-              "motivation": "painting",
-              "target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/41",
-              "body": {
-                "id": "https://proxy.archieven.nl/iiif-image/184/CD08360AFE7649589A3D53602DAD9542/full/max/0/default.jpg",
-                "type": "Image",
-                "format": "image/jpeg",
-                "height": 8076,
-                "width": 6598,
-                "service": [
-                  {
-                    "profile": "level2",
-                    "width": 6598,
-                    "height": 8076,
-                    "type": "ImageService3",
-                    "id": "https://proxy.archieven.nl/iiif-image/184/CD08360AFE7649589A3D53602DAD9542"
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      ]
-    }
-  ]
+	"@context": "http://iiif.io/api/presentation/3/context.json",
+	"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json",
+	"type": "Manifest",
+	"label": {
+		"en": ["Kaart van Rotterdam en omgeving; bestaande uit 24 bladen"]
+	},
+	"items": [
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/0",
+			"type": "Canvas",
+			"height": 7980,
+			"width": 6610,
+			"label": {
+				"en": ["Blad 3 (1969)"]
+			},
+			"items": [
+				{
+					"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/0/annotation-page",
+					"type": "AnnotationPage",
+					"items": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/0/annotation-page/image",
+							"type": "Annotation",
+							"motivation": "painting",
+							"target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/0",
+							"body": {
+								"id": "https://proxy.archieven.nl/iiif-image/184/0B0C8E3BB8FB415E960588345B2CAD44/full/max/0/default.jpg",
+								"type": "Image",
+								"format": "image/jpeg",
+								"height": 7980,
+								"width": 6610,
+								"service": [
+									{
+										"id": "https://proxy.archieven.nl/iiif-image/184/0B0C8E3BB8FB415E960588345B2CAD44",
+										"type": "ImageService3",
+										"profile": "level2",
+										"height": 7980,
+										"width": 6610
+									}
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/1",
+			"type": "Canvas",
+			"height": 7900,
+			"width": 6219,
+			"label": {
+				"en": ["Blad 3 (1979)"]
+			},
+			"items": [
+				{
+					"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/1/annotation-page",
+					"type": "AnnotationPage",
+					"items": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/1/annotation-page/image",
+							"type": "Annotation",
+							"motivation": "painting",
+							"target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/1",
+							"body": {
+								"id": "https://proxy.archieven.nl/iiif-image/184/BE4D137089164DE3869C7CA7FCCD6B63/full/max/0/default.jpg",
+								"type": "Image",
+								"format": "image/jpeg",
+								"height": 7900,
+								"width": 6219,
+								"service": [
+									{
+										"id": "https://proxy.archieven.nl/iiif-image/184/BE4D137089164DE3869C7CA7FCCD6B63",
+										"type": "ImageService3",
+										"profile": "level2",
+										"height": 7900,
+										"width": 6219
+									}
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/2",
+			"type": "Canvas",
+			"height": 8034,
+			"width": 6526,
+			"label": {
+				"en": ["Blad 4 (1973)"]
+			},
+			"items": [
+				{
+					"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/2/annotation-page",
+					"type": "AnnotationPage",
+					"items": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/2/annotation-page/image",
+							"type": "Annotation",
+							"motivation": "painting",
+							"target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/2",
+							"body": {
+								"id": "https://proxy.archieven.nl/iiif-image/184/5E1285BEB6ED4B51B7D8331F397CF750/full/max/0/default.jpg",
+								"type": "Image",
+								"format": "image/jpeg",
+								"height": 8034,
+								"width": 6526,
+								"service": [
+									{
+										"id": "https://proxy.archieven.nl/iiif-image/184/5E1285BEB6ED4B51B7D8331F397CF750",
+										"type": "ImageService3",
+										"profile": "level2",
+										"height": 8034,
+										"width": 6526
+									}
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/3",
+			"type": "Canvas",
+			"height": 7900,
+			"width": 6046,
+			"label": {
+				"en": ["Blad 4 (1979)"]
+			},
+			"items": [
+				{
+					"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/3/annotation-page",
+					"type": "AnnotationPage",
+					"items": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/3/annotation-page/image",
+							"type": "Annotation",
+							"motivation": "painting",
+							"target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/3",
+							"body": {
+								"id": "https://proxy.archieven.nl/iiif-image/184/B0510BB497A4403D8C08155E997A511D/full/max/0/default.jpg",
+								"type": "Image",
+								"format": "image/jpeg",
+								"height": 7900,
+								"width": 6046,
+								"service": [
+									{
+										"id": "https://proxy.archieven.nl/iiif-image/184/B0510BB497A4403D8C08155E997A511D",
+										"type": "ImageService3",
+										"profile": "level2",
+										"height": 7900,
+										"width": 6046
+									}
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/4",
+			"type": "Canvas",
+			"height": 8026,
+			"width": 6526,
+			"label": {
+				"en": ["Blad 5 (1970)"]
+			},
+			"items": [
+				{
+					"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/4/annotation-page",
+					"type": "AnnotationPage",
+					"items": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/4/annotation-page/image",
+							"type": "Annotation",
+							"motivation": "painting",
+							"target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/4",
+							"body": {
+								"id": "https://proxy.archieven.nl/iiif-image/184/7D27A37186AB436E83AEE2771091F597/full/max/0/default.jpg",
+								"type": "Image",
+								"format": "image/jpeg",
+								"height": 8026,
+								"width": 6526,
+								"service": [
+									{
+										"id": "https://proxy.archieven.nl/iiif-image/184/7D27A37186AB436E83AEE2771091F597",
+										"type": "ImageService3",
+										"profile": "level2",
+										"height": 8026,
+										"width": 6526
+									}
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/5",
+			"type": "Canvas",
+			"height": 7900,
+			"width": 6178,
+			"label": {
+				"en": ["Blad 5 (1978)"]
+			},
+			"items": [
+				{
+					"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/5/annotation-page",
+					"type": "AnnotationPage",
+					"items": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/5/annotation-page/image",
+							"type": "Annotation",
+							"motivation": "painting",
+							"target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/5",
+							"body": {
+								"id": "https://proxy.archieven.nl/iiif-image/184/D145C9F034814CC1A7E6329F0F6AC49A/full/max/0/default.jpg",
+								"type": "Image",
+								"format": "image/jpeg",
+								"height": 7900,
+								"width": 6178,
+								"service": [
+									{
+										"id": "https://proxy.archieven.nl/iiif-image/184/D145C9F034814CC1A7E6329F0F6AC49A",
+										"type": "ImageService3",
+										"profile": "level2",
+										"height": 7900,
+										"width": 6178
+									}
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/6",
+			"type": "Canvas",
+			"height": 3953,
+			"width": 3054,
+			"label": {
+				"en": ["Blad 5 (1970)"]
+			},
+			"items": [
+				{
+					"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/6/annotation-page",
+					"type": "AnnotationPage",
+					"items": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/6/annotation-page/image",
+							"type": "Annotation",
+							"motivation": "painting",
+							"target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/6",
+							"body": {
+								"id": "https://proxy.archieven.nl/iiif-image/184/526394B58BAE4E32AC21A006EF6EA85C/full/max/0/default.jpg",
+								"type": "Image",
+								"format": "image/jpeg",
+								"height": 3953,
+								"width": 3054,
+								"service": [
+									{
+										"id": "https://proxy.archieven.nl/iiif-image/184/526394B58BAE4E32AC21A006EF6EA85C",
+										"type": "ImageService3",
+										"profile": "level2",
+										"height": 3953,
+										"width": 3054
+									}
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/7",
+			"type": "Canvas",
+			"height": 7998,
+			"width": 6502,
+			"label": {
+				"en": ["Blad 6 (1967)"]
+			},
+			"items": [
+				{
+					"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/7/annotation-page",
+					"type": "AnnotationPage",
+					"items": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/7/annotation-page/image",
+							"type": "Annotation",
+							"motivation": "painting",
+							"target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/7",
+							"body": {
+								"id": "https://proxy.archieven.nl/iiif-image/184/BA42683C714C4DACBCB7B9DE5BE97E61/full/max/0/default.jpg",
+								"type": "Image",
+								"format": "image/jpeg",
+								"height": 7998,
+								"width": 6502,
+								"service": [
+									{
+										"id": "https://proxy.archieven.nl/iiif-image/184/BA42683C714C4DACBCB7B9DE5BE97E61",
+										"type": "ImageService3",
+										"profile": "level2",
+										"height": 7998,
+										"width": 6502
+									}
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/8",
+			"type": "Canvas",
+			"height": 8014,
+			"width": 6490,
+			"label": {
+				"en": ["Blad 6 (1973)"]
+			},
+			"items": [
+				{
+					"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/8/annotation-page",
+					"type": "AnnotationPage",
+					"items": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/8/annotation-page/image",
+							"type": "Annotation",
+							"motivation": "painting",
+							"target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/8",
+							"body": {
+								"id": "https://proxy.archieven.nl/iiif-image/184/FF8E791A6DD24D61AAEA47BBFF0D56D5/full/max/0/default.jpg",
+								"type": "Image",
+								"format": "image/jpeg",
+								"height": 8014,
+								"width": 6490,
+								"service": [
+									{
+										"id": "https://proxy.archieven.nl/iiif-image/184/FF8E791A6DD24D61AAEA47BBFF0D56D5",
+										"type": "ImageService3",
+										"profile": "level2",
+										"height": 8014,
+										"width": 6490
+									}
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/9",
+			"type": "Canvas",
+			"height": 7990,
+			"width": 6514,
+			"label": {
+				"en": ["Blad 7 (1971)"]
+			},
+			"items": [
+				{
+					"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/9/annotation-page",
+					"type": "AnnotationPage",
+					"items": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/9/annotation-page/image",
+							"type": "Annotation",
+							"motivation": "painting",
+							"target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/9",
+							"body": {
+								"id": "https://proxy.archieven.nl/iiif-image/184/BEAB99DBC8064151B8E3E6DBC61FAE6D/full/max/0/default.jpg",
+								"type": "Image",
+								"format": "image/jpeg",
+								"height": 7990,
+								"width": 6514,
+								"service": [
+									{
+										"id": "https://proxy.archieven.nl/iiif-image/184/BEAB99DBC8064151B8E3E6DBC61FAE6D",
+										"type": "ImageService3",
+										"profile": "level2",
+										"height": 7990,
+										"width": 6514
+									}
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/10",
+			"type": "Canvas",
+			"height": 8002,
+			"width": 6526,
+			"label": {
+				"en": ["Blad 8 (1971)"]
+			},
+			"items": [
+				{
+					"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/10/annotation-page",
+					"type": "AnnotationPage",
+					"items": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/10/annotation-page/image",
+							"type": "Annotation",
+							"motivation": "painting",
+							"target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/10",
+							"body": {
+								"id": "https://proxy.archieven.nl/iiif-image/184/4D871230B029440C9F9648882D0E1299/full/max/0/default.jpg",
+								"type": "Image",
+								"format": "image/jpeg",
+								"height": 8002,
+								"width": 6526,
+								"service": [
+									{
+										"id": "https://proxy.archieven.nl/iiif-image/184/4D871230B029440C9F9648882D0E1299",
+										"type": "ImageService3",
+										"profile": "level2",
+										"height": 8002,
+										"width": 6526
+									}
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/11",
+			"type": "Canvas",
+			"height": 8026,
+			"width": 6610,
+			"label": {
+				"en": ["Blad 9 (1968)"]
+			},
+			"items": [
+				{
+					"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/11/annotation-page",
+					"type": "AnnotationPage",
+					"items": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/11/annotation-page/image",
+							"type": "Annotation",
+							"motivation": "painting",
+							"target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/11",
+							"body": {
+								"id": "https://proxy.archieven.nl/iiif-image/184/2E194DE133804A2297CE8F9A3AE15D4A/full/max/0/default.jpg",
+								"type": "Image",
+								"format": "image/jpeg",
+								"height": 8026,
+								"width": 6610,
+								"service": [
+									{
+										"id": "https://proxy.archieven.nl/iiif-image/184/2E194DE133804A2297CE8F9A3AE15D4A",
+										"type": "ImageService3",
+										"profile": "level2",
+										"height": 8026,
+										"width": 6610
+									}
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/12",
+			"type": "Canvas",
+			"height": 8014,
+			"width": 6538,
+			"label": {
+				"en": ["Blad 9 (1973)"]
+			},
+			"items": [
+				{
+					"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/12/annotation-page",
+					"type": "AnnotationPage",
+					"items": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/12/annotation-page/image",
+							"type": "Annotation",
+							"motivation": "painting",
+							"target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/12",
+							"body": {
+								"id": "https://proxy.archieven.nl/iiif-image/184/3483A5C328E5430880185610180DBE83/full/max/0/default.jpg",
+								"type": "Image",
+								"format": "image/jpeg",
+								"height": 8014,
+								"width": 6538,
+								"service": [
+									{
+										"id": "https://proxy.archieven.nl/iiif-image/184/3483A5C328E5430880185610180DBE83",
+										"type": "ImageService3",
+										"profile": "level2",
+										"height": 8014,
+										"width": 6538
+									}
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/13",
+			"type": "Canvas",
+			"height": 8002,
+			"width": 6514,
+			"label": {
+				"en": ["Blad 10 (1969)"]
+			},
+			"items": [
+				{
+					"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/13/annotation-page",
+					"type": "AnnotationPage",
+					"items": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/13/annotation-page/image",
+							"type": "Annotation",
+							"motivation": "painting",
+							"target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/13",
+							"body": {
+								"id": "https://proxy.archieven.nl/iiif-image/184/6C1D0ED38BB04672B07C3EEACE6B08D4/full/max/0/default.jpg",
+								"type": "Image",
+								"format": "image/jpeg",
+								"height": 8002,
+								"width": 6514,
+								"service": [
+									{
+										"id": "https://proxy.archieven.nl/iiif-image/184/6C1D0ED38BB04672B07C3EEACE6B08D4",
+										"type": "ImageService3",
+										"profile": "level2",
+										"height": 8002,
+										"width": 6514
+									}
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/14",
+			"type": "Canvas",
+			"height": 8026,
+			"width": 6514,
+			"label": {
+				"en": ["Blad 10 (1974)"]
+			},
+			"items": [
+				{
+					"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/14/annotation-page",
+					"type": "AnnotationPage",
+					"items": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/14/annotation-page/image",
+							"type": "Annotation",
+							"motivation": "painting",
+							"target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/14",
+							"body": {
+								"id": "https://proxy.archieven.nl/iiif-image/184/F291044171094875B3A062BE9A72292F/full/max/0/default.jpg",
+								"type": "Image",
+								"format": "image/jpeg",
+								"height": 8026,
+								"width": 6514,
+								"service": [
+									{
+										"id": "https://proxy.archieven.nl/iiif-image/184/F291044171094875B3A062BE9A72292F",
+										"type": "ImageService3",
+										"profile": "level2",
+										"height": 8026,
+										"width": 6514
+									}
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/15",
+			"type": "Canvas",
+			"height": 8086,
+			"width": 6622,
+			"label": {
+				"en": ["Blad 10 (1965)"]
+			},
+			"items": [
+				{
+					"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/15/annotation-page",
+					"type": "AnnotationPage",
+					"items": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/15/annotation-page/image",
+							"type": "Annotation",
+							"motivation": "painting",
+							"target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/15",
+							"body": {
+								"id": "https://proxy.archieven.nl/iiif-image/184/7F31A1A44BBF4677B8DE474D36900C71/full/max/0/default.jpg",
+								"type": "Image",
+								"format": "image/jpeg",
+								"height": 8086,
+								"width": 6622,
+								"service": [
+									{
+										"id": "https://proxy.archieven.nl/iiif-image/184/7F31A1A44BBF4677B8DE474D36900C71",
+										"type": "ImageService3",
+										"profile": "level2",
+										"height": 8086,
+										"width": 6622
+									}
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/16",
+			"type": "Canvas",
+			"height": 7990,
+			"width": 6502,
+			"label": {
+				"en": ["Blad 11 (1965)"]
+			},
+			"items": [
+				{
+					"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/16/annotation-page",
+					"type": "AnnotationPage",
+					"items": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/16/annotation-page/image",
+							"type": "Annotation",
+							"motivation": "painting",
+							"target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/16",
+							"body": {
+								"id": "https://proxy.archieven.nl/iiif-image/184/EF11CAEAC04643C5A580961EDD8D9EF7/full/max/0/default.jpg",
+								"type": "Image",
+								"format": "image/jpeg",
+								"height": 7990,
+								"width": 6502,
+								"service": [
+									{
+										"id": "https://proxy.archieven.nl/iiif-image/184/EF11CAEAC04643C5A580961EDD8D9EF7",
+										"type": "ImageService3",
+										"profile": "level2",
+										"height": 7990,
+										"width": 6502
+									}
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/17",
+			"type": "Canvas",
+			"height": 7990,
+			"width": 6502,
+			"label": {
+				"en": ["Blad 11 (1971)"]
+			},
+			"items": [
+				{
+					"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/17/annotation-page",
+					"type": "AnnotationPage",
+					"items": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/17/annotation-page/image",
+							"type": "Annotation",
+							"motivation": "painting",
+							"target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/17",
+							"body": {
+								"id": "https://proxy.archieven.nl/iiif-image/184/616C13ABA37E4FF2AB2B43B8F2AD8835/full/max/0/default.jpg",
+								"type": "Image",
+								"format": "image/jpeg",
+								"height": 7990,
+								"width": 6502,
+								"service": [
+									{
+										"id": "https://proxy.archieven.nl/iiif-image/184/616C13ABA37E4FF2AB2B43B8F2AD8835",
+										"type": "ImageService3",
+										"profile": "level2",
+										"height": 7990,
+										"width": 6502
+									}
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/18",
+			"type": "Canvas",
+			"height": 7990,
+			"width": 6526,
+			"label": {
+				"en": ["Blad 11 (1977)"]
+			},
+			"items": [
+				{
+					"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/18/annotation-page",
+					"type": "AnnotationPage",
+					"items": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/18/annotation-page/image",
+							"type": "Annotation",
+							"motivation": "painting",
+							"target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/18",
+							"body": {
+								"id": "https://proxy.archieven.nl/iiif-image/184/77E7F10E589440C1A06649246C5598FD/full/max/0/default.jpg",
+								"type": "Image",
+								"format": "image/jpeg",
+								"height": 7990,
+								"width": 6526,
+								"service": [
+									{
+										"id": "https://proxy.archieven.nl/iiif-image/184/77E7F10E589440C1A06649246C5598FD",
+										"type": "ImageService3",
+										"profile": "level2",
+										"height": 7990,
+										"width": 6526
+									}
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/19",
+			"type": "Canvas",
+			"height": 8014,
+			"width": 6514,
+			"label": {
+				"en": ["Blad 12 (1967)"]
+			},
+			"items": [
+				{
+					"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/19/annotation-page",
+					"type": "AnnotationPage",
+					"items": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/19/annotation-page/image",
+							"type": "Annotation",
+							"motivation": "painting",
+							"target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/19",
+							"body": {
+								"id": "https://proxy.archieven.nl/iiif-image/184/0AA159F6779D40F6AC2B3C78917D6ACE/full/max/0/default.jpg",
+								"type": "Image",
+								"format": "image/jpeg",
+								"height": 8014,
+								"width": 6514,
+								"service": [
+									{
+										"id": "https://proxy.archieven.nl/iiif-image/184/0AA159F6779D40F6AC2B3C78917D6ACE",
+										"type": "ImageService3",
+										"profile": "level2",
+										"height": 8014,
+										"width": 6514
+									}
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/20",
+			"type": "Canvas",
+			"height": 8002,
+			"width": 6502,
+			"label": {
+				"en": ["Blad 12 (1975)"]
+			},
+			"items": [
+				{
+					"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/20/annotation-page",
+					"type": "AnnotationPage",
+					"items": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/20/annotation-page/image",
+							"type": "Annotation",
+							"motivation": "painting",
+							"target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/20",
+							"body": {
+								"id": "https://proxy.archieven.nl/iiif-image/184/2F17DE4B2E504A43B7A862E7FC76DFBE/full/max/0/default.jpg",
+								"type": "Image",
+								"format": "image/jpeg",
+								"height": 8002,
+								"width": 6502,
+								"service": [
+									{
+										"id": "https://proxy.archieven.nl/iiif-image/184/2F17DE4B2E504A43B7A862E7FC76DFBE",
+										"type": "ImageService3",
+										"profile": "level2",
+										"height": 8002,
+										"width": 6502
+									}
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/21",
+			"type": "Canvas",
+			"height": 3953,
+			"width": 3259,
+			"label": {
+				"en": ["Blad 13 (1965)"]
+			},
+			"items": [
+				{
+					"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/21/annotation-page",
+					"type": "AnnotationPage",
+					"items": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/21/annotation-page/image",
+							"type": "Annotation",
+							"motivation": "painting",
+							"target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/21",
+							"body": {
+								"id": "https://proxy.archieven.nl/iiif-image/184/4C3CC48BF7244AAAA539E5A3E20DFA0E/full/max/0/default.jpg",
+								"type": "Image",
+								"format": "image/jpeg",
+								"height": 3953,
+								"width": 3259,
+								"service": [
+									{
+										"id": "https://proxy.archieven.nl/iiif-image/184/4C3CC48BF7244AAAA539E5A3E20DFA0E",
+										"type": "ImageService3",
+										"profile": "level2",
+										"height": 3953,
+										"width": 3259
+									}
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/22",
+			"type": "Canvas",
+			"height": 7978,
+			"width": 6526,
+			"label": {
+				"en": ["Blad 14 (1975)"]
+			},
+			"items": [
+				{
+					"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/22/annotation-page",
+					"type": "AnnotationPage",
+					"items": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/22/annotation-page/image",
+							"type": "Annotation",
+							"motivation": "painting",
+							"target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/22",
+							"body": {
+								"id": "https://proxy.archieven.nl/iiif-image/184/92A178A580A445CFA07629E770C93D04/full/max/0/default.jpg",
+								"type": "Image",
+								"format": "image/jpeg",
+								"height": 7978,
+								"width": 6526,
+								"service": [
+									{
+										"id": "https://proxy.archieven.nl/iiif-image/184/92A178A580A445CFA07629E770C93D04",
+										"type": "ImageService3",
+										"profile": "level2",
+										"height": 7978,
+										"width": 6526
+									}
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/23",
+			"type": "Canvas",
+			"height": 8050,
+			"width": 6586,
+			"label": {
+				"en": ["Blad 14 (1965)"]
+			},
+			"items": [
+				{
+					"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/23/annotation-page",
+					"type": "AnnotationPage",
+					"items": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/23/annotation-page/image",
+							"type": "Annotation",
+							"motivation": "painting",
+							"target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/23",
+							"body": {
+								"id": "https://proxy.archieven.nl/iiif-image/184/D1345D35E17D4A0EB7F35EFB8A057753/full/max/0/default.jpg",
+								"type": "Image",
+								"format": "image/jpeg",
+								"height": 8050,
+								"width": 6586,
+								"service": [
+									{
+										"id": "https://proxy.archieven.nl/iiif-image/184/D1345D35E17D4A0EB7F35EFB8A057753",
+										"type": "ImageService3",
+										"profile": "level2",
+										"height": 8050,
+										"width": 6586
+									}
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/24",
+			"type": "Canvas",
+			"height": 7978,
+			"width": 6538,
+			"label": {
+				"en": ["Blad 15 (1975)"]
+			},
+			"items": [
+				{
+					"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/24/annotation-page",
+					"type": "AnnotationPage",
+					"items": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/24/annotation-page/image",
+							"type": "Annotation",
+							"motivation": "painting",
+							"target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/24",
+							"body": {
+								"id": "https://proxy.archieven.nl/iiif-image/184/5F399B82E2834170A09C40F849F388E2/full/max/0/default.jpg",
+								"type": "Image",
+								"format": "image/jpeg",
+								"height": 7978,
+								"width": 6538,
+								"service": [
+									{
+										"id": "https://proxy.archieven.nl/iiif-image/184/5F399B82E2834170A09C40F849F388E2",
+										"type": "ImageService3",
+										"profile": "level2",
+										"height": 7978,
+										"width": 6538
+									}
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/25",
+			"type": "Canvas",
+			"height": 8086,
+			"width": 6610,
+			"label": {
+				"en": ["Blad 15 (1964)"]
+			},
+			"items": [
+				{
+					"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/25/annotation-page",
+					"type": "AnnotationPage",
+					"items": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/25/annotation-page/image",
+							"type": "Annotation",
+							"motivation": "painting",
+							"target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/25",
+							"body": {
+								"id": "https://proxy.archieven.nl/iiif-image/184/B75C358496D9417FA088E61DAF74AB3E/full/max/0/default.jpg",
+								"type": "Image",
+								"format": "image/jpeg",
+								"height": 8086,
+								"width": 6610,
+								"service": [
+									{
+										"id": "https://proxy.archieven.nl/iiif-image/184/B75C358496D9417FA088E61DAF74AB3E",
+										"type": "ImageService3",
+										"profile": "level2",
+										"height": 8086,
+										"width": 6610
+									}
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/26",
+			"type": "Canvas",
+			"height": 7978,
+			"width": 6490,
+			"label": {
+				"en": ["Blad 16 (1971)"]
+			},
+			"items": [
+				{
+					"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/26/annotation-page",
+					"type": "AnnotationPage",
+					"items": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/26/annotation-page/image",
+							"type": "Annotation",
+							"motivation": "painting",
+							"target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/26",
+							"body": {
+								"id": "https://proxy.archieven.nl/iiif-image/184/BEE436A743D1481EA923C1004FBCD7DE/full/max/0/default.jpg",
+								"type": "Image",
+								"format": "image/jpeg",
+								"height": 7978,
+								"width": 6490,
+								"service": [
+									{
+										"id": "https://proxy.archieven.nl/iiif-image/184/BEE436A743D1481EA923C1004FBCD7DE",
+										"type": "ImageService3",
+										"profile": "level2",
+										"height": 7978,
+										"width": 6490
+									}
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/27",
+			"type": "Canvas",
+			"height": 7990,
+			"width": 6490,
+			"label": {
+				"en": ["Blad 16 (1977)"]
+			},
+			"items": [
+				{
+					"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/27/annotation-page",
+					"type": "AnnotationPage",
+					"items": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/27/annotation-page/image",
+							"type": "Annotation",
+							"motivation": "painting",
+							"target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/27",
+							"body": {
+								"id": "https://proxy.archieven.nl/iiif-image/184/71C16F94D6A1412489F07FD2AD18E024/full/max/0/default.jpg",
+								"type": "Image",
+								"format": "image/jpeg",
+								"height": 7990,
+								"width": 6490,
+								"service": [
+									{
+										"id": "https://proxy.archieven.nl/iiif-image/184/71C16F94D6A1412489F07FD2AD18E024",
+										"type": "ImageService3",
+										"profile": "level2",
+										"height": 7990,
+										"width": 6490
+									}
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/28",
+			"type": "Canvas",
+			"height": 8182,
+			"width": 6610,
+			"label": {
+				"en": ["Blad 16 (1964)"]
+			},
+			"items": [
+				{
+					"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/28/annotation-page",
+					"type": "AnnotationPage",
+					"items": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/28/annotation-page/image",
+							"type": "Annotation",
+							"motivation": "painting",
+							"target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/28",
+							"body": {
+								"id": "https://proxy.archieven.nl/iiif-image/184/1DD6087ACFF94820BBDDDD39EF6C8C0A/full/max/0/default.jpg",
+								"type": "Image",
+								"format": "image/jpeg",
+								"height": 8182,
+								"width": 6610,
+								"service": [
+									{
+										"id": "https://proxy.archieven.nl/iiif-image/184/1DD6087ACFF94820BBDDDD39EF6C8C0A",
+										"type": "ImageService3",
+										"profile": "level2",
+										"height": 8182,
+										"width": 6610
+									}
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/29",
+			"type": "Canvas",
+			"height": 8002,
+			"width": 6514,
+			"label": {
+				"en": ["Blad 17 (1971)"]
+			},
+			"items": [
+				{
+					"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/29/annotation-page",
+					"type": "AnnotationPage",
+					"items": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/29/annotation-page/image",
+							"type": "Annotation",
+							"motivation": "painting",
+							"target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/29",
+							"body": {
+								"id": "https://proxy.archieven.nl/iiif-image/184/DD20BD58FDE443B793F87AF53EE78457/full/max/0/default.jpg",
+								"type": "Image",
+								"format": "image/jpeg",
+								"height": 8002,
+								"width": 6514,
+								"service": [
+									{
+										"id": "https://proxy.archieven.nl/iiif-image/184/DD20BD58FDE443B793F87AF53EE78457",
+										"type": "ImageService3",
+										"profile": "level2",
+										"height": 8002,
+										"width": 6514
+									}
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/30",
+			"type": "Canvas",
+			"height": 8002,
+			"width": 6490,
+			"label": {
+				"en": ["Blad 17 (1977)"]
+			},
+			"items": [
+				{
+					"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/30/annotation-page",
+					"type": "AnnotationPage",
+					"items": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/30/annotation-page/image",
+							"type": "Annotation",
+							"motivation": "painting",
+							"target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/30",
+							"body": {
+								"id": "https://proxy.archieven.nl/iiif-image/184/25D1FEAF7D19439A9F88CD9C92EF38F3/full/max/0/default.jpg",
+								"type": "Image",
+								"format": "image/jpeg",
+								"height": 8002,
+								"width": 6490,
+								"service": [
+									{
+										"id": "https://proxy.archieven.nl/iiif-image/184/25D1FEAF7D19439A9F88CD9C92EF38F3",
+										"type": "ImageService3",
+										"profile": "level2",
+										"height": 8002,
+										"width": 6490
+									}
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/31",
+			"type": "Canvas",
+			"height": 8026,
+			"width": 6562,
+			"label": {
+				"en": ["Blad 17 (1964)"]
+			},
+			"items": [
+				{
+					"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/31/annotation-page",
+					"type": "AnnotationPage",
+					"items": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/31/annotation-page/image",
+							"type": "Annotation",
+							"motivation": "painting",
+							"target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/31",
+							"body": {
+								"id": "https://proxy.archieven.nl/iiif-image/184/ADA91A2EC6614190B489CC89C9635F5C/full/max/0/default.jpg",
+								"type": "Image",
+								"format": "image/jpeg",
+								"height": 8026,
+								"width": 6562,
+								"service": [
+									{
+										"id": "https://proxy.archieven.nl/iiif-image/184/ADA91A2EC6614190B489CC89C9635F5C",
+										"type": "ImageService3",
+										"profile": "level2",
+										"height": 8026,
+										"width": 6562
+									}
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/32",
+			"type": "Canvas",
+			"height": 8002,
+			"width": 6478,
+			"label": {
+				"en": ["Blad 18 (1973)"]
+			},
+			"items": [
+				{
+					"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/32/annotation-page",
+					"type": "AnnotationPage",
+					"items": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/32/annotation-page/image",
+							"type": "Annotation",
+							"motivation": "painting",
+							"target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/32",
+							"body": {
+								"id": "https://proxy.archieven.nl/iiif-image/184/D8F4F2EA092C4CB0AB8A3DC704AC200F/full/max/0/default.jpg",
+								"type": "Image",
+								"format": "image/jpeg",
+								"height": 8002,
+								"width": 6478,
+								"service": [
+									{
+										"id": "https://proxy.archieven.nl/iiif-image/184/D8F4F2EA092C4CB0AB8A3DC704AC200F",
+										"type": "ImageService3",
+										"profile": "level2",
+										"height": 8002,
+										"width": 6478
+									}
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/33",
+			"type": "Canvas",
+			"height": 8038,
+			"width": 6598,
+			"label": {
+				"en": ["Blad 19 (1968)"]
+			},
+			"items": [
+				{
+					"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/33/annotation-page",
+					"type": "AnnotationPage",
+					"items": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/33/annotation-page/image",
+							"type": "Annotation",
+							"motivation": "painting",
+							"target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/33",
+							"body": {
+								"id": "https://proxy.archieven.nl/iiif-image/184/2D358EF7F15D4DD69450689EC46C65AA/full/max/0/default.jpg",
+								"type": "Image",
+								"format": "image/jpeg",
+								"height": 8038,
+								"width": 6598,
+								"service": [
+									{
+										"id": "https://proxy.archieven.nl/iiif-image/184/2D358EF7F15D4DD69450689EC46C65AA",
+										"type": "ImageService3",
+										"profile": "level2",
+										"height": 8038,
+										"width": 6598
+									}
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/34",
+			"type": "Canvas",
+			"height": 7990,
+			"width": 6490,
+			"label": {
+				"en": ["Blad 19 (1975)"]
+			},
+			"items": [
+				{
+					"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/34/annotation-page",
+					"type": "AnnotationPage",
+					"items": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/34/annotation-page/image",
+							"type": "Annotation",
+							"motivation": "painting",
+							"target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/34",
+							"body": {
+								"id": "https://proxy.archieven.nl/iiif-image/184/40D0472C99224792A9A08CD683B1B64F/full/max/0/default.jpg",
+								"type": "Image",
+								"format": "image/jpeg",
+								"height": 7990,
+								"width": 6490,
+								"service": [
+									{
+										"id": "https://proxy.archieven.nl/iiif-image/184/40D0472C99224792A9A08CD683B1B64F",
+										"type": "ImageService3",
+										"profile": "level2",
+										"height": 7990,
+										"width": 6490
+									}
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/35",
+			"type": "Canvas",
+			"height": 7990,
+			"width": 6598,
+			"label": {
+				"en": ["Blad 20 (1969)"]
+			},
+			"items": [
+				{
+					"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/35/annotation-page",
+					"type": "AnnotationPage",
+					"items": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/35/annotation-page/image",
+							"type": "Annotation",
+							"motivation": "painting",
+							"target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/35",
+							"body": {
+								"id": "https://proxy.archieven.nl/iiif-image/184/D21066FCEA644DE4A3FB0A742551EC43/full/max/0/default.jpg",
+								"type": "Image",
+								"format": "image/jpeg",
+								"height": 7990,
+								"width": 6598,
+								"service": [
+									{
+										"id": "https://proxy.archieven.nl/iiif-image/184/D21066FCEA644DE4A3FB0A742551EC43",
+										"type": "ImageService3",
+										"profile": "level2",
+										"height": 7990,
+										"width": 6598
+									}
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/36",
+			"type": "Canvas",
+			"height": 8014,
+			"width": 6502,
+			"label": {
+				"en": ["Blad 20 (1976)"]
+			},
+			"items": [
+				{
+					"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/36/annotation-page",
+					"type": "AnnotationPage",
+					"items": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/36/annotation-page/image",
+							"type": "Annotation",
+							"motivation": "painting",
+							"target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/36",
+							"body": {
+								"id": "https://proxy.archieven.nl/iiif-image/184/B77C1D1EAEE54DCF927B57AA50367D72/full/max/0/default.jpg",
+								"type": "Image",
+								"format": "image/jpeg",
+								"height": 8014,
+								"width": 6502,
+								"service": [
+									{
+										"id": "https://proxy.archieven.nl/iiif-image/184/B77C1D1EAEE54DCF927B57AA50367D72",
+										"type": "ImageService3",
+										"profile": "level2",
+										"height": 8014,
+										"width": 6502
+									}
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/37",
+			"type": "Canvas",
+			"height": 7990,
+			"width": 6610,
+			"label": {
+				"en": ["Blad 21 (1966)"]
+			},
+			"items": [
+				{
+					"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/37/annotation-page",
+					"type": "AnnotationPage",
+					"items": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/37/annotation-page/image",
+							"type": "Annotation",
+							"motivation": "painting",
+							"target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/37",
+							"body": {
+								"id": "https://proxy.archieven.nl/iiif-image/184/E49358CF478342E0AD6FC2382B68926A/full/max/0/default.jpg",
+								"type": "Image",
+								"format": "image/jpeg",
+								"height": 7990,
+								"width": 6610,
+								"service": [
+									{
+										"id": "https://proxy.archieven.nl/iiif-image/184/E49358CF478342E0AD6FC2382B68926A",
+										"type": "ImageService3",
+										"profile": "level2",
+										"height": 7990,
+										"width": 6610
+									}
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/38",
+			"type": "Canvas",
+			"height": 8040,
+			"width": 6502,
+			"label": {
+				"en": ["Blad 22 (1967)"]
+			},
+			"items": [
+				{
+					"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/38/annotation-page",
+					"type": "AnnotationPage",
+					"items": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/38/annotation-page/image",
+							"type": "Annotation",
+							"motivation": "painting",
+							"target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/38",
+							"body": {
+								"id": "https://proxy.archieven.nl/iiif-image/184/C7BF982CAB5A40019A8F15AC2776993A/full/max/0/default.jpg",
+								"type": "Image",
+								"format": "image/jpeg",
+								"height": 8040,
+								"width": 6502,
+								"service": [
+									{
+										"id": "https://proxy.archieven.nl/iiif-image/184/C7BF982CAB5A40019A8F15AC2776993A",
+										"type": "ImageService3",
+										"profile": "level2",
+										"height": 8040,
+										"width": 6502
+									}
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/39",
+			"type": "Canvas",
+			"height": 8004,
+			"width": 6610,
+			"label": {
+				"en": ["Blad 23 (1969)"]
+			},
+			"items": [
+				{
+					"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/39/annotation-page",
+					"type": "AnnotationPage",
+					"items": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/39/annotation-page/image",
+							"type": "Annotation",
+							"motivation": "painting",
+							"target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/39",
+							"body": {
+								"id": "https://proxy.archieven.nl/iiif-image/184/EB148CC519834CD3BC1F20D9C527D096/full/max/0/default.jpg",
+								"type": "Image",
+								"format": "image/jpeg",
+								"height": 8004,
+								"width": 6610,
+								"service": [
+									{
+										"id": "https://proxy.archieven.nl/iiif-image/184/EB148CC519834CD3BC1F20D9C527D096",
+										"type": "ImageService3",
+										"profile": "level2",
+										"height": 8004,
+										"width": 6610
+									}
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/40",
+			"type": "Canvas",
+			"height": 7900,
+			"width": 6173,
+			"label": {
+				"en": ["Blad 24 (1980)"]
+			},
+			"items": [
+				{
+					"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/40/annotation-page",
+					"type": "AnnotationPage",
+					"items": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/40/annotation-page/image",
+							"type": "Annotation",
+							"motivation": "painting",
+							"target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/40",
+							"body": {
+								"id": "https://proxy.archieven.nl/iiif-image/184/460436E453494BFDBF8BC174A8AF9F53/full/max/0/default.jpg",
+								"type": "Image",
+								"format": "image/jpeg",
+								"height": 7900,
+								"width": 6173,
+								"service": [
+									{
+										"id": "https://proxy.archieven.nl/iiif-image/184/460436E453494BFDBF8BC174A8AF9F53",
+										"type": "ImageService3",
+										"profile": "level2",
+										"height": 7900,
+										"width": 6173
+									}
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/41",
+			"type": "Canvas",
+			"height": 8076,
+			"width": 6598,
+			"label": {
+				"en": ["Blad 24 (1965)"]
+			},
+			"items": [
+				{
+					"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/41/annotation-page",
+					"type": "AnnotationPage",
+					"items": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/41/annotation-page/image",
+							"type": "Annotation",
+							"motivation": "painting",
+							"target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/41",
+							"body": {
+								"id": "https://proxy.archieven.nl/iiif-image/184/CD08360AFE7649589A3D53602DAD9542/full/max/0/default.jpg",
+								"type": "Image",
+								"format": "image/jpeg",
+								"height": 8076,
+								"width": 6598,
+								"service": [
+									{
+										"id": "https://proxy.archieven.nl/iiif-image/184/CD08360AFE7649589A3D53602DAD9542",
+										"type": "ImageService3",
+										"profile": "level2",
+										"height": 8076,
+										"width": 6598
+									}
+								]
+							}
+						}
+					]
+				}
+			]
+		}
+	]
 }
