@@ -1,1376 +1,17 @@
 {
+	"id": "https://annotations.allmaps.org/manifests/7737cec074ed3ecf",
 	"type": "AnnotationPage",
 	"@context": "http://www.w3.org/ns/anno.jsonld",
 	"items": [
 		{
+			"id": "https://annotations.allmaps.org/maps/bc7b5c77831e200d",
 			"type": "Annotation",
 			"@context": [
 				"http://iiif.io/api/extension/georef/1/context.json",
 				"http://iiif.io/api/presentation/3/context.json"
 			],
-			"motivation": "georeferencing",
-			"target": {
-				"type": "SpecificResource",
-				"source": {
-					"id": "https://proxy.archieven.nl/iiif-image/184/0B0C8E3BB8FB415E960588345B2CAD44",
-					"type": "ImageService3",
-					"height": 7980,
-					"width": 6610
-				},
-				"selector": {
-					"type": "SvgSelector",
-					"value": "<svg width=\"6610\" height=\"7980\"><polygon points=\"0,0 6610,0 6610,7980 0,7980\" /></svg>"
-				}
-			},
-			"body": {
-				"type": "FeatureCollection",
-				"transformation": { "type": "thinPlateSpline" },
-				"features": [
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [0, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.397601758733386, 51.97124966890055] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [6610, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.441254735617566, 51.97160882219258] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [6610, 7980] },
-						"geometry": { "type": "Point", "coordinates": [4.441917351655849, 51.94015367446279] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [0, 7980] },
-						"geometry": { "type": "Point", "coordinates": [4.398294850748607, 51.93979490049013] }
-					}
-				]
-			}
-		},
-		{
-			"type": "Annotation",
-			"@context": [
-				"http://iiif.io/api/extension/georef/1/context.json",
-				"http://iiif.io/api/presentation/3/context.json"
-			],
-			"motivation": "georeferencing",
-			"target": {
-				"type": "SpecificResource",
-				"source": {
-					"id": "https://proxy.archieven.nl/iiif-image/184/BE4D137089164DE3869C7CA7FCCD6B63",
-					"type": "ImageService3",
-					"height": 7900,
-					"width": 6219
-				},
-				"selector": {
-					"type": "SvgSelector",
-					"value": "<svg width=\"6219\" height=\"7900\"><polygon points=\"0,0 6219,0 6219,7900 0,7900\" /></svg>"
-				}
-			},
-			"body": {
-				"type": "FeatureCollection",
-				"transformation": { "type": "thinPlateSpline" },
-				"features": [
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [0, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.397601758733386, 51.97124966890055] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [6219, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.441254735617566, 51.97160882219258] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [6219, 7900] },
-						"geometry": { "type": "Point", "coordinates": [4.441917351655849, 51.94015367446279] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [0, 7900] },
-						"geometry": { "type": "Point", "coordinates": [4.398294850748607, 51.93979490049013] }
-					}
-				]
-			}
-		},
-		{
-			"type": "Annotation",
-			"@context": [
-				"http://iiif.io/api/extension/georef/1/context.json",
-				"http://iiif.io/api/presentation/3/context.json"
-			],
-			"motivation": "georeferencing",
-			"target": {
-				"type": "SpecificResource",
-				"source": {
-					"id": "https://proxy.archieven.nl/iiif-image/184/5E1285BEB6ED4B51B7D8331F397CF750",
-					"type": "ImageService3",
-					"height": 8034,
-					"width": 6526
-				},
-				"selector": {
-					"type": "SvgSelector",
-					"value": "<svg width=\"6526\" height=\"8034\"><polygon points=\"0,0 6526,0 6526,8034 0,8034\" /></svg>"
-				}
-			},
-			"body": {
-				"type": "FeatureCollection",
-				"transformation": { "type": "thinPlateSpline" },
-				"features": [
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [0, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.441254735617566, 51.97160882219258] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [6526, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.484908494055437, 51.971951773201766] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [6526, 8034] },
-						"geometry": { "type": "Point", "coordinates": [4.485540636318282, 51.94049625819658] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [0, 8034] },
-						"geometry": { "type": "Point", "coordinates": [4.441917351655849, 51.94015367446279] }
-					}
-				]
-			}
-		},
-		{
-			"type": "Annotation",
-			"@context": [
-				"http://iiif.io/api/extension/georef/1/context.json",
-				"http://iiif.io/api/presentation/3/context.json"
-			],
-			"motivation": "georeferencing",
-			"target": {
-				"type": "SpecificResource",
-				"source": {
-					"id": "https://proxy.archieven.nl/iiif-image/184/B0510BB497A4403D8C08155E997A511D",
-					"type": "ImageService3",
-					"height": 7900,
-					"width": 6046
-				},
-				"selector": {
-					"type": "SvgSelector",
-					"value": "<svg width=\"6046\" height=\"7900\"><polygon points=\"0,0 6046,0 6046,7900 0,7900\" /></svg>"
-				}
-			},
-			"body": {
-				"type": "FeatureCollection",
-				"transformation": { "type": "thinPlateSpline" },
-				"features": [
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [0, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.441254735617566, 51.97160882219258] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [6046, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.484908494055437, 51.971951773201766] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [6046, 7900] },
-						"geometry": { "type": "Point", "coordinates": [4.485540636318282, 51.94049625819658] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [0, 7900] },
-						"geometry": { "type": "Point", "coordinates": [4.441917351655849, 51.94015367446279] }
-					}
-				]
-			}
-		},
-		{
-			"type": "Annotation",
-			"@context": [
-				"http://iiif.io/api/extension/georef/1/context.json",
-				"http://iiif.io/api/presentation/3/context.json"
-			],
-			"motivation": "georeferencing",
-			"target": {
-				"type": "SpecificResource",
-				"source": {
-					"id": "https://proxy.archieven.nl/iiif-image/184/7D27A37186AB436E83AEE2771091F597",
-					"type": "ImageService3",
-					"height": 8026,
-					"width": 6526
-				},
-				"selector": {
-					"type": "SvgSelector",
-					"value": "<svg width=\"6526\" height=\"8026\"><polygon points=\"0,0 6526,0 6526,8026 0,8026\" /></svg>"
-				}
-			},
-			"body": {
-				"type": "FeatureCollection",
-				"transformation": { "type": "thinPlateSpline" },
-				"features": [
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [0, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.484908494055437, 51.971951773201766] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [6526, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.528563061555093, 51.97227848668739] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [6526, 8026] },
-						"geometry": { "type": "Point", "coordinates": [4.529164730471181, 51.94082258926311] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [0, 8026] },
-						"geometry": { "type": "Point", "coordinates": [4.485540636318282, 51.94049625819658] }
-					}
-				]
-			}
-		},
-		{
-			"type": "Annotation",
-			"@context": [
-				"http://iiif.io/api/extension/georef/1/context.json",
-				"http://iiif.io/api/presentation/3/context.json"
-			],
-			"motivation": "georeferencing",
-			"target": {
-				"type": "SpecificResource",
-				"source": {
-					"id": "https://proxy.archieven.nl/iiif-image/184/D145C9F034814CC1A7E6329F0F6AC49A",
-					"type": "ImageService3",
-					"height": 7900,
-					"width": 6178
-				},
-				"selector": {
-					"type": "SvgSelector",
-					"value": "<svg width=\"6178\" height=\"7900\"><polygon points=\"0,0 6178,0 6178,7900 0,7900\" /></svg>"
-				}
-			},
-			"body": {
-				"type": "FeatureCollection",
-				"transformation": { "type": "thinPlateSpline" },
-				"features": [
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [0, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.484908494055437, 51.971951773201766] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [6178, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.528563061555093, 51.97227848668739] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [6178, 7900] },
-						"geometry": { "type": "Point", "coordinates": [4.529164730471181, 51.94082258926311] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [0, 7900] },
-						"geometry": { "type": "Point", "coordinates": [4.485540636318282, 51.94049625819658] }
-					}
-				]
-			}
-		},
-		{
-			"type": "Annotation",
-			"@context": [
-				"http://iiif.io/api/extension/georef/1/context.json",
-				"http://iiif.io/api/presentation/3/context.json"
-			],
-			"motivation": "georeferencing",
-			"target": {
-				"type": "SpecificResource",
-				"source": {
-					"id": "https://proxy.archieven.nl/iiif-image/184/526394B58BAE4E32AC21A006EF6EA85C",
-					"type": "ImageService3",
-					"height": 3953,
-					"width": 3054
-				},
-				"selector": {
-					"type": "SvgSelector",
-					"value": "<svg width=\"3054\" height=\"3953\"><polygon points=\"0,0 3054,0 3054,3953 0,3953\" /></svg>"
-				}
-			},
-			"body": {
-				"type": "FeatureCollection",
-				"transformation": { "type": "thinPlateSpline" },
-				"features": [
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [0, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.484908494055437, 51.971951773201766] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [3054, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.528563061555093, 51.97227848668739] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [3054, 3953] },
-						"geometry": { "type": "Point", "coordinates": [4.529164730471181, 51.94082258926311] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [0, 3953] },
-						"geometry": { "type": "Point", "coordinates": [4.485540636318282, 51.94049625819658] }
-					}
-				]
-			}
-		},
-		{
-			"type": "Annotation",
-			"@context": [
-				"http://iiif.io/api/extension/georef/1/context.json",
-				"http://iiif.io/api/presentation/3/context.json"
-			],
-			"motivation": "georeferencing",
-			"target": {
-				"type": "SpecificResource",
-				"source": {
-					"id": "https://proxy.archieven.nl/iiif-image/184/BA42683C714C4DACBCB7B9DE5BE97E61",
-					"type": "ImageService3",
-					"height": 7998,
-					"width": 6502
-				},
-				"selector": {
-					"type": "SvgSelector",
-					"value": "<svg width=\"6502\" height=\"7998\"><polygon points=\"0,0 6502,0 6502,7998 0,7998\" /></svg>"
-				}
-			},
-			"body": {
-				"type": "FeatureCollection",
-				"transformation": { "type": "thinPlateSpline" },
-				"features": [
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [0, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.528563061555093, 51.97227848668739] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [6502, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.572218372590571, 51.97258898003047] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [6502, 7998] },
-						"geometry": { "type": "Point", "coordinates": [4.572789565607348, 51.94113270170936] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [0, 7998] },
-						"geometry": { "type": "Point", "coordinates": [4.529164730471181, 51.94082258926311] }
-					}
-				]
-			}
-		},
-		{
-			"type": "Annotation",
-			"@context": [
-				"http://iiif.io/api/extension/georef/1/context.json",
-				"http://iiif.io/api/presentation/3/context.json"
-			],
-			"motivation": "georeferencing",
-			"target": {
-				"type": "SpecificResource",
-				"source": {
-					"id": "https://proxy.archieven.nl/iiif-image/184/FF8E791A6DD24D61AAEA47BBFF0D56D5",
-					"type": "ImageService3",
-					"height": 8014,
-					"width": 6490
-				},
-				"selector": {
-					"type": "SvgSelector",
-					"value": "<svg width=\"6490\" height=\"8014\"><polygon points=\"0,0 6490,0 6490,8014 0,8014\" /></svg>"
-				}
-			},
-			"body": {
-				"type": "FeatureCollection",
-				"transformation": { "type": "thinPlateSpline" },
-				"features": [
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [0, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.528563061555093, 51.97227848668739] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [6490, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.572218372590571, 51.97258898003047] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [6490, 8014] },
-						"geometry": { "type": "Point", "coordinates": [4.572789565607348, 51.94113270170936] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [0, 8014] },
-						"geometry": { "type": "Point", "coordinates": [4.529164730471181, 51.94082258926311] }
-					}
-				]
-			}
-		},
-		{
-			"type": "Annotation",
-			"@context": [
-				"http://iiif.io/api/extension/georef/1/context.json",
-				"http://iiif.io/api/presentation/3/context.json"
-			],
-			"motivation": "georeferencing",
-			"target": {
-				"type": "SpecificResource",
-				"source": {
-					"id": "https://proxy.archieven.nl/iiif-image/184/BEAB99DBC8064151B8E3E6DBC61FAE6D",
-					"type": "ImageService3",
-					"height": 7990,
-					"width": 6514
-				},
-				"selector": {
-					"type": "SvgSelector",
-					"value": "<svg width=\"6514\" height=\"7990\"><polygon points=\"0,0 6514,0 6514,7990 0,7990\" /></svg>"
-				}
-			},
-			"body": {
-				"type": "FeatureCollection",
-				"transformation": { "type": "thinPlateSpline" },
-				"features": [
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [0, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.311052380392915, 51.93902857355062] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [6514, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.354673186789997, 51.93941983074853] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [6514, 7990] },
-						"geometry": { "type": "Point", "coordinates": [4.3553956712206965, 51.9079652251722] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [0, 7990] },
-						"geometry": { "type": "Point", "coordinates": [4.311805373349288, 51.90757428645553] }
-					}
-				]
-			}
-		},
-		{
-			"type": "Annotation",
-			"@context": [
-				"http://iiif.io/api/extension/georef/1/context.json",
-				"http://iiif.io/api/presentation/3/context.json"
-			],
-			"motivation": "georeferencing",
-			"target": {
-				"type": "SpecificResource",
-				"source": {
-					"id": "https://proxy.archieven.nl/iiif-image/184/4D871230B029440C9F9648882D0E1299",
-					"type": "ImageService3",
-					"height": 8002,
-					"width": 6526
-				},
-				"selector": {
-					"type": "SvgSelector",
-					"value": "<svg width=\"6526\" height=\"8002\"><polygon points=\"0,0 6526,0 6526,8002 0,8002\" /></svg>"
-				}
-			},
-			"body": {
-				"type": "FeatureCollection",
-				"transformation": { "type": "thinPlateSpline" },
-				"features": [
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [0, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.354673186789997, 51.93941983074853] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [6526, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.398294850748607, 51.93979490049013] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [6526, 8002] },
-						"geometry": { "type": "Point", "coordinates": [4.398986824616449, 51.908339991143464] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [0, 8002] },
-						"geometry": { "type": "Point", "coordinates": [4.3553956712206965, 51.9079652251722] }
-					}
-				]
-			}
-		},
-		{
-			"type": "Annotation",
-			"@context": [
-				"http://iiif.io/api/extension/georef/1/context.json",
-				"http://iiif.io/api/presentation/3/context.json"
-			],
-			"motivation": "georeferencing",
-			"target": {
-				"type": "SpecificResource",
-				"source": {
-					"id": "https://proxy.archieven.nl/iiif-image/184/2E194DE133804A2297CE8F9A3AE15D4A",
-					"type": "ImageService3",
-					"height": 8026,
-					"width": 6610
-				},
-				"selector": {
-					"type": "SvgSelector",
-					"value": "<svg width=\"6610\" height=\"8026\"><polygon points=\"0,0 6610,0 6610,8026 0,8026\" /></svg>"
-				}
-			},
-			"body": {
-				"type": "FeatureCollection",
-				"transformation": { "type": "thinPlateSpline" },
-				"features": [
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [0, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.398294850748607, 51.93979490049013] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [6610, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.441917351655849, 51.94015367446279] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [6610, 8026] },
-						"geometry": { "type": "Point", "coordinates": [4.442578901561096, 51.90869838339343] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [0, 8026] },
-						"geometry": { "type": "Point", "coordinates": [4.398986824616449, 51.908339991143464] }
-					}
-				]
-			}
-		},
-		{
-			"type": "Annotation",
-			"@context": [
-				"http://iiif.io/api/extension/georef/1/context.json",
-				"http://iiif.io/api/presentation/3/context.json"
-			],
-			"motivation": "georeferencing",
-			"target": {
-				"type": "SpecificResource",
-				"source": {
-					"id": "https://proxy.archieven.nl/iiif-image/184/3483A5C328E5430880185610180DBE83",
-					"type": "ImageService3",
-					"height": 8014,
-					"width": 6538
-				},
-				"selector": {
-					"type": "SvgSelector",
-					"value": "<svg width=\"6538\" height=\"8014\"><polygon points=\"0,0 6538,0 6538,8014 0,8014\" /></svg>"
-				}
-			},
-			"body": {
-				"type": "FeatureCollection",
-				"transformation": { "type": "thinPlateSpline" },
-				"features": [
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [0, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.398294850748607, 51.93979490049013] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [6538, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.441917351655849, 51.94015367446279] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [6538, 8014] },
-						"geometry": { "type": "Point", "coordinates": [4.442578901561096, 51.90869838339343] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [0, 8014] },
-						"geometry": { "type": "Point", "coordinates": [4.398986824616449, 51.908339991143464] }
-					}
-				]
-			}
-		},
-		{
-			"type": "Annotation",
-			"@context": [
-				"http://iiif.io/api/extension/georef/1/context.json",
-				"http://iiif.io/api/presentation/3/context.json"
-			],
-			"motivation": "georeferencing",
-			"target": {
-				"type": "SpecificResource",
-				"source": {
-					"id": "https://proxy.archieven.nl/iiif-image/184/6C1D0ED38BB04672B07C3EEACE6B08D4",
-					"type": "ImageService3",
-					"height": 8002,
-					"width": 6514
-				},
-				"selector": {
-					"type": "SvgSelector",
-					"value": "<svg width=\"6514\" height=\"8002\"><polygon points=\"0,0 6514,0 6514,8002 0,8002\" /></svg>"
-				}
-			},
-			"body": {
-				"type": "FeatureCollection",
-				"transformation": { "type": "thinPlateSpline" },
-				"features": [
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [0, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.441917351655849, 51.94015367446279] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [6514, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.485540636318282, 51.94049625819658] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [6514, 8002] },
-						"geometry": { "type": "Point", "coordinates": [4.486171761614773, 51.909040600365266] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [0, 8002] },
-						"geometry": { "type": "Point", "coordinates": [4.442578901561096, 51.90869838339343] }
-					}
-				]
-			}
-		},
-		{
-			"type": "Annotation",
-			"@context": [
-				"http://iiif.io/api/extension/georef/1/context.json",
-				"http://iiif.io/api/presentation/3/context.json"
-			],
-			"motivation": "georeferencing",
-			"target": {
-				"type": "SpecificResource",
-				"source": {
-					"id": "https://proxy.archieven.nl/iiif-image/184/F291044171094875B3A062BE9A72292F",
-					"type": "ImageService3",
-					"height": 8026,
-					"width": 6514
-				},
-				"selector": {
-					"type": "SvgSelector",
-					"value": "<svg width=\"6514\" height=\"8026\"><polygon points=\"0,0 6514,0 6514,8026 0,8026\" /></svg>"
-				}
-			},
-			"body": {
-				"type": "FeatureCollection",
-				"transformation": { "type": "thinPlateSpline" },
-				"features": [
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [0, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.441917351655849, 51.94015367446279] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [6514, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.485540636318282, 51.94049625819658] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [6514, 8026] },
-						"geometry": { "type": "Point", "coordinates": [4.486171761614773, 51.909040600365266] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [0, 8026] },
-						"geometry": { "type": "Point", "coordinates": [4.442578901561096, 51.90869838339343] }
-					}
-				]
-			}
-		},
-		{
-			"type": "Annotation",
-			"@context": [
-				"http://iiif.io/api/extension/georef/1/context.json",
-				"http://iiif.io/api/presentation/3/context.json"
-			],
-			"motivation": "georeferencing",
-			"target": {
-				"type": "SpecificResource",
-				"source": {
-					"id": "https://proxy.archieven.nl/iiif-image/184/7F31A1A44BBF4677B8DE474D36900C71",
-					"type": "ImageService3",
-					"height": 8086,
-					"width": 6622
-				},
-				"selector": {
-					"type": "SvgSelector",
-					"value": "<svg width=\"6622\" height=\"8086\"><polygon points=\"0,0 6622,0 6622,8086 0,8086\" /></svg>"
-				}
-			},
-			"body": {
-				"type": "FeatureCollection",
-				"transformation": { "type": "thinPlateSpline" },
-				"features": [
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [0, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.441917351655849, 51.94015367446279] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [6622, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.485540636318282, 51.94049625819658] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [6622, 8086] },
-						"geometry": { "type": "Point", "coordinates": [4.486171761614773, 51.909040600365266] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [0, 8086] },
-						"geometry": { "type": "Point", "coordinates": [4.442578901561096, 51.90869838339343] }
-					}
-				]
-			}
-		},
-		{
-			"type": "Annotation",
-			"@context": [
-				"http://iiif.io/api/extension/georef/1/context.json",
-				"http://iiif.io/api/presentation/3/context.json"
-			],
-			"motivation": "georeferencing",
-			"target": {
-				"type": "SpecificResource",
-				"source": {
-					"id": "https://proxy.archieven.nl/iiif-image/184/EF11CAEAC04643C5A580961EDD8D9EF7",
-					"type": "ImageService3",
-					"height": 7990,
-					"width": 6502
-				},
-				"selector": {
-					"type": "SvgSelector",
-					"value": "<svg width=\"6502\" height=\"7990\"><polygon points=\"0,0 6502,0 6502,7990 0,7990\" /></svg>"
-				}
-			},
-			"body": {
-				"type": "FeatureCollection",
-				"transformation": { "type": "thinPlateSpline" },
-				"features": [
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [0, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.485540636318282, 51.94049625819658] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [6502, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.529164730471181, 51.94082258926311] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [6502, 7990] },
-						"geometry": { "type": "Point", "coordinates": [4.529765431630155, 51.90936654831907] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [0, 7990] },
-						"geometry": { "type": "Point", "coordinates": [4.486171761614773, 51.909040600365266] }
-					}
-				]
-			}
-		},
-		{
-			"type": "Annotation",
-			"@context": [
-				"http://iiif.io/api/extension/georef/1/context.json",
-				"http://iiif.io/api/presentation/3/context.json"
-			],
-			"motivation": "georeferencing",
-			"target": {
-				"type": "SpecificResource",
-				"source": {
-					"id": "https://proxy.archieven.nl/iiif-image/184/616C13ABA37E4FF2AB2B43B8F2AD8835",
-					"type": "ImageService3",
-					"height": 7990,
-					"width": 6502
-				},
-				"selector": {
-					"type": "SvgSelector",
-					"value": "<svg width=\"6502\" height=\"7990\"><polygon points=\"0,0 6502,0 6502,7990 0,7990\" /></svg>"
-				}
-			},
-			"body": {
-				"type": "FeatureCollection",
-				"transformation": { "type": "thinPlateSpline" },
-				"features": [
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [0, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.485540636318282, 51.94049625819658] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [6502, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.529164730471181, 51.94082258926311] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [6502, 7990] },
-						"geometry": { "type": "Point", "coordinates": [4.529765431630155, 51.90936654831907] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [0, 7990] },
-						"geometry": { "type": "Point", "coordinates": [4.486171761614773, 51.909040600365266] }
-					}
-				]
-			}
-		},
-		{
-			"type": "Annotation",
-			"@context": [
-				"http://iiif.io/api/extension/georef/1/context.json",
-				"http://iiif.io/api/presentation/3/context.json"
-			],
-			"motivation": "georeferencing",
-			"target": {
-				"type": "SpecificResource",
-				"source": {
-					"id": "https://proxy.archieven.nl/iiif-image/184/77E7F10E589440C1A06649246C5598FD",
-					"type": "ImageService3",
-					"height": 7990,
-					"width": 6526
-				},
-				"selector": {
-					"type": "SvgSelector",
-					"value": "<svg width=\"6526\" height=\"7990\"><polygon points=\"0,0 6526,0 6526,7990 0,7990\" /></svg>"
-				}
-			},
-			"body": {
-				"type": "FeatureCollection",
-				"transformation": { "type": "thinPlateSpline" },
-				"features": [
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [0, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.485540636318282, 51.94049625819658] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [6526, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.529164730471181, 51.94082258926311] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [6526, 7990] },
-						"geometry": { "type": "Point", "coordinates": [4.529765431630155, 51.90936654831907] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [0, 7990] },
-						"geometry": { "type": "Point", "coordinates": [4.486171761614773, 51.909040600365266] }
-					}
-				]
-			}
-		},
-		{
-			"type": "Annotation",
-			"@context": [
-				"http://iiif.io/api/extension/georef/1/context.json",
-				"http://iiif.io/api/presentation/3/context.json"
-			],
-			"motivation": "georeferencing",
-			"target": {
-				"type": "SpecificResource",
-				"source": {
-					"id": "https://proxy.archieven.nl/iiif-image/184/0AA159F6779D40F6AC2B3C78917D6ACE",
-					"type": "ImageService3",
-					"height": 8014,
-					"width": 6514
-				},
-				"selector": {
-					"type": "SvgSelector",
-					"value": "<svg width=\"6514\" height=\"8014\"><polygon points=\"0,0 6514,0 6514,8014 0,8014\" /></svg>"
-				}
-			},
-			"body": {
-				"type": "FeatureCollection",
-				"transformation": { "type": "thinPlateSpline" },
-				"features": [
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [0, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.529164730471181, 51.94082258926311] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [6514, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.572789565607348, 51.94113270170936] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [6514, 8014] },
-						"geometry": { "type": "Point", "coordinates": [4.573359840042846, 51.90967628040089] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [0, 8014] },
-						"geometry": { "type": "Point", "coordinates": [4.529765431630155, 51.90936654831907] }
-					}
-				]
-			}
-		},
-		{
-			"type": "Annotation",
-			"@context": [
-				"http://iiif.io/api/extension/georef/1/context.json",
-				"http://iiif.io/api/presentation/3/context.json"
-			],
-			"motivation": "georeferencing",
-			"target": {
-				"type": "SpecificResource",
-				"source": {
-					"id": "https://proxy.archieven.nl/iiif-image/184/2F17DE4B2E504A43B7A862E7FC76DFBE",
-					"type": "ImageService3",
-					"height": 8002,
-					"width": 6502
-				},
-				"selector": {
-					"type": "SvgSelector",
-					"value": "<svg width=\"6502\" height=\"8002\"><polygon points=\"0,0 6502,0 6502,8002 0,8002\" /></svg>"
-				}
-			},
-			"body": {
-				"type": "FeatureCollection",
-				"transformation": { "type": "thinPlateSpline" },
-				"features": [
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [0, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.529164730471181, 51.94082258926311] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [6502, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.572789565607348, 51.94113270170936] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [6502, 8002] },
-						"geometry": { "type": "Point", "coordinates": [4.573359840042846, 51.90967628040089] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [0, 8002] },
-						"geometry": { "type": "Point", "coordinates": [4.529765431630155, 51.90936654831907] }
-					}
-				]
-			}
-		},
-		{
-			"type": "Annotation",
-			"@context": [
-				"http://iiif.io/api/extension/georef/1/context.json",
-				"http://iiif.io/api/presentation/3/context.json"
-			],
-			"motivation": "georeferencing",
-			"target": {
-				"type": "SpecificResource",
-				"source": {
-					"id": "https://proxy.archieven.nl/iiif-image/184/4C3CC48BF7244AAAA539E5A3E20DFA0E",
-					"type": "ImageService3",
-					"height": 3953,
-					"width": 3259
-				},
-				"selector": {
-					"type": "SvgSelector",
-					"value": "<svg width=\"3259\" height=\"3953\"><polygon points=\"0,0 3259,0 3259,3953 0,3953\" /></svg>"
-				}
-			},
-			"body": {
-				"type": "FeatureCollection",
-				"transformation": { "type": "thinPlateSpline" },
-				"features": [
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [0, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.311805373349288, 51.90757428645553] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [3259, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.3553956712206965, 51.9079652251722] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [3259, 3953] },
-						"geometry": { "type": "Point", "coordinates": [4.356117166801454, 51.87651031928838] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [0, 3953] },
-						"geometry": { "type": "Point", "coordinates": [4.312557346776279, 51.87611978353403] }
-					}
-				]
-			}
-		},
-		{
-			"type": "Annotation",
-			"@context": [
-				"http://iiif.io/api/extension/georef/1/context.json",
-				"http://iiif.io/api/presentation/3/context.json"
-			],
-			"motivation": "georeferencing",
-			"target": {
-				"type": "SpecificResource",
-				"source": {
-					"id": "https://proxy.archieven.nl/iiif-image/184/92A178A580A445CFA07629E770C93D04",
-					"type": "ImageService3",
-					"height": 7978,
-					"width": 6526
-				},
-				"selector": {
-					"type": "SvgSelector",
-					"value": "<svg width=\"6526\" height=\"7978\"><polygon points=\"0,0 6526,0 6526,7978 0,7978\" /></svg>"
-				}
-			},
-			"body": {
-				"type": "FeatureCollection",
-				"transformation": { "type": "thinPlateSpline" },
-				"features": [
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [0, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.3553956712206965, 51.9079652251722] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [6526, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.398986824616449, 51.908339991143464] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [6526, 7978] },
-						"geometry": { "type": "Point", "coordinates": [4.399677840960927, 51.876884699797436] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [0, 7978] },
-						"geometry": { "type": "Point", "coordinates": [4.356117166801454, 51.87651031928838] }
-					}
-				]
-			}
-		},
-		{
-			"type": "Annotation",
-			"@context": [
-				"http://iiif.io/api/extension/georef/1/context.json",
-				"http://iiif.io/api/presentation/3/context.json"
-			],
-			"motivation": "georeferencing",
-			"target": {
-				"type": "SpecificResource",
-				"source": {
-					"id": "https://proxy.archieven.nl/iiif-image/184/D1345D35E17D4A0EB7F35EFB8A057753",
-					"type": "ImageService3",
-					"height": 8050,
-					"width": 6586
-				},
-				"selector": {
-					"type": "SvgSelector",
-					"value": "<svg width=\"6586\" height=\"8050\"><polygon points=\"0,0 6586,0 6586,8050 0,8050\" /></svg>"
-				}
-			},
-			"body": {
-				"type": "FeatureCollection",
-				"transformation": { "type": "thinPlateSpline" },
-				"features": [
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [0, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.3553956712206965, 51.9079652251722] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [6586, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.398986824616449, 51.908339991143464] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [6586, 8050] },
-						"geometry": { "type": "Point", "coordinates": [4.399677840960927, 51.876884699797436] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [0, 8050] },
-						"geometry": { "type": "Point", "coordinates": [4.356117166801454, 51.87651031928838] }
-					}
-				]
-			}
-		},
-		{
-			"type": "Annotation",
-			"@context": [
-				"http://iiif.io/api/extension/georef/1/context.json",
-				"http://iiif.io/api/presentation/3/context.json"
-			],
-			"motivation": "georeferencing",
-			"target": {
-				"type": "SpecificResource",
-				"source": {
-					"id": "https://proxy.archieven.nl/iiif-image/184/5F399B82E2834170A09C40F849F388E2",
-					"type": "ImageService3",
-					"height": 7978,
-					"width": 6538
-				},
-				"selector": {
-					"type": "SvgSelector",
-					"value": "<svg width=\"6538\" height=\"7978\"><polygon points=\"0,0 6538,0 6538,7978 0,7978\" /></svg>"
-				}
-			},
-			"body": {
-				"type": "FeatureCollection",
-				"transformation": { "type": "thinPlateSpline" },
-				"features": [
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [0, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.398986824616449, 51.908339991143464] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [6538, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.442578901561096, 51.90869838339343] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [6538, 7978] },
-						"geometry": { "type": "Point", "coordinates": [4.4432394357955225, 51.87724275880592] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [0, 7978] },
-						"geometry": { "type": "Point", "coordinates": [4.399677840960927, 51.876884699797436] }
-					}
-				]
-			}
-		},
-		{
-			"type": "Annotation",
-			"@context": [
-				"http://iiif.io/api/extension/georef/1/context.json",
-				"http://iiif.io/api/presentation/3/context.json"
-			],
-			"motivation": "georeferencing",
-			"target": {
-				"type": "SpecificResource",
-				"source": {
-					"id": "https://proxy.archieven.nl/iiif-image/184/B75C358496D9417FA088E61DAF74AB3E",
-					"type": "ImageService3",
-					"height": 8086,
-					"width": 6610
-				},
-				"selector": {
-					"type": "SvgSelector",
-					"value": "<svg width=\"6610\" height=\"8086\"><polygon points=\"0,0 6610,0 6610,8086 0,8086\" /></svg>"
-				}
-			},
-			"body": {
-				"type": "FeatureCollection",
-				"transformation": { "type": "thinPlateSpline" },
-				"features": [
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [0, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.398986824616449, 51.908339991143464] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [6610, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.442578901561096, 51.90869838339343] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [6610, 8086] },
-						"geometry": { "type": "Point", "coordinates": [4.4432394357955225, 51.87724275880592] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [0, 8086] },
-						"geometry": { "type": "Point", "coordinates": [4.399677840960927, 51.876884699797436] }
-					}
-				]
-			}
-		},
-		{
-			"type": "Annotation",
-			"@context": [
-				"http://iiif.io/api/extension/georef/1/context.json",
-				"http://iiif.io/api/presentation/3/context.json"
-			],
-			"motivation": "georeferencing",
-			"target": {
-				"type": "SpecificResource",
-				"source": {
-					"id": "https://proxy.archieven.nl/iiif-image/184/BEE436A743D1481EA923C1004FBCD7DE",
-					"type": "ImageService3",
-					"height": 7978,
-					"width": 6490
-				},
-				"selector": {
-					"type": "SvgSelector",
-					"value": "<svg width=\"6490\" height=\"7978\"><polygon points=\"0,0 6490,0 6490,7978 0,7978\" /></svg>"
-				}
-			},
-			"body": {
-				"type": "FeatureCollection",
-				"transformation": { "type": "thinPlateSpline" },
-				"features": [
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [0, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.442578901561096, 51.90869838339343] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [6490, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.486171761614773, 51.909040600365266] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [6490, 7978] },
-						"geometry": { "type": "Point", "coordinates": [4.486801813675766, 51.87758465884496] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [0, 7978] },
-						"geometry": { "type": "Point", "coordinates": [4.4432394357955225, 51.87724275880592] }
-					}
-				]
-			}
-		},
-		{
-			"type": "Annotation",
-			"@context": [
-				"http://iiif.io/api/extension/georef/1/context.json",
-				"http://iiif.io/api/presentation/3/context.json"
-			],
-			"motivation": "georeferencing",
-			"target": {
-				"type": "SpecificResource",
-				"source": {
-					"id": "https://proxy.archieven.nl/iiif-image/184/71C16F94D6A1412489F07FD2AD18E024",
-					"type": "ImageService3",
-					"height": 7990,
-					"width": 6490
-				},
-				"selector": {
-					"type": "SvgSelector",
-					"value": "<svg width=\"6490\" height=\"7990\"><polygon points=\"0,0 6490,0 6490,7990 0,7990\" /></svg>"
-				}
-			},
-			"body": {
-				"type": "FeatureCollection",
-				"transformation": { "type": "thinPlateSpline" },
-				"features": [
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [0, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.442578901561096, 51.90869838339343] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [6490, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.486171761614773, 51.909040600365266] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [6490, 7990] },
-						"geometry": { "type": "Point", "coordinates": [4.486801813675766, 51.87758465884496] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [0, 7990] },
-						"geometry": { "type": "Point", "coordinates": [4.4432394357955225, 51.87724275880592] }
-					}
-				]
-			}
-		},
-		{
-			"type": "Annotation",
-			"@context": [
-				"http://iiif.io/api/extension/georef/1/context.json",
-				"http://iiif.io/api/presentation/3/context.json"
-			],
-			"motivation": "georeferencing",
-			"target": {
-				"type": "SpecificResource",
-				"source": {
-					"id": "https://proxy.archieven.nl/iiif-image/184/1DD6087ACFF94820BBDDDD39EF6C8C0A",
-					"type": "ImageService3",
-					"height": 8182,
-					"width": 6610
-				},
-				"selector": {
-					"type": "SvgSelector",
-					"value": "<svg width=\"6610\" height=\"8182\"><polygon points=\"0,0 6610,0 6610,8182 0,8182\" /></svg>"
-				}
-			},
-			"body": {
-				"type": "FeatureCollection",
-				"transformation": { "type": "thinPlateSpline" },
-				"features": [
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [0, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.442578901561096, 51.90869838339343] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [6610, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.486171761614773, 51.909040600365266] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [6610, 8182] },
-						"geometry": { "type": "Point", "coordinates": [4.486801813675766, 51.87758465884496] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [0, 8182] },
-						"geometry": { "type": "Point", "coordinates": [4.4432394357955225, 51.87724275880592] }
-					}
-				]
-			}
-		},
-		{
-			"type": "Annotation",
-			"@context": [
-				"http://iiif.io/api/extension/georef/1/context.json",
-				"http://iiif.io/api/presentation/3/context.json"
-			],
+			"created": "2026-07-06T20:50:57.431Z",
+			"modified": "2026-07-06T20:50:57.431Z",
 			"motivation": "georeferencing",
 			"target": {
 				"type": "SpecificResource",
@@ -1378,46 +19,427 @@
 					"id": "https://proxy.archieven.nl/iiif-image/184/DD20BD58FDE443B793F87AF53EE78457",
 					"type": "ImageService3",
 					"height": 8002,
-					"width": 6514
+					"width": 6514,
+					"partOf": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/29",
+							"type": "Canvas",
+							"partOf": [
+								{
+									"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json",
+									"type": "Manifest",
+									"label": {
+										"en": ["Kaart van Rotterdam en omgeving; bestaande uit 24 bladen"]
+									}
+								}
+							]
+						}
+					]
 				},
 				"selector": {
 					"type": "SvgSelector",
-					"value": "<svg width=\"6514\" height=\"8002\"><polygon points=\"0,0 6514,0 6514,8002 0,8002\" /></svg>"
+					"value": "<svg width=\"6514\" height=\"8002\"><polygon points=\"177,214 186,7365 6325,7343 6313,192\" /></svg>"
 				}
 			},
 			"body": {
 				"type": "FeatureCollection",
-				"transformation": { "type": "thinPlateSpline" },
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
 				"features": [
 					{
 						"type": "Feature",
-						"properties": { "resourceCoords": [0, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.486171761614773, 51.909040600365266] }
+						"properties": {
+							"resourceCoords": [186, 7365]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.486801813675766, 51.87758465884496]
+						}
 					},
 					{
 						"type": "Feature",
-						"properties": { "resourceCoords": [6514, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.529765431630155, 51.90936654831907] }
+						"properties": {
+							"resourceCoords": [177, 215]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.486171761614772, 51.90904060036529]
+						}
 					},
 					{
 						"type": "Feature",
-						"properties": { "resourceCoords": [6514, 8002] },
-						"geometry": { "type": "Point", "coordinates": [4.530364977377569, 51.877910356544646] }
+						"properties": {
+							"resourceCoords": [6325, 7343]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.53036497737757, 51.877910356544646]
+						}
 					},
 					{
 						"type": "Feature",
-						"properties": { "resourceCoords": [0, 8002] },
-						"geometry": { "type": "Point", "coordinates": [4.486801813675766, 51.87758465884496] }
+						"properties": {
+							"resourceCoords": [6313, 192]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.529765431630155, 51.90936654831907]
+						}
 					}
-				]
+				],
+				"_allmaps": {
+					"id": "https://annotations.allmaps.org/maps/bc7b5c77831e200d",
+					"version": "https://annotations.allmaps.org/maps/bc7b5c77831e200d@d373f45d30b74cf2",
+					"image": {
+						"id": "https://annotations.allmaps.org/images/2b0523b5706ed561",
+						"version": "https://annotations.allmaps.org/images/2b0523b5706ed561@95a5f561b2e13e40",
+						"canvases": [
+							{
+								"id": "https://annotations.allmaps.org/canvases/b63655c03d810383",
+								"manifests": [
+									{
+										"id": "https://annotations.allmaps.org/manifests/7737cec074ed3ecf"
+									}
+								]
+							}
+						]
+					},
+					"scale": 2.044289,
+					"area": 10502097.62
+				}
 			}
 		},
 		{
+			"id": "https://annotations.allmaps.org/maps/a35e353a12241da9",
 			"type": "Annotation",
 			"@context": [
 				"http://iiif.io/api/extension/georef/1/context.json",
 				"http://iiif.io/api/presentation/3/context.json"
 			],
+			"created": "2026-07-06T20:44:17.146Z",
+			"modified": "2026-07-06T20:44:17.146Z",
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://proxy.archieven.nl/iiif-image/184/BEE436A743D1481EA923C1004FBCD7DE",
+					"type": "ImageService3",
+					"height": 7978,
+					"width": 6490,
+					"partOf": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/26",
+							"type": "Canvas",
+							"partOf": [
+								{
+									"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json",
+									"type": "Manifest",
+									"label": {
+										"en": ["Kaart van Rotterdam en omgeving; bestaande uit 24 bladen"]
+									}
+								}
+							]
+						}
+					]
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"6490\" height=\"7978\"><polygon points=\"181,195 187,7344 6325,7327 6318,177\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6318, 177]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.486171761614772, 51.90904060036529]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [187, 7344]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.4432394357955225, 51.87724275880593]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6325, 7327]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.486801813675766, 51.87758465884496]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [181, 195]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.442578901561096, 51.90869838339343]
+						}
+					}
+				],
+				"_allmaps": {
+					"id": "https://annotations.allmaps.org/maps/a35e353a12241da9",
+					"version": "https://annotations.allmaps.org/maps/a35e353a12241da9@ca512c9f1f128158",
+					"image": {
+						"id": "https://annotations.allmaps.org/images/33f0dd451774032e",
+						"version": "https://annotations.allmaps.org/images/33f0dd451774032e@22cbfea98a29ee48",
+						"canvases": [
+							{
+								"id": "https://annotations.allmaps.org/canvases/24759ccbbb871813",
+								"manifests": [
+									{
+										"id": "https://annotations.allmaps.org/manifests/7737cec074ed3ecf"
+									}
+								]
+							}
+						]
+					},
+					"scale": 2.044148,
+					"area": 10501311.54
+				}
+			}
+		},
+		{
+			"id": "https://annotations.allmaps.org/maps/539b8f714ffa9b01",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"created": "2026-07-06T20:44:14.901Z",
+			"modified": "2026-07-06T20:44:14.901Z",
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://proxy.archieven.nl/iiif-image/184/71C16F94D6A1412489F07FD2AD18E024",
+					"type": "ImageService3",
+					"height": 7990,
+					"width": 6490,
+					"partOf": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/27",
+							"type": "Canvas",
+							"partOf": [
+								{
+									"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json",
+									"type": "Manifest",
+									"label": {
+										"en": ["Kaart van Rotterdam en omgeving; bestaande uit 24 bladen"]
+									}
+								}
+							]
+						}
+					]
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"6490\" height=\"7990\"><polygon points=\"170,192 168,7339 6309,7326 6307,181\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6307, 181]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.486171761614772, 51.90904060036529]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [168, 7339]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.4432394357955225, 51.87724275880593]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6309, 7326]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.486801813675766, 51.87758465884496]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [170, 192]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.442578901561096, 51.90869838339343]
+						}
+					}
+				],
+				"_allmaps": {
+					"id": "https://annotations.allmaps.org/maps/539b8f714ffa9b01",
+					"version": "https://annotations.allmaps.org/maps/539b8f714ffa9b01@417159c9f8aedfd4",
+					"image": {
+						"id": "https://annotations.allmaps.org/images/64f32b32b398cd62",
+						"version": "https://annotations.allmaps.org/images/64f32b32b398cd62@e5be3036de708b31",
+						"canvases": [
+							{
+								"id": "https://annotations.allmaps.org/canvases/59a3287020509c83",
+								"manifests": [
+									{
+										"id": "https://annotations.allmaps.org/manifests/7737cec074ed3ecf"
+									}
+								]
+							}
+						]
+					},
+					"scale": 2.043895,
+					"area": 10501311.54
+				}
+			}
+		},
+		{
+			"id": "https://annotations.allmaps.org/maps/e8572d265296adf9",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"created": "2026-07-06T20:44:12.328Z",
+			"modified": "2026-07-06T20:44:12.328Z",
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://proxy.archieven.nl/iiif-image/184/1DD6087ACFF94820BBDDDD39EF6C8C0A",
+					"type": "ImageService3",
+					"height": 8182,
+					"width": 6610,
+					"partOf": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/28",
+							"type": "Canvas",
+							"partOf": [
+								{
+									"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json",
+									"type": "Manifest",
+									"label": {
+										"en": ["Kaart van Rotterdam en omgeving; bestaande uit 24 bladen"]
+									}
+								}
+							]
+						}
+					]
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"6610\" height=\"8182\"><polygon points=\"223,262 234,7413 6384,7393 6368,240\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [223, 262]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.442578901561096, 51.90869838339343]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6384, 7393]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.486801813675766, 51.87758465884496]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6368, 240]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.486171761614772, 51.90904060036529]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [234, 7413]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.4432394357955225, 51.87724275880593]
+						}
+					}
+				],
+				"_allmaps": {
+					"id": "https://annotations.allmaps.org/maps/e8572d265296adf9",
+					"version": "https://annotations.allmaps.org/maps/e8572d265296adf9@eae3607ddf934f61",
+					"image": {
+						"id": "https://annotations.allmaps.org/images/8198728dc598a7e9",
+						"version": "https://annotations.allmaps.org/images/8198728dc598a7e9@50cd1eb1c3bff6b5",
+						"canvases": [
+							{
+								"id": "https://annotations.allmaps.org/canvases/b71fb1da3b7cec8c",
+								"manifests": [
+									{
+										"id": "https://annotations.allmaps.org/manifests/7737cec074ed3ecf"
+									}
+								]
+							}
+						]
+					},
+					"scale": 2.046174,
+					"area": 10501311.54
+				}
+			}
+		},
+		{
+			"id": "https://annotations.allmaps.org/maps/18b3296bb838638c",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"created": "2026-07-06T20:44:06.352Z",
+			"modified": "2026-07-06T20:44:06.352Z",
 			"motivation": "georeferencing",
 			"target": {
 				"type": "SpecificResource",
@@ -1425,46 +447,106 @@
 					"id": "https://proxy.archieven.nl/iiif-image/184/25D1FEAF7D19439A9F88CD9C92EF38F3",
 					"type": "ImageService3",
 					"height": 8002,
-					"width": 6490
+					"width": 6490,
+					"partOf": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/30",
+							"type": "Canvas",
+							"partOf": [
+								{
+									"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json",
+									"type": "Manifest",
+									"label": {
+										"en": ["Kaart van Rotterdam en omgeving; bestaande uit 24 bladen"]
+									}
+								}
+							]
+						}
+					]
 				},
 				"selector": {
 					"type": "SvgSelector",
-					"value": "<svg width=\"6490\" height=\"8002\"><polygon points=\"0,0 6490,0 6490,8002 0,8002\" /></svg>"
+					"value": "<svg width=\"6490\" height=\"8002\"><polygon points=\"163,198 158,7345 6302,7334 6299,186\" /></svg>"
 				}
 			},
 			"body": {
 				"type": "FeatureCollection",
-				"transformation": { "type": "thinPlateSpline" },
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
 				"features": [
 					{
 						"type": "Feature",
-						"properties": { "resourceCoords": [0, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.486171761614773, 51.909040600365266] }
+						"properties": {
+							"resourceCoords": [158, 7345]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.486801813675766, 51.87758465884496]
+						}
 					},
 					{
 						"type": "Feature",
-						"properties": { "resourceCoords": [6490, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.529765431630155, 51.90936654831907] }
+						"properties": {
+							"resourceCoords": [6299, 186]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.529765431630155, 51.90936654831907]
+						}
 					},
 					{
 						"type": "Feature",
-						"properties": { "resourceCoords": [6490, 8002] },
-						"geometry": { "type": "Point", "coordinates": [4.530364977377569, 51.877910356544646] }
+						"properties": {
+							"resourceCoords": [6302, 7334]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.53036497737757, 51.877910356544646]
+						}
 					},
 					{
 						"type": "Feature",
-						"properties": { "resourceCoords": [0, 8002] },
-						"geometry": { "type": "Point", "coordinates": [4.486801813675766, 51.87758465884496] }
+						"properties": {
+							"resourceCoords": [163, 198]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.486171761614772, 51.90904060036529]
+						}
 					}
-				]
+				],
+				"_allmaps": {
+					"id": "https://annotations.allmaps.org/maps/18b3296bb838638c",
+					"version": "https://annotations.allmaps.org/maps/18b3296bb838638c@5051272663b1d526",
+					"image": {
+						"id": "https://annotations.allmaps.org/images/eb5d88e26db4d186",
+						"version": "https://annotations.allmaps.org/images/eb5d88e26db4d186@f652c54838ea9c52",
+						"canvases": [
+							{
+								"id": "https://annotations.allmaps.org/canvases/00d7268682c54761",
+								"manifests": [
+									{
+										"id": "https://annotations.allmaps.org/manifests/7737cec074ed3ecf"
+									}
+								]
+							}
+						]
+					},
+					"scale": 2.04427,
+					"area": 10501364.85
+				}
 			}
 		},
 		{
+			"id": "https://annotations.allmaps.org/maps/0252635c7146a555",
 			"type": "Annotation",
 			"@context": [
 				"http://iiif.io/api/extension/georef/1/context.json",
 				"http://iiif.io/api/presentation/3/context.json"
 			],
+			"created": "2026-07-06T20:44:03.301Z",
+			"modified": "2026-07-06T20:44:03.301Z",
 			"motivation": "georeferencing",
 			"target": {
 				"type": "SpecificResource",
@@ -1472,46 +554,106 @@
 					"id": "https://proxy.archieven.nl/iiif-image/184/ADA91A2EC6614190B489CC89C9635F5C",
 					"type": "ImageService3",
 					"height": 8026,
-					"width": 6562
+					"width": 6562,
+					"partOf": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/31",
+							"type": "Canvas",
+							"partOf": [
+								{
+									"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json",
+									"type": "Manifest",
+									"label": {
+										"en": ["Kaart van Rotterdam en omgeving; bestaande uit 24 bladen"]
+									}
+								}
+							]
+						}
+					]
 				},
 				"selector": {
 					"type": "SvgSelector",
-					"value": "<svg width=\"6562\" height=\"8026\"><polygon points=\"0,0 6562,0 6562,8026 0,8026\" /></svg>"
+					"value": "<svg width=\"6562\" height=\"8026\"><polygon points=\"213,225 197,7374 6346,7378 6355,223\" /></svg>"
 				}
 			},
 			"body": {
 				"type": "FeatureCollection",
-				"transformation": { "type": "thinPlateSpline" },
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
 				"features": [
 					{
 						"type": "Feature",
-						"properties": { "resourceCoords": [0, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.486171761614773, 51.909040600365266] }
+						"properties": {
+							"resourceCoords": [197, 7374]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.486801813675766, 51.87758465884496]
+						}
 					},
 					{
 						"type": "Feature",
-						"properties": { "resourceCoords": [6562, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.529765431630155, 51.90936654831907] }
+						"properties": {
+							"resourceCoords": [213, 225]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.486171761614772, 51.90904060036529]
+						}
 					},
 					{
 						"type": "Feature",
-						"properties": { "resourceCoords": [6562, 8026] },
-						"geometry": { "type": "Point", "coordinates": [4.530364977377569, 51.877910356544646] }
+						"properties": {
+							"resourceCoords": [6355, 223]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.529765431630155, 51.90936654831907]
+						}
 					},
 					{
 						"type": "Feature",
-						"properties": { "resourceCoords": [0, 8026] },
-						"geometry": { "type": "Point", "coordinates": [4.486801813675766, 51.87758465884496] }
+						"properties": {
+							"resourceCoords": [6346, 7378]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.53036497737757, 51.877910356544646]
+						}
 					}
-				]
+				],
+				"_allmaps": {
+					"id": "https://annotations.allmaps.org/maps/0252635c7146a555",
+					"version": "https://annotations.allmaps.org/maps/0252635c7146a555@93bf70cdba5afa2d",
+					"image": {
+						"id": "https://annotations.allmaps.org/images/31c3a0c87e555ffc",
+						"version": "https://annotations.allmaps.org/images/31c3a0c87e555ffc@e2d32af527367314",
+						"canvases": [
+							{
+								"id": "https://annotations.allmaps.org/canvases/24e07e3b4a18ba09",
+								"manifests": [
+									{
+										"id": "https://annotations.allmaps.org/manifests/7737cec074ed3ecf"
+									}
+								]
+							}
+						]
+					},
+					"scale": 2.04583,
+					"area": 10501364.85
+				}
 			}
 		},
 		{
+			"id": "https://annotations.allmaps.org/maps/1d3cfbfda2c92182",
 			"type": "Annotation",
 			"@context": [
 				"http://iiif.io/api/extension/georef/1/context.json",
 				"http://iiif.io/api/presentation/3/context.json"
 			],
+			"created": "2026-07-06T20:44:00.644Z",
+			"modified": "2026-07-06T20:44:00.644Z",
 			"motivation": "georeferencing",
 			"target": {
 				"type": "SpecificResource",
@@ -1519,46 +661,106 @@
 					"id": "https://proxy.archieven.nl/iiif-image/184/D8F4F2EA092C4CB0AB8A3DC704AC200F",
 					"type": "ImageService3",
 					"height": 8002,
-					"width": 6478
+					"width": 6478,
+					"partOf": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/32",
+							"type": "Canvas",
+							"partOf": [
+								{
+									"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json",
+									"type": "Manifest",
+									"label": {
+										"en": ["Kaart van Rotterdam en omgeving; bestaande uit 24 bladen"]
+									}
+								}
+							]
+						}
+					]
 				},
 				"selector": {
 					"type": "SvgSelector",
-					"value": "<svg width=\"6478\" height=\"8002\"><polygon points=\"0,0 6478,0 6478,8002 0,8002\" /></svg>"
+					"value": "<svg width=\"6478\" height=\"8002\"><polygon points=\"165,191 168,7345 6308,7328 6308,178\" /></svg>"
 				}
 			},
 			"body": {
 				"type": "FeatureCollection",
-				"transformation": { "type": "thinPlateSpline" },
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
 				"features": [
 					{
 						"type": "Feature",
-						"properties": { "resourceCoords": [0, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.529765431630155, 51.90936654831907] }
+						"properties": {
+							"resourceCoords": [6308, 178]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.573359840042845, 51.90967628040089]
+						}
 					},
 					{
 						"type": "Feature",
-						"properties": { "resourceCoords": [6478, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.573359840042846, 51.90967628040089] }
+						"properties": {
+							"resourceCoords": [6308, 7328]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.573928869129179, 51.878219873913494]
+						}
 					},
 					{
 						"type": "Feature",
-						"properties": { "resourceCoords": [6478, 8002] },
-						"geometry": { "type": "Point", "coordinates": [4.573928869129179, 51.87821987391352] }
+						"properties": {
+							"resourceCoords": [168, 7345]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.53036497737757, 51.877910356544646]
+						}
 					},
 					{
 						"type": "Feature",
-						"properties": { "resourceCoords": [0, 8002] },
-						"geometry": { "type": "Point", "coordinates": [4.530364977377569, 51.877910356544646] }
+						"properties": {
+							"resourceCoords": [165, 191]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.529765431630155, 51.90936654831907]
+						}
 					}
-				]
+				],
+				"_allmaps": {
+					"id": "https://annotations.allmaps.org/maps/1d3cfbfda2c92182",
+					"version": "https://annotations.allmaps.org/maps/1d3cfbfda2c92182@17755df5e4b28b04",
+					"image": {
+						"id": "https://annotations.allmaps.org/images/f34a1e4dc2cfa02c",
+						"version": "https://annotations.allmaps.org/images/f34a1e4dc2cfa02c@9939e62af99c7bd2",
+						"canvases": [
+							{
+								"id": "https://annotations.allmaps.org/canvases/820f7b9fb39d7c08",
+								"manifests": [
+									{
+										"id": "https://annotations.allmaps.org/manifests/7737cec074ed3ecf"
+									}
+								]
+							}
+						]
+					},
+					"scale": 2.045161,
+					"area": 10501396.99
+				}
 			}
 		},
 		{
+			"id": "https://annotations.allmaps.org/maps/fcef248d7b7affd3",
 			"type": "Annotation",
 			"@context": [
 				"http://iiif.io/api/extension/georef/1/context.json",
 				"http://iiif.io/api/presentation/3/context.json"
 			],
+			"created": "2026-07-06T20:43:57.647Z",
+			"modified": "2026-07-06T20:43:57.647Z",
 			"motivation": "georeferencing",
 			"target": {
 				"type": "SpecificResource",
@@ -1566,46 +768,106 @@
 					"id": "https://proxy.archieven.nl/iiif-image/184/2D358EF7F15D4DD69450689EC46C65AA",
 					"type": "ImageService3",
 					"height": 8038,
-					"width": 6598
+					"width": 6598,
+					"partOf": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/33",
+							"type": "Canvas",
+							"partOf": [
+								{
+									"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json",
+									"type": "Manifest",
+									"label": {
+										"en": ["Kaart van Rotterdam en omgeving; bestaande uit 24 bladen"]
+									}
+								}
+							]
+						}
+					]
 				},
 				"selector": {
 					"type": "SvgSelector",
-					"value": "<svg width=\"6598\" height=\"8038\"><polygon points=\"0,0 6598,0 6598,8038 0,8038\" /></svg>"
+					"value": "<svg width=\"6598\" height=\"8038\"><polygon points=\"223,204 224,7359 6364,7350 6367,196\" /></svg>"
 				}
 			},
 			"body": {
 				"type": "FeatureCollection",
-				"transformation": { "type": "thinPlateSpline" },
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
 				"features": [
 					{
 						"type": "Feature",
-						"properties": { "resourceCoords": [0, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.312557346776279, 51.87611978353403] }
+						"properties": {
+							"resourceCoords": [224, 7359]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.313308180934636, 51.84466511531956]
+						}
 					},
 					{
 						"type": "Feature",
-						"properties": { "resourceCoords": [6598, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.356117166801454, 51.87651031928838] }
+						"properties": {
+							"resourceCoords": [223, 204]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.312557346776279, 51.87611978353403]
+						}
 					},
 					{
 						"type": "Feature",
-						"properties": { "resourceCoords": [6598, 8038] },
-						"geometry": { "type": "Point", "coordinates": [4.356837569492037, 51.84505521323026] }
+						"properties": {
+							"resourceCoords": [6364, 7350]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.356837569492037, 51.84505521323026]
+						}
 					},
 					{
 						"type": "Feature",
-						"properties": { "resourceCoords": [0, 8038] },
-						"geometry": { "type": "Point", "coordinates": [4.313308180934636, 51.84466511531956] }
+						"properties": {
+							"resourceCoords": [6367, 196]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.356117166801455, 51.87651031928838]
+						}
 					}
-				]
+				],
+				"_allmaps": {
+					"id": "https://annotations.allmaps.org/maps/fcef248d7b7affd3",
+					"version": "https://annotations.allmaps.org/maps/fcef248d7b7affd3@58f50bd7c25f2ab6",
+					"image": {
+						"id": "https://annotations.allmaps.org/images/e212695d0cd396e2",
+						"version": "https://annotations.allmaps.org/images/e212695d0cd396e2@bec49148ebeb3ea4",
+						"canvases": [
+							{
+								"id": "https://annotations.allmaps.org/canvases/f6843f31b067978d",
+								"manifests": [
+									{
+										"id": "https://annotations.allmaps.org/manifests/7737cec074ed3ecf"
+									}
+								]
+							}
+						]
+					},
+					"scale": 2.045631,
+					"area": 10501089.08
+				}
 			}
 		},
 		{
+			"id": "https://annotations.allmaps.org/maps/e5db02bd70c6e31e",
 			"type": "Annotation",
 			"@context": [
 				"http://iiif.io/api/extension/georef/1/context.json",
 				"http://iiif.io/api/presentation/3/context.json"
 			],
+			"created": "2026-07-06T20:43:54.357Z",
+			"modified": "2026-07-06T20:43:54.357Z",
 			"motivation": "georeferencing",
 			"target": {
 				"type": "SpecificResource",
@@ -1613,46 +875,106 @@
 					"id": "https://proxy.archieven.nl/iiif-image/184/40D0472C99224792A9A08CD683B1B64F",
 					"type": "ImageService3",
 					"height": 7990,
-					"width": 6490
+					"width": 6490,
+					"partOf": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/34",
+							"type": "Canvas",
+							"partOf": [
+								{
+									"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json",
+									"type": "Manifest",
+									"label": {
+										"en": ["Kaart van Rotterdam en omgeving; bestaande uit 24 bladen"]
+									}
+								}
+							]
+						}
+					]
 				},
 				"selector": {
 					"type": "SvgSelector",
-					"value": "<svg width=\"6490\" height=\"7990\"><polygon points=\"0,0 6490,0 6490,7990 0,7990\" /></svg>"
+					"value": "<svg width=\"6490\" height=\"7990\"><polygon points=\"156,190 163,7342 6314,7328 6307,172\" /></svg>"
 				}
 			},
 			"body": {
 				"type": "FeatureCollection",
-				"transformation": { "type": "thinPlateSpline" },
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
 				"features": [
 					{
 						"type": "Feature",
-						"properties": { "resourceCoords": [0, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.312557346776279, 51.87611978353403] }
+						"properties": {
+							"resourceCoords": [156, 190]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.312557346776279, 51.87611978353403]
+						}
 					},
 					{
 						"type": "Feature",
-						"properties": { "resourceCoords": [6490, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.356117166801454, 51.87651031928838] }
+						"properties": {
+							"resourceCoords": [6314, 7328]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.356837569492037, 51.84505521323026]
+						}
 					},
 					{
 						"type": "Feature",
-						"properties": { "resourceCoords": [6490, 7990] },
-						"geometry": { "type": "Point", "coordinates": [4.356837569492037, 51.84505521323026] }
+						"properties": {
+							"resourceCoords": [163, 7342]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.313308180934636, 51.84466511531956]
+						}
 					},
 					{
 						"type": "Feature",
-						"properties": { "resourceCoords": [0, 7990] },
-						"geometry": { "type": "Point", "coordinates": [4.313308180934636, 51.84466511531956] }
+						"properties": {
+							"resourceCoords": [6307, 172]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.356117166801455, 51.87651031928838]
+						}
 					}
-				]
+				],
+				"_allmaps": {
+					"id": "https://annotations.allmaps.org/maps/e5db02bd70c6e31e",
+					"version": "https://annotations.allmaps.org/maps/e5db02bd70c6e31e@989474e18332cd1e",
+					"image": {
+						"id": "https://annotations.allmaps.org/images/cece01b390d26aed",
+						"version": "https://annotations.allmaps.org/images/cece01b390d26aed@05811f4a5f122e3e",
+						"canvases": [
+							{
+								"id": "https://annotations.allmaps.org/canvases/63b764ec4564aaf9",
+								"manifests": [
+									{
+										"id": "https://annotations.allmaps.org/manifests/7737cec074ed3ecf"
+									}
+								]
+							}
+						]
+					},
+					"scale": 2.047061,
+					"area": 10501089.08
+				}
 			}
 		},
 		{
+			"id": "https://annotations.allmaps.org/maps/65dc32b3c554294d",
 			"type": "Annotation",
 			"@context": [
 				"http://iiif.io/api/extension/georef/1/context.json",
 				"http://iiif.io/api/presentation/3/context.json"
 			],
+			"created": "2026-07-06T20:43:51.666Z",
+			"modified": "2026-07-06T20:43:51.666Z",
 			"motivation": "georeferencing",
 			"target": {
 				"type": "SpecificResource",
@@ -1660,187 +982,106 @@
 					"id": "https://proxy.archieven.nl/iiif-image/184/D21066FCEA644DE4A3FB0A742551EC43",
 					"type": "ImageService3",
 					"height": 7990,
-					"width": 6598
+					"width": 6598,
+					"partOf": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/35",
+							"type": "Canvas",
+							"partOf": [
+								{
+									"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json",
+									"type": "Manifest",
+									"label": {
+										"en": ["Kaart van Rotterdam en omgeving; bestaande uit 24 bladen"]
+									}
+								}
+							]
+						}
+					]
 				},
 				"selector": {
 					"type": "SvgSelector",
-					"value": "<svg width=\"6598\" height=\"7990\"><polygon points=\"0,0 6598,0 6598,7990 0,7990\" /></svg>"
+					"value": "<svg width=\"6598\" height=\"7990\"><polygon points=\"240,201 235,7353 6378,7347 6376,187\" /></svg>"
 				}
 			},
 			"body": {
 				"type": "FeatureCollection",
-				"transformation": { "type": "thinPlateSpline" },
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
 				"features": [
 					{
 						"type": "Feature",
-						"properties": { "resourceCoords": [0, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.356117166801454, 51.87651031928838] }
+						"properties": {
+							"resourceCoords": [235, 7353]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.356837569492037, 51.84505521323026]
+						}
 					},
 					{
 						"type": "Feature",
-						"properties": { "resourceCoords": [6598, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.399677840960927, 51.876884699797436] }
+						"properties": {
+							"resourceCoords": [6376, 187]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.399677840960927, 51.876884699797436]
+						}
 					},
 					{
 						"type": "Feature",
-						"properties": { "resourceCoords": [6598, 7990] },
-						"geometry": { "type": "Point", "coordinates": [4.400367811034999, 51.84542916951671] }
+						"properties": {
+							"resourceCoords": [240, 201]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.356117166801455, 51.87651031928838]
+						}
 					},
 					{
 						"type": "Feature",
-						"properties": { "resourceCoords": [0, 7990] },
-						"geometry": { "type": "Point", "coordinates": [4.356837569492037, 51.84505521323026] }
+						"properties": {
+							"resourceCoords": [6378, 7347]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.400367811035, 51.84542916951671]
+						}
 					}
-				]
+				],
+				"_allmaps": {
+					"id": "https://annotations.allmaps.org/maps/65dc32b3c554294d",
+					"version": "https://annotations.allmaps.org/maps/65dc32b3c554294d@3284d971c3a27fec",
+					"image": {
+						"id": "https://annotations.allmaps.org/images/ea2cb8b7fc1f2918",
+						"version": "https://annotations.allmaps.org/images/ea2cb8b7fc1f2918@1c7ff68028dacb74",
+						"canvases": [
+							{
+								"id": "https://annotations.allmaps.org/canvases/01262477ed947f59",
+								"manifests": [
+									{
+										"id": "https://annotations.allmaps.org/manifests/7737cec074ed3ecf"
+									}
+								]
+							}
+						]
+					},
+					"scale": 2.045421,
+					"area": 10501172.1
+				}
 			}
 		},
 		{
+			"id": "https://annotations.allmaps.org/maps/23951349f6b983e2",
 			"type": "Annotation",
 			"@context": [
 				"http://iiif.io/api/extension/georef/1/context.json",
 				"http://iiif.io/api/presentation/3/context.json"
 			],
-			"motivation": "georeferencing",
-			"target": {
-				"type": "SpecificResource",
-				"source": {
-					"id": "https://proxy.archieven.nl/iiif-image/184/B77C1D1EAEE54DCF927B57AA50367D72",
-					"type": "ImageService3",
-					"height": 8014,
-					"width": 6502
-				},
-				"selector": {
-					"type": "SvgSelector",
-					"value": "<svg width=\"6502\" height=\"8014\"><polygon points=\"0,0 6502,0 6502,8014 0,8014\" /></svg>"
-				}
-			},
-			"body": {
-				"type": "FeatureCollection",
-				"transformation": { "type": "thinPlateSpline" },
-				"features": [
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [0, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.356117166801454, 51.87651031928838] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [6502, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.399677840960927, 51.876884699797436] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [6502, 8014] },
-						"geometry": { "type": "Point", "coordinates": [4.400367811034999, 51.84542916951671] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [0, 8014] },
-						"geometry": { "type": "Point", "coordinates": [4.356837569492037, 51.84505521323026] }
-					}
-				]
-			}
-		},
-		{
-			"type": "Annotation",
-			"@context": [
-				"http://iiif.io/api/extension/georef/1/context.json",
-				"http://iiif.io/api/presentation/3/context.json"
-			],
-			"motivation": "georeferencing",
-			"target": {
-				"type": "SpecificResource",
-				"source": {
-					"id": "https://proxy.archieven.nl/iiif-image/184/E49358CF478342E0AD6FC2382B68926A",
-					"type": "ImageService3",
-					"height": 7990,
-					"width": 6610
-				},
-				"selector": {
-					"type": "SvgSelector",
-					"value": "<svg width=\"6610\" height=\"7990\"><polygon points=\"0,0 6610,0 6610,7990 0,7990\" /></svg>"
-				}
-			},
-			"body": {
-				"type": "FeatureCollection",
-				"transformation": { "type": "thinPlateSpline" },
-				"features": [
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [0, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.399677840960927, 51.876884699797436] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [6610, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.4432394357955225, 51.87724275880592] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [6610, 7990] },
-						"geometry": { "type": "Point", "coordinates": [4.443898926201432, 51.84578691571713] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [0, 7990] },
-						"geometry": { "type": "Point", "coordinates": [4.400367811034999, 51.84542916951671] }
-					}
-				]
-			}
-		},
-		{
-			"type": "Annotation",
-			"@context": [
-				"http://iiif.io/api/extension/georef/1/context.json",
-				"http://iiif.io/api/presentation/3/context.json"
-			],
-			"motivation": "georeferencing",
-			"target": {
-				"type": "SpecificResource",
-				"source": {
-					"id": "https://proxy.archieven.nl/iiif-image/184/C7BF982CAB5A40019A8F15AC2776993A",
-					"type": "ImageService3",
-					"height": 8040,
-					"width": 6502
-				},
-				"selector": {
-					"type": "SvgSelector",
-					"value": "<svg width=\"6502\" height=\"8040\"><polygon points=\"0,0 6502,0 6502,8040 0,8040\" /></svg>"
-				}
-			},
-			"body": {
-				"type": "FeatureCollection",
-				"transformation": { "type": "thinPlateSpline" },
-				"features": [
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [0, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.4432394357955225, 51.87724275880592] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [6502, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.486801813675766, 51.87758465884496] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [6502, 8040] },
-						"geometry": { "type": "Point", "coordinates": [4.48743082248541, 51.846128517732744] }
-					},
-					{
-						"type": "Feature",
-						"properties": { "resourceCoords": [0, 8040] },
-						"geometry": { "type": "Point", "coordinates": [4.443898926201432, 51.84578691571713] }
-					}
-				]
-			}
-		},
-		{
-			"type": "Annotation",
-			"@context": [
-				"http://iiif.io/api/extension/georef/1/context.json",
-				"http://iiif.io/api/presentation/3/context.json"
-			],
+			"created": "2026-07-06T20:43:42.755Z",
+			"modified": "2026-07-06T20:43:42.755Z",
 			"motivation": "georeferencing",
 			"target": {
 				"type": "SpecificResource",
@@ -1848,46 +1089,106 @@
 					"id": "https://proxy.archieven.nl/iiif-image/184/EB148CC519834CD3BC1F20D9C527D096",
 					"type": "ImageService3",
 					"height": 8004,
-					"width": 6610
+					"width": 6610,
+					"partOf": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/39",
+							"type": "Canvas",
+							"partOf": [
+								{
+									"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json",
+									"type": "Manifest",
+									"label": {
+										"en": ["Kaart van Rotterdam en omgeving; bestaande uit 24 bladen"]
+									}
+								}
+							]
+						}
+					]
 				},
 				"selector": {
 					"type": "SvgSelector",
-					"value": "<svg width=\"6610\" height=\"8004\"><polygon points=\"0,0 6610,0 6610,8004 0,8004\" /></svg>"
+					"value": "<svg width=\"6610\" height=\"8004\"><polygon points=\"220,201 212,7360 6352,7350 6358,198\" /></svg>"
 				}
 			},
 			"body": {
 				"type": "FeatureCollection",
-				"transformation": { "type": "thinPlateSpline" },
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
 				"features": [
 					{
 						"type": "Feature",
-						"properties": { "resourceCoords": [0, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.486801813675766, 51.87758465884496] }
+						"properties": {
+							"resourceCoords": [6358, 198]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.53036497737757, 51.877910356544646]
+						}
 					},
 					{
 						"type": "Feature",
-						"properties": { "resourceCoords": [6610, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.530364977377569, 51.877910356544646] }
+						"properties": {
+							"resourceCoords": [220, 201]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.486801813675766, 51.87758465884496]
+						}
 					},
 					{
 						"type": "Feature",
-						"properties": { "resourceCoords": [6610, 8004] },
-						"geometry": { "type": "Point", "coordinates": [4.530963462248405, 51.84645403050987] }
+						"properties": {
+							"resourceCoords": [6352, 7350]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.530963462248405, 51.8464540305099]
+						}
 					},
 					{
 						"type": "Feature",
-						"properties": { "resourceCoords": [0, 8004] },
-						"geometry": { "type": "Point", "coordinates": [4.48743082248541, 51.846128517732744] }
+						"properties": {
+							"resourceCoords": [212, 7360]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.48743082248541, 51.846128517732744]
+						}
 					}
-				]
+				],
+				"_allmaps": {
+					"id": "https://annotations.allmaps.org/maps/23951349f6b983e2",
+					"version": "https://annotations.allmaps.org/maps/23951349f6b983e2@8f69882a4363e4c5",
+					"image": {
+						"id": "https://annotations.allmaps.org/images/a71bf98f7800a278",
+						"version": "https://annotations.allmaps.org/images/a71bf98f7800a278@56193695de06a21c",
+						"canvases": [
+							{
+								"id": "https://annotations.allmaps.org/canvases/d8f73f0df6163528",
+								"manifests": [
+									{
+										"id": "https://annotations.allmaps.org/manifests/7737cec074ed3ecf"
+									}
+								]
+							}
+						]
+					},
+					"scale": 2.04525,
+					"area": 10501333.71
+				}
 			}
 		},
 		{
+			"id": "https://annotations.allmaps.org/maps/c319025a6185f045",
 			"type": "Annotation",
 			"@context": [
 				"http://iiif.io/api/extension/georef/1/context.json",
 				"http://iiif.io/api/presentation/3/context.json"
 			],
+			"created": "2026-07-06T20:43:40.143Z",
+			"modified": "2026-07-06T20:43:40.143Z",
 			"motivation": "georeferencing",
 			"target": {
 				"type": "SpecificResource",
@@ -1895,46 +1196,106 @@
 					"id": "https://proxy.archieven.nl/iiif-image/184/460436E453494BFDBF8BC174A8AF9F53",
 					"type": "ImageService3",
 					"height": 7900,
-					"width": 6173
+					"width": 6173,
+					"partOf": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/40",
+							"type": "Canvas",
+							"partOf": [
+								{
+									"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json",
+									"type": "Manifest",
+									"label": {
+										"en": ["Kaart van Rotterdam en omgeving; bestaande uit 24 bladen"]
+									}
+								}
+							]
+						}
+					]
 				},
 				"selector": {
 					"type": "SvgSelector",
-					"value": "<svg width=\"6173\" height=\"7900\"><polygon points=\"0,0 6173,0 6173,7900 0,7900\" /></svg>"
+					"value": "<svg width=\"6173\" height=\"7900\"><polygon points=\"181,292 176,7061 5989,7054 5992,283\" /></svg>"
 				}
 			},
 			"body": {
 				"type": "FeatureCollection",
-				"transformation": { "type": "thinPlateSpline" },
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
 				"features": [
 					{
 						"type": "Feature",
-						"properties": { "resourceCoords": [0, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.530364977377569, 51.877910356544646] }
+						"properties": {
+							"resourceCoords": [176, 7061]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.530963462248405, 51.8464540305099]
+						}
 					},
 					{
 						"type": "Feature",
-						"properties": { "resourceCoords": [6173, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.573928869129179, 51.87821987391352] }
+						"properties": {
+							"resourceCoords": [5989, 7054]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.57449681137266, 51.84676341742383]
+						}
 					},
 					{
 						"type": "Feature",
-						"properties": { "resourceCoords": [6173, 7900] },
-						"geometry": { "type": "Point", "coordinates": [4.57449681137266, 51.84676341742383] }
+						"properties": {
+							"resourceCoords": [181, 292]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.53036497737757, 51.877910356544646]
+						}
 					},
 					{
 						"type": "Feature",
-						"properties": { "resourceCoords": [0, 7900] },
-						"geometry": { "type": "Point", "coordinates": [4.530963462248405, 51.84645403050987] }
+						"properties": {
+							"resourceCoords": [5992, 283]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.573928869129179, 51.878219873913494]
+						}
 					}
-				]
+				],
+				"_allmaps": {
+					"id": "https://annotations.allmaps.org/maps/c319025a6185f045",
+					"version": "https://annotations.allmaps.org/maps/c319025a6185f045@018dd467be6e15a6",
+					"image": {
+						"id": "https://annotations.allmaps.org/images/5ce8c3e5036140ea",
+						"version": "https://annotations.allmaps.org/images/5ce8c3e5036140ea@e0b9e18f7803c14e",
+						"canvases": [
+							{
+								"id": "https://annotations.allmaps.org/canvases/5425d9d95fe2f115",
+								"manifests": [
+									{
+										"id": "https://annotations.allmaps.org/manifests/7737cec074ed3ecf"
+									}
+								]
+							}
+						]
+					},
+					"scale": 1.935685,
+					"area": 10501337.86
+				}
 			}
 		},
 		{
+			"id": "https://annotations.allmaps.org/maps/f4d12f20340ce1a2",
 			"type": "Annotation",
 			"@context": [
 				"http://iiif.io/api/extension/georef/1/context.json",
 				"http://iiif.io/api/presentation/3/context.json"
 			],
+			"created": "2026-07-06T20:43:37.567Z",
+			"modified": "2026-07-06T20:43:37.567Z",
 			"motivation": "georeferencing",
 			"target": {
 				"type": "SpecificResource",
@@ -1942,38 +1303,3210 @@
 					"id": "https://proxy.archieven.nl/iiif-image/184/CD08360AFE7649589A3D53602DAD9542",
 					"type": "ImageService3",
 					"height": 8076,
-					"width": 6598
+					"width": 6598,
+					"partOf": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/41",
+							"type": "Canvas",
+							"partOf": [
+								{
+									"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json",
+									"type": "Manifest",
+									"label": {
+										"en": ["Kaart van Rotterdam en omgeving; bestaande uit 24 bladen"]
+									}
+								}
+							]
+						}
+					]
 				},
 				"selector": {
 					"type": "SvgSelector",
-					"value": "<svg width=\"6598\" height=\"8076\"><polygon points=\"0,0 6598,0 6598,8076 0,8076\" /></svg>"
+					"value": "<svg width=\"6598\" height=\"8076\"><polygon points=\"243,231 236,7381 6382,7373 6385,223\" /></svg>"
 				}
 			},
 			"body": {
 				"type": "FeatureCollection",
-				"transformation": { "type": "thinPlateSpline" },
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
 				"features": [
 					{
 						"type": "Feature",
-						"properties": { "resourceCoords": [0, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.530364977377569, 51.877910356544646] }
+						"properties": {
+							"resourceCoords": [236, 7381]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.530963462248405, 51.8464540305099]
+						}
 					},
 					{
 						"type": "Feature",
-						"properties": { "resourceCoords": [6598, 0] },
-						"geometry": { "type": "Point", "coordinates": [4.573928869129179, 51.87821987391352] }
+						"properties": {
+							"resourceCoords": [6385, 223]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.573928869129179, 51.878219873913494]
+						}
 					},
 					{
 						"type": "Feature",
-						"properties": { "resourceCoords": [6598, 8076] },
-						"geometry": { "type": "Point", "coordinates": [4.57449681137266, 51.84676341742383] }
+						"properties": {
+							"resourceCoords": [243, 231]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.53036497737757, 51.877910356544646]
+						}
 					},
 					{
 						"type": "Feature",
-						"properties": { "resourceCoords": [0, 8076] },
-						"geometry": { "type": "Point", "coordinates": [4.530963462248405, 51.84645403050987] }
+						"properties": {
+							"resourceCoords": [6382, 7373]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.57449681137266, 51.84676341742383]
+						}
 					}
-				]
+				],
+				"_allmaps": {
+					"id": "https://annotations.allmaps.org/maps/f4d12f20340ce1a2",
+					"version": "https://annotations.allmaps.org/maps/f4d12f20340ce1a2@7d4f2db2bac5c8e6",
+					"image": {
+						"id": "https://annotations.allmaps.org/images/85d7965cd9103463",
+						"version": "https://annotations.allmaps.org/images/85d7965cd9103463@268419b2915b8cce",
+						"canvases": [
+							{
+								"id": "https://annotations.allmaps.org/canvases/370218e59798dca8",
+								"manifests": [
+									{
+										"id": "https://annotations.allmaps.org/manifests/7737cec074ed3ecf"
+									}
+								]
+							}
+						]
+					},
+					"scale": 2.045296,
+					"area": 10501337.86
+				}
+			}
+		},
+		{
+			"id": "https://annotations.allmaps.org/maps/a878e68f40fd57e1",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"created": "2026-07-06T20:41:42.493Z",
+			"modified": "2026-07-06T20:41:42.493Z",
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://proxy.archieven.nl/iiif-image/184/C7BF982CAB5A40019A8F15AC2776993A",
+					"type": "ImageService3",
+					"height": 8040,
+					"width": 6502,
+					"partOf": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/38",
+							"type": "Canvas",
+							"partOf": [
+								{
+									"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json",
+									"type": "Manifest",
+									"label": {
+										"en": ["Kaart van Rotterdam en omgeving; bestaande uit 24 bladen"]
+									}
+								}
+							]
+						}
+					]
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"6502\" height=\"8040\"><polygon points=\"169,210 178,7363 6323,7344 6314,189\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6314, 189]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.486801813675766, 51.87758465884496]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [169, 210]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.4432394357955225, 51.87724275880593]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6323, 7344]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.48743082248541, 51.846128517732744]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [178, 7363]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.443898926201432, 51.84578691571713]
+						}
+					}
+				],
+				"_allmaps": {
+					"id": "https://annotations.allmaps.org/maps/a878e68f40fd57e1",
+					"version": "https://annotations.allmaps.org/maps/a878e68f40fd57e1@7680e10a2d9893c8",
+					"image": {
+						"id": "https://annotations.allmaps.org/images/d6c687fd0a4f0d6a",
+						"version": "https://annotations.allmaps.org/images/d6c687fd0a4f0d6a@5c0a2e3f583f014b",
+						"canvases": [
+							{
+								"id": "https://annotations.allmaps.org/canvases/e77f507b1a9f8e10",
+								"manifests": [
+									{
+										"id": "https://annotations.allmaps.org/manifests/7737cec074ed3ecf"
+									}
+								]
+							}
+						]
+					},
+					"scale": 2.046043,
+					"area": 10501301.69
+				}
+			}
+		},
+		{
+			"id": "https://annotations.allmaps.org/maps/861b48c2594a94a1",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"created": "2026-07-06T20:40:54.298Z",
+			"modified": "2026-07-06T20:40:54.298Z",
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://proxy.archieven.nl/iiif-image/184/E49358CF478342E0AD6FC2382B68926A",
+					"type": "ImageService3",
+					"height": 7990,
+					"width": 6610,
+					"partOf": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/37",
+							"type": "Canvas",
+							"partOf": [
+								{
+									"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json",
+									"type": "Manifest",
+									"label": {
+										"en": ["Kaart van Rotterdam en omgeving; bestaande uit 24 bladen"]
+									}
+								}
+							]
+						}
+					]
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"6610\" height=\"7990\"><polygon points=\"236,198 217,7343 6362,7344 6378,201\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6362, 7344]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.443898926201432, 51.84578691571713]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6378, 201]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.4432394357955225, 51.87724275880593]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [236, 198]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.399677840960927, 51.876884699797436]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [217, 7343]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.400367811035, 51.84542916951671]
+						}
+					}
+				],
+				"_allmaps": {
+					"id": "https://annotations.allmaps.org/maps/861b48c2594a94a1",
+					"version": "https://annotations.allmaps.org/maps/861b48c2594a94a1@1f72d119605af618",
+					"image": {
+						"id": "https://annotations.allmaps.org/images/32ebb00fc535ad4b",
+						"version": "https://annotations.allmaps.org/images/32ebb00fc535ad4b@eb40722d0eb56df4",
+						"canvases": [
+							{
+								"id": "https://annotations.allmaps.org/canvases/a8eee6acb35fff5b",
+								"manifests": [
+									{
+										"id": "https://annotations.allmaps.org/manifests/7737cec074ed3ecf"
+									}
+								]
+							}
+						]
+					},
+					"scale": 2.044364,
+					"area": 10501255.38
+				}
+			}
+		},
+		{
+			"id": "https://annotations.allmaps.org/maps/3b525766fdd38e77",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"created": "2026-07-06T20:40:21.804Z",
+			"modified": "2026-07-06T20:40:21.804Z",
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://proxy.archieven.nl/iiif-image/184/B77C1D1EAEE54DCF927B57AA50367D72",
+					"type": "ImageService3",
+					"height": 8014,
+					"width": 6502,
+					"partOf": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/36",
+							"type": "Canvas",
+							"partOf": [
+								{
+									"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json",
+									"type": "Manifest",
+									"label": {
+										"en": ["Kaart van Rotterdam en omgeving; bestaande uit 24 bladen"]
+									}
+								}
+							]
+						}
+					]
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"6502\" height=\"8014\"><polygon points=\"182,200 187,7353 6326,7332 6314,180\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [187, 7353]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.356837569492037, 51.84505521323026]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [182, 200]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.356117166801455, 51.87651031928838]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6314, 180]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.399677840960927, 51.876884699797436]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6326, 7332]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.400367811035, 51.84542916951671]
+						}
+					}
+				],
+				"_allmaps": {
+					"id": "https://annotations.allmaps.org/maps/3b525766fdd38e77",
+					"version": "https://annotations.allmaps.org/maps/3b525766fdd38e77@96b4878c02fe9845",
+					"image": {
+						"id": "https://annotations.allmaps.org/images/57a9ccf204b80607",
+						"version": "https://annotations.allmaps.org/images/57a9ccf204b80607@e63717adb768e2be",
+						"canvases": [
+							{
+								"id": "https://annotations.allmaps.org/canvases/0662c4d9e48a3dc6",
+								"manifests": [
+									{
+										"id": "https://annotations.allmaps.org/manifests/7737cec074ed3ecf"
+									}
+								]
+							}
+						]
+					},
+					"scale": 2.044259,
+					"area": 10501172.1
+				}
+			}
+		},
+		{
+			"id": "https://annotations.allmaps.org/maps/383e40531b6a21c0",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"created": "2026-07-06T20:30:22.196Z",
+			"modified": "2026-07-06T20:30:22.196Z",
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://proxy.archieven.nl/iiif-image/184/B75C358496D9417FA088E61DAF74AB3E",
+					"type": "ImageService3",
+					"height": 8086,
+					"width": 6610,
+					"partOf": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/25",
+							"type": "Canvas",
+							"partOf": [
+								{
+									"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json",
+									"type": "Manifest",
+									"label": {
+										"en": ["Kaart van Rotterdam en omgeving; bestaande uit 24 bladen"]
+									}
+								}
+							]
+						}
+					]
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"6610\" height=\"8086\"><polygon points=\"231,255 235,7403 6383,7387 6371,237\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [231, 255]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.398986824616448, 51.908339991143464]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6371, 237]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.442578901561096, 51.90869838339343]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6383, 7387]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.4432394357955225, 51.87724275880593]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [235, 7403]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.399677840960927, 51.876884699797436]
+						}
+					}
+				],
+				"_allmaps": {
+					"id": "https://annotations.allmaps.org/maps/383e40531b6a21c0",
+					"version": "https://annotations.allmaps.org/maps/383e40531b6a21c0@8047dec0e8f08e48",
+					"image": {
+						"id": "https://annotations.allmaps.org/images/7d10a424b1ba8be2",
+						"version": "https://annotations.allmaps.org/images/7d10a424b1ba8be2@b08feb80fbabb7e9",
+						"canvases": [
+							{
+								"id": "https://annotations.allmaps.org/canvases/bd71ad29887f8fca",
+								"manifests": [
+									{
+										"id": "https://annotations.allmaps.org/manifests/7737cec074ed3ecf"
+									}
+								]
+							}
+						]
+					},
+					"scale": 2.045164,
+					"area": 10501258.89
+				}
+			}
+		},
+		{
+			"id": "https://annotations.allmaps.org/maps/26dbb12db492277c",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"created": "2026-07-06T20:29:11.263Z",
+			"modified": "2026-07-06T20:29:11.263Z",
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://proxy.archieven.nl/iiif-image/184/4C3CC48BF7244AAAA539E5A3E20DFA0E",
+					"type": "ImageService3",
+					"height": 3953,
+					"width": 3259,
+					"partOf": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/21",
+							"type": "Canvas",
+							"partOf": [
+								{
+									"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json",
+									"type": "Manifest",
+									"label": {
+										"en": ["Kaart van Rotterdam en omgeving; bestaande uit 24 bladen"]
+									}
+								}
+							]
+						}
+					]
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"3259\" height=\"3953\"><polygon points=\"124,93 111,3616 3131,3623 3136,106\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [124, 93]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.311805373349288, 51.90757428645553]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [3131, 3623]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.356117166801455, 51.87651031928838]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [111, 3616]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.312557346776279, 51.87611978353403]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [3136, 106]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.355395671220696, 51.907965225172205]
+						}
+					}
+				],
+				"_allmaps": {
+					"id": "https://annotations.allmaps.org/maps/26dbb12db492277c",
+					"version": "https://annotations.allmaps.org/maps/26dbb12db492277c@7f04696e18480c53",
+					"image": {
+						"id": "https://annotations.allmaps.org/images/81fc2275f124cf13",
+						"version": "https://annotations.allmaps.org/images/81fc2275f124cf13@adb357e42ed87846",
+						"canvases": [
+							{
+								"id": "https://annotations.allmaps.org/canvases/4d4e0012fb85f69b",
+								"manifests": [
+									{
+										"id": "https://annotations.allmaps.org/manifests/7737cec074ed3ecf"
+									}
+								]
+							}
+						]
+					},
+					"scale": 1.005475,
+					"area": 10501103.22
+				}
+			}
+		},
+		{
+			"id": "https://annotations.allmaps.org/maps/574a31c3a26cc357",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"created": "2026-07-06T20:29:08.691Z",
+			"modified": "2026-07-06T20:29:08.691Z",
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://proxy.archieven.nl/iiif-image/184/92A178A580A445CFA07629E770C93D04",
+					"type": "ImageService3",
+					"height": 7978,
+					"width": 6526,
+					"partOf": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/22",
+							"type": "Canvas",
+							"partOf": [
+								{
+									"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json",
+									"type": "Manifest",
+									"label": {
+										"en": ["Kaart van Rotterdam en omgeving; bestaande uit 24 bladen"]
+									}
+								}
+							]
+						}
+					]
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"6526\" height=\"7978\"><polygon points=\"167,202 168,7354 6337,7336 6317,182\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [168, 7354]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.356117166801455, 51.87651031928838]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6317, 182]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.398986824616448, 51.908339991143464]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [167, 202]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.355395671220696, 51.907965225172205]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6337, 7336]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.399677840960927, 51.876884699797436]
+						}
+					}
+				],
+				"_allmaps": {
+					"id": "https://annotations.allmaps.org/maps/574a31c3a26cc357",
+					"version": "https://annotations.allmaps.org/maps/574a31c3a26cc357@f46ebbb353566c1b",
+					"image": {
+						"id": "https://annotations.allmaps.org/images/877f53e0c5633ac0",
+						"version": "https://annotations.allmaps.org/images/877f53e0c5633ac0@bbdda2ad627c0d75",
+						"canvases": [
+							{
+								"id": "https://annotations.allmaps.org/canvases/429cd96dddb268ce",
+								"manifests": [
+									{
+										"id": "https://annotations.allmaps.org/manifests/7737cec074ed3ecf"
+									}
+								]
+							}
+						]
+					},
+					"scale": 2.048325,
+					"area": 10501173.59
+				}
+			}
+		},
+		{
+			"id": "https://annotations.allmaps.org/maps/9cafd3b4b7c3ffe1",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"created": "2026-07-06T20:29:05.375Z",
+			"modified": "2026-07-06T20:29:05.375Z",
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://proxy.archieven.nl/iiif-image/184/D1345D35E17D4A0EB7F35EFB8A057753",
+					"type": "ImageService3",
+					"height": 8050,
+					"width": 6586,
+					"partOf": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/23",
+							"type": "Canvas",
+							"partOf": [
+								{
+									"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json",
+									"type": "Manifest",
+									"label": {
+										"en": ["Kaart van Rotterdam en omgeving; bestaande uit 24 bladen"]
+									}
+								}
+							]
+						}
+					]
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"6586\" height=\"8050\"><polygon points=\"213,235 213,7388 6363,7374 6359,222\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6359, 222]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.398986824616448, 51.908339991143464]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6363, 7374]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.399677840960927, 51.876884699797436]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [213, 7388]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.356117166801455, 51.87651031928838]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [213, 235]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.355395671220696, 51.907965225172205]
+						}
+					}
+				],
+				"_allmaps": {
+					"id": "https://annotations.allmaps.org/maps/9cafd3b4b7c3ffe1",
+					"version": "https://annotations.allmaps.org/maps/9cafd3b4b7c3ffe1@2af650592e8dec0d",
+					"image": {
+						"id": "https://annotations.allmaps.org/images/dc28b882e0fb733b",
+						"version": "https://annotations.allmaps.org/images/dc28b882e0fb733b@98c573bf81111a00",
+						"canvases": [
+							{
+								"id": "https://annotations.allmaps.org/canvases/3936084b0419549f",
+								"manifests": [
+									{
+										"id": "https://annotations.allmaps.org/manifests/7737cec074ed3ecf"
+									}
+								]
+							}
+						]
+					},
+					"scale": 2.046337,
+					"area": 10501173.59
+				}
+			}
+		},
+		{
+			"id": "https://annotations.allmaps.org/maps/e488f1939181be62",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"created": "2026-07-06T20:29:01.652Z",
+			"modified": "2026-07-06T20:29:01.652Z",
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://proxy.archieven.nl/iiif-image/184/5F399B82E2834170A09C40F849F388E2",
+					"type": "ImageService3",
+					"height": 7978,
+					"width": 6538,
+					"partOf": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/24",
+							"type": "Canvas",
+							"partOf": [
+								{
+									"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json",
+									"type": "Manifest",
+									"label": {
+										"en": ["Kaart van Rotterdam en omgeving; bestaande uit 24 bladen"]
+									}
+								}
+							]
+						}
+					]
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"6538\" height=\"7978\"><polygon points=\"187,192 167,7339 6317,7341 6330,190\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [187, 192]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.398986824616448, 51.908339991143464]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6330, 190]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.442578901561096, 51.90869838339343]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [167, 7339]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.399677840960927, 51.876884699797436]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6317, 7341]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.4432394357955225, 51.87724275880593]
+						}
+					}
+				],
+				"_allmaps": {
+					"id": "https://annotations.allmaps.org/maps/e488f1939181be62",
+					"version": "https://annotations.allmaps.org/maps/e488f1939181be62@b4fb1c858fa5b7f8",
+					"image": {
+						"id": "https://annotations.allmaps.org/images/a857344de821118b",
+						"version": "https://annotations.allmaps.org/images/a857344de821118b@f8c4856fae835970",
+						"canvases": [
+							{
+								"id": "https://annotations.allmaps.org/canvases/96997246667d1768",
+								"manifests": [
+									{
+										"id": "https://annotations.allmaps.org/manifests/7737cec074ed3ecf"
+									}
+								]
+							}
+						]
+					},
+					"scale": 2.045577,
+					"area": 10501258.89
+				}
+			}
+		},
+		{
+			"id": "https://annotations.allmaps.org/maps/f0391bed7e39077b",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"created": "2026-07-06T20:24:38.972Z",
+			"modified": "2026-07-06T20:24:38.972Z",
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://proxy.archieven.nl/iiif-image/184/2F17DE4B2E504A43B7A862E7FC76DFBE",
+					"type": "ImageService3",
+					"height": 8002,
+					"width": 6502,
+					"partOf": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/20",
+							"type": "Canvas",
+							"partOf": [
+								{
+									"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json",
+									"type": "Manifest",
+									"label": {
+										"en": ["Kaart van Rotterdam en omgeving; bestaande uit 24 bladen"]
+									}
+								}
+							]
+						}
+					]
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"6502\" height=\"8002\"><polygon points=\"164,208 171,7357 6320,7337 6308,187\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [164, 208]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.529164730471181, 51.94082258926308]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6320, 7337]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.573359840042845, 51.90967628040089]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [171, 7357]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.529765431630155, 51.90936654831907]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6308, 187]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.572789565607348, 51.94113270170936]
+						}
+					}
+				],
+				"_allmaps": {
+					"id": "https://annotations.allmaps.org/maps/f0391bed7e39077b",
+					"version": "https://annotations.allmaps.org/maps/f0391bed7e39077b@6101218e864b94ba",
+					"image": {
+						"id": "https://annotations.allmaps.org/images/84f9250a407c76a5",
+						"version": "https://annotations.allmaps.org/images/84f9250a407c76a5@ac60e4219f9f5f93",
+						"canvases": [
+							{
+								"id": "https://annotations.allmaps.org/canvases/93fcfc36c1734293",
+								"manifests": [
+									{
+										"id": "https://annotations.allmaps.org/manifests/7737cec074ed3ecf"
+									}
+								]
+							}
+						]
+					},
+					"scale": 2.045636,
+					"area": 10501437.62
+				}
+			}
+		},
+		{
+			"id": "https://annotations.allmaps.org/maps/872600bacb333299",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"created": "2026-07-06T20:23:35.573Z",
+			"modified": "2026-07-06T20:23:35.573Z",
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://proxy.archieven.nl/iiif-image/184/0AA159F6779D40F6AC2B3C78917D6ACE",
+					"type": "ImageService3",
+					"height": 8014,
+					"width": 6514,
+					"partOf": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/19",
+							"type": "Canvas",
+							"partOf": [
+								{
+									"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json",
+									"type": "Manifest",
+									"label": {
+										"en": ["Kaart van Rotterdam en omgeving; bestaande uit 24 bladen"]
+									}
+								}
+							]
+						}
+					]
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"6514\" height=\"8014\"><polygon points=\"176,201 180,7350 6327,7334 6317,184\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6317, 184]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.572789565607348, 51.94113270170936]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [180, 7350]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.529765431630155, 51.90936654831907]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [176, 201]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.529164730471181, 51.94082258926308]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6327, 7334]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.573359840042845, 51.90967628040089]
+						}
+					}
+				],
+				"_allmaps": {
+					"id": "https://annotations.allmaps.org/maps/872600bacb333299",
+					"version": "https://annotations.allmaps.org/maps/872600bacb333299@aaa8dae168242f84",
+					"image": {
+						"id": "https://annotations.allmaps.org/images/7544c4beb0cd4d85",
+						"version": "https://annotations.allmaps.org/images/7544c4beb0cd4d85@11ff771c0f4db35d",
+						"canvases": [
+							{
+								"id": "https://annotations.allmaps.org/canvases/29d1f03051a71466",
+								"manifests": [
+									{
+										"id": "https://annotations.allmaps.org/manifests/7737cec074ed3ecf"
+									}
+								]
+							}
+						]
+					},
+					"scale": 2.045218,
+					"area": 10501437.62
+				}
+			}
+		},
+		{
+			"id": "https://annotations.allmaps.org/maps/d6663044616af06c",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"created": "2026-07-06T20:00:06.733Z",
+			"modified": "2026-07-06T20:00:06.733Z",
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://proxy.archieven.nl/iiif-image/184/2E194DE133804A2297CE8F9A3AE15D4A",
+					"type": "ImageService3",
+					"height": 8026,
+					"width": 6610,
+					"partOf": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/11",
+							"type": "Canvas",
+							"partOf": [
+								{
+									"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json",
+									"type": "Manifest",
+									"label": {
+										"en": ["Kaart van Rotterdam en omgeving; bestaande uit 24 bladen"]
+									}
+								}
+							]
+						}
+					]
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"6610\" height=\"8026\"><polygon points=\"227,183 224,7333 6372,7319 6368,175\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6372, 7319]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.442578901561096, 51.90869838339343]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [224, 7333]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.398986824616448, 51.908339991143464]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [227, 183]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.398294850748607, 51.93979490049013]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6368, 175]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.441917351655849, 51.94015367446279]
+						}
+					}
+				],
+				"_allmaps": {
+					"id": "https://annotations.allmaps.org/maps/d6663044616af06c",
+					"version": "https://annotations.allmaps.org/maps/d6663044616af06c@60cce259b6523358",
+					"image": {
+						"id": "https://annotations.allmaps.org/images/d55fcefb90e3cf47",
+						"version": "https://annotations.allmaps.org/images/d55fcefb90e3cf47@d04e6eb0bd49462d",
+						"canvases": [
+							{
+								"id": "https://annotations.allmaps.org/canvases/fd30f0c91976ce57",
+								"manifests": [
+									{
+										"id": "https://annotations.allmaps.org/manifests/7737cec074ed3ecf"
+									}
+								]
+							}
+						]
+					},
+					"scale": 2.044964,
+					"area": 10501199.25
+				}
+			}
+		},
+		{
+			"id": "https://annotations.allmaps.org/maps/a5a59f2262954f84",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"created": "2026-07-06T20:00:02.654Z",
+			"modified": "2026-07-06T20:00:02.654Z",
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://proxy.archieven.nl/iiif-image/184/3483A5C328E5430880185610180DBE83",
+					"type": "ImageService3",
+					"height": 8014,
+					"width": 6538,
+					"partOf": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/12",
+							"type": "Canvas",
+							"partOf": [
+								{
+									"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json",
+									"type": "Manifest",
+									"label": {
+										"en": ["Kaart van Rotterdam en omgeving; bestaande uit 24 bladen"]
+									}
+								}
+							]
+						}
+					]
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"6538\" height=\"8014\"><polygon points=\"200,207 196,7360 6346,7346 6344,195\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6346, 7346]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.442578901561096, 51.90869838339343]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6344, 195]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.441917351655849, 51.94015367446279]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [200, 207]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.398294850748607, 51.93979490049013]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [196, 7360]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.398986824616448, 51.908339991143464]
+						}
+					}
+				],
+				"_allmaps": {
+					"id": "https://annotations.allmaps.org/maps/a5a59f2262954f84",
+					"version": "https://annotations.allmaps.org/maps/a5a59f2262954f84@e1f2db1293be5fa3",
+					"image": {
+						"id": "https://annotations.allmaps.org/images/65f58d225eb101bf",
+						"version": "https://annotations.allmaps.org/images/65f58d225eb101bf@70424e3d1e83c921",
+						"canvases": [
+							{
+								"id": "https://annotations.allmaps.org/canvases/757b8747f2871989",
+								"manifests": [
+									{
+										"id": "https://annotations.allmaps.org/manifests/7737cec074ed3ecf"
+									}
+								]
+							}
+						]
+					},
+					"scale": 2.046095,
+					"area": 10501199.25
+				}
+			}
+		},
+		{
+			"id": "https://annotations.allmaps.org/maps/f6edf49764482bf2",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"created": "2026-07-06T19:59:57.741Z",
+			"modified": "2026-07-06T19:59:57.741Z",
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://proxy.archieven.nl/iiif-image/184/F291044171094875B3A062BE9A72292F",
+					"type": "ImageService3",
+					"height": 8026,
+					"width": 6514,
+					"partOf": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/14",
+							"type": "Canvas",
+							"partOf": [
+								{
+									"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json",
+									"type": "Manifest",
+									"label": {
+										"en": ["Kaart van Rotterdam en omgeving; bestaande uit 24 bladen"]
+									}
+								}
+							]
+						}
+					]
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"6514\" height=\"8026\"><polygon points=\"188,191 185,7338 6334,7332 6343,185\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6343, 185]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.485540636318283, 51.94049625819658]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [188, 191]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.441917351655849, 51.94015367446279]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [185, 7338]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.442578901561096, 51.90869838339343]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6334, 7332]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.486171761614772, 51.90904060036529]
+						}
+					}
+				],
+				"_allmaps": {
+					"id": "https://annotations.allmaps.org/maps/f6edf49764482bf2",
+					"version": "https://annotations.allmaps.org/maps/f6edf49764482bf2@9932d75a36e47de1",
+					"image": {
+						"id": "https://annotations.allmaps.org/images/f981a045b643d526",
+						"version": "https://annotations.allmaps.org/images/f981a045b643d526@27c1d1a6df29bf97",
+						"canvases": [
+							{
+								"id": "https://annotations.allmaps.org/canvases/9f773bcd4adf0388",
+								"manifests": [
+									{
+										"id": "https://annotations.allmaps.org/manifests/7737cec074ed3ecf"
+									}
+								]
+							}
+						]
+					},
+					"scale": 2.046204,
+					"area": 10501268.06
+				}
+			}
+		},
+		{
+			"id": "https://annotations.allmaps.org/maps/c107e62ae0265c36",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"created": "2026-07-06T19:59:53.244Z",
+			"modified": "2026-07-06T19:59:53.244Z",
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://proxy.archieven.nl/iiif-image/184/EF11CAEAC04643C5A580961EDD8D9EF7",
+					"type": "ImageService3",
+					"height": 7990,
+					"width": 6502,
+					"partOf": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/16",
+							"type": "Canvas",
+							"partOf": [
+								{
+									"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json",
+									"type": "Manifest",
+									"label": {
+										"en": ["Kaart van Rotterdam en omgeving; bestaande uit 24 bladen"]
+									}
+								}
+							]
+						}
+					]
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"6502\" height=\"7990\"><polygon points=\"172,188 163,7342 6313,7337 6319,175\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [163, 7342]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.486171761614772, 51.90904060036529]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [172, 188]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.485540636318283, 51.94049625819658]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6313, 7337]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.529765431630155, 51.90936654831907]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6319, 175]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.529164730471181, 51.94082258926308]
+						}
+					}
+				],
+				"_allmaps": {
+					"id": "https://annotations.allmaps.org/maps/c107e62ae0265c36",
+					"version": "https://annotations.allmaps.org/maps/c107e62ae0265c36@60e1c787391f66f5",
+					"image": {
+						"id": "https://annotations.allmaps.org/images/fc69e84b8869d101",
+						"version": "https://annotations.allmaps.org/images/fc69e84b8869d101@88c762b36cbb586c",
+						"canvases": [
+							{
+								"id": "https://annotations.allmaps.org/canvases/0b928356cac9c049",
+								"manifests": [
+									{
+										"id": "https://annotations.allmaps.org/manifests/7737cec074ed3ecf"
+									}
+								]
+							}
+						]
+					},
+					"scale": 2.047187,
+					"area": 10501354.37
+				}
+			}
+		},
+		{
+			"id": "https://annotations.allmaps.org/maps/59e599042dfeca30",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"created": "2026-07-06T19:59:49.945Z",
+			"modified": "2026-07-06T19:59:49.945Z",
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://proxy.archieven.nl/iiif-image/184/616C13ABA37E4FF2AB2B43B8F2AD8835",
+					"type": "ImageService3",
+					"height": 7990,
+					"width": 6502,
+					"partOf": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/17",
+							"type": "Canvas",
+							"partOf": [
+								{
+									"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json",
+									"type": "Manifest",
+									"label": {
+										"en": ["Kaart van Rotterdam en omgeving; bestaande uit 24 bladen"]
+									}
+								}
+							]
+						}
+					]
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"6502\" height=\"7990\"><polygon points=\"172,209 179,7356 6318,7338 6311,187\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6318, 7338]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.529765431630155, 51.90936654831907]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6311, 187]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.529164730471181, 51.94082258926308]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [170, 209]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.485540636318283, 51.94049625819658]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [179, 7356]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.486171761614772, 51.90904060036529]
+						}
+					}
+				],
+				"_allmaps": {
+					"id": "https://annotations.allmaps.org/maps/59e599042dfeca30",
+					"version": "https://annotations.allmaps.org/maps/59e599042dfeca30@998aef465b145bb4",
+					"image": {
+						"id": "https://annotations.allmaps.org/images/c73072b17db365c6",
+						"version": "https://annotations.allmaps.org/images/c73072b17db365c6@e026330cef0a6e50",
+						"canvases": [
+							{
+								"id": "https://annotations.allmaps.org/canvases/2cde16dae3b6ae1b",
+								"manifests": [
+									{
+										"id": "https://annotations.allmaps.org/manifests/7737cec074ed3ecf"
+									}
+								]
+							}
+						]
+					},
+					"scale": 2.04449,
+					"area": 10499639.01
+				}
+			}
+		},
+		{
+			"id": "https://annotations.allmaps.org/maps/ac5172e4ac572d1f",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"created": "2026-07-06T19:59:46.441Z",
+			"modified": "2026-07-06T19:59:46.441Z",
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://proxy.archieven.nl/iiif-image/184/77E7F10E589440C1A06649246C5598FD",
+					"type": "ImageService3",
+					"height": 7990,
+					"width": 6526,
+					"partOf": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/18",
+							"type": "Canvas",
+							"partOf": [
+								{
+									"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json",
+									"type": "Manifest",
+									"label": {
+										"en": ["Kaart van Rotterdam en omgeving; bestaande uit 24 bladen"]
+									}
+								}
+							]
+						}
+					]
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"6526\" height=\"7990\"><polygon points=\"177,196 172,7339 6316,7328 6319,183\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6316, 7328]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.529765431630155, 51.90936654831907]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [177, 196]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.485540636318283, 51.94049625819658]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [172, 7339]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.486171761614772, 51.90904060036529]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6319, 183]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.529164730471181, 51.94082258926308]
+						}
+					}
+				],
+				"_allmaps": {
+					"id": "https://annotations.allmaps.org/maps/ac5172e4ac572d1f",
+					"version": "https://annotations.allmaps.org/maps/ac5172e4ac572d1f@65436bfb33610066",
+					"image": {
+						"id": "https://annotations.allmaps.org/images/a4f74dcce36e2cd0",
+						"version": "https://annotations.allmaps.org/images/a4f74dcce36e2cd0@7548e3ca40f333ab",
+						"canvases": [
+							{
+								"id": "https://annotations.allmaps.org/canvases/7def1c5b427ac20b",
+								"manifests": [
+									{
+										"id": "https://annotations.allmaps.org/manifests/7737cec074ed3ecf"
+									}
+								]
+							}
+						]
+					},
+					"scale": 2.044269,
+					"area": 10501354.37
+				}
+			}
+		},
+		{
+			"id": "https://annotations.allmaps.org/maps/a99d165da921a49c",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"created": "2026-07-06T19:50:13.186Z",
+			"modified": "2026-07-06T19:50:13.186Z",
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://proxy.archieven.nl/iiif-image/184/7F31A1A44BBF4677B8DE474D36900C71",
+					"type": "ImageService3",
+					"height": 8086,
+					"width": 6622,
+					"partOf": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/15",
+							"type": "Canvas",
+							"partOf": [
+								{
+									"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json",
+									"type": "Manifest",
+									"label": {
+										"en": ["Kaart van Rotterdam en omgeving; bestaande uit 24 bladen"]
+									}
+								}
+							]
+						}
+					]
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"6622\" height=\"8086\"><polygon points=\"251,249 255,7398 6400,7383 6399,233\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [255, 7398]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.442578901561096, 51.90869838339343]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6400, 7383]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.486171761614772, 51.90904060036529]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [251, 249]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.441917351655849, 51.94015367446279]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6399, 233]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.485540636318283, 51.94049625819658]
+						}
+					}
+				],
+				"_allmaps": {
+					"id": "https://annotations.allmaps.org/maps/a99d165da921a49c",
+					"version": "https://annotations.allmaps.org/maps/a99d165da921a49c@75c48d239519d7c4",
+					"image": {
+						"id": "https://annotations.allmaps.org/images/b88a998a3ebbbe4a",
+						"version": "https://annotations.allmaps.org/images/b88a998a3ebbbe4a@06fe8bc055578ace",
+						"canvases": [
+							{
+								"id": "https://annotations.allmaps.org/canvases/9bdae0bb595b202c",
+								"manifests": [
+									{
+										"id": "https://annotations.allmaps.org/manifests/7737cec074ed3ecf"
+									}
+								]
+							}
+						]
+					},
+					"scale": 2.045649,
+					"area": 10501268.06
+				}
+			}
+		},
+		{
+			"id": "https://annotations.allmaps.org/maps/80fca36e1ecd1a18",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"created": "2026-07-06T19:44:47.132Z",
+			"modified": "2026-07-06T19:44:47.132Z",
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://proxy.archieven.nl/iiif-image/184/BEAB99DBC8064151B8E3E6DBC61FAE6D",
+					"type": "ImageService3",
+					"height": 7990,
+					"width": 6514,
+					"partOf": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/9",
+							"type": "Canvas",
+							"partOf": [
+								{
+									"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json",
+									"type": "Manifest",
+									"label": {
+										"en": ["Kaart van Rotterdam en omgeving; bestaande uit 24 bladen"]
+									}
+								}
+							]
+						}
+					]
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"6514\" height=\"7990\"><polygon points=\"185,192 183,7348 6336,7337 6334,176\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [185, 192]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.311052380392915, 51.93902857355063]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6334, 176]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.354673186789997, 51.93941983074853]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6336, 7337]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.355395671220696, 51.907965225172205]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [183, 7348]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.311805373349288, 51.90757428645553]
+						}
+					}
+				],
+				"_allmaps": {
+					"id": "https://annotations.allmaps.org/maps/80fca36e1ecd1a18",
+					"version": "https://annotations.allmaps.org/maps/80fca36e1ecd1a18@de85c97fffd39b9f",
+					"image": {
+						"id": "https://annotations.allmaps.org/images/e4cf006b11e55b30",
+						"version": "https://annotations.allmaps.org/images/e4cf006b11e55b30@003cb5ddab977e9c",
+						"canvases": [
+							{
+								"id": "https://annotations.allmaps.org/canvases/9456d41e4ed46c88",
+								"manifests": [
+									{
+										"id": "https://annotations.allmaps.org/manifests/7737cec074ed3ecf"
+									}
+								]
+							}
+						]
+					},
+					"scale": 2.047702,
+					"area": 10501087.41
+				}
+			}
+		},
+		{
+			"id": "https://annotations.allmaps.org/maps/d56d926c229ed549",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"created": "2026-07-06T19:44:27.165Z",
+			"modified": "2026-07-06T19:44:27.165Z",
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://proxy.archieven.nl/iiif-image/184/4D871230B029440C9F9648882D0E1299",
+					"type": "ImageService3",
+					"height": 8002,
+					"width": 6526,
+					"partOf": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/10",
+							"type": "Canvas",
+							"partOf": [
+								{
+									"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json",
+									"type": "Manifest",
+									"label": {
+										"en": ["Kaart van Rotterdam en omgeving; bestaande uit 24 bladen"]
+									}
+								}
+							]
+						}
+					]
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"6526\" height=\"8002\"><polygon points=\"180,204 187,7360 6338,7342 6330,184\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6330, 184]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.398294850748607, 51.93979490049013]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [187, 7360]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.355395671220696, 51.907965225172205]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6338, 7342]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.398986824616448, 51.908339991143464]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [180, 204]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.354673186789997, 51.93941983074853]
+						}
+					}
+				],
+				"_allmaps": {
+					"id": "https://annotations.allmaps.org/maps/d56d926c229ed549",
+					"version": "https://annotations.allmaps.org/maps/d56d926c229ed549@8bb1030c2756c480",
+					"image": {
+						"id": "https://annotations.allmaps.org/images/74e881961e76e2d8",
+						"version": "https://annotations.allmaps.org/images/74e881961e76e2d8@18fd8a636f3097ce",
+						"canvases": [
+							{
+								"id": "https://annotations.allmaps.org/canvases/8bd6fb2027a98882",
+								"manifests": [
+									{
+										"id": "https://annotations.allmaps.org/manifests/7737cec074ed3ecf"
+									}
+								]
+							}
+						]
+					},
+					"scale": 2.047403,
+					"area": 10501129.88
+				}
+			}
+		},
+		{
+			"id": "https://annotations.allmaps.org/maps/b6fc66dfc65e4d63",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"created": "2026-07-06T19:43:40.739Z",
+			"modified": "2026-07-06T19:43:40.739Z",
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://proxy.archieven.nl/iiif-image/184/6C1D0ED38BB04672B07C3EEACE6B08D4",
+					"type": "ImageService3",
+					"height": 8002,
+					"width": 6514,
+					"partOf": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/13",
+							"type": "Canvas",
+							"partOf": [
+								{
+									"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json",
+									"type": "Manifest",
+									"label": {
+										"en": ["Kaart van Rotterdam en omgeving; bestaande uit 24 bladen"]
+									}
+								}
+							]
+						}
+					]
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"6514\" height=\"8002\"><polygon points=\"178,220 190,7372 6335,7351 6322,189\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6322, 189]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.485540636318283, 51.94049625819658]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [178, 220]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.441917351655849, 51.94015367446279]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [190, 7372]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.442578901561096, 51.90869838339343]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6335, 7351]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.486171761614772, 51.90904060036529]
+						}
+					}
+				],
+				"_allmaps": {
+					"id": "https://annotations.allmaps.org/maps/b6fc66dfc65e4d63",
+					"version": "https://annotations.allmaps.org/maps/b6fc66dfc65e4d63@e1334a8a35b85530",
+					"image": {
+						"id": "https://annotations.allmaps.org/images/f6fe42f840fc51eb",
+						"version": "https://annotations.allmaps.org/images/f6fe42f840fc51eb@074234ad6b5650f2",
+						"canvases": [
+							{
+								"id": "https://annotations.allmaps.org/canvases/65b9f04d3d642854",
+								"manifests": [
+									{
+										"id": "https://annotations.allmaps.org/manifests/7737cec074ed3ecf"
+									}
+								]
+							}
+						]
+					},
+					"scale": 2.046395,
+					"area": 10501268.06
+				}
+			}
+		},
+		{
+			"id": "https://annotations.allmaps.org/maps/3d22b895d179cb18",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"created": "2026-07-06T19:40:19.334Z",
+			"modified": "2026-07-06T19:40:19.334Z",
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://proxy.archieven.nl/iiif-image/184/526394B58BAE4E32AC21A006EF6EA85C",
+					"type": "ImageService3",
+					"height": 3953,
+					"width": 3054,
+					"partOf": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/6",
+							"type": "Canvas",
+							"partOf": [
+								{
+									"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json",
+									"type": "Manifest",
+									"label": {
+										"en": ["Kaart van Rotterdam en omgeving; bestaande uit 24 bladen"]
+									}
+								}
+							]
+						}
+					]
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"3054\" height=\"3953\"><polygon points=\"59,43 52,3478 2995,3476 2997,42\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [52, 3478]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.485540636318283, 51.94049625819658]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [2997, 42]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.528563061555092, 51.97227848668739]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [2995, 3476]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.529164730471181, 51.94082258926308]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [59, 43]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.484908494055437, 51.971951773201766]
+						}
+					}
+				],
+				"_allmaps": {
+					"id": "https://annotations.allmaps.org/maps/3d22b895d179cb18",
+					"version": "https://annotations.allmaps.org/maps/3d22b895d179cb18@aea9707d494509e7",
+					"image": {
+						"id": "https://annotations.allmaps.org/images/a8844064c58951bf",
+						"version": "https://annotations.allmaps.org/images/a8844064c58951bf@3315c42710215fea",
+						"canvases": [
+							{
+								"id": "https://annotations.allmaps.org/canvases/884c1e062dd2da48",
+								"manifests": [
+									{
+										"id": "https://annotations.allmaps.org/manifests/7737cec074ed3ecf"
+									}
+								]
+							}
+						]
+					},
+					"scale": 0.980663,
+					"area": 10501351.23
+				}
+			}
+		},
+		{
+			"id": "https://annotations.allmaps.org/maps/466b513f3b6271d5",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"created": "2026-07-06T19:40:15.831Z",
+			"modified": "2026-07-06T19:40:15.831Z",
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://proxy.archieven.nl/iiif-image/184/BA42683C714C4DACBCB7B9DE5BE97E61",
+					"type": "ImageService3",
+					"height": 7998,
+					"width": 6502,
+					"partOf": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/7",
+							"type": "Canvas",
+							"partOf": [
+								{
+									"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json",
+									"type": "Manifest",
+									"label": {
+										"en": ["Kaart van Rotterdam en omgeving; bestaande uit 24 bladen"]
+									}
+								}
+							]
+						}
+					]
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"6502\" height=\"7998\"><polygon points=\"177,191 177,7346 6319,7337 6318,179\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [177, 7346]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.529164730471181, 51.94082258926308]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6319, 7337]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.572789565607348, 51.94113270170936]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6318, 179]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.572218372590571, 51.97258898003048]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [177, 191]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.528563061555092, 51.97227848668739]
+						}
+					}
+				],
+				"_allmaps": {
+					"id": "https://annotations.allmaps.org/maps/466b513f3b6271d5",
+					"version": "https://annotations.allmaps.org/maps/466b513f3b6271d5@ef01ea403f02b484",
+					"image": {
+						"id": "https://annotations.allmaps.org/images/9464d3d90fbd8fba",
+						"version": "https://annotations.allmaps.org/images/9464d3d90fbd8fba@38c32ce9f6a72e96",
+						"canvases": [
+							{
+								"id": "https://annotations.allmaps.org/canvases/257f46236dfd8071",
+								"manifests": [
+									{
+										"id": "https://annotations.allmaps.org/manifests/7737cec074ed3ecf"
+									}
+								]
+							}
+						]
+					},
+					"scale": 2.0458,
+					"area": 10501434.54
+				}
+			}
+		},
+		{
+			"id": "https://annotations.allmaps.org/maps/d5e9057da8140cb7",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"created": "2026-07-06T19:40:12.996Z",
+			"modified": "2026-07-06T19:40:12.996Z",
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://proxy.archieven.nl/iiif-image/184/FF8E791A6DD24D61AAEA47BBFF0D56D5",
+					"type": "ImageService3",
+					"height": 8014,
+					"width": 6490,
+					"partOf": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/8",
+							"type": "Canvas",
+							"partOf": [
+								{
+									"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json",
+									"type": "Manifest",
+									"label": {
+										"en": ["Kaart van Rotterdam en omgeving; bestaande uit 24 bladen"]
+									}
+								}
+							]
+						}
+					]
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"6490\" height=\"8014\"><polygon points=\"156,212 164,7359 6308,7340 6298,189\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [156, 212]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.528563061555092, 51.97227848668739]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6308, 7340]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.572789565607348, 51.94113270170936]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6298, 189]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.572218372590571, 51.97258898003048]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [164, 7359]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.529164730471181, 51.94082258926308]
+						}
+					}
+				],
+				"_allmaps": {
+					"id": "https://annotations.allmaps.org/maps/d5e9057da8140cb7",
+					"version": "https://annotations.allmaps.org/maps/d5e9057da8140cb7@ce55dc86e5791153",
+					"image": {
+						"id": "https://annotations.allmaps.org/images/8d6470a1d65e23a4",
+						"version": "https://annotations.allmaps.org/images/8d6470a1d65e23a4@e3afd3e531c04070",
+						"canvases": [
+							{
+								"id": "https://annotations.allmaps.org/canvases/ffb83b6728a1018e",
+								"manifests": [
+									{
+										"id": "https://annotations.allmaps.org/manifests/7737cec074ed3ecf"
+									}
+								]
+							}
+						]
+					},
+					"scale": 2.044982,
+					"area": 10501434.54
+				}
+			}
+		},
+		{
+			"id": "https://annotations.allmaps.org/maps/8601f7abd520d62b",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"created": "2026-07-06T19:35:26.121Z",
+			"modified": "2026-07-06T19:35:26.121Z",
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://proxy.archieven.nl/iiif-image/184/D145C9F034814CC1A7E6329F0F6AC49A",
+					"type": "ImageService3",
+					"height": 7900,
+					"width": 6178,
+					"partOf": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/5",
+							"type": "Canvas",
+							"partOf": [
+								{
+									"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json",
+									"type": "Manifest",
+									"label": {
+										"en": ["Kaart van Rotterdam en omgeving; bestaande uit 24 bladen"]
+									}
+								}
+							]
+						}
+					]
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"6178\" height=\"7900\"><polygon points=\"164,244 174,7101 6065,7087 6059,224\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6065, 7087]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.529164730471181, 51.94082258926308]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [164, 244]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.484908494055437, 51.971951773201766]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [174, 7101]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.485540636318283, 51.94049625819658]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6059, 224]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.528563061555092, 51.97227848668739]
+						}
+					}
+				],
+				"_allmaps": {
+					"id": "https://annotations.allmaps.org/maps/8601f7abd520d62b",
+					"version": "https://annotations.allmaps.org/maps/8601f7abd520d62b@302efc62c6bcf9eb",
+					"image": {
+						"id": "https://annotations.allmaps.org/images/beaa34698a184d57",
+						"version": "https://annotations.allmaps.org/images/beaa34698a184d57@5149b0181266e54c",
+						"canvases": [
+							{
+								"id": "https://annotations.allmaps.org/canvases/2a0d920030ef5e2f",
+								"manifests": [
+									{
+										"id": "https://annotations.allmaps.org/manifests/7737cec074ed3ecf"
+									}
+								]
+							}
+						]
+					},
+					"scale": 1.962043,
+					"area": 10501351.23
+				}
+			}
+		},
+		{
+			"id": "https://annotations.allmaps.org/maps/e1c83e2352657f01",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"created": "2026-07-06T19:34:27.145Z",
+			"modified": "2026-07-06T19:34:27.145Z",
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://proxy.archieven.nl/iiif-image/184/BE4D137089164DE3869C7CA7FCCD6B63",
+					"type": "ImageService3",
+					"height": 7900,
+					"width": 6219,
+					"partOf": [
+						{
+							"id": "https://proxy.archieven.nl/iiif/canvas/184/BE4D137089164DE3869C7CA7FCCD6B63",
+							"type": "Canvas",
+							"label": {
+								"none": ["Pagina 1"]
+							},
+							"partOf": []
+						},
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/1",
+							"type": "Canvas",
+							"partOf": [
+								{
+									"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json",
+									"type": "Manifest",
+									"label": {
+										"en": ["Kaart van Rotterdam en omgeving; bestaande uit 24 bladen"]
+									}
+								}
+							]
+						}
+					]
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"6219\" height=\"7900\"><polygon points=\"198,326 209,7065 6012,7050 6002,308\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6002, 308]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.441254735617566, 51.97160882219258]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [209, 7065]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.398294850748607, 51.93979490049013]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [198, 326]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.397601758733385, 51.97124966890055]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6012, 7050]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.441917351655849, 51.94015367446279]
+						}
+					}
+				],
+				"_allmaps": {
+					"id": "https://annotations.allmaps.org/maps/e1c83e2352657f01",
+					"version": "https://annotations.allmaps.org/maps/e1c83e2352657f01@4b990d337fc1359f",
+					"image": {
+						"id": "https://annotations.allmaps.org/images/54f462e16809b1e1",
+						"version": "https://annotations.allmaps.org/images/54f462e16809b1e1@e05d9daa1de4ac67",
+						"canvases": [
+							{
+								"id": "https://annotations.allmaps.org/canvases/2f3572a801055e4f",
+								"manifests": []
+							},
+							{
+								"id": "https://annotations.allmaps.org/canvases/d2144389c1c27f02",
+								"manifests": [
+									{
+										"id": "https://annotations.allmaps.org/manifests/7737cec074ed3ecf"
+									}
+								]
+							}
+						]
+					},
+					"scale": 1.930068,
+					"area": 10501197.83
+				}
+			}
+		},
+		{
+			"id": "https://annotations.allmaps.org/maps/52fdccee9a832c1b",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"created": "2026-07-06T19:34:24.162Z",
+			"modified": "2026-07-06T19:34:24.162Z",
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://proxy.archieven.nl/iiif-image/184/5E1285BEB6ED4B51B7D8331F397CF750",
+					"type": "ImageService3",
+					"height": 8034,
+					"width": 6526,
+					"partOf": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/2",
+							"type": "Canvas",
+							"partOf": [
+								{
+									"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json",
+									"type": "Manifest",
+									"label": {
+										"en": ["Kaart van Rotterdam en omgeving; bestaande uit 24 bladen"]
+									}
+								}
+							]
+						}
+					]
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"6526\" height=\"8034\"><polygon points=\"181,208 179,7354 6328,7346 6332,198\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [179, 7354]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.441917351655849, 51.94015367446279]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6328, 7346]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.485540636318283, 51.94049625819658]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [181, 208]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.441254735617566, 51.97160882219258]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6332, 198]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.484908494055437, 51.971951773201766]
+						}
+					}
+				],
+				"_allmaps": {
+					"id": "https://annotations.allmaps.org/maps/52fdccee9a832c1b",
+					"version": "https://annotations.allmaps.org/maps/52fdccee9a832c1b@1a0b06b3e4e84dbd",
+					"image": {
+						"id": "https://annotations.allmaps.org/images/95371e3987a5b384",
+						"version": "https://annotations.allmaps.org/images/95371e3987a5b384@857f2362fa7514ba",
+						"canvases": [
+							{
+								"id": "https://annotations.allmaps.org/canvases/a82d7b9132a97ad2",
+								"manifests": [
+									{
+										"id": "https://annotations.allmaps.org/manifests/7737cec074ed3ecf"
+									}
+								]
+							}
+						]
+					},
+					"scale": 2.045872,
+					"area": 10501265.53
+				}
+			}
+		},
+		{
+			"id": "https://annotations.allmaps.org/maps/fa2e3c2244f41642",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"created": "2026-07-06T19:34:21.973Z",
+			"modified": "2026-07-06T19:34:21.973Z",
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://proxy.archieven.nl/iiif-image/184/B0510BB497A4403D8C08155E997A511D",
+					"type": "ImageService3",
+					"height": 7900,
+					"width": 6046,
+					"partOf": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/3",
+							"type": "Canvas",
+							"partOf": [
+								{
+									"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json",
+									"type": "Manifest",
+									"label": {
+										"en": ["Kaart van Rotterdam en omgeving; bestaande uit 24 bladen"]
+									}
+								}
+							]
+						}
+					]
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"6046\" height=\"7900\"><polygon points=\"138,306 138,7046 5929,7034 5926,293\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [138, 306]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.441254735617566, 51.97160882219258]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [5929, 7034]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.485540636318283, 51.94049625819658]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [5926, 293]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.484908494055437, 51.971951773201766]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [138, 7046]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.441917351655849, 51.94015367446279]
+						}
+					}
+				],
+				"_allmaps": {
+					"id": "https://annotations.allmaps.org/maps/fa2e3c2244f41642",
+					"version": "https://annotations.allmaps.org/maps/fa2e3c2244f41642@711ef418ee19cdba",
+					"image": {
+						"id": "https://annotations.allmaps.org/images/2c650c90f94e23ef",
+						"version": "https://annotations.allmaps.org/images/2c650c90f94e23ef@c564afe9ca3cd0fa",
+						"canvases": [
+							{
+								"id": "https://annotations.allmaps.org/canvases/f11fc216b985d47a",
+								"manifests": [
+									{
+										"id": "https://annotations.allmaps.org/manifests/7737cec074ed3ecf"
+									}
+								]
+							}
+						]
+					},
+					"scale": 1.927729,
+					"area": 10501265.53
+				}
+			}
+		},
+		{
+			"id": "https://annotations.allmaps.org/maps/7f882eb244863537",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"created": "2026-07-06T19:34:19.284Z",
+			"modified": "2026-07-06T19:34:19.284Z",
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://proxy.archieven.nl/iiif-image/184/7D27A37186AB436E83AEE2771091F597",
+					"type": "ImageService3",
+					"height": 8026,
+					"width": 6526,
+					"partOf": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/4",
+							"type": "Canvas",
+							"partOf": [
+								{
+									"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json",
+									"type": "Manifest",
+									"label": {
+										"en": ["Kaart van Rotterdam en omgeving; bestaande uit 24 bladen"]
+									}
+								}
+							]
+						}
+					]
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"6526\" height=\"8026\"><polygon points=\"182,208 178,7361 6334,7349 6334,194\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [178, 7361]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.485540636318283, 51.94049625819658]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [182, 208]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.484908494055437, 51.971951773201766]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6334, 7349]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.529164730471181, 51.94082258926308]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6334, 194]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.528563061555092, 51.97227848668739]
+						}
+					}
+				],
+				"_allmaps": {
+					"id": "https://annotations.allmaps.org/maps/7f882eb244863537",
+					"version": "https://annotations.allmaps.org/maps/7f882eb244863537@e9b362839afcea1a",
+					"image": {
+						"id": "https://annotations.allmaps.org/images/600fd344ed2c7691",
+						"version": "https://annotations.allmaps.org/images/600fd344ed2c7691@306085f080b73d4a",
+						"canvases": [
+							{
+								"id": "https://annotations.allmaps.org/canvases/9951495bc171fd2c",
+								"manifests": [
+									{
+										"id": "https://annotations.allmaps.org/manifests/7737cec074ed3ecf"
+									}
+								]
+							}
+						]
+					},
+					"scale": 2.047531,
+					"area": 10501351.23
+				}
+			}
+		},
+		{
+			"id": "https://annotations.allmaps.org/maps/f624a14b0ff8f0de",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"created": "2026-07-06T19:27:20.187Z",
+			"modified": "2026-07-06T19:27:20.187Z",
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://proxy.archieven.nl/iiif-image/184/0B0C8E3BB8FB415E960588345B2CAD44",
+					"type": "ImageService3",
+					"height": 7980,
+					"width": 6610,
+					"partOf": [
+						{
+							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json/canvas/0",
+							"type": "Canvas",
+							"partOf": [
+								{
+									"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json",
+									"type": "Manifest",
+									"label": {
+										"en": ["Kaart van Rotterdam en omgeving; bestaande uit 24 bladen"]
+									}
+								}
+							]
+						}
+					]
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"6610\" height=\"7980\"><polygon points=\"235,218 234,7375 6381,7365 6378,202\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [234, 7375]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.398294850748607, 51.93979490049013]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6381, 7365]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.441917351655849, 51.94015367446279]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6378, 202]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.441254735617566, 51.97160882219258]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [235, 218]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.397601758733385, 51.97124966890055]
+						}
+					}
+				],
+				"_allmaps": {
+					"id": "https://annotations.allmaps.org/maps/f624a14b0ff8f0de",
+					"version": "https://annotations.allmaps.org/maps/f624a14b0ff8f0de@209b1c153a34d1c0",
+					"image": {
+						"id": "https://annotations.allmaps.org/images/7e439ce696829c40",
+						"version": "https://annotations.allmaps.org/images/7e439ce696829c40@5a0664b7aecb15cb",
+						"canvases": [
+							{
+								"id": "https://annotations.allmaps.org/canvases/65c0f9a05e4f37ab",
+								"manifests": [
+									{
+										"id": "https://annotations.allmaps.org/manifests/7737cec074ed3ecf"
+									}
+								]
+							}
+						]
+					},
+					"scale": 2.046907,
+					"area": 10501197.83
+				}
 			}
 		}
 	]
