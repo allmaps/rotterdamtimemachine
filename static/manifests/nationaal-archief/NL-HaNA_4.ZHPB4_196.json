@@ -1,6 +1,6 @@
 {
 	"@context": "http://iiif.io/api/presentation/3/context.json",
-	"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/NL-HaNA_4.ZHPB4_196.json",
+	"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json",
 	"type": "Manifest",
 	"label": {
 		"en": ["196 Rotterdam"]
