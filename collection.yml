@@ -174,7 +174,7 @@
   iiif:
     url: https://raw.githubusercontent.com/bertspaan/rotterdams-publiek/master/manifests/plattegrond-van-rotterdam-in-25-bladen-1910.json
     type: manifest
-  annotation: https://annotations.allmaps.org/manifests/012e1c2c1db0ebf7
+  annotation: annotations/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1910.json
 - label: Plattegrond van Rotterdam
   title: Plattegrond van Rotterdam
   year: 1920
