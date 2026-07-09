@@ -57,7 +57,7 @@
   iiif:
     url: https://sammeltassen.nl/iiif-manifests/nationaal-archief/NL-HaNA_4.OBGK_K5.40.json
     type: manifest
-  annotation: https://annotations.allmaps.org/manifests/4bf066b5196a1aa1
+  annotation: annotations/nationaal-archief/NL-HaNA_4.OBGK_K5.40.json
 - label: Blijdorpsche polder
   title: 64a - Blijdorpsche polder gem. Overschie en Rotterdam
   year: 1858
@@ -309,7 +309,7 @@
   iiif:
     url: https://sammeltassen.nl/iiif-manifests/stadsarchief-rotterdam/NL-RtSA_4201_I-216.json
     type: manifest
-  annotation: https://annotations.allmaps.org/manifests/3313ef58346281df
+  annotation: annotations/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1947.json
 - label: Toeristische plattegrond
   title: Rotterdam, Holland toeristische plattegrond
   year: 1949

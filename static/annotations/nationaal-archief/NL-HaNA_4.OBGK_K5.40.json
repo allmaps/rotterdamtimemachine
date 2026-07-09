@@ -1,0 +1,652 @@
+{
+	"type": "AnnotationPage",
+	"@context": "http://www.w3.org/ns/anno.jsonld",
+	"items": [
+		{
+			"id": "https://annotations.allmaps.org/maps/f75b572dc3157282/attach",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"created": "2026-07-09T15:34:03.427Z",
+			"modified": "2026-07-09T15:34:03.427Z",
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://service.archief.nl/iipsrv?IIIF=/61/e1/0b/1b/37/6a/4b/19/9b/d7/54/7b/70/af/69/dc/6ace22af-b715-4594-ad09-c3ba7c1797f7.jp2",
+					"type": "ImageService2",
+					"height": 7471,
+					"width": 9525,
+					"partOf": [
+						{
+							"id": "https://service.archief.nl/iipsrv?IIIF=/61/e1/0b/1b/37/6a/4b/19/9b/d7/54/7b/70/af/69/dc/6ace22af-b715-4594-ad09-c3ba7c1797f7.jp2/info.json",
+							"type": "Canvas",
+							"partOf": [
+								{
+									"id": "https://sammeltassen.nl/iiif-manifests/nationaal-archief/NL-HaNA_4.OBGK_K5.40.json",
+									"type": "Manifest",
+									"label": {
+										"nl": ["Kaart van de Provincie Zuid Holland (1846"]
+									}
+								}
+							]
+						}
+					]
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"9525\" height=\"7471\"><polygon points=\"641,673 8873,651 8873,6807 663,6820\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [641, 673]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.244097647267464, 51.86199851645947]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [8873, 651]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.761548306177819, 51.8616425494694]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [663, 6820]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.2441782618107835, 51.62662443304027]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [8873, 6807]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.760325169489338, 51.62619793004548]
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "https://annotations.allmaps.org/maps/1cdb4c9b3388ecec/attach",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"created": "2026-07-09T15:33:48.603Z",
+			"modified": "2026-07-09T15:33:48.603Z",
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://service.archief.nl/iipsrv?IIIF=/61/e1/0b/1b/37/6a/4b/19/9b/d7/54/7b/70/af/69/dc/21919bbf-da9c-4675-93ca-35a7f06d9643.jp2",
+					"type": "ImageService2",
+					"height": 7435,
+					"width": 9549,
+					"partOf": [
+						{
+							"id": "https://service.archief.nl/iipsrv?IIIF=/61/e1/0b/1b/37/6a/4b/19/9b/d7/54/7b/70/af/69/dc/21919bbf-da9c-4675-93ca-35a7f06d9643.jp2/info.json",
+							"type": "Canvas",
+							"partOf": [
+								{
+									"id": "https://sammeltassen.nl/iiif-manifests/nationaal-archief/NL-HaNA_4.OBGK_K5.40.json",
+									"type": "Manifest",
+									"label": {
+										"nl": ["Kaart van de Provincie Zuid Holland (1846"]
+									}
+								}
+							]
+						}
+					]
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"9549\" height=\"7435\"><polygon points=\"631,640 8915,628 8917,6801 635,6797\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [8915, 628]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.244097647267464, 51.86199851645947]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [8917, 6801]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.2441782618107835, 51.62662443304027]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [631, 640]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [3.7271616098228875, 51.861562152674686]
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "https://annotations.allmaps.org/maps/006f35921dba2b37/attach",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"created": "2026-07-09T15:33:18.771Z",
+			"modified": "2026-07-09T15:33:18.771Z",
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://service.archief.nl/iipsrv?IIIF=/61/e1/0b/1b/37/6a/4b/19/9b/d7/54/7b/70/af/69/dc/64b1e60e-128b-4dee-8f32-7b156c3545d5.jp2",
+					"type": "ImageService2",
+					"height": 7411,
+					"width": 9526,
+					"partOf": [
+						{
+							"id": "https://service.archief.nl/iipsrv?IIIF=/61/e1/0b/1b/37/6a/4b/19/9b/d7/54/7b/70/af/69/dc/64b1e60e-128b-4dee-8f32-7b156c3545d5.jp2/info.json",
+							"type": "Canvas",
+							"partOf": [
+								{
+									"id": "https://sammeltassen.nl/iiif-manifests/nationaal-archief/NL-HaNA_4.OBGK_K5.40.json",
+									"type": "Manifest",
+									"label": {
+										"nl": ["Kaart van de Provincie Zuid Holland (1846"]
+									}
+								}
+							]
+						}
+					]
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"9526\" height=\"7411\"><polygon points=\"627,632 8912,619 8903,6790 629,6796\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [629, 6796]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.761548306177819, 51.8616425494694]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [8912, 619]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [5.276900620301385, 52.09757287793052]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [8903, 6790]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [5.278686289799318, 51.86228607469418]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [627, 632]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.760003271642156, 52.09717195592608]
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "https://annotations.allmaps.org/maps/4e99e53485d39237/attach",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"created": "2026-07-09T15:32:58.420Z",
+			"modified": "2026-07-09T15:32:58.420Z",
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://service.archief.nl/iipsrv?IIIF=/61/e1/0b/1b/37/6a/4b/19/9b/d7/54/7b/70/af/69/dc/fc85cbc6-bc18-4ebb-a58e-fbd8c67ce38e.jp2",
+					"type": "ImageService2",
+					"height": 7467,
+					"width": 9585,
+					"partOf": [
+						{
+							"id": "https://service.archief.nl/iipsrv?IIIF=/61/e1/0b/1b/37/6a/4b/19/9b/d7/54/7b/70/af/69/dc/fc85cbc6-bc18-4ebb-a58e-fbd8c67ce38e.jp2/info.json",
+							"type": "Canvas",
+							"partOf": [
+								{
+									"id": "https://sammeltassen.nl/iiif-manifests/nationaal-archief/NL-HaNA_4.OBGK_K5.40.json",
+									"type": "Manifest",
+									"label": {
+										"nl": ["Kaart van de Provincie Zuid Holland (1846"]
+									}
+								}
+							]
+						}
+					]
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"9585\" height=\"7467\"><polygon points=\"647,649 634,6814 8913,6818 8936,656\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [634, 6814]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.244097647267464, 51.86199851645947]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [8913, 6818]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.761548306177819, 51.8616425494694]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [8936, 656]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.760003271642156, 52.09717195592608]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [647, 649]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.2433918873911365, 52.097482380866644]
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "https://annotations.allmaps.org/maps/1c7c6291be59aaef/attach",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"created": "2026-07-09T15:32:49.807Z",
+			"modified": "2026-07-09T15:32:49.807Z",
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://service.archief.nl/iipsrv?IIIF=/61/e1/0b/1b/37/6a/4b/19/9b/d7/54/7b/70/af/69/dc/df5869f5-067d-400e-a8eb-36a1ce044d44.jp2",
+					"type": "ImageService2",
+					"height": 7419,
+					"width": 9610,
+					"partOf": [
+						{
+							"id": "https://service.archief.nl/iipsrv?IIIF=/61/e1/0b/1b/37/6a/4b/19/9b/d7/54/7b/70/af/69/dc/df5869f5-067d-400e-a8eb-36a1ce044d44.jp2/info.json",
+							"type": "Canvas",
+							"partOf": [
+								{
+									"id": "https://sammeltassen.nl/iiif-manifests/nationaal-archief/NL-HaNA_4.OBGK_K5.40.json",
+									"type": "Manifest",
+									"label": {
+										"nl": ["Kaart van de Provincie Zuid Holland (1846"]
+									}
+								}
+							]
+						}
+					]
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"9610\" height=\"7419\"><polygon points=\"682,631 8964,625 8950,6779 681,6790\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [8950, 6779]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.244097647267464, 51.86199851645947]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [681, 6790]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [3.7271616098228875, 51.861562152674686]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [8964, 625]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.2433918873911365, 52.097482380866644]
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "https://annotations.allmaps.org/maps/fbcffd415b6a9471/attach",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"created": "2026-07-09T15:32:32.825Z",
+			"modified": "2026-07-09T15:32:32.825Z",
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://service.archief.nl/iipsrv?IIIF=/61/e1/0b/1b/37/6a/4b/19/9b/d7/54/7b/70/af/69/dc/0fc1e373-f484-4699-a126-12a4d09371a2.jp2",
+					"type": "ImageService2",
+					"height": 7419,
+					"width": 9538,
+					"partOf": [
+						{
+							"id": "https://service.archief.nl/iipsrv?IIIF=/61/e1/0b/1b/37/6a/4b/19/9b/d7/54/7b/70/af/69/dc/0fc1e373-f484-4699-a126-12a4d09371a2.jp2/info.json",
+							"type": "Canvas",
+							"partOf": [
+								{
+									"id": "https://sammeltassen.nl/iiif-manifests/nationaal-archief/NL-HaNA_4.OBGK_K5.40.json",
+									"type": "Manifest",
+									"label": {
+										"nl": ["Kaart van de Provincie Zuid Holland (1846"]
+									}
+								}
+							]
+						}
+					]
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"9538\" height=\"7419\"><polygon points=\"633,648 648,6807 8930,6785 8912,618\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [8930, 6785]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [5.276900620301385, 52.09757287793052]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [648, 6807]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.760003271642156, 52.09717195592608]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [633, 648]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.76039695070846, 52.33246902122879]
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "https://annotations.allmaps.org/maps/2dfbacf5bef8f0a8/attach",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"created": "2026-07-09T15:32:09.855Z",
+			"modified": "2026-07-09T15:32:09.855Z",
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://service.archief.nl/iipsrv?IIIF=/61/e1/0b/1b/37/6a/4b/19/9b/d7/54/7b/70/af/69/dc/1d71739a-096d-40e6-bc4f-85511495cd02.jp2",
+					"type": "ImageService2",
+					"height": 7431,
+					"width": 9562,
+					"partOf": [
+						{
+							"id": "https://service.archief.nl/iipsrv?IIIF=/61/e1/0b/1b/37/6a/4b/19/9b/d7/54/7b/70/af/69/dc/1d71739a-096d-40e6-bc4f-85511495cd02.jp2/info.json",
+							"type": "Canvas",
+							"partOf": [
+								{
+									"id": "https://sammeltassen.nl/iiif-manifests/nationaal-archief/NL-HaNA_4.OBGK_K5.40.json",
+									"type": "Manifest",
+									"label": {
+										"nl": ["Kaart van de Provincie Zuid Holland (1846"]
+									}
+								}
+							]
+						}
+					]
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"9562\" height=\"7431\"><polygon points=\"619,644 8921,629 8915,6803 602,6812\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [8915, 6803]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.760003271642156, 52.09717195592608]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [602, 6812]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.2433918873911365, 52.097482380866644]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [8921, 629]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.76039695070846, 52.33246902122879]
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "https://annotations.allmaps.org/maps/c0f1c0b0b51a619f/attach",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"created": "2026-07-09T15:20:31.867Z",
+			"modified": "2026-07-09T15:20:31.867Z",
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://service.archief.nl/iipsrv?IIIF=/61/e1/0b/1b/37/6a/4b/19/9b/d7/54/7b/70/af/69/dc/ed12074a-3dca-4929-966c-dbfc6cd5768c.jp2",
+					"type": "ImageService2",
+					"height": 7423,
+					"width": 9502,
+					"partOf": [
+						{
+							"id": "https://service.archief.nl/iipsrv?IIIF=/61/e1/0b/1b/37/6a/4b/19/9b/d7/54/7b/70/af/69/dc/ed12074a-3dca-4929-966c-dbfc6cd5768c.jp2/info.json",
+							"type": "Canvas",
+							"partOf": [
+								{
+									"id": "https://sammeltassen.nl/iiif-manifests/nationaal-archief/NL-HaNA_4.OBGK_K5.40.json",
+									"type": "Manifest",
+									"label": {
+										"nl": ["Kaart van de Provincie Zuid Holland (1846"]
+									}
+								}
+							]
+						}
+					]
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"9502\" height=\"7423\"><polygon points=\"642,647 8859,640 8847,4047 7319,4042 7322,6785 632,6782\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [642, 647]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.761548306177819, 51.8616425494694]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [632, 6782]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.760325169489338, 51.62619793004548]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [8859, 640]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [5.278686289799318, 51.86228607469418]
+						}
+					}
+				]
+			}
+		}
+	]
+}
