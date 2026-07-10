@@ -1,1696 +1,2292 @@
 {
-	"type": "AnnotationPage",
-	"@context": "http://www.w3.org/ns/anno.jsonld",
-	"items": [
-		{
-			"id": "annotation-https://rotterdamspubliek.nl/iiif/B79F5D048E584873BC38A35BFAEC49CC/info.json/attach",
-			"type": "Annotation",
-			"@context": [
-				"http://iiif.io/api/extension/georef/1/context.json",
-				"http://iiif.io/api/presentation/3/context.json"
-			],
-			"motivation": "georeferencing",
-			"target": {
-				"type": "SpecificResource",
-				"source": {
-					"id": "https://rotterdamspubliek.nl/iiif/B79F5D048E584873BC38A35BFAEC49CC",
-					"type": "ImageService2",
-					"height": 4391,
-					"width": 5227
-				},
-				"selector": {
-					"type": "SvgSelector",
-					"value": "<svg width=\"5227\" height=\"4391\"><polygon points=\"239,160 245,3654 3194,3657 3199,4010 5047,4007 5032,143\" /></svg>"
-				}
-			},
-			"body": {
-				"type": "FeatureCollection",
-				"transformation": {
-					"type": "thinPlateSpline"
-				},
-				"features": [
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [5032, 143]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.4297842233176254, 51.87645981514119]
-						}
-					},
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [239, 160]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.400203811283273, 51.87440633653219]
-						}
-					},
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [5047, 4007]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.432496404059388, 51.86184897851709]
-						}
-					}
-				]
-			}
-		},
-		{
-			"id": "annotation-https://rotterdamspubliek.nl/iiif/AE2AD818169243EFB9207C98CA37ED59/info.json/attach",
-			"type": "Annotation",
-			"@context": [
-				"http://iiif.io/api/extension/georef/1/context.json",
-				"http://iiif.io/api/presentation/3/context.json"
-			],
-			"motivation": "georeferencing",
-			"target": {
-				"type": "SpecificResource",
-				"source": {
-					"id": "https://rotterdamspubliek.nl/iiif/AE2AD818169243EFB9207C98CA37ED59",
-					"type": "ImageService2",
-					"height": 4534,
-					"width": 6450
-				},
-				"selector": {
-					"type": "SvgSelector",
-					"value": "<svg width=\"6450\" height=\"4534\"><polygon points=\"160,186 171,4317 6276,4314 6259,173\" /></svg>"
-				}
-			},
-			"body": {
-				"type": "FeatureCollection",
-				"transformation": {
-					"type": "thinPlateSpline"
-				},
-				"features": [
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [171, 4317]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.506883440029409, 51.881963241431016]
-						}
-					},
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [160, 186]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.503810787799418, 51.897556696124724]
-						}
-					},
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [6259, 173]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.541442776495192, 51.9003366661439]
-						}
-					},
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [6276, 4314]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.544553597733358, 51.88472666098698]
-						}
-					}
-				]
-			}
-		},
-		{
-			"id": "annotation-https://rotterdamspubliek.nl/iiif/BBAE5AD560CC41719B7420ED659C6D4D/info.json/attach",
-			"type": "Annotation",
-			"@context": [
-				"http://iiif.io/api/extension/georef/1/context.json",
-				"http://iiif.io/api/presentation/3/context.json"
-			],
-			"motivation": "georeferencing",
-			"target": {
-				"type": "SpecificResource",
-				"source": {
-					"id": "https://rotterdamspubliek.nl/iiif/BBAE5AD560CC41719B7420ED659C6D4D",
-					"type": "ImageService2",
-					"height": 4510,
-					"width": 5155
-				},
-				"selector": {
-					"type": "SvgSelector",
-					"value": "<svg width=\"5155\" height=\"4510\"><polygon points=\"213,200 226,4340 5018,4345 4994,202\" /></svg>"
-				}
-			},
-			"body": {
-				"type": "FeatureCollection",
-				"transformation": {
-					"type": "thinPlateSpline"
-				},
-				"features": [
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [5018, 4345]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.420450307020755, 51.92542821967924]
-						}
-					},
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [226, 4340]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.391093944778214, 51.92334220379105]
-						}
-					},
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [4994, 202]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.417336369312054, 51.94095862057702]
-						}
-					}
-				]
-			}
-		},
-		{
-			"id": "annotation-https://rotterdamspubliek.nl/iiif/59DBAF5BE1CC4C09BCD3610F6B7ED6D3/info.json/attach",
-			"type": "Annotation",
-			"@context": [
-				"http://iiif.io/api/extension/georef/1/context.json",
-				"http://iiif.io/api/presentation/3/context.json"
-			],
-			"motivation": "georeferencing",
-			"target": {
-				"type": "SpecificResource",
-				"source": {
-					"id": "https://rotterdamspubliek.nl/iiif/59DBAF5BE1CC4C09BCD3610F6B7ED6D3",
-					"type": "ImageService2",
-					"height": 4726,
-					"width": 5203
-				},
-				"selector": {
-					"type": "SvgSelector",
-					"value": "<svg width=\"5203\" height=\"4726\"><polygon points=\"237,120 243,4550 5037,4544 5021,101\" /></svg>"
-				}
-			},
-			"body": {
-				"type": "FeatureCollection",
-				"transformation": {
-					"type": "thinPlateSpline"
-				},
-				"features": [
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [5021, 101]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.420450307020755, 51.92542821967924]
-						}
-					},
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [237, 120]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.391093944778214, 51.92334220379105]
-						}
-					},
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [243, 4550]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.394211839666816, 51.906758869968144]
-						}
-					},
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [5037, 4544]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.423580465485976, 51.908794037203954]
-						}
-					}
-				]
-			}
-		},
-		{
-			"id": "annotation-https://rotterdamspubliek.nl/iiif/A96CC28B52154C2EBED72E4B9DB4EAAF/info.json/attach",
-			"type": "Annotation",
-			"@context": [
-				"http://iiif.io/api/extension/georef/1/context.json",
-				"http://iiif.io/api/presentation/3/context.json"
-			],
-			"motivation": "georeferencing",
-			"target": {
-				"type": "SpecificResource",
-				"source": {
-					"id": "https://rotterdamspubliek.nl/iiif/A96CC28B52154C2EBED72E4B9DB4EAAF",
-					"type": "ImageService2",
-					"height": 4846,
-					"width": 5239
-				},
-				"selector": {
-					"type": "SvgSelector",
-					"value": "<svg width=\"5239\" height=\"4846\"><polygon points=\"232,165 240,4640 5034,4637 5014,165\" /></svg>"
-				}
-			},
-			"body": {
-				"type": "FeatureCollection",
-				"transformation": {
-					"type": "thinPlateSpline"
-				},
-				"features": [
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [232, 165]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.394211839666816, 51.906758869968144]
-						}
-					},
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [5014, 165]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.423580465485976, 51.908794037203954]
-						}
-					},
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [5034, 4637]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.426787482076786, 51.89204615201211]
-						}
-					},
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [240, 4640]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.397372578738275, 51.889998030111215]
-						}
-					}
-				]
-			}
-		},
-		{
-			"id": "annotation-https://rotterdamspubliek.nl/iiif/3269A4524A3B42F3BA6D9EBC92B0B888/info.json/attach",
-			"type": "Annotation",
-			"@context": [
-				"http://iiif.io/api/extension/georef/1/context.json",
-				"http://iiif.io/api/presentation/3/context.json"
-			],
-			"motivation": "georeferencing",
-			"target": {
-				"type": "SpecificResource",
-				"source": {
-					"id": "https://rotterdamspubliek.nl/iiif/3269A4524A3B42F3BA6D9EBC92B0B888",
-					"type": "ImageService2",
-					"height": 4498,
-					"width": 5227
-				},
-				"selector": {
-					"type": "SvgSelector",
-					"value": "<svg width=\"5227\" height=\"4498\"><polygon points=\"271,153 277,4285 5064,4274 5035,141\" /></svg>"
-				}
-			},
-			"body": {
-				"type": "FeatureCollection",
-				"transformation": {
-					"type": "thinPlateSpline"
-				},
-				"features": [
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [5064, 4274]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.4297842233176254, 51.87645981514119]
-						}
-					},
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [277, 4285]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.400203811283273, 51.87440633653219]
-						}
-					},
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [5035, 141]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.426787482076786, 51.89204615201211]
-						}
-					},
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [271, 153]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.397372578738275, 51.889998030111215]
-						}
-					}
-				]
-			}
-		},
-		{
-			"id": "annotation-https://rotterdamspubliek.nl/iiif/6A9C823CC3234837B35A55362EDD3BFC/info.json/attach",
-			"type": "Annotation",
-			"@context": [
-				"http://iiif.io/api/extension/georef/1/context.json",
-				"http://iiif.io/api/presentation/3/context.json"
-			],
-			"motivation": "georeferencing",
-			"target": {
-				"type": "SpecificResource",
-				"source": {
-					"id": "https://rotterdamspubliek.nl/iiif/6A9C823CC3234837B35A55362EDD3BFC",
-					"type": "ImageService2",
-					"height": 4307,
-					"width": 6438
-				},
-				"selector": {
-					"type": "SvgSelector",
-					"value": "<svg width=\"6438\" height=\"4307\"><polygon points=\"163,164 168,4032 6276,4016 6243,159\" /></svg>"
-				}
-			},
-			"body": {
-				"type": "FeatureCollection",
-				"transformation": {
-					"type": "thinPlateSpline"
-				},
-				"features": [
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [163, 164]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.4297842233176254, 51.87645981514119]
-						}
-					},
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [168, 4032]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.432496404059388, 51.86184897851709]
-						}
-					},
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [6243, 159]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.467381113244098, 51.87911157943088]
-						}
-					},
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [6276, 4016]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.470259954915617, 51.86449905529593]
-						}
-					}
-				]
-			}
-		},
-		{
-			"id": "annotation-https://rotterdamspubliek.nl/iiif/2058A487AD284CD988282D2DC60AA432/info.json/attach",
-			"type": "Annotation",
-			"@context": [
-				"http://iiif.io/api/extension/georef/1/context.json",
-				"http://iiif.io/api/presentation/3/context.json"
-			],
-			"motivation": "georeferencing",
-			"target": {
-				"type": "SpecificResource",
-				"source": {
-					"id": "https://rotterdamspubliek.nl/iiif/2058A487AD284CD988282D2DC60AA432",
-					"type": "ImageService2",
-					"height": 4415,
-					"width": 6702
-				},
-				"selector": {
-					"type": "SvgSelector",
-					"value": "<svg width=\"6702\" height=\"4415\"><polygon points=\"173,169 175,4041 6564,4045 6549,181\" /></svg>"
-				}
-			},
-			"body": {
-				"type": "FeatureCollection",
-				"transformation": {
-					"type": "thinPlateSpline"
-				},
-				"features": [
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [6549, 181]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.506883440029409, 51.881963241431016]
-						}
-					},
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [173, 169]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.467381113244098, 51.87911157943088]
-						}
-					},
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [175, 4041]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.470259954915617, 51.86449905529593]
-						}
-					},
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [6564, 4045]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.509785103877562, 51.867330592583365]
-						}
-					}
-				]
-			}
-		},
-		{
-			"id": "annotation-https://rotterdamspubliek.nl/iiif/AD0567937AFC415096DCC6E6686FE32E/info.json/attach",
-			"type": "Annotation",
-			"@context": [
-				"http://iiif.io/api/extension/georef/1/context.json",
-				"http://iiif.io/api/presentation/3/context.json"
-			],
-			"motivation": "georeferencing",
-			"target": {
-				"type": "SpecificResource",
-				"source": {
-					"id": "https://rotterdamspubliek.nl/iiif/AD0567937AFC415096DCC6E6686FE32E",
-					"type": "ImageService2",
-					"height": 4546,
-					"width": 6762
-				},
-				"selector": {
-					"type": "SvgSelector",
-					"value": "<svg width=\"6762\" height=\"4546\"><polygon points=\"157,206 160,4343 6568,4340 6548,204\" /></svg>"
-				}
-			},
-			"body": {
-				"type": "FeatureCollection",
-				"transformation": {
-					"type": "thinPlateSpline"
-				},
-				"features": [
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [157, 206]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.454824578499926, 51.94366261656775]
-						}
-					},
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [160, 4343]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.457832265830094, 51.92812236651177]
-						}
-					},
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [6568, 4340]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.497165396473079, 51.931015235045784]
-						}
-					},
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [6548, 204]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.494057713025564, 51.94653552423249]
-						}
-					}
-				]
-			}
-		},
-		{
-			"id": "annotation-https://rotterdamspubliek.nl/iiif/13B51C4B387C4480A0347D6C87FB921B/info.json/attach",
-			"type": "Annotation",
-			"@context": [
-				"http://iiif.io/api/extension/georef/1/context.json",
-				"http://iiif.io/api/presentation/3/context.json"
-			],
-			"motivation": "georeferencing",
-			"target": {
-				"type": "SpecificResource",
-				"source": {
-					"id": "https://rotterdamspubliek.nl/iiif/13B51C4B387C4480A0347D6C87FB921B",
-					"type": "ImageService2",
-					"height": 4331,
-					"width": 6438
-				},
-				"selector": {
-					"type": "SvgSelector",
-					"value": "<svg width=\"6438\" height=\"4331\"><polygon points=\"171,151 167,4024 6268,4011 6254,161\" /></svg>"
-				}
-			},
-			"body": {
-				"type": "FeatureCollection",
-				"transformation": {
-					"type": "thinPlateSpline"
-				},
-				"features": [
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [171, 151]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.506883440029409, 51.881963241431016]
-						}
-					},
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [6254, 161]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.544553597733358, 51.88472666098698]
-						}
-					},
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [167, 4024]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.509785103877562, 51.867330592583365]
-						}
-					},
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [6268, 4011]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.54751238771369, 51.87017462672382]
-						}
-					}
-				]
-			}
-		},
-		{
-			"id": "annotation-https://rotterdamspubliek.nl/iiif/EF863AEF0BF04473908738EB4971A5E3/info.json/attach",
-			"type": "Annotation",
-			"@context": [
-				"http://iiif.io/api/extension/georef/1/context.json",
-				"http://iiif.io/api/presentation/3/context.json"
-			],
-			"motivation": "georeferencing",
-			"target": {
-				"type": "SpecificResource",
-				"source": {
-					"id": "https://rotterdamspubliek.nl/iiif/EF863AEF0BF04473908738EB4971A5E3",
-					"type": "ImageService2",
-					"height": 4307,
-					"width": 5287
-				},
-				"selector": {
-					"type": "SvgSelector",
-					"value": "<svg width=\"5287\" height=\"4307\"><polygon points=\"183,127 187,3982 1597,3982 1591,127\" /></svg>"
-				}
-			},
-			"body": {
-				"type": "FeatureCollection",
-				"transformation": {
-					"type": "thinPlateSpline"
-				},
-				"features": [
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [183, 127]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.544553597733358, 51.88472666098698]
-						}
-					},
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [187, 3982]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.54751238771369, 51.87017462672382]
-						}
-					}
-				]
-			}
-		},
-		{
-			"id": "annotation-https://rotterdamspubliek.nl/iiif/8D75837EA87148228528DB79FCFAF488/info.json/attach",
-			"type": "Annotation",
-			"@context": [
-				"http://iiif.io/api/extension/georef/1/context.json",
-				"http://iiif.io/api/presentation/3/context.json"
-			],
-			"motivation": "georeferencing",
-			"target": {
-				"type": "SpecificResource",
-				"source": {
-					"id": "https://rotterdamspubliek.nl/iiif/8D75837EA87148228528DB79FCFAF488",
-					"type": "ImageService2",
-					"height": 4414,
-					"width": 5239
-				},
-				"selector": {
-					"type": "SvgSelector",
-					"value": "<svg width=\"5239\" height=\"4414\"><polygon points=\"133,123 138,4246 4978,4241 4946,101\" /></svg>"
-				}
-			},
-			"body": {
-				"type": "FeatureCollection",
-				"transformation": {
-					"type": "thinPlateSpline"
-				},
-				"features": [
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [133, 123]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.541442776495192, 51.9003366661439]
-						}
-					},
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [138, 4246]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.544553597733358, 51.88472666098698]
-						}
-					},
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [4946, 101]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.571231633909707, 51.90261423814906]
-						}
-					}
-				]
-			}
-		},
-		{
-			"id": "annotation-https://rotterdamspubliek.nl/iiif/AD324025E81A42C8AEF74EFE049C7D8B/info.json/attach",
-			"type": "Annotation",
-			"@context": [
-				"http://iiif.io/api/extension/georef/1/context.json",
-				"http://iiif.io/api/presentation/3/context.json"
-			],
-			"motivation": "georeferencing",
-			"target": {
-				"type": "SpecificResource",
-				"source": {
-					"id": "https://rotterdamspubliek.nl/iiif/AD324025E81A42C8AEF74EFE049C7D8B",
-					"type": "ImageService2",
-					"height": 4738,
-					"width": 5227
-				},
-				"selector": {
-					"type": "SvgSelector",
-					"value": "<svg width=\"5227\" height=\"4738\"><polygon points=\"159,119 171,4563 5001,4551 4980,114\" /></svg>"
-				}
-			},
-			"body": {
-				"type": "FeatureCollection",
-				"transformation": {
-					"type": "thinPlateSpline"
-				},
-				"features": [
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [171, 4563]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.541442776495192, 51.9003366661439]
-						}
-					},
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [5001, 4551]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.571231633909707, 51.90261423814906]
-						}
-					},
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [4980, 114]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.567768507879496, 51.91931110616608]
-						}
-					},
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [159, 119]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.5380461250602195, 51.917092043313836]
-						}
-					}
-				]
-			}
-		},
-		{
-			"id": "annotation-https://rotterdamspubliek.nl/iiif/C50AD01841D54576A6C8B642938A01DD/info.json/attach",
-			"type": "Annotation",
-			"@context": [
-				"http://iiif.io/api/extension/georef/1/context.json",
-				"http://iiif.io/api/presentation/3/context.json"
-			],
-			"motivation": "georeferencing",
-			"target": {
-				"type": "SpecificResource",
-				"source": {
-					"id": "https://rotterdamspubliek.nl/iiif/C50AD01841D54576A6C8B642938A01DD",
-					"type": "ImageService2",
-					"height": 4762,
-					"width": 5143
-				},
-				"selector": {
-					"type": "SvgSelector",
-					"value": "<svg width=\"5143\" height=\"4762\"><polygon points=\"127,123 129,4572 4948,4587 4948,121\" /></svg>"
-				}
-			},
-			"body": {
-				"type": "FeatureCollection",
-				"transformation": {
-					"type": "thinPlateSpline"
-				},
-				"features": [
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [4948, 4587]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.567768507879496, 51.91931110616608]
-						}
-					},
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [129, 4572]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.5380461250602195, 51.917092043313836]
-						}
-					},
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [4948, 121]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.564336810483445, 51.93609941039839]
-						}
-					},
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [127, 123]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.534681106499982, 51.93382742777451]
-						}
-					}
-				]
-			}
-		},
-		{
-			"id": "annotation-https://rotterdamspubliek.nl/iiif/4F0DA8FB957E430D9C1C45AE4BBC3C06/info.json/attach",
-			"type": "Annotation",
-			"@context": [
-				"http://iiif.io/api/extension/georef/1/context.json",
-				"http://iiif.io/api/presentation/3/context.json"
-			],
-			"motivation": "georeferencing",
-			"target": {
-				"type": "SpecificResource",
-				"source": {
-					"id": "https://rotterdamspubliek.nl/iiif/4F0DA8FB957E430D9C1C45AE4BBC3C06",
-					"type": "ImageService2",
-					"height": 4414,
-					"width": 5083
-				},
-				"selector": {
-					"type": "SvgSelector",
-					"value": "<svg width=\"5083\" height=\"4414\"><polygon points=\"109,156 111,4288 4926,4280 4911,164\" /></svg>"
-				}
-			},
-			"body": {
-				"type": "FeatureCollection",
-				"transformation": {
-					"type": "thinPlateSpline"
-				},
-				"features": [
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [4926, 4280]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.564336810483445, 51.93609941039839]
-						}
-					},
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [111, 4288]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.534681106499982, 51.93382742777451]
-						}
-					},
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [109, 156]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.531512190262563, 51.9493349000702]
-						}
-					}
-				]
-			}
-		},
-		{
-			"id": "annotation-https://rotterdamspubliek.nl/iiif/637888E013C749D189E0FBEA40AAE49A/info.json/attach",
-			"type": "Annotation",
-			"@context": [
-				"http://iiif.io/api/extension/georef/1/context.json",
-				"http://iiif.io/api/presentation/3/context.json"
-			],
-			"motivation": "georeferencing",
-			"target": {
-				"type": "SpecificResource",
-				"source": {
-					"id": "https://rotterdamspubliek.nl/iiif/637888E013C749D189E0FBEA40AAE49A",
-					"type": "ImageService2",
-					"height": 4534,
-					"width": 6402
-				},
-				"selector": {
-					"type": "SvgSelector",
-					"value": "<svg width=\"6402\" height=\"4534\"><polygon points=\"146,189 144,4331 6247,4329 6235,199\" /></svg>"
-				}
-			},
-			"body": {
-				"type": "FeatureCollection",
-				"transformation": {
-					"type": "thinPlateSpline"
-				},
-				"features": [
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [144, 4331]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.497165396473079, 51.931015235045784]
-						}
-					},
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [146, 189]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.494057713025564, 51.94653552423249]
-						}
-					},
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [6247, 4329]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.534681106499982, 51.93382742777451]
-						}
-					},
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [6235, 199]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.531512190262563, 51.9493349000702]
-						}
-					}
-				]
-			}
-		},
-		{
-			"id": "annotation-https://rotterdamspubliek.nl/iiif/3E0AF0D3DEE145318C457D9FE875DB6C/info.json/attach",
-			"type": "Annotation",
-			"@context": [
-				"http://iiif.io/api/extension/georef/1/context.json",
-				"http://iiif.io/api/presentation/3/context.json"
-			],
-			"motivation": "georeferencing",
-			"target": {
-				"type": "SpecificResource",
-				"source": {
-					"id": "https://rotterdamspubliek.nl/iiif/3E0AF0D3DEE145318C457D9FE875DB6C",
-					"type": "ImageService2",
-					"height": 4846,
-					"width": 6474
-				},
-				"selector": {
-					"type": "SvgSelector",
-					"value": "<svg width=\"6474\" height=\"4846\"><polygon points=\"177,174 204,4608 6310,4577 6268,136\" /></svg>"
-				}
-			},
-			"body": {
-				"type": "FeatureCollection",
-				"transformation": {
-					"type": "thinPlateSpline"
-				},
-				"features": [
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [177, 174]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.420450307020755, 51.92542821967924]
-						}
-					},
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [204, 4608]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.423580465485976, 51.908794037203954]
-						}
-					},
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [6268, 136]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.457832265830094, 51.92812236651177]
-						}
-					},
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [6310, 4577]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.4611214264812284, 51.91145518719393]
-						}
-					}
-				]
-			}
-		},
-		{
-			"id": "annotation-https://rotterdamspubliek.nl/iiif/E17C0C6C9801455497366626D2EA8A29/info.json/attach",
-			"type": "Annotation",
-			"@context": [
-				"http://iiif.io/api/extension/georef/1/context.json",
-				"http://iiif.io/api/presentation/3/context.json"
-			],
-			"motivation": "georeferencing",
-			"target": {
-				"type": "SpecificResource",
-				"source": {
-					"id": "https://rotterdamspubliek.nl/iiif/E17C0C6C9801455497366626D2EA8A29",
-					"type": "ImageService2",
-					"height": 4858,
-					"width": 6510
-				},
-				"selector": {
-					"type": "SvgSelector",
-					"value": "<svg width=\"6510\" height=\"4858\"><polygon points=\"147,168 178,4613 6281,4592 6257,132\" /></svg>"
-				}
-			},
-			"body": {
-				"type": "FeatureCollection",
-				"transformation": {
-					"type": "thinPlateSpline"
-				},
-				"features": [
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [147, 168]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.497165396473079, 51.931015235045784]
-						}
-					},
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [6281, 4592]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.5380461250602195, 51.917092043313836]
-						}
-					},
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [6257, 132]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.534681106499982, 51.93382742777451]
-						}
-					},
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [178, 4613]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.500503439870627, 51.914327715486316]
-						}
-					}
-				]
-			}
-		},
-		{
-			"id": "annotation-https://rotterdamspubliek.nl/iiif/8C000D39DCD544888DE21A5F02EC75D8/info.json/attach",
-			"type": "Annotation",
-			"@context": [
-				"http://iiif.io/api/extension/georef/1/context.json",
-				"http://iiif.io/api/presentation/3/context.json"
-			],
-			"motivation": "georeferencing",
-			"target": {
-				"type": "SpecificResource",
-				"source": {
-					"id": "https://rotterdamspubliek.nl/iiif/8C000D39DCD544888DE21A5F02EC75D8",
-					"type": "ImageService2",
-					"height": 4846,
-					"width": 6390
-				},
-				"selector": {
-					"type": "SvgSelector",
-					"value": "<svg width=\"6390\" height=\"4846\"><polygon points=\"127,161 147,4607 6246,4595 6225,148\" /></svg>"
-				}
-			},
-			"body": {
-				"type": "FeatureCollection",
-				"transformation": {
-					"type": "thinPlateSpline"
-				},
-				"features": [
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [127, 161]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.423580465485976, 51.908794037203954]
-						}
-					},
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [147, 4607]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.426787482076786, 51.89204615201211]
-						}
-					},
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [6225, 148]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.4611214264812284, 51.91145518719393]
-						}
-					},
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [6246, 4595]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.464365713941197, 51.894713405463534]
-						}
-					}
-				]
-			}
-		},
-		{
-			"id": "annotation-https://rotterdamspubliek.nl/iiif/69B895061B4348729BFCC3F785B60A76/info.json/attach",
-			"type": "Annotation",
-			"@context": [
-				"http://iiif.io/api/extension/georef/1/context.json",
-				"http://iiif.io/api/presentation/3/context.json"
-			],
-			"motivation": "georeferencing",
-			"target": {
-				"type": "SpecificResource",
-				"source": {
-					"id": "https://rotterdamspubliek.nl/iiif/69B895061B4348729BFCC3F785B60A76",
-					"type": "ImageService2",
-					"height": 4906,
-					"width": 6858
-				},
-				"selector": {
-					"type": "SvgSelector",
-					"value": "<svg width=\"6858\" height=\"4906\"><polygon points=\"218,183 230,4636 6642,4625 6613,160\" /></svg>"
-				}
-			},
-			"body": {
-				"type": "FeatureCollection",
-				"transformation": {
-					"type": "thinPlateSpline"
-				},
-				"features": [
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [6642, 4625]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.503810787799418, 51.897556696124724]
-						}
-					},
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [218, 183]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.4611214264812284, 51.91145518719393]
-						}
-					},
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [6613, 160]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.500503439870627, 51.914327715486316]
-						}
-					},
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [230, 4636]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.464365713941197, 51.894713405463534]
-						}
-					}
-				]
-			}
-		},
-		{
-			"id": "annotation-https://rotterdamspubliek.nl/iiif/863C7B0202ED49629FF21D3CC48E7A24/info.json/attach",
-			"type": "Annotation",
-			"@context": [
-				"http://iiif.io/api/extension/georef/1/context.json",
-				"http://iiif.io/api/presentation/3/context.json"
-			],
-			"motivation": "georeferencing",
-			"target": {
-				"type": "SpecificResource",
-				"source": {
-					"id": "https://rotterdamspubliek.nl/iiif/863C7B0202ED49629FF21D3CC48E7A24",
-					"type": "ImageService2",
-					"height": 4558,
-					"width": 6522
-				},
-				"selector": {
-					"type": "SvgSelector",
-					"value": "<svg width=\"6522\" height=\"4558\"><polygon points=\"201,221 232,4361 6291,4345 6290,210\" /></svg>"
-				}
-			},
-			"body": {
-				"type": "FeatureCollection",
-				"transformation": {
-					"type": "thinPlateSpline"
-				},
-				"features": [
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [232, 4361]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.420450307020755, 51.92542821967924]
-						}
-					},
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [201, 221]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.417336369312054, 51.94095862057702]
-						}
-					},
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [6290, 210]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.454824578499926, 51.94366261656775]
-						}
-					},
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [6291, 4345]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.457832265830094, 51.92812236651177]
-						}
-					}
-				]
-			}
-		},
-		{
-			"id": "annotation-https://rotterdamspubliek.nl/iiif/6D3A2D321823462A9A606210390651B5/info.json/attach",
-			"type": "Annotation",
-			"@context": [
-				"http://iiif.io/api/extension/georef/1/context.json",
-				"http://iiif.io/api/presentation/3/context.json"
-			],
-			"motivation": "georeferencing",
-			"target": {
-				"type": "SpecificResource",
-				"source": {
-					"id": "https://rotterdamspubliek.nl/iiif/6D3A2D321823462A9A606210390651B5",
-					"type": "ImageService2",
-					"height": 4822,
-					"width": 6738
-				},
-				"selector": {
-					"type": "SvgSelector",
-					"value": "<svg width=\"6738\" height=\"4822\"><polygon points=\"175,190 179,4619 6574,4616 6556,176\" /></svg>"
-				}
-			},
-			"body": {
-				"type": "FeatureCollection",
-				"transformation": {
-					"type": "thinPlateSpline"
-				},
-				"features": [
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [175, 190]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.457832265830094, 51.92812236651177]
-						}
-					},
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [6556, 176]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.497165396473079, 51.931015235045784]
-						}
-					},
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [179, 4619]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.4611214264812284, 51.91145518719393]
-						}
-					},
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [6574, 4616]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.500503439870627, 51.914327715486316]
-						}
-					}
-				]
-			}
-		},
-		{
-			"id": "annotation-https://rotterdamspubliek.nl/iiif/A136B927DA744CD2BEA9F1A3FF2271BA/info.json/attach",
-			"type": "Annotation",
-			"@context": [
-				"http://iiif.io/api/extension/georef/1/context.json",
-				"http://iiif.io/api/presentation/3/context.json"
-			],
-			"motivation": "georeferencing",
-			"target": {
-				"type": "SpecificResource",
-				"source": {
-					"id": "https://rotterdamspubliek.nl/iiif/A136B927DA744CD2BEA9F1A3FF2271BA",
-					"type": "ImageService2",
-					"height": 4810,
-					"width": 6426
-				},
-				"selector": {
-					"type": "SvgSelector",
-					"value": "<svg width=\"6426\" height=\"4810\"><polygon points=\"148,138 151,4593 6262,4588 6241,133\" /></svg>"
-				}
-			},
-			"body": {
-				"type": "FeatureCollection",
-				"transformation": {
-					"type": "thinPlateSpline"
-				},
-				"features": [
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [151, 4593]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.503810787799418, 51.897556696124724]
-						}
-					},
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [6262, 4588]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.541442776495192, 51.9003366661439]
-						}
-					},
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [6241, 133]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.5380461250602195, 51.917092043313836]
-						}
-					},
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [148, 138]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.500503439870627, 51.914327715486316]
-						}
-					}
-				]
-			}
-		},
-		{
-			"id": "annotation-https://rotterdamspubliek.nl/iiif/BA70EAF4A39249A7AF9CEAFEFCDD7470/info.json/attach",
-			"type": "Annotation",
-			"@context": [
-				"http://iiif.io/api/extension/georef/1/context.json",
-				"http://iiif.io/api/presentation/3/context.json"
-			],
-			"motivation": "georeferencing",
-			"target": {
-				"type": "SpecificResource",
-				"source": {
-					"id": "https://rotterdamspubliek.nl/iiif/BA70EAF4A39249A7AF9CEAFEFCDD7470",
-					"type": "ImageService2",
-					"height": 4546,
-					"width": 6522
-				},
-				"selector": {
-					"type": "SvgSelector",
-					"value": "<svg width=\"6522\" height=\"4546\"><polygon points=\"214,187 228,4327 6331,4326 6316,175\" /></svg>"
-				}
-			},
-			"body": {
-				"type": "FeatureCollection",
-				"transformation": {
-					"type": "thinPlateSpline"
-				},
-				"features": [
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [228, 4327]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.4297842233176254, 51.87645981514119]
-						}
-					},
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [214, 187]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.426787482076786, 51.89204615201211]
-						}
-					},
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [6331, 4326]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.467381113244098, 51.87911157943088]
-						}
-					},
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [6316, 175]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.464365713941197, 51.894713405463534]
-						}
-					}
-				]
-			}
-		},
-		{
-			"id": "annotation-https://rotterdamspubliek.nl/iiif/E5FBDF15ECCB4E2B9DF2A782FF3EDCF6/info.json/attach",
-			"type": "Annotation",
-			"@context": [
-				"http://iiif.io/api/extension/georef/1/context.json",
-				"http://iiif.io/api/presentation/3/context.json"
-			],
-			"motivation": "georeferencing",
-			"target": {
-				"type": "SpecificResource",
-				"source": {
-					"id": "https://rotterdamspubliek.nl/iiif/E5FBDF15ECCB4E2B9DF2A782FF3EDCF6",
-					"type": "ImageService2",
-					"height": 4474,
-					"width": 6834
-				},
-				"selector": {
-					"type": "SvgSelector",
-					"value": "<svg width=\"6834\" height=\"4474\"><polygon points=\"191,148 211,4284 6621,4262 6592,115\" /></svg>"
-				}
-			},
-			"body": {
-				"type": "FeatureCollection",
-				"transformation": {
-					"type": "thinPlateSpline"
-				},
-				"features": [
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [6621, 4262]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.506883440029409, 51.881963241431016]
-						}
-					},
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [6592, 115]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.503810787799418, 51.897556696124724]
-						}
-					},
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [211, 4284]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.467381113244098, 51.87911157943088]
-						}
-					},
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [191, 148]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.464365713941197, 51.894713405463534]
-						}
-					}
-				]
-			}
-		}
-	]
+  "type": "AnnotationPage",
+  "@context": "http://www.w3.org/ns/anno.jsonld",
+  "items": [
+    {
+      "id": "annotation-https://rotterdamspubliek.nl/iiif/B79F5D048E584873BC38A35BFAEC49CC/info.json/attach",
+      "type": "Annotation",
+      "@context": [
+        "http://iiif.io/api/extension/georef/1/context.json",
+        "http://iiif.io/api/presentation/3/context.json"
+      ],
+      "motivation": "georeferencing",
+      "target": {
+        "type": "SpecificResource",
+        "source": {
+          "id": "https://rotterdamspubliek.nl/iiif/B79F5D048E584873BC38A35BFAEC49CC",
+          "type": "ImageService2",
+          "height": 4391,
+          "width": 5227
+        },
+        "selector": {
+          "type": "SvgSelector",
+          "value": "<svg width=\"5227\" height=\"4391\"><polygon points=\"239,160 245,3654 3194,3657 3199,4010 5047,4007 5032,143\" /></svg>"
+        }
+      },
+      "body": {
+        "type": "FeatureCollection",
+        "transformation": {
+          "type": "thinPlateSpline"
+        },
+        "features": [
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                5032,
+                143
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.4297842233176254,
+                51.87645981514119
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                239,
+                160
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.400203811283273,
+                51.87440633653219
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                5047,
+                4007
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.432496404059388,
+                51.86184897851709
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "annotation-https://rotterdamspubliek.nl/iiif/AE2AD818169243EFB9207C98CA37ED59/info.json/attach",
+      "type": "Annotation",
+      "@context": [
+        "http://iiif.io/api/extension/georef/1/context.json",
+        "http://iiif.io/api/presentation/3/context.json"
+      ],
+      "motivation": "georeferencing",
+      "target": {
+        "type": "SpecificResource",
+        "source": {
+          "id": "https://rotterdamspubliek.nl/iiif/AE2AD818169243EFB9207C98CA37ED59",
+          "type": "ImageService2",
+          "height": 4534,
+          "width": 6450
+        },
+        "selector": {
+          "type": "SvgSelector",
+          "value": "<svg width=\"6450\" height=\"4534\"><polygon points=\"160,186 171,4317 6276,4314 6259,173\" /></svg>"
+        }
+      },
+      "body": {
+        "type": "FeatureCollection",
+        "transformation": {
+          "type": "thinPlateSpline"
+        },
+        "features": [
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                171,
+                4317
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.506883440029409,
+                51.881963241431016
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                160,
+                186
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.503810787799418,
+                51.897556696124724
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                6259,
+                173
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.541442776495192,
+                51.9003366661439
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                6276,
+                4314
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.544553597733358,
+                51.88472666098698
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "annotation-https://rotterdamspubliek.nl/iiif/BBAE5AD560CC41719B7420ED659C6D4D/info.json/attach",
+      "type": "Annotation",
+      "@context": [
+        "http://iiif.io/api/extension/georef/1/context.json",
+        "http://iiif.io/api/presentation/3/context.json"
+      ],
+      "motivation": "georeferencing",
+      "target": {
+        "type": "SpecificResource",
+        "source": {
+          "id": "https://rotterdamspubliek.nl/iiif/BBAE5AD560CC41719B7420ED659C6D4D",
+          "type": "ImageService2",
+          "height": 4510,
+          "width": 5155
+        },
+        "selector": {
+          "type": "SvgSelector",
+          "value": "<svg width=\"5155\" height=\"4510\"><polygon points=\"213,200 226,4340 5018,4345 4994,202\" /></svg>"
+        }
+      },
+      "body": {
+        "type": "FeatureCollection",
+        "transformation": {
+          "type": "thinPlateSpline"
+        },
+        "features": [
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                5018,
+                4345
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.420450307020755,
+                51.92542821967924
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                226,
+                4340
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.391093944778214,
+                51.92334220379105
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                4994,
+                202
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.417336369312054,
+                51.94095862057702
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "annotation-https://rotterdamspubliek.nl/iiif/59DBAF5BE1CC4C09BCD3610F6B7ED6D3/info.json/attach",
+      "type": "Annotation",
+      "@context": [
+        "http://iiif.io/api/extension/georef/1/context.json",
+        "http://iiif.io/api/presentation/3/context.json"
+      ],
+      "motivation": "georeferencing",
+      "target": {
+        "type": "SpecificResource",
+        "source": {
+          "id": "https://rotterdamspubliek.nl/iiif/59DBAF5BE1CC4C09BCD3610F6B7ED6D3",
+          "type": "ImageService2",
+          "height": 4726,
+          "width": 5203
+        },
+        "selector": {
+          "type": "SvgSelector",
+          "value": "<svg width=\"5203\" height=\"4726\"><polygon points=\"237,120 243,4550 5037,4544 5021,101\" /></svg>"
+        }
+      },
+      "body": {
+        "type": "FeatureCollection",
+        "transformation": {
+          "type": "thinPlateSpline"
+        },
+        "features": [
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                5021,
+                101
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.420450307020755,
+                51.92542821967924
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                237,
+                120
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.391093944778214,
+                51.92334220379105
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                243,
+                4550
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.394211839666816,
+                51.906758869968144
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                5037,
+                4544
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.423580465485976,
+                51.908794037203954
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "annotation-https://rotterdamspubliek.nl/iiif/A96CC28B52154C2EBED72E4B9DB4EAAF/info.json/attach",
+      "type": "Annotation",
+      "@context": [
+        "http://iiif.io/api/extension/georef/1/context.json",
+        "http://iiif.io/api/presentation/3/context.json"
+      ],
+      "motivation": "georeferencing",
+      "target": {
+        "type": "SpecificResource",
+        "source": {
+          "id": "https://rotterdamspubliek.nl/iiif/A96CC28B52154C2EBED72E4B9DB4EAAF",
+          "type": "ImageService2",
+          "height": 4846,
+          "width": 5239
+        },
+        "selector": {
+          "type": "SvgSelector",
+          "value": "<svg width=\"5239\" height=\"4846\"><polygon points=\"232,165 240,4640 5034,4637 5014,165\" /></svg>"
+        }
+      },
+      "body": {
+        "type": "FeatureCollection",
+        "transformation": {
+          "type": "thinPlateSpline"
+        },
+        "features": [
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                232,
+                165
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.394211839666816,
+                51.906758869968144
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                5014,
+                165
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.423580465485976,
+                51.908794037203954
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                5034,
+                4637
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.426787482076786,
+                51.89204615201211
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                240,
+                4640
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.397372578738275,
+                51.889998030111215
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "annotation-https://rotterdamspubliek.nl/iiif/3269A4524A3B42F3BA6D9EBC92B0B888/info.json/attach",
+      "type": "Annotation",
+      "@context": [
+        "http://iiif.io/api/extension/georef/1/context.json",
+        "http://iiif.io/api/presentation/3/context.json"
+      ],
+      "motivation": "georeferencing",
+      "target": {
+        "type": "SpecificResource",
+        "source": {
+          "id": "https://rotterdamspubliek.nl/iiif/3269A4524A3B42F3BA6D9EBC92B0B888",
+          "type": "ImageService2",
+          "height": 4498,
+          "width": 5227
+        },
+        "selector": {
+          "type": "SvgSelector",
+          "value": "<svg width=\"5227\" height=\"4498\"><polygon points=\"271,153 277,4285 5064,4274 5035,141\" /></svg>"
+        }
+      },
+      "body": {
+        "type": "FeatureCollection",
+        "transformation": {
+          "type": "thinPlateSpline"
+        },
+        "features": [
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                5064,
+                4274
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.4297842233176254,
+                51.87645981514119
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                277,
+                4285
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.400203811283273,
+                51.87440633653219
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                5035,
+                141
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.426787482076786,
+                51.89204615201211
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                271,
+                153
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.397372578738275,
+                51.889998030111215
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "annotation-https://rotterdamspubliek.nl/iiif/6A9C823CC3234837B35A55362EDD3BFC/info.json/attach",
+      "type": "Annotation",
+      "@context": [
+        "http://iiif.io/api/extension/georef/1/context.json",
+        "http://iiif.io/api/presentation/3/context.json"
+      ],
+      "motivation": "georeferencing",
+      "target": {
+        "type": "SpecificResource",
+        "source": {
+          "id": "https://rotterdamspubliek.nl/iiif/6A9C823CC3234837B35A55362EDD3BFC",
+          "type": "ImageService2",
+          "height": 4307,
+          "width": 6438
+        },
+        "selector": {
+          "type": "SvgSelector",
+          "value": "<svg width=\"6438\" height=\"4307\"><polygon points=\"163,164 168,4032 6276,4016 6243,159\" /></svg>"
+        }
+      },
+      "body": {
+        "type": "FeatureCollection",
+        "transformation": {
+          "type": "thinPlateSpline"
+        },
+        "features": [
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                163,
+                164
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.4297842233176254,
+                51.87645981514119
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                168,
+                4032
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.432496404059388,
+                51.86184897851709
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                6243,
+                159
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.467381113244098,
+                51.87911157943088
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                6276,
+                4016
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.470259954915617,
+                51.86449905529593
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "annotation-https://rotterdamspubliek.nl/iiif/2058A487AD284CD988282D2DC60AA432/info.json/attach",
+      "type": "Annotation",
+      "@context": [
+        "http://iiif.io/api/extension/georef/1/context.json",
+        "http://iiif.io/api/presentation/3/context.json"
+      ],
+      "motivation": "georeferencing",
+      "target": {
+        "type": "SpecificResource",
+        "source": {
+          "id": "https://rotterdamspubliek.nl/iiif/2058A487AD284CD988282D2DC60AA432",
+          "type": "ImageService2",
+          "height": 4415,
+          "width": 6702
+        },
+        "selector": {
+          "type": "SvgSelector",
+          "value": "<svg width=\"6702\" height=\"4415\"><polygon points=\"173,169 175,4041 6564,4045 6549,181\" /></svg>"
+        }
+      },
+      "body": {
+        "type": "FeatureCollection",
+        "transformation": {
+          "type": "thinPlateSpline"
+        },
+        "features": [
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                6549,
+                181
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.506883440029409,
+                51.881963241431016
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                173,
+                169
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.467381113244098,
+                51.87911157943088
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                175,
+                4041
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.470259954915617,
+                51.86449905529593
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                6564,
+                4045
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.509785103877562,
+                51.867330592583365
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "annotation-https://rotterdamspubliek.nl/iiif/AD0567937AFC415096DCC6E6686FE32E/info.json/attach",
+      "type": "Annotation",
+      "@context": [
+        "http://iiif.io/api/extension/georef/1/context.json",
+        "http://iiif.io/api/presentation/3/context.json"
+      ],
+      "motivation": "georeferencing",
+      "target": {
+        "type": "SpecificResource",
+        "source": {
+          "id": "https://rotterdamspubliek.nl/iiif/AD0567937AFC415096DCC6E6686FE32E",
+          "type": "ImageService2",
+          "height": 4546,
+          "width": 6762
+        },
+        "selector": {
+          "type": "SvgSelector",
+          "value": "<svg width=\"6762\" height=\"4546\"><polygon points=\"157,206 160,4343 6568,4340 6548,204\" /></svg>"
+        }
+      },
+      "body": {
+        "type": "FeatureCollection",
+        "transformation": {
+          "type": "thinPlateSpline"
+        },
+        "features": [
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                157,
+                206
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.454824578499926,
+                51.94366261656775
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                160,
+                4343
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.457832265830094,
+                51.92812236651177
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                6568,
+                4340
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.497165396473079,
+                51.931015235045784
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                6548,
+                204
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.494057713025564,
+                51.94653552423249
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "annotation-https://rotterdamspubliek.nl/iiif/13B51C4B387C4480A0347D6C87FB921B/info.json/attach",
+      "type": "Annotation",
+      "@context": [
+        "http://iiif.io/api/extension/georef/1/context.json",
+        "http://iiif.io/api/presentation/3/context.json"
+      ],
+      "motivation": "georeferencing",
+      "target": {
+        "type": "SpecificResource",
+        "source": {
+          "id": "https://rotterdamspubliek.nl/iiif/13B51C4B387C4480A0347D6C87FB921B",
+          "type": "ImageService2",
+          "height": 4331,
+          "width": 6438
+        },
+        "selector": {
+          "type": "SvgSelector",
+          "value": "<svg width=\"6438\" height=\"4331\"><polygon points=\"171,151 167,4024 6268,4011 6254,161\" /></svg>"
+        }
+      },
+      "body": {
+        "type": "FeatureCollection",
+        "transformation": {
+          "type": "thinPlateSpline"
+        },
+        "features": [
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                171,
+                151
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.506883440029409,
+                51.881963241431016
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                6254,
+                161
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.544553597733358,
+                51.88472666098698
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                167,
+                4024
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.509785103877562,
+                51.867330592583365
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                6268,
+                4011
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.54751238771369,
+                51.87017462672382
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "annotation-https://rotterdamspubliek.nl/iiif/EF863AEF0BF04473908738EB4971A5E3/info.json/attach",
+      "type": "Annotation",
+      "@context": [
+        "http://iiif.io/api/extension/georef/1/context.json",
+        "http://iiif.io/api/presentation/3/context.json"
+      ],
+      "motivation": "georeferencing",
+      "target": {
+        "type": "SpecificResource",
+        "source": {
+          "id": "https://rotterdamspubliek.nl/iiif/EF863AEF0BF04473908738EB4971A5E3",
+          "type": "ImageService2",
+          "height": 4307,
+          "width": 5287
+        },
+        "selector": {
+          "type": "SvgSelector",
+          "value": "<svg width=\"5287\" height=\"4307\"><polygon points=\"183,127 187,3982 1597,3982 1591,127 1530,127\" /></svg>"
+        }
+      },
+      "body": {
+        "type": "FeatureCollection",
+        "transformation": {
+          "type": "thinPlateSpline"
+        },
+        "features": [
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                183,
+                127
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.544554,
+                51.884727
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                187,
+                3982
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.547512,
+                51.870175
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                1530,
+                127
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.552885,
+                51.885345
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "annotation-https://rotterdamspubliek.nl/iiif/8D75837EA87148228528DB79FCFAF488/info.json/attach",
+      "type": "Annotation",
+      "@context": [
+        "http://iiif.io/api/extension/georef/1/context.json",
+        "http://iiif.io/api/presentation/3/context.json"
+      ],
+      "motivation": "georeferencing",
+      "target": {
+        "type": "SpecificResource",
+        "source": {
+          "id": "https://rotterdamspubliek.nl/iiif/8D75837EA87148228528DB79FCFAF488",
+          "type": "ImageService2",
+          "height": 4414,
+          "width": 5239
+        },
+        "selector": {
+          "type": "SvgSelector",
+          "value": "<svg width=\"5239\" height=\"4414\"><polygon points=\"133,123 138,4246 1482,4247 4978,4241 4946,101\" /></svg>"
+        }
+      },
+      "body": {
+        "type": "FeatureCollection",
+        "transformation": {
+          "type": "thinPlateSpline"
+        },
+        "features": [
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                133,
+                123
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.541443,
+                51.900337
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                138,
+                4246
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.544554,
+                51.884727
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                1482,
+                4247
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.552885,
+                51.885345
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                4946,
+                101
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.571232,
+                51.902614
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "annotation-https://rotterdamspubliek.nl/iiif/AD324025E81A42C8AEF74EFE049C7D8B/info.json/attach",
+      "type": "Annotation",
+      "@context": [
+        "http://iiif.io/api/extension/georef/1/context.json",
+        "http://iiif.io/api/presentation/3/context.json"
+      ],
+      "motivation": "georeferencing",
+      "target": {
+        "type": "SpecificResource",
+        "source": {
+          "id": "https://rotterdamspubliek.nl/iiif/AD324025E81A42C8AEF74EFE049C7D8B",
+          "type": "ImageService2",
+          "height": 4738,
+          "width": 5227
+        },
+        "selector": {
+          "type": "SvgSelector",
+          "value": "<svg width=\"5227\" height=\"4738\"><polygon points=\"159,119 171,4563 5001,4551 4980,114\" /></svg>"
+        }
+      },
+      "body": {
+        "type": "FeatureCollection",
+        "transformation": {
+          "type": "thinPlateSpline"
+        },
+        "features": [
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                171,
+                4563
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.541442776495192,
+                51.9003366661439
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                5001,
+                4551
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.571231633909707,
+                51.90261423814906
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                4980,
+                114
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.567768507879496,
+                51.91931110616608
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                159,
+                119
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.5380461250602195,
+                51.917092043313836
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "annotation-https://rotterdamspubliek.nl/iiif/C50AD01841D54576A6C8B642938A01DD/info.json/attach",
+      "type": "Annotation",
+      "@context": [
+        "http://iiif.io/api/extension/georef/1/context.json",
+        "http://iiif.io/api/presentation/3/context.json"
+      ],
+      "motivation": "georeferencing",
+      "target": {
+        "type": "SpecificResource",
+        "source": {
+          "id": "https://rotterdamspubliek.nl/iiif/C50AD01841D54576A6C8B642938A01DD",
+          "type": "ImageService2",
+          "height": 4762,
+          "width": 5143
+        },
+        "selector": {
+          "type": "SvgSelector",
+          "value": "<svg width=\"5143\" height=\"4762\"><polygon points=\"127,123 129,4572 4948,4587 4948,121\" /></svg>"
+        }
+      },
+      "body": {
+        "type": "FeatureCollection",
+        "transformation": {
+          "type": "thinPlateSpline"
+        },
+        "features": [
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                4948,
+                4587
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.567768507879496,
+                51.91931110616608
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                129,
+                4572
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.5380461250602195,
+                51.917092043313836
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                4948,
+                121
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.564336810483445,
+                51.93609941039839
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                127,
+                123
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.534681106499982,
+                51.93382742777451
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "annotation-https://rotterdamspubliek.nl/iiif/4F0DA8FB957E430D9C1C45AE4BBC3C06/info.json/attach",
+      "type": "Annotation",
+      "@context": [
+        "http://iiif.io/api/extension/georef/1/context.json",
+        "http://iiif.io/api/presentation/3/context.json"
+      ],
+      "motivation": "georeferencing",
+      "target": {
+        "type": "SpecificResource",
+        "source": {
+          "id": "https://rotterdamspubliek.nl/iiif/4F0DA8FB957E430D9C1C45AE4BBC3C06",
+          "type": "ImageService2",
+          "height": 4414,
+          "width": 5083
+        },
+        "selector": {
+          "type": "SvgSelector",
+          "value": "<svg width=\"5083\" height=\"4414\"><polygon points=\"109,156 111,4288 4926,4280 4911,164\" /></svg>"
+        }
+      },
+      "body": {
+        "type": "FeatureCollection",
+        "transformation": {
+          "type": "thinPlateSpline"
+        },
+        "features": [
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                4926,
+                4280
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.564336810483445,
+                51.93609941039839
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                111,
+                4288
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.534681106499982,
+                51.93382742777451
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                109,
+                156
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.531512190262563,
+                51.9493349000702
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "annotation-https://rotterdamspubliek.nl/iiif/637888E013C749D189E0FBEA40AAE49A/info.json/attach",
+      "type": "Annotation",
+      "@context": [
+        "http://iiif.io/api/extension/georef/1/context.json",
+        "http://iiif.io/api/presentation/3/context.json"
+      ],
+      "motivation": "georeferencing",
+      "target": {
+        "type": "SpecificResource",
+        "source": {
+          "id": "https://rotterdamspubliek.nl/iiif/637888E013C749D189E0FBEA40AAE49A",
+          "type": "ImageService2",
+          "height": 4534,
+          "width": 6402
+        },
+        "selector": {
+          "type": "SvgSelector",
+          "value": "<svg width=\"6402\" height=\"4534\"><polygon points=\"146,189 144,4331 6247,4329 6235,199\" /></svg>"
+        }
+      },
+      "body": {
+        "type": "FeatureCollection",
+        "transformation": {
+          "type": "thinPlateSpline"
+        },
+        "features": [
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                144,
+                4331
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.497165396473079,
+                51.931015235045784
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                146,
+                189
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.494057713025564,
+                51.94653552423249
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                6247,
+                4329
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.534681106499982,
+                51.93382742777451
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                6235,
+                199
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.531512190262563,
+                51.9493349000702
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "annotation-https://rotterdamspubliek.nl/iiif/3E0AF0D3DEE145318C457D9FE875DB6C/info.json/attach",
+      "type": "Annotation",
+      "@context": [
+        "http://iiif.io/api/extension/georef/1/context.json",
+        "http://iiif.io/api/presentation/3/context.json"
+      ],
+      "motivation": "georeferencing",
+      "target": {
+        "type": "SpecificResource",
+        "source": {
+          "id": "https://rotterdamspubliek.nl/iiif/3E0AF0D3DEE145318C457D9FE875DB6C",
+          "type": "ImageService2",
+          "height": 4846,
+          "width": 6474
+        },
+        "selector": {
+          "type": "SvgSelector",
+          "value": "<svg width=\"6474\" height=\"4846\"><polygon points=\"177,174 204,4608 6310,4577 6268,136\" /></svg>"
+        }
+      },
+      "body": {
+        "type": "FeatureCollection",
+        "transformation": {
+          "type": "thinPlateSpline"
+        },
+        "features": [
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                177,
+                174
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.420450307020755,
+                51.92542821967924
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                204,
+                4608
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.423580465485976,
+                51.908794037203954
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                6268,
+                136
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.457832265830094,
+                51.92812236651177
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                6310,
+                4577
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.4611214264812284,
+                51.91145518719393
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "annotation-https://rotterdamspubliek.nl/iiif/E17C0C6C9801455497366626D2EA8A29/info.json/attach",
+      "type": "Annotation",
+      "@context": [
+        "http://iiif.io/api/extension/georef/1/context.json",
+        "http://iiif.io/api/presentation/3/context.json"
+      ],
+      "motivation": "georeferencing",
+      "target": {
+        "type": "SpecificResource",
+        "source": {
+          "id": "https://rotterdamspubliek.nl/iiif/E17C0C6C9801455497366626D2EA8A29",
+          "type": "ImageService2",
+          "height": 4858,
+          "width": 6510
+        },
+        "selector": {
+          "type": "SvgSelector",
+          "value": "<svg width=\"6510\" height=\"4858\"><polygon points=\"147,168 178,4613 6281,4592 6257,132\" /></svg>"
+        }
+      },
+      "body": {
+        "type": "FeatureCollection",
+        "transformation": {
+          "type": "thinPlateSpline"
+        },
+        "features": [
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                147,
+                168
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.497165396473079,
+                51.931015235045784
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                6281,
+                4592
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.5380461250602195,
+                51.917092043313836
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                6257,
+                132
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.534681106499982,
+                51.93382742777451
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                178,
+                4613
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.500503439870627,
+                51.914327715486316
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "annotation-https://rotterdamspubliek.nl/iiif/8C000D39DCD544888DE21A5F02EC75D8/info.json/attach",
+      "type": "Annotation",
+      "@context": [
+        "http://iiif.io/api/extension/georef/1/context.json",
+        "http://iiif.io/api/presentation/3/context.json"
+      ],
+      "motivation": "georeferencing",
+      "target": {
+        "type": "SpecificResource",
+        "source": {
+          "id": "https://rotterdamspubliek.nl/iiif/8C000D39DCD544888DE21A5F02EC75D8",
+          "type": "ImageService2",
+          "height": 4846,
+          "width": 6390
+        },
+        "selector": {
+          "type": "SvgSelector",
+          "value": "<svg width=\"6390\" height=\"4846\"><polygon points=\"127,161 147,4607 6246,4595 6225,148\" /></svg>"
+        }
+      },
+      "body": {
+        "type": "FeatureCollection",
+        "transformation": {
+          "type": "thinPlateSpline"
+        },
+        "features": [
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                127,
+                161
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.423580465485976,
+                51.908794037203954
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                147,
+                4607
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.426787482076786,
+                51.89204615201211
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                6225,
+                148
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.4611214264812284,
+                51.91145518719393
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                6246,
+                4595
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.464365713941197,
+                51.894713405463534
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "annotation-https://rotterdamspubliek.nl/iiif/69B895061B4348729BFCC3F785B60A76/info.json/attach",
+      "type": "Annotation",
+      "@context": [
+        "http://iiif.io/api/extension/georef/1/context.json",
+        "http://iiif.io/api/presentation/3/context.json"
+      ],
+      "motivation": "georeferencing",
+      "target": {
+        "type": "SpecificResource",
+        "source": {
+          "id": "https://rotterdamspubliek.nl/iiif/69B895061B4348729BFCC3F785B60A76",
+          "type": "ImageService2",
+          "height": 4906,
+          "width": 6858
+        },
+        "selector": {
+          "type": "SvgSelector",
+          "value": "<svg width=\"6858\" height=\"4906\"><polygon points=\"218,183 230,4636 6642,4625 6613,160\" /></svg>"
+        }
+      },
+      "body": {
+        "type": "FeatureCollection",
+        "transformation": {
+          "type": "thinPlateSpline"
+        },
+        "features": [
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                6642,
+                4625
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.503810787799418,
+                51.897556696124724
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                218,
+                183
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.4611214264812284,
+                51.91145518719393
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                6613,
+                160
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.500503439870627,
+                51.914327715486316
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                230,
+                4636
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.464365713941197,
+                51.894713405463534
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "annotation-https://rotterdamspubliek.nl/iiif/863C7B0202ED49629FF21D3CC48E7A24/info.json/attach",
+      "type": "Annotation",
+      "@context": [
+        "http://iiif.io/api/extension/georef/1/context.json",
+        "http://iiif.io/api/presentation/3/context.json"
+      ],
+      "motivation": "georeferencing",
+      "target": {
+        "type": "SpecificResource",
+        "source": {
+          "id": "https://rotterdamspubliek.nl/iiif/863C7B0202ED49629FF21D3CC48E7A24",
+          "type": "ImageService2",
+          "height": 4558,
+          "width": 6522
+        },
+        "selector": {
+          "type": "SvgSelector",
+          "value": "<svg width=\"6522\" height=\"4558\"><polygon points=\"201,221 232,4361 6291,4345 6290,210\" /></svg>"
+        }
+      },
+      "body": {
+        "type": "FeatureCollection",
+        "transformation": {
+          "type": "thinPlateSpline"
+        },
+        "features": [
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                232,
+                4361
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.420450307020755,
+                51.92542821967924
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                201,
+                221
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.417336369312054,
+                51.94095862057702
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                6290,
+                210
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.454824578499926,
+                51.94366261656775
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                6291,
+                4345
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.457832265830094,
+                51.92812236651177
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "annotation-https://rotterdamspubliek.nl/iiif/6D3A2D321823462A9A606210390651B5/info.json/attach",
+      "type": "Annotation",
+      "@context": [
+        "http://iiif.io/api/extension/georef/1/context.json",
+        "http://iiif.io/api/presentation/3/context.json"
+      ],
+      "motivation": "georeferencing",
+      "target": {
+        "type": "SpecificResource",
+        "source": {
+          "id": "https://rotterdamspubliek.nl/iiif/6D3A2D321823462A9A606210390651B5",
+          "type": "ImageService2",
+          "height": 4822,
+          "width": 6738
+        },
+        "selector": {
+          "type": "SvgSelector",
+          "value": "<svg width=\"6738\" height=\"4822\"><polygon points=\"175,190 179,4619 6574,4616 6556,176\" /></svg>"
+        }
+      },
+      "body": {
+        "type": "FeatureCollection",
+        "transformation": {
+          "type": "thinPlateSpline"
+        },
+        "features": [
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                175,
+                190
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.457832265830094,
+                51.92812236651177
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                6556,
+                176
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.497165396473079,
+                51.931015235045784
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                179,
+                4619
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.4611214264812284,
+                51.91145518719393
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                6574,
+                4616
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.500503439870627,
+                51.914327715486316
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "annotation-https://rotterdamspubliek.nl/iiif/A136B927DA744CD2BEA9F1A3FF2271BA/info.json/attach",
+      "type": "Annotation",
+      "@context": [
+        "http://iiif.io/api/extension/georef/1/context.json",
+        "http://iiif.io/api/presentation/3/context.json"
+      ],
+      "motivation": "georeferencing",
+      "target": {
+        "type": "SpecificResource",
+        "source": {
+          "id": "https://rotterdamspubliek.nl/iiif/A136B927DA744CD2BEA9F1A3FF2271BA",
+          "type": "ImageService2",
+          "height": 4810,
+          "width": 6426
+        },
+        "selector": {
+          "type": "SvgSelector",
+          "value": "<svg width=\"6426\" height=\"4810\"><polygon points=\"148,138 151,4593 6262,4588 6241,133\" /></svg>"
+        }
+      },
+      "body": {
+        "type": "FeatureCollection",
+        "transformation": {
+          "type": "thinPlateSpline"
+        },
+        "features": [
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                151,
+                4593
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.503810787799418,
+                51.897556696124724
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                6262,
+                4588
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.541442776495192,
+                51.9003366661439
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                6241,
+                133
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.5380461250602195,
+                51.917092043313836
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                148,
+                138
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.500503439870627,
+                51.914327715486316
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "annotation-https://rotterdamspubliek.nl/iiif/BA70EAF4A39249A7AF9CEAFEFCDD7470/info.json/attach",
+      "type": "Annotation",
+      "@context": [
+        "http://iiif.io/api/extension/georef/1/context.json",
+        "http://iiif.io/api/presentation/3/context.json"
+      ],
+      "motivation": "georeferencing",
+      "target": {
+        "type": "SpecificResource",
+        "source": {
+          "id": "https://rotterdamspubliek.nl/iiif/BA70EAF4A39249A7AF9CEAFEFCDD7470",
+          "type": "ImageService2",
+          "height": 4546,
+          "width": 6522
+        },
+        "selector": {
+          "type": "SvgSelector",
+          "value": "<svg width=\"6522\" height=\"4546\"><polygon points=\"214,187 228,4327 6331,4326 6316,175\" /></svg>"
+        }
+      },
+      "body": {
+        "type": "FeatureCollection",
+        "transformation": {
+          "type": "thinPlateSpline"
+        },
+        "features": [
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                228,
+                4327
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.4297842233176254,
+                51.87645981514119
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                214,
+                187
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.426787482076786,
+                51.89204615201211
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                6331,
+                4326
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.467381113244098,
+                51.87911157943088
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                6316,
+                175
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.464365713941197,
+                51.894713405463534
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "annotation-https://rotterdamspubliek.nl/iiif/E5FBDF15ECCB4E2B9DF2A782FF3EDCF6/info.json/attach",
+      "type": "Annotation",
+      "@context": [
+        "http://iiif.io/api/extension/georef/1/context.json",
+        "http://iiif.io/api/presentation/3/context.json"
+      ],
+      "motivation": "georeferencing",
+      "target": {
+        "type": "SpecificResource",
+        "source": {
+          "id": "https://rotterdamspubliek.nl/iiif/E5FBDF15ECCB4E2B9DF2A782FF3EDCF6",
+          "type": "ImageService2",
+          "height": 4474,
+          "width": 6834
+        },
+        "selector": {
+          "type": "SvgSelector",
+          "value": "<svg width=\"6834\" height=\"4474\"><polygon points=\"191,148 211,4284 6621,4262 6592,115\" /></svg>"
+        }
+      },
+      "body": {
+        "type": "FeatureCollection",
+        "transformation": {
+          "type": "thinPlateSpline"
+        },
+        "features": [
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                6621,
+                4262
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.506883440029409,
+                51.881963241431016
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                6592,
+                115
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.503810787799418,
+                51.897556696124724
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                211,
+                4284
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.467381113244098,
+                51.87911157943088
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                191,
+                148
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.464365713941197,
+                51.894713405463534
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
 }
