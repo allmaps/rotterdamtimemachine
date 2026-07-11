@@ -1296,7 +1296,7 @@
 										{/if}
 									</div>
 									<div
-										class="mr-3 flex max-w-full gap-1 overflow-x-auto overscroll-x-contain px-4 pb-3 text-[0.65rem] font-semibold text-gray-500 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+										class="pointer-events-auto mr-3 flex min-w-0 max-w-full gap-1 overflow-x-auto overscroll-x-contain px-4 pb-3 text-[0.65rem] font-semibold text-gray-500 [-ms-overflow-style:none] [-webkit-overflow-scrolling:touch] [scrollbar-width:none] [touch-action:pan-x] [&::-webkit-scrollbar]:hidden"
 									>
 										<a
 											href={map.url}
