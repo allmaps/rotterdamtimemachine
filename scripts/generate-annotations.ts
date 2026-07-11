@@ -31,9 +31,19 @@ type AppConfig = {
 	collection?: string;
 };
 
-type MapRecord = {
+type MapRecord = Record<string, unknown> & {
 	year?: number | string;
 	annotation?: string;
+};
+
+type MapSeriesRecord = Record<string, unknown> & {
+	id?: string;
+	seriesId?: string;
+	seriesLabel?: string;
+	seriesTitle?: string;
+	label?: string;
+	title?: string;
+	items: MapRecord[];
 };
 
 type ParsedAnnotationEntry = {
@@ -52,6 +62,11 @@ type GeneratedMaps = {
 type GeneratedMapRecord = MapRecord & {
 	id: string;
 	mapIds: string[];
+	seriesId?: string;
+	seriesLabel?: string;
+	seriesTitle?: string;
+	seriesIndex?: number;
+	seriesTotal?: number;
 };
 
 type GenerateAnnotationsResult = {
@@ -81,13 +96,13 @@ export async function generateAnnotations(
 		configFileName
 	);
 	const collectionPath = path.join(root, collectionFileName);
-	const collection = (await readYamlFile(collectionPath)) as MapRecord[];
+	const collection = (await readYamlFile(collectionPath)) as Array<MapRecord | MapSeriesRecord>;
 
 	if (!Array.isArray(collection)) {
 		throw new Error(`${collectionFileName} must contain an array of map records`);
 	}
 
-	const sortedCollection = sortCollection(collection);
+	const sortedCollection = sortCollection(expandCollection(collection));
 	const annotationUrls = [
 		...new Set(sortedCollection.map((map) => String(map?.annotation ?? '').trim()).filter(Boolean))
 	];
@@ -140,6 +155,63 @@ export async function generateAnnotations(
 		mapCount: maps.length,
 		mapReferenceCount
 	};
+}
+
+function expandCollection(collection: Array<MapRecord | MapSeriesRecord>): MapRecord[] {
+	const maps: MapRecord[] = [];
+
+	for (const [index, record] of collection.entries()) {
+		if (isSeriesRecord(record)) {
+			maps.push(...expandSeriesRecord(record, index));
+		} else {
+			maps.push(record);
+		}
+	}
+
+	return maps;
+}
+
+function isSeriesRecord(record: MapRecord | MapSeriesRecord): record is MapSeriesRecord {
+	return Array.isArray((record as MapSeriesRecord).items);
+}
+
+function expandSeriesRecord(series: MapSeriesRecord, seriesOrder: number): MapRecord[] {
+	const items = series.items;
+	const shared: Record<string, unknown> = { ...series };
+	delete shared.items;
+	delete shared.type;
+	delete shared.id;
+	delete shared.seriesId;
+	delete shared.seriesLabel;
+	delete shared.seriesTitle;
+
+	const resolvedSeriesId = getSeriesId(series, seriesOrder);
+	const resolvedSeriesLabel = String(series.seriesLabel ?? series.label ?? '').trim();
+	const resolvedSeriesTitle = String(series.seriesTitle ?? series.title ?? '').trim();
+
+	return items.map((item, index) => ({
+		...shared,
+		...item,
+		seriesId: resolvedSeriesId,
+		seriesLabel: resolvedSeriesLabel,
+		seriesTitle: resolvedSeriesTitle,
+		seriesIndex: index,
+		seriesTotal: items.length
+	}));
+}
+
+function getSeriesId(series: MapSeriesRecord, seriesOrder: number) {
+	const explicitId = String(series.seriesId ?? series.id ?? '').trim();
+	if (explicitId) return explicitId;
+
+	const source = String(series.label ?? series.title ?? `series-${seriesOrder + 1}`)
+		.toLowerCase()
+		.normalize('NFD')
+		.replace(/[\u0300-\u036f]/g, '')
+		.replace(/[^a-z0-9]+/g, '-')
+		.replace(/^-|-$/g, '');
+
+	return source || `series-${seriesOrder + 1}`;
 }
 
 function addAnnotationDataToCollectionRecord(

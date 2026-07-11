@@ -11,6 +11,11 @@ export type MapMetadata = {
 	};
 	annotation: string;
 	mapIds: string[];
+	seriesId?: string;
+	seriesLabel?: string;
+	seriesTitle?: string;
+	seriesIndex?: number;
+	seriesTotal?: number;
 };
 
 export type TourConfig =
@@ -188,12 +193,10 @@ export type AppConfig = {
 		openLabel: string;
 		closeLabel: string;
 		searchPlaceholder: string;
-		current: string;
 		favorite: string;
 		inView: string;
 		noResults: string;
 		found: string;
-		yearPrefix: string;
 		resultSingular: string;
 		resultPlural: string;
 		leftPane: string;
@@ -209,6 +212,8 @@ export type AppConfig = {
 		openInAllmapsViewer: string;
 		copyXyzTileUrl: string;
 		copiedXyzTileUrl: string;
+		copyAnnotationUrl: string;
+		copiedAnnotationUrl: string;
 		basemap: string;
 		protomaps: string;
 		openStreetMap: string;

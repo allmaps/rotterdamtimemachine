@@ -223,12 +223,10 @@ layers:
   openLabel: Open kaartlagen
   closeLabel: Sluit kaartlagen
   searchPlaceholder: Zoek kaart...
-  current: Huidig
   favorite: Favorieten
   inView: Kaartuitsnede
   noResults: Geen kaarten gevonden.
   found: gevonden
-  yearPrefix: voor
   resultSingular: kaart
   resultPlural: kaarten
   leftPane: Linker kaart
@@ -244,6 +242,8 @@ layers:
   openInAllmapsViewer: Open in Allmaps Viewer
   copyXyzTileUrl: Kopieer XYZ tile URL
   copiedXyzTileUrl: XYZ tile URL gekopieerd
+  copyAnnotationUrl: Kopieer annotatie URL
+  copiedAnnotationUrl: Annotatie URL gekopieerd
   basemap: Achtergrondkaart
   protomaps: Protomaps
   openStreetMap: © OpenStreetMap

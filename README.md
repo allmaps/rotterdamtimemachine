@@ -208,6 +208,25 @@ Optional fields:
 
 Multiple maps can share the same year. The app will show previous/next buttons and a position indicator, for example `1/3`. Maps with a year range appear for every year in that range.
 
+Map series that share the same metadata can be written as one `type: series` record. The generator expands the `items` into normal runtime records and adds series metadata so the layers panel can show the series as one grouped item:
+
+```yaml
+- type: series
+  id: city-map-series
+  label: City map series
+  title: City map series, 1:5.000
+  institution: Institution name
+  url: https://example.org/item
+  iiif:
+    url: https://example.org/iiif/manifest.json
+    type: manifest
+  items:
+    - year: 1964
+      annotation: annotations/city-map-series/1964.json
+    - year: 1965
+      annotation: annotations/city-map-series/1965.json
+```
+
 ### Georeference Annotations
 
 The app expects each map to have valid Georeference Annotations. During development and production builds, `scripts/generate-annotations.ts` reads the configured config and collection YAML files, sorts the collection by earliest year, fetches or reads every annotation, parses the annotations with Allmaps, and writes generated JSON assets to `src/lib/generated/`. `config.json` and `collection.json` are the runtime content files imported by the app. `collection.json` augments every collection record with its generated annotation ID and map IDs, while `maps.json` contains the unique georeferenced maps. This allows map series annotations to repeat sheets across years without loading duplicate maps. The app then loads those local generated assets and builds a `WarpedMapList` from them for:
