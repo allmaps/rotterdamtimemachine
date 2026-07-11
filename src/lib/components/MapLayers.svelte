@@ -1296,7 +1296,7 @@
 										{/if}
 									</div>
 									<div
-										class="pointer-events-auto mr-3 flex min-w-0 max-w-full gap-1 overflow-x-auto overscroll-x-contain px-4 pb-3 text-[0.65rem] font-semibold text-gray-500 [-ms-overflow-style:none] [-webkit-overflow-scrolling:touch] [scrollbar-width:none] [touch-action:pan-x] [&::-webkit-scrollbar]:hidden"
+										class="pointer-events-auto mr-3 flex max-w-full min-w-0 [touch-action:pan-x] [scrollbar-width:none] gap-1 overflow-x-auto overscroll-x-contain px-4 pb-3 text-[0.65rem] font-semibold text-gray-500 [-ms-overflow-style:none] [-webkit-overflow-scrolling:touch] [&::-webkit-scrollbar]:hidden"
 									>
 										<a
 											href={map.url}
@@ -1315,7 +1315,7 @@
 											rel="external noopener noreferrer"
 											aria-label="{config.layers.openInAllmapsViewer} {map.label}"
 											onmouseenter={() => (selectedIndex = index)}
-											class="pointer-events-auto relative z-20 inline-flex flex-none cursor-pointer items-center gap-1 whitespace-nowrap rounded bg-gray-100 px-1.5 py-0.5 hover:bg-brand-soft hover:text-brand-main"
+											class="pointer-events-auto relative z-20 inline-flex flex-none cursor-pointer items-center gap-1 rounded bg-gray-100 px-1.5 py-0.5 whitespace-nowrap hover:bg-brand-soft hover:text-brand-main"
 										>
 											<span>{config.layers.openInAllmapsViewer}</span>
 											<ExternalLink class="h-3 w-3 flex-none" />
@@ -1327,7 +1327,7 @@
 												: config.layers.copyXyzTileUrl} {map.label}"
 											onclick={() => copyXyzTileUrl(map.annotation)}
 											onmouseenter={() => (selectedIndex = index)}
-											class="pointer-events-auto relative z-20 inline-flex flex-none cursor-pointer items-center gap-1 whitespace-nowrap rounded bg-gray-100 px-1.5 py-0.5 hover:bg-brand-soft hover:text-brand-main"
+											class="pointer-events-auto relative z-20 inline-flex flex-none cursor-pointer items-center gap-1 rounded bg-gray-100 px-1.5 py-0.5 whitespace-nowrap hover:bg-brand-soft hover:text-brand-main"
 										>
 											{#if copiedXyzAnnotation === map.annotation}
 												<Check class="h-3 w-3 flex-none" />
@@ -1344,7 +1344,7 @@
 												: config.layers.copyAnnotationUrl} {map.label}"
 											onclick={() => copyAnnotationUrl(map.annotation)}
 											onmouseenter={() => (selectedIndex = index)}
-											class="pointer-events-auto relative z-20 inline-flex flex-none cursor-pointer items-center gap-1 whitespace-nowrap rounded bg-gray-100 px-1.5 py-0.5 hover:bg-brand-soft hover:text-brand-main"
+											class="pointer-events-auto relative z-20 inline-flex flex-none cursor-pointer items-center gap-1 rounded bg-gray-100 px-1.5 py-0.5 whitespace-nowrap hover:bg-brand-soft hover:text-brand-main"
 										>
 											{#if copiedAnnotation === map.annotation}
 												<Check class="h-3 w-3 flex-none" />
@@ -1361,9 +1361,9 @@
 								>
 									<button
 										type="button"
-										aria-label="{config.layers.selectMap} {getGroupLabel(group)} ({getGroupYearLabel(
+										aria-label="{config.layers.selectMap} {getGroupLabel(
 											group
-										)}, {map.institution})"
+										)} ({getGroupYearLabel(group)}, {map.institution})"
 										aria-pressed={isGroupActive(group)}
 										onclick={() => selectLayerGroup(group)}
 										onmouseenter={() => (selectedIndex = index)}
