@@ -7,20 +7,20 @@
 	},
 	"items": [
 		{
-			"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
 			"type": "Canvas",
 			"height": 10531,
 			"width": 14897,
 			"items": [
 				{
-					"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotation-page",
+					"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotation-page",
 					"type": "AnnotationPage",
 					"items": [
 						{
-							"id": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotation-page/image",
+							"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotation-page/image",
 							"type": "Annotation",
 							"motivation": "painting",
-							"target": "https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+							"target": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
 							"body": {
 								"id": "https://service.archief.nl/iip/iipsrv?IIIF=8c/7f/06/1e/58/55/40/56/87/96/4f/03/a7/19/fd/8e/593513c9-89a0-4163-b4ed-31d31ae61c5e.jp2/full/max/0/default.jpg",
 								"type": "Image",
