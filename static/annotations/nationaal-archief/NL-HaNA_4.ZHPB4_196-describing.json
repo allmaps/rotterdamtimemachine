@@ -1,0 +1,3344 @@
+{
+	"@context": "http://iiif.io/api/presentation/3/context.json",
+	"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/",
+	"type": "AnnotationPage",
+	"label": { "en": ["Transcribed toponyms"] },
+	"items": [
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/26373814-2495-4aa4-af73-5263fb42a7b6",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "Groote of St. Laurens Kerk",
+					"number": 1
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:7400,3798,36,35"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/445894d6-fb35-4aec-9e27-245c42136b46",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{ "type": "TextualBody", "format": "text/plain", "value": "Prinsen Kerk", "number": 2 }
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:8538,3759,35,46"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/a25110c1-3e3c-45ba-bcea-21bd1924b9f8",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{ "type": "TextualBody", "format": "text/plain", "value": "Zuider Kerk", "number": 3 }
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:5704,6424,77,43"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/69bc45f3-a72d-4a78-b7aa-ea76ed07612a",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "Nieuwe of Ooster Kerk",
+					"number": 4
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:9887,4914,48,40"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/b3e2a422-1d7b-4500-8391-02f378d87ee6",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{ "type": "TextualBody", "format": "text/plain", "value": "Waalsche Kerk", "number": 5 }
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:6426,3889,60,47"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/2b82a35a-046b-4e42-bed1-391d30b1db0c",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "Presbyteriaansche Kerk",
+					"number": 6
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:10055,5964,61,60"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/51e1cfe4-b090-4566-b9ee-206ee8cc1953",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "Groote Schotsche Kerk",
+					"number": 7
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:4082,6953,31,36"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/649d9db3-1062-4873-94b1-19e8652740a7",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "Kleine Schotsche Kerk",
+					"number": 8
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:7994,3056,40,38"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/042ccb42-5975-488d-9122-1bfb76528448",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "Episcopaalsche Kerk",
+					"number": 9
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:10810,6075,72,64"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/a6b04237-a984-4c09-b07f-3202a98887ed",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{ "type": "TextualBody", "format": "text/plain", "value": "Luthersche Kerk", "number": 10 }
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:6359,5135,94,45"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/331167ec-e101-4c56-a291-a8dd642f10f7",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "Doopsgezinde Kerk",
+					"number": 11
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:6589,3665,58,47"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/fdaae38a-bad9-4746-b5d9-5929cd83d534",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "Remonstrantsche Kerken",
+					"number": 12
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:7728,4993,90,77"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/ed8fc157-df14-4369-a013-9ad302d0589e",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "R.C. Kerk (Gemeente van den Oppert)",
+					"number": 13
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:7563,2830,64,53"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/2776f311-95dd-4d64-b9b6-df840235d875",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "R.C. Kerk (Gemeente van de Slykvaart)",
+					"number": 14
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:7247,3125,70,43"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/d3919197-9c74-466f-8775-0d79b3fca395",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "R.C. Kerk (Gemeente van den Leeuwenstraat)",
+					"number": 15
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:6726,3315,46,35"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/42c60a41-00ae-41e1-810d-e5613fbbdba0",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "R.C. Kerk (Gemeente van den Steiger)",
+					"number": 16
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:6629,3952,73,42"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/4854ca4d-6cb0-4899-a2a3-5e2ceb6c0184",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "R.C. Kerk (Gemeente van den Houttuin)",
+					"number": 17
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:9067,5074,44,37"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/5dd1023a-e1d6-4982-b25d-2deb91ead16c",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "Israëlitische Hoofdsynagoge",
+					"number": 18
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:5625,7257,78,49"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/ed3df9d8-8cd1-427a-9ba0-532f5e9287c2",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{ "type": "TextualBody", "format": "text/plain", "value": "Gasthuis", "number": 19 }
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:10597,5032,67,77"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/b125e4f8-c001-4f61-80e4-c16c149462c3",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "Israëlitisch Gasthuis",
+					"number": 20
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:9352,4782,60,25"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/c3409d5f-c4b3-4d6e-a628-43ad805d98a8",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "Proveniers en Leprooshuis",
+					"number": 21
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:1042,3247,63,57"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/2ae7c29b-4f37-4a55-ab04-3cedb2127fe8",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [{ "type": "TextualBody", "format": "text/plain", "value": "Dolhuis", "number": 22 }],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:10792,5088,70,88"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/7b9aab74-0396-4fdc-bcba-db7a3713792b",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "Oude Mannenhuis (Bureau van het Stads Armbestuur)",
+					"number": 23
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:10027,4858,69,71"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/82b72ef2-04fd-4b5c-9f51-45d84bd84254",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{ "type": "TextualBody", "format": "text/plain", "value": "Oude Vrouwenhuis", "number": 24 }
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:10439,4979,84,77"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/2017bd4a-9266-4bb9-846b-33005e1b0938",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "M.C. van Doorens Vrouwen Gesticht van Weldadigheid",
+					"number": 25
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:6090,3882,82,35"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/97b941ea-6a98-43b4-80b8-69078f53121a",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{ "type": "TextualBody", "format": "text/plain", "value": "Stads Armhuis", "number": 26 }
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:4035,6793,63,34"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/a25f0a99-cea8-468c-9bc8-a3d02f5bada2",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "Gereformeerde Ledematenhuis",
+					"number": 27
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:8599,3364,78,76"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/f0134a5b-3a75-45da-a78f-0a1a3230db82",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "Gereformeerde Burgerweeshuis",
+					"number": 28
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:9901,4133,67,41"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/afa18df3-5213-417f-9fab-39dc1ba91867",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "Luthersch Weeshuis",
+					"number": 29
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:3921,6927,51,30"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/8665f41a-64e4-44eb-8114-80fa7846afcf",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "R.C. Weeshuis (Gemeente van de Slykvaart)",
+					"number": 30
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:7478,3526,74,38"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/0f67dcad-2249-4109-a2c7-63d04ad9c873",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "R.C. Weeshuis (Gemeente van den Steiger)",
+					"number": 31
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:5456,4728,48,37"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/8bed5ac2-19ef-4a4c-b0a0-5c904e99b288",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "R.C. Weeshuis (Gemeente van den Houttuin)",
+					"number": 32
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:5361,4802,60,37"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/53fce77c-915b-48e0-9992-5c49df0dec8e",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "R.C. Brei en Naaischool",
+					"number": 33
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:8401,3336,74,53"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/e0c6e624-e9e2-4fe1-beae-1974787c4551",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{ "type": "TextualBody", "format": "text/plain", "value": "Bank van Leening", "number": 34 }
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:7399,3512,58,54"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/a819c22f-d30e-475f-9347-7233ed2592c8",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "Huis van Arrest voor jeugdige veroordeelden",
+					"number": 35
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:6181,3790,71,54"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/9013cd8a-1463-4afe-8be2-00af741400e5",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{ "type": "TextualBody", "format": "text/plain", "value": "Stadhuis", "number": 36 }
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:8389,4240,79,46"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/282c7cef-94ad-420b-bef8-334adc0333ba",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "Gemeenelandshuis van Schieland",
+					"number": 37
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:5811,4276,70,62"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/979fd04d-8c4f-4a0d-a8f9-d29f096c12ca",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "Paleis van Justitie",
+					"number": 38
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:6851,2040,78,66"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/0e00e1d4-c9ba-4863-8d14-530040b5adce",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "Zakkendragershuis",
+					"number": 39
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:8541,3963,128,54"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/68e58805-033f-4cbf-b831-b461b0191386",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "Kazerne der Mariniers en Lands Magazyn",
+					"number": 40
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:10936,5499,41,37"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/c5fb0d51-6f8f-4725-8cee-c0c310692485",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "Kazerne der Mobiele Schuttery",
+					"number": 41
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:4035,5790,75,38"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/0eebef8b-ce59-458c-902d-92b898af34ba",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "Voormalig Oost Ind. Comp. Huis nu Entrepôt",
+					"number": 42
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:5426,7204,112,63"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/d71cc830-cef0-4f9e-92b1-cae1d32229d2",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "Pakhuizen der voormalige West Ind. Comp",
+					"number": 43
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:9902,5871,58,43"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/5cae2393-aca0-491e-814c-de2abf4b70a7",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{ "type": "TextualBody", "format": "text/plain", "value": "Zeekantoor", "number": 44 }
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:9174,6034,58,35"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/1882e116-d684-46b8-9434-3fa2264c5efa",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{ "type": "TextualBody", "format": "text/plain", "value": "Vleeschhal", "number": 45 }
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:8390,4003,80,53"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/a9837bb1-a831-4337-9a2a-64e2c7172067",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "Kleinere Vleeschhallen",
+					"number": 46
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:5614,4109,62,40"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/7598af18-778f-491a-b0c1-e95e0be0c5a1",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "Kleinere Vleeschhallen",
+					"number": 47
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:4806,5841,55,37"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/654656fb-b806-4478-9a55-00454a774c2a",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{ "type": "TextualBody", "format": "text/plain", "value": "Stadswaag", "number": 48 }
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:7692,6307,61,35"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/b0c2aa2d-7cb9-4048-9e5f-d73c29cca79e",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "Notarishuis (Lokaal der publieke verkoopingen)",
+					"number": 49
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:8168,5614,73,41"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/650c580c-7aa3-417a-abfa-8501043ba75a",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{ "type": "TextualBody", "format": "text/plain", "value": "Postkantoor", "number": 50 }
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:8049,5886,77,39"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/a3d5cad1-437a-463c-859a-1e0e49ee6319",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "Commissariaat der Delfsche Veren",
+					"number": 51
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:6669,1072,56,43"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/f605acb2-5af3-42b4-991c-a37dba0bae2d",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "Nederlandsche Stoombootmaatschappy",
+					"number": 52
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:6108,6959,125,94"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/cd642bce-41cb-4a00-bbda-8b1f1594eaa4",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "Maatschappy tot nut van 't algemeen",
+					"number": 53
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:7480,2458,63,36"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/72a630cb-02ad-4d99-bf38-bf186f5ab3e8",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "Verscheidenheid en Overeenstemming",
+					"number": 54
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:6772,6480,65,39"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/cca8dde4-767c-4630-9383-b349129211b1",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "Schilderkundig Genootschap",
+					"number": 55
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:8626,3746,42,43"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/d3e835d8-7da7-45bc-b1f6-54ba370c452d",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{ "type": "TextualBody", "format": "text/plain", "value": "Concertzaal", "number": 56 }
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:6819,6261,56,36"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/037e9364-71e7-403f-a1dc-c7f214b3851e",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{ "type": "TextualBody", "format": "text/plain", "value": "Schouwburg", "number": 57 }
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:5932,2243,65,36"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/c67602df-a118-48f8-9b4e-d75243e7545f",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{ "type": "TextualBody", "format": "text/plain", "value": "Stads Ryschool", "number": 58 }
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:3900,3698,68,36"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/0f8b0edc-3111-4801-b9bd-516c9d65e140",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "Erasmiaansche School",
+					"number": 59
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:7293,3300,48,49"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/d1c230a4-6d04-4d92-9b9e-5f13d134502d",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{ "type": "TextualBody", "format": "text/plain", "value": "Stads Scholen", "number": 60 }
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:8876,4413,68,59"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/7fcde9ea-6ac3-43b6-9370-8037979fd6ca",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{ "type": "TextualBody", "format": "text/plain", "value": "Stads Scholen", "number": 61 }
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:3870,6872,53,47"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/640af755-9c3e-4556-8966-6d1ea643b5d5",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{ "type": "TextualBody", "format": "text/plain", "value": "Stads Scholen", "number": 62 }
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:8151,3321,48,41"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/594f8617-05ec-45be-b3ef-9dd7b3749ad7",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{ "type": "TextualBody", "format": "text/plain", "value": "Stads Scholen", "number": 63 }
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:5783,4118,69,50"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/d21ef459-c7ce-46c5-a57b-29b29383378c",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "Gereformeerde Diaconie Scholen",
+					"number": 64
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:9750,4624,68,39"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/836b3bb5-f532-4408-9268-0e32e34153a9",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "Gereformeerde Diaconie Scholen",
+					"number": 65
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:3930,6487,49,29"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/bbfff6b1-8dc3-4ea2-bc69-7ca10eed6fd9",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "Gereformeerde Diaconie Scholen",
+					"number": 66
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:6041,3612,59,42"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/ee6934d2-6673-4be5-828a-883d1c40e1d0",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "Bewaarschool voor kinderen",
+					"number": 67
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:8487,2676,47,39"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/a0aeaa80-e13d-4310-9274-f220742cf4a5",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "Bewaarschool voor kinderen",
+					"number": 67
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:3959,6009,60,31"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/4dbe16b1-30b7-4f16-9df5-30d8c294975f",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "Waalsche Diaconie School",
+					"number": 68
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:7247,2952,57,29"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/10415535-6a01-4c78-8692-e7c13f493d4c",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "R.C. Diaconie School",
+					"number": 69
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:6197,3340,54,44"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/eb5d8bd3-e5f6-4cae-af05-b4a910399388",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "Israëlitische School",
+					"number": 70
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:5621,7127,89,76"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/d25348ee-5a80-4ece-9d32-10f542858f43",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "Loges Fredrik Royal en de Eendragt",
+					"number": 71
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:6931,6333,56,45"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/5163eed7-fb32-4ebd-a246-47d68a1e0df4",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "Loge de Drie Kolommen",
+					"number": 72
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:9171,4724,55,47"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/8b63bc8e-f824-4625-a34e-2316363ed810",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "Societeit het Lees Museum",
+					"number": 73
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:7750,5540,60,63"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/b0d650e8-7242-4251-8be7-59718e2d7a05",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "Societeit Amicitia",
+					"number": 74
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:7432,5475,70,52"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/ae548c5d-7aed-484c-9d42-8f98b7352358",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "Societeit Concordia Felix",
+					"number": 75
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:3778,2716,65,41"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/821f4cac-0b3e-40cb-af22-48f6b0a3a4ee",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "Societeit de Eensgezindheid",
+					"number": 76
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:4743,2466,69,74"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/3ad5688a-d008-42da-840e-93e093007bfe",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "Het Fransche Koffyhuis en Societeit Vrede best",
+					"number": 77
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:7935,5308,70,43"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/4d51fd1c-fbdf-4831-bca9-6829d6ad0455",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "Het Londonsch Koffyhuis",
+					"number": 78
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:7873,4803,68,36"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/cd441519-b38b-4bb5-b058-aaf90742f50b",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "Koffyhuis Neêrlands Wapen",
+					"number": 79
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:6230,4367,59,37"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/1ae74203-fad7-46c4-8f18-ee72ba9ae965",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "Het Rotterdamsche Koffyhuis",
+					"number": 80
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:6264,4264,44,33"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/71840de4-13ba-43cd-8494-f8d983f8bf63",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "Het Zeeuwsche Koffyhuis",
+					"number": 81
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:6091,3934,65,33"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/2e27bbfd-86e4-41c7-964f-6cc00d838836",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "Koffyhuis Gezelligheid",
+					"number": 82
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:7195,3900,55,28"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/3e2ca30b-6eab-43a2-9eb2-911a3b90c8ba",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "Koffyhuis de Stad Parys",
+					"number": 83
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:6489,4412,57,41"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/0df26c6d-ec8d-4b11-b902-89f301c2a11c",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "Groot Hotel de Pays Bas",
+					"number": 84
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:5861,7239,83,103"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/740d4de5-459d-4570-a0ac-bebfe597aabe",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{ "type": "TextualBody", "format": "text/plain", "value": "Groot Bath Hotel", "number": 85 }
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:7014,6952,111,80"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/1cc108aa-6ffe-43e0-89e1-9e23dc3f2f8d",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "Hotel de l'Europe",
+					"number": 86
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:5285,7383,107,80"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/4450bc2b-00eb-4bd1-8666-1dc0d3601c47",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "Heeren Logement (van ouds Klein Schippershuis)",
+					"number": 87
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:8901,5638,66,31"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/dc548f0e-6c99-4431-85fe-7a3bd99a2d73",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "Groot Hotel van Engeland (van ouds het Zwynshoofd)",
+					"number": 88
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:7390,4503,64,59"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/f66e2173-2f4f-4d60-8be2-e269ede37409",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{ "type": "TextualBody", "format": "text/plain", "value": "Hotel St. Lucas", "number": 89 }
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:7297,4123,48,48"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/86bdbd19-2af2-4b07-82ff-47a0d3b5e9dd",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "Het Hof van Berlyn",
+					"number": 90
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:9066,5955,77,53"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/22ec4faa-07e9-4469-8367-39b88fcfa220",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "Het Middelburgs en Vlissings Veerhuis",
+					"number": 91
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:8978,5873,75,52"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/c037cc4c-e917-4099-bd0f-7b6f780e2598",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "Het Curaçouwsche Jagt",
+					"number": 92
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:8147,4524,53,59"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/1c337877-acf7-46ff-8629-4d1c851823a7",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{ "type": "TextualBody", "format": "text/plain", "value": "Logement de Zon", "number": 93 }
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:8094,4514,45,40"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/4529f3c6-ce11-4f0c-a050-5a260be0e464",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "Logement de Hertog van Wellington",
+					"number": 94
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:8351,3720,78,67"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/f384790d-7de7-4494-93a5-172e76875a5b",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{ "type": "TextualBody", "format": "text/plain", "value": "Logement de Star", "number": 95 }
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:8752,4596,55,28"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/04a9a52f-f6f4-4bb3-8661-05e6bf0f2372",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "Stads Herberg de Romein (Paardenpostery)",
+					"number": 96
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:6475,947,53,48"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/8c94b3b7-0851-4a85-8ac8-c166e5e2e30a",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{ "type": "TextualBody", "format": "text/plain", "value": "De Stads Herberg", "number": 97 }
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:2277,8019,68,50"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/bd65f80e-1846-46b9-85a3-3d41c61e1ed0",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "Stads Herberg de Papegaay",
+					"number": 98
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:11740,5605,90,45"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/6634a9a7-32b7-43ed-8502-4702a156e732",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{ "type": "TextualBody", "format": "text/plain", "value": "Mol Steeg", "number": 99 }
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:7112,5577,78,42"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/aa68dfb2-21c7-4864-b3db-25a5aa313ba6",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "Kraker Steeg (Jaap)",
+					"number": 100
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:9869,5539,54,25"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/0ebea585-3c02-4cdd-ab76-a6f10481887d",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "Kaptein Niemandsverdriet Steeg",
+					"number": 101
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:9663,5511,68,34"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/7a15714c-e787-4394-b1e5-1192757ed991",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{ "type": "TextualBody", "format": "text/plain", "value": "Zevenhuis Steeg", "number": 102 }
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:8729,5289,68,51"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/c3751f14-efc0-479f-b700-96ac5ab8533e",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "Kromme Elleboogsgang",
+					"number": 103
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:10812,5229,72,36"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/dbe5a67f-5c59-4365-8ddc-206416a555f9",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{ "type": "TextualBody", "format": "text/plain", "value": "Dolhuisgang", "number": 104 }
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:10989,5271,65,43"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/c54a6143-a312-4d0c-b116-8513dfeca71c",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{ "type": "TextualBody", "format": "text/plain", "value": "Vrouwenhuisgang", "number": 105 }
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:10309,5076,80,35"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/de8ddd0a-164d-45b6-887d-63334d8b598c",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "Knollemans Steeg",
+					"number": 106
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:10386,4841,53,29"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/45c6ca2c-509d-4ae3-b6b5-72420a86a57d",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{ "type": "TextualBody", "format": "text/plain", "value": "Brandewyn Steeg", "number": 107 }
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:10452,4859,52,35"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/3aab5928-c529-4835-a75f-3c71661ec14a",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{ "type": "TextualBody", "format": "text/plain", "value": "Baan Steeg", "number": 108 }
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:10506,4879,53,38"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/c024ee3a-ed99-4ee2-9d5b-21e287c832a9",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{ "type": "TextualBody", "format": "text/plain", "value": "Vyver Steeg", "number": 109 }
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:10631,4875,58,47"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/a086c972-30cf-49de-94dd-9961a9d3ca5a",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{ "type": "TextualBody", "format": "text/plain", "value": "Gieter Steeg", "number": 110 }
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:10746,4879,62,33"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/2f4d1d99-87ef-46c1-ba6c-e234ee232599",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{ "type": "TextualBody", "format": "text/plain", "value": "Walen Steeg", "number": 111 }
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:9728,4326,48,32"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/b199d9cf-05dc-4649-9174-1e412d247579",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{ "type": "TextualBody", "format": "text/plain", "value": "Karnemelksgang", "number": 112 }
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:9925,4316,64,51"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/663b2c6b-d6df-4751-abe2-13eb81d3c84f",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "Korte Lyn Straat",
+					"number": 113
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:9201,4488,73,31"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/86fb36dc-cf96-40b1-bec3-1e4980169506",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "St. Joris Krieken Steeg",
+					"number": 114
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:9514,4855,82,53"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/72b165b0-7ad9-49fd-a01f-cfaa737bb251",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "St. Jacob Gersten Steeg",
+					"number": 115
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:9322,4808,59,28"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/b67e6265-dfe9-4ae7-8343-474096362ab8",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{ "type": "TextualBody", "format": "text/plain", "value": "Kroesen Steeg", "number": 116 }
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:9237,4780,60,31"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/a73fbdf9-69f1-4cc0-ac63-cb9126087549",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{ "type": "TextualBody", "format": "text/plain", "value": "Spaander Steeg", "number": 117 }
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:9057,4713,71,39"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/b9eb313b-92fe-4476-89f2-51681b10971f",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{ "type": "TextualBody", "format": "text/plain", "value": "Zalm Steeg", "number": 118 }
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:8854,4657,71,27"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/75cd8e82-fee3-456a-ae9d-3ef7b2e6156e",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{ "type": "TextualBody", "format": "text/plain", "value": "Halvemaan Steeg", "number": 119 }
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:8639,4548,57,38"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/00b7460c-ab66-49bc-a6bc-92bc14c85fd6",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{ "type": "TextualBody", "format": "text/plain", "value": "Boot Steeg", "number": 120 }
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:8853,4623,85,31"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/b9d5603c-9376-4ea0-8fc0-743def15d2f9",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{ "type": "TextualBody", "format": "text/plain", "value": "Water Steeg", "number": 121 }
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:9253,4752,58,29"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/5f7c89b2-219b-415a-9ac9-179bac0dc849",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "Doodkisten Steeg",
+					"number": 122
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:9385,4596,61,57"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/f3b3dab9-2a3b-4721-9d1a-7b2c6bb46f43",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{ "type": "TextualBody", "format": "text/plain", "value": "Schouten Steeg", "number": 123 }
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:9587,4610,84,48"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/9499a799-3a26-4dc2-b842-4f30509e9dab",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{ "type": "TextualBody", "format": "text/plain", "value": "Hal Steeg", "number": 124 }
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:8760,3782,56,34"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/d530b1d8-90d1-4856-84a2-57ef6e0acbf6",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{ "type": "TextualBody", "format": "text/plain", "value": "Boter Steeg", "number": 125 }
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:8109,3962,89,35"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/f629432f-bd04-4ac3-a912-6af62bb83843",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{ "type": "TextualBody", "format": "text/plain", "value": "Klaver Steeg", "number": 126 }
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:8122,3884,65,43"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/686d829f-123b-41d7-b964-3d92a4318bf6",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{ "type": "TextualBody", "format": "text/plain", "value": "Wildezee Steeg", "number": 127 }
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:7930,2725,54,40"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/b1774743-72be-4930-a2e1-1ea6d6583715",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "Snippenvlug Steeg",
+					"number": 128
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:7408,3432,56,37"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/6225f98d-8814-4125-9be1-d074277c18ac",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{ "type": "TextualBody", "format": "text/plain", "value": "Zonneblom Steeg", "number": 129 }
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:7301,2859,73,53"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/926fa3e5-b7c9-4de4-a7cb-17ec5dc876c6",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "Stokvischwatertje of Verlaat",
+					"number": 130
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:7301,1739,53,33"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/de7cf1d8-d365-44d3-85db-43e132de874c",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "Vleeschhoudersgang",
+					"number": 131
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:7353,1822,49,27"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/74e20511-8c3d-4fd3-97d4-b513172f8efd",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "Schoorsteenvegersgang",
+					"number": 132
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:7358,1857,57,21"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/1750a557-24db-4e97-b0db-eb57d24d9292",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{ "type": "TextualBody", "format": "text/plain", "value": "Makkelyn Steeg", "number": 133 }
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:7368,1904,54,28"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/559d56c9-bfb4-4cdb-820e-9332ddb6aed9",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "Breedeplaats (Agter)",
+					"number": 134
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:7371,1940,61,30"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/ee9975eb-ee91-4f95-9059-19634fe14cae",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{ "type": "TextualBody", "format": "text/plain", "value": "Tempelaarsgang", "number": 135 }
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:7371,1979,79,24"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/8e557a27-6dd4-4ff5-8106-38b281a19ed8",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "Hoedenmakersgang of Lodewyktakkensteegje",
+					"number": 136
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:7401,2050,63,28"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/35995184-cb68-4096-937a-b62cbb1671f9",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{ "type": "TextualBody", "format": "text/plain", "value": "Kalkgang", "number": 137 }
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:7410,2111,59,26"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/123f8324-b00e-4a35-aa85-19cbb1d8dc7a",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{ "type": "TextualBody", "format": "text/plain", "value": "Porssersgang", "number": 138 }
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:7436,2219,60,34"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/7c46f762-501a-4e1c-928d-43944d18df44",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{ "type": "TextualBody", "format": "text/plain", "value": "Hartmansgang", "number": 139 }
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:7458,2378,80,37"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/443281d6-faad-43fb-b59f-587149beb33c",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{ "type": "TextualBody", "format": "text/plain", "value": "Broeder Steeg", "number": 140 }
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:7661,3326,68,50"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/0d39b7f1-0b3f-48b2-b914-c41bfe587a95",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{ "type": "TextualBody", "format": "text/plain", "value": "Kokker Steeg", "number": 141 }
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:7709,3576,64,35"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/d3f6ce42-3370-48c5-b488-8b25172754df",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{ "type": "TextualBody", "format": "text/plain", "value": "Kerkwater", "number": 142 }
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:7514,3624,49,39"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/e5eef1dd-d9cf-4fc3-81b9-4979369bab1b",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{ "type": "TextualBody", "format": "text/plain", "value": "Padden Steeg", "number": 143 }
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:6942,2440,54,45"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/cd15eb42-f107-4b14-90ee-ad670d25feb0",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{ "type": "TextualBody", "format": "text/plain", "value": "Bierdragersgang", "number": 144 }
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:6507,2467,71,45"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/da338062-fe5e-4795-9096-c9b112de9b14",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{ "type": "TextualBody", "format": "text/plain", "value": "Breedeplaats", "number": 145 }
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:6252,2554,61,26"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/00be5538-0ef4-4708-8e32-3a26fade7fc5",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "Kleine Leeuwenlaan",
+					"number": 146
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:6092,3201,63,33"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/701829d3-19a7-40d8-91e5-ae46caf48b63",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{ "type": "TextualBody", "format": "text/plain", "value": "Mosterd Steeg", "number": 147 }
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:6632,2667,62,39"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/64b27d6b-b4a1-4d74-88bf-4d53e183bb23",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "Jan Arendsgang (Aersens)",
+					"number": 148
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:5423,4630,61,39"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/648ac533-d130-4693-b4c6-1dfbac0a75fa",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "Zwarte Leeuwengang",
+					"number": 149
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:4795,5473,79,47"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/eddc17f0-5de0-425d-a40f-44546b74f5f0",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{ "type": "TextualBody", "format": "text/plain", "value": "Romeinschegang", "number": 150 }
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:4912,5598,60,41"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/8edd2c7d-75ee-45ca-bba8-2f6287d343db",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{ "type": "TextualBody", "format": "text/plain", "value": "Kuipersgang", "number": 151 }
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:4678,5620,69,38"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/1f1bc38a-5cf2-48cb-bec9-7ff92d691e0e",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "Plaats van Van Es",
+					"number": 152
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:4697,5682,68,36"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/175e5cf0-fc98-4037-84c4-cc795b197a27",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{ "type": "TextualBody", "format": "text/plain", "value": "Bogertgang", "number": 153 }
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:4653,5768,71,33"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/6e198f62-2d19-4b9f-a00f-05c340fca237",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "Hoornbrekersgang",
+					"number": 154
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:4763,5872,50,36"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/1b5bf326-6c24-4796-a454-24a5eeb66025",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{ "type": "TextualBody", "format": "text/plain", "value": "Ketelaarsgang", "number": 155 }
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:4280,6118,63,36"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/8d1abc9f-e817-4f4b-85d4-e454fb475957",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{ "type": "TextualBody", "format": "text/plain", "value": "Visschersgang", "number": 156 }
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:4239,6181,76,31"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/73b34067-5cbb-4729-838f-46e8e2719816",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{ "type": "TextualBody", "format": "text/plain", "value": "Koningshoofd", "number": 157 }
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:4213,6227,65,29"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/da06433c-b848-4c22-b4c7-b9a204186176",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{ "type": "TextualBody", "format": "text/plain", "value": "Lammetjesgang", "number": 158 }
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:4197,6264,58,34"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/11c54a75-1efe-4d31-bf04-60d40ab8ea27",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{
+					"type": "TextualBody",
+					"format": "text/plain",
+					"value": "Oost Ind. plaats",
+					"number": 159
+				}
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:4229,6450,56,44"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/5d15aab3-1cbb-4483-82c9-2eff5cefd80a",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{ "type": "TextualBody", "format": "text/plain", "value": "Leerengang", "number": 160 }
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:4164,6508,60,36"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/b7cc5a71-d26a-4502-9cdd-5c8c8f262820",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{ "type": "TextualBody", "format": "text/plain", "value": "Vossegang", "number": 161 }
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:4047,6503,57,39"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/ca4aec0f-02e0-4996-83d2-b5f116d3392e",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{ "type": "TextualBody", "format": "text/plain", "value": "Bellegang", "number": 162 }
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:4018,6549,68,35"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/5fcc8d16-0299-4f35-95b7-ffc1097fb13b",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{ "type": "TextualBody", "format": "text/plain", "value": "Doode Steeg", "number": 163 }
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:8328,6628,98,80"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/c1a20c61-be9d-4787-96ed-b1f7bbcf5dc8",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{ "type": "TextualBody", "format": "text/plain", "value": "Water Steeg", "number": 164 }
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:7928,2776,84,31"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/6b811bbb-b7f1-4ceb-ad10-ebabe8e5fb49",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{ "type": "TextualBody", "format": "text/plain", "value": "Water Steeg", "number": 165 }
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:7496,2527,69,34"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/3698dbbd-65ff-468f-9489-ddaf21c642dd",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{ "type": "TextualBody", "format": "text/plain", "value": "Water Steeg", "number": 166 }
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:7447,2281,66,43"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/3b7e41f1-3582-403b-95ba-cc838fccbe5b",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{ "type": "TextualBody", "format": "text/plain", "value": "Water Steeg", "number": 167 }
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:9129,5089,49,27"
+				}
+			}
+		},
+		{
+			"id": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0/annotations/0/9b1822fc-a268-47eb-a636-dfe1bb93943c",
+			"type": "Annotation",
+			"motivation": "describing",
+			"body": [
+				{ "type": "TextualBody", "format": "text/plain", "value": "Water Steeg", "number": 168 }
+			],
+			"target": {
+				"type": "SpecificResource",
+				"source": "https://rotterdamtimemachine.nl/manifests/nationaal-archief/NL-HaNA_4.ZHPB4_196.json/canvas/0",
+				"selector": {
+					"type": "FragmentSelector",
+					"conformsTo": "http://www.w3.org/TR/media-frags/",
+					"value": "xywh=pixel:9205,5106,60,40"
+				}
+			}
+		}
+	]
+}
