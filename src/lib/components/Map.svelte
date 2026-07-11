@@ -79,6 +79,8 @@
 		// eslint-disable-next-line no-useless-assignment -- This bindable prop is written back to the parent.
 		annotationsAtCenter = $bindable<string[]>([]),
 		// eslint-disable-next-line no-useless-assignment -- This bindable prop is written back to the parent.
+		mapIdsAtCenter = $bindable<string[]>([]),
+		// eslint-disable-next-line no-useless-assignment -- This bindable prop is written back to the parent.
 		geocoderBounds = $bindable(),
 		mapKeyboardCommand,
 		mapToolbarCommand,
@@ -100,6 +102,7 @@
 		currentLocation?: MapLocation;
 		annotationsInView?: string[];
 		annotationsAtCenter?: string[];
+		mapIdsAtCenter?: string[];
 		geocoderBounds?: GeocoderBounds;
 		mapKeyboardCommand?: MapKeyboardCommand;
 		mapToolbarCommand?: MapToolbarCommand;
@@ -990,6 +993,7 @@
 		if (!map || !loaded) {
 			annotationsInView = [];
 			annotationsAtCenter = [];
+			mapIdsAtCenter = [];
 			return;
 		}
 
@@ -1005,21 +1009,20 @@
 			onlyVisible: false
 		});
 		const center = map.getCenter();
-		const mapIdsAtCenter = warpedMapLayer.getWarpedMapList().getMapIds({
+		const centerMapIds = warpedMapLayer.getWarpedMapList().getMapIds({
 			geoPoint: [center.lng, center.lat],
 			onlyVisible: false
 		});
 
 		annotationsInView = getAnnotationsForMapIds(mapIds);
-		annotationsAtCenter = getAnnotationsForMapIds(mapIdsAtCenter);
+		annotationsAtCenter = getAnnotationsForMapIds(centerMapIds);
+		mapIdsAtCenter = centerMapIds;
 	}
 
 	function getAnnotationsForMapIds(mapIds: string[]) {
 		return [
 			...new Set(
-				mapIds
-					.map((mapId) => annotationsByMapId.get(mapId))
-					.filter((annotationUrl): annotationUrl is string => !!annotationUrl)
+				mapIds.flatMap((mapId) => [...(annotationsByMapId.get(mapId) ?? new Set<string>())])
 			)
 		];
 	}
@@ -1120,6 +1123,7 @@
 			mapInstance.remove();
 			annotationsInView = [];
 			annotationsAtCenter = [];
+			mapIdsAtCenter = [];
 			geocoderBounds = undefined;
 			map = undefined;
 			mapReady = false;

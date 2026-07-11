@@ -3,7 +3,7 @@
 	"@context": "http://www.w3.org/ns/anno.jsonld",
 	"items": [
 		{
-			"id": "annotation-https://rotterdamspubliek.nl/iiif/B79F5D048E584873BC38A35BFAEC49CC/info.json/attach",
+			"id": "https://rotterdamspubliek.nl/iiif/B79F5D048E584873BC38A35BFAEC49CC/info.json/attach",
 			"type": "Annotation",
 			"@context": [
 				"http://iiif.io/api/extension/georef/1/context.json",
@@ -36,7 +36,7 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.4297842233176254, 51.87645981514119]
+							"coordinates": [4.429784249535892, 51.876459839669344]
 						}
 					},
 					{
@@ -46,7 +46,7 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.400203811283273, 51.87440633653219]
+							"coordinates": [4.4002038263529615, 51.87440635057849]
 						}
 					},
 					{
@@ -56,14 +56,14 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.432496404059388, 51.86184897851709]
+							"coordinates": [4.432496462173059, 51.86184903314775]
 						}
 					}
 				]
 			}
 		},
 		{
-			"id": "annotation-https://rotterdamspubliek.nl/iiif/AE2AD818169243EFB9207C98CA37ED59/info.json/attach",
+			"id": "https://rotterdamspubliek.nl/iiif/AE2AD818169243EFB9207C98CA37ED59/info.json/attach",
 			"type": "Annotation",
 			"@context": [
 				"http://iiif.io/api/extension/georef/1/context.json",
@@ -92,31 +92,11 @@
 					{
 						"type": "Feature",
 						"properties": {
-							"resourceCoords": [171, 4317]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.506883440029409, 51.881963241431016]
-						}
-					},
-					{
-						"type": "Feature",
-						"properties": {
-							"resourceCoords": [160, 186]
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": [4.503810787799418, 51.897556696124724]
-						}
-					},
-					{
-						"type": "Feature",
-						"properties": {
 							"resourceCoords": [6259, 173]
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.541442776495192, 51.9003366661439]
+							"coordinates": [4.541438761316115, 51.90033289068552]
 						}
 					},
 					{
@@ -126,14 +106,34 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.544553597733358, 51.88472666098698]
+							"coordinates": [4.544554136503531, 51.884727167921774]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [160, 186]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.503810626399066, 51.897556544466106]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [171, 4317]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.506883967007377, 51.88196373742028]
 						}
 					}
 				]
 			}
 		},
 		{
-			"id": "annotation-https://rotterdamspubliek.nl/iiif/BBAE5AD560CC41719B7420ED659C6D4D/info.json/attach",
+			"id": "https://rotterdamspubliek.nl/iiif/BBAE5AD560CC41719B7420ED659C6D4D/info.json/attach",
 			"type": "Annotation",
 			"@context": [
 				"http://iiif.io/api/extension/georef/1/context.json",
@@ -166,7 +166,7 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.420450307020755, 51.92542821967924]
+							"coordinates": [4.420450305309806, 51.925428217971515]
 						}
 					},
 					{
@@ -176,7 +176,7 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.391093944778214, 51.92334220379105]
+							"coordinates": [4.391093944167222, 51.923342203194395]
 						}
 					},
 					{
@@ -186,14 +186,14 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.417336369312054, 51.94095862057702]
+							"coordinates": [4.417336366610091, 51.94095861807568]
 						}
 					}
 				]
 			}
 		},
 		{
-			"id": "annotation-https://rotterdamspubliek.nl/iiif/59DBAF5BE1CC4C09BCD3610F6B7ED6D3/info.json/attach",
+			"id": "https://rotterdamspubliek.nl/iiif/59DBAF5BE1CC4C09BCD3610F6B7ED6D3/info.json/attach",
 			"type": "Annotation",
 			"@context": [
 				"http://iiif.io/api/extension/georef/1/context.json",
@@ -226,7 +226,7 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.420450307020755, 51.92542821967924]
+							"coordinates": [4.420450305309806, 51.925428217971515]
 						}
 					},
 					{
@@ -236,7 +236,7 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.391093944778214, 51.92334220379105]
+							"coordinates": [4.391093944167222, 51.923342203194395]
 						}
 					},
 					{
@@ -246,7 +246,7 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.394211839666816, 51.906758869968144]
+							"coordinates": [4.3942118399802474, 51.90675887017599]
 						}
 					},
 					{
@@ -256,14 +256,14 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.423580465485976, 51.908794037203954]
+							"coordinates": [4.423580464416307, 51.90879403599954]
 						}
 					}
 				]
 			}
 		},
 		{
-			"id": "annotation-https://rotterdamspubliek.nl/iiif/A96CC28B52154C2EBED72E4B9DB4EAAF/info.json/attach",
+			"id": "https://rotterdamspubliek.nl/iiif/A96CC28B52154C2EBED72E4B9DB4EAAF/info.json/attach",
 			"type": "Annotation",
 			"@context": [
 				"http://iiif.io/api/extension/georef/1/context.json",
@@ -296,7 +296,7 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.394211839666816, 51.906758869968144]
+							"coordinates": [4.3942118399802474, 51.90675887017599]
 						}
 					},
 					{
@@ -306,7 +306,7 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.423580465485976, 51.908794037203954]
+							"coordinates": [4.423580464416307, 51.90879403599954]
 						}
 					},
 					{
@@ -316,7 +316,7 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.426787482076786, 51.89204615201211]
+							"coordinates": [4.426787484362528, 51.89204615410955]
 						}
 					},
 					{
@@ -326,14 +326,14 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.397372578738275, 51.889998030111215]
+							"coordinates": [4.397372582078642, 51.88999803310422]
 						}
 					}
 				]
 			}
 		},
 		{
-			"id": "annotation-https://rotterdamspubliek.nl/iiif/3269A4524A3B42F3BA6D9EBC92B0B888/info.json/attach",
+			"id": "https://rotterdamspubliek.nl/iiif/3269A4524A3B42F3BA6D9EBC92B0B888/info.json/attach",
 			"type": "Annotation",
 			"@context": [
 				"http://iiif.io/api/extension/georef/1/context.json",
@@ -366,7 +366,7 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.4297842233176254, 51.87645981514119]
+							"coordinates": [4.429784249535892, 51.876459839669344]
 						}
 					},
 					{
@@ -376,7 +376,7 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.400203811283273, 51.87440633653219]
+							"coordinates": [4.4002038263529615, 51.87440635057849]
 						}
 					},
 					{
@@ -386,7 +386,7 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.426787482076786, 51.89204615201211]
+							"coordinates": [4.426787484362528, 51.89204615410955]
 						}
 					},
 					{
@@ -396,14 +396,14 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.397372578738275, 51.889998030111215]
+							"coordinates": [4.397372582078642, 51.88999803310422]
 						}
 					}
 				]
 			}
 		},
 		{
-			"id": "annotation-https://rotterdamspubliek.nl/iiif/6A9C823CC3234837B35A55362EDD3BFC/info.json/attach",
+			"id": "https://rotterdamspubliek.nl/iiif/6A9C823CC3234837B35A55362EDD3BFC/info.json/attach",
 			"type": "Annotation",
 			"@context": [
 				"http://iiif.io/api/extension/georef/1/context.json",
@@ -436,7 +436,7 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.4297842233176254, 51.87645981514119]
+							"coordinates": [4.429784249535892, 51.876459839669344]
 						}
 					},
 					{
@@ -446,7 +446,7 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.432496404059388, 51.86184897851709]
+							"coordinates": [4.432496462173059, 51.86184903314775]
 						}
 					},
 					{
@@ -456,7 +456,7 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.467381113244098, 51.87911157943088]
+							"coordinates": [4.467381195308219, 51.879111656612935]
 						}
 					},
 					{
@@ -466,14 +466,14 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.470259954915617, 51.86449905529593]
+							"coordinates": [4.47026019965178, 51.86449928556934]
 						}
 					}
 				]
 			}
 		},
 		{
-			"id": "annotation-https://rotterdamspubliek.nl/iiif/2058A487AD284CD988282D2DC60AA432/info.json/attach",
+			"id": "https://rotterdamspubliek.nl/iiif/2058A487AD284CD988282D2DC60AA432/info.json/attach",
 			"type": "Annotation",
 			"@context": [
 				"http://iiif.io/api/extension/georef/1/context.json",
@@ -506,7 +506,7 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.506883440029409, 51.881963241431016]
+							"coordinates": [4.506883967007377, 51.88196373742028]
 						}
 					},
 					{
@@ -516,7 +516,7 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.467381113244098, 51.87911157943088]
+							"coordinates": [4.467381195308219, 51.879111656612935]
 						}
 					},
 					{
@@ -526,7 +526,7 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.470259954915617, 51.86449905529593]
+							"coordinates": [4.47026019965178, 51.86449928556934]
 						}
 					},
 					{
@@ -536,14 +536,14 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.509785103877562, 51.867330592583365]
+							"coordinates": [4.509786674741938, 51.86733207102136]
 						}
 					}
 				]
 			}
 		},
 		{
-			"id": "annotation-https://rotterdamspubliek.nl/iiif/AD0567937AFC415096DCC6E6686FE32E/info.json/attach",
+			"id": "https://rotterdamspubliek.nl/iiif/AD0567937AFC415096DCC6E6686FE32E/info.json/attach",
 			"type": "Annotation",
 			"@context": [
 				"http://iiif.io/api/extension/georef/1/context.json",
@@ -576,7 +576,7 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.454824578499926, 51.94366261656775]
+							"coordinates": [4.454824565045473, 51.94366260384647]
 						}
 					},
 					{
@@ -586,7 +586,7 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.457832265830094, 51.92812236651177]
+							"coordinates": [4.45783225803889, 51.92812235916996]
 						}
 					},
 					{
@@ -596,7 +596,7 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.497165396473079, 51.931015235045784]
+							"coordinates": [4.497165340381411, 51.93101518205785]
 						}
 					},
 					{
@@ -606,14 +606,14 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.494057713025564, 51.94653552423249]
+							"coordinates": [4.4940576693174, 51.94653548283724]
 						}
 					}
 				]
 			}
 		},
 		{
-			"id": "annotation-https://rotterdamspubliek.nl/iiif/13B51C4B387C4480A0347D6C87FB921B/info.json/attach",
+			"id": "https://rotterdamspubliek.nl/iiif/13B51C4B387C4480A0347D6C87FB921B/info.json/attach",
 			"type": "Annotation",
 			"@context": [
 				"http://iiif.io/api/extension/georef/1/context.json",
@@ -642,21 +642,21 @@
 					{
 						"type": "Feature",
 						"properties": {
-							"resourceCoords": [171, 151]
+							"resourceCoords": [6254, 161]
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.506883440029409, 51.881963241431016]
+							"coordinates": [4.544554136503531, 51.884727167921774]
 						}
 					},
 					{
 						"type": "Feature",
 						"properties": {
-							"resourceCoords": [6254, 161]
+							"resourceCoords": [171, 151]
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.544553597733358, 51.88472666098698]
+							"coordinates": [4.506883967007377, 51.88196373742028]
 						}
 					},
 					{
@@ -666,7 +666,7 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.509785103877562, 51.867330592583365]
+							"coordinates": [4.509786674741938, 51.86733207102136]
 						}
 					},
 					{
@@ -676,14 +676,14 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.54751238771369, 51.87017462672382]
+							"coordinates": [4.547523368219462, 51.87018495906709]
 						}
 					}
 				]
 			}
 		},
 		{
-			"id": "annotation-https://rotterdamspubliek.nl/iiif/EF863AEF0BF04473908738EB4971A5E3/info.json/attach",
+			"id": "https://rotterdamspubliek.nl/iiif/EF863AEF0BF04473908738EB4971A5E3/info.json/attach",
 			"type": "Annotation",
 			"@context": [
 				"http://iiif.io/api/extension/georef/1/context.json",
@@ -700,7 +700,7 @@
 				},
 				"selector": {
 					"type": "SvgSelector",
-					"value": "<svg width=\"5287\" height=\"4307\"><polygon points=\"183,127 187,3982 1597,3982 1591,127\" /></svg>"
+					"value": "<svg width=\"5287\" height=\"4307\"><polygon points=\"187,3982 5012,3982 5005,168 183,127\" /></svg>"
 				}
 			},
 			"body": {
@@ -716,7 +716,7 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.544553597733358, 51.88472666098698]
+							"coordinates": [4.544554136503531, 51.884727167921774]
 						}
 					},
 					{
@@ -726,14 +726,24 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.54751238771369, 51.87017462672382]
+							"coordinates": [4.547523368219462, 51.87018495906709]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [5005, 168]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.574442000173537, 51.8868928476222]
 						}
 					}
 				]
 			}
 		},
 		{
-			"id": "annotation-https://rotterdamspubliek.nl/iiif/8D75837EA87148228528DB79FCFAF488/info.json/attach",
+			"id": "https://rotterdamspubliek.nl/iiif/8D75837EA87148228528DB79FCFAF488/info.json/attach",
 			"type": "Annotation",
 			"@context": [
 				"http://iiif.io/api/extension/georef/1/context.json",
@@ -766,7 +776,7 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.541442776495192, 51.9003366661439]
+							"coordinates": [4.541438761316115, 51.90033289068552]
 						}
 					},
 					{
@@ -776,7 +786,17 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.544553597733358, 51.88472666098698]
+							"coordinates": [4.544554136503531, 51.884727167921774]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [4978, 4241]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.574442000173537, 51.8868928476222]
 						}
 					},
 					{
@@ -786,14 +806,14 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.571231633909707, 51.90261423814906]
+							"coordinates": [4.571222512188155, 51.90260566113418]
 						}
 					}
 				]
 			}
 		},
 		{
-			"id": "annotation-https://rotterdamspubliek.nl/iiif/AD324025E81A42C8AEF74EFE049C7D8B/info.json/attach",
+			"id": "https://rotterdamspubliek.nl/iiif/AD324025E81A42C8AEF74EFE049C7D8B/info.json/attach",
 			"type": "Annotation",
 			"@context": [
 				"http://iiif.io/api/extension/georef/1/context.json",
@@ -826,7 +846,7 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.541442776495192, 51.9003366661439]
+							"coordinates": [4.541438761316115, 51.90033289068552]
 						}
 					},
 					{
@@ -836,7 +856,7 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.571231633909707, 51.90261423814906]
+							"coordinates": [4.571222512188155, 51.90260566113418]
 						}
 					},
 					{
@@ -846,7 +866,7 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.567768507879496, 51.91931110616608]
+							"coordinates": [4.567767432358372, 51.9193100951402]
 						}
 					},
 					{
@@ -856,14 +876,14 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.5380461250602195, 51.917092043313836]
+							"coordinates": [4.538045597789277, 51.91709154771075]
 						}
 					}
 				]
 			}
 		},
 		{
-			"id": "annotation-https://rotterdamspubliek.nl/iiif/C50AD01841D54576A6C8B642938A01DD/info.json/attach",
+			"id": "https://rotterdamspubliek.nl/iiif/C50AD01841D54576A6C8B642938A01DD/info.json/attach",
 			"type": "Annotation",
 			"@context": [
 				"http://iiif.io/api/extension/georef/1/context.json",
@@ -896,7 +916,7 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.567768507879496, 51.91931110616608]
+							"coordinates": [4.567767432358372, 51.9193100951402]
 						}
 					},
 					{
@@ -906,7 +926,7 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.5380461250602195, 51.917092043313836]
+							"coordinates": [4.538045597789277, 51.91709154771075]
 						}
 					},
 					{
@@ -916,7 +936,7 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.564336810483445, 51.93609941039839]
+							"coordinates": [4.564336559691468, 51.93609917467135]
 						}
 					},
 					{
@@ -926,14 +946,14 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.534681106499982, 51.93382742777451]
+							"coordinates": [4.534680939702186, 51.93382727103197]
 						}
 					}
 				]
 			}
 		},
 		{
-			"id": "annotation-https://rotterdamspubliek.nl/iiif/4F0DA8FB957E430D9C1C45AE4BBC3C06/info.json/attach",
+			"id": "https://rotterdamspubliek.nl/iiif/4F0DA8FB957E430D9C1C45AE4BBC3C06/info.json/attach",
 			"type": "Annotation",
 			"@context": [
 				"http://iiif.io/api/extension/georef/1/context.json",
@@ -966,7 +986,7 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.564336810483445, 51.93609941039839]
+							"coordinates": [4.564336559691468, 51.93609917467135]
 						}
 					},
 					{
@@ -976,7 +996,7 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.534681106499982, 51.93382742777451]
+							"coordinates": [4.534680939702186, 51.93382727103197]
 						}
 					},
 					{
@@ -986,14 +1006,14 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.531512190262563, 51.9493349000702]
+							"coordinates": [4.531512090616208, 51.949334806501675]
 						}
 					}
 				]
 			}
 		},
 		{
-			"id": "annotation-https://rotterdamspubliek.nl/iiif/637888E013C749D189E0FBEA40AAE49A/info.json/attach",
+			"id": "https://rotterdamspubliek.nl/iiif/637888E013C749D189E0FBEA40AAE49A/info.json/attach",
 			"type": "Annotation",
 			"@context": [
 				"http://iiif.io/api/extension/georef/1/context.json",
@@ -1026,7 +1046,7 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.497165396473079, 51.931015235045784]
+							"coordinates": [4.497165340381411, 51.93101518205785]
 						}
 					},
 					{
@@ -1036,7 +1056,7 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.494057713025564, 51.94653552423249]
+							"coordinates": [4.4940576693174, 51.94653548283724]
 						}
 					},
 					{
@@ -1046,7 +1066,7 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.534681106499982, 51.93382742777451]
+							"coordinates": [4.534680939702186, 51.93382727103197]
 						}
 					},
 					{
@@ -1056,14 +1076,14 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.531512190262563, 51.9493349000702]
+							"coordinates": [4.531512090616208, 51.949334806501675]
 						}
 					}
 				]
 			}
 		},
 		{
-			"id": "annotation-https://rotterdamspubliek.nl/iiif/3E0AF0D3DEE145318C457D9FE875DB6C/info.json/attach",
+			"id": "https://rotterdamspubliek.nl/iiif/3E0AF0D3DEE145318C457D9FE875DB6C/info.json/attach",
 			"type": "Annotation",
 			"@context": [
 				"http://iiif.io/api/extension/georef/1/context.json",
@@ -1096,7 +1116,7 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.420450307020755, 51.92542821967924]
+							"coordinates": [4.420450305309806, 51.925428217971515]
 						}
 					},
 					{
@@ -1106,7 +1126,7 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.423580465485976, 51.908794037203954]
+							"coordinates": [4.423580464416307, 51.90879403599954]
 						}
 					},
 					{
@@ -1116,7 +1136,7 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.457832265830094, 51.92812236651177]
+							"coordinates": [4.45783225803889, 51.92812235916996]
 						}
 					},
 					{
@@ -1126,14 +1146,14 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.4611214264812284, 51.91145518719393]
+							"coordinates": [4.461121417759409, 51.91145517914181]
 						}
 					}
 				]
 			}
 		},
 		{
-			"id": "annotation-https://rotterdamspubliek.nl/iiif/E17C0C6C9801455497366626D2EA8A29/info.json/attach",
+			"id": "https://rotterdamspubliek.nl/iiif/E17C0C6C9801455497366626D2EA8A29/info.json/attach",
 			"type": "Annotation",
 			"@context": [
 				"http://iiif.io/api/extension/georef/1/context.json",
@@ -1166,7 +1186,7 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.497165396473079, 51.931015235045784]
+							"coordinates": [4.497165340381411, 51.93101518205785]
 						}
 					},
 					{
@@ -1176,7 +1196,7 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.5380461250602195, 51.917092043313836]
+							"coordinates": [4.538045597789277, 51.91709154771075]
 						}
 					},
 					{
@@ -1186,7 +1206,7 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.534681106499982, 51.93382742777451]
+							"coordinates": [4.534680939702186, 51.93382727103197]
 						}
 					},
 					{
@@ -1196,14 +1216,14 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.500503439870627, 51.914327715486316]
+							"coordinates": [4.500503355602196, 51.91432763626476]
 						}
 					}
 				]
 			}
 		},
 		{
-			"id": "annotation-https://rotterdamspubliek.nl/iiif/8C000D39DCD544888DE21A5F02EC75D8/info.json/attach",
+			"id": "https://rotterdamspubliek.nl/iiif/8C000D39DCD544888DE21A5F02EC75D8/info.json/attach",
 			"type": "Annotation",
 			"@context": [
 				"http://iiif.io/api/extension/georef/1/context.json",
@@ -1236,7 +1256,7 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.423580465485976, 51.908794037203954]
+							"coordinates": [4.423580464416307, 51.90879403599954]
 						}
 					},
 					{
@@ -1246,7 +1266,7 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.426787482076786, 51.89204615201211]
+							"coordinates": [4.426787484362528, 51.89204615410955]
 						}
 					},
 					{
@@ -1256,7 +1276,7 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.4611214264812284, 51.91145518719393]
+							"coordinates": [4.461121417759409, 51.91145517914181]
 						}
 					},
 					{
@@ -1266,14 +1286,14 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.464365713941197, 51.894713405463534]
+							"coordinates": [4.464365699753714, 51.89471339230537]
 						}
 					}
 				]
 			}
 		},
 		{
-			"id": "annotation-https://rotterdamspubliek.nl/iiif/69B895061B4348729BFCC3F785B60A76/info.json/attach",
+			"id": "https://rotterdamspubliek.nl/iiif/69B895061B4348729BFCC3F785B60A76/info.json/attach",
 			"type": "Annotation",
 			"@context": [
 				"http://iiif.io/api/extension/georef/1/context.json",
@@ -1306,7 +1326,7 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.503810787799418, 51.897556696124724]
+							"coordinates": [4.503810626399066, 51.897556544466106]
 						}
 					},
 					{
@@ -1316,7 +1336,7 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.4611214264812284, 51.91145518719393]
+							"coordinates": [4.461121417759409, 51.91145517914181]
 						}
 					},
 					{
@@ -1326,7 +1346,7 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.500503439870627, 51.914327715486316]
+							"coordinates": [4.500503355602196, 51.91432763626476]
 						}
 					},
 					{
@@ -1336,14 +1356,14 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.464365713941197, 51.894713405463534]
+							"coordinates": [4.464365699753714, 51.89471339230537]
 						}
 					}
 				]
 			}
 		},
 		{
-			"id": "annotation-https://rotterdamspubliek.nl/iiif/863C7B0202ED49629FF21D3CC48E7A24/info.json/attach",
+			"id": "https://rotterdamspubliek.nl/iiif/863C7B0202ED49629FF21D3CC48E7A24/info.json/attach",
 			"type": "Annotation",
 			"@context": [
 				"http://iiif.io/api/extension/georef/1/context.json",
@@ -1376,7 +1396,7 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.420450307020755, 51.92542821967924]
+							"coordinates": [4.420450305309806, 51.925428217971515]
 						}
 					},
 					{
@@ -1386,7 +1406,7 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.417336369312054, 51.94095862057702]
+							"coordinates": [4.417336366610091, 51.94095861807568]
 						}
 					},
 					{
@@ -1396,7 +1416,7 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.454824578499926, 51.94366261656775]
+							"coordinates": [4.454824565045473, 51.94366260384647]
 						}
 					},
 					{
@@ -1406,14 +1426,14 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.457832265830094, 51.92812236651177]
+							"coordinates": [4.45783225803889, 51.92812235916996]
 						}
 					}
 				]
 			}
 		},
 		{
-			"id": "annotation-https://rotterdamspubliek.nl/iiif/6D3A2D321823462A9A606210390651B5/info.json/attach",
+			"id": "https://rotterdamspubliek.nl/iiif/6D3A2D321823462A9A606210390651B5/info.json/attach",
 			"type": "Annotation",
 			"@context": [
 				"http://iiif.io/api/extension/georef/1/context.json",
@@ -1446,7 +1466,7 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.457832265830094, 51.92812236651177]
+							"coordinates": [4.45783225803889, 51.92812235916996]
 						}
 					},
 					{
@@ -1456,7 +1476,7 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.497165396473079, 51.931015235045784]
+							"coordinates": [4.497165340381411, 51.93101518205785]
 						}
 					},
 					{
@@ -1466,7 +1486,7 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.4611214264812284, 51.91145518719393]
+							"coordinates": [4.461121417759409, 51.91145517914181]
 						}
 					},
 					{
@@ -1476,14 +1496,14 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.500503439870627, 51.914327715486316]
+							"coordinates": [4.500503355602196, 51.91432763626476]
 						}
 					}
 				]
 			}
 		},
 		{
-			"id": "annotation-https://rotterdamspubliek.nl/iiif/A136B927DA744CD2BEA9F1A3FF2271BA/info.json/attach",
+			"id": "https://rotterdamspubliek.nl/iiif/A136B927DA744CD2BEA9F1A3FF2271BA/info.json/attach",
 			"type": "Annotation",
 			"@context": [
 				"http://iiif.io/api/extension/georef/1/context.json",
@@ -1512,21 +1532,21 @@
 					{
 						"type": "Feature",
 						"properties": {
-							"resourceCoords": [151, 4593]
+							"resourceCoords": [6262, 4588]
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.503810787799418, 51.897556696124724]
+							"coordinates": [4.541438761316115, 51.90033289068552]
 						}
 					},
 					{
 						"type": "Feature",
 						"properties": {
-							"resourceCoords": [6262, 4588]
+							"resourceCoords": [151, 4593]
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.541442776495192, 51.9003366661439]
+							"coordinates": [4.503810626399066, 51.897556544466106]
 						}
 					},
 					{
@@ -1536,7 +1556,7 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.5380461250602195, 51.917092043313836]
+							"coordinates": [4.538045597789277, 51.91709154771075]
 						}
 					},
 					{
@@ -1546,14 +1566,14 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.500503439870627, 51.914327715486316]
+							"coordinates": [4.500503355602196, 51.91432763626476]
 						}
 					}
 				]
 			}
 		},
 		{
-			"id": "annotation-https://rotterdamspubliek.nl/iiif/BA70EAF4A39249A7AF9CEAFEFCDD7470/info.json/attach",
+			"id": "https://rotterdamspubliek.nl/iiif/BA70EAF4A39249A7AF9CEAFEFCDD7470/info.json/attach",
 			"type": "Annotation",
 			"@context": [
 				"http://iiif.io/api/extension/georef/1/context.json",
@@ -1586,7 +1606,7 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.4297842233176254, 51.87645981514119]
+							"coordinates": [4.429784249535892, 51.876459839669344]
 						}
 					},
 					{
@@ -1596,7 +1616,7 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.426787482076786, 51.89204615201211]
+							"coordinates": [4.426787484362528, 51.89204615410955]
 						}
 					},
 					{
@@ -1606,7 +1626,7 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.467381113244098, 51.87911157943088]
+							"coordinates": [4.467381195308219, 51.879111656612935]
 						}
 					},
 					{
@@ -1616,14 +1636,14 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.464365713941197, 51.894713405463534]
+							"coordinates": [4.464365699753714, 51.89471339230537]
 						}
 					}
 				]
 			}
 		},
 		{
-			"id": "annotation-https://rotterdamspubliek.nl/iiif/E5FBDF15ECCB4E2B9DF2A782FF3EDCF6/info.json/attach",
+			"id": "https://rotterdamspubliek.nl/iiif/E5FBDF15ECCB4E2B9DF2A782FF3EDCF6/info.json/attach",
 			"type": "Annotation",
 			"@context": [
 				"http://iiif.io/api/extension/georef/1/context.json",
@@ -1652,21 +1672,21 @@
 					{
 						"type": "Feature",
 						"properties": {
-							"resourceCoords": [6621, 4262]
+							"resourceCoords": [6592, 115]
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.506883440029409, 51.881963241431016]
+							"coordinates": [4.503810626399066, 51.897556544466106]
 						}
 					},
 					{
 						"type": "Feature",
 						"properties": {
-							"resourceCoords": [6592, 115]
+							"resourceCoords": [6621, 4262]
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.503810787799418, 51.897556696124724]
+							"coordinates": [4.506883967007377, 51.88196373742028]
 						}
 					},
 					{
@@ -1676,7 +1696,7 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.467381113244098, 51.87911157943088]
+							"coordinates": [4.467381195308219, 51.879111656612935]
 						}
 					},
 					{
@@ -1686,7 +1706,7 @@
 						},
 						"geometry": {
 							"type": "Point",
-							"coordinates": [4.464365713941197, 51.894713405463534]
+							"coordinates": [4.464365699753714, 51.89471339230537]
 						}
 					}
 				]

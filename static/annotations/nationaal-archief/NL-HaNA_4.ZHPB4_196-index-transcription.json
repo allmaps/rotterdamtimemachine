@@ -1,0 +1,679 @@
+{
+	"source": "static/NL-HaNA_4.ZHPB4_196-groot.jpg",
+	"language": "nl",
+	"columns": 7,
+	"mappings": [
+		{
+			"number": 1,
+			"label": "Groote of St. Laurens Kerk"
+		},
+		{
+			"number": 2,
+			"label": "Prinsen Kerk"
+		},
+		{
+			"number": 3,
+			"label": "Zuider Kerk"
+		},
+		{
+			"number": 4,
+			"label": "Nieuwe of Ooster Kerk"
+		},
+		{
+			"number": 5,
+			"label": "Waalsche Kerk"
+		},
+		{
+			"number": 6,
+			"label": "Presbyteriaansche Kerk"
+		},
+		{
+			"number": 7,
+			"label": "Groote Schotsche Kerk"
+		},
+		{
+			"number": 8,
+			"label": "Kleine Schotsche Kerk"
+		},
+		{
+			"number": 9,
+			"label": "Episcopaalsche Kerk"
+		},
+		{
+			"number": 10,
+			"label": "Luthersche Kerk"
+		},
+		{
+			"number": 11,
+			"label": "Doopsgezinde Kerk"
+		},
+		{
+			"number": 12,
+			"label": "Remonstrantsche Kerken"
+		},
+		{
+			"number": 13,
+			"label": "R.C. Kerk (Gemeente van den Oppert)"
+		},
+		{
+			"number": 14,
+			"label": "R.C. Kerk (Gemeente van de Slykvaart)"
+		},
+		{
+			"number": 15,
+			"label": "R.C. Kerk (Gemeente van den Leeuwenstraat)"
+		},
+		{
+			"number": 16,
+			"label": "R.C. Kerk (Gemeente van den Steiger)"
+		},
+		{
+			"number": 17,
+			"label": "R.C. Kerk (Gemeente van den Houttuin)"
+		},
+		{
+			"number": 18,
+			"label": "Israëlitische Hoofdsynagoge"
+		},
+		{
+			"number": 19,
+			"label": "Gasthuis"
+		},
+		{
+			"number": 20,
+			"label": "Israëlitisch Gasthuis"
+		},
+		{
+			"number": 21,
+			"label": "Proveniers en Leprooshuis"
+		},
+		{
+			"number": 22,
+			"label": "Dolhuis"
+		},
+		{
+			"number": 23,
+			"label": "Oude Mannenhuis (Bureau van het Stads Armbestuur)"
+		},
+		{
+			"number": 24,
+			"label": "Oude Vrouwenhuis"
+		},
+		{
+			"number": 25,
+			"label": "M.C. van Doorens Vrouwen Gesticht van Weldadigheid"
+		},
+		{
+			"number": 26,
+			"label": "Stads Armhuis"
+		},
+		{
+			"number": 27,
+			"label": "Gereformeerde Ledematenhuis"
+		},
+		{
+			"number": 28,
+			"label": "Gereformeerde Burgerweeshuis"
+		},
+		{
+			"number": 29,
+			"label": "Luthersch Weeshuis"
+		},
+		{
+			"number": 30,
+			"label": "R.C. Weeshuis (Gemeente van de Slykvaart)"
+		},
+		{
+			"number": 31,
+			"label": "R.C. Weeshuis (Gemeente van den Steiger)"
+		},
+		{
+			"number": 32,
+			"label": "R.C. Weeshuis (Gemeente van den Houttuin)"
+		},
+		{
+			"number": 33,
+			"label": "R.C. Brei en Naaischool"
+		},
+		{
+			"number": 34,
+			"label": "Bank van Leening"
+		},
+		{
+			"number": 35,
+			"label": "Huis van Arrest voor jeugdige veroordeelden"
+		},
+		{
+			"number": 36,
+			"label": "Stadhuis"
+		},
+		{
+			"number": 37,
+			"label": "Gemeenelandshuis van Schieland"
+		},
+		{
+			"number": 38,
+			"label": "Paleis van Justitie"
+		},
+		{
+			"number": 39,
+			"label": "Zakkendragershuis"
+		},
+		{
+			"number": 40,
+			"label": "Kazerne der Mariniers en Lands Magazyn"
+		},
+		{
+			"number": 41,
+			"label": "Kazerne der Mobiele Schuttery"
+		},
+		{
+			"number": 42,
+			"label": "Voormalig Oost Ind. Comp. Huis nu Entrepôt"
+		},
+		{
+			"number": 43,
+			"label": "Pakhuizen der voormalige West Ind. Comp."
+		},
+		{
+			"number": 44,
+			"label": "Zeekantoor"
+		},
+		{
+			"number": 45,
+			"label": "Vleeschhal"
+		},
+		{
+			"number": 46,
+			"label": "Kleinere Vleeschhallen"
+		},
+		{
+			"number": 47,
+			"label": "Kleinere Vleeschhallen"
+		},
+		{
+			"number": 48,
+			"label": "Stadswaag"
+		},
+		{
+			"number": 49,
+			"label": "Notarishuis (Lokaal der publieke verkoopingen)"
+		},
+		{
+			"number": 50,
+			"label": "Postkantoor"
+		},
+		{
+			"number": 51,
+			"label": "Commissariaat der Delfsche Veren"
+		},
+		{
+			"number": 52,
+			"label": "Nederlandsche Stoombootmaatschappy"
+		},
+		{
+			"number": 53,
+			"label": "Maatschappy tot nut van 't algemeen"
+		},
+		{
+			"number": 54,
+			"label": "Verscheidenheid en Overeenstemming"
+		},
+		{
+			"number": 55,
+			"label": "Schilderkundig Genootschap"
+		},
+		{
+			"number": 56,
+			"label": "Concertzaal"
+		},
+		{
+			"number": 57,
+			"label": "Schouwburg"
+		},
+		{
+			"number": 58,
+			"label": "Stads Ryschool"
+		},
+		{
+			"number": 59,
+			"label": "Erasmiaansche School"
+		},
+		{
+			"number": 60,
+			"label": "Stads Scholen"
+		},
+		{
+			"number": 61,
+			"label": "Stads Scholen"
+		},
+		{
+			"number": 62,
+			"label": "Stads Scholen"
+		},
+		{
+			"number": 63,
+			"label": "Stads Scholen"
+		},
+		{
+			"number": 64,
+			"label": "Gereformeerde Diaconie Scholen"
+		},
+		{
+			"number": 65,
+			"label": "Gereformeerde Diaconie Scholen"
+		},
+		{
+			"number": 66,
+			"label": "Gereformeerde Diaconie Scholen"
+		},
+		{
+			"number": 67,
+			"label": "Bewaarschool voor kinderen"
+		},
+		{
+			"number": 68,
+			"label": "Waalsche Diaconie School"
+		},
+		{
+			"number": 69,
+			"label": "R.C. Diaconie School"
+		},
+		{
+			"number": 70,
+			"label": "Israëlitische School"
+		},
+		{
+			"number": 71,
+			"label": "Loges Fredrik Royal en de Eendragt"
+		},
+		{
+			"number": 72,
+			"label": "Loge de Drie Kolommen"
+		},
+		{
+			"number": 73,
+			"label": "Societeit het Lees Museum"
+		},
+		{
+			"number": 74,
+			"label": "Societeit Amicitia"
+		},
+		{
+			"number": 75,
+			"label": "Societeit Concordia Felix"
+		},
+		{
+			"number": 76,
+			"label": "Societeit de Eensgezindheid"
+		},
+		{
+			"number": 77,
+			"label": "Het Fransche Koffyhuis en Societeit Vrede best"
+		},
+		{
+			"number": 78,
+			"label": "Het Londonsch Koffyhuis"
+		},
+		{
+			"number": 79,
+			"label": "Koffyhuis Neêrlands Wapen"
+		},
+		{
+			"number": 80,
+			"label": "Het Rotterdamsche Koffyhuis"
+		},
+		{
+			"number": 81,
+			"label": "Het Zeeuwsche Koffyhuis"
+		},
+		{
+			"number": 82,
+			"label": "Koffyhuis Gezelligheid"
+		},
+		{
+			"number": 83,
+			"label": "Koffyhuis de Stad Parys"
+		},
+		{
+			"number": 84,
+			"label": "Groot Hotel de Pays Bas"
+		},
+		{
+			"number": 85,
+			"label": "Groot Bath Hotel"
+		},
+		{
+			"number": 86,
+			"label": "Hotel de l'Europe"
+		},
+		{
+			"number": 87,
+			"label": "Heeren Logement (van ouds Klein Schippershuis)"
+		},
+		{
+			"number": 88,
+			"label": "Groot Hotel van Engeland (van ouds het Zwynshoofd)"
+		},
+		{
+			"number": 89,
+			"label": "Hotel St. Lucas"
+		},
+		{
+			"number": 90,
+			"label": "Het Hof van Berlyn"
+		},
+		{
+			"number": 91,
+			"label": "Het Middelburgs en Vlissings Veerhuis"
+		},
+		{
+			"number": 92,
+			"label": "Het Curaçouwsche Jagt"
+		},
+		{
+			"number": 93,
+			"label": "Logement de Zon"
+		},
+		{
+			"number": 94,
+			"label": "Logement de Hertog van Wellington"
+		},
+		{
+			"number": 95,
+			"label": "Logement de Star"
+		},
+		{
+			"number": 96,
+			"label": "Stads Herberg de Romein (Paardenpostery)"
+		},
+		{
+			"number": 97,
+			"label": "De Stads Herberg"
+		},
+		{
+			"number": 98,
+			"label": "Stads Herberg de Papegaay"
+		},
+		{
+			"number": 99,
+			"label": "Mol Steeg"
+		},
+		{
+			"number": 100,
+			"label": "Kraker Steeg (Jaap)"
+		},
+		{
+			"number": 101,
+			"label": "Kaptein Niemandsverdriet Steeg"
+		},
+		{
+			"number": 102,
+			"label": "Zevenhuis Steeg"
+		},
+		{
+			"number": 103,
+			"label": "Kromme Elleboogsgang"
+		},
+		{
+			"number": 104,
+			"label": "Dolhuisgang"
+		},
+		{
+			"number": 105,
+			"label": "Vrouwenhuisgang"
+		},
+		{
+			"number": 106,
+			"label": "Knollemans Steeg"
+		},
+		{
+			"number": 107,
+			"label": "Brandewyn Steeg"
+		},
+		{
+			"number": 108,
+			"label": "Baan Steeg"
+		},
+		{
+			"number": 109,
+			"label": "Vyver Steeg"
+		},
+		{
+			"number": 110,
+			"label": "Gieter Steeg"
+		},
+		{
+			"number": 111,
+			"label": "Walen Steeg"
+		},
+		{
+			"number": 112,
+			"label": "Karnemelksgang"
+		},
+		{
+			"number": 113,
+			"label": "Korte Lyn Straat"
+		},
+		{
+			"number": 114,
+			"label": "St. Joris Krieken Steeg"
+		},
+		{
+			"number": 115,
+			"label": "St. Jacob Gersten Steeg"
+		},
+		{
+			"number": 116,
+			"label": "Kroesen Steeg"
+		},
+		{
+			"number": 117,
+			"label": "Spaander Steeg"
+		},
+		{
+			"number": 118,
+			"label": "Zalm Steeg"
+		},
+		{
+			"number": 119,
+			"label": "Halvemaan Steeg"
+		},
+		{
+			"number": 120,
+			"label": "Boot Steeg"
+		},
+		{
+			"number": 121,
+			"label": "Water Steeg"
+		},
+		{
+			"number": 122,
+			"label": "Doodkisten Steeg"
+		},
+		{
+			"number": 123,
+			"label": "Schouten Steeg"
+		},
+		{
+			"number": 124,
+			"label": "Hal Steeg"
+		},
+		{
+			"number": 125,
+			"label": "Boter Steeg"
+		},
+		{
+			"number": 126,
+			"label": "Klaver Steeg"
+		},
+		{
+			"number": 127,
+			"label": "Wildezee Steeg"
+		},
+		{
+			"number": 128,
+			"label": "Snippenvlug Steeg"
+		},
+		{
+			"number": 129,
+			"label": "Zonneblom Steeg"
+		},
+		{
+			"number": 130,
+			"label": "Stokvischwatertje of Verlaat"
+		},
+		{
+			"number": 131,
+			"label": "Vleeschhoudersgang"
+		},
+		{
+			"number": 132,
+			"label": "Schoorsteenvegersgang"
+		},
+		{
+			"number": 133,
+			"label": "Makkelyn Steeg"
+		},
+		{
+			"number": 134,
+			"label": "Breedeplaats (Agter)"
+		},
+		{
+			"number": 135,
+			"label": "Tempelaarsgang"
+		},
+		{
+			"number": 136,
+			"label": "Hoedenmakersgang of Lodewyktakkensteegje"
+		},
+		{
+			"number": 137,
+			"label": "Kalkgang"
+		},
+		{
+			"number": 138,
+			"label": "Porssersgang"
+		},
+		{
+			"number": 139,
+			"label": "Hartmansgang"
+		},
+		{
+			"number": 140,
+			"label": "Broeder Steeg"
+		},
+		{
+			"number": 141,
+			"label": "Kokker Steeg"
+		},
+		{
+			"number": 142,
+			"label": "Kerkwater"
+		},
+		{
+			"number": 143,
+			"label": "Padden Steeg"
+		},
+		{
+			"number": 144,
+			"label": "Bierdragersgang"
+		},
+		{
+			"number": 145,
+			"label": "Breedeplaats"
+		},
+		{
+			"number": 146,
+			"label": "Kleine Leeuwenlaan"
+		},
+		{
+			"number": 147,
+			"label": "Mosterd Steeg"
+		},
+		{
+			"number": 148,
+			"label": "Jan Arendsgang (Aersens)"
+		},
+		{
+			"number": 149,
+			"label": "Zwarte Leeuwengang"
+		},
+		{
+			"number": 150,
+			"label": "Romeinschegang"
+		},
+		{
+			"number": 151,
+			"label": "Kuipersgang"
+		},
+		{
+			"number": 152,
+			"label": "Plaats van Van Es"
+		},
+		{
+			"number": 153,
+			"label": "Bogertgang"
+		},
+		{
+			"number": 154,
+			"label": "Hoornbrekersgang"
+		},
+		{
+			"number": 155,
+			"label": "Ketelaarsgang"
+		},
+		{
+			"number": 156,
+			"label": "Visschersgang"
+		},
+		{
+			"number": 157,
+			"label": "Koningshoofd"
+		},
+		{
+			"number": 158,
+			"label": "Lammetjesgang"
+		},
+		{
+			"number": 159,
+			"label": "Oost Ind. plaats"
+		},
+		{
+			"number": 160,
+			"label": "Leerengang"
+		},
+		{
+			"number": 161,
+			"label": "Vossegang"
+		},
+		{
+			"number": 162,
+			"label": "Bellegang"
+		},
+		{
+			"number": 163,
+			"label": "Doode Steeg"
+		},
+		{
+			"number": 164,
+			"label": "Water Steeg"
+		},
+		{
+			"number": 165,
+			"label": "Water Steeg"
+		},
+		{
+			"number": 166,
+			"label": "Water Steeg"
+		},
+		{
+			"number": 167,
+			"label": "Water Steeg"
+		},
+		{
+			"number": 168,
+			"label": "Water Steeg"
+		}
+	]
+}

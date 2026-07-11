@@ -11,6 +11,7 @@
 		Check,
 		Copy,
 		Eye,
+		EyeOff,
 		ExternalLink,
 		MapPinned,
 		PanelLeft,
@@ -33,6 +34,13 @@
 		MapLayersOpenCommand,
 		MapMetadata
 	} from '$lib/types';
+
+	type LayerGroup = {
+		key: string;
+		maps: MapMetadata[];
+		primaryMap: MapMetadata;
+		isSeries: boolean;
+	};
 
 	const CAROUSEL_SCROLL_SETTLE_MS = 140;
 	const CAROUSEL_SCROLL_FALLBACK_MS = 640;
@@ -81,17 +89,19 @@
 	let favoriteAnnotations = $derived(maps.map((map) => map.annotation));
 
 	let layersOpen = $state(false);
-	let showCurrentYearOnly = $state(true);
 	let showFavoritesOnly = $state(false);
 	let showInViewOnly = $state(false);
 	let searchTerm = $state('');
 	let selectedIndex = $state(0);
+	let inspectedAnnotation = $state<string | undefined>();
 	let copiedXyzAnnotation = $state<string | undefined>();
+	let copiedAnnotation = $state<string | undefined>();
 	let listElement = $state<HTMLUListElement>();
 	let searchInputElement = $state<HTMLInputElement>();
 	let carouselTrackElement = $state<HTMLDivElement>();
 	let carouselDotsElement = $state<HTMLDivElement>();
 	let copiedXyzTimer: ReturnType<typeof setTimeout> | undefined;
+	let copiedAnnotationTimer: ReturnType<typeof setTimeout> | undefined;
 	let carouselScrollTimer: ReturnType<typeof setTimeout> | undefined;
 	let carouselProgrammaticScrollTimer: ReturnType<typeof setTimeout> | undefined;
 	let carouselHintDelayTimer: ReturnType<typeof setTimeout> | undefined;
@@ -136,7 +146,6 @@
 	let mapsForResolvedYear = $derived(
 		selectionMaps.filter((map) => mapIncludesYear(map, resolvedYear))
 	);
-	let mapsForVisibleYear = $derived(maps.filter((map) => mapIncludesYear(map, resolvedYear)));
 	let activeMap = $derived(
 		mapsForResolvedYear.find((map) => map.annotation === annotation) ??
 			(autoplayActive ? maps.find((map) => map.annotation === annotation) : undefined) ??
@@ -156,17 +165,21 @@
 		hasMultipleMaps ? mapsForResolvedYear.map((map) => map.annotation).join('\n') : undefined
 	);
 	let normalizedSearchTerm = $derived(normalizeSearchTerm(searchTerm));
-	let visibleMaps = $derived(
-		(showCurrentYearOnly ? mapsForVisibleYear : maps).filter(
+	let filteredMaps = $derived(
+		maps.filter(
 			(map) =>
 				(showFavoritesOnly ? favorites.includes(map.annotation) : true) &&
 				(showInViewOnly ? annotationsInViewSet.has(map.annotation) : true) &&
 				(normalizedSearchTerm ? getSearchText(map).includes(normalizedSearchTerm) : true)
 		)
 	);
+	let visibleLayerGroups = $derived(getLayerGroups(filteredMaps));
+	let visibleMapCount = $derived(
+		visibleLayerGroups.reduce((total, group) => total + group.maps.length, 0)
+	);
 	let resultLabel = $derived(
-		`${visibleMaps.length} ${
-			visibleMaps.length === 1 ? config.layers.resultSingular : config.layers.resultPlural
+		`${visibleMapCount} ${
+			visibleMapCount === 1 ? config.layers.resultSingular : config.layers.resultPlural
 		}`
 	);
 
@@ -358,15 +371,16 @@
 	});
 
 	$effect(() => {
-		if (visibleMaps.length === 0) {
+		if (visibleLayerGroups.length === 0) {
 			selectedIndex = 0;
-		} else if (selectedIndex > visibleMaps.length - 1) {
-			selectedIndex = visibleMaps.length - 1;
+		} else if (selectedIndex > visibleLayerGroups.length - 1) {
+			selectedIndex = visibleLayerGroups.length - 1;
 		}
 	});
 
 	onDestroy(() => {
 		if (copiedXyzTimer) clearTimeout(copiedXyzTimer);
+		if (copiedAnnotationTimer) clearTimeout(copiedAnnotationTimer);
 		if (carouselScrollTimer) clearTimeout(carouselScrollTimer);
 		if (carouselProgrammaticScrollTimer) clearTimeout(carouselProgrammaticScrollTimer);
 		if (carouselHintDelayTimer) clearTimeout(carouselHintDelayTimer);
@@ -393,8 +407,69 @@
 
 	function getSearchText(map: (typeof maps)[0]) {
 		return normalizeSearchTerm(
-			[map.label, map.title, getMapYearLabel(map), map.institution].join(' ')
+			[
+				map.label,
+				map.title,
+				map.seriesLabel,
+				map.seriesTitle,
+				getMapYearLabel(map),
+				map.institution
+			].join(' ')
 		);
+	}
+
+	function getLayerGroups(sourceMaps: MapMetadata[]): LayerGroup[] {
+		const groups: LayerGroup[] = [];
+
+		for (const map of sourceMaps) {
+			const key = map.seriesId ? `series:${map.seriesId}` : `map:${map.annotation}`;
+			const group = groups.find((item) => item.key === key);
+
+			if (group) {
+				group.maps.push(map);
+				group.primaryMap = getPreferredGroupMap(group.maps);
+			} else {
+				groups.push({
+					key,
+					maps: [map],
+					primaryMap: map,
+					isSeries: !!map.seriesId
+				});
+			}
+		}
+
+		return groups;
+	}
+
+	function getPreferredGroupMap(groupMaps: MapMetadata[]) {
+		return (
+			groupMaps.find((map) => map.annotation === inspectedAnnotation) ??
+			groupMaps.find((map) => map.annotation === annotation) ??
+			groupMaps.find((map) => mapIncludesYear(map, selectedYear)) ??
+			groupMaps[0]
+		);
+	}
+
+	function getGroupLabel(group: LayerGroup) {
+		return group.primaryMap.seriesLabel || group.primaryMap.label;
+	}
+
+	function getGroupTitle(group: LayerGroup) {
+		return group.primaryMap.seriesTitle || group.primaryMap.title;
+	}
+
+	function getGroupYearLabel(group: LayerGroup) {
+		if (!group.isSeries) return getMapYearLabel(group.primaryMap);
+
+		const years = getExpandedMapYears(group.maps);
+		if (years.length === 0) return getMapYearLabel(group.primaryMap);
+		if (years.length === 1) return String(years[0]);
+
+		return `${years[0]} - ${years[years.length - 1]}`;
+	}
+
+	function isGroupActive(group: LayerGroup) {
+		return group.maps.some((map) => map.annotation === annotation);
 	}
 
 	function openLayers() {
@@ -424,20 +499,26 @@
 	}
 
 	function resetModalState() {
-		showCurrentYearOnly = true;
 		showFavoritesOnly = false;
 		showInViewOnly = preferInViewMaps && annotationsInViewSet.size > 0;
 		searchTerm = '';
-		selectedIndex = Math.max(
-			0,
-			mapsForResolvedYear.findIndex((map) => map.annotation === annotation)
-		);
+		inspectedAnnotation = undefined;
+		selectedIndex = getActiveGroupIndex();
 	}
 
 	function selectMap(map: (typeof maps)[0]) {
 		annotation = map.annotation;
 		selectedYear = mapIncludesYear(map, selectedYear) ? selectedYear : getMapStartYear(map);
 		closeLayers();
+	}
+
+	function selectLayerGroup(group: LayerGroup) {
+		selectMap(group.primaryMap);
+	}
+
+	function inspectLayerMap(map: MapMetadata, index: number) {
+		inspectedAnnotation = map.annotation;
+		selectedIndex = index;
 	}
 
 	function getAllmapsViewerUrl(annotationUrl: string) {
@@ -474,6 +555,20 @@
 		copiedXyzTimer = setTimeout(() => (copiedXyzAnnotation = undefined), 2000);
 	}
 
+	async function copyAnnotationUrl(annotationUrl: string) {
+		const publicAnnotationUrl = getPublicAnnotationUrl(annotationUrl);
+
+		try {
+			await navigator.clipboard.writeText(publicAnnotationUrl);
+		} catch {
+			copyTextWithFallback(publicAnnotationUrl);
+		}
+
+		if (copiedAnnotationTimer) clearTimeout(copiedAnnotationTimer);
+		copiedAnnotation = annotationUrl;
+		copiedAnnotationTimer = setTimeout(() => (copiedAnnotation = undefined), 2000);
+	}
+
 	function copyTextWithFallback(value: string) {
 		const textarea = document.createElement('textarea');
 		textarea.value = value;
@@ -486,38 +581,50 @@
 		textarea.remove();
 	}
 
-	async function toggleCurrentYearFilter() {
-		showCurrentYearOnly = !showCurrentYearOnly;
-		focusSearchInput();
-		await selectActiveResult();
-	}
-
 	async function selectActiveResult() {
 		await tick();
 		if (!annotation) return;
 
-		const activeIndex = visibleMaps.findIndex((map) => map.annotation === annotation);
+		const activeIndex = getActiveGroupIndex();
 		selectedIndex = Math.max(0, activeIndex);
 		scrollSelectedIntoView('center');
 	}
 
 	function handleSearchInput() {
-		if (searchTerm.trim() !== '') {
-			showCurrentYearOnly = false;
+		selectedIndex = 0;
+	}
+
+	function getActiveGroupIndex() {
+		return Math.max(
+			0,
+			visibleLayerGroups.findIndex((group) =>
+				group.maps.some((map) => map.annotation === annotation)
+			)
+		);
+	}
+
+	async function toggleFavoritesFilter() {
+		const nextShowFavoritesOnly = !showFavoritesOnly;
+		showFavoritesOnly = nextShowFavoritesOnly;
+		focusSearchInput();
+
+		if (nextShowFavoritesOnly) {
+			selectedIndex = 0;
+		} else {
+			await selectActiveResult();
 		}
-		selectedIndex = 0;
 	}
 
-	function toggleFavoritesFilter() {
-		showFavoritesOnly = !showFavoritesOnly;
-		selectedIndex = 0;
+	async function toggleInViewFilter() {
+		const nextShowInViewOnly = !showInViewOnly;
+		showInViewOnly = nextShowInViewOnly;
 		focusSearchInput();
-	}
 
-	function toggleInViewFilter() {
-		showInViewOnly = !showInViewOnly;
-		selectedIndex = 0;
-		focusSearchInput();
+		if (nextShowInViewOnly) {
+			selectedIndex = 0;
+		} else {
+			await selectActiveResult();
+		}
 	}
 
 	function scrollSelectedIntoView(block: ScrollLogicalPosition = 'nearest') {
@@ -552,19 +659,19 @@
 			return;
 		}
 
-		if (visibleMaps.length === 0) return;
+		if (visibleLayerGroups.length === 0) return;
 
 		if (event.key === 'Enter') {
 			const target = event.target instanceof HTMLElement ? event.target : undefined;
 			if (target?.closest('button, a')) return;
 
 			event.preventDefault();
-			selectMap(visibleMaps[selectedIndex]);
+			selectLayerGroup(visibleLayerGroups[selectedIndex]);
 		}
 
 		if (event.key === 'ArrowDown') {
 			event.preventDefault();
-			selectedIndex = Math.min(selectedIndex + 1, visibleMaps.length - 1);
+			selectedIndex = Math.min(selectedIndex + 1, visibleLayerGroups.length - 1);
 			scrollSelectedIntoView();
 		}
 
@@ -1039,9 +1146,6 @@
 						{#if searchTerm}
 							{config.layers.found}
 						{/if}
-						{#if showCurrentYearOnly}
-							{config.layers.yearPrefix} {resolvedYear}
-						{/if}
 					</p>
 				</div>
 				{#if showPaneIndicator}
@@ -1083,23 +1187,7 @@
 			</div>
 
 			<div class="border-b border-gray-200 bg-gray-50 px-4 py-2">
-				<div class="grid grid-cols-3 gap-1 text-xs leading-none font-semibold">
-					<button
-						type="button"
-						aria-label="{config.layers.current}: {resolvedYear}"
-						aria-pressed={showCurrentYearOnly}
-						onclick={toggleCurrentYearFilter}
-						class="{filterButtonClass} {showCurrentYearOnly
-							? activeFilterClass
-							: inactiveFilterClass}"
-					>
-						<span class="min-w-0 truncate tabular-nums {showCurrentYearOnly ? 'pr-3' : ''}">
-							{resolvedYear}
-						</span>
-						{#if showCurrentYearOnly}
-							<X class="pointer-events-none absolute right-1.5 h-3 w-3 text-brand-main" />
-						{/if}
-					</button>
+				<div class="grid grid-cols-2 gap-1 text-xs leading-none font-semibold">
 					<button
 						type="button"
 						aria-pressed={showFavoritesOnly}
@@ -1140,23 +1228,24 @@
 				</div>
 			</div>
 
-			{#if visibleMaps.length > 0}
+			{#if visibleLayerGroups.length > 0}
 				<ul
 					bind:this={listElement}
 					transition:slide={{ duration: 140 }}
 					class="min-h-0 flex-1 overflow-y-auto overscroll-contain bg-white"
 				>
-					{#each visibleMaps as map, index (map.annotation)}
+					{#each visibleLayerGroups as group, index (group.key)}
+						{@const map = group.primaryMap}
 						<li
 							data-map-annotation={map.annotation}
 							class="relative border-b border-gray-100 last:border-b-0"
 						>
 							<button
 								type="button"
-								aria-label="{config.layers.selectMap} {map.label} ({getMapYearLabel(
-									map
+								aria-label="{config.layers.selectMap} {getGroupLabel(group)} ({getGroupYearLabel(
+									group
 								)}, {map.institution})"
-								onclick={() => selectMap(map)}
+								onclick={() => selectLayerGroup(group)}
 								onmouseenter={() => (selectedIndex = index)}
 								class="absolute inset-0 z-0 cursor-pointer text-left transition focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-brand-main {index ===
 								selectedIndex
@@ -1170,29 +1259,44 @@
 											<p
 												class="min-w-0 flex-1 text-sm leading-4 font-semibold break-words text-gray-900"
 											>
-												{map.label}
+												{getGroupLabel(group)}
 											</p>
 											<span
 												class="flex-none rounded bg-gray-900 px-1.5 py-0.5 font-heading text-[0.65rem] text-white"
 											>
-												{getMapYearLabel(map)}
+												{getGroupYearLabel(group)}
 											</span>
-											{#if annotation === map.annotation}
-												<span
-													title={config.layers.visibleOnMap}
-													class="flex h-5 w-5 flex-none items-center justify-center rounded bg-brand-muted text-brand-main"
-												>
-													<span class="sr-only">{config.layers.visibleOnMap}</span>
-													<Eye class="h-3.5 w-3.5" />
-												</span>
-											{/if}
 										</div>
 										<p class="mt-1 text-xs leading-4 break-words text-gray-500">
-											{map.title}
+											{getGroupTitle(group)}
 										</p>
+										{#if group.isSeries && group.maps.length > 1}
+											<div class="pointer-events-auto mt-2 flex flex-wrap gap-1">
+												{#each group.maps as seriesMap (seriesMap.annotation)}
+													<button
+														type="button"
+														aria-label="{seriesMap.label} ({getMapYearLabel(
+															seriesMap
+														)}, {seriesMap.institution})"
+														aria-pressed={map.annotation === seriesMap.annotation}
+														onclick={(event) => {
+															event.stopPropagation();
+															inspectLayerMap(seriesMap, index);
+														}}
+														onmouseenter={() => (selectedIndex = index)}
+														class="cursor-pointer rounded border px-1.5 py-0.5 font-heading text-[0.65rem] tabular-nums transition {map.annotation ===
+														seriesMap.annotation
+															? 'border-brand-main bg-brand-soft text-brand-main'
+															: 'border-gray-200 bg-gray-50 text-gray-500 hover:border-brand-main hover:text-brand-main'}"
+													>
+														{getMapYearLabel(seriesMap)}
+													</button>
+												{/each}
+											</div>
+										{/if}
 									</div>
 									<div
-										class="flex flex-wrap gap-1 px-4 pb-3 text-[0.65rem] font-semibold text-gray-500"
+										class="mr-3 flex max-w-full gap-1 overflow-x-auto overscroll-x-contain px-4 pb-3 text-[0.65rem] font-semibold text-gray-500 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
 									>
 										<a
 											href={map.url}
@@ -1200,9 +1304,9 @@
 											rel="external noopener noreferrer"
 											aria-label="{config.layers.viewItemAt} {map.institution}"
 											onmouseenter={() => (selectedIndex = index)}
-											class="pointer-events-auto relative z-20 inline-flex max-w-full cursor-pointer items-center gap-1 rounded bg-gray-100 px-1.5 py-0.5 hover:bg-brand-soft hover:text-brand-main"
+											class="pointer-events-auto relative z-20 inline-flex max-w-48 flex-none cursor-pointer items-center gap-1 rounded bg-gray-100 px-1.5 py-0.5 hover:bg-brand-soft hover:text-brand-main"
 										>
-											<span class="min-w-0 break-words">{map.institution}</span>
+											<span class="min-w-0 truncate">{map.institution}</span>
 											<ExternalLink class="h-3 w-3 flex-none" />
 										</a>
 										<a
@@ -1211,7 +1315,7 @@
 											rel="external noopener noreferrer"
 											aria-label="{config.layers.openInAllmapsViewer} {map.label}"
 											onmouseenter={() => (selectedIndex = index)}
-											class="pointer-events-auto relative z-20 inline-flex max-w-full cursor-pointer items-center gap-1 rounded bg-gray-100 px-1.5 py-0.5 hover:bg-brand-soft hover:text-brand-main"
+											class="pointer-events-auto relative z-20 inline-flex flex-none cursor-pointer items-center gap-1 whitespace-nowrap rounded bg-gray-100 px-1.5 py-0.5 hover:bg-brand-soft hover:text-brand-main"
 										>
 											<span>{config.layers.openInAllmapsViewer}</span>
 											<ExternalLink class="h-3 w-3 flex-none" />
@@ -1223,7 +1327,7 @@
 												: config.layers.copyXyzTileUrl} {map.label}"
 											onclick={() => copyXyzTileUrl(map.annotation)}
 											onmouseenter={() => (selectedIndex = index)}
-											class="pointer-events-auto relative z-20 inline-flex max-w-full cursor-pointer items-center gap-1 rounded bg-gray-100 px-1.5 py-0.5 hover:bg-brand-soft hover:text-brand-main"
+											class="pointer-events-auto relative z-20 inline-flex flex-none cursor-pointer items-center gap-1 whitespace-nowrap rounded bg-gray-100 px-1.5 py-0.5 hover:bg-brand-soft hover:text-brand-main"
 										>
 											{#if copiedXyzAnnotation === map.annotation}
 												<Check class="h-3 w-3 flex-none" />
@@ -1233,25 +1337,66 @@
 												<span>{config.layers.copyXyzTileUrl}</span>
 											{/if}
 										</button>
+										<button
+											type="button"
+											aria-label="{copiedAnnotation === map.annotation
+												? config.layers.copiedAnnotationUrl
+												: config.layers.copyAnnotationUrl} {map.label}"
+											onclick={() => copyAnnotationUrl(map.annotation)}
+											onmouseenter={() => (selectedIndex = index)}
+											class="pointer-events-auto relative z-20 inline-flex flex-none cursor-pointer items-center gap-1 whitespace-nowrap rounded bg-gray-100 px-1.5 py-0.5 hover:bg-brand-soft hover:text-brand-main"
+										>
+											{#if copiedAnnotation === map.annotation}
+												<Check class="h-3 w-3 flex-none" />
+												<span>{config.layers.copiedAnnotationUrl}</span>
+											{:else}
+												<Copy class="h-3 w-3 flex-none" />
+												<span>{config.layers.copyAnnotationUrl}</span>
+											{/if}
+										</button>
 									</div>
 								</div>
-
-								<button
-									type="button"
-									aria-label={favorites.includes(map.annotation)
-										? `${config.layers.removeFavorite} ${map.label} (${getMapYearLabel(map)}, ${map.institution})`
-										: `${config.layers.addFavorite} ${map.label} (${getMapYearLabel(map)}, ${map.institution})`}
-									aria-pressed={favorites.includes(map.annotation)}
-									onclick={() => toggleFavorite(map.annotation)}
-									onmouseenter={() => (selectedIndex = index)}
-									class="pointer-events-auto relative z-20 flex w-12 flex-none cursor-pointer items-center justify-center border-l border-gray-100 text-gray-400 hover:bg-white hover:text-yellow-500"
+								<div
+									class="flex w-11 flex-none flex-col items-center border-l border-gray-100 bg-white/70"
 								>
-									<Star
-										class="h-4 w-4 {favorites.includes(map.annotation)
-											? 'fill-yellow-400 text-yellow-500'
-											: ''}"
-									/>
-								</button>
+									<button
+										type="button"
+										aria-label="{config.layers.selectMap} {getGroupLabel(group)} ({getGroupYearLabel(
+											group
+										)}, {map.institution})"
+										aria-pressed={isGroupActive(group)}
+										onclick={() => selectLayerGroup(group)}
+										onmouseenter={() => (selectedIndex = index)}
+										class="pointer-events-auto relative z-20 flex h-10 w-full cursor-pointer items-center justify-center transition hover:bg-brand-soft hover:text-brand-main {isGroupActive(
+											group
+										)
+											? 'text-brand-main'
+											: 'text-gray-400'}"
+									>
+										{#if isGroupActive(group)}
+											<span class="sr-only">{config.layers.visibleOnMap}</span>
+											<Eye class="h-4 w-4" />
+										{:else}
+											<EyeOff class="h-4 w-4" />
+										{/if}
+									</button>
+									<button
+										type="button"
+										aria-label={favorites.includes(map.annotation)
+											? `${config.layers.removeFavorite} ${map.label} (${getMapYearLabel(map)}, ${map.institution})`
+											: `${config.layers.addFavorite} ${map.label} (${getMapYearLabel(map)}, ${map.institution})`}
+										aria-pressed={favorites.includes(map.annotation)}
+										onclick={() => toggleFavorite(map.annotation)}
+										onmouseenter={() => (selectedIndex = index)}
+										class="pointer-events-auto relative z-20 flex h-10 w-full cursor-pointer items-center justify-center text-gray-400 transition hover:bg-white hover:text-yellow-500"
+									>
+										<Star
+											class="h-4 w-4 {favorites.includes(map.annotation)
+												? 'fill-yellow-400 text-yellow-500'
+												: ''}"
+										/>
+									</button>
+								</div>
 							</div>
 						</li>
 					{/each}

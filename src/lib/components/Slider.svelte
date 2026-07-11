@@ -31,7 +31,7 @@
 		scaleInterval = 25,
 		enableKeyboardShortcut = false,
 		animateInitialScroll = false,
-		initialScrollComplete = $bindable(false),
+		initialScrollComplete = $bindable(),
 		keyboardCommand,
 		annotationsInView = []
 	}: {
@@ -118,7 +118,6 @@
 	});
 
 	onMount(() => {
-		initialScrollComplete = !animateInitialScroll;
 		updateContainerHeight();
 
 		const resizeObserver = new ResizeObserver(updateContainerHeight);
@@ -166,7 +165,7 @@
 
 			if (shouldAnimateInitialScroll) {
 				hasPlayedInitialScroll = true;
-				initialScrollComplete = false;
+				setInitialScrollComplete(false);
 				isInteracting = true;
 
 				const selectionId = ++pendingSelectionId;
@@ -511,10 +510,16 @@
 		finishInteractionFrame = requestAnimationFrame(() => {
 			isInteracting = false;
 			if (hasPlayedInitialScroll) {
-				initialScrollComplete = true;
+				setInitialScrollComplete(true);
 			}
 			finishInteractionFrame = undefined;
 		});
+	}
+
+	function setInitialScrollComplete(complete: boolean) {
+		if (initialScrollComplete === complete) return;
+
+		initialScrollComplete = complete;
 	}
 
 	function queueScrollSettled() {

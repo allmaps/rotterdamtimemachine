@@ -88,7 +88,7 @@ The app is structured so the most important content lives outside the components
 - `config.yml`: app settings, text, metadata, and UI labels
 - `collection.yml`: historical map records and Georeference Annotation URLs or local annotation paths
 
-The YAML files are loaded through `src/lib/content.ts` and `@modyfi/vite-plugin-yaml`. If you extend the YAML structure, also update the shared types in `src/lib/types.ts`.
+The YAML files are parsed by `scripts/generate-annotations.ts`, which writes generated JSON files to `src/lib/generated/`. The app imports those generated JSON files through `src/lib/content.ts`. If you extend the YAML structure, also update the shared types in `src/lib/types.ts`.
 
 By default, the app uses `config.yml`, which points to `collection.yml`. To keep multiple configurations in one repository, place alternate content packages in `content/` folders and select the configuration file with `CONFIG`:
 
@@ -208,9 +208,28 @@ Optional fields:
 
 Multiple maps can share the same year. The app will show previous/next buttons and a position indicator, for example `1/3`. Maps with a year range appear for every year in that range.
 
+Map series that share the same metadata can be written as one `type: series` record. The generator expands the `items` into normal runtime records and adds series metadata so the layers panel can show the series as one grouped item:
+
+```yaml
+- type: series
+  id: city-map-series
+  label: City map series
+  title: City map series, 1:5.000
+  institution: Institution name
+  url: https://example.org/item
+  iiif:
+    url: https://example.org/iiif/manifest.json
+    type: manifest
+  items:
+    - year: 1964
+      annotation: annotations/city-map-series/1964.json
+    - year: 1965
+      annotation: annotations/city-map-series/1965.json
+```
+
 ### Georeference Annotations
 
-The app expects each map to have valid Georeference Annotations. During development and production builds, `scripts/generate-annotations.ts` reads the configured collection, fetches or reads every annotation, parses the annotations with Allmaps, and writes a generated JSON asset to `src/lib/generated/maps.json`. The app then loads that local generated asset and builds a `WarpedMapList` from it for:
+The app expects each map to have valid Georeference Annotations. During development and production builds, `scripts/generate-annotations.ts` reads the configured config and collection YAML files, sorts the collection by earliest year, fetches or reads every annotation, parses the annotations with Allmaps, and writes generated JSON assets to `src/lib/generated/`. `config.json` and `collection.json` are the runtime content files imported by the app. `collection.json` augments every collection record with its generated annotation ID and map IDs, while `maps.json` contains the unique georeferenced maps. This allows map series annotations to repeat sheets across years without loading duplicate maps. The app then loads those local generated assets and builds a `WarpedMapList` from them for:
 
 - displaying historical map layers
 - the "in view" filter
@@ -233,7 +252,7 @@ Relative annotation paths are resolved with the SvelteKit base path, so they con
 
 Remote annotations are cached in `.cache/annotations` after a successful fetch. When the cache contains an annotation, local development and builds reuse that cached copy instead of requesting it again, which keeps startup fast when switching between multiple configs. If no cache exists, the script fetches the remote annotation and stores it for later. The generated JSON and cache directory are ignored by Git.
 
-To rebuild the generated annotation asset from the current cache, run:
+To rebuild the generated content and annotation assets from the current cache, run:
 
 ```bash
 pnpm run generate:annotations
@@ -265,7 +284,7 @@ You can link to a year with the `year` parameter. This parameter only accepts a 
 https://example.org/time-machine/?year=1897
 ```
 
-You can link to a specific map with the `map` parameter. This parameter accepts the generated annotation ID from `src/lib/generated/maps.json`; full annotation URLs are not accepted. For Allmaps annotations this is the hash in the annotation URL; any version hash after `@` is ignored:
+You can link to a specific map with the `map` parameter. This parameter accepts the generated annotation ID from `src/lib/generated/collection.json`; full annotation URLs are not accepted. For Allmaps annotations this is the hash in the annotation URL; any version hash after `@` is ignored:
 
 ```text
 https://example.org/time-machine/?map=7256050d27d1f599
@@ -289,7 +308,7 @@ The sharing modal keeps the default link simple and only includes view parameter
 
 - `config.yml`: app settings, text, and metadata
 - `collection.yml`: map collection
-- `src/lib/content.ts`: selects and loads config and collection YAML files
+- `src/lib/content.ts`: imports generated config and collection JSON files
 - `src/routes/+page.ts`: exposes config and collection to the main page
 - `src/routes/+layout.ts`: exposes config for metadata
 - `src/lib/components`: Svelte components for the map, layers, header, modals, and slider

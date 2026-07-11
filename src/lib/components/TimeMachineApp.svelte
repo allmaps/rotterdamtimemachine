@@ -14,7 +14,11 @@
 	} from '$lib/app-state.svelte.js';
 	import { hasOpenModal, isInteractiveTarget } from '$lib/keyboard';
 	import { getMapStartYear, mapIncludesYear } from '$lib/map-years';
-	import { annotationById, loadWarpedMapData } from '$lib/warped-map-list';
+	import {
+		annotationById,
+		earliestAnnotationByMapId,
+		loadWarpedMapData
+	} from '$lib/warped-map-list';
 	import { LoaderCircle } from '@lucide/svelte';
 	import type {
 		AppConfig,
@@ -111,6 +115,7 @@
 	let autoplayTimeout: ReturnType<typeof setTimeout> | undefined;
 	let leftAnnotationsInView = $state<string[]>([]);
 	let leftAnnotationsAtCenter = $state<string[]>([]);
+	let leftMapIdsAtCenter = $state<string[]>([]);
 	let appShellElement = $state<HTMLDivElement>();
 	let presentationTouch: PresentationTouch | undefined;
 
@@ -125,7 +130,9 @@
 	);
 	let autoplayInterval = $derived(config.autoplay?.intervalSeconds);
 	let autoplayIntervalMs = $derived(Math.max(0, (autoplayInterval ?? 0) * 1000));
-	let autoplayViewportMaps = $derived(getMapsInView(collection, leftAnnotationsAtCenter));
+	let autoplayViewportMaps = $derived(
+		getMapsInView(collection, leftAnnotationsAtCenter, leftMapIdsAtCenter)
+	);
 	let autoplayItems = $derived(
 		getAutoplayItems(focusActiveMap ? collection : autoplayViewportMaps)
 	);
@@ -217,11 +224,32 @@
 			.sort((left, right) => left.year - right.year || left.order - right.order);
 	}
 
-	function getMapsInView(maps: MapMetadata[], annotationsInView: string[]) {
+	function getMapsInView(
+		maps: MapMetadata[],
+		annotationsInView: string[],
+		mapIdsInView: string[] = []
+	) {
 		const annotationsInViewSet = new Set(annotationsInView);
 		if (annotationsInViewSet.size === 0) return [];
 
-		return maps.filter((map) => annotationsInViewSet.has(map.annotation));
+		if (mapIdsInView.length === 0) {
+			return maps.filter((map) => annotationsInViewSet.has(map.annotation));
+		}
+
+		const mapsByAnnotation = new Map(maps.map((map) => [map.annotation, map]));
+		const uniqueMaps: MapMetadata[] = [];
+
+		for (const mapId of mapIdsInView) {
+			const annotation = earliestAnnotationByMapId.get(mapId);
+			if (!annotation || !annotationsInViewSet.has(annotation)) continue;
+
+			const map = mapsByAnnotation.get(annotation);
+			if (map && !uniqueMaps.some((uniqueMap) => uniqueMap.annotation === map.annotation)) {
+				uniqueMaps.push(map);
+			}
+		}
+
+		return uniqueMaps;
 	}
 
 	function mapForAnnotationParam(value: string | null) {
@@ -608,6 +636,7 @@
 				bind:geocoderBounds
 				bind:annotationsInView={leftAnnotationsInView}
 				bind:annotationsAtCenter={leftAnnotationsAtCenter}
+				bind:mapIdsAtCenter={leftMapIdsAtCenter}
 				{mapKeyboardCommand}
 				{mapToolbarCommand}
 				{sliderKeyboardCommand}
