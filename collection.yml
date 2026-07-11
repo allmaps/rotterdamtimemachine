@@ -320,29 +320,146 @@
     type: manifest
   annotation: https://annotations.allmaps.org/manifests/d1fe7fa60b56896e
 - label: Kaart van Rotterdam en omgeving bestaande uit 24 bladen
-  title: "Kaart van Rotterdam en omgeving; bestaande uit 24 bladen. Blad 10: Blijdorp, Bergpolder, Oude Noorden, Nieuwe Westen, Middelland, Oude Westen, Cool."
+  title: "Kaart van Rotterdam en omgeving; bestaande uit 24 bladen"
+  year: 1964
+  institution: Stadsarchief Rotterdam
+  url: https://proxy.archieven.nl/0/8638E53E722D4CB5B85D54F8BA23DEEF
+  iiif:
+    url: https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json
+    type: manifest
+  annotation: static/annotations/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980/1964.json
+- label: Kaart van Rotterdam en omgeving bestaande uit 24 bladen
+  title: "Kaart van Rotterdam en omgeving; bestaande uit 24 bladen"
   year: 1965
   institution: Stadsarchief Rotterdam
-  url: https://hdl.handle.net/21.12133/7F31A1A44BBF4677B8DE474D36900C71
+  url: https://proxy.archieven.nl/0/8638E53E722D4CB5B85D54F8BA23DEEF
   iiif:
-    url: https://rotterdamspubliek.nl/iiif/NL-RtSA_4201_I-259-10/info.json
-    type: image
-  annotation: https://annotations.allmaps.org/images/5d04ef29d01e6fc2
+    url: https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json
+    type: manifest
+  annotation: static/annotations/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980/1965.json
 - label: Kaart van Rotterdam en omgeving bestaande uit 24 bladen
-  title: "Kaart van Rotterdam en omgeving; bestaande uit 24 bladen. Blad 10: Blijdorp, Bergpolder, Oude Noorden, Nieuwe Westen, Middelland, Oude Westen, Cool."
+  title: "Kaart van Rotterdam en omgeving; bestaande uit 24 bladen"
+  year: 1966
+  institution: Stadsarchief Rotterdam
+  url: https://proxy.archieven.nl/0/8638E53E722D4CB5B85D54F8BA23DEEF
+  iiif:
+    url: https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json
+    type: manifest
+  annotation: static/annotations/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980/1966.json
+- label: Kaart van Rotterdam en omgeving bestaande uit 24 bladen
+  title: "Kaart van Rotterdam en omgeving; bestaande uit 24 bladen"
+  year: 1967
+  institution: Stadsarchief Rotterdam
+  url: https://proxy.archieven.nl/0/8638E53E722D4CB5B85D54F8BA23DEEF
+  iiif:
+    url: https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json
+    type: manifest
+  annotation: static/annotations/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980/1967.json
+- label: Kaart van Rotterdam en omgeving bestaande uit 24 bladen
+  title: "Kaart van Rotterdam en omgeving; bestaande uit 24 bladen"
+  year: 1968
+  institution: Stadsarchief Rotterdam
+  url: https://proxy.archieven.nl/0/8638E53E722D4CB5B85D54F8BA23DEEF
+  iiif:
+    url: https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json
+    type: manifest
+  annotation: static/annotations/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980/1968.json
+- label: Kaart van Rotterdam en omgeving bestaande uit 24 bladen
+  title: "Kaart van Rotterdam en omgeving; bestaande uit 24 bladen"
   year: 1969
   institution: Stadsarchief Rotterdam
-  url: https://hdl.handle.net/21.12133/6C1D0ED38BB04672B07C3EEACE6B08D4
+  url: https://proxy.archieven.nl/0/8638E53E722D4CB5B85D54F8BA23DEEF
   iiif:
-    url: https://rotterdamspubliek.nl/iiif/NL-RtSA_4201_1970-2043/info.json
-    type: image
-  annotation: https://annotations.allmaps.org/images/486d777481bd9d94
+    url: https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json
+    type: manifest
+  annotation: static/annotations/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980/1969.json
 - label: Kaart van Rotterdam en omgeving bestaande uit 24 bladen
-  title: "Kaart van Rotterdam en omgeving; bestaande uit 24 bladen. Blad 10: Blijdorp, Bergpolder, Oude Noorden, Nieuwe Westen, Middelland, Oude Westen, Cool."
+  title: "Kaart van Rotterdam en omgeving; bestaande uit 24 bladen"
+  year: 1970
+  institution: Stadsarchief Rotterdam
+  url: https://proxy.archieven.nl/0/8638E53E722D4CB5B85D54F8BA23DEEF
+  iiif:
+    url: https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json
+    type: manifest
+  annotation: static/annotations/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980/1970.json
+- label: Kaart van Rotterdam en omgeving bestaande uit 24 bladen
+  title: "Kaart van Rotterdam en omgeving; bestaande uit 24 bladen"
+  year: 1971
+  institution: Stadsarchief Rotterdam
+  url: https://proxy.archieven.nl/0/8638E53E722D4CB5B85D54F8BA23DEEF
+  iiif:
+    url: https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json
+    type: manifest
+  annotation: static/annotations/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980/1971.json
+- label: Kaart van Rotterdam en omgeving bestaande uit 24 bladen
+  title: "Kaart van Rotterdam en omgeving; bestaande uit 24 bladen"
+  year: 1973
+  institution: Stadsarchief Rotterdam
+  url: https://proxy.archieven.nl/0/8638E53E722D4CB5B85D54F8BA23DEEF
+  iiif:
+    url: https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json
+    type: manifest
+  annotation: static/annotations/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980/1973.json
+- label: Kaart van Rotterdam en omgeving bestaande uit 24 bladen
+  title: "Kaart van Rotterdam en omgeving; bestaande uit 24 bladen"
   year: 1974
   institution: Stadsarchief Rotterdam
-  url: https://hdl.handle.net/21.12133/F291044171094875B3A062BE9A72292F
+  url: https://proxy.archieven.nl/0/8638E53E722D4CB5B85D54F8BA23DEEF
   iiif:
-    url: https://sammeltassen.nl/iiif-images/stadsarchief-rotterdam/NL-RtSA_4201_1974-968/info.json
-    type: image
-  annotation: https://annotations.allmaps.org/images/b6b64593a9ab80cc
+    url: https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json
+    type: manifest
+  annotation: static/annotations/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980/1974.json
+- label: Kaart van Rotterdam en omgeving bestaande uit 24 bladen
+  title: "Kaart van Rotterdam en omgeving; bestaande uit 24 bladen"
+  year: 1975
+  institution: Stadsarchief Rotterdam
+  url: https://proxy.archieven.nl/0/8638E53E722D4CB5B85D54F8BA23DEEF
+  iiif:
+    url: https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json
+    type: manifest
+  annotation: static/annotations/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980/1975.json
+- label: Kaart van Rotterdam en omgeving bestaande uit 24 bladen
+  title: "Kaart van Rotterdam en omgeving; bestaande uit 24 bladen"
+  year: 1976
+  institution: Stadsarchief Rotterdam
+  url: https://proxy.archieven.nl/0/8638E53E722D4CB5B85D54F8BA23DEEF
+  iiif:
+    url: https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json
+    type: manifest
+  annotation: static/annotations/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980/1976.json
+- label: Kaart van Rotterdam en omgeving bestaande uit 24 bladen
+  title: "Kaart van Rotterdam en omgeving; bestaande uit 24 bladen"
+  year: 1977
+  institution: Stadsarchief Rotterdam
+  url: https://proxy.archieven.nl/0/8638E53E722D4CB5B85D54F8BA23DEEF
+  iiif:
+    url: https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json
+    type: manifest
+  annotation: static/annotations/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980/1977.json
+- label: Kaart van Rotterdam en omgeving bestaande uit 24 bladen
+  title: "Kaart van Rotterdam en omgeving; bestaande uit 24 bladen"
+  year: 1978
+  institution: Stadsarchief Rotterdam
+  url: https://proxy.archieven.nl/0/8638E53E722D4CB5B85D54F8BA23DEEF
+  iiif:
+    url: https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json
+    type: manifest
+  annotation: static/annotations/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980/1978.json
+- label: Kaart van Rotterdam en omgeving bestaande uit 24 bladen
+  title: "Kaart van Rotterdam en omgeving; bestaande uit 24 bladen"
+  year: 1979
+  institution: Stadsarchief Rotterdam
+  url: https://proxy.archieven.nl/0/8638E53E722D4CB5B85D54F8BA23DEEF
+  iiif:
+    url: https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json
+    type: manifest
+  annotation: static/annotations/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980/1979.json
+- label: Kaart van Rotterdam en omgeving bestaande uit 24 bladen
+  title: "Kaart van Rotterdam en omgeving; bestaande uit 24 bladen"
+  year: 1980
+  institution: Stadsarchief Rotterdam
+  url: https://proxy.archieven.nl/0/8638E53E722D4CB5B85D54F8BA23DEEF
+  iiif:
+    url: https://rotterdamtimemachine.nl/manifests/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980.json
+    type: manifest
+  annotation: static/annotations/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1964-1980/1980.json
