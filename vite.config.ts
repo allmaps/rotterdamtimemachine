@@ -1,6 +1,5 @@
 import tailwindcss from '@tailwindcss/vite';
 import { sveltekit } from '@sveltejs/kit/vite';
-import ViteYaml from '@modyfi/vite-plugin-yaml';
 import { defineConfig, loadEnv } from 'vite';
 import { generateAnnotations } from './scripts/generate-annotations.ts';
 import type { Plugin, ViteDevServer } from 'vite';
@@ -10,10 +9,7 @@ export default defineConfig(({ mode }) => {
 	const configFile = env.CONFIG || 'config.yml';
 
 	return {
-		define: {
-			__APP_CONFIG_FILE__: JSON.stringify(configFile)
-		},
-		plugins: [generateAnnotationsPlugin(configFile), ViteYaml(), tailwindcss(), sveltekit()],
+		plugins: [generateAnnotationsPlugin(configFile), tailwindcss(), sveltekit()],
 		server: {
 			host: 'localhost'
 		}

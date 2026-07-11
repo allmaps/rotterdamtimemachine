@@ -1,4 +1,5 @@
 export type MapMetadata = {
+	id: string;
 	label: string;
 	title: string;
 	year: number | string;
@@ -9,6 +10,7 @@ export type MapMetadata = {
 		type: string;
 	};
 	annotation: string;
+	mapIds: string[];
 };
 
 export type TourConfig =

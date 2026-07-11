@@ -48,7 +48,8 @@
 		autoplayActive = false,
 		autoplayNextAnnotation,
 		annotationsInView = $bindable<string[]>([]),
-		annotationsAtCenter = $bindable<string[]>([])
+		annotationsAtCenter = $bindable<string[]>([]),
+		mapIdsAtCenter = $bindable<string[]>([])
 	}: {
 		maps: MapMetadata[];
 		config: AppConfig;
@@ -79,6 +80,7 @@
 		autoplayNextAnnotation?: string;
 		annotationsInView?: string[];
 		annotationsAtCenter?: string[];
+		mapIdsAtCenter?: string[];
 	} = $props();
 
 	let mapOrderClass = $derived(navPosition === 'right' ? 'md:order-1' : 'md:order-2');
@@ -138,6 +140,7 @@
 			bind:currentLocation
 			bind:annotationsInView
 			bind:annotationsAtCenter
+			bind:mapIdsAtCenter
 			bind:geocoderBounds
 			bind:loaded={mapLoaded}
 			{config}

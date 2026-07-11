@@ -1,21 +1,17 @@
 import { WarpedMapList } from '@allmaps/render';
-import annotationsUrl from '$lib/generated/maps.json?url';
+import mapsUrl from '$lib/generated/maps.json?url';
+import { collection } from '$lib/content';
 
 import type { GeoreferencedMap } from '@allmaps/annotation';
 import type { WebGL2WarpedMap } from '@allmaps/render/webgl2';
 
-type GeneratedAnnotationEntry = {
-	id: string;
-	annotation: string;
+type GeneratedMaps = {
 	maps: GeoreferencedMap[];
 };
 
-type GeneratedAnnotations = {
-	annotations: GeneratedAnnotationEntry[];
-};
-
 export const mapIdsByAnnotation = new Map<string, Set<string>>();
-export const annotationsByMapId = new Map<string, string>();
+export const annotationsByMapId = new Map<string, Set<string>>();
+export const earliestAnnotationByMapId = new Map<string, string>();
 export const annotationById = new Map<string, string>();
 export const idByAnnotation = new Map<string, string>();
 
@@ -43,28 +39,42 @@ export const getWarpedMapList = () => {
 };
 
 async function loadGeneratedAnnotations() {
-	const response = await fetch(annotationsUrl);
-	if (!response.ok) {
-		throw new Error(`Generated annotations request failed with status ${response.status}`);
-	}
-
-	const data = (await response.json()) as GeneratedAnnotations;
-	const entries = data.annotations ?? [];
+	const mapsData = await fetchGeneratedJson<GeneratedMaps>(mapsUrl, 'Generated maps');
 
 	mapIdsByAnnotation.clear();
 	annotationsByMapId.clear();
+	earliestAnnotationByMapId.clear();
 	annotationById.clear();
 	idByAnnotation.clear();
 
-	georeferencedMaps = entries.flatMap((entry) => {
-		const ids = entry.maps.flatMap(({ id }) => (id ? [id] : []));
+	georeferencedMaps = mapsData.maps ?? [];
 
-		annotationById.set(entry.id, entry.annotation);
-		idByAnnotation.set(entry.annotation, entry.id);
-		mapIdsByAnnotation.set(entry.annotation, new Set(ids));
-		ids.forEach((id) => annotationsByMapId.set(id, entry.annotation));
-		return entry.maps;
-	});
+	for (const map of collection) {
+		const ids = map.mapIds.filter(Boolean);
+
+		annotationById.set(map.id, map.annotation);
+		idByAnnotation.set(map.annotation, map.id);
+		mapIdsByAnnotation.set(map.annotation, new Set(ids));
+
+		for (const id of ids) {
+			if (!earliestAnnotationByMapId.has(id)) {
+				earliestAnnotationByMapId.set(id, map.annotation);
+			}
+
+			const annotations = annotationsByMapId.get(id) ?? new Set<string>();
+			annotations.add(map.annotation);
+			annotationsByMapId.set(id, annotations);
+		}
+	}
 
 	loaded = true;
+}
+
+async function fetchGeneratedJson<T>(url: string, label: string) {
+	const response = await fetch(url);
+	if (!response.ok) {
+		throw new Error(`${label} request failed with status ${response.status}`);
+	}
+
+	return (await response.json()) as T;
 }

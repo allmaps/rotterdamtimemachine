@@ -1,8 +1,9 @@
-import { readFileSync } from 'node:fs';
 import path from 'node:path';
-import { load as parseYaml } from 'js-yaml';
-
-const DEFAULT_CONFIG_FILE = 'config.yml';
+import {
+	DEFAULT_CONFIG_FILE,
+	normalizeContentFileName,
+	readYamlFileSync
+} from './content-files.ts';
 
 type AppConfig = {
 	site?: {
@@ -15,19 +16,6 @@ export function resolveSvelteKitBasePath() {
 	const config = readConfigSync(process.cwd(), configFile);
 
 	return getSiteUrlPath(config.site?.url);
-}
-
-export function normalizeContentFileName(fileName: string | undefined, fallback: string) {
-	const normalized = (fileName?.trim() || fallback)
-		.replace(/\\/g, '/')
-		.replace(/^\.\//, '')
-		.replace(/^\/+/, '');
-
-	if (normalized.startsWith('../')) {
-		throw new Error(`Content file paths must stay inside the project: ${normalized}`);
-	}
-
-	return normalized;
 }
 
 function normalizeBasePath(value: string) {
@@ -46,11 +34,7 @@ function getSiteUrlPath(siteUrl: string | undefined) {
 }
 
 function readConfigSync(root: string, configFile: string) {
-	return parseConfig(readFileSync(path.join(root, configFile), 'utf8'), configFile);
-}
-
-function parseConfig(source: string, configFile: string) {
-	const parsed = parseYaml(source) as AppConfig;
+	const parsed = readYamlFileSync<AppConfig>(path.join(root, configFile));
 	if (!parsed || typeof parsed !== 'object') {
 		throw new Error(`${configFile} must contain a YAML object`);
 	}
