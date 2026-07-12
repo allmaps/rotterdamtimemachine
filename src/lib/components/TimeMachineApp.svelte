@@ -27,6 +27,7 @@
 		MapLayersOpenCommand,
 		MapKeyboardCommand,
 		MapLocation,
+		MapLocationSyncCommand,
 		MapMetadata,
 		MapToolbarCommand,
 		SliderKeyboardCommand
@@ -94,6 +95,7 @@
 	let aboutOpen = $state(false);
 	let shareOpen = $state(false);
 	let currentLocation = $state<MapLocation>(initial.defaultLocation);
+	let rightLocation = $state<MapLocation>(initial.defaultLocation);
 	let geocoderBounds = $state<GeocoderBounds>();
 	let searchOpen = $state(false);
 	let compareStacked = $state(false);
@@ -106,6 +108,9 @@
 	let mapLayersOpenCommand = $state<MapLayersOpenCommand>();
 	let rotateToMapOrientation = $state(false);
 	let focusActiveMap = $state(false);
+	let compareViewsLinked = $state(true);
+	let rightLocationSyncCommand = $state<MapLocationSyncCommand>();
+	let locationSyncCommandId = 0;
 	let autoplayActive = $state(startsInPresentation);
 	let autoplayPlaying = $state(startsInPresentation);
 	let autoplayRepairSelection = $state(false);
@@ -118,6 +123,7 @@
 	let leftMapIdsAtCenter = $state<string[]>([]);
 	let appShellElement = $state<HTMLDivElement>();
 	let presentationTouch: PresentationTouch | undefined;
+	let previousCompareViewsLinked = true;
 
 	if (initial.initialMap) viewState.annotation = initial.initialMap.annotation;
 	if (!comparison.rightAnnotation) comparison.rightAnnotation = initial.rightAnnotation;
@@ -165,6 +171,28 @@
 		if (comparison.active && autoplayActive) {
 			stopAutoplay();
 		}
+	});
+
+	$effect(() => {
+		if (!comparison.active) {
+			if (!compareViewsLinked) compareViewsLinked = true;
+			rightLocation = currentLocation;
+			rightLocationSyncCommand = undefined;
+			previousCompareViewsLinked = compareViewsLinked;
+			return;
+		}
+
+		if (compareViewsLinked && !previousCompareViewsLinked) {
+			const location = currentLocation;
+			rightLocationSyncCommand = { id: ++locationSyncCommandId, location };
+			rightLocation = location;
+		} else if (compareViewsLinked) {
+			rightLocation = currentLocation;
+		} else {
+			rightLocationSyncCommand = undefined;
+		}
+
+		previousCompareViewsLinked = compareViewsLinked;
 	});
 
 	$effect(() => {
@@ -288,6 +316,22 @@
 		};
 	}
 
+	function handlePrimaryLocationChange(location: MapLocation) {
+		currentLocation = location;
+
+		if (comparison.active && compareViewsLinked) {
+			rightLocation = location;
+		}
+	}
+
+	function handleSecondaryLocationChange(location: MapLocation) {
+		rightLocation = location;
+
+		if (comparison.active && compareViewsLinked) {
+			currentLocation = location;
+		}
+	}
+
 	function applyInitialParams(params: URLSearchParams) {
 		const yearParam = yearFromParam(params.get('year'));
 		const initialMap = params.has('map')
@@ -302,6 +346,7 @@
 		}
 
 		currentLocation = locationFromParams(params) ?? initial.defaultLocation;
+		rightLocation = currentLocation;
 	}
 
 	function startAutoplay() {
@@ -633,6 +678,7 @@
 				bind:rotateToMapOrientation
 				bind:focusActiveMap
 				bind:currentLocation
+				onLocationChange={handlePrimaryLocationChange}
 				bind:geocoderBounds
 				bind:annotationsInView={leftAnnotationsInView}
 				bind:annotationsAtCenter={leftAnnotationsAtCenter}
@@ -660,10 +706,15 @@
 					bind:annotation={comparison.rightAnnotation}
 					bind:opacity={comparison.rightOpacity}
 					bind:selectedYear={rightSelectedYear}
-					bind:currentLocation
+					bind:viewsLinked={compareViewsLinked}
+					locationSyncCommand={rightLocationSyncCommand}
+					bind:currentLocation={rightLocation}
+					onLocationChange={handleSecondaryLocationChange}
 					{mapKeyboardCommand}
 					enableLocationMarker
 					showLayersPaneIndicator
+					showZoomControls={!compareViewsLinked}
+					showLinkControl
 				/>
 			{/if}
 		{:else}

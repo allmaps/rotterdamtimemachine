@@ -10,6 +10,7 @@
 		MapLayersOpenCommand,
 		MapKeyboardCommand,
 		MapLocation,
+		MapLocationSyncCommand,
 		MapMetadata,
 		MapToolbarCommand,
 		SliderKeyboardCommand
@@ -43,8 +44,13 @@
 		enableLayersShortcut = false,
 		showLayersPaneIndicator = false,
 		showInViewControl = false,
+		showZoomControls = true,
+		showLinkControl = false,
 		rotateToMapOrientation = $bindable(false),
 		focusActiveMap = $bindable(false),
+		viewsLinked = $bindable(false),
+		locationSyncCommand,
+		onLocationChange,
 		autoplayActive = false,
 		autoplayNextAnnotation,
 		annotationsInView = $bindable<string[]>([]),
@@ -74,8 +80,13 @@
 		enableLayersShortcut?: boolean;
 		showLayersPaneIndicator?: boolean;
 		showInViewControl?: boolean;
+		showZoomControls?: boolean;
+		showLinkControl?: boolean;
 		rotateToMapOrientation?: boolean;
 		focusActiveMap?: boolean;
+		viewsLinked?: boolean;
+		locationSyncCommand?: MapLocationSyncCommand;
+		onLocationChange?: (location: MapLocation) => void;
 		autoplayActive?: boolean;
 		autoplayNextAnnotation?: string;
 		annotationsInView?: string[];
@@ -136,6 +147,8 @@
 			bind:opacity
 			bind:rotateToMapOrientation
 			bind:focusActiveMap
+			bind:viewsLinked
+			{locationSyncCommand}
 			bind:inViewOnly={sliderInViewOnly}
 			bind:currentLocation
 			bind:annotationsInView
@@ -151,6 +164,9 @@
 			{navPosition}
 			{controlsPosition}
 			{showInViewControl}
+			{showZoomControls}
+			{showLinkControl}
+			{onLocationChange}
 			{autoplayActive}
 			{autoplayNextAnnotation}
 		/>
