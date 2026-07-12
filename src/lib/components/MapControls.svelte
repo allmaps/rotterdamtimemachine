@@ -2,8 +2,8 @@
 	import {
 		Compass,
 		Focus,
-		Link2,
-		Link2Off,
+		Link,
+		Unlink,
 		MapPinned,
 		Minus,
 		Plus,
@@ -192,9 +192,9 @@
 				class={getToggleButtonClass(viewsLinked)}
 			>
 				{#if viewsLinked}
-					<Link2 class="h-4 w-4" />
+					<Link class="h-4 w-4" />
 				{:else}
-					<Link2Off class="h-4 w-4" />
+					<Unlink class="h-4 w-4" />
 				{/if}
 			</button>
 		{/if}
