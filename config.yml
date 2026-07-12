@@ -260,6 +260,8 @@ controls:
   followOrientation: Kaartoriëntatie volgen
   disableFocus: Kaartlaagfocus uitschakelen
   followFocus: Kaartlaagfocus volgen
+  linkViews: Kaartbeelden koppelen
+  unlinkViews: Kaartbeelden ontkoppelen
   opacity: Opacity
   adjustOpacity: Opacity aanpassen
   layerOpacity: Opacity kaartlaag

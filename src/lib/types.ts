@@ -229,6 +229,8 @@ export type AppConfig = {
 		followOrientation: string;
 		disableFocus: string;
 		followFocus: string;
+		linkViews: string;
+		unlinkViews: string;
 		opacity: string;
 		adjustOpacity: string;
 		layerOpacity: string;
@@ -250,6 +252,11 @@ export type MapLocation = {
 	center: [number, number];
 	zoom: number;
 	bearing: number;
+};
+
+export type MapLocationSyncCommand = {
+	id: number;
+	location: MapLocation;
 };
 
 export type GeocoderBounds = {

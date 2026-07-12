@@ -1,9 +1,19 @@
 <script lang="ts">
-	import { Compass, Focus, MapPinned, Minus, Plus, SlidersHorizontal } from '@lucide/svelte';
+	import {
+		Compass,
+		Focus,
+		Link,
+		Unlink,
+		MapPinned,
+		Minus,
+		Plus,
+		SlidersHorizontal
+	} from '@lucide/svelte';
 	import type { AppConfig } from '$lib/types';
 	import type maplibregl from 'maplibre-gl';
 
 	type ControlPosition = 'top-left' | 'top-right';
+	const CONTROL_WIDTH_REM = 2.25;
 
 	let {
 		config,
@@ -11,10 +21,13 @@
 		opacity = $bindable(100),
 		rotateToMapOrientation = $bindable(false),
 		focusActiveMap = $bindable(false),
+		viewsLinked = $bindable(false),
 		inViewOnly = $bindable(false),
 		position = 'top-right',
 		canZoomToMap = false,
 		canFilterInView = false,
+		showZoomControls = true,
+		showLinkControl = false,
 		showInViewControl = false,
 		onUserCameraAction
 	}: {
@@ -23,10 +36,13 @@
 		opacity?: number;
 		rotateToMapOrientation?: boolean;
 		focusActiveMap?: boolean;
+		viewsLinked?: boolean;
 		inViewOnly?: boolean;
 		position?: ControlPosition;
 		canZoomToMap?: boolean;
 		canFilterInView?: boolean;
+		showZoomControls?: boolean;
+		showLinkControl?: boolean;
 		showInViewControl?: boolean;
 		onUserCameraAction?: () => void;
 	} = $props();
@@ -60,6 +76,14 @@
 			}
 		}
 	]);
+	let controlCount = $derived(
+		(showZoomControls ? zoomControls.length : 0) +
+			2 +
+			(showLinkControl ? 1 : 0) +
+			(showInViewControl ? 1 : 0) +
+			1
+	);
+	let toolbarWidth = $derived(`${controlCount * CONTROL_WIDTH_REM}rem`);
 	const controlButtonClass =
 		'flex h-9 w-9 shrink-0 cursor-pointer items-center justify-center hover:bg-gray-100 focus-visible:z-10 focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-brand-main disabled:cursor-not-allowed disabled:text-gray-300 disabled:hover:bg-white';
 
@@ -79,6 +103,10 @@
 
 	function toggleMapFocus() {
 		focusActiveMap = !focusActiveMap;
+	}
+
+	function toggleViewsLinked() {
+		viewsLinked = !viewsLinked;
 	}
 
 	function toggleInViewOnly() {
@@ -108,20 +136,23 @@
 	ondblclick={(event) => event.stopPropagation()}
 >
 	<div
-		class="inline-grid auto-cols-[2.25rem] grid-flow-col divide-x divide-gray-200 overflow-hidden rounded-md border border-gray-200 bg-white text-gray-800 shadow-lg"
+		style:width={toolbarWidth}
+		class="inline-grid auto-cols-[2.25rem] grid-flow-col divide-x divide-gray-200 overflow-hidden rounded-md border border-gray-200 bg-white text-gray-800 shadow-lg transition-[width] duration-200 ease-out"
 	>
-		{#each zoomControls as control (control.label)}
-			{@const Icon = control.icon}
-			<button
-				type="button"
-				aria-label={control.label}
-				title={control.label}
-				onclick={control.action}
-				class={controlButtonClass}
-			>
-				<Icon class="h-4 w-4" />
-			</button>
-		{/each}
+		{#if showZoomControls}
+			{#each zoomControls as control (control.label)}
+				{@const Icon = control.icon}
+				<button
+					type="button"
+					aria-label={control.label}
+					title={control.label}
+					onclick={control.action}
+					class={controlButtonClass}
+				>
+					<Icon class="h-4 w-4" />
+				</button>
+			{/each}
+		{/if}
 
 		<button
 			type="button"
@@ -150,6 +181,23 @@
 		>
 			<Focus class="h-4 w-4" />
 		</button>
+
+		{#if showLinkControl}
+			<button
+				type="button"
+				aria-label={viewsLinked ? config.controls.unlinkViews : config.controls.linkViews}
+				title={viewsLinked ? config.controls.unlinkViews : config.controls.linkViews}
+				aria-pressed={viewsLinked}
+				onclick={toggleViewsLinked}
+				class={getToggleButtonClass(viewsLinked)}
+			>
+				{#if viewsLinked}
+					<Link class="h-4 w-4" />
+				{:else}
+					<Unlink class="h-4 w-4" />
+				{/if}
+			</button>
+		{/if}
 
 		{#if showInViewControl}
 			<button

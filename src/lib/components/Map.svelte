@@ -15,6 +15,7 @@
 		GeocoderBounds,
 		MapKeyboardCommand,
 		MapLocation,
+		MapLocationSyncCommand,
 		MapToolbarCommand
 	} from '$lib/types';
 
@@ -69,6 +70,8 @@
 		opacity = $bindable(viewState.opacity),
 		rotateToMapOrientation = $bindable(false),
 		focusActiveMap = $bindable(false),
+		viewsLinked = $bindable(false),
+		locationSyncCommand,
 		inViewOnly = $bindable(false),
 		currentLocation = $bindable({
 			center: [...config.map.initialView.center] as [number, number],
@@ -88,7 +91,10 @@
 		enableLocationMarker = false,
 		navPosition = 'left',
 		controlsPosition = 'top-right',
+		showZoomControls = true,
+		showLinkControl = false,
 		showInViewControl = false,
+		onLocationChange,
 		autoplayActive = false,
 		autoplayNextAnnotation,
 		loaded = $bindable(false)
@@ -98,6 +104,8 @@
 		opacity?: number;
 		rotateToMapOrientation?: boolean;
 		focusActiveMap?: boolean;
+		viewsLinked?: boolean;
+		locationSyncCommand?: MapLocationSyncCommand;
 		inViewOnly?: boolean;
 		currentLocation?: MapLocation;
 		annotationsInView?: string[];
@@ -110,7 +118,10 @@
 		enableLocationMarker?: boolean;
 		navPosition?: 'left' | 'right';
 		controlsPosition?: 'top-left' | 'top-right';
+		showZoomControls?: boolean;
+		showLinkControl?: boolean;
 		showInViewControl?: boolean;
+		onLocationChange?: (location: MapLocation) => void;
 		autoplayActive?: boolean;
 		autoplayNextAnnotation?: string;
 		loaded?: boolean;
@@ -145,6 +156,8 @@
 	let zoomLimitRetryTimer: ReturnType<typeof setTimeout> | undefined;
 	let visibilityCheckFrame: number | undefined;
 	let isSyncing = false;
+	let previousLocationSyncCommandId = 0;
+	let activeLocationSyncCommandId = 0;
 	let warpedMapList = getWarpedMapList();
 	let warpedMapLayer = new WarpedMapLayer({
 		visible: false,
@@ -217,16 +230,48 @@
 
 	// Synchronize the map position with the bound location.
 	$effect(() => {
-		if (mapReady && map && currentLocation) {
-			const center = currentLocation.center;
-			const zoom = currentLocation.zoom;
-			const bearing = currentLocation.bearing ?? 0;
-			if (!mapMatchesLocation(center, zoom, bearing)) {
-				clearPreferredSelectionZoom();
+		if (!mapReady || !map || !currentLocation) return;
+
+		const pendingAnimatedSync =
+			locationSyncCommand && locationSyncCommand.id !== previousLocationSyncCommandId
+				? locationSyncCommand
+				: undefined;
+
+		if (
+			!pendingAnimatedSync &&
+			activeLocationSyncCommandId &&
+			locationSyncCommand?.id === activeLocationSyncCommandId
+		) {
+			return;
+		}
+
+		const targetLocation = pendingAnimatedSync?.location ?? currentLocation;
+		const center = targetLocation.center;
+		const zoom = targetLocation.zoom;
+		const bearing = targetLocation.bearing ?? 0;
+		if (!mapMatchesLocation(center, zoom, bearing)) {
+			clearPreferredSelectionZoom();
+
+			if (pendingAnimatedSync) {
+				previousLocationSyncCommandId = pendingAnimatedSync.id;
+				activeLocationSyncCommandId = pendingAnimatedSync.id;
+				isSyncing = true;
+				map.stop();
+				map.once('moveend', () => {
+					if (activeLocationSyncCommandId === pendingAnimatedSync.id) {
+						activeLocationSyncCommandId = 0;
+					}
+					isSyncing = false;
+				});
+				map.flyTo({ center, zoom, bearing, pitch: 0, essential: true });
+			} else {
 				isSyncing = true;
 				map.jumpTo({ center, zoom, bearing });
 				isSyncing = false;
 			}
+		} else if (pendingAnimatedSync) {
+			previousLocationSyncCommandId = pendingAnimatedSync.id;
+			activeLocationSyncCommandId = 0;
 		}
 	});
 
@@ -335,6 +380,7 @@
 		if (!mapReady || !map || !command || command.id === previousKeyboardCommandId) return;
 
 		previousKeyboardCommandId = command.id;
+
 		let zoom = command.zoomDelta === undefined ? map.getZoom() : map.getZoom() + command.zoomDelta;
 
 		clearPreferredSelectionZoom();
@@ -1072,11 +1118,13 @@
 
 		mapInstance.on('move', () => {
 			if (!isSyncing) {
-				currentLocation = {
+				const nextLocation = {
 					center: mapInstance.getCenter().toArray() as [number, number],
 					zoom: mapInstance.getZoom(),
 					bearing: mapInstance.getBearing()
 				};
+				currentLocation = nextLocation;
+				onLocationChange?.(nextLocation);
 			}
 
 			if (visibilityWarningOpen) {
@@ -1160,10 +1208,13 @@
 			bind:opacity
 			bind:rotateToMapOrientation
 			bind:focusActiveMap
+			bind:viewsLinked
 			bind:inViewOnly
 			position={controlsPosition}
 			canZoomToMap={canZoomToActiveMap}
 			canFilterInView={annotationsInView.length > 0}
+			{showZoomControls}
+			{showLinkControl}
 			{showInViewControl}
 			onUserCameraAction={clearPreferredSelectionZoom}
 		/>
