@@ -669,7 +669,6 @@
 				navPosition={leftNavPosition}
 				paneSide="left"
 				layersId="map-layers-left"
-				bordered={comparison.active}
 				maps={collection}
 				{config}
 				bind:annotation={viewState.annotation}

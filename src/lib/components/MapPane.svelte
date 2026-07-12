@@ -36,7 +36,6 @@
 		mapToolbarCommand,
 		paneSide = 'left',
 		layersId = `map-layers-${navPosition}`,
-		bordered = false,
 		showMapYearTicks = true,
 		showOnlyAvailableYears = config.slider.showOnlyAvailableYears ?? false,
 		enableFlyTo = false,
@@ -72,7 +71,6 @@
 		mapToolbarCommand?: MapToolbarCommand;
 		paneSide?: 'left' | 'right';
 		layersId?: string;
-		bordered?: boolean;
 		showMapYearTicks?: boolean;
 		showOnlyAvailableYears?: boolean;
 		enableFlyTo?: boolean;
@@ -114,11 +112,7 @@
 	});
 </script>
 
-<section
-	class="map-pane relative flex min-h-0 min-w-0 flex-1 flex-row overflow-hidden {bordered
-		? 'md:border-r-2 md:border-gray-300'
-		: ''}"
->
+<section class="map-pane relative flex min-h-0 min-w-0 flex-1 flex-row overflow-hidden">
 	{#if !autoplayActive && mapLoaded}
 		<div
 			class="absolute inset-y-0 z-20 flex-none {navPosition === 'right' ? 'right-0' : 'left-0'}"
