@@ -16,7 +16,7 @@
     url: https://www.goudatijdmachine.nl/omeka/iiif/3/170/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=450
-- label: Gouda
+- label: Kloosterkaart van Gouda
   title: Bijkaartje, behorend bij de stadsplattegrond die Jacob van Deventer in 1562 van Gouda maakte. Dit bijkaartje wordt in Gouda ook wel "kloosterkaartje" genoemd, vanwege het voorkomen van de Goudse kloosters. Facsimile uit ca. 1920
   year: 1562
   institution: Streekarchief Midden-Holland
@@ -25,7 +25,7 @@
     url: https://images.memorix.nl/sahm/iiif/f297b75b-6a0d-3ee4-059d-73b1dba3ef1f/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=320
-- label: Gouda
+- label: Gouda binnen de singels
   title: Gouda binnen de singels (toestand 1562), afdruk (litho), ca. 1920.
   year: 1562
   institution: Streekarchief Midden-Holland
@@ -52,7 +52,7 @@
     url: https://www.goudatijdmachine.nl/omeka/iiif/3/12/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=434
-- label: Plattegrond van Gouda uit de atlas van Frans Hogenberg, 1585.
+- label: Plattegrond van Gouda uit de atlas van Frans Hogenberg
   title: Plattegrond van Gouda
   year: 1585
   institution: Streekarchief Midden-Holland
@@ -61,7 +61,7 @@
     url: https://images.memorix.nl/sahm/iiif/7c923ed3-7921-a9e8-5fd5-aa640700b303/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=67
-- label: Gouda
+- label: Plattegrond van de stad Gouda binnen de singels
   title: Plattegrond van de stad Gouda binnen de singels, ca. 1600.
   year: 1585
   institution: Streekarchief Midden-Holland
@@ -70,7 +70,7 @@
     url: https://images.memorix.nl/sahm/iiif/66445714-6d86-789f-9cdb-5de88a877976/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=158
-- label: Gouda
+- label: Plattegrond van de stad Gouda binnen de singels
   title: Plattegrond van de stad Gouda binnen de singels, ca. 1612.
   year: 1585
   institution: Streekarchief Midden-Holland
@@ -106,7 +106,7 @@
     url: https://www.goudatijdmachine.nl/omeka/iiif/3/96687/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=429
-- label: Kaart van Gouda binnen de singels
+- label: Sadsplan van Gouda uit de atlas van Braun en Hogenberg
   title: Op deze kaart is het stadsplan van Gouda te zien uit de atlas van Braun en Hogenberg uit 1585. Het is een kostbare bron, omdat het de oudst gedrukte plattegrond van Gouda is. De plattegrond is hoogstwaarschijnlijk gebaseerd op gegevens die Pieter Dircxzoon Crabeth aangeleverd heeft. Pieter Dircxzoon is de vader van de wereldberoemde glazeniers Dirk en Wouter Crabeth, de makers van de Goudse Glazen in de Sint Janskerk.
   year: 1585
   institution: Rijksdienst voor het Cultureel Erfgoed
@@ -115,8 +115,8 @@
     url: https://www.goudatijdmachine.nl/omeka/iiif/3/172/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=438
-- label: GOUDA
-  title: gebouwen in scheve projectie; noorden boven; links onder cartouche met tekst in Latijn
+- label: Gouda
+  title: Gebouwen in scheve projectie; noorden boven; links onder cartouche met tekst in Latijn
   year: 1590
   institution: Universiteit Delft
   url: https://n2t.net/ark:/60537/bvbuxt
@@ -124,7 +124,7 @@
     url: https://www.goudatijdmachine.nl/omeka/iiif/3/13002/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=423
-- label: ''
+- label: Kaart van de vaarweg van Gouda naar Bodegraven
   title: Kaart van de vaarweg van Gouda (vanaf de Karnemelksloot) naar Bodegraven, ca. 1650. Gedeelte vanaf de Karnemelksloot tot voorbij de Reeuwijkse brug.
   year: 1610
   institution: Streekarchief Midden-Holland
@@ -169,7 +169,7 @@
     url: https://images.memorix.nl/sahm/iiif/3291c967-d903-471d-4222-a3014bef1530/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=26
-- label: Caerte van de vierdalffhondert gaerden in de langhte van der halver IJssel opwaerts te brouckwaert ende vierdalffhondert gaerden inde breete totte vrijheyt van der Goude ...
+- label: Kadastrale kaart van de "vrijheid" (rechtsgebied) van de stad Gouda
   title: Kadastrale kaart van de "vrijheid" (rechtsgebied) van de stad Gouda, 1613. In elk perceel, behorende tot dit gebied, staat de naam van de eigenaar vermeld
   year: 1613
   institution: Streekarchief Midden-Holland
@@ -178,7 +178,7 @@
     url: https://images.memorix.nl/sahm/iiif/eedebc9c-de6b-0c79-febb-585c49e24066/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=370
-- label: Affteyckeninge van 't groote bolwerck, mette declaratie van dien, gedaen in den jare 1615
+- label: Affteyckeninge van 't groote bolwerck
   title: Situatietekening van het bolwerk buiten de Dijkspoort, later Rotterdamse poort genoemd (gelegen aan het westeinde van de Veerstal), 1615.
   year: 1615
   institution: Streekarchief Midden-Holland
@@ -187,7 +187,7 @@
     url: https://images.memorix.nl/sahm/iiif/a8cfdcfa-31bd-055b-ad0a-5bdc557cc5f1/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=77
-- label: Het oude kerckhoff. Leggende in Blommendael ...
+- label: Het oude kerckhoff liggende in Bloemendaal
   title: Situatieschets van "het oude kerkhof", gelegen in Bloemendaal aan de Kleiweg, ca. 1610 - 1615. Het kerkhof is weergegeven met vermelding van afmetingen
   year: 1615
   institution: Streekarchief Midden-Holland
@@ -205,7 +205,7 @@
     url: https://www.goudatijdmachine.nl/omeka/iiif/3/17778/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=454
-- label: Afbeeldinge van het groote bolwerck ...
+- label: Afbeeldinge van het groote bolwerck
   title: Situatietekening van het bolwerk buiten de Dijkspoort (= Rotterdamse Poort), gelegen bij de Mallegatsbrug en Schielands Hoge Zeedijk, 15 november 1617.
   year: 1617
   institution: Streekarchief Midden-Holland
@@ -241,7 +241,7 @@
     url: https://images.memorix.nl/sahm/iiif/7db68dd1-61db-330a-d182-5b52b07af049/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=59
-- label: ''
+- label: Plattegrond van het erf van Frans Jacobsz aan het eind van de Drapeniersteeg bij de Vest
   title: Plattegrond van het erf van Frans Jacobsz aan het eind van de Drapeniersteeg bij de Vest, 13 augustus 1621.
   year: 1621
   institution: Streekarchief Midden-Holland
@@ -250,7 +250,7 @@
     url: https://images.memorix.nl/sahm/iiif/7d6c250e-60c0-5fcd-de53-2d0689f53e8f/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=70
-- label: ''
+- label: Plattegrond van Gouda geplakt op het wegenpatroon in de directe omgeving
   title: 'Plattegrond van Gouda geplakt op het wegenpatroon in de directe omgeving, zoals: Moordrechtse Kerklaan, Moordrechtse Tiendeweg, Moordrechtse Veenweg, de Uitweg, de Winterdijk, Kleiweg, Tiendeweg, Willenseweg, Platteweg, (Groene) Ree. Ook enkele waterwegen'
   year: 1625
   institution: Streekarchief Midden-Holland
@@ -259,7 +259,7 @@
     url: https://images.memorix.nl/sahm/iiif/9b7ec444-7c4a-ec0e-e3c6-bcbc83d03b42/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=89
-- label: Kaart van Gouda
+- label: Ruw geschetste kaart gemaakt door Balthasar Florisz. van Berckenrode
   title: Deze ruw geschetste kaart is gemaakt door Balthasar Florisz. van Berckenrode. Althans, dat moeten we aannemen. Nergens staat duidelijk genoteerd dat Van Berckenrode de maker is van deze kaart. De Nederlandse cartograaf is met name bekend van zijn plattegrond van Amsterdam die hij rond 1630 heeft gemaakt. Hij heeft ook meegewerkt aan het boek 'Theatrum sive Hollandiae Comitatus et Urbium nova descriptio', een boek waarin ook een kaart van Gouda is opgenomen.
   year: 1630
   institution: Rijksdienst voor het Cultureel Erfgoed
@@ -268,7 +268,7 @@
     url: https://www.goudatijdmachine.nl/omeka/iiif/3/176/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=436
-- label: Gouda
+- label: Plattegrond van Gouda
   title: Plattegrond van Gouda
   year: 1632
   institution: Streekarchief Midden-Holland
@@ -277,7 +277,7 @@
     url: https://images.memorix.nl/sahm/iiif/6aade9a9-741e-8e69-0f9c-f72a2d9a41af/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=388
-- label: 'Plattegrond van Gouda '
+- label: Plattegrond van Gouda, uit Boxhorn
   title: 'Prent uit: Boxhorn, Marcus Zuerius. Theatrum sive Hollandiae comitatus et urbium nova descriptio (...). Amsterdam: Henricus Hondius, 1632, p. 268.'
   year: 1632
   institution: Rijksmuseum
@@ -286,7 +286,7 @@
     url: https://www.goudatijdmachine.nl/omeka/iiif/3/96626/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=455
-- label: Plattegrond van Gouda en omgeving
+- label: Plattegrond van Gouda en omgeving, uit Boxhorn
   title: 'Uit: Boxhorn, Tonneel ofte Beschrijvinghe des landts ende steden van Hollandt ende West-Vrieslandt, 1632. met legenda en schaal rechtsboven. Links boven het wapen van Gouda.'
   year: 1632
   institution: Edams Museum
@@ -295,7 +295,7 @@
     url: https://www.goudatijdmachine.nl/omeka/iiif/3/93728/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=462
-- label: Der Goude
+- label: Plattegrond van Gouda
   title: Plattegrond van Gouda
   year: 1634
   institution: Streekarchief Midden-Holland
@@ -304,7 +304,7 @@
     url: https://images.memorix.nl/sahm/iiif/bf07f066-c07d-8bf4-88f6-fc717f0d2741/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=307
-- label: Der Govde
+- label: Plattegrond van Gouda
   title: Plattegrond van Gouda
   year: 1634
   institution: Streekarchief Midden-Holland
@@ -322,7 +322,7 @@
     url: https://images.memorix.nl/sahm/iiif/5263c464-db60-9538-55e5-f79e8e9c74ee/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=160
-- label: GOVDA
+- label: Kaart van Gouda, door Joh. Blaeu
   title: Kopergravure met de gebouwen in opstand weergegeven. Met wapen van de stad en van Holland, uitgebreide meerdelige legenda. Joh.Blaeu.
   year: 1649
   institution: Streekarchief Midden-Holland
@@ -341,7 +341,7 @@
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=437
 - label: Plattegrond van Gouda
-  title: "Plattegrond in vogelvluchtperspectief. Linksboven het wapen van Holland met rechts daarvan de titelcartouche. Onder het wapen een legenda a-l. Linksonder een legenda 1-79. Rechtsboven het wapen van Gouda met links daarvan een cartouche met de opdracht. Onder het wapen een legenda m-y. Daaronder een schaalstok: Schala van 50 Rhynlandse roede.\r\nVervaardiger\r\n"
+  title: "Plattegrond in vogelvluchtperspectief. Linksboven het wapen van Holland met rechts daarvan de titelcartouche. Onder het wapen een legenda a-l. Linksonder een legenda 1-79. Rechtsboven het wapen van Gouda met links daarvan een cartouche met de opdracht. Onder het wapen een legenda m-y. Daaronder een schaalstok: Schala van 50 Rhynlandse roede."
   year: 1649
   institution: Rijksmuseum
   url: https://n2t.net/ark:/60537/bsunUJ
@@ -367,7 +367,7 @@
     url: https://www.goudatijdmachine.nl/omeka/iiif/3/17783/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=461
-- label: Gouda
+- label: Plattegrond van de stad Gouda binnen de singels
   title: Plattegrond van de stad Gouda binnen de singels, ca. 1650.
   year: 1650
   institution: Streekarchief Midden-Holland
@@ -385,7 +385,7 @@
     url: https://www.goudatijdmachine.nl/omeka/iiif/3/150/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=451
-- label: ''
+- label: Hoogheemraadschap Schieland, deel tussen Gouda, Nieuwerkerk an den IJssel, Waddinxveen en Moerkapelle
   title: Hoogheemraadschap Schieland, deel tussen Gouda, Nieuwerkerk an den IJssel, Waddinxveen en Moerkapelle
   year: 1651
   institution: Streekarchief Midden-Holland
@@ -394,7 +394,7 @@
     url: https://images.memorix.nl/sahm/iiif/49510e46-d454-203c-e745-2ff614820aeb/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=410
-- label: Der Govde
+- label: Plattegrond van Gouda
   title: Plattegrond van Gouda
   year: 1652
   institution: Streekarchief Midden-Holland
@@ -403,7 +403,7 @@
     url: https://images.memorix.nl/sahm/iiif/afda72bb-b8a2-4770-ddb4-128136d26111/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=304
-- label: 'Plattegrond van Gouda '
+- label: Plattegrond van Gouda 
   title: Plattegrond in vogelvluchtperspectief. Linksboven het wapen van Holland met rechts daarvan de titelcartouche. Onder het wapen een legenda a-l. Linksonder een legenda 1-79. Rechtsboven het wapen van Gouda met links daarvan een cartouche met de opdracht. Onder het wapen een legenda m-y. Op verso Latijnse tekst.
   year: 1652
   institution: Rijksmuseum
@@ -421,7 +421,7 @@
     url: https://www.goudatijdmachine.nl/omeka/iiif/3/162/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=459
-- label: Plattegrond van Gouda
+- label: Plattegrond van Gouda, uit Guicciardini, Lodovico
   title: 'Prent uit: Guicciardini, Lodovico. Belgicae sive inferioris Germaniae Descriptio (...). Amsterdam: Johannes Janssonius, 1652, dl. 3, p. 113.'
   year: 1652
   institution: Rijksmuseum
@@ -439,7 +439,7 @@
     url: https://www.goudatijdmachine.nl/omeka/iiif/3/158/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=467
-- label: Gouda
+- label: Plattegrond van de stad Gouda binnen de singels
   title: Plattegrond van de stad Gouda binnen de singels (planimetrisch), ca. 1655 (1659?)
   year: 1655
   institution: Streekarchief Midden-Holland
@@ -448,7 +448,7 @@
     url: https://images.memorix.nl/sahm/iiif/84881bbf-aa83-a748-87b6-2e2fe3dd222a/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=327
-- label: Kaerte van de neegen-hondert roede om de stadt der Gouw. Anno 1655 in de maent junii.
+- label: Kaerte van de neegen-hondert roede om de stadt der Gouw
   title: Kaart van Gouda met de omgeving, waarbinnen niet geslagturfd mocht worden (cirkel met een straal van ca. 900 roeden), juni 1655.
   year: 1655
   institution: Streekarchief Midden-Holland
@@ -457,7 +457,7 @@
     url: https://images.memorix.nl/sahm/iiif/aa9264ae-1433-a650-59fd-40d44f49e174/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=343
-- label: ''
+- label: Kaart van de Gouwe tussen de "Stats herberch" (stadsherberg) van Gouda en de brug te Waddinxveen
   title: Kaart van de Gouwe tussen de "Stats herberch" (stadsherberg) van Gouda en de brug te Waddinxveen met de oostwaarts daarvan gelegen percelen, 1657 trekvaart
   year: 1657
   institution: Streekarchief Midden-Holland
@@ -466,7 +466,7 @@
     url: https://images.memorix.nl/sahm/iiif/bd3e0f33-ecdf-950c-71c4-99e4b8061d53/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=87
-- label: Kaart van de polders in het gebied ruwweg begrensd door Boskoop - Bodegraven - Hekendorp - Gouderak, ca. 1665
+- label: Kaart van de polders in het gebied ruwweg begrensd door Boskoop - Bodegraven - Hekendorp - Gouderak
   title: Kaart van de polders in het gebied ruwweg begrensd door Boskoop - Bodegraven - Hekendorp - Gouderak, ca. 1665
   year: 1665
   institution: Streekarchief Midden-Holland
@@ -484,7 +484,7 @@
     url: https://images.memorix.nl/sahm/iiif/ec220986-6489-fc25-a8e2-86e836b5cf8a/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=311
-- label: ''
+- label: Overzichtskaart met betrekking tot de aan te leggen trekvaart tussen Gouda en Schoonhoven
   title: Thematische overzichtskaart met betrekking tot de aan te leggen trekvaart tussen Gouda en Schoonhoven, mei 1679
   year: 1679
   institution: Streekarchief Midden-Holland
@@ -502,7 +502,7 @@
     url: https://www.goudatijdmachine.nl/omeka/iiif/3/17776/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=424
-- label: Gouda
+- label: Plattegrond van Gouda
   title: Plattegrond van Gouda
   year: 1691
   institution: Streekarchief Midden-Holland
@@ -511,7 +511,7 @@
     url: https://images.memorix.nl/sahm/iiif/60b54b46-fc3e-78ca-889c-566f31905a5e/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=371
-- label: Gouda
+- label: Plattegrond van Gouda
   title: ''
   year: 1698
   institution: Koninklijke Bibliotheek
@@ -520,7 +520,7 @@
     url: https://www.goudatijdmachine.nl/omeka/iiif/3/17781/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=425
-- label: ''
+- label: Plattegrond van Mallegatsluis en directe omgeving
   title: Plattegrond van Mallegatsluis en directe omgeving
   year: 1700
   institution: Streekarchief Midden-Holland
@@ -547,7 +547,7 @@
     url: https://images.memorix.nl/sahm/iiif/9e37ce39-d27e-b833-7752-ff987156fd54/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=356
-- label: Gouda
+- label: Plattegrond van de stad Gouda binnen de singels
   title: Plattegrond van de stad Gouda binnen de singels, ca. 1700.
   year: 1700
   institution: Streekarchief Midden-Holland
@@ -556,7 +556,7 @@
     url: https://images.memorix.nl/sahm/iiif/5caa5402-643c-4771-305e-5f201e5a9161/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=407
-- label: Gouda
+- label: Plattegrond van de stad Gouda binnen de singels
   title: Plattegrond van de stad Gouda binnen de singels (planimetrisch), ca. 1710.
   year: 1710
   institution: Streekarchief Midden-Holland
@@ -583,7 +583,7 @@
     url: https://images.memorix.nl/sahm/iiif/3c727fa5-69bf-2216-7b06-203ea60951e1/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=182
-- label: Plan de la Ville de Gouda - Platte Gront van de Stad Gouda
+- label: Plattegrond van Gouda
   title: Plattegrond van de stad Gouda, met weergave "in aanzicht" van de belangrijkste gebouwen en weergave van de buiten de stad gelegen tuinen
   year: 1740
   institution: Streekarchief Midden-Holland
@@ -592,7 +592,7 @@
     url: https://images.memorix.nl/sahm/iiif/07972934-4e35-1dcf-6e68-177da4dc145f/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=332
-- label: Plan de la Ville de Gouda - Platte Gront van de Stad Gouda
+- label: Plattegrond van Gouda
   title: Plattegrond van de stad Gouda, met weergave "in aanzicht" van de belangrijkste gebouwen en weergave van de buiten de stad gelegen tuinen
   year: 1740
   institution: Streekarchief Midden-Holland
@@ -601,7 +601,7 @@
     url: https://images.memorix.nl/sahm/iiif/c3c01ba3-5fdf-6fb6-364b-76a18d236f6a/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=372
-- label: ''
+- label: Kaart van het grootste deel van Rijnland en een stukje Schieland
   title: Kaart van het grootste deel van Rijnland en een stukje Schieland. Rechts van het midden ligt Gouda.
   year: 1740
   institution: Streekarchief Midden-Holland
@@ -610,7 +610,7 @@
     url: https://images.memorix.nl/sahm/iiif/b0345aef-aab4-874e-9643-5018311825ac/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=379
-- label: Platte gront van de stad Gouda
+- label: Plattegrond van Gouda
   title: 'Cote VDM: "Hollande Merid. nÂ°30" (ms.)'
   year: 1740
   institution: Rijksdienst voor het Cultureel Erfgoed
@@ -655,7 +655,7 @@
     url: https://www.goudatijdmachine.nl/omeka/iiif/3/154/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=431
-- label: ''
+- label: Kaart van Rijnland
   title: Kaart van Rijnland 11e en 12e blad
   year: 1746
   institution: Streekarchief Midden-Holland
@@ -664,7 +664,7 @@
     url: https://images.memorix.nl/sahm/iiif/ddd1424a-d57c-ad94-fb5d-e4f966c4e764/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=401
-- label: Gouda
+- label: Plattegrond van de stad Gouda binnen de singels
   title: Plattegrond van de stad Gouda binnen de singels, ca. 1750.
   year: 1750
   institution: Streekarchief Midden-Holland
@@ -673,7 +673,7 @@
     url: https://images.memorix.nl/sahm/iiif/fcaa7e5f-02d1-2008-7c00-53dfa2e7a22d/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=329
-- label: Nieuwe kaart van Schieland
+- label: Kaart van Schieland, tussen Schiedam, Gouda, Delft, Capelle aan den IJssel
   title: Kaart van Schieland, tussen Schiedam, Gouda, Delft, Capelle aan den IJssel. ca. 1750
   year: 1750
   institution: Streekarchief Midden-Holland
@@ -682,7 +682,7 @@
     url: https://images.memorix.nl/sahm/iiif/eefc734a-0825-46a7-5d72-daee19f802e5/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=366
-- label: Plan de la Ville de Gouda. Platte Gront van de Stad Gouda.
+- label: Plattegrond van Gouda
   title: Plattegrond van Gouda
   year: 1750
   institution: Streekarchief Midden-Holland
@@ -691,7 +691,7 @@
     url: https://images.memorix.nl/sahm/iiif/98014e73-f51a-137c-450c-8f785580d9c3/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=404
-- label: Plattegrond van de Gasthuiskapel (Waalse Kerk).
+- label: Plattegrond van de Gasthuiskapel (Waalse Kerk)
   title: Plattegrond van de Gasthuiskapel (Waalse kerk), ca. 1772.
   year: 1772
   institution: Streekarchief Midden-Holland
@@ -700,7 +700,7 @@
     url: https://images.memorix.nl/sahm/iiif/bd6e58db-d83b-1dd2-24ef-56a1a04a80a9/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=65
-- label: Conceptkaart ter Droogmaking van de Groote Plass 13 october 1779.
+- label: Conceptkaart ter Droogmaking van de Groote Plass (Zuidplas)
   title: Zuidplas, plan voor droogmaking
   year: 1779
   institution: Streekarchief Midden-Holland
@@ -709,7 +709,7 @@
     url: https://images.memorix.nl/sahm/iiif/18346119-d944-a9f1-bc4b-a2db613d3e42/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=178
-- label: La Ville de Tergou
+- label: Plattegrond van Gouda
   title: Plattegrond van Gouda
   year: 1786
   institution: Streekarchief Midden-Holland
@@ -718,7 +718,7 @@
     url: https://images.memorix.nl/sahm/iiif/2ae807d3-93b8-d598-6bbe-f10690fc6ca4/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=95
-- label: Gouda 1806
+- label: Kaart van de binnenstad van Gouda
   title: Kaart van de binnenstad van Gouda, begrensd door Kattensingel, Kleiweg, Gouwe en Markt. Op de kaart zijn grachten, zijlen, kookers en rejoolen aangegeven.
   year: 1806
   institution: Streekarchief Midden-Holland
@@ -781,7 +781,7 @@
     url: https://www.goudatijdmachine.nl/omeka/iiif/3/10/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=449
-- label: 'KAART van de Gemeente van GOUDA: bevattende de voormalige Gemeentens van GOUDA, BLOEMENDAAL, BROEK-THUIL en T WEEGJE in BROEKHUISEN ...'
+- label: Kaart van de Gemeente van Gouda
   title: Gebied begrensd door Gouwe, scheiding polder Bloemendaal met Vereenigde Polder aan de Oostzijde van de Gouwe (Randenburg), Middelburgse Weg, Omloopwetering, Breevaart en verlengde ervan, Hollandsche IJssel, ongeveer de Ringvaart van de Zuidplaspolder, bij
   year: 1812
   institution: Streekarchief Midden-Holland
@@ -799,7 +799,7 @@
     url: https://images.memorix.nl/sahm/iiif/40643a04-ec09-8435-e41e-11811b1d1006/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=64
-- label: ''
+- label: Kaart van de Gemeente Gouda
   title: Kaart van de Gemeente Gouda bevattende de voormalige gemeenten van Gouda, Bloemendaal, Broek, Thuil, 't Weegje en Broekhuisen.
   year: 1816
   institution: Streekarchief Midden-Holland
@@ -808,43 +808,43 @@
     url: https://images.memorix.nl/sahm/iiif/899652eb-1364-d855-2a52-805c73212741/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=88
-- label: De stad van der Goude voor de versterking in het jaar 1270
+- label: De stad van der Goude voor de versterking
   title: Schetsmatige plattegrond (reconstructie) van de stad Gouda met naaste omgeving, ca. 1816.
-  year: 1816
+  year: 1270
   institution: Streekarchief Midden-Holland
   url: https://samh.nl/bronnen/beeldbank/detail/003e7fd0-8bc7-376e-1e61-61f56089c6b2/media/1e3c73bf-bd80-131f-d871-c01fe45c8ea5
   iiif:
     url: https://images.memorix.nl/sahm/iiif/1e3c73bf-bd80-131f-d871-c01fe45c8ea5/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=298
-- label: Ter Goude, voor de omwalling in 1270
+- label: Ter Goude, voor de omwalling volgens C.J. de Lange van Wijngaarden
   title: Plattegrond van Gouda, zoals C.J. de Lange van Wijngaarden dacht dat de stad er rond 1270 uitzag. ca. 1816.
-  year: 1816
+  year: 1270
   institution: Streekarchief Midden-Holland
   url: https://samh.nl/bronnen/beeldbank/detail/2725d3ec-1e46-4733-b567-48fc882b8399/media/6922ed09-299a-5407-2737-87e3d1ac9306
   iiif:
     url: https://images.memorix.nl/sahm/iiif/6922ed09-299a-5407-2737-87e3d1ac9306/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=322
-- label: Ter Goude, voor de omwalling in 1270
+- label: Ter Goude, voor de omwalling volgens C.J. de Lange van Wijngaarden
   title: Plattegrond van Gouda, zoals C.J. de Lange van Wijngaarden dacht dat de stad er rond 1270 uitzag. ca. 1816.
-  year: 1816
+  year: 1270
   institution: Streekarchief Midden-Holland
   url: https://samh.nl/bronnen/beeldbank/detail/2725d3ec-1e46-4733-b567-48fc882b8399/media/32cf987c-4239-c344-c262-67b36ad2128b
   iiif:
     url: https://images.memorix.nl/sahm/iiif/32cf987c-4239-c344-c262-67b36ad2128b/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=323
-- label: ter Goude. Voor de omwalling in 1270.
+- label: Ter Goude, voor de omwalling
   title: Plattegrond van Gouda
-  year: 1817
+  year: 1270
   institution: Streekarchief Midden-Holland
   url: https://samh.nl/bronnen/beeldbank/detail/b354a7a9-4401-7885-e091-7c0cbc5a1565/media/2094efd4-d806-ca33-651f-e74b5412a52d
   iiif:
     url: https://images.memorix.nl/sahm/iiif/2094efd4-d806-ca33-651f-e74b5412a52d/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=384
-- label: Gemeente Gouda in 5 sectien. Sectie A in 3 bladen, genaamd de Cingels. Blad 2 van no. 268 tot 643.
+- label: Kadastrale kaart van sectie A 2
   title: 'Kadastrale kaart van sectie A 2, 1828. Begrensd door: N.: Oude Goudse Watering (= Graaf Florisweg), O.: Breevaart, Z.: Karnemelksloot, W.: Blekerssingel, Spoorstraat.'
   year: 1828
   institution: Streekarchief Midden-Holland
@@ -853,7 +853,7 @@
     url: https://images.memorix.nl/sahm/iiif/fe443da7-9d25-e81d-3d68-8f43c683ab6b/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=7
-- label: Gemeente Gouda in 5 SectiÃ«n. Sectie E in 2 bladen genaamd de Korte Akkers. Blad 1 van No.1 tot 454.
+- label: Kadastrale kaart van sectie E 1
   title: 'Kadastrale kaart van sectie E 1, 1828. Begrensd door: - ten N.: Kromme Gouwe, - ten O.: Turfsingel, - ten Z.: Solonskade (ten onrechte ook wel Tollenskade genoemd) (= Oude Kerkhoflaan, in 1917 opgenomen in het terrein van de Kaarsenfabriek), - ten W.: Rui'
   year: 1828
   institution: Streekarchief Midden-Holland
@@ -862,7 +862,7 @@
     url: https://images.memorix.nl/sahm/iiif/8c21c140-f1a9-1603-4aee-4002e235523c/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=32
-- label: Gemeente Gouda in 5 sectiÃ«n. Sectie E in 2 bladen genaamd de Korte Akkers. Blad 2 van No 455 tot 549
+- label: Kadastrale kaart van sectie E 2
   title: 'Kadastrale kaart van sectie E 2, 1828. Begrensd door: - ten N.: Solonskade, - ten Z.: Hollandsche IJssel, - ten O.: Turfsingel, - ten W.: Ruige Watering (= Emmastraat, Const. Huygensstraat).'
   year: 1828
   institution: Streekarchief Midden-Holland
@@ -871,7 +871,7 @@
     url: https://images.memorix.nl/sahm/iiif/28433468-5f9b-752c-ac3f-34effcb2f236/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=41
-- label: Gemeente Gouda in 5 sectien. Sectie A in 3 bladen, genaamd de Cingels. Blad 1 van no. 1 tot 267.
+- label: Kadastrale kaart van sectie A 1
   title: 'Kadastrale kaart van sectie A 1, 1828. Begrensd door: N.: Jan Verzwollewetering, O.: Kleiweg, Z.: Kattensingel, W.: Kromme Gouwe.'
   year: 1828
   institution: Streekarchief Midden-Holland
@@ -880,7 +880,7 @@
     url: https://images.memorix.nl/sahm/iiif/f24ebd64-c52e-ab6c-7013-e0acf539fb0b/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=55
-- label: Gemeente Gouda in 5 SectiÃ«n. Sectie B in Ã©Ã©n blad genaamd Stads-erf van No 1 tot 1032.
+- label: Kadastrale kaart van sectie B
   title: 'Kadastrale kaart van sectie B, 1828. Begrensd door: - ten N.: Kattensingel, - ten O.: Kleiweg, Hoogstraat, Markt en Wijdstraat, - ten Z.en W.: de Gouwe.'
   year: 1828
   institution: Streekarchief Midden-Holland
@@ -889,7 +889,7 @@
     url: https://images.memorix.nl/sahm/iiif/be13fc53-13c2-4acd-116d-f5975d610115/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=61
-- label: Gemeente Gouda in 5 sectiÃ«n. Sectie A in 3 bladen, genaamd de Cingels. Blad 3 van No.644 tot 821
+- label: Kadastrale kaart van sectie A 3
   title: 'Kadastrale kaart van sectie A 3, 1828. Begrensd door: ten N.: Brede Zeide (= Karnemelksloot), - ten O.: Breede Vaart (= Krugerlaan), - ten Z.: Hollandsche IJssel, - ten W.: Fluwelensingel.'
   year: 1828
   institution: Streekarchief Midden-Holland
@@ -898,7 +898,7 @@
     url: https://images.memorix.nl/sahm/iiif/0573db63-a362-8ece-456e-f9a696a49aac/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=74
-- label: Gemeente Gouda in 5 sectiÃ«n. Sectie C in Ã©Ã©n blad, genaamd de Markt van No. 1 tm 1294
+- label: Kadastrale kaart van sectie C
   title: 'Kadastrale kaart van sectie C, 1828. Begrensd door: - ten N. en ten W.: Blekerssingel en Fluwelensingel, - ten Z.: Hollandsche IJssel, - ten O.: de Haven, Wijdstraat, Markt, Kleiweg.'
   year: 1828
   institution: Streekarchief Midden-Holland
@@ -907,7 +907,7 @@
     url: https://images.memorix.nl/sahm/iiif/1dd3f774-a4a2-7bff-9f7e-d078a23d848e/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=179
-- label: Gemeente Gouda in 5 sectiÃ«n. Sectie D in 1 blad genaamd het Proveniershuis. Blad 1 van No 1 tot 1020
+- label: Kadastrale kaart van sectie D
   title: 'Kadastrale kaart van sectie D, 1828. Begrensd door: - ten N.en O.: de Gouwe en de Haven, - ten Z.: Hollandsche IJssel, - ten W.: Turfsingel.'
   year: 1828
   institution: Streekarchief Midden-Holland
@@ -925,7 +925,7 @@
     url: https://www.goudatijdmachine.nl/omeka/iiif/3/382/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=427
-- label: Platte-grond der stad Gouda
+- label: Plattegrond Gouda tijdens de Cholera in 1832
   title: '[tijdens de Cholera in 1832]'
   year: 1832
   institution: Universiteitsbibliotheek Leiden
@@ -934,7 +934,7 @@
     url: https://www.goudatijdmachine.nl/omeka/iiif/3/66282/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=453
-- label: Plan van de Breede vaart volgens de kadastrale plans van de Gemeenten Gouda, Stein, Broek e.a., Sluipwijk en Reeuwijk overgebragt op de Schaal van 1 Ã  5000.
+- label: Plan van de Breede vaart volgens de kadastrale plans
   title: Kadastrale kaart, vervaardigd op verzoek van Burgemeester en Wethouders der stad Gouda d.d. 18 augustus 1837.
   year: 1837
   institution: Streekarchief Midden-Holland
@@ -943,7 +943,7 @@
     url: https://images.memorix.nl/sahm/iiif/ce9eb83e-111a-1fbd-ccff-ba6e020479db/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=82
-- label: Kaart van Gouda.
+- label: Kaart van Gouda
   title: Kaart van Gouda
   year: 1840
   institution: Streekarchief Midden-Holland
@@ -952,7 +952,7 @@
     url: https://images.memorix.nl/sahm/iiif/ea8f0c8f-cdbd-7e5c-1b4d-3126cf8d3949/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=139
-- label: Kaart van Gouda 1847
+- label: Kaart van Gouda
   title: 'Kaart van Gouda 1847. Links onder: Straten en Wegen. Rechts boven: Openbare Gebouwen.'
   year: 1847
   institution: Streekarchief Midden-Holland
@@ -961,7 +961,7 @@
     url: https://images.memorix.nl/sahm/iiif/40120356-a9ec-d812-84b3-e7b6137d88a6/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=470
-- label: Gemeente Gouda Sectie D. Grond Prince. Perceel liggend tussen Raam, Houtensteeg en Vest.
+- label: Gemeente Gouda Sectie D
   title: Panden tussen Raam, Houtenstraat en Vest
   year: 1850
   institution: Streekarchief Midden-Holland
@@ -970,7 +970,7 @@
     url: https://images.memorix.nl/sahm/iiif/d1bafb34-23f1-5105-0ec8-55ae01541142/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=324
-- label: Gemeente Gouda Sectie D. Grond Prince. Perceel liggend tussen Raam, Houtensteeg en Vest.
+- label: Gemeente Gouda Sectie D
   title: Panden tussen Raam, Houtenstraat en Vest
   year: 1850
   institution: Streekarchief Midden-Holland
@@ -979,7 +979,7 @@
     url: https://images.memorix.nl/sahm/iiif/5beed936-8e75-0a9d-5a80-561e85d339b4/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=403
-- label: 'Kaart van de rivier de Hollandsche Ijssel van Gouda tot IJsselmonde : in drie bladen (1859/1860)'
+- label: 'Kaart van de rivier de Hollandsche Ijssel van Gouda tot IJsselmonde'
   title: "op last van Zijne Excellentie den Minister van Binnenlandsche Zaken, onder directie van den Hoofd-Inspecteur van den Waterstaat L.J.A. van der Kun ; opgemeten en vervaardigd door de landmeters bij de Algemeene dienst van den Waterstaat E. Olivier Dz. En J. Leijds. - [Delft : Algemeene Dienst van den Waterstaat, 1859-1860] (Delft : Topographisch Bureau en Drukkerij van het Departement van Oorlog). â\x80\x93 1 kaartserie in 3 bladen, in kleur : lithografie ; diverse formaten."
   year: 1859
   institution: Rijksdienst voor het Cultureel Erfgoed
@@ -988,7 +988,7 @@
     url: https://www.goudatijdmachine.nl/omeka/iiif/3/416/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=435
-- label: Gemeente-Atlas van Nederland naar officieele bronnen bewerkt, Gouda (1865-1870)
+- label: Gemeente-Atlas van Nederland naar officieele bronnen bewerkt, Gouda
   title: ''
   year: 1865
   institution: Nationaal Archief
@@ -997,7 +997,7 @@
     url: https://www.goudatijdmachine.nl/omeka/iiif/3/14/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=421
-- label: Provincie Zuid-Holland. Gemeente Broek.
+- label: Provincie Zuid-Holland, gemeente Broek
   title: Kaart van het grondgebied van de gemeente Broek c.a., begrensd door de gemeenten N.-Waddinxveen, Reeuwijk,Sluipwijk, Gouderak, Moordrecht en Z.-Waddinxveen, 1866.
   year: 1866
   institution: Streekarchief Midden-Holland
@@ -1006,7 +1006,7 @@
     url: https://images.memorix.nl/sahm/iiif/7e7ffbc1-74eb-e260-c349-3f199d707682/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=310
-- label: Gemeente-Atlas van Nederland. Provincie Zuid Holland. Gemeente Gouda. (No 2 Stad.)
+- label: Gemeente-Atlas van Nederland, provincie Zuid Holland, gemeente Gouda
   title: Binnenstad Gouda
   year: 1867
   institution: Streekarchief Midden-Holland
@@ -1015,7 +1015,7 @@
     url: https://images.memorix.nl/sahm/iiif/0e80470b-4bba-18ef-b6f0-8cdb5207404f/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=84
-- label: Gemeente-Atlas van Nederland. Provincie Zuid Holland. Gemeente Gouda. (No 2 Stad.)
+- label: Gemeente-Atlas van Nederland, provincie Zuid Holland, gemeente Gouda
   title: Binnenstad Gouda
   year: 1867
   institution: Streekarchief Midden-Holland
@@ -1024,7 +1024,7 @@
     url: https://images.memorix.nl/sahm/iiif/59313109-fa8e-e34f-a8da-2b058be29fd6/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=85
-- label: Provincie Zuid-Holland. Gemeente Broek.
+- label: Provincie Zuid-Holland, gemeente Broek
   title: Kaart van het grondgebied van de gemeente Broek c.a., begrensd door de gemeenten N.-Waddinxveen, Reeuwijk,Sluipwijk, Gouderak, Moordrecht en Z.-Waddinxveen, 1867.
   year: 1867
   institution: Streekarchief Midden-Holland
@@ -1033,7 +1033,7 @@
     url: https://images.memorix.nl/sahm/iiif/6b74efd8-3b58-5379-2a26-808b0ad517b9/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=115
-- label: Provincie Zuid Holland. Gemeente Gouda.
+- label: Provincie Zuid Holland, gemeente Gouda
   title: Gouda en omliggend gebied
   year: 1867
   institution: Streekarchief Midden-Holland
@@ -1060,7 +1060,7 @@
     url: https://images.memorix.nl/sahm/iiif/d95f56c4-a9d3-9ce9-cef3-1e5d3403da20/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=133
-- label: Gemeente Gouda, Sectie B, genaamd Stadserf.
+- label: Gemeente Gouda, Sectie B, genaamd Stadserf
   title: Behoort bij het verslag der riolen gemaakt gedurende 1868 en 1869. De gemeente Bouwmeester L. van Burgersdijk.
   year: 1868
   institution: Streekarchief Midden-Holland
@@ -1069,7 +1069,7 @@
     url: https://images.memorix.nl/sahm/iiif/d74a62f8-51f7-6294-f32c-dfa09075c177/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=305
-- label: 'Gemeente Stein Sectie B in 2 bladen thans Gouda Sectie K in twee bladen genaamd Altena Blad 2 van N: 194 tot 554 en van 840 tot 1151'
+- label: Kadastrale kaart van sectie K 2
   title: 'Kadastrale kaart van sectie K 2, ca. 1870. Begrensd door: - ten N.: Platteweg, - ten Z.: Hollandsche IJssel, - ten O.: Scharroosingel en verlengde, - ten W.: Breevaart (o.a. huidige Krugerlaan).'
   year: 1870
   institution: Streekarchief Midden-Holland
@@ -1096,7 +1096,7 @@
     url: https://images.memorix.nl/sahm/iiif/ec00c716-ee1b-5d0b-65ff-af2caaabd719/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=22
-- label: Gemeente Gouda, Sectie B, genaamd Stadserf.
+- label: Gemeente Gouda, Sectie B, genaamd Stadserf
   title: Behoort bij verslag der riolen gemaakt in 1870. De gemeente Bouwmeester L. van Burgersdijk.
   year: 1870
   institution: Streekarchief Midden-Holland
@@ -1114,7 +1114,7 @@
     url: https://images.memorix.nl/sahm/iiif/1a450cec-425d-4648-cec7-f9ebf107057f/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=33
-- label: Gemeente Gouda voorheen Broek in tien SectiÃ«n in vijftien bladen.
+- label: Kadastrale kaart van sectie G
   title: 'Kadastrale kaart van sectie G (= G 1 ?), ca. 1870. Begrensd door: ten N.: spoorlijn, ten O.: Winterdijk, ten Z.: Jan Verzwollewetering (= Korte Gouwe), ten W.: Kromme Gouwe.'
   year: 1870
   institution: Streekarchief Midden-Holland
@@ -1123,7 +1123,7 @@
     url: https://images.memorix.nl/sahm/iiif/c9fb54b0-faa9-4f9d-711e-030148a367cf/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=48
-- label: Gemeente Gouda voorheen Broek in tien SectiÃ«n in vijftien bladen. Sectie I in Ã©Ã©n blad.
+- label: Kadastrale kaart van sectie I
   title: 'Kadastrale kaart van sectie I, ca. 1870. Begrensd door: - ten N.: Omlooppad, - ten Z.: Oude Gouwe (= Graaf Florisweg), - ten O.: Breevaart, - ten W.: Draafpad (= Ridder van Catsweg).'
   year: 1870
   institution: Streekarchief Midden-Holland
@@ -1132,7 +1132,7 @@
     url: https://images.memorix.nl/sahm/iiif/057e542e-7e3b-600a-2ac8-c7c56690d275/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=80
-- label: Gemeente Broek, Sectie D in 3 bladen, genaamd Broek ...
+- label: Kadastrale kaart van sectie F 1
   title: "Kadastrale kaart van sectie F 1, ca. 1870. Begrensd door: - ten N.en ten O.: de Gouwe, -  ten Z.: Moordrechtse Tiendweg (tot ca. 150 m ten W. van de Ringvaart), - ten W.: evenwijdig aan de Ringvaart tot Oude Alpher Watering ('t Weegje inbegrepen) en Oude"
   year: 1870
   institution: Streekarchief Midden-Holland
@@ -1141,7 +1141,7 @@
     url: https://images.memorix.nl/sahm/iiif/73ed33a9-dcc1-b68c-9198-99aa53cf99b8/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=97
-- label: Gemeente Gouda
+- label: Schetsmatig overzicht van bebouwing en waterlopen
   title: Schetsmatig overzicht van bebouwing en waterlopen
   year: 1870
   institution: Streekarchief Midden-Holland
@@ -1150,7 +1150,7 @@
     url: https://images.memorix.nl/sahm/iiif/c727e1ac-f4fd-5369-8b0f-c7d6c501c053/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=102
-- label: Gemeente Stein Sectie B in 2 bladen thans Gouda ... K ... genaamd Altena. Blad 1 van n 1 tot 193 - Van 555 tot 839 en van 1152 tot 1201 laatste.
+- label: Kadastrale kaart van sectie K 1
   title: 'Kadastrale kaart van sectie K 1, ca. 1870. Begrensd door: - ten N.: Platteweg en verlengde tot scheiding Kalverbroek / Nieuwenbroek, lijn door Kalverbroek evenwijdig aan de afscheiding met Vrijhoef (op 200 m), Twaalfmorgen en Willens, - ten O.: Voorwillen'
   year: 1870
   institution: Streekarchief Midden-Holland
@@ -1159,7 +1159,7 @@
     url: https://images.memorix.nl/sahm/iiif/07d9a55a-c463-a22b-39a4-1471eb2f42b2/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=120
-- label: Gemeente Gouda.
+- label: Kaart van gedeelte van Gouda
   title: Kaart van gedeelte van Gouda, begrensd door Markt, Ridder van Catsweg, Graaf Florisweg, Breevaart en Karnemelksloot.
   year: 1870
   institution: Streekarchief Midden-Holland
@@ -1168,7 +1168,7 @@
     url: https://images.memorix.nl/sahm/iiif/4ee46e31-e530-acb9-d866-4daa94a18a89/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=122
-- label: Gemeente Gouda.
+- label: Kaart van gedeelte van Gouda
   title: Kaart van gedeelte van Gouda, begrensd door Winterdijk, Crabethstraat, Station, Groenendaal / Naaierstraat, Onder de Boompjes. In rood aangegeven het ontwerp-tracÃ© voor de Nieuwe Gouwe nabij het Bolwerk.
   year: 1870
   institution: Streekarchief Midden-Holland
@@ -1195,7 +1195,7 @@
     url: https://images.memorix.nl/sahm/iiif/a605c7ae-3487-be69-6daf-a1ec199ba9bd/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=141
-- label: Gemeente Gouda voorheen Broek in tien SectiÃ«n in vijftien bladen. Sectie H in Ã©Ã©n blad. Gouda H Blad 1 bijblad (later doorgestreept).
+- label: Kadastrale kaart van sectie H
   title: 'Kadastrale kaart van sectie H, ca. 1870. Begrensd door: - ten N.: BÃ¼chnerweg en verlengde ervan tot aan de Winterdijk, - ten O.: Draafpad (= Ridder van Catsweg), - ten Z.: Jan Verzwolle Wetering, - ten W.: Winterdijk.'
   year: 1870
   institution: Streekarchief Midden-Holland
@@ -1213,7 +1213,7 @@
     url: https://images.memorix.nl/sahm/iiif/e38167f1-c4b1-8da1-cfe4-1713901965d6/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=153
-- label: Gemeente Broek Sectie D in 3 bladen genaamd Broek. Blad 3.
+- label: Kadastrale kaart van sectie F 2
   title: 'Kadastrale kaart van sectie F 2, ca. 1870. Begrensd door: - ten N. en ten O.: Tweede Moordrechtse Tiendweg, Watering (= Leeuwerikstraat, Emmastraat, Const. Huygensstraat, Schielands Hoge Zeedijk en het verlengde van de Van der Palmstraat tot aan de IJssel'
   year: 1870
   institution: Streekarchief Midden-Holland
@@ -1222,7 +1222,7 @@
     url: https://images.memorix.nl/sahm/iiif/3ba525ac-ec66-d2ff-8a5e-90eabc7d5848/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=168
-- label: Gemeente Gouda. Sectie E in 2 bladen. 2e blad.
+- label: Kadastrale kaarten van het gebied van Sectie E
   title: 'Kadastrale kaarten van het gebied van Sectie E, ca. 1870 - 1893. Begrensd door: - Turfsingel (-sgracht) - IJssel - Ruige Watering (= Const. Huygensstraat) - Roemer Visscherstraat - Solonskade (= oude Kerkhoflaan ?).'
   year: 1870
   institution: Streekarchief Midden-Holland
@@ -1231,7 +1231,7 @@
     url: https://images.memorix.nl/sahm/iiif/84d0c484-d95d-c752-1d59-0ec7c91bba09/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=177
-- label: Gem.te Gouda sectie B genaamd Stads Erf. Blad No 2.
+- label: Gemeentte Gouda sectie B genaamd Stads Erf, blad No 2
   title: Plattegrond vervaardigd in verband met de aanleg van riolering, Gebied begrensd door Turfmarktgracht, Hoogstraat, Markt, Gouwe. 1870.
   year: 1870
   institution: Streekarchief Midden-Holland
@@ -1240,7 +1240,7 @@
     url: https://images.memorix.nl/sahm/iiif/d8e59a8f-378e-136c-9324-a36d8dbf046b/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=411
-- label: Gem.te Gouda sectie C genaamd De Markt. Blad No 4.
+- label: Gemeente Gouda sectie C genaamd De Markt, blad No 4
   title: Plattegrond vervaardigd in verband met de aanleg van riolering, Gebied begrensd door Blekerssingelgracht, Tiendeweg, Zeugstraat, St.-Anthoniestraat, Kleiweg. 1871 - 1873.
   year: 1871
   institution: Streekarchief Midden-Holland
@@ -1249,7 +1249,7 @@
     url: https://images.memorix.nl/sahm/iiif/04adadd1-736f-2e5f-3c32-43e86ea05573/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=17
-- label: Gemeente Gouda, Sectie C, genaamd De Markt.
+- label: Gemeente Gouda, Sectie C, genaamd De Markt
   title: Behoort bij de verslagen der riolen gemaakt in 1871, 1872 en 1873. De Gemeente Bouwmeester L. van Burgersdijk.
   year: 1871
   institution: Streekarchief Midden-Holland
@@ -1258,7 +1258,7 @@
     url: https://images.memorix.nl/sahm/iiif/48bd4310-615d-2bad-a93e-22a919a82f29/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=93
-- label: Gem.te Gouda sectie C genaamd De Markt. Blad No 3.
+- label: Gemeente Gouda sectie C genaamd De Markt, blad No 3
   title: Plattegrond vervaardigd in verband met de aanleg van riolering, Gebied begrensd door St.- Anthoniestraat, Zeugstraat, Molenwerf, Oosthaven, Dubbele Buurt, Wijdstraat, Markt, Hoogstraat. 1871.
   year: 1871
   institution: Streekarchief Midden-Holland
@@ -1267,7 +1267,7 @@
     url: https://images.memorix.nl/sahm/iiif/df233926-be6a-a51b-430d-a08e2a392c01/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=391
-- label: Gem.te Gouda sectie C genaamd De Markt. Blad No 5.
+- label: Gemeente Gouda sectie C genaamd De Markt, blad No 5
   title: Plattegrond vervaardigd in verband met de aanleg van riolering, Gebied begrensd door Molenwerf, Kerkhof, Lange Tiendeweg, Fluweelensingelgracht, IJssel, Haven. 1873.
   year: 1873
   institution: Streekarchief Midden-Holland
@@ -1276,7 +1276,7 @@
     url: https://images.memorix.nl/sahm/iiif/71c52c91-4dec-6d07-4b27-e03e37e3dd1a/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=150
-- label: Gem.te Gouda sectie D genaamd de Raam
+- label: Gemeente Gouda sectie D genaamd de Raam
   title: Plattegrond vervaardigd in verband met de aanleg van riolering, Gebied begrensd door de Gouwe, Lange Willemsteeg, Drapiersteeg en Turfsingelgracht. 1874, 1875.
   year: 1874
   institution: Streekarchief Midden-Holland
@@ -1285,7 +1285,7 @@
     url: https://images.memorix.nl/sahm/iiif/d97413e5-bd25-aa24-5b96-38e5c8dde4f1/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=14
-- label: Gemeente Gouda, Sectie C, genaamd De Markt.
+- label: Gemeente Gouda, Sectie C, genaamd De Markt
   title: Behoort bij het verslag der riolen gemaakt in 1874, 1875, 1881 en 1878. De Gemeente Bouwmeester L. van Burgersdijk.
   year: 1874
   institution: Streekarchief Midden-Holland
@@ -1303,7 +1303,7 @@
     url: https://images.memorix.nl/sahm/iiif/abca30a9-f31c-8884-e1d0-edd5cc8f7052/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=418
-- label: Gem.te Gouda sectie E
+- label: Gemeente Gouda sectie E
   title: Plattegrond vervaardigd in verband met de aanleg van riolering,  Gebied begrensd door Turfsingelgracht, Kerkhoflaan, algemene begraafplaats, Bosweg met aanliggende percelen, en verlengde ervan, Snoystraat. ca. 1875 - 1880.
   year: 1875
   institution: Streekarchief Midden-Holland
@@ -1312,7 +1312,7 @@
     url: https://images.memorix.nl/sahm/iiif/70ddd026-7f99-5f4c-b6c3-f2d41002f16f/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=54
-- label: Gemeente Gouda.
+- label: Gemeente Gouda
   title: Kaart van gedeelte van Gouda, begrensd door Winterdijk, Crabethstraat, Station, Groenendaal / Naaierstraat, Onder de Boompjes. Hier is de aansluiting van de Nieuwe Gouwe nabij het Bolwerk ingetekend.
   year: 1875
   institution: Streekarchief Midden-Holland
@@ -1321,7 +1321,7 @@
     url: https://images.memorix.nl/sahm/iiif/cb01a30d-13e8-6ceb-3dfb-55d592f0a03c/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=56
-- label: Gemeente Gouda, Sectie D, genaamd De Raam.
+- label: Gemeente Gouda, Sectie D, genaamd De Raam
   title: Behoort bij de verslagen der riolen gemaakt in 1875, 1876, 1880 en 1881. De Gemeente Bouwmeester L. van Burgersdijk.
   year: 1875
   institution: Streekarchief Midden-Holland
@@ -1330,7 +1330,7 @@
     url: https://images.memorix.nl/sahm/iiif/db77a75a-d12f-f58c-5ee8-2bef4868f3ed/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=166
-- label: Gemeente Gouda. Marktplein.
+- label: Gemeente Gouda, Marktplein
   title: Situatietekening van de riolering van de Markt, ca. 1875.
   year: 1875
   institution: Streekarchief Midden-Holland
@@ -1348,7 +1348,7 @@
     url: https://images.memorix.nl/sahm/iiif/d592613e-d925-960d-d699-b4a3a0b4340d/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=378
-- label: Gemeente Gouda, Sectie C, genaamd De Markt.
+- label: Gemeente Gouda, Sectie C, genaamd De Markt
   title: Behoort bij het verslag der riolen gemaakt in 1876. De Gemeente Bouwmeester L. van Burgersdijk.
   year: 1876
   institution: Streekarchief Midden-Holland
@@ -1357,7 +1357,7 @@
     url: https://images.memorix.nl/sahm/iiif/2ab56942-5a67-8368-66ed-bb7ee3b0d42e/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=86
-- label: Gem.te Gouda sectie D genaamd De Raam
+- label: Gemeente Gouda sectie D genaamd De Raam
   title: Plattegrond vervaardigd in verband met de aanleg van riolering, Gebied begrensd door de Haven, IJssel, Turfsingelgracht, Drapiersteeg, Lange Willemsteeg, Gouwe. 1876, 1877.
   year: 1876
   institution: Streekarchief Midden-Holland
@@ -1366,7 +1366,7 @@
     url: https://images.memorix.nl/sahm/iiif/4d31f718-c8b1-fe32-803c-8a29eb460204/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=162
-- label: Gemeente Gouda, Sectie D, genaamd De Raam.
+- label: Gemeente Gouda, Sectie D, genaamd De Raam
   title: Behoort bij de verslagen der riolen gemaakt in 1877, 1878, 1880 en 1881. De Gemeente Bouwmeester L. van Burgersdijk.
   year: 1877
   institution: Streekarchief Midden-Holland
@@ -1375,7 +1375,7 @@
     url: https://images.memorix.nl/sahm/iiif/6031b625-3032-4d78-b88c-9096229bc1cd/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=46
-- label: Gouda. Waterleidingnet.
+- label: Waterleidingnet Gouda
   title: Kaart van Gouda met ingetekend de hoofdwaterleidingen
   year: 1877
   institution: Streekarchief Midden-Holland
@@ -1384,7 +1384,7 @@
     url: https://images.memorix.nl/sahm/iiif/18305eae-bdc1-cd84-e9c7-8191f55025ef/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=315
-- label: Bylage A
+- label: Projectie van mogelijke verbinding van Hollandsche IJssel
   title: Projectie van mogelijke verbinding van Hollandsche IJssel, via de Turfsingelgracht naar de Kromme Gouwe, met aanduiding van het begin van de latere "1e Coupure", 1878.
   year: 1878
   institution: Streekarchief Midden-Holland
@@ -1393,7 +1393,7 @@
     url: https://images.memorix.nl/sahm/iiif/5b0321b3-ff0e-cb19-cd66-f1a39668e266/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=321
-- label: Bylage B
+- label: Projectie van een mogelijke verbinding rechtstreeks tussen Hollandsche IJssel en Kromme Gouwe
   title: Op basis van de kadastrale kaart, projectie van een mogelijke verbinding rechtstreeks tussen Hollandsche IJssel en Kromme Gouwe, 1878.
   year: 1878
   institution: Streekarchief Midden-Holland
@@ -1402,7 +1402,7 @@
     url: https://images.memorix.nl/sahm/iiif/dbebe0db-9faa-3ef8-f69b-9e80128a37d0/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=399
-- label: Situatietekening van een gedeelte van de Zuidzijde der stad Gouda, waarop de gedane ontgravingen tot onderzoek naar een tunnel onder de Riv. Den IJssel met zwart zijn aangegeven.
+- label: Situatietekening van een gedeelte van de Zuidzijde der stad Gouda, waarop de gedane ontgravingen tot onderzoek naar een tunnel onder de Riv. Den IJssel met zwart zijn aangegeven
   title: Op deze kaart tevens "Platte grond van de ontgraven onderaardsche gang" en "Profiel tekening der bovengenoemde gang enz. Waarop de hoogten boven en de diepten beneden AP zijn aangegeven. (schaal 1:200)
   year: 1879
   institution: Streekarchief Midden-Holland
@@ -1411,7 +1411,7 @@
     url: https://images.memorix.nl/sahm/iiif/76d3d24a-b5b8-f34c-aaed-99c72a2f52fa/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=47
-- label: ''
+- label: Overzichtskaart van de Jan Verzwollewetering
   title: Overzichtskaart van de Jan Verzwollewetering, ca. 1900.
   year: 1880
   institution: Streekarchief Midden-Holland
@@ -1420,7 +1420,7 @@
     url: https://images.memorix.nl/sahm/iiif/1313ef72-7faf-c077-387c-035af36f0464/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=134
-- label: Gemeente Gouda Sectie-A
+- label: Gemeente Gouda Sectie A 2
   title: Deel van sectie A 2, in het noorden begrensd door Oude Gouwe, in het oosten door de r.k. begraafplaats en de Vierde Kade (= Bagijnekade), in het zuiden door de Karnemelksloot en in het westen door de Blekerssingelgracht, ca. 1886.
   year: 1886
   institution: Streekarchief Midden-Holland
@@ -1438,7 +1438,7 @@
     url: https://images.memorix.nl/sahm/iiif/d8a49517-f56c-84ca-fb0b-5b6b76adda66/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=341
-- label: Gemeente Gouda Sectie-E
+- label: Gemeente Gouda Sectie E
   title: Kadastrale kaart van sectie E, in het noorden begrensd door de Kromme Gouwe, in het oosten door de Turfsingel, in het zuiden door de Hollandsche IJssel en in het westen door de Ruige Watering (= Emmastraat en Constantijn Huygensstraat), ca. 1886.
   year: 1886
   institution: Streekarchief Midden-Holland
@@ -1447,7 +1447,7 @@
     url: https://images.memorix.nl/sahm/iiif/778db5a1-ebf3-1f16-2c5a-e075814d2d4d/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=373
-- label: Gemeente Gouda. Te dempen en te rioleren gedeelte van de Turfmarkt.
+- label: Gemeente Gouda, te dempen en te rioleren gedeelte van de Turfmarkt
   title: Te dempen en te rioleren gedeelte van de Turfmarkt met 12 dwarsprofielen (1 tm 12) en 3 lengteprofielen (A-B, C-D, E-F), 1882.
   year: 1886
   institution: Streekarchief Midden-Holland
@@ -1456,7 +1456,7 @@
     url: https://images.memorix.nl/sahm/iiif/9a0af340-50cf-02ed-d00d-1a4371ea03b2/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=402
-- label: Overzichtskaart van de binnenstad van Gouda, sectie B en C gedeeltelijk.
+- label: Overzichtskaart van de binnenstad van Gouda, sectie B en C gedeeltelijk
   title: Overzichtskaart van de binnenstad van Gouda, sectie B en C gedeeltelijk. In het noorden en oosten begrensd door Kattensingel en Blekerssingel, in het zuiden en westen door de Gouwe, 1882.
   year: 1886
   institution: Streekarchief Midden-Holland
@@ -1465,7 +1465,7 @@
     url: https://images.memorix.nl/sahm/iiif/6f0b3afe-6076-ec6d-e01c-e824c6173ed0/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=417
-- label: Kanaalrigting door Gouda
+- label: Kanaalrichting door Gouda
   title: Projectie van een mogelijke kanaalrichting door Gouda, afgebeeld op een overzichtskaartje van Gouda, ca. 1890.
   year: 1890
   institution: Streekarchief Midden-Holland
@@ -1474,7 +1474,7 @@
     url: https://images.memorix.nl/sahm/iiif/c16ff3be-9995-7981-962d-a9df99ea821f/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=57
-- label: Situatie. Gemeente Gouda. Sectie E.
+- label: Situatie gemeente Gouda, sectie E
   title: Kadastrale percelen in sectie E, begrensd door Turfsingelgracht, Gouwe, Prins Hendrikstraat en Moordrechts Verlaat, ca. 1890.
   year: 1890
   institution: Streekarchief Midden-Holland
@@ -1483,7 +1483,7 @@
     url: https://images.memorix.nl/sahm/iiif/1a16ab45-17fb-6892-fcb4-b2b97dbb154a/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=109
-- label: Kanaalrigting door Gouda
+- label: Kanaalrichting door Gouda
   title: Projectie van een mogelijke kanaalrichting door Gouda, afgebeeld op een overzichtskaartje van Gouda, ca. 1890.
   year: 1890
   institution: Streekarchief Midden-Holland
@@ -1492,7 +1492,7 @@
     url: https://images.memorix.nl/sahm/iiif/bdbd1973-56db-95dc-b2ee-0124ba64bc2a/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=125
-- label: Gemeente Gouda. Sectie D.
+- label: Gemeente Gouda, sectie D
   title: Situatietekening van de omgeving van het Proveniershuis in sectie D, hoek Gouwe en Rotterdamse Veer, ca. 1890.
   year: 1890
   institution: Streekarchief Midden-Holland
@@ -1501,7 +1501,7 @@
     url: https://images.memorix.nl/sahm/iiif/09a37d6a-30f4-5244-315e-dcc0eec8e84f/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=171
-- label: Gouda E in twee bladen, eerste blad.
+- label: Gouda E in twee bladen, eerste blad
   title: 'Kadastrale kaart van het gebied van sectie E. Begrensd door: - Kromme Gouwe - Turfsingel (-sgracht) - Ruyge Wetering - Alg.Begraafplaats.'
   year: 1890
   institution: Streekarchief Midden-Holland
@@ -1528,7 +1528,7 @@
     url: https://images.memorix.nl/sahm/iiif/9cce0fbd-a486-856a-a2b2-d2a714971b68/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=369
-- label: Gemeente Gouda. Sectie D.
+- label: Gemeente Gouda, sectie D
   title: Detail van de kadastrale kaart Gouda sectie D, van een gedeelte tussen de Raam en de Kuiperstraat, ca. 1892.
   year: 1892
   institution: Streekarchief Midden-Holland
@@ -1537,7 +1537,7 @@
     url: https://images.memorix.nl/sahm/iiif/faaae153-72f8-16d1-0276-e19abd48509b/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=44
-- label: Gemeente Gouda, sectie C in een blad.
+- label: Gemeente Gouda, sectie C
   title: 'Kadastrale kaart van het gebied Sectie C, maart 1893. Begrensd door: - Twijstraat (= Wijdstraat) - Hoogstraat - Kleiweg - Blekerssingel (-sgracht) - Fluwelensingel (-sgracht) - IJssel - Haven.'
   year: 1893
   institution: Streekarchief Midden-Holland
@@ -1546,7 +1546,7 @@
     url: https://images.memorix.nl/sahm/iiif/abf9b2fc-6e7e-5676-e58b-5f734554f42e/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=28
-- label: Gemeente Gouda, Sectie A, 3e blad.
+- label: Gemeente Gouda, sectie A, 3e blad
   title: 'Kadastrale kaarten van het gebied van Kadastrale kaart van het gebied Sectie A. Begrensd door: - Krugerlaan - IJssel - Fluwelensingel - Karnemelksloot.'
   year: 1893
   institution: Streekarchief Midden-Holland
@@ -1555,7 +1555,7 @@
     url: https://images.memorix.nl/sahm/iiif/b9bbf1e9-60ec-a895-0157-7374312c1e80/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=94
-- label: Gemeente Gouda. Sectie A, 1e blad
+- label: Gemeente Gouda, sectie A, 1e blad
   title: 'Kadastrale kaarten van het gebied van Kadastrale kaart van het gebied Sectie A. Begrensd door: - Jan Verzwollewetering - Spoorstraat - Kattensingel - Kromme Gouwe.'
   year: 1893
   institution: Streekarchief Midden-Holland
@@ -1564,7 +1564,7 @@
     url: https://images.memorix.nl/sahm/iiif/c20d7b67-cc00-3efe-b59a-522516733bd5/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=100
-- label: Platte Grond van Gouda 1894
+- label: Plattegrond van Gouda
   title: Plattegrond van Gouda
   year: 1894
   institution: Streekarchief Midden-Holland
@@ -1573,7 +1573,7 @@
     url: https://images.memorix.nl/sahm/iiif/24e3e7fc-608b-0c39-f4d2-b355837bce5c/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=49
-- label: Platte Grond van Gouda 1894
+- label: Plattegrond van Gouda
   title: Plattegrond van Gouda
   year: 1894
   institution: Streekarchief Midden-Holland
@@ -1582,7 +1582,7 @@
     url: https://images.memorix.nl/sahm/iiif/091e3b62-0002-a9d5-4ad3-bb0882f51e3c/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=161
-- label: ''
+- label: Kadastrale kaart van Gouda, sectie E
   title: 'Kadastrale kaart van Gouda, sectie E, ca. 1900. Begrensd door: Hollandsche IJssel, Herenstraat, Turfsingelgracht, uiterwaard - kogelvanger.'
   year: 1895
   institution: Streekarchief Midden-Holland
@@ -1591,7 +1591,7 @@
     url: https://images.memorix.nl/sahm/iiif/f01a19a3-b28a-e2ae-a047-ef656c100a00/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=79
-- label: ''
+- label: Kaart van de vaarweg door Gouda
   title: Kaart van de vaarweg door Gouda met vermelding van Binnen Gouwe of vaart door de binnenstad en Haven of binnenvaart, en verder Buiten Gouwe en Turfsingelgracht of buitenvaart, ca. 1895.
   year: 1895
   institution: Streekarchief Midden-Holland
@@ -1600,7 +1600,7 @@
     url: https://images.memorix.nl/sahm/iiif/4d7b3fbb-649e-b160-ba52-53381bcca535/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=345
-- label: Gemeente Gouda. Sectie D.
+- label: Gemeente Gouda, sectie D
   title: Situatietekening van het kadastrale nummer Gouda D 2244 tussen Peperstraat en Keizerstraat, ca. 1898.
   year: 1898
   institution: Streekarchief Midden-Holland
@@ -1609,7 +1609,7 @@
     url: https://images.memorix.nl/sahm/iiif/e7b4b646-b1f2-1cc2-c495-d2e2a27bb13e/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=181
-- label: Gemeente Gouda Sectie D in Ã©Ã©n blad
+- label: Gemeente Gouda, sectie D
   title: Kadastrale kaart van sectie D, 7 september 1900.
   year: 1900
   institution: Streekarchief Midden-Holland
@@ -1618,7 +1618,7 @@
     url: https://images.memorix.nl/sahm/iiif/3faf8b41-ce62-637f-9922-0720440933c2/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=19
-- label: Gemeente Gouda. situatie Sectie E.
+- label: Gemeente Gouda, sectie E
   title: 'Kadastrale kaart van Gouda. Situatietekening binnen sectie E: Turfsingelgracht, Solonkade, begraafplaats, Kaarsenfabriek, ca. 1900?'
   year: 1900
   institution: Streekarchief Midden-Holland
@@ -1627,7 +1627,7 @@
     url: https://images.memorix.nl/sahm/iiif/f2bb4d63-1179-10b4-b40f-57bd973650e4/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=23
-- label: Gemeente Gouda. Sectie E.
+- label: Gemeente Gouda, sectie E
   title: Situatietekening van de begraafplaats Memento Mori begrensd door de Korte Akkeren ***, nr.274 en 288, met een plattegrond van graven op het kerkhof, juli 1900.
   year: 1900
   institution: Streekarchief Midden-Holland
@@ -1636,7 +1636,7 @@
     url: https://images.memorix.nl/sahm/iiif/a588fe9c-bbeb-549f-003c-13d086eba98a/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=68
-- label: Gem. Gouda. Sectie E.
+- label: Gemeente Gouda, sectie E
   title: 'Kadastrale kaart van Gouda, sectie E, ca. 1900. Begrensd door: Moordrechts Verlaat, Wachtelstraat, Gouwe.'
   year: 1900
   institution: Streekarchief Midden-Holland
@@ -1645,7 +1645,7 @@
     url: https://images.memorix.nl/sahm/iiif/8c81823f-3b8f-67ad-d16d-2e5ecce0457b/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=98
-- label: Gemeente Gouda Sectie D in Ã©Ã©n blad
+- label: Gemeente Gouda, sectie D
   title: Kadastrale kaart van sectie D, 7 september 1900.
   year: 1900
   institution: Streekarchief Midden-Holland
@@ -1654,7 +1654,7 @@
     url: https://images.memorix.nl/sahm/iiif/71093b16-421d-bb4e-7bbc-3bc8c50322d9/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=101
-- label: Platte Grond van Gouda circa 1900
+- label: Plattegrond van Gouda
   title: Plattegrond van Gouda
   year: 1900
   institution: Streekarchief Midden-Holland
@@ -1663,7 +1663,7 @@
     url: https://images.memorix.nl/sahm/iiif/95b35f30-ac21-376e-99aa-0f48f2cb19fa/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=111
-- label: Gemeente Gouda. Sectie E.
+- label: Gemeente Gouda, sectie E
   title: Kadastrale percelen in sectie E, begrensd door Rotterdamse Dijk, Vorstmanstraat, Turfsingelgracht, ca. 1900.
   year: 1900
   institution: Streekarchief Midden-Holland
@@ -1672,7 +1672,7 @@
     url: https://images.memorix.nl/sahm/iiif/4c500562-a503-5e05-ca25-085bc0c18cec/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=112
-- label: Situatie grond Jongenburger.
+- label: Situatie grond Jongenburger
   title: Situatietekening van over te dragen grond bij Snoystraat en Bockenbergstraat, ca. 1900 (?).
   year: 1900
   institution: Streekarchief Midden-Holland
@@ -1681,7 +1681,7 @@
     url: https://images.memorix.nl/sahm/iiif/b8c81e10-466d-5c62-17e8-9580d2813656/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=128
-- label: Gemeente Gouda in tien Sectien, in vijftien bladen. Sectie F. F blad II.
+- label: Gemeente Gouda, sectie F, blad II
   title: 'Kadastrale kaarten van het gebied van Sectie F. Begrensd door: - Tweede Moordrechtse Tiendeweg - Watering (d.w.z. water / Leeuwerikstraat, Emmastraat, Const. Huygensstraat, Schielands Hoge Zeedijk en het verlengde van de Van der Palmstraat tot aan de IJss'
   year: 1900
   institution: Streekarchief Midden-Holland
@@ -1690,7 +1690,7 @@
     url: https://images.memorix.nl/sahm/iiif/992acc4e-a245-39fa-9efa-e201d45eb0eb/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=169
-- label: Gem. Gouda. Situatie Gedeelte Boschweg.
+- label: Gemeente Gouda, situatie gedeelte Boschweg
   title: Situatieschets van zuidelijk deel van de Bosweg met aanliggende percelen, ca. 1900.
   year: 1900
   institution: Streekarchief Midden-Holland
@@ -1699,7 +1699,7 @@
     url: https://images.memorix.nl/sahm/iiif/7a3a77b4-714e-ff83-4d48-db1881bd3c80/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=180
-- label: ''
+- label: Detail van kadastrale kaart van Gouda sectie C
   title: Detail van kadastrale kaart van Gouda sectie C. In het westen begrensd door de Oosthaven, in het noorden door de Lange Noodgodsstraat, in het oosten door de Spieringstraat, de zuidelijke begrenzing loopt evenwijdig aan de Lange Noodgodsstraat op 60 m afst
   year: 1900
   institution: Streekarchief Midden-Holland
@@ -1708,7 +1708,7 @@
     url: https://images.memorix.nl/sahm/iiif/e00710e6-89fd-30ba-f9b6-460b764d9c65/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=334
-- label: Uittreksel uit het kadastrale plan. Gemeente Gouda SectiÃ«n G en H
+- label: Uittreksel uit het kadastrale plan, gemeente Gouda, sectiën G en H
   title: Kaart van enige percelen in sectie G en H langs de noordzijde van de Jan Verzwollewetering, liggende tussen het station en de aan te leggen Nieuwe Gouwe, ca. 1900.
   year: 1900
   institution: Streekarchief Midden-Holland
@@ -1717,7 +1717,7 @@
     url: https://images.memorix.nl/sahm/iiif/9582c531-4e6c-8100-5d47-a6011686a321/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=342
-- label: ''
+- label: Plattegrond Gouda
   title: Gouda
   year: 1900
   institution: Streekarchief Midden-Holland
@@ -1726,7 +1726,7 @@
     url: https://images.memorix.nl/sahm/iiif/bab6a6b5-dd8a-cd85-452d-bb9c9d2e3012/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=397
-- label: ''
+- label: Situatie van een gedeelte van het Goudsche Rijpad met aangrenzende terreinen
   title: Situatie van een gedeelte van het Goudsche Rijpad met aangrenzende terreinen
   year: 1900
   institution: Streekarchief Midden-Holland
@@ -1735,7 +1735,7 @@
     url: https://images.memorix.nl/sahm/iiif/910a8643-8859-0141-3be2-b40dc66378e2/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=408
-- label: Blad No. 1 Hollandsche IJssel, Gouda
+- label: Rivierkaart van de Hollandsche IJssel nabij gemeente Gouda
   title: Rivierkaart van de Hollandsche IJssel nabij gemeente Gouda. Op de kaart is in rood ingetekend het toekomstige tracÃ© voor de spoorlijn van Gouda naar Schoonhoven.
   year: 1902
   institution: Streekarchief Midden-Holland
@@ -1753,7 +1753,7 @@
     url: https://images.memorix.nl/sahm/iiif/56ea1fa7-aff9-9f5c-8bb0-b0828f08aea5/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=308
-- label: Schetsteekening Gemeente Gouda Sectie A
+- label: Schetstekening voor de aanleg van de stoomtramweg Gouda - Schoonhoven
   title: Schetstekening voor de aanleg van de stoomtramweg Gouda - Schoonhoven in sectie A bij de passage van de IJssel, ca. 1903.
   year: 1903
   institution: Streekarchief Midden-Holland
@@ -1762,7 +1762,7 @@
     url: https://images.memorix.nl/sahm/iiif/a752bba0-49e5-213d-f8d8-0bbd9eb150e8/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=90
-- label: Situatiekaart
+- label: Uitbreidingsplan
   title: Aangevende de aansluiting van den in het ontwerp van het uitbreidingsplan begrepen grond aan het overige grondgebied der gemeente. Vastgesteld door den Raad der Gemeente Gouda den 27 Maart 1903.
   year: 1903
   institution: Streekarchief Midden-Holland
@@ -1771,7 +1771,7 @@
     url: https://images.memorix.nl/sahm/iiif/92c9a6ff-4284-b1a9-c4f2-d0b4558cba66/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=140
-- label: Platte Grond van Gouda
+- label: Plattegrond van Gouda
   title: Plattegrond van Gouda
   year: 1903
   institution: Streekarchief Midden-Holland
@@ -1780,7 +1780,7 @@
     url: https://images.memorix.nl/sahm/iiif/c1de317f-e96e-543b-b4ca-468b113fb4b4/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=176
-- label: Gemeente Gouda Sectie A
+- label: Gemeente Gouda, sectie A
   title: Kadastrale kaart van een deel van sectie A in het noorden begrensd door de Graaf Florisweg (= Oude Gouwe), in het oosten door de Zwarteweg, in het zuiden door de Karnemelksloot, in het westen door de Blekerssingel en Spoorstraat.
   year: 1903
   institution: Streekarchief Midden-Holland
@@ -1789,7 +1789,7 @@
     url: https://images.memorix.nl/sahm/iiif/3df14b7b-a08d-267d-b53f-fae61775b378/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=301
-- label: Gemeente Gouda Sectie E
+- label: Gemeente Gouda, sectie E
   title: Bebouwing en uitbreiding buiten de singels, maart 1903. Kadastrale kaart van sectie E, in het noorden begrensd door de Gouwe, in het oosten door de Turfsingel, in het zuiden door de Hollandsche IJssel en in het westen door de Watering (= Emmastraat en Con
   year: 1903
   institution: Streekarchief Midden-Holland
@@ -1798,7 +1798,7 @@
     url: https://images.memorix.nl/sahm/iiif/fd979fe8-e359-8c04-e70b-5b05f45cdd12/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=314
-- label: Gemeente Gouda Sectie A, G en H
+- label: Gemeente Gouda, sectie A, G en H
   title: Bebouwing en uitbreiding buiten de singels, maart 1903. Kadastrale kaart van secties A, G en H, in het noorden begrensd door station en spoor, in het oosten door de Spoorstraat, in het zuiden door de Kattensingel, in het westen door de Gouwe.
   year: 1903
   institution: Streekarchief Midden-Holland
@@ -1807,7 +1807,7 @@
     url: https://images.memorix.nl/sahm/iiif/b35e635f-8112-ea17-8f51-a11489c72fc4/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=360
-- label: Gemeente Gouda Sectie A
+- label: Gemeente Gouda, sectie A
   title: Bebouwing en uitbreiding buiten de singels, maart 1903. Kadastrale kaart van een deel van sectie A, in het noorden begrensd door de Karnemelksloot, in het oosten door de Krugerlaan, in het zuiden door de Hollandsche IJssel, in het westen door de Fluwelens
   year: 1903
   institution: Streekarchief Midden-Holland
@@ -1816,7 +1816,7 @@
     url: https://images.memorix.nl/sahm/iiif/34de8687-20ee-04b7-0513-ca4288ff736c/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=374
-- label: ''
+- label: Kaart van Gouda met omliggende polders, wegen en watergangen
   title: Kaartje van Gouda met omliggende polders, wegen en watergangen.
   year: 1904
   institution: Streekarchief Midden-Holland
@@ -1825,7 +1825,7 @@
     url: https://images.memorix.nl/sahm/iiif/6b9d7889-a62d-1040-436d-9bc142cd90b7/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=13
-- label: Gemeente Gouda. Situatie Sectie G
+- label: Gemeente Gouda, situatie sectie G
   title: Kadastrale situatie in sectie G tussen de Oude Spoordijk en de Nieuwe Gouwe, waarover nieuwe wegen en spoorlijnen zijn geprojecteerd, ca. 1905 (?).
   year: 1905
   institution: Streekarchief Midden-Holland
@@ -1834,7 +1834,7 @@
     url: https://images.memorix.nl/sahm/iiif/64591d34-60fb-6265-4684-12f35fe8208a/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=29
-- label: Plan van uitbreiding van de gemeente Gouda, 1908.
+- label: Plan van uitbreiding van de gemeente Gouda
   title: Plan van uitbreiding van de gemeente Gouda met de bestaande riolen. Raadsbesluit van 27 maart 1908.
   year: 1908
   institution: Streekarchief Midden-Holland
@@ -1843,7 +1843,7 @@
     url: https://images.memorix.nl/sahm/iiif/078129e7-6ddf-99b5-24d0-ad6034337270/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=108
-- label: Plan van uitbreiding van de gemeente Gouda, 1909.
+- label: Plan van uitbreiding van de gemeente Gouda
   title: Plan van uitbreiding van de gemeente Gouda met daarop ingekleurd de watergangen en wegen.
   year: 1909
   institution: Streekarchief Midden-Holland
@@ -1852,7 +1852,7 @@
     url: https://images.memorix.nl/sahm/iiif/d59b11c8-1ce2-856f-84c1-ae1052b692bf/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=99
-- label: Plan van uitbreiding van de gemeente Gouda, 1909.
+- label: Plan van uitbreiding van de gemeente Gouda
   title: Plan van uitbreiding van de gemeente Gouda met daarop ingekleurd de bebouwing binnen de singels en de westzijde van de Turfsingelgracht.
   year: 1909
   institution: Streekarchief Midden-Holland
@@ -1861,7 +1861,7 @@
     url: https://images.memorix.nl/sahm/iiif/8da31463-3441-a17d-cb69-b826baae5c5c/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=409
-- label: Gemeente Gouda
+- label: Gemeentegrens volgens grenswijziging
   title: Kaart van gemeente Gouda met daarop aangegeven de gemeentegrens volgens grenswijziging en gebiedsdelen van voormalige gemeenten Broek, Stein die in resp. 1870 en 1828 zijn over gegaan naar gemeente Gouda
   year: 1910
   institution: Streekarchief Midden-Holland
@@ -1879,7 +1879,7 @@
     url: https://www.goudatijdmachine.nl/omeka/iiif/3/34507/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=463
-- label: Topografische Kaart Gouda 1913
+- label: Topografische kaart Gouda
   title: 1913. Gebied Wassenaar-Achttienhoven-Kethel-Nieuwpoort
   year: 1913
   institution: Streekarchief Midden-Holland
@@ -1888,7 +1888,7 @@
     url: https://images.memorix.nl/sahm/iiif/d722702e-ad58-122a-33f2-b91a45ec1eba/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=1
-- label: Plattegrond van Gouda. Voornaamste gebouwen, bezienswaardigheden in inrichtingen
+- label: Plattegrond van Gouda
   title: Gouda, plattegrond met genummerde lijst van gebouwen etc.
   year: 1913
   institution: Streekarchief Midden-Holland
@@ -1906,7 +1906,7 @@
     url: https://images.memorix.nl/sahm/iiif/ee621106-cdf6-fb14-1c9b-c9f4fc73dace/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=3
-- label: ''
+- label: Plattegrond van Gouda
   title: Gouda
   year: 1914
   institution: Streekarchief Midden-Holland
@@ -1915,7 +1915,7 @@
     url: https://images.memorix.nl/sahm/iiif/72eb470b-28c0-cb50-938c-a76b7c33fe2e/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=347
-- label: ''
+- label: Plattegrond van Gouda
   title: Plattegrond van Gouda
   year: 1914
   institution: Streekarchief Midden-Holland
@@ -1924,7 +1924,7 @@
     url: https://images.memorix.nl/sahm/iiif/fc790720-a550-99b7-426b-a0770bb7d5d3/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=358
-- label: Gemeente Gouda, Platte Grond met Uitbreidingsplan
+- label: Plattegrond met uitbreidingsplan
   title: plattegrond met uitbreidingsplan. In kader advertenties van Goudse ondernemers. Achterzijde stratenlijst, lijst van bijzondere gebouwen en instellingen alsmede advertenties.
   year: 1915
   institution: Streekarchief Midden-Holland
@@ -1933,7 +1933,7 @@
     url: https://images.memorix.nl/sahm/iiif/a686c241-5082-1cee-ba3c-e67fe3b6af68/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=318
-- label: Plan van uitbreiding van de gemeente Gouda, 1917.
+- label: Plan van uitbreiding van de gemeente Gouda
   title: Plan van uitbreiding van de gemeente Gouda. Raad 12 october 1917, Gedeputeerde Staten 3 december 1917.
   year: 1917
   institution: Streekarchief Midden-Holland
@@ -1942,7 +1942,7 @@
     url: https://images.memorix.nl/sahm/iiif/d50e0c75-c8e1-8b01-dc7e-93260044f68e/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=149
-- label: Situatie "de Punt" Sectie C naar kadastrale gegevens.
+- label: Situatie "de Punt" Sectie C naar kadastrale gegevens
   title: Terrein rond molen 't Slot
   year: 1917
   institution: Streekarchief Midden-Holland
@@ -1951,7 +1951,7 @@
     url: https://images.memorix.nl/sahm/iiif/c24b8b54-1e9f-a9eb-97c4-d50ce7b6cb67/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=165
-- label: Riolen in Kort Haarlem. Riolenkaart 1.
+- label: Riolen in Kort Haarlem (1)
   title: gebied tussen Goejanverwelledijk, Krugerlaan, Burgemeester Martenssingel, Burgemeester Martensstraat, Fluwelensingel.
   year: 1918
   institution: Streekarchief Midden-Holland
@@ -1960,7 +1960,7 @@
     url: https://images.memorix.nl/sahm/iiif/bf983295-c6a9-5f02-4068-48d3088759bb/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=71
-- label: Verbinding tusschen Hollandsche IJssel en Gouwe. Ontwerp Nieuwe sluis buiten Gouda met bijkomende werken.
+- label: Ontwerp voor de nieuwe sluis (Julianasluis)
   title: '"Kaart van de verbinding tussen Hollandse IJssel en Gouwe met ingetekend het ontwerp voor de nieuwe sluis (Julianasluis). Inzet ""Gouda"" in schaal 1 : 25.000. Behoort bij het rapport in zake een nieuwe IJsselsluis te Gouda, Hoofd Ingenieur Directeur Provinciale Waterstaat van Zuid Holland, van Elzingen."'
   year: 1920
   institution: Streekarchief Midden-Holland
@@ -1969,7 +1969,7 @@
     url: https://images.memorix.nl/sahm/iiif/8f8e9c91-bee1-17a2-cfd2-d857499cf734/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=2
-- label: Situatie sectie D. No. 2811. De Vereeniging tot Oprichting en Instandhouding van Vrije Scholen op Gereformeerde Grondslag te Gouda.
+- label: Kadastrale percelen in sectie D
   title: Kadastrale percelen in sectie D, begrensd door Komijnsteeg, Keizerstraat, Kuiperstraat en Peperstraat, ca. 1920.
   year: 1920
   institution: Streekarchief Midden-Holland
@@ -1978,7 +1978,7 @@
     url: https://images.memorix.nl/sahm/iiif/c0cf43de-323e-88e9-e745-34bc79e28d9e/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=35
-- label: Verbinding tusschen Hollandsche IJssel en Gouwe. Ontwerp Nieuwe Mallegatsluis met bijkomende werken.
+- label: Ontwerp Nieuwe Mallegatsluis met bijkomende werken
   title: Kaart van de verbinding tussen Hollandse IJssel en Gouwe met ingetekend het ontwerp voor de nieuwe Mallegatsluis. Behoort bij het rapport in zake een nieuwe IJsselsluis te Gouda, Hoofd Ingenieur Directeur Provinciale Waterstaat van Zuid Holland, van Elzingen.
   year: 1920
   institution: Streekarchief Midden-Holland
@@ -1987,7 +1987,7 @@
     url: https://images.memorix.nl/sahm/iiif/14c6dcf0-2cfc-3ee8-5544-79ffa3baea1c/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=37
-- label: Situatie Sectie D. Geref. School No. 2811
+- label: Situatie Sectie D, Geref. School
   title: Situatiekening van de gereformeerde school aan de Keizerstraat in sectie D, ca. 1920.
   year: 1920
   institution: Streekarchief Midden-Holland
@@ -1996,7 +1996,7 @@
     url: https://images.memorix.nl/sahm/iiif/c8210aec-705f-848c-dabf-ae42af2ab547/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=138
-- label: Riolen in Kort Haarlem. Riolenkaart 2.
+- label: Riolen in Kort Haarlem (2)
   title: gebied tussen Karnemelksloot, Krugerlaan, Fluwelensingel.
   year: 1921
   institution: Streekarchief Midden-Holland
@@ -2005,7 +2005,7 @@
     url: https://images.memorix.nl/sahm/iiif/3f5cd746-7067-b1c0-b651-1492736b9108/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=137
-- label: Gouda B in Ã©Ã©n blad.
+- label: Kadastrale kaart van het gebied van sectie B
   title: Kadastrale kaart van het gebied van sectie B in Ã©Ã©n blad, 1924. Begrends door Kattensingelgracht, Hoogstraat, Kleiweg, Gouwe.
   year: 1924
   institution: Streekarchief Midden-Holland
@@ -2014,7 +2014,7 @@
     url: https://images.memorix.nl/sahm/iiif/9716fab6-9efa-8df1-03b0-fceeebb018c0/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=12
-- label: Gouda D in Ã©Ã©n blad. Gemeenteplan.
+- label: Kadastrale kaart van het gebied van sectie D
   title: 'Kadastrale kaart van het gebied van sectie D, juni 1924. Begrensd door: - Haven - IJssel - Turfsingel (-gracht) - Gouwe (= Lage Gouwe).'
   year: 1924
   institution: Streekarchief Midden-Holland
@@ -2023,7 +2023,7 @@
     url: https://images.memorix.nl/sahm/iiif/4e923cec-2691-b325-acd8-06c665c44f82/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=62
-- label: ''
+- label: Uitbreidingsplan gemeente Gouda
   title: Uitbreidingsplan gemeente Gouda. Gebied begrensd door spoorlijn, Breede Vaart, Ridder van Catsweg
   year: 1925
   institution: Streekarchief Midden-Holland
@@ -2032,16 +2032,7 @@
     url: https://images.memorix.nl/sahm/iiif/539bd0d0-ffac-09eb-a244-28beb5834bbe/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=104
-- label: Riolering Korte Akkeren. Blad 2. Sectie E.
-  title: gebied tussen Turfsingel, Westerkade, Walvisstraat, Gerard Leeustraat, Woudstraat.
-  year: 1925
-  institution: Streekarchief Midden-Holland
-  url: https://samh.nl/bronnen/beeldbank/detail/bbc77f14-ae9a-9ef4-c8cf-c6f395eb5906/media/5539d2bb-893f-4497-da6f-e25976878b11
-  iiif:
-    url: https://images.memorix.nl/sahm/iiif/5539d2bb-893f-4497-da6f-e25976878b11/
-    type: image
-  annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=116
-- label: Riolering Korte Akkeren. Blad 1. Sectie E.
+- label: Riolering Korte Akkeren, blad 1, sectie E
   title: gebied tussen Turfsingel, van Baerlestraat, van der Palmstraat en Mosstraat.
   year: 1925
   institution: Streekarchief Midden-Holland
@@ -2050,7 +2041,16 @@
     url: https://images.memorix.nl/sahm/iiif/b59b27bb-616c-2979-6566-9dd40f922659/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=119
-- label: Gouda A, 2e blad. Gemeenteplan.
+- label: Riolering Korte Akkeren, blad 2, sectie E
+  title: gebied tussen Turfsingel, Westerkade, Walvisstraat, Gerard Leeustraat, Woudstraat.
+  year: 1925
+  institution: Streekarchief Midden-Holland
+  url: https://samh.nl/bronnen/beeldbank/detail/bbc77f14-ae9a-9ef4-c8cf-c6f395eb5906/media/5539d2bb-893f-4497-da6f-e25976878b11
+  iiif:
+    url: https://images.memorix.nl/sahm/iiif/5539d2bb-893f-4497-da6f-e25976878b11/
+    type: image
+  annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=116
+- label: Kadastrale kaart van het gebied van sectie A
   title: 'Kadastrale kaart van het gebied van sectie A, 1925. Begrensd door: - Graaf Florisweg - Breevaart - Karnemelksloot - Blekerssingel (-gracht) - (Spoorstraat).'
   year: 1925
   institution: Streekarchief Midden-Holland
@@ -2068,7 +2068,7 @@
     url: https://images.memorix.nl/sahm/iiif/6f90d48a-0141-4023-2049-c2a49817645e/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=288
-- label: ''
+- label: Plattegrond der Gemeente Gouda
   title: Plattegrond der Gemeente Gouda
   year: 1925
   institution: Streekarchief Midden-Holland
@@ -2077,7 +2077,7 @@
     url: https://images.memorix.nl/sahm/iiif/31ddee51-24d6-3e79-fe28-04bced358067/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=375
-- label: Gouda E, 1e blad. Gemeenteplan.
+- label: Kadastrale kaart van het gebied van sectie E
   title: 'Kadastrale kaart van het gebied van sectie E, 22 juli 1927. Begrensd door: - (Eerste Moordrechtse Tiendeweg) - Kromme Gouwe - Bolwerk - Turfsingel - (Kerkhoflaan, Vorstmanstraat, Roemer Visscherstraat) - Const. Huygensstraat - (Emmastraat, Leeuwerikstraat'
   year: 1927
   institution: Streekarchief Midden-Holland
@@ -2086,7 +2086,7 @@
     url: https://images.memorix.nl/sahm/iiif/b4b3cb1d-4861-3319-4fc8-10dbb74998e4/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=106
-- label: Gouda A. 3e blad. Gemeenteplan.
+- label: Kadastrale kaart van het gebied van sectie A
   title: 'Kadastrale kaart van het gebied van sectie A, 1927. Begrensd door: - Krugerlaan (+ aanliggende woningen) - IJssel - Fluwelensingel (-gracht) - Karnemelksloot.'
   year: 1927
   institution: Streekarchief Midden-Holland
@@ -2095,7 +2095,7 @@
     url: https://images.memorix.nl/sahm/iiif/cae43d84-0700-0bc4-6560-43bfb0c18e65/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=357
-- label: Gouda C in Ã©Ã©n blad. Gemeenteplan.
+- label: Kadastrale kaart van het gebied van sectie C
   title: 'Kadastrale kaart van het gebied van sectie C, 1928 maart. Begrensd door: - Wijdstraat - Hoogstraat - Kleiweg - Blekerssingel (-sgracht) - Fluwelensingel (-gracht) - IJssel - Haven.'
   year: 1928
   institution: Streekarchief Midden-Holland
@@ -2104,7 +2104,7 @@
     url: https://images.memorix.nl/sahm/iiif/4a8a67eb-aeff-b082-7f7a-9ee900a33918/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=113
-- label: Gouda B. Gemeenteplan.
+- label: Kadastrale kaart van het gebied van sectie B
   title: Kadastrale kaart van het gebied van sectie B, 1928. Begrensd door Kromme Gouwe, Kattensingel en Spoorstraat.
   year: 1928
   institution: Streekarchief Midden-Holland
@@ -2113,7 +2113,7 @@
     url: https://images.memorix.nl/sahm/iiif/66718319-475c-5616-6b04-20902760d027/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=118
-- label: Gemeente gouda. Situatie sectie F
+- label: Ligging projectie Julianasluis en Gouwekanaal over bestaande verkaveling
   title: Ligging projectie Julianasluis en Gouwekanaal over bestaande verkaveling, ca. 1930.
   year: 1930
   institution: Streekarchief Midden-Holland
@@ -2122,7 +2122,7 @@
     url: https://images.memorix.nl/sahm/iiif/ec20c737-4624-7599-14ac-1c2025fd5458/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=5
-- label: Reeuwijksche en Sluipwijksche Plassen
+- label: Reeuwijkse Plassen met ingetekende bruggen en wegenloop
   title: Reeuwijkse Plassen met ingetekende bruggen en wegenloop
   year: 1930
   institution: Streekarchief Midden-Holland
@@ -2140,7 +2140,7 @@
     url: https://images.memorix.nl/sahm/iiif/b623c2cf-5562-a250-9677-051b6a8fba05/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=40
-- label: Gemeente Gouda Sectie D
+- label: Kadastrale percelen in sectie D
   title: Kadastrale percelen in sectie D, langs de Turfsingelgracht tussen de Drapiersteeg en de Bogen, 1931. Met aanduiding van provinciale, gemeentelijke en particuliere eigendommen.
   year: 1931
   institution: Streekarchief Midden-Holland
@@ -2149,7 +2149,7 @@
     url: https://images.memorix.nl/sahm/iiif/37f6d73b-5397-cbe0-fc6b-57f3ebde5696/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=76
-- label: Gemeente Gouda. Sectie D
+- label: Kadastrale percelen in sectie D
   title: Kadastrale percelen in sectie D, langs de Turfsingelgracht, tussen de molen De Roode Leeuw tot even ten zuiden van de Hondesteeg (= Houtensteeg), 1931.
   year: 1931
   institution: Streekarchief Midden-Holland
@@ -2158,7 +2158,7 @@
     url: https://images.memorix.nl/sahm/iiif/16773d4f-bf5e-dc29-963b-08ac168a4883/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=92
-- label: Verzamelkaart der gemeente Gouda, Gemeenteplan
+- label: Verzamelkaart van gemeente Gouda met de kadastrale secties
   title: Verzamelkaart van gemeente Gouda met de kadastrale secties.
   year: 1931
   institution: Streekarchief Midden-Holland
@@ -2167,7 +2167,7 @@
     url: https://images.memorix.nl/sahm/iiif/aac3af5d-efab-0ce1-5a11-b549a5c51ea5/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=167
-- label: Blad No. 1 Hollandsche IJssel Gouda (in ms. Verbindingsweg Gouwesluis - Krimpenerwaard)
+- label: Rivierkaart van de Hollandsche IJssel vanaf de Oostpolder in Schieland tot en met de Waaiersluis
   title: Rivierkaart van de Hollandsche IJssel vanaf de Oostpolder in Schieland tot en met de Waaiersluis, inclusief het zuidelijk deel van de binnenstad van Gouda en Stolwijkersluis, 1931.
   year: 1931
   institution: Streekarchief Midden-Holland
@@ -2176,7 +2176,7 @@
     url: https://images.memorix.nl/sahm/iiif/014e0a1d-71d3-c22e-4a6e-c8bcd0ca0828/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=381
-- label: ''
+- label: Rooilijnplan Prins Hendrikstraat
   title: Rooilijnplan Prins Hendrikstraat.
   year: 1932
   institution: Streekarchief Midden-Holland
@@ -2185,7 +2185,7 @@
     url: https://images.memorix.nl/sahm/iiif/a7313497-324f-ee4a-e20f-df90a4462ef0/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=148
-- label: ''
+- label: Rooilijnplan Wachtelstraat, Sectie E
   title: Rooilijnplan Wachtelstraat, Sectie"E"
   year: 1933
   institution: Streekarchief Midden-Holland
@@ -2194,7 +2194,7 @@
     url: https://images.memorix.nl/sahm/iiif/02104412-c9eb-9871-df4c-cfdda7ec222f/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=105
-- label: Uitbreidingsplan Korte Akkeren, 1934 -1935.
+- label: Uitbreidingsplan Korte Akkeren
   title: 'Uitbreidingsplan Korte Akkeren, waarop in geel ingekleurd het stratenplan. Op de achterzijde: "Behoort bij het besluit van den Raad der Gemeente Gouda, van 18 mei 1934", ondertekend door Burgemeester en Secretaris. "Behoort bij besluit van Gedeputeerde Staten van Zuid-Holland van 6 maart 1935"'
   year: 1934
   institution: Streekarchief Midden-Holland
@@ -2203,7 +2203,7 @@
     url: https://images.memorix.nl/sahm/iiif/00e4f0d1-e9c2-56e8-b8ba-33cb50c0d68f/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=60
-- label: Uitbreidingsplan Korte Akkeren, 1934 - 1935.
+- label: Uitbreidingsplan Korte Akkeren
   title: 'Uitbreidingsplan Korte Akkeren, waarop ingekleurd de bestaande en nieuwe bebouwing, straten, wegen en watergangen. Op de achterzijde: "Behoort bij het besluit van den Raad der Gemeente Gouda, van 18 mei 1934", ondertekend door Burgemeester en Secretaris. "Behoort bij besluit van Gedeputeerde Staten van Zuid-Holland van 6 maart 1935"'
   year: 1934
   institution: Streekarchief Midden-Holland
@@ -2221,7 +2221,7 @@
     url: https://images.memorix.nl/sahm/iiif/5964763c-51e2-633e-c135-894e52f35db5/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=75
-- label: ''
+- label: Rooilijnplan Van Strijenstraat (sectie H)
   title: Rooilijnplan Van Strijenstraat (sectie H)
   year: 1934
   institution: Streekarchief Midden-Holland
@@ -2239,7 +2239,7 @@
     url: https://images.memorix.nl/sahm/iiif/4c42f40b-7f62-1c82-3a9a-310163687894/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=81
-- label: ''
+- label: Rooilijnplan Karnemelksloot, Sectie A, Zuid-Oost Zijde
   title: Rooilijnplan Karnemelksloot, Sectie "A", Zuid-Oost Zijde.
   year: 1934
   institution: Streekarchief Midden-Holland
@@ -2248,16 +2248,16 @@
     url: https://images.memorix.nl/sahm/iiif/ba867713-46a6-c49b-1af7-56cdfb71675e/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=103
-- label: Gouda omstreeks 1550
+- label: Situatie van Gouda
   title: Situatie van Gouda rond 1550
-  year: 1934
+  year: 1550
   institution: Streekarchief Midden-Holland
   url: https://samh.nl/bronnen/beeldbank/detail/b5561cf7-fd5a-094b-6818-e02fe06f828d/media/45afc857-1f78-3a55-26fe-bfc3722b532d
   iiif:
     url: https://images.memorix.nl/sahm/iiif/45afc857-1f78-3a55-26fe-bfc3722b532d/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=124
-- label: ''
+- label: Rooilijnplan Spoorstraat - Ridder van Catsweg (sectie A, I en H)
   title: Rooilijnplan Spoorstraat - Ridder van Catsweg (sectie A, I en H)
   year: 1934
   institution: Streekarchief Midden-Holland
@@ -2266,7 +2266,7 @@
     url: https://images.memorix.nl/sahm/iiif/fabef2f3-8f56-5044-9606-2d93f4f2087c/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=126
-- label: ''
+- label: Rooilijnplan Karnemelksloot, sectie A
   title: Rooilijnplan Karnemelksloot, Sectie "A"
   year: 1934
   institution: Streekarchief Midden-Holland
@@ -2284,7 +2284,7 @@
     url: https://images.memorix.nl/sahm/iiif/86d105ea-4111-52f8-5efa-aa3c2fe130ca/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=174
-- label: ''
+- label: Rooilijnplan Willens (sectie K)
   title: Rooilijnplan Willens (sectie K)
   year: 1934
   institution: Streekarchief Midden-Holland
@@ -2293,7 +2293,7 @@
     url: https://images.memorix.nl/sahm/iiif/e92137b2-3241-797f-1279-d7731ad26951/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=361
-- label: ''
+- label: Rooilijnplan Derde en Vierde Kade (sectie A)
   title: Rooilijnplan Derde en Vierde Kade (sectie A)
   year: 1934
   institution: Streekarchief Midden-Holland
@@ -2302,7 +2302,7 @@
     url: https://images.memorix.nl/sahm/iiif/73db408b-4088-7bf7-a09a-0fce84f0efec/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=382
-- label: ''
+- label: Plattegrond van Gouda
   title: Plattegrond van Gouda
   year: 1934
   institution: Streekarchief Midden-Holland
@@ -2320,7 +2320,7 @@
     url: https://images.memorix.nl/sahm/iiif/85cec1d0-3b16-1ecb-8294-2cb746a3c4f0/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=412
-- label: ''
+- label: Wijkindeling en verspreiding van het Kruideniersbedrijf te Gouda
   title: Wijkindeling en verspreiding van het Kruideniersbedrijf te Gouda in 1935/1936
   year: 1935
   institution: Streekarchief Midden-Holland
@@ -2329,7 +2329,7 @@
     url: https://images.memorix.nl/sahm/iiif/600b6bf7-8ee0-aa4f-bfcb-71f3d965fa75/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=380
-- label: Structuurplan Gouda 1936
+- label: Structuurplan Gouda met uitbreidingsplannen
   title: Kaart van "Structuurplan Gouda 1936". Uitbreidingsplannen zijn met waterverf ingekleurd
   year: 1936
   institution: Streekarchief Midden-Holland
@@ -2338,7 +2338,7 @@
     url: https://images.memorix.nl/sahm/iiif/c630d046-bfaf-5a32-4eda-80580ea12d04/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=129
-- label: Gouda, C in Ã©Ã©n blad
+- label: Kadastrale kaart van sectie B 1
   title: Kadastrale kaart van sectie B 1, 15 mei 1937.
   year: 1937
   institution: Streekarchief Midden-Holland
@@ -2347,7 +2347,7 @@
     url: https://images.memorix.nl/sahm/iiif/1be596c8-fb8e-6d63-3e0e-8500fa459c59/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=69
-- label: Gouda, C in Ã©Ã©n blad
+- label: Kadastrale kaart van sectie B 1
   title: Kadastrale kaart van sectie B 1, 15 mei 1937.
   year: 1937
   institution: Streekarchief Midden-Holland
@@ -2356,7 +2356,7 @@
     url: https://images.memorix.nl/sahm/iiif/3e1d325a-43b4-2fd8-00dc-7a89acf37ae7/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=110
-- label: Gouda, C in Ã©Ã©n blad
+- label: Kadastrale kaart van sectie B 1
   title: Kadastrale kaart van sectie B 1, 15 mei 1937.
   year: 1937
   institution: Streekarchief Midden-Holland
@@ -2365,7 +2365,7 @@
     url: https://images.memorix.nl/sahm/iiif/0debe271-b598-cef0-60c3-41a296cf13ed/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=156
-- label: 'Gangen, omtrek. St: Janskerk.'
+- label: Situatietekening met ligging van de onderaardse gangen tussen St.-Janskerk en Patersteeg
   title: Situatietekening met ligging van de onderaardse gangen tussen St.-Janskerk en Patersteeg, ca. 1937.
   year: 1937
   institution: Streekarchief Midden-Holland
@@ -2374,7 +2374,7 @@
     url: https://images.memorix.nl/sahm/iiif/d29ab4db-0650-af18-d49a-30774a13beb6/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=300
-- label: Situatie Sectie D
+- label: Kadastrale percelen in sectie D
   title: Kadastrale percelen in sectie D, in het blok begrensd door Drapiersteeg, Nobelstraat en Vest, 1938.
   year: 1938
   institution: Streekarchief Midden-Holland
@@ -2401,7 +2401,7 @@
     url: https://images.memorix.nl/sahm/iiif/03bb8536-98a4-a104-f2d2-3cae59aba183/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=130
-- label: ''
+- label: Rooilijnplan Nieuwsteeg (sectie C)
   title: Rooilijnplan Nieuwsteeg (sectie C)
   year: 1939
   institution: Streekarchief Midden-Holland
@@ -2410,16 +2410,7 @@
     url: https://images.memorix.nl/sahm/iiif/93048661-f041-be5f-a57a-d9fac0f1c8e5/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=387
-- label: Saneringsplan Baanstraat en omgeving. Nieuwe toestand.
-  title: Saneringsplan Baanstraat en omgeving. Nieuwe toestand.
-  year: 1940
-  institution: Streekarchief Midden-Holland
-  url: https://samh.nl/bronnen/beeldbank/detail/54d29dcc-eca6-4993-2052-fdf882927070/media/de6e4bae-5aeb-ac8e-f249-7a51228cb845
-  iiif:
-    url: https://images.memorix.nl/sahm/iiif/de6e4bae-5aeb-ac8e-f249-7a51228cb845/
-    type: image
-  annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=20
-- label: Situatie Baanstraat en omgeving. Bestaande toestand.
+- label: Situatie Baanstraat en omgeving, bestaande toestand
   title: Situatie Baanstraat en omgeving. Bestaande toestand.
   year: 1940
   institution: Streekarchief Midden-Holland
@@ -2428,7 +2419,16 @@
     url: https://images.memorix.nl/sahm/iiif/02876a5c-3247-3117-96ec-b84755b3ac02/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=131
-- label: Gouda B 1
+- label: Saneringsplan Baanstraat en omgeving, nieuwe toestand
+  title: Saneringsplan Baanstraat en omgeving. Nieuwe toestand.
+  year: 1940
+  institution: Streekarchief Midden-Holland
+  url: https://samh.nl/bronnen/beeldbank/detail/54d29dcc-eca6-4993-2052-fdf882927070/media/de6e4bae-5aeb-ac8e-f249-7a51228cb845
+  iiif:
+    url: https://images.memorix.nl/sahm/iiif/de6e4bae-5aeb-ac8e-f249-7a51228cb845/
+    type: image
+  annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=20
+- label: Kadastrale kaart van sectie B 1
   title: Kadastrale kaart van sectie B 1, 1941.
   year: 1941
   institution: Streekarchief Midden-Holland
@@ -2437,7 +2437,7 @@
     url: https://images.memorix.nl/sahm/iiif/1e14eb99-c657-bd2a-7fb6-739068a4d835/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=9
-- label: Gouda E1
+- label: kadastrale kaart Gouda E1
   title: kadastrale kaart Gouda E1. Kromme Gouwe, Turfsingelsgracht, Constantijn Huygensstraat, Vorstmanstraat
   year: 1941
   institution: Streekarchief Midden-Holland
@@ -2446,7 +2446,7 @@
     url: https://images.memorix.nl/sahm/iiif/b6ddd14e-ff09-562c-3304-641c12253aa2/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=51
-- label: Gouda K1
+- label: kadastrale kaart Gouda sectie K1
   title: kadastrale kaart Gouda sectie K1. Hollandse IJssel / Goejanverwelledijk (Z), Middel-Willens, Voorwillens en Willensche Kade (O).
   year: 1941
   institution: Streekarchief Midden-Holland
@@ -2455,7 +2455,7 @@
     url: https://images.memorix.nl/sahm/iiif/6ee26762-79d6-b117-9f22-de8b3e9d1bf4/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=63
-- label: Gouda B 1
+- label: Kadastrale kaart van sectie B 1
   title: Kadastrale kaart van sectie B 1, 1941.
   year: 1941
   institution: Streekarchief Midden-Holland
@@ -2464,7 +2464,7 @@
     url: https://images.memorix.nl/sahm/iiif/8b237e79-d1ce-e53a-e8ae-85474118df70/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=73
-- label: Gouda B 1
+- label: Kadastrale kaart van sectie B 1
   title: Kadastrale kaart van sectie B 1, 1941.
   year: 1941
   institution: Streekarchief Midden-Holland
@@ -2473,7 +2473,7 @@
     url: https://images.memorix.nl/sahm/iiif/ce230ae8-3aad-9c68-f36c-d29e43587e0d/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=114
-- label: Gouda B 1
+- label: Kadastrale kaart van sectie B 1
   title: Kadastrale kaart van sectie B 1, 1941.
   year: 1941
   institution: Streekarchief Midden-Holland
@@ -2482,7 +2482,7 @@
     url: https://images.memorix.nl/sahm/iiif/d84bca36-5670-b2f1-c761-763da4ca6dee/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=142
-- label: Gouda A 1
+- label: Kadastrale kaart van sectie A 1
   title: Kadastrale kaart van sectie A 1, 1941.
   year: 1941
   institution: Streekarchief Midden-Holland
@@ -2491,7 +2491,7 @@
     url: https://images.memorix.nl/sahm/iiif/5d6e675b-55c0-fc37-1263-a3315f8b5188/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=152
-- label: Gouda F2
+- label: kadastrale kaart Gouda F2
   title: kadastrale kaart Gouda F2. Hollandsche IJssel, Ringvaart, Constantijn Huygensstraat / Emmastraat
   year: 1941
   institution: Streekarchief Midden-Holland
@@ -2500,7 +2500,7 @@
     url: https://images.memorix.nl/sahm/iiif/e756cd1d-c3b8-8c87-12d2-96000b31c3e2/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=344
-- label: Telefoonnet Gouda, Blad No 44.
+- label: Telefoonnet van Gouda, situatie Binnenstad, noord-oostelijk gedeelte
   title: Telefoonnet van Gouda, situatie Binnenstad, Noord-oostelijk gedeelte.
   year: 1942
   institution: Streekarchief Midden-Holland
@@ -2509,43 +2509,7 @@
     url: https://images.memorix.nl/sahm/iiif/bc22ea81-cb9b-9aa7-59c5-c1ce7654d6d9/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=4
-- label: Telefoonnet Gouda, Blad No 47.
-  title: Telefoonnet van Gouda, situatie Binnenstad, Zuid-westelijk gedeelte.
-  year: 1942
-  institution: Streekarchief Midden-Holland
-  url: https://samh.nl/bronnen/beeldbank/detail/3e59ff03-192e-04e7-d324-d6971abfad3e/media/8d31e07f-47a9-1a35-260a-a5a4d77973d5
-  iiif:
-    url: https://images.memorix.nl/sahm/iiif/8d31e07f-47a9-1a35-260a-a5a4d77973d5/
-    type: image
-  annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=36
-- label: Partieel Uitbreidingsplan der Gemeente Gouda, Gedeelte "Korte Akkeren" (Zuidelijk gedeelte). 1942
-  title: 'Op de achterzijde: "Behoort bij bsluit van den Minister van Staat, Commissaris der provincie Zuid-Holland, ter waarneming van de taak van Gedeputeerde Staten dier provincie, d.d. 20 januari 1942, res.nr. 147." Ondertekend door de Griffier'
-  year: 1942
-  institution: Streekarchief Midden-Holland
-  url: https://samh.nl/bronnen/beeldbank/detail/242b5935-e44f-395b-11fe-058427cf9a00/media/a670ea2b-5037-5039-dfb0-5970c2a7cfa1
-  iiif:
-    url: https://images.memorix.nl/sahm/iiif/a670ea2b-5037-5039-dfb0-5970c2a7cfa1/
-    type: image
-  annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=45
-- label: Gouda A, 3e blad
-  title: Kadastrale kaart van sectie A 3,  Veldplan 1942.
-  year: 1942
-  institution: Streekarchief Midden-Holland
-  url: https://samh.nl/bronnen/beeldbank/detail/5d2d6d4a-9c64-6ce4-bd20-11159e68a016/media/778f4e40-0f9e-b331-e38b-c8c974448ec5
-  iiif:
-    url: https://images.memorix.nl/sahm/iiif/778f4e40-0f9e-b331-e38b-c8c974448ec5/
-    type: image
-  annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=52
-- label: '"Uitbreidingsplan der Gemeente Gouda, Gedeelte ""Korte Akkeren"", 1942."'
-  title: Uitbreidingsplan gedeelte Korte Akkeren.
-  year: 1942
-  institution: Streekarchief Midden-Holland
-  url: https://samh.nl/bronnen/beeldbank/detail/c0160aa2-8919-8844-a591-417bfbe2c9b3/media/929a63a4-b8f5-1578-0ea1-0e8764e6bce1
-  iiif:
-    url: https://images.memorix.nl/sahm/iiif/929a63a4-b8f5-1578-0ea1-0e8764e6bce1/
-    type: image
-  annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=117
-- label: Telefoonnet Gouda, Blad No 45.
+- label: Telefoonnet van Gouda, situatie Binnenstad, noord-westelijk gedeelte
   title: Telefoonnet van Gouda, situatie Binnenstad, Noord-westelijk gedeelte.
   year: 1942
   institution: Streekarchief Midden-Holland
@@ -2554,7 +2518,7 @@
     url: https://images.memorix.nl/sahm/iiif/1734a427-5f6b-1c98-4597-33765c757aa2/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=127
-- label: Telefoonnet Gouda, Blad No 46.
+- label: Telefoonnet van Gouda, situatie Binnenstad, zuid-oostelijk gedeelte
   title: Telefoonnet van Gouda, situatie Binnenstad, Zuid-oostelijk gedeelte.
   year: 1942
   institution: Streekarchief Midden-Holland
@@ -2563,7 +2527,43 @@
     url: https://images.memorix.nl/sahm/iiif/aefcc848-a689-f86a-5ec0-859a607cb240/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=144
-- label: Uitbreidingsplan der Gemeente Gouda, 1942 - 1943.
+- label: Telefoonnet van Gouda, situatie Binnenstad, zuid-westelijk gedeelte
+  title: Telefoonnet van Gouda, situatie Binnenstad, Zuid-westelijk gedeelte.
+  year: 1942
+  institution: Streekarchief Midden-Holland
+  url: https://samh.nl/bronnen/beeldbank/detail/3e59ff03-192e-04e7-d324-d6971abfad3e/media/8d31e07f-47a9-1a35-260a-a5a4d77973d5
+  iiif:
+    url: https://images.memorix.nl/sahm/iiif/8d31e07f-47a9-1a35-260a-a5a4d77973d5/
+    type: image
+  annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=36
+- label: Partieel Uitbreidingsplan der gemeente Gouda, gedeelte Korte Akkeren
+  title: 'Op de achterzijde: "Behoort bij bsluit van den Minister van Staat, Commissaris der provincie Zuid-Holland, ter waarneming van de taak van Gedeputeerde Staten dier provincie, d.d. 20 januari 1942, res.nr. 147." Ondertekend door de Griffier'
+  year: 1942
+  institution: Streekarchief Midden-Holland
+  url: https://samh.nl/bronnen/beeldbank/detail/242b5935-e44f-395b-11fe-058427cf9a00/media/a670ea2b-5037-5039-dfb0-5970c2a7cfa1
+  iiif:
+    url: https://images.memorix.nl/sahm/iiif/a670ea2b-5037-5039-dfb0-5970c2a7cfa1/
+    type: image
+  annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=45
+- label: Kadastrale kaart van sectie A 3
+  title: Kadastrale kaart van sectie A 3,  Veldplan 1942.
+  year: 1942
+  institution: Streekarchief Midden-Holland
+  url: https://samh.nl/bronnen/beeldbank/detail/5d2d6d4a-9c64-6ce4-bd20-11159e68a016/media/778f4e40-0f9e-b331-e38b-c8c974448ec5
+  iiif:
+    url: https://images.memorix.nl/sahm/iiif/778f4e40-0f9e-b331-e38b-c8c974448ec5/
+    type: image
+  annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=52
+- label: Uitbreidingsplan gedeelte Korte Akkeren
+  title: Uitbreidingsplan gedeelte Korte Akkeren.
+  year: 1942
+  institution: Streekarchief Midden-Holland
+  url: https://samh.nl/bronnen/beeldbank/detail/c0160aa2-8919-8844-a591-417bfbe2c9b3/media/929a63a4-b8f5-1578-0ea1-0e8764e6bce1
+  iiif:
+    url: https://images.memorix.nl/sahm/iiif/929a63a4-b8f5-1578-0ea1-0e8764e6bce1/
+    type: image
+  annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=117
+- label: Uitbreidingsplan der Gemeente Gouda
   title: 'Op de achterzijde: "Behoort bij besluit van den Burgemeester van Gouda, ter waarneming van de taak van den Raad dier gemeente van den 27 maart 1943, no. 13-8", ondertekend door de Gemeente-Secretaris. "Behoort bij besluit van den Commissaris der provincie Zuid-Holland, ter waarneming van de taak van Gedeputeerde Staten dier provincie, d.d. 12 april 1944, res.nr. 129/2", ondertekend door de Griffier.'
   year: 1942
   institution: Streekarchief Midden-Holland
@@ -2572,7 +2572,7 @@
     url: https://images.memorix.nl/sahm/iiif/ad2045a4-ad71-fd80-536b-39bd73a6c98a/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=154
-- label: ''
+- label: Plattegrond Gouda
   title: Gouda
   year: 1942
   institution: Streekarchief Midden-Holland
@@ -2581,7 +2581,7 @@
     url: https://images.memorix.nl/sahm/iiif/f39f181b-9c11-f725-bcf2-d521528f8929/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=365
-- label: Situatie tusschen Spoorbaan en Karnemelksloot, sectie A.
+- label: Situatie tusschen Spoorbaan en Karnemelksloot, sectie A
   title: Situatie tusschen Spoorbaan en Karnemelksloot, sectie A.
   year: 1943
   institution: Streekarchief Midden-Holland
@@ -2590,7 +2590,7 @@
     url: https://images.memorix.nl/sahm/iiif/a2da0d6f-0e77-98b8-5ff6-80df27714615/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=135
-- label: Gouda E2
+- label: Kadastrale kaart Gouda E2
   title: kadastrale kaart Gouda E2. Hollandsche IJssel, Turfsingelsgracht, Kerkhoflaan / Vorstmanstraat, Constantijn Huygensstraat
   year: 1944
   institution: Streekarchief Midden-Holland
@@ -2599,7 +2599,7 @@
     url: https://images.memorix.nl/sahm/iiif/e7c7cf99-866e-ad41-fc6b-3d50868464e2/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=8
-- label: Gouda E2
+- label: Kadastrale kaart Gouda E2
   title: kadastrale kaart Gouda E2. Hollandsche IJssel, Turfsingelsgracht, Kerkhoflaan / Vorstmanstraat, Constantijn Huygensstraat
   year: 1944
   institution: Streekarchief Midden-Holland
@@ -2617,7 +2617,7 @@
     url: https://images.memorix.nl/sahm/iiif/3da4ac46-345e-1ce0-b7f3-cc6b567bebdf/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=39
-- label: Gouda E2
+- label: Kadastrale kaart Gouda E2
   title: kadastrale kaart Gouda E2. Hollandsche IJssel, Turfsingelsgracht, Kerkhoflaan / Vorstmanstraat, Constantijn Huygensstraat
   year: 1944
   institution: Streekarchief Midden-Holland
@@ -2626,7 +2626,7 @@
     url: https://images.memorix.nl/sahm/iiif/ec938c9e-711f-099e-9255-f8c0f9d1d878/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=136
-- label: Gouda A 2
+- label: Kadastrale kaarten van het gebied van sectie A 2
   title: 'Kadastrale kaarten van het gebied van sectie A 2. Begrensd door - ten N.: spoorlijn - ten Z.: Karnemelksloot - ten O.: Breevaart - ten W.: Spoorstraat. 1944'
   year: 1944
   institution: Streekarchief Midden-Holland
@@ -2635,7 +2635,7 @@
     url: https://images.memorix.nl/sahm/iiif/5c590d75-4eb6-48b9-a525-d57eb8faa4a5/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=143
-- label: '"""Cito Plan"" Gouda, goedkope uitgave."'
+- label: Cito Plan Gouda
   title: plattegrond van gemeente Gouda in kleur met straatnamenlijst.
   year: 1947
   institution: Streekarchief Midden-Holland
@@ -2644,7 +2644,7 @@
     url: https://images.memorix.nl/sahm/iiif/ab950d86-dfd4-bc2c-4664-0abaed69761d/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=91
-- label: Gouda H2
+- label: Kadastrale kaart Gouda H2
   title: kadastrale kaart Gouda H2. Rijksweg nr. 3 (Burg.Jamessingel), Ridder van Catsweg en gemeentegrens Waddinxveen (N).
   year: 1949
   institution: Streekarchief Midden-Holland
@@ -2653,7 +2653,7 @@
     url: https://images.memorix.nl/sahm/iiif/3924b3d1-977e-5b17-18b0-e58cb92d2439/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=6
-- label: Plan bebouwing omgeving tunnel
+- label: Plan voor ontwikkeling omgeving tunnen Albert Plesmanplein
   title: Plan voor ontwikkeling omgeving tunnen Albert Plesmanplein.
   year: 1949
   institution: Streekarchief Midden-Holland
@@ -2662,7 +2662,7 @@
     url: https://images.memorix.nl/sahm/iiif/ed066685-17ea-cca9-2735-702049ac3832/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=27
-- label: Gouda H 2
+- label: Kadastrale kaart van sectie H 2
   title: Kadastrale kaart van sectie H 2. Begrensd door spoorlijn den Haag/Rotterdam-Utrecht, Ridder van Catsweg, Rijksweg nr. 3 (Burg.Jamessingel).
   year: 1949
   institution: Streekarchief Midden-Holland
@@ -2671,7 +2671,7 @@
     url: https://images.memorix.nl/sahm/iiif/ccd04ac1-4bc9-2e98-7a4f-46201544a2e5/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=30
-- label: '"""Cito Plan"" Gouda, goedkope uitgave."'
+- label: Cito Plan Gouda
   title: plattegrond van gemeente Gouda in kleur met straatnamenlijst.
   year: 1949
   institution: Streekarchief Midden-Holland
@@ -2680,7 +2680,7 @@
     url: https://images.memorix.nl/sahm/iiif/07ae93df-2404-efc4-ca55-18639878c078/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=339
-- label: ''
+- label: Voorstel plaatsing tankstation en bushalte nabij kruispunt Koningin Wilhelminaweg - Provincialeweg
   title: Voorstel plaatsing tankstation en bushalte nabij kruispunt Koningin Wilhelminaweg - Provincialeweg.
   year: 1952
   institution: Streekarchief Midden-Holland
@@ -2689,7 +2689,7 @@
     url: https://images.memorix.nl/sahm/iiif/163e6356-5e66-d333-5a4f-0580a7cf7a3a/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=189
-- label: Voorstel plaatsing tankstation en bushalte nabij kruispunt Koningin Wilhelminaweg - Provincialeweg.
+- label: Voorstel plaatsing tankstation en bushalte nabij kruispunt Koningin Wilhelminaweg - Provincialeweg
   title: Voorstel plaatsing tankstation en bushalte nabij kruispunt Koningin Wilhelminaweg - Provincialeweg.
   year: 1952
   institution: Streekarchief Midden-Holland
@@ -2698,7 +2698,7 @@
     url: https://images.memorix.nl/sahm/iiif/76df8074-1f89-d22f-5cee-30fa0ed49e37/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=217
-- label: ''
+- label: Ontwikkeling Albert Plesmanplein
   title: Ontwikkeling Albert Plesmanplein
   year: 1954
   institution: Streekarchief Midden-Holland
@@ -2707,7 +2707,7 @@
     url: https://images.memorix.nl/sahm/iiif/012c5b76-abf3-0911-187d-394ce4f0921d/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=190
-- label: Kruispunt Koningin Wilhelminaweg - Provincialeweg - Weidebloemkwartier.
+- label: Ontwerp van Politie Gouda voor inrichting van het kruispunt
   title: ontwerp van Politie Gouda voor inrichting van het kruispunt.
   year: 1954
   institution: Streekarchief Midden-Holland
@@ -2716,7 +2716,7 @@
     url: https://images.memorix.nl/sahm/iiif/73f6ad03-4db4-9a53-ab09-ad2298f9de86/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=239
-- label: ''
+- label: Ontwerp kruising Koningin Wilhelminaweg - Provicialeweg - Weidebloemkwartier
   title: Ontwerp kruising Koningin Wilhelminaweg - Provicialeweg - Weidebloemkwartier.
   year: 1954
   institution: Streekarchief Midden-Holland
@@ -2725,7 +2725,7 @@
     url: https://images.memorix.nl/sahm/iiif/38496b6a-09cf-e421-be45-abbeca2b54eb/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=262
-- label: Kruispunt Koningin Wilhelminaweg - Provincialeweg - Weidebloemkwartier.
+- label: Ontwerp van Gemeentewerken Gouda voor inrichting van het kruispunt
   title: ontwerp van Gemeentewerken Gouda voor inrichting van het kruispunt.
   year: 1954
   institution: Streekarchief Midden-Holland
@@ -2734,7 +2734,7 @@
     url: https://images.memorix.nl/sahm/iiif/9ed33a08-3513-0441-1076-55998b062cbf/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=275
-- label: ''
+- label: Plankaart voor uitbreidingsplan Weidebloemkwartier
   title: Plankaart voor uitbreidingsplan Weidebloemkwartier.
   year: 1955
   institution: Streekarchief Midden-Holland
@@ -2743,7 +2743,7 @@
     url: https://images.memorix.nl/sahm/iiif/5667667a-3692-45a9-7a69-d20226258b51/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=211
-- label: Rooilijnen Lange- en Korte Noodgodsstraten.
+- label: Rooilijnen Lange- en Korte Noodgodsstraten
   title: 'Rooilijnen Lange- en Korte Noodgodstraten. Links onder inzet overzichtskaartje 1 : 1.000.'
   year: 1955
   institution: Streekarchief Midden-Holland
@@ -2752,7 +2752,7 @@
     url: https://images.memorix.nl/sahm/iiif/36fb2dd4-762a-5155-6e5e-71b0b51f6596/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=230
-- label: ''
+- label: Situatie kruispunt Koningin Wilhelminaweg - Provincialeweg - Weidebloemkwartier
   title: Situatie kruispunt Koningin Wilhelminaweg - Provincialeweg - Weidebloemkwartier.
   year: 1956
   institution: Streekarchief Midden-Holland
@@ -2761,7 +2761,7 @@
     url: https://images.memorix.nl/sahm/iiif/38c43f6b-279e-8e88-b576-309f7973947a/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=194
-- label: Albert Plesmanplein
+- label: Ontwerptekening Albert Plesmanplein
   title: Ontwerptekening Albert Plesmanplein
   year: 1956
   institution: Streekarchief Midden-Holland
@@ -2770,7 +2770,7 @@
     url: https://images.memorix.nl/sahm/iiif/c23e4aed-0b80-e74a-daa5-53a3898cdf32/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=228
-- label: ''
+- label: Plankaart voor gebied Kanaalstraat, Parkstraat, Noorderstraat, Winterdijk en Van Bergen IJzendoornpark
   title: Plankaart voor gebied Kanaalstraat, Parkstraat, Noorderstraat, Winterdijk en Van Bergen IJzendoornpark.
   year: 1956
   institution: Streekarchief Midden-Holland
@@ -2779,7 +2779,7 @@
     url: https://images.memorix.nl/sahm/iiif/92c051ed-ccdb-e05c-6863-c234f0d2f0fd/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=255
-- label: Uitbreidingsplan Achterwillens en Oosterwei.
+- label: Plankaart voor uitbreidingsplan Achterwillens en gedeelte Oosterwei
   title: Plankaart voor uitbreidingsplan Achterwillens en gedeelte Oosterwei.
   year: 1956
   institution: Streekarchief Midden-Holland
@@ -2788,7 +2788,7 @@
     url: https://images.memorix.nl/sahm/iiif/adc15796-5c95-9b0e-2b16-b206f00ec64c/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=274
-- label: ''
+- label: Gedeelte Uitbreidingsplan Noord-Noord-West, verkaveling oostzijde Jan van Beaumontstraat en gedeelte Sint Joseph Paviljoen
   title: Gedeelte Uitbreidingsplan Noord-Noord-West, verkaveling oostzijde Jan van Beaumontstraat en gedeelte Sint Joseph Paviljoen.
   year: 1956
   institution: Streekarchief Midden-Holland
@@ -2797,7 +2797,7 @@
     url: https://images.memorix.nl/sahm/iiif/868b78e7-c212-c9f9-5bd6-9ca1af81d9b9/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=280
-- label: Ontwerp Bodegraafsestraatweg.
+- label: Ontwerp Bodegraafsestraatweg
   title: Betreft gedeelte tussen Graaf Florisweg en Willem de Zwijgersingel / Jan van Renesseplein. Tekening is ingekleurd.
   year: 1956
   institution: Streekarchief Midden-Holland
@@ -2806,7 +2806,7 @@
     url: https://images.memorix.nl/sahm/iiif/bc157c81-a993-88c8-7fdd-9c8585a8609c/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=294
-- label: ''
+- label: Schetsplan Profielwijziging en verkeersaansluiting Ridder van Catsweg met de Randweg en Albert Plesmanplein
   title: Schetsplan Profielwijziging en verkeersaansluiting Ridder van Catsweg met de Randweg en Albert Plesmanplein.
   year: 1957
   institution: Streekarchief Midden-Holland
@@ -2815,7 +2815,7 @@
     url: https://images.memorix.nl/sahm/iiif/8111291d-9774-0a17-07a8-b2a3f9694ff1/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=185
-- label: Gedeeltelijk Ontwerp Uitbreidingsplan "Oosterwei".
+- label: Gedeeltelijk Ontwerp Uitbreidingsplan "Oosterwei"
   title: Betreft plaats sportterrein in zuid-oostelijk gedeelte van het plangebied.
   year: 1957
   institution: Streekarchief Midden-Holland
@@ -2824,7 +2824,7 @@
     url: https://images.memorix.nl/sahm/iiif/7c226e18-bbab-5195-686a-b6ebb62c2536/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=188
-- label: ''
+- label: Verkeersoplossing Kleiwegsbrug e.o.
   title: Verkeersoplossing "Kleiwegsbrug" e.o.
   year: 1957
   institution: Streekarchief Midden-Holland
@@ -2833,7 +2833,7 @@
     url: https://images.memorix.nl/sahm/iiif/864d66b3-a239-9483-f5fe-abc2fd146926/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=216
-- label: Gedeelte Uitbreidingsplan Goudse Veld.
+- label: Gedeelte Uitbreidingsplan Goudse Veld
   title: Betreft gebied ten westen van de Ridder van Catsweg.
   year: 1958
   institution: Streekarchief Midden-Holland
@@ -2842,7 +2842,7 @@
     url: https://images.memorix.nl/sahm/iiif/5033d1b5-62d5-0117-cfab-3eebe820b31e/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=195
-- label: ''
+- label: Voorstel tot wijziging van Uitbreidingsplan Oosterwei
   title: Voorstel tot wijziging van Uitbreidingsplan 'Oosterwei'.
   year: 1958
   institution: Streekarchief Midden-Holland
@@ -2851,7 +2851,7 @@
     url: https://images.memorix.nl/sahm/iiif/861a1bb9-9fcd-34b7-b0e4-27fae17a9cfb/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=198
-- label: ''
+- label: Uitbreidingsplan Oosterwei
   title: Uitbreidingsplan 'Oosterwei'
   year: 1958
   institution: Streekarchief Midden-Holland
@@ -2860,7 +2860,7 @@
     url: https://images.memorix.nl/sahm/iiif/6b443c92-14d5-cec1-1b4d-9502e6b07e2b/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=236
-- label: ''
+- label: Gemeente Gouda Uitbreidingsplan in onderdelen Oosterwei
   title: Gemeente Gouda Uitbreidingsplan in onderdelen "Oosterwei"
   year: 1959
   institution: Streekarchief Midden-Holland
@@ -2869,7 +2869,7 @@
     url: https://images.memorix.nl/sahm/iiif/01aa8fbe-6dbf-5174-1902-366695e66edb/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=224
-- label: Functie- en kwaliteitskaart gemeente Gouda
+- label: Functie- en kwaliteitskaart bedrijfsterrein Kromme Gouwe
   title: Functie- en kwaliteitskaart bedrijfsterrein Kromme Gouwe. Begrensd door Kromme Gouwe en Nieuwe Gouwe.
   year: 1960
   institution: Streekarchief Midden-Holland
@@ -2923,15 +2923,6 @@
     url: https://images.memorix.nl/sahm/iiif/32728119-1afe-ce36-0e06-71056dc7210e/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=245
-- label: ''
-  title: Uitbreidingsplan in onderdelen "Oosterwei" en uitbreidingsplan in hoofdzaak "Sportcomplexen Oost"
-  year: 1960
-  institution: Streekarchief Midden-Holland
-  url: https://samh.nl/bronnen/beeldbank/detail/79ee6768-7ea1-e040-d109-6a278b6deaa8/media/b34e2bcb-92ce-6cf9-b97c-9ed3db5572d3
-  iiif:
-    url: https://images.memorix.nl/sahm/iiif/b34e2bcb-92ce-6cf9-b97c-9ed3db5572d3/
-    type: image
-  annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=252
 - label: Functie- en kwaliteitskaart gemeente Gouda
   title: Kaart van gedeelte Gouda met soort en kwaliteit van bebouwing gebaseerd op kaart Telefoonnet Gouda bladnr. L 11 uit 1958. Betreft gedeelte Stolwijkersluis, Goudseweg, Oude Brugweg, Gouderaksedijk.
   year: 1960
@@ -2950,7 +2941,16 @@
     url: https://images.memorix.nl/sahm/iiif/a905502e-90e5-d4e5-9600-029f691af8ba/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=289
-- label: Planontwerp voor Uitbreidingsplan 'Noord-West' .
+- label: Uitbreidingsplan in onderdelen Oosterwei en uitbreidingsplan in Sportcomplexen Oost
+  title: Uitbreidingsplan in onderdelen "Oosterwei" en uitbreidingsplan in hoofdzaak "Sportcomplexen Oost"
+  year: 1960
+  institution: Streekarchief Midden-Holland
+  url: https://samh.nl/bronnen/beeldbank/detail/79ee6768-7ea1-e040-d109-6a278b6deaa8/media/b34e2bcb-92ce-6cf9-b97c-9ed3db5572d3
+  iiif:
+    url: https://images.memorix.nl/sahm/iiif/b34e2bcb-92ce-6cf9-b97c-9ed3db5572d3/
+    type: image
+  annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=252
+- label: Planontwerp voor Uitbreidingsplan Noord-West
   title: Betreft gebied ten noord-westen van het Albert Plesmanplein (Bleulandweg - Ridder van Catsweg).
   year: 1960
   institution: Streekarchief Midden-Holland
@@ -2959,7 +2959,7 @@
     url: https://images.memorix.nl/sahm/iiif/96f5bf95-3b80-fede-d144-64b4fd4b8442/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=292
-- label: ''
+- label: Plattegrond van Gouda
   title: Plattegrond van Gouda
   year: 1960
   institution: Streekarchief Midden-Holland
@@ -2968,7 +2968,7 @@
     url: https://images.memorix.nl/sahm/iiif/7d9d30a5-b771-aed2-9001-8d04812a3f5e/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=354
-- label: ''
+- label: Plattegrond van Gouda
   title: Gouda
   year: 1960
   institution: Streekarchief Midden-Holland
@@ -3013,7 +3013,7 @@
     url: https://images.memorix.nl/sahm/iiif/4767318d-4fad-8c2a-f0b7-4e5b8b0f650d/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=223
-- label: Gemeente-eigendommen in het Onteigeningsplan Slapperdelplein.
+- label: Gemeente-eigendommen in het Onteigeningsplan Slapperdelplein
   title: Gemeente-eigendommen in het Onteigeningsplan Slapperdelplein.
   year: 1968
   institution: Streekarchief Midden-Holland
@@ -3031,7 +3031,7 @@
     url: https://images.memorix.nl/sahm/iiif/74d13546-9c02-ca9b-f5e4-a456c5ab5e3d/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=193
-- label: ''
+- label: Plattegrond van Gouda
   title: Gouda
   year: 1970
   institution: Streekarchief Midden-Holland
@@ -3040,7 +3040,7 @@
     url: https://images.memorix.nl/sahm/iiif/fd44ee1f-e99c-78ff-f975-5edf26d5d501/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=312
-- label: ''
+- label: Plattegrond van Gouda
   title: Plattegrond van Gouda
   year: 1970
   institution: Streekarchief Midden-Holland
@@ -3049,7 +3049,7 @@
     url: https://images.memorix.nl/sahm/iiif/03ef0e7f-0594-6677-93f9-8b715f820ed2/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=352
-- label: ''
+- label: Plattegrond van Gouda
   title: Plattegrond van Gouda
   year: 1970
   institution: Streekarchief Midden-Holland
@@ -3112,7 +3112,7 @@
     url: https://images.memorix.nl/sahm/iiif/66596107-f320-2e00-7c59-30d020c7ee39/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=290
-- label: Gouda - Binnenstad - Verband Beschermde Monumenten / Beschermd Stadsgezicht.
+- label: Gouda - Binnenstad - Verband Beschermde Monumenten / Beschermd Stadsgezicht
   title: Bijlage 7F van nota "monumenten in Gouda"
   year: 1975
   institution: Streekarchief Midden-Holland
@@ -3121,7 +3121,7 @@
     url: https://images.memorix.nl/sahm/iiif/a11a9536-34cb-a742-2c80-0248819b39a8/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=202
-- label: Gemeente Gouda - Binnenstad met Beschermde Monumenten.
+- label: Gemeente Gouda - Binnenstad met Beschermde Monumenten
   title: Bijlage 7C van nota "monumenten in Gouda"
   year: 1975
   institution: Streekarchief Midden-Holland
@@ -3130,7 +3130,7 @@
     url: https://images.memorix.nl/sahm/iiif/b436aac4-255c-8bad-9021-b82a7b4eeead/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=243
-- label: Gouda - Binnenstad met Beschermde Monumenten. Kwaliteitsaanduiding.
+- label: Gouda - Binnenstad met Beschermde Monumenten, kwaliteitsaanduiding
   title: Bijlage 7D van nota "monumenten in Gouda"
   year: 1975
   institution: Streekarchief Midden-Holland
@@ -3139,7 +3139,7 @@
     url: https://images.memorix.nl/sahm/iiif/663b8491-637e-b0e8-584b-e7211b2e1b30/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=244
-- label: Gouda - Binnenstad met Beschermde Monumenten. Bestemmingen.
+- label: Gouda - Binnenstad met Beschermde Monumenten, bestemmingen
   title: Bijlage 7E van nota "monumenten in Gouda".
   year: 1975
   institution: Streekarchief Midden-Holland
@@ -3148,7 +3148,7 @@
     url: https://images.memorix.nl/sahm/iiif/c065974f-d2fd-4995-ae91-be00f3d13677/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=270
-- label: Situatie Markt.
+- label: Situatie Markt
   title: Markt
   year: 1976
   institution: Streekarchief Midden-Holland
@@ -3157,7 +3157,7 @@
     url: https://images.memorix.nl/sahm/iiif/ba8ae209-8038-80be-7bd3-9cb2c976aa88/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=246
-- label: Gouda, Stadsdeel Bloemendaal. Beschermde Monumenten aan de Bloemendaalseweg.
+- label: Gouda, Stadsdeel Bloemendaal, Beschermde Monumenten aan de Bloemendaalseweg
   title: Bijlage 7H van nota "monumenten in Gouda"
   year: 1977
   institution: Streekarchief Midden-Holland
@@ -3166,7 +3166,7 @@
     url: https://images.memorix.nl/sahm/iiif/5e6699a1-2cef-9601-f485-77c0de0e3d53/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=272
-- label: Basiskaart Gemeente Gouda 105-4470
+- label: Basiskaart Gemeente Gouda, 't Weegje, Provincialeweg, Ringvaart
   title: Basiskaart Gemeente Gouda. , Kaartnummer 105-4470, 't Weegje, Provincialeweg, Ringvaart
   year: 1981
   institution: Streekarchief Midden-Holland
@@ -3175,7 +3175,7 @@
     url: https://images.memorix.nl/sahm/iiif/a4416430-54fa-1c85-38ba-cb9a13a2c67b/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=199
-- label: Basiskaart Gemeente Gouda 105-4485
+- label: Basiskaart Gemeente Gouda, Noordringdijk, Nieuwe Gouwe oz, Henegouwerweg, Rijksweg A12, Gouwe-Aquaduct
   title: Basiskaart Gemeente Gouda., Kaartnummer 105-4485, Noordringdijk, Nieuwe Gouwe oz, Henegouwerweg, Rijksweg A12, Gouwe-Aquaduct.
   year: 1981
   institution: Streekarchief Midden-Holland
@@ -3184,7 +3184,7 @@
     url: https://images.memorix.nl/sahm/iiif/109a92f1-cb0a-2356-7a92-b3543edac85e/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=206
-- label: Basiskaart Gemeente Gouda 105-4475
+- label: Basiskaart Gemeente Gouda, Spoorlijn Den Haag / Rotterdam - Utrecht, 't Weegje
   title: Basiskaart Gemeente Gouda. , Kaartnummer 105-4475, Spoorlijn Den Haag / Rotterdam - Utrecht, 't Weegje
   year: 1981
   institution: Streekarchief Midden-Holland
@@ -3193,7 +3193,7 @@
     url: https://images.memorix.nl/sahm/iiif/115e75f4-0077-fe5b-bf1a-50a6d6fb74e6/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=256
-- label: Basiskaart Gemeente Gouda 110-4475
+- label: Basiskaart Gemeente Gouda, Achterwillenseweg, Voorwillenseweg
   title: Basiskaart Gemeente Gouda 110-4475, Achterwillenseweg, Voorwillenseweg
   year: 1990
   institution: Streekarchief Midden-Holland
@@ -3202,7 +3202,7 @@
     url: https://images.memorix.nl/sahm/iiif/f743e0c0-9aa6-5ef2-dcc0-e7d4a09dd112/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=184
-- label: Basiskaart Gemeente Gouda 106-447
+- label: Basiskaart Gemeente Gouda, Broekweg, Nieuwe Gouwe o.z., Burgemeester van Reenensingel, van Bergen IJzendoornpark, Abel Tasmanlaan
   title: Basiskaart Gemeente Gouda 106-447, Broekweg, Nieuwe Gouwe o.z., Burgemeester van Reenensingel, van Bergen IJzendoornpark, Abel Tasmanlaan
   year: 1990
   institution: Streekarchief Midden-Holland
@@ -3211,7 +3211,7 @@
     url: https://images.memorix.nl/sahm/iiif/9330b941-bc5c-3f0c-4b49-aa2bdc5f56e6/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=186
-- label: Basiskaart Gemeente Gouda 108-4475
+- label: Basiskaart Gemeente Gouda, Burgemeester Jamessingel, Graaf Florisweg, Bellamystraat, van Strijenstraat
   title: Basiskaart Gemeente Gouda 108-4475, Burgemeester Jamessingel, Graaf Florisweg, Bellamystraat, van Strijenstraat
   year: 1990
   institution: Streekarchief Midden-Holland
@@ -3220,7 +3220,7 @@
     url: https://images.memorix.nl/sahm/iiif/5ad412d7-bed9-d43b-f334-91e47cc9d82d/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=187
-- label: Basiskaart Gemeente Gouda 107-4475
+- label: Basiskaart Gemeente Gouda, Spoorlijn Den Haag/Rotterdam-Utrecht, van Bergen IJzendoornpark, Goudkade
   title: Basiskaart Gemeente Gouda 107-4475, Spoorlijn Den Haag/Rotterdam-Utrecht, van Bergen IJzendoornpark, Goudkade
   year: 1990
   institution: Streekarchief Midden-Holland
@@ -3229,7 +3229,7 @@
     url: https://images.memorix.nl/sahm/iiif/891bcf79-e706-3625-6da3-2a09beb4e4b5/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=191
-- label: Basiskaart Gemeente Gouda 109-4495
+- label: Basiskaart Gemeente Gouda, Omloopwetering, Klipperwerf, Zoutmansweg / Bodegraafse Straagweg, Burgemeester Lucasselaan, Beemdgras
   title: Basiskaart Gemeente Gouda 109-4495, Omloopwetering, Klipperwerf, Zoutmansweg / Bodegraafse Straagweg, Burgemeester Lucasselaan, Beemdgras
   year: 1990
   institution: Streekarchief Midden-Holland
@@ -3238,7 +3238,7 @@
     url: https://images.memorix.nl/sahm/iiif/042934a6-38e6-ef01-7bb7-337c2625ba4d/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=192
-- label: Basiskaart Gemeente Gouda 108-4455
+- label: Basiskaart Gemeente Gouda, Hollandsche IJssel, Veerstalblok
   title: Basiskaart Gemeente Gouda 108-4455, Hollandsche IJssel, Veerstalblok
   year: 1990
   institution: Streekarchief Midden-Holland
@@ -3247,7 +3247,7 @@
     url: https://images.memorix.nl/sahm/iiif/e7c877b6-f228-0033-5a3a-29bc54c1a601/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=197
-- label: Basiskaart Gemeente Gouda 111-4475
+- label: Basiskaart Gemeente Gouda, Vlietdijk, Twaalfmorgen, Willenskade, Spoorlijn Den Haag / Rotterdam - Utrecht
   title: Basiskaart Gemeente Gouda 111-4475, Vlietdijk, Twaalfmorgen, Willenskade, Spoorlijn Den Haag / Rotterdam - Utrecht
   year: 1990
   institution: Streekarchief Midden-Holland
@@ -3256,7 +3256,7 @@
     url: https://images.memorix.nl/sahm/iiif/06429df4-be22-5c6d-13fa-76cf6c832d02/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=200
-- label: Basiskaart Gemeente Gouda 108-4500
+- label: Basiskaart Gemeente Gouda, Rijksweg A12, Omloopkade, Mastpad, Negenhoeven, Plaswijckweg
   title: Basiskaart Gemeente Gouda 108-4500, Rijksweg A12, Omloopkade, Mastpad, Negenhoeven, Plaswijckweg
   year: 1990
   institution: Streekarchief Midden-Holland
@@ -3265,7 +3265,7 @@
     url: https://images.memorix.nl/sahm/iiif/cc0b5ff7-8198-1120-de74-f6191fc9e6d1/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=203
-- label: Basiskaart Gemeente Gouda 106-4470
+- label: Basiskaart Gemeente Gouda, Ringvaart, Broekweg, Gouwekanaal
   title: Basiskaart Gemeente Gouda 106-4470, Ringvaart, Broekweg, Gouwekanaal
   year: 1990
   institution: Streekarchief Midden-Holland
@@ -3274,7 +3274,7 @@
     url: https://images.memorix.nl/sahm/iiif/8a750e2e-bf0f-ccca-5902-a78fc6f4dd75/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=204
-- label: Basiskaart Gemeente Gouda 107-4465
+- label: Basiskaart Gemeente Gouda, Tweede Moordrechtse Tiendweg, Prins Hendrikstraat, Tollensstraat, Nieuwe Broekweg
   title: Basiskaart Gemeente Gouda 107-4465, Tweede Moordrechtse Tiendweg, Prins Hendrikstraat, Tollensstraat, Nieuwe Broekweg
   year: 1990
   institution: Streekarchief Midden-Holland
@@ -3283,7 +3283,7 @@
     url: https://images.memorix.nl/sahm/iiif/af172c41-678e-7f25-3ed8-50718cfb50c9/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=205
-- label: Basiskaart Gemeente Gouda 106-445
+- label: Basiskaart Gemeente Gouda, Ringvaart, Hollandsche IJssel, Tollensstraat, Brug over Stroomkanaal
   title: Basiskaart Gemeente Gouda, kaartnr. 106-445, Ringvaart, Hollandsche IJssel, Tollensstraat, Brug over Stroomkanaal
   year: 1990
   institution: Streekarchief Midden-Holland
@@ -3292,7 +3292,7 @@
     url: https://images.memorix.nl/sahm/iiif/f6c87a65-63ad-a369-f784-1705527f6c4b/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=208
-- label: Basiskaart Gemeente Gouda 107-4495
+- label: Basiskaart Gemeente Gouda, Rijksweg A12, Noordhoef, Gildenburg, Geraniumstraat
   title: Basiskaart Gemeente Gouda 107-4495, Rijksweg A12, Noordhoef, Gildenburg, Geraniumstraat
   year: 1990
   institution: Streekarchief Midden-Holland
@@ -3301,7 +3301,7 @@
     url: https://images.memorix.nl/sahm/iiif/026b718a-cb1f-5765-f88f-3553351bc8e6/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=210
-- label: Basiskaart Gemeente Gouda 106-446
+- label: Basiskaart Gemeente Gouda, Ringvaart, Provincialeweg, Constantijn Huygensstraat, Nieuwe Gouwe o.z., Broekweg
   title: Basiskaart Gemeente Gouda 106-446, Ringvaart, Provincialeweg, Constantijn Huygensstraat, Nieuwe Gouwe o.z., Broekweg
   year: 1990
   institution: Streekarchief Midden-Holland
@@ -3310,7 +3310,7 @@
     url: https://images.memorix.nl/sahm/iiif/c1caadd8-55cf-5922-9769-29373ee01f73/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=213
-- label: Basiskaart Gemeente Gouda 108-4495
+- label: Basiskaart Gemeente Goude, Noordhoef, Pluutwerf, Beemdgras, Gildenburg
   title: Basiskaart Gemeente Gouda 108-4495, Noordhoef, Pluutwerf, Beemdgras, Gildenburg
   year: 1990
   institution: Streekarchief Midden-Holland
@@ -3319,7 +3319,7 @@
     url: https://images.memorix.nl/sahm/iiif/a39e2c4e-863a-e8af-0de9-ef7dc5b4f05c/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=215
-- label: Basiskaart Gemeente Gouda 106-449
+- label: Basiskaart Gemeente Gouda, Rijksweg A12, Noordhoef, Gildenburg, Groenhovenweg
   title: Basiskaart Gemeente Gouda 106-449, Rijksweg A12, Noordhoef, Gildenburg, Groenhovenweg
   year: 1990
   institution: Streekarchief Midden-Holland
@@ -3328,7 +3328,7 @@
     url: https://images.memorix.nl/sahm/iiif/45f0a529-7a6a-18d7-c430-74cead8a4a16/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=218
-- label: Basiskaart Gemeente Gouda 106-448
+- label: Basiskaart Gemeente Gouda, Rijksweg A12, Ridder van Catsweg, Columbuslaan, Nieuwe Gouwe o.z., Hanzeweg
   title: Basiskaart Gemeente Gouda 106-448, Rijksweg A12, Ridder van Catsweg, Columbuslaan, Nieuwe Gouwe o.z., Hanzeweg
   year: 1990
   institution: Streekarchief Midden-Holland
@@ -3337,7 +3337,7 @@
     url: https://images.memorix.nl/sahm/iiif/62ef39a0-9292-9757-fb55-146375944573/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=219
-- label: Basiskaart Gemeente Gouda 108-448
+- label: Basiskaart Gemeente Gouda, Gildenburg, Burgemeester Lucasselaan, Wethouder Venteweg, Abel Tasmanlaan
   title: Basiskaart Gemeente Gouda 108-448, Gildenburg, Burgemeester Lucasselaan, Wethouder Venteweg, Abel Tasmanlaan
   year: 1990
   institution: Streekarchief Midden-Holland
@@ -3346,7 +3346,7 @@
     url: https://images.memorix.nl/sahm/iiif/8713f5e9-ffae-1557-29ef-1ed4fe03f095/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=221
-- label: Basiskaart Gemeente Gouda 108-446
+- label: Basiskaart Gemeente Gouda, van Strijenstraat, Brandsmastraat, Zuider IJsseldijk, Bosweg
   title: Basiskaart Gemeente Gouda 108-446, van Strijenstraat, Brandsmastraat, Zuider IJsseldijk, Bosweg
   year: 1990
   institution: Streekarchief Midden-Holland
@@ -3355,7 +3355,7 @@
     url: https://images.memorix.nl/sahm/iiif/da5218b1-e12a-b85e-e8e6-6cd3dce7e2dd/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=225
-- label: Basiskaart Gemeente Gouda 107-4460
+- label: Basiskaart Gemeente Gouda, Jacob van Lennepkade, Tollensstraat, Rotterdamseweg, Ringdijk Oost
   title: Basiskaart Gemeente Gouda 107-4460, Jacob van Lennepkade, Tollensstraat, Rotterdamseweg, Ringdijk Oost
   year: 1990
   institution: Streekarchief Midden-Holland
@@ -3373,7 +3373,7 @@
     url: https://images.memorix.nl/sahm/iiif/a01dff40-c5c2-a78c-8e43-b011da0846fb/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=229
-- label: Basiskaart Gemeente Gouda 108-4480
+- label: Basiskaart Gemeente Gouda, Livingstonelaan, Vliegenstraat, Willem en Marialaan, Ronssepad
   title: Basiskaart Gemeente Gouda 108-4480, Livingstonelaan, Vliegenstraat, Willem en Marialaan, Ronssepad
   year: 1990
   institution: Streekarchief Midden-Holland
@@ -3382,7 +3382,7 @@
     url: https://images.memorix.nl/sahm/iiif/71c7da8e-1998-4300-784a-84fc5afd3486/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=231
-- label: Basiskaart Gemeente Gouda 109-4465
+- label: Basiskaart Gemeente Gouda, IJssellaan, Waaiersluis, Provincialeweg West, Stolwijkersluis, Gouderaksedijk
   title: Basiskaart Gemeente Gouda 109-4465, IJssellaan, Waaiersluis, Provincialeweg West, Stolwijkersluis, Gouderaksedijk
   year: 1990
   institution: Streekarchief Midden-Holland
@@ -3391,7 +3391,7 @@
     url: https://images.memorix.nl/sahm/iiif/5b62db98-ab1d-f717-8821-b3bcd431fa75/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=233
-- label: Basiskaart Gemeente Gouda 110-446
+- label: Basiskaart Gemeente Gouda, Vrijheidslaan, Willenskade, Voorwillenseweg, Provincialeweg West
   title: Basiskaart Gemeente Gouda 110-446, Vrijheidslaan, Willenskade, Voorwillenseweg, Provincialeweg West
   year: 1990
   institution: Streekarchief Midden-Holland
@@ -3400,7 +3400,7 @@
     url: https://images.memorix.nl/sahm/iiif/78b61528-c9ce-a236-1a47-2bad83be38e2/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=235
-- label: Basiskaart Gemeente Gouda 106-4480
+- label: Basiskaart Gemeente Gouda, Nieuwe Gouwe o.z., Burgemeester van Reenensingel, Goudse Poort
   title: Basiskaart Gemeente Gouda 106-4480, Nieuwe Gouwe o.z., Burgemeester van Reenensingel, Goudse Poort
   year: 1990
   institution: Streekarchief Midden-Holland
@@ -3409,7 +3409,7 @@
     url: https://images.memorix.nl/sahm/iiif/bdb621e2-0d70-b62e-57a3-0c76b60caf02/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=237
-- label: Basiskaart Gemeente Gouda 106-4455
+- label: Basiskaart Gemeente Gouda, Ringvraart, Sluisdijk
   title: Basiskaart Gemeente Gouda 106-4455, Ringvraart, Sluisdijk
   year: 1990
   institution: Streekarchief Midden-Holland
@@ -3418,7 +3418,7 @@
     url: https://images.memorix.nl/sahm/iiif/ecd6f627-56f6-3b4e-9de3-ec0e7c06ff13/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=238
-- label: Basiskaart Gemeente Gouda 110-4480
+- label: Basiskaart Gemeente Gouda, Vlietdijk
   title: Basiskaart Gemeente Gouda 110-4480, Vlietdijk
   year: 1990
   institution: Streekarchief Midden-Holland
@@ -3427,7 +3427,7 @@
     url: https://images.memorix.nl/sahm/iiif/5609e74b-b102-d6e2-c9bd-2d560245f8dd/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=240
-- label: Basiskaart Gemeente Gouda 107-4490
+- label: Basiskaart Gemeente Gouda, Groenhovenweg, Plaswijckweg, Clematislaan, Lindelaan
   title: Basiskaart Gemeente Gouda 107-4490, Groenhovenweg, Plaswijckweg, Clematislaan, Lindelaan
   year: 1990
   institution: Streekarchief Midden-Holland
@@ -3436,7 +3436,7 @@
     url: https://images.memorix.nl/sahm/iiif/e9d5d0a3-26b2-099a-e26d-9f58bb635cf6/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=241
-- label: Basiskaart Gemeente Gouda 106-4490
+- label: Basiskaart Gemeente Gouda, Rijksweg A12, Prunuslaan, Groenhovenpark
   title: Basiskaart Gemeente Gouda 106-4490, Rijksweg A12, Prunuslaan, Groenhovenpark
   year: 1990
   institution: Streekarchief Midden-Holland
@@ -3445,7 +3445,7 @@
     url: https://images.memorix.nl/sahm/iiif/433e4bf0-0209-dfa8-2617-dad528804711/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=247
-- label: Basiskaart Gemeente Gouda 110-4485
+- label: Basiskaart Gemeente Gouda, Platteweg
   title: Basiskaart Gemeente Gouda 110-4485,  Platteweg
   year: 1990
   institution: Streekarchief Midden-Holland
@@ -3454,7 +3454,7 @@
     url: https://images.memorix.nl/sahm/iiif/ce77bb07-2ff0-e976-9c94-cc7dcc1d9161/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=249
-- label: Basiskaart Gemeente Gouda 107-4480
+- label: Basiskaart Gemeente Gouda, Burgemeester van Reenensingel, Abel Tasmanlaan, Burgemeester Jamessingel, Antwerpseweg
   title: Basiskaart Gemeente Gouda 107-4480, Burgemeester van Reenensingel, Abel Tasmanlaan, Burgemeester Jamessingel, Antwerpseweg
   year: 1990
   institution: Streekarchief Midden-Holland
@@ -3463,7 +3463,7 @@
     url: https://images.memorix.nl/sahm/iiif/de1acbbd-5233-6012-82a2-32cef1ec5023/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=250
-- label: Basiskaart Gemeente Gouda 109-4470
+- label: Basiskaart Gemeente Gouda, Karnemelksloot, Gedenklaan, Goejanverwelledijk, Burgemeester Martensstraat
   title: Basiskaart Gemeente Gouda 109-4470, Karnemelksloot, Gedenklaan, Goejanverwelledijk, Burgemeester Martensstraat
   year: 1990
   institution: Streekarchief Midden-Holland
@@ -3472,7 +3472,7 @@
     url: https://images.memorix.nl/sahm/iiif/4923ff47-a30c-f69c-cecd-78795daa9893/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=251
-- label: Basiskaart Gemeente Gouda 109-4485
+- label: Basiskaart Gemeente Gouda, Gloucesterstraat, Platteweg, Rentmeesterslag, Troelstralaan
   title: Basiskaart Gemeente Gouda 109-4485, Gloucesterstraat, Platteweg, Rentmeesterslag, Troelstralaan
   year: 1990
   institution: Streekarchief Midden-Holland
@@ -3481,7 +3481,7 @@
     url: https://images.memorix.nl/sahm/iiif/36287b31-62cc-8a00-aa47-d140aa70ae2a/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=254
-- label: Basiskaart Gemeente Gouda 107-4500
+- label: Basiskaart Gemeente Gouda, Rijksweg A12
   title: Basiskaart Gemeente Gouda 107-4500, Rijksweg A12
   year: 1990
   institution: Streekarchief Midden-Holland
@@ -3490,7 +3490,7 @@
     url: https://images.memorix.nl/sahm/iiif/15beb531-1ad3-4cab-a801-9b118f14f512/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=257
-- label: Basiskaart Gemeente Gouda 111-4460
+- label: Basiskaart Gemeente Gouda, Goejanverwelledijk, Provincialeweg West
   title: Basiskaart Gemeente Gouda 111-4460, Goejanverwelledijk, Provincialeweg West
   year: 1990
   institution: Streekarchief Midden-Holland
@@ -3499,7 +3499,7 @@
     url: https://images.memorix.nl/sahm/iiif/41309add-582d-6c45-b00a-3bddae129500/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=260
-- label: Basiskaart Gemeente Gouda 106-4475
+- label: Basiskaart Gemeente Gouda, Broekweg, Oude Gouwe, Nieuwe Gouwe o.z., Gouwe-kanaal
   title: Basiskaart Gemeente Gouda 106-4475, Broekweg, Oude Gouwe, Nieuwe Gouwe o.z., Gouwe-kanaal
   year: 1990
   institution: Streekarchief Midden-Holland
@@ -3508,7 +3508,7 @@
     url: https://images.memorix.nl/sahm/iiif/13efafa3-ab29-e2a3-e477-76c1de43e36f/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=261
-- label: Basiskaart Gemeente Gouda 107-4485
+- label: Basiskaart Gemeente Gouda, Plataanstraat, Clematislaan, Abel Tasmanlaan, Tobbepad
   title: Basiskaart Gemeente Gouda 107-4485, Plataanstraat, Clematislaan, Abel Tasmanlaan, Tobbepad
   year: 1990
   institution: Streekarchief Midden-Holland
@@ -3517,7 +3517,7 @@
     url: https://images.memorix.nl/sahm/iiif/1c0f2f39-d0c8-55bc-911c-7b820a9d5f20/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=265
-- label: Basiskaart Gemeente Gouda 110-445
+- label: Basiskaart Gemeente Gouda, Provincialeweg West, Goejanverwelledijk
   title: Basiskaart Gemeente Gouda 110-445, Provincialeweg West, Goejanverwelledijk
   year: 1990
   institution: Streekarchief Midden-Holland
@@ -3526,7 +3526,7 @@
     url: https://images.memorix.nl/sahm/iiif/b531500d-e431-3efb-f9b6-9e46b3d8d89a/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=266
-- label: Basiskaart Gemeente Gouda 109-4480
+- label: Basiskaart Gemeente Gouda, Thorbeckelaan, Heemraadslag, Graaf Florisweg, Willem en Marialaan
   title: Basiskaart Gemeente Gouda 109-4480, Thorbeckelaan, Heemraadslag, Graaf Florisweg, Willem en Marialaan
   year: 1990
   institution: Streekarchief Midden-Holland
@@ -3535,7 +3535,7 @@
     url: https://images.memorix.nl/sahm/iiif/961a46a9-ecc6-4a1f-48da-6c0073ebc598/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=267
-- label: Basiskaart Gemeente Gouda 107-4455
+- label: Basiskaart Gemeente Gouda, Ringdijk Oost, Dotterplantsoen, Schielands Hoge Zeedijk, Sluisdijk
   title: Basiskaart Gemeente Gouda 107-4455, Ringdijk Oost, Dotterplantsoen, Schielands Hoge Zeedijk, Sluisdijk
   year: 1990
   institution: Streekarchief Midden-Holland
@@ -3544,7 +3544,7 @@
     url: https://images.memorix.nl/sahm/iiif/65eb7810-d22e-4c5d-7b21-7e8b4580180d/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=268
-- label: Basiskaart Gemeente Gouda 110-447
+- label: Basiskaart Gemeente Gouda, Vlietdijk, Willenskade, Spoorlijn Den Haag/Rotterdam-Utrecht, Voorwillenseweg
   title: Basiskaart Gemeente Gouda 110-447, Vlietdijk, Willenskade, Spoorlijn Den Haag/Rotterdam-Utrecht, Voorwillenseweg
   year: 1990
   institution: Streekarchief Midden-Holland
@@ -3553,7 +3553,7 @@
     url: https://images.memorix.nl/sahm/iiif/926a976c-2164-bff4-cf45-3f29634ea9e1/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=269
-- label: Basiskaart Gemeente Gouda 109-4490
+- label: Basiskaart Gemeente Gouda, Waterlelie, Burgemeester Lucasselaan, Solingenstraat
   title: Basiskaart Gemeente Gouda 109-4490, Waterlelie, Burgemeester Lucasselaan, Solingenstraat
   year: 1990
   institution: Streekarchief Midden-Holland
@@ -3562,7 +3562,7 @@
     url: https://images.memorix.nl/sahm/iiif/1cb2cd69-6b99-53fb-b744-e09c7b73b7be/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=271
-- label: Basiskaart Gemeente Gouda 108-4470
+- label: Basiskaart Gemeente Gouda, van Strijenstraat, Eerste Kade, Burgemeester Martens-straat, Peperstraat
   title: Basiskaart Gemeente Gouda 108-4470, van Strijenstraat, Eerste Kade, Burgemeester Martens-straat, Peperstraat
   year: 1990
   institution: Streekarchief Midden-Holland
@@ -3571,7 +3571,7 @@
     url: https://images.memorix.nl/sahm/iiif/f96017b9-e98f-b899-29db-5dd7a7dd2f7e/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=273
-- label: Basiskaart Gemeente Gouda 107-4470
+- label: Basiskaart Gemeente Gouda, Goudkade, van Bergen IJzendoornpark, Westerkade, Nieuwe Broekweg
   title: Basiskaart Gemeente Gouda 107-4470, Goudkade, van Bergen IJzendoornpark, Westerkade, Nieuwe Broekweg
   year: 1990
   institution: Streekarchief Midden-Holland
@@ -3580,7 +3580,7 @@
     url: https://images.memorix.nl/sahm/iiif/ee45e447-02b3-dc7a-ad00-80386f15fc58/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=276
-- label: Basiskaart Gemeente Gouda 108-445
+- label: Basiskaart Gemeente Gouda, Bosweg, Goudseweg, Tiendweg, Hollandsche IJssel
   title: Basiskaart Gemeente Gouda 108-445, Bosweg, Goudseweg, Tiendweg, Hollandsche IJssel
   year: 1990
   institution: Streekarchief Midden-Holland
@@ -3589,7 +3589,7 @@
     url: https://images.memorix.nl/sahm/iiif/f2bac475-81af-d308-12de-f89e61c198fd/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=277
-- label: Basiskaart Gemeente Gouda 108-449
+- label: Basiskaart Gemeente Gouda, Rijksweg A12, Burgemeester Lucasselaan, Raaigras, Leeuwenburg
   title: Basiskaart Gemeente Gouda 108-449, Rijksweg A12, Burgemeester Lucasselaan, Raaigras, Leeuwenburg
   year: 1990
   institution: Streekarchief Midden-Holland
@@ -3598,7 +3598,7 @@
     url: https://images.memorix.nl/sahm/iiif/8ac04093-251e-c27e-e62a-72c0f5af50d1/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=278
-- label: Basiskaart Gemeente Gouda 106-4485
+- label: Basiskaart Gemeente Gouda, Rijksweg A12, Goudse Poort, Nieuwe Gouwe o.z.
   title: Basiskaart Gemeente Gouda 106-4485, Rijksweg A12, Goudse Poort, Nieuwe Gouwe o.z.
   year: 1990
   institution: Streekarchief Midden-Holland
@@ -3607,7 +3607,7 @@
     url: https://images.memorix.nl/sahm/iiif/6e46b163-0a3f-9e9a-7725-93c87eb0ca71/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=279
-- label: Basiskaart Gemeente Gouda 108-4470c
+- label: Basiskaart Gemeente Gouda, Markt, Fluwelensingel, Burgemeester Martensstraat, Peperstraat
   title: Basiskaart Gemeente Gouda 108-4470c, Markt, Fluwelensingel, Burgemeester Martensstraat, Peperstraat
   year: 1990
   institution: Streekarchief Midden-Holland
@@ -3616,7 +3616,7 @@
     url: https://images.memorix.nl/sahm/iiif/e1a28eec-d358-1142-2810-5706e4024ae9/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=281
-- label: Basiskaart Gemeente Gouda 108-4465
+- label: Basiskaart Gemeente Gouda, Lethmaetstraat, Doelenstraat, Gouderaksedijk, Vondelstraat
   title: Basiskaart Gemeente Gouda 108-4465, Lethmaetstraat, Doelenstraat, Gouderaksedijk, Vondelstraat
   year: 1990
   institution: Streekarchief Midden-Holland
@@ -3625,7 +3625,7 @@
     url: https://images.memorix.nl/sahm/iiif/b5fee4c8-c735-698b-6342-6a690c254289/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=284
-- label: Basiskaart Gemeente Gouda 108-4460
+- label: Basiskaart Gemeente Gouda, Vondelstraat, Gouderaksedijk, Rioolwaterzuivering, Schielands Hoge Zeedijk, Tollensstraat
   title: Basiskaart Gemeente Gouda 108-4460, Vondelstraat, Gouderaksedijk, Rioolwaterzuivering, Schielands Hoge Zeedijk, Tollensstraat
   year: 1990
   institution: Streekarchief Midden-Holland
@@ -3634,7 +3634,7 @@
     url: https://images.memorix.nl/sahm/iiif/0c03fa9e-0f07-6350-e277-da007216ff64/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=285
-- label: Basiskaart Gemeente Gouda 108-4485
+- label: Basiskaart Gemeente Gouda, Burgemeester van Reenensingel, Vliegenstraat, Abel Tasmanlaan
   title: Basiskaart Gemeente Gouda 108-4485, Burgemeester van Reenensingel, Vliegenstraat, Abel Tasmanlaan
   year: 1990
   institution: Streekarchief Midden-Holland
@@ -3643,7 +3643,7 @@
     url: https://images.memorix.nl/sahm/iiif/697c4a5a-abe5-99ea-175a-720a43e30e83/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=286
-- label: Basiskaart Gemeente Gouda 109-4460
+- label: Basiskaart Gemeente Gouda, Gouderaksedijk, Goudseweg, Tiendweg
   title: Basiskaart Gemeente Gouda 109-4460, Gouderaksedijk, Goudseweg, Tiendweg
   year: 1990
   institution: Streekarchief Midden-Holland
@@ -3652,7 +3652,7 @@
     url: https://images.memorix.nl/sahm/iiif/6a3231a1-f37c-98a7-85e1-6a7c3c10a5f9/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=287
-- label: Basiskaart Gemeente Gouda 110-4460
+- label: Basiskaart Gemeente Gouda, Provincialeweg West, Goejanverwelledijk
   title: Basiskaart Gemeente Gouda 110-4460, Provincialeweg West, Goejanverwelledijk
   year: 1990
   institution: Streekarchief Midden-Holland
@@ -3661,7 +3661,7 @@
     url: https://images.memorix.nl/sahm/iiif/85fd5210-293c-1dcb-595b-fed26fe1fce1/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=295
-- label: Basiskaart Gemeente Gouda 108-4490
+- label: Basiskaart Gemeente Gouda, Gildenburg, Waterlelie, Solingenstraat, Catsveld
   title: Basiskaart Gemeente Gouda 108-4490, Gildenburg, Waterlelie, Solingenstraat, Catsveld
   year: 1990
   institution: Streekarchief Midden-Holland
@@ -3670,7 +3670,7 @@
     url: https://images.memorix.nl/sahm/iiif/6a87efed-bd59-9863-dccf-0761fd4b0209/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=296
-- label: Basiskaart Gemeente Gouda 106-4465
+- label: Basiskaart Gemeente Gouda, Provincialeweg, Ringvaart, Tweede Moordrechtse Tiendweg
   title: Basiskaart Gemeente Gouda 106-4465, Provincialeweg, Ringvaart, Tweede Moordrechtse Tiendweg
   year: 1990
   institution: Streekarchief Midden-Holland
@@ -3679,7 +3679,7 @@
     url: https://images.memorix.nl/sahm/iiif/db3665b7-d08b-7c78-cd43-7457cc893bf8/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=297
-- label: Basiskaart Gemeente Gouda 110-4470
+- label: Basiskaart Gemeente Gouda, Vrijheidslaan, Goverwellesingel, Gortmolenerf, Verkennerspad
   title: Basiskaart Gemeente Gouda 110-4470, Vrijheidslaan, Goverwellesingel, Gortmolenerf, Verkennerspad
   year: 1992
   institution: Streekarchief Midden-Holland
@@ -3688,7 +3688,7 @@
     url: https://images.memorix.nl/sahm/iiif/ea544731-cadd-5455-df68-227ba44e0240/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=207
-- label: Basiskaart Gemeente Gouda 110-4465
+- label: Basiskaart Gemeente Gouda, Waaiersluis, Volmolenerf, Wilhelmina van Pruisenlaan, Provincialeweg West
   title: Basiskaart Gemeente Gouda 110-4465, Waaiersluis, Volmolenerf, Wilhelmina van Pruisenlaan, Provincialeweg West
   year: 1992
   institution: Streekarchief Midden-Holland
@@ -3697,7 +3697,7 @@
     url: https://images.memorix.nl/sahm/iiif/33ff4ddd-bb1e-b99f-71c5-e8ccc2fb8d38/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=264
-- label: Basiskaart Gemeente Gouda 111-4465
+- label: Basiskaart Gemeente Gouda, Noordveenpolderstraat, Steinse Tiendweg, Het Grote Lot, Binnenpolderweg, Wilhelmina van Pruisenlaan
   title: Basiskaart Gemeente Gouda 111-4465, Noordveenpolderstraat, Steinse Tiendweg, Het Grote Lot, Binnenpolderweg, Wilhelmina van Pruisenlaan
   year: 1993
   institution: Streekarchief Midden-Holland
@@ -3706,7 +3706,7 @@
     url: https://images.memorix.nl/sahm/iiif/d677f282-0b47-1826-0d06-aa574ff23513/
     type: image
   annotation: https://www.goudatijdmachine.nl/velepanden/georefereren/view/annotation.php?id=248
-- label: Basiskaart Gemeente Gouda 111-4470
+- label: Basiskaart Gemeente Gouda, Willenskade, Het Grote Lot, Oranjepoldererf, Goverwellesingel
   title: Basiskaart Gemeente Gouda 111-4470, Willenskade, Het Grote Lot, Oranjepoldererf, Goverwellesingel
   year: 1993
   institution: Streekarchief Midden-Holland

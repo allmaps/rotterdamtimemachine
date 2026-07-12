@@ -39,40 +39,33 @@ theme:
   color: "#3891b1"
   fonts:
     families:
-      - name: Bolder
+      - name: Source Sans Pro
         faces:
           - weight: 300
             style: normal
             files:
-              - /fonts/Bolder-Light.woff2
-              - /fonts/Bolder-Light.woff
+              - /fonts/source-sans-pro-latin-300-normal.woff2
+              - /fonts/source-sans-pro-latin-300-normal.woff
           - weight: 400
             style: normal
             files:
-              - /fonts/Bolder-Regular.woff2
-              - /fonts/Bolder-Regular.woff
+              - /fonts/source-sans-pro-latin-400-normal.woff2
+              - /fonts/source-sans-pro-latin-400-normal.woff
           - weight: 400
             style: italic
             files:
-              - /fonts/Bolder-RegularItalic.woff2
-              - /fonts/Bolder-RegularItalic.woff
+              - /fonts/source-sans-pro-latin-400-italic.woff2
+              - /fonts/source-sans-pro-latin-400-italic.woff
           - weight: 700
             style: normal
             files:
-              - /fonts/Bolder-Bold.woff2
-              - /fonts/Bolder-Bold.woff
-      - name: Bolder Heading
-        faces:
-          - weight: 700
-            style: normal
-            files:
-              - /fonts/Bolder-Heading.woff2
-              - /fonts/Bolder-Heading.woff
+              - /fonts/source-sans-pro-latin-700-normal.woff2
+              - /fonts/source-sans-pro-latin-700-normal.woff
     roles:
-      body: Noto Sans
-      accent: Bolder
-      heading: [Bolder Heading, Bolder]
-      display: [Bolder Heading, Bolder]
+      body: Source Sans Pro
+      accent: Source Sans Pro
+      heading: Source Sans Pro
+      display: Source Sans Pro
 
 basemap:
   protomapsApiKey: 8a4b1d9342ca6e89
