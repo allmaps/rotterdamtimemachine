@@ -128,13 +128,15 @@ export type AppConfig = {
 				url: string;
 			}>;
 		};
-		institutionsTitle: string;
 		sources?: {
 			title: string;
-			links: Array<{
+			bookLabel: string;
+			websiteLabel: string;
+			institutionsLabel: string;
+			items: Array<{
 				label: string;
-				type?: string;
-				url: string;
+				type?: 'book' | 'website';
+				url?: string;
 			}>;
 		};
 		credits?: {

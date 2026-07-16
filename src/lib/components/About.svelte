@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Modal from '$lib/components/Modal.svelte';
-	import { ExternalLink, X, Info } from '@lucide/svelte';
+	import { BookOpen, ExternalLink, Globe, Landmark, X, Info } from '@lucide/svelte';
 	import { tick } from 'svelte';
 	import type { AppConfig, MapMetadata } from '$lib/types';
 
@@ -16,6 +16,14 @@
 
 	type Contact = NonNullable<AppConfig['about']['contact']>['contacts'][number];
 	type ContactEmail = NonNullable<Contact['email']>;
+	type SourceType = NonNullable<
+		NonNullable<AppConfig['about']['sources']>['items'][number]['type']
+	>;
+	type SourceItem = NonNullable<AppConfig['about']['sources']>['items'][number];
+	type SourceGroup = {
+		type: SourceType;
+		items: SourceItem[];
+	};
 
 	let closeButton: HTMLButtonElement | undefined = $state();
 	let revealedEmailKeys = $state<string[]>([]);
@@ -48,6 +56,28 @@
 
 	function getContactEmailAddress(email: ContactEmail) {
 		return email.address;
+	}
+
+	function getSourceGroups(): SourceGroup[] {
+		return (['book', 'website'] as const)
+			.map((type) => ({
+				type,
+				items: getSourceItemsByType(type)
+			}))
+			.filter((group) => group.items.length > 0);
+	}
+
+	function getSourceItemsByType(type: SourceType) {
+		const items = config.about.sources?.items ?? [];
+		return items.filter((item) =>
+			type === 'website' ? item.type === 'website' || !item.type : item.type === type
+		);
+	}
+
+	function getSourceGroupLabel(type: SourceType) {
+		return type === 'book'
+			? (config.about.sources?.bookLabel ?? 'Books')
+			: (config.about.sources?.websiteLabel ?? 'Websites');
 	}
 
 	function revealContactEmail(contact: Contact, index: number) {
@@ -131,47 +161,6 @@
 						{/each}
 					</div>
 				{/if}
-			</section>
-		{/if}
-
-		{#if institutions.length > 0}
-			<section class="mt-6 border-t border-gray-200 pt-5">
-				<h3 class="mb-3 text-sm font-bold text-gray-900">{config.about.institutionsTitle}</h3>
-				<ul class="flex flex-wrap gap-2 text-sm text-gray-700">
-					{#each institutions as institution (institution)}
-						<li class="rounded bg-gray-100 px-2.5 py-1 font-medium">
-							{institution}
-						</li>
-					{/each}
-				</ul>
-			</section>
-		{/if}
-
-		{#if config.about.sources?.links.length}
-			<section class="mt-6 border-t border-gray-200 pt-5">
-				<h3 class="mb-3 text-sm font-bold text-gray-900">{config.about.sources.title}</h3>
-				<ul class="list-disc space-y-2 pl-5 text-sm text-gray-700">
-					{#each config.about.sources.links as link (link.url)}
-						<li>
-							<a
-								href={link.url}
-								target="_blank"
-								rel="external noopener noreferrer"
-								class="inline-flex items-center gap-1.5 font-medium text-gray-700 hover:text-brand-main"
-							>
-								<span>{link.label}</span>
-								<ExternalLink class="h-3.5 w-3.5 flex-none" />
-							</a>
-							{#if link.type}
-								<span
-									class="ml-1.5 inline-flex rounded border border-gray-200 bg-gray-100 px-1.5 py-0.5 text-[0.625rem] leading-none font-bold text-gray-500 uppercase"
-								>
-									{link.type}
-								</span>
-							{/if}
-						</li>
-					{/each}
-				</ul>
 			</section>
 		{/if}
 
@@ -280,6 +269,65 @@
 						</li>
 					{/each}
 				</ul>
+			</section>
+		{/if}
+
+		{#if institutions.length > 0 || config.about.sources?.items.length}
+			<section class="mt-6 border-t border-gray-200 pt-5">
+				{#if config.about.sources?.title}
+					<h3 class="mb-3 text-sm font-bold text-gray-900">
+						{config.about.sources?.title}
+					</h3>
+				{/if}
+				<div class="space-y-4">
+					{#each getSourceGroups() as group (group.type)}
+						<div>
+							<h4 class="mb-2 flex items-center gap-1.5 text-sm font-bold text-gray-700">
+								{#if group.type === 'book'}
+									<BookOpen class="h-3.5 w-3.5" aria-hidden="true" />
+								{:else}
+									<Globe class="h-3.5 w-3.5" aria-hidden="true" />
+								{/if}
+								<span>{getSourceGroupLabel(group.type)}</span>
+							</h4>
+							<ul class="list-disc space-y-2 pl-5 text-sm text-gray-700">
+								{#each group.items as item (item.url ?? item.label)}
+									<li>
+										{#if item.url}
+											<a
+												href={item.url}
+												target="_blank"
+												rel="external noopener noreferrer"
+												class="font-medium text-gray-700 hover:text-brand-main"
+											>
+												<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+												{@html item.label}<ExternalLink
+													class="ml-1 inline-block h-3.5 w-3.5 align-[-0.125em]"
+												/>
+											</a>
+										{:else}
+											<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+											<span class="font-medium text-gray-700">{@html item.label}</span>
+										{/if}
+									</li>
+								{/each}
+							</ul>
+						</div>
+					{/each}
+					{#if institutions.length > 0}
+						<div>
+							<h4 class="mb-2 flex items-center gap-1.5 text-sm font-bold text-gray-700">
+								<Landmark class="h-3.5 w-3.5" aria-hidden="true" />
+								<span>{config.about.sources?.institutionsLabel}</span>
+							</h4>
+							<ul class="list-disc space-y-2 pl-5 text-sm text-gray-700">
+								{#each institutions as institution (institution)}
+									<li class="font-medium">{institution}</li>
+								{/each}
+							</ul>
+						</div>
+					{/if}
+				</div>
 			</section>
 		{/if}
 
