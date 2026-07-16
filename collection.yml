@@ -1,3 +1,12 @@
+- type: series
+  id: gemeentewerken-1-op-5000-1910-1943
+  label: "Plattegrond van Rotterdam in respectievelijk 25, 30, 35, 42 en 49 bladen"
+  title: "Plattegrond van Rotterdam in respectievelijk 25, 30, 35, 42 en 49 bladen. Schaal 1:5000. Periode: 1910-1943"
+  url: https://proxy.archieven.nl/0/E4AD222697BB4D148AA5F14375EE153C
+  institution: Stadsarchief Rotterdam
+  items:
+    - year: 1923
+      annotation: static/annotations/stadsarchief-rotterdam/gemeentewerken-1-op-5000-1910-1943/1923.json
 - label: 'Plattegrond van Rotterdam'
   title: 'Plattegrond van Rotterdam, 1:2.500. Topografische seriekaarten vervaardigd door Gemeentewerken Rotterdam'
   year: 1886
