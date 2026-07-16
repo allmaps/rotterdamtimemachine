@@ -129,6 +129,13 @@ export type AppConfig = {
 			}>;
 		};
 		institutionsTitle: string;
+		sources?: {
+			title: string;
+			links: Array<{
+				label: string;
+				url: string;
+			}>;
+		};
 		source?: {
 			title: string;
 			description: string;

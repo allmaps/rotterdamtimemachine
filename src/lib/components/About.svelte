@@ -110,6 +110,27 @@
 			</section>
 		{/if}
 
+		{#if config.about.sources?.links.length}
+			<section class="mt-6 border-t border-gray-200 pt-5">
+				<h3 class="mb-3 text-sm font-bold text-gray-900">{config.about.sources.title}</h3>
+				<ul class="space-y-2 text-sm text-gray-700">
+					{#each config.about.sources.links as link (link.url)}
+						<li>
+							<a
+								href={link.url}
+								target="_blank"
+								rel="external noopener noreferrer"
+								class="inline-flex items-center gap-1.5 font-medium text-gray-700 hover:text-brand-main"
+							>
+								<span>{link.label}</span>
+								<ExternalLink class="h-3.5 w-3.5 flex-none" />
+							</a>
+						</li>
+					{/each}
+				</ul>
+			</section>
+		{/if}
+
 		{#if config.about.source}
 			<section class="mt-6 border-t border-gray-200 pt-5">
 				<h3 class="mb-2 text-sm font-bold text-gray-900">{config.about.source.title}</h3>

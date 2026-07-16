@@ -140,11 +140,34 @@ about:
       - label: Allmaps
         url: https://allmaps.org/
   institutionsTitle: Kaartbronnen
+  sources:
+    title: Gebruikte bronnen en inspiratie
+    links:
+      - label: "Historische atlas van Rotterdam"
+        url: https://worldcat.org/en/title/797468780
+      - label: "Rotterdam, 1940-1945"
+        url: https://worldcat.org/en/title/500170275
+      - label: Rotterdams Publiek
+        url: https://rotterdamspubliek.nl/
+      - label: Rotterdam Kaart
+        url: https://rotterdamkaart.nl/
+      - label: Collectie Rotterdam op de Kaart
+        url: https://www.rotterdaminkaart.nl/
+      - label: HisGIS Rotterdam
+        url: https://www.hisgis.nl/projecten/rotterdam/
+      - label: Amsterdam Time Machine
+        url: https://www.amsterdamtimemachine.nl/
+      - label: Topotijdreis Nederland
+        url: https://www.topotijdreis.nl/
+      - label: Topotijdreis België
+        url: https://topotijdreis.be/
+      - label: Watertijdreis
+        url: https://watertijdreis.nl/
   source:
     title: Open source
     description: Rotterdam Time Machine is een open-source project geïnitieerd en beheerd door Allmaps, in samenwerking met het Stadsarchief Rotterdam. De broncode is beschikbaar op GitHub en kan hergebruikt worden voor een tijdreis van een andere stad, zie bijvoorbeeld het Kaartenkabinet van de Gouda Tijdmachine.
     links:
-      - label: Bekijk de broncode op GitHub
+      - label: Broncode op GitHub
         url: https://github.com/allmaps/rotterdamtimemachine
       - label: Gouda Tijdmachine
         url: https://www.goudatijdmachine.nl/kaarten-kabinet/
