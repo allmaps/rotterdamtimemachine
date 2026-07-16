@@ -14,7 +14,12 @@
 		onClose: () => void;
 	} = $props();
 
+	type Contact = NonNullable<AppConfig['about']['contact']>['contacts'][number];
+	type ContactEmail = NonNullable<Contact['email']>;
+
 	let closeButton: HTMLButtonElement | undefined = $state();
+	let revealedEmailKeys = $state<string[]>([]);
+	let copiedEmailKey = $state<string>();
 	let institutions = $derived(getInstitutions(maps, config.site.locale));
 	const keyClass =
 		'inline-flex min-w-7 items-center justify-center rounded border border-gray-300 bg-gray-50 px-1.5 py-0.5 font-heading text-xs font-bold text-gray-800 shadow-sm';
@@ -35,6 +40,38 @@
 			});
 
 		return institutions.toSorted(new Intl.Collator(locale).compare);
+	}
+
+	function getContactKey(contact: Contact, index: number) {
+		return `${index}-${contact.title}`;
+	}
+
+	function getContactEmailAddress(email: ContactEmail) {
+		return email.address;
+	}
+
+	function revealContactEmail(contact: Contact, index: number) {
+		const key = getContactKey(contact, index);
+		if (!revealedEmailKeys.includes(key)) {
+			revealedEmailKeys = [...revealedEmailKeys, key];
+		}
+	}
+
+	async function copyContactEmail(contact: Contact, index: number) {
+		if (!contact.email) return;
+
+		const key = getContactKey(contact, index);
+		revealContactEmail(contact, index);
+
+		try {
+			await navigator.clipboard.writeText(getContactEmailAddress(contact.email));
+			copiedEmailKey = key;
+			setTimeout(() => {
+				if (copiedEmailKey === key) copiedEmailKey = undefined;
+			}, 1600);
+		} catch {
+			copiedEmailKey = undefined;
+		}
 	}
 </script>
 
@@ -113,9 +150,9 @@
 		{#if config.about.sources?.links.length}
 			<section class="mt-6 border-t border-gray-200 pt-5">
 				<h3 class="mb-3 text-sm font-bold text-gray-900">{config.about.sources.title}</h3>
-				<ul class="space-y-2 text-sm text-gray-700">
+				<ul class="list-disc space-y-2 pl-5 text-sm text-gray-700">
 					{#each config.about.sources.links as link (link.url)}
-						<li class="flex flex-wrap items-center gap-2">
+						<li>
 							<a
 								href={link.url}
 								target="_blank"
@@ -127,7 +164,7 @@
 							</a>
 							{#if link.type}
 								<span
-									class="rounded border border-gray-200 bg-gray-100 px-1.5 py-0.5 text-[0.625rem] leading-none font-bold text-gray-500 uppercase"
+									class="ml-1.5 inline-flex rounded border border-gray-200 bg-gray-100 px-1.5 py-0.5 text-[0.625rem] leading-none font-bold text-gray-500 uppercase"
 								>
 									{link.type}
 								</span>
@@ -188,6 +225,61 @@
 						{/each}
 					</div>
 				{/if}
+			</section>
+		{/if}
+
+		{#if config.about.contact?.contacts.length}
+			<section class="mt-6 border-t border-gray-200 pt-5">
+				<h3 class="mb-3 text-sm font-bold text-gray-900">{config.about.contact.title}</h3>
+				<ul class="space-y-4 text-sm text-gray-700">
+					{#each config.about.contact.contacts as contact, index (contact.title)}
+						{@const contactKey = getContactKey(contact, index)}
+						<li>
+							<h4 class="font-semibold text-gray-900">{contact.title}</h4>
+							{#if contact.description}
+								<p class="mt-1 leading-relaxed">{contact.description}</p>
+							{/if}
+							<div class="mt-2 flex flex-wrap items-center gap-2">
+								{#if contact.email}
+									{#if revealedEmailKeys.includes(contactKey)}
+										<span class="font-medium text-gray-900">
+											{getContactEmailAddress(contact.email)}
+										</span>
+										<button
+											type="button"
+											onclick={() => copyContactEmail(contact, index)}
+											class="cursor-pointer rounded bg-gray-100 px-2 py-1 text-xs font-semibold text-gray-600 hover:bg-brand-soft hover:text-brand-main"
+										>
+											{copiedEmailKey === contactKey
+												? (contact.email.copiedLabel ?? 'Copied')
+												: (contact.email.copyLabel ?? 'Copy')}
+										</button>
+									{:else}
+										<button
+											type="button"
+											onclick={() => revealContactEmail(contact, index)}
+											class="cursor-pointer rounded bg-gray-100 px-2 py-1 text-xs font-semibold text-gray-600 hover:bg-brand-soft hover:text-brand-main"
+										>
+											{contact.email.revealLabel}
+										</button>
+									{/if}
+								{/if}
+
+								{#if contact.url && contact.urlLabel}
+									<a
+										href={contact.url}
+										target="_blank"
+										rel="external noopener noreferrer"
+										class="inline-flex items-center gap-1 rounded bg-gray-100 px-2 py-1 text-xs font-semibold text-gray-600 hover:bg-brand-soft hover:text-brand-main"
+									>
+										<span>{contact.urlLabel}</span>
+										<ExternalLink class="h-3 w-3 flex-none" />
+									</a>
+								{/if}
+							</div>
+						</li>
+					{/each}
+				</ul>
 			</section>
 		{/if}
 

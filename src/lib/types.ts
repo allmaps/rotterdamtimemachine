@@ -151,6 +151,21 @@ export type AppConfig = {
 				url: string;
 			}>;
 		};
+		contact?: {
+			title: string;
+			contacts: Array<{
+				title: string;
+				description?: string;
+				url?: string;
+				urlLabel?: string;
+				email?: {
+					address: string;
+					revealLabel: string;
+					copyLabel?: string;
+					copiedLabel?: string;
+				};
+			}>;
+		};
 		shortcutsTitle: string;
 		shortcuts: Array<{
 			keys: string[];
