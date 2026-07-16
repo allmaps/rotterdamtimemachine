@@ -133,12 +133,19 @@ export type AppConfig = {
 			title: string;
 			links: Array<{
 				label: string;
+				type?: string;
 				url: string;
 			}>;
 		};
-		source?: {
+		credits?: {
 			title: string;
-			description: string;
+			description?: string;
+			people?: Array<{
+				name: string;
+				affiliation?: string;
+				url?: string;
+				role: string;
+			}>;
 			links?: Array<{
 				label: string;
 				url: string;
