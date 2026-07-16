@@ -1,0 +1,2066 @@
+{
+	"type": "AnnotationPage",
+	"@context": "http://www.w3.org/ns/anno.jsonld",
+	"items": [
+		{
+			"id": "https://proxy.archieven.nl/iiif-image/184/B7CAA4B6EC3B4D1EABF2C4C9DC1EA7DD/attach",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://proxy.archieven.nl/iiif-image/184/B7CAA4B6EC3B4D1EABF2C4C9DC1EA7DD",
+					"type": "ImageService2",
+					"height": 4522,
+					"width": 6366
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"6366\" height=\"4522\"><polygon points=\"138,185 6219,178 6217,4334 147,4337\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6217, 4334]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.457900665907642, 51.92841604773259]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [138, 185]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.417418179672221, 51.9414152579531]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6219, 178]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.45496059931629, 51.94412136725344]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [147, 4337]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.42041083280675, 51.92575194629271]
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "https://proxy.archieven.nl/iiif-image/184/A1E06910658145ECBBA64726FD460552/attach",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://proxy.archieven.nl/iiif-image/184/A1E06910658145ECBBA64726FD460552",
+					"type": "ImageService2",
+					"height": 4546,
+					"width": 6702
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"6702\" height=\"4546\"><polygon points=\"147,206 6530,191 6533,4351 160,4354\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [160, 4354]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.457900665907642, 51.92841604773259]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [147, 206]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.45496059931629, 51.94412136725344]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6533, 4351]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.49744637257729, 51.93121982197717]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6530, 191]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.494527532139171, 51.946975370962086]
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "https://proxy.archieven.nl/iiif-image/184/4B67ED9EF0C149D79836159C19CBB21A/attach",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://proxy.archieven.nl/iiif-image/184/4B67ED9EF0C149D79836159C19CBB21A",
+					"type": "ImageService2",
+					"height": 4570,
+					"width": 6402
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"6402\" height=\"4570\"><polygon points=\"155,137 6208,142 6223,4285 154,4288\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [154, 4288]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.49744637257729, 51.93121982197717]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [155, 137]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.494527532139171, 51.946975370962086]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6223, 4285]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.535139530857487, 51.933902895212945]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6208, 142]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.532118370666341, 51.94962274114797]
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "https://proxy.archieven.nl/iiif-image/184/FAAF83B1E65442C0B2532113F3F138A3/attach",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://proxy.archieven.nl/iiif-image/184/FAAF83B1E65442C0B2532113F3F138A3",
+					"type": "ImageService2",
+					"height": 4822,
+					"width": 6282
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"6282\" height=\"4822\"><polygon points=\"103,111 6164,109 6175,4579 108,4576\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6164, 109]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.457900665907642, 51.92841604773259]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [103, 111]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.42041083280675, 51.92575194629271]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6175, 4579]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.461087575337598, 51.91153446706013]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [108, 4576]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.423590501683881, 51.90889734635086]
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "https://proxy.archieven.nl/iiif-image/184/AF11589A366646959A04722E19FD5162/attach",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://proxy.archieven.nl/iiif-image/184/AF11589A366646959A04722E19FD5162",
+					"type": "ImageService2",
+					"height": 4930,
+					"width": 6630
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"6630\" height=\"4930\"><polygon points=\"113,120 6485,93 6514,4546 136,4563\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [113, 120]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.457900665907642, 51.92841604773259]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6485, 93]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.49744637257729, 51.93121982197717]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [136, 4563]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.461087575337598, 51.91153446706013]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6514, 4546]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.500647196267134, 51.9143328995086]
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "https://proxy.archieven.nl/iiif-image/184/BA6090F6FF0B4D74AFFB1FE9D33A6208/attach",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://proxy.archieven.nl/iiif-image/184/BA6090F6FF0B4D74AFFB1FE9D33A6208",
+					"type": "ImageService2",
+					"height": 4774,
+					"width": 6426
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"6426\" height=\"4774\"><polygon points=\"148,118 6219,105 6235,4553 165,4571\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [148, 118]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.49744637257729, 51.93121982197717]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6219, 105]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.535139530857487, 51.933902895212945]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [165, 4571]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.500647196267134, 51.9143328995086]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6235, 4553]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.538317994718997, 51.917013699126926]
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "https://proxy.archieven.nl/iiif-image/184/11225CEA12774F73A9D00FCBD4C5BDA2/attach",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://proxy.archieven.nl/iiif-image/184/11225CEA12774F73A9D00FCBD4C5BDA2",
+					"type": "ImageService2",
+					"height": 4870,
+					"width": 6354
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"6354\" height=\"4870\"><polygon points=\"130,145 6194,156 6198,4619 138,4607\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6194, 156]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.461087575337598, 51.91153446706013]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [130, 145]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.423590501683881, 51.90889734635086]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6198, 4619]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.464257129666002, 51.89463378176197]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [138, 4607]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.426750055494439, 51.89200805425158]
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "https://proxy.archieven.nl/iiif-image/184/E0300A4D89E24B22871F0D99F6CD144E/attach",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://proxy.archieven.nl/iiif-image/184/E0300A4D89E24B22871F0D99F6CD144E",
+					"type": "ImageService2",
+					"height": 4786,
+					"width": 6646
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"6646\" height=\"4786\"><polygon points=\"124,125 6504,106 6522,4579 141,4581\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [124, 125]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.461087575337598, 51.91153446706013]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6504, 106]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.500647196267134, 51.9143328995086]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [141, 4581]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.464257129666002, 51.89463378176197]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6522, 4579]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.503808889212037, 51.89740055262761]
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "https://proxy.archieven.nl/iiif-image/184/8B7F824C71654A3A993B476DC16D3DC8/attach",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://proxy.archieven.nl/iiif-image/184/8B7F824C71654A3A993B476DC16D3DC8",
+					"type": "ImageService2",
+					"height": 4846,
+					"width": 6346
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"6346\" height=\"4846\"><polygon points=\"139,163 6205,160 6219,4626 142,4624\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [139, 163]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.500647196267134, 51.9143328995086]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6205, 160]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.538317994718997, 51.917013699126926]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [142, 4624]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.503808889212037, 51.89740055262761]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6219, 4626]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.541496792918796, 51.900072018176026]
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "https://proxy.archieven.nl/iiif-image/184/81F4775D5CCF4726A9D981B75E28FACC/attach",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://proxy.archieven.nl/iiif-image/184/81F4775D5CCF4726A9D981B75E28FACC",
+					"type": "ImageService2",
+					"height": 4486,
+					"width": 6406
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"6406\" height=\"4486\"><polygon points=\"169,125 6225,107 6241,4250 182,4265\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6225, 107]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.464257129666002, 51.89463378176197]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [169, 125]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.426750055494439, 51.89200805425158]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6241, 4250]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.467150641448659, 51.8789199513972]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [182, 4265]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.429611860640217, 51.8763118339882]
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "https://proxy.archieven.nl/iiif-image/184/96571307C0CD445888DA16180B3110D5/attach",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://proxy.archieven.nl/iiif-image/184/96571307C0CD445888DA16180B3110D5",
+					"type": "ImageService2",
+					"height": 4571,
+					"width": 6634
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"6634\" height=\"4571\"><polygon points=\"109,111 6490,83 6512,4237 129,4251\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [109, 111]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.464257129666002, 51.89463378176197]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6490, 83]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.503808889212037, 51.89740055262761]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [129, 4251]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.467150641448659, 51.8789199513972]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6512, 4237]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.506718724580057, 51.88165624988529]
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "https://proxy.archieven.nl/iiif-image/184/4170E51994374E5C9FDE1FA566FDAB68/attach",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://proxy.archieven.nl/iiif-image/184/4170E51994374E5C9FDE1FA566FDAB68",
+					"type": "ImageService2",
+					"height": 4462,
+					"width": 6262
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"6262\" height=\"4462\"><polygon points=\"87,130 6154,126 6159,4279 84,4272\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [87, 130]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.503808889212037, 51.89740055262761]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6154, 126]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.541496792918796, 51.900072018176026]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [84, 4272]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.506718724580057, 51.88165624988529]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6159, 4279]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.544456556620592, 51.88432056969623]
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "https://proxy.archieven.nl/iiif-image/184/8BD2F9CF10794DCA9458E27E5EAF3425/attach",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://proxy.archieven.nl/iiif-image/184/8BD2F9CF10794DCA9458E27E5EAF3425",
+					"type": "ImageService2",
+					"height": 4462,
+					"width": 6562
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"6562\" height=\"4462\"><polygon points=\"87,150 6435,150 6445,4293 92,4291\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6435, 150]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.417418179672221, 51.9414152579531]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6445, 4293]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.42041083280675, 51.92575194629271]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [92, 4291]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.381183127439994, 51.922967971970266]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [87, 150]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.378193443609541, 51.93861376751863]
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "https://proxy.archieven.nl/iiif-image/184/EC935AA0A2284EDAA9622E7F4C746901/attach",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://proxy.archieven.nl/iiif-image/184/EC935AA0A2284EDAA9622E7F4C746901",
+					"type": "ImageService2",
+					"height": 4762,
+					"width": 6574
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"6574\" height=\"4762\"><polygon points=\"97,98 6456,81 6487,4552 113,4568\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6456, 81]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.42041083280675, 51.92575194629271]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6487, 4552]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.423590501683881, 51.90889734635086]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [97, 98]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.381183127439994, 51.922967971970266]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [113, 4568]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.384317557345484, 51.906127360536374]
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "https://proxy.archieven.nl/iiif-image/184/A325137D02504E808C491BB6F13DA641/attach",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://proxy.archieven.nl/iiif-image/184/A325137D02504E808C491BB6F13DA641",
+					"type": "ImageService2",
+					"height": 4690,
+					"width": 6562
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"6562\" height=\"4690\"><polygon points=\"80,103 6433,60 6467,4530 111,4564\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6433, 60]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.423590501683881, 51.90889734635086]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6467, 4530]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.426750055494439, 51.89200805425158]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [80, 103]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.384317557345484, 51.906127360536374]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [111, 4564]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.38745564020751, 51.889262158451224]
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "https://proxy.archieven.nl/iiif-image/184/3489C192CF70429695C553A172CB5CB7/attach",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://proxy.archieven.nl/iiif-image/184/3489C192CF70429695C553A172CB5CB7",
+					"type": "ImageService2",
+					"height": 4318,
+					"width": 6514
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"6514\" height=\"4318\"><polygon points=\"79,75 6430,54 6442,4198 89,4212\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6430, 54]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.426750055494439, 51.89200805425158]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6442, 4198]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.429611860640217, 51.8763118339882]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [79, 75]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.38745564020751, 51.889262158451224]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [89, 4212]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.390262610993436, 51.87358812172114]
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "https://proxy.archieven.nl/iiif-image/184/217C7E2F96714C43AA7B8E316611FC71/attach",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://proxy.archieven.nl/iiif-image/184/217C7E2F96714C43AA7B8E316611FC71",
+					"type": "ImageService2",
+					"height": 4115,
+					"width": 6514
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"6514\" height=\"4115\"><polygon points=\"82,99 6427,86 6427,3943 90,3954\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6427, 86]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.429611860640217, 51.8763118339882]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [82, 99]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.390262610993436, 51.87358812172114]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6427, 3943]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.432218729446304, 51.861645318128026]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [90, 3954]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.392888674942374, 51.85895261784821]
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "https://proxy.archieven.nl/iiif-image/184/3292F3D49C7542C2AA8904377BBB9DBB/attach",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://proxy.archieven.nl/iiif-image/184/3292F3D49C7542C2AA8904377BBB9DBB",
+					"type": "ImageService2",
+					"height": 4151,
+					"width": 6238
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"6238\" height=\"4151\"><polygon points=\"83,97 6140,97 6151,3965 77,3967\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6140, 97]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.467150641448659, 51.8789199513972]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [83, 97]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.429611860640217, 51.8763118339882]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [77, 3967]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.432218729446304, 51.861645318128026]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6151, 3965]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.469873019720715, 51.86424598071029]
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "https://proxy.archieven.nl/iiif-image/184/247A46F0AB414745A6A5116969696097/attach",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://proxy.archieven.nl/iiif-image/184/247A46F0AB414745A6A5116969696097",
+					"type": "ImageService2",
+					"height": 4259,
+					"width": 6562
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"6562\" height=\"4259\"><polygon points=\"79,167 6468,168 6461,4043 88,4035\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [79, 167]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.467150641448659, 51.8789199513972]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6468, 168]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.506718724580057, 51.88165624988529]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [88, 4035]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.469873019720715, 51.86424598071029]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6461, 4043]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.509412369111159, 51.8669454028585]
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "https://proxy.archieven.nl/iiif-image/184/B56C9983C86D493A808C4DA5121CF44F/attach",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://proxy.archieven.nl/iiif-image/184/B56C9983C86D493A808C4DA5121CF44F",
+					"type": "ImageService2",
+					"height": 4115,
+					"width": 6238
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"6238\" height=\"4115\"><polygon points=\"86,78 6172,65 6179,3940 107,3948\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [86, 78]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.506718724580057, 51.88165624988529]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6172, 65]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.544456556620592, 51.88432056969623]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [107, 3948]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.509412369111159, 51.8669454028585]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6179, 3940]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.547203200843379, 51.86954688399496]
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "https://proxy.archieven.nl/iiif-image/184/A7F9AF29183B419B82E3336AFE42876A/attach",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://proxy.archieven.nl/iiif-image/184/A7F9AF29183B419B82E3336AFE42876A",
+					"type": "ImageService2",
+					"height": 5326,
+					"width": 6298
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"6298\" height=\"5326\"><polygon points=\"344,338 5153,324 5167,4207 366,4221\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [344, 338]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.544456556620592, 51.88432056969623]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [366, 4221]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.547203200843379, 51.86954688399496]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [5153, 324]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.5745240785523205, 51.88649865758474]
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "https://proxy.archieven.nl/iiif-image/184/5EE0867A9EE649BB9FA56805E9F70786/attach",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://proxy.archieven.nl/iiif-image/184/5EE0867A9EE649BB9FA56805E9F70786",
+					"type": "ImageService2",
+					"height": 4806,
+					"width": 6262
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"6262\" height=\"4806\"><polygon points=\"331,358 5152,338 5182,4462 345,4492\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [331, 358]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.541496792918796, 51.900072018176026]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [345, 4492]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.544456556620592, 51.88432056969623]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [5182, 4462]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.5745240785523205, 51.88649865758474]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [5152, 338]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.571550670353479, 51.90223911281738]
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "https://proxy.archieven.nl/iiif-image/184/DDEC1E54CBC94A708BA34242A07A16F0/attach",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://proxy.archieven.nl/iiif-image/184/DDEC1E54CBC94A708BA34242A07A16F0",
+					"type": "ImageService2",
+					"height": 5118,
+					"width": 6202
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"6202\" height=\"5118\"><polygon points=\"325,356 5142,334 5151,4773 328,4793\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [325, 356]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.538317994718997, 51.917013699126926]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [328, 4793]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.541496792918796, 51.900072018176026]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [5151, 4773]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.571550670353479, 51.90223911281738]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [5142, 334]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.568388424597216, 51.91919731457709]
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "https://proxy.archieven.nl/iiif-image/184/7591542E219E47DCB680F0B8D6CB2E85/attach",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://proxy.archieven.nl/iiif-image/184/7591542E219E47DCB680F0B8D6CB2E85",
+					"type": "ImageService2",
+					"height": 5106,
+					"width": 6274
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"6274\" height=\"5106\"><polygon points=\"323,350 5159,345 5156,4787 323,4789\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [323, 350]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.535139530857487, 51.933902895212945]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [323, 4789]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.538317994718997, 51.917013699126926]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [5156, 4787]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.568388424597216, 51.91919731457709]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [5159, 345]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.56523117346189, 51.936089803798026]
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "https://proxy.archieven.nl/iiif-image/184/F6D4487DEE36493789F5DB4916BF7015/attach",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://proxy.archieven.nl/iiif-image/184/F6D4487DEE36493789F5DB4916BF7015",
+					"type": "ImageService2",
+					"height": 5418,
+					"width": 6262
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"6262\" height=\"5418\"><polygon points=\"338,957 5174,970 5165,5113 328,5091\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [328, 5091]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.535139530857487, 51.933902895212945]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [338, 957]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.532118370666341, 51.94962274114797]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [5165, 5113]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.56523117346189, 51.936089803798026]
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "https://proxy.archieven.nl/iiif-image/184/70AB061BAB6C4B13BDFA39E0DF8D788C/attach",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://proxy.archieven.nl/iiif-image/184/70AB061BAB6C4B13BDFA39E0DF8D788C",
+					"type": "ImageService2",
+					"height": 5602,
+					"width": 7692
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"7692\" height=\"5602\"><polygon points=\"1117,1129 7495,1111 7531,5274 1131,5277\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [7531, 5274]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.381183127439994, 51.922967971970266]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [7495, 1111]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.378193443609541, 51.93861376751863]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [1131, 5277]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.3417700656285385, 51.920233733907494]
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "https://proxy.archieven.nl/iiif-image/184/4E66E163BDDA4978B3B8F206E0697A7E/attach",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://proxy.archieven.nl/iiif-image/184/4E66E163BDDA4978B3B8F206E0697A7E",
+					"type": "ImageService2",
+					"height": 5063,
+					"width": 7032
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"7032\" height=\"5063\"><polygon points=\"340,313 6689,316 6699,4753 344,4747\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6689, 316]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.381183127439994, 51.922967971970266]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6699, 4753]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.384317557345484, 51.906127360536374]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [340, 313]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.3417700656285385, 51.920233733907494]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [344, 4747]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.344867502007764, 51.90337898588289]
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "https://proxy.archieven.nl/iiif-image/184/E8643E6125DC41F2AAE9C5CB5E738106/attach",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://proxy.archieven.nl/iiif-image/184/E8643E6125DC41F2AAE9C5CB5E738106",
+					"type": "ImageService2",
+					"height": 5087,
+					"width": 7006
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"7006\" height=\"5087\"><polygon points=\"340,317 6701,311 6715,4763 344,4759\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6701, 311]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.384317557345484, 51.906127360536374]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6715, 4763]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.38745564020751, 51.889262158451224]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [340, 317]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.344867502007764, 51.90337898588289]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [344, 4759]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.347950051869549, 51.886510080730204]
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "https://proxy.archieven.nl/iiif-image/184/B38405BFC3FE48709329B625E814BFE3/attach",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://proxy.archieven.nl/iiif-image/184/B38405BFC3FE48709329B625E814BFE3",
+					"type": "ImageService2",
+					"height": 4162,
+					"width": 6118
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"6118\" height=\"4162\"><polygon points=\"297,291 5815,312 5786,3890 260,3855\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [5815, 312]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.38745564020751, 51.889262158451224]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [5786, 3890]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.390262610993436, 51.87358812172114]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [297, 291]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.347950051869549, 51.886510080730204]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [260, 3855]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.350656977483505, 51.87086272574454]
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "https://proxy.archieven.nl/iiif-image/184/484C5630C0B149679FE405D793DADEE4/attach",
+			"type": "Annotation",
+			"@context": [
+				"http://iiif.io/api/extension/georef/1/context.json",
+				"http://iiif.io/api/presentation/3/context.json"
+			],
+			"motivation": "georeferencing",
+			"target": {
+				"type": "SpecificResource",
+				"source": {
+					"id": "https://proxy.archieven.nl/iiif-image/184/484C5630C0B149679FE405D793DADEE4",
+					"type": "ImageService2",
+					"height": 4546,
+					"width": 6694
+				},
+				"selector": {
+					"type": "SvgSelector",
+					"value": "<svg width=\"6694\" height=\"4546\"><polygon points=\"938,271 6484,271 6480,3615 929,3612\" /></svg>"
+				}
+			},
+			"body": {
+				"type": "FeatureCollection",
+				"transformation": {
+					"type": "thinPlateSpline"
+				},
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6484, 271]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.390262610993436, 51.87358812172114]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [6480, 3615]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.392888674942374, 51.85895261784821]
+						}
+					},
+					{
+						"type": "Feature",
+						"properties": {
+							"resourceCoords": [938, 271]
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": [4.350656977483505, 51.87086272574454]
+						}
+					}
+				]
+			}
+		}
+	]
+}
