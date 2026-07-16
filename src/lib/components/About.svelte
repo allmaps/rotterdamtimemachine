@@ -115,7 +115,7 @@
 				<h3 class="mb-3 text-sm font-bold text-gray-900">{config.about.sources.title}</h3>
 				<ul class="space-y-2 text-sm text-gray-700">
 					{#each config.about.sources.links as link (link.url)}
-						<li>
+						<li class="flex flex-wrap items-center gap-2">
 							<a
 								href={link.url}
 								target="_blank"
@@ -125,21 +125,57 @@
 								<span>{link.label}</span>
 								<ExternalLink class="h-3.5 w-3.5 flex-none" />
 							</a>
+							{#if link.type}
+								<span
+									class="rounded border border-gray-200 bg-gray-100 px-1.5 py-0.5 text-[0.625rem] leading-none font-bold text-gray-500 uppercase"
+								>
+									{link.type}
+								</span>
+							{/if}
 						</li>
 					{/each}
 				</ul>
 			</section>
 		{/if}
 
-		{#if config.about.source}
+		{#if config.about.credits}
 			<section class="mt-6 border-t border-gray-200 pt-5">
-				<h3 class="mb-2 text-sm font-bold text-gray-900">{config.about.source.title}</h3>
-				<p class="text-sm leading-relaxed text-gray-700">
-					{config.about.source.description}
-				</p>
-				{#if config.about.source.links?.length}
+				<h3 class="mb-2 text-sm font-bold text-gray-900">{config.about.credits.title}</h3>
+				{#if config.about.credits.description}
+					<p class="text-sm leading-relaxed text-gray-700">
+						{config.about.credits.description}
+					</p>
+				{/if}
+				{#if config.about.credits.people?.length}
+					<ul class="mt-3 space-y-2 text-sm text-gray-700">
+						{#each config.about.credits.people as person (person.name)}
+							<li class="grid gap-0.5 sm:grid-cols-[minmax(0,12rem)_1fr] sm:gap-3">
+								<span>
+									{#if person.url}
+										<a
+											href={person.url}
+											target="_blank"
+											rel="external noopener noreferrer"
+											class="inline-flex items-center gap-1 font-semibold text-gray-900 hover:text-brand-main"
+										>
+											<span>{person.name}</span>
+											<ExternalLink class="h-3 w-3 flex-none" />
+										</a>
+									{:else}
+										<span class="block font-semibold text-gray-900">{person.name}</span>
+									{/if}
+									{#if person.affiliation}
+										<span class="block text-xs text-gray-500">{person.affiliation}</span>
+									{/if}
+								</span>
+								<span>{person.role}</span>
+							</li>
+						{/each}
+					</ul>
+				{/if}
+				{#if config.about.credits.links?.length}
 					<div class="mt-3 flex flex-wrap gap-2">
-						{#each config.about.source.links as link (link.url)}
+						{#each config.about.credits.links as link (link.url)}
 							<a
 								href={link.url}
 								target="_blank"

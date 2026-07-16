@@ -144,35 +144,69 @@ about:
     title: Gebruikte bronnen en inspiratie
     links:
       - label: "Historische atlas van Rotterdam"
+        type: Boek
         url: https://worldcat.org/en/title/797468780
       - label: "Rotterdam, 1940-1945"
+        type: Boek
         url: https://worldcat.org/en/title/500170275
       - label: Rotterdams Publiek
+        type: Website
         url: https://rotterdamspubliek.nl/
       - label: Rotterdam Kaart
+        type: Website
         url: https://rotterdamkaart.nl/
       - label: Collectie Rotterdam op de Kaart
+        type: Website
         url: https://www.rotterdaminkaart.nl/
       - label: HisGIS Rotterdam
+        type: Website
         url: https://www.hisgis.nl/projecten/rotterdam/
       - label: Amsterdam Time Machine
+        type: Website
         url: https://www.amsterdamtimemachine.nl/
       - label: Topotijdreis Nederland
+        type: Website
         url: https://www.topotijdreis.nl/
       - label: Topotijdreis België
+        type: Website
         url: https://topotijdreis.be/
       - label: Watertijdreis
+        type: Website
         url: https://watertijdreis.nl/
-  source:
-    title: Open source
-    description: Rotterdam Time Machine is een open-source project geïnitieerd en beheerd door Allmaps, in samenwerking met het Stadsarchief Rotterdam. De broncode is beschikbaar op GitHub en kan hergebruikt worden voor een tijdreis van een andere stad, zie bijvoorbeeld het Kaartenkabinet van de Gouda Tijdmachine.
+  credits:
+    title: Credits
+    description: Rotterdam Time Machine is een open-source project geïnitieerd en beheerd door Allmaps, in samenwerking met het Stadsarchief Rotterdam. Het eerste prototype werd ontwikkeld als onderdeel van een stage van het Techniek College Rotterdam. De broncode is beschikbaar op GitHub en kan hergebruikt worden voor een tijdreis van een andere stad, zie bijvoorbeeld het Kaartenkabinet van de Gouda Tijdmachine.
+    people:
+      - name: Jules Schoonman
+        affiliation: Allmaps & TU Delft Library
+        role: Initiatief, ontwikkeling en coördinatie
+        url: https://www.tudelft.nl/staff/j.a.schoonman/
+      - name: Mountaser Salah
+        affiliation: Student Techniek College Rotterdam
+        role: Ontwikkeling prototype, testen en georefereren
+        url: https://www.linkedin.com/in/m-s-623b82195/
+      - name: Anna de Bruyn
+        affiliation: Stadsarchief Rotterdam
+        role: Specialist kaartverzameling
+        url: https://www.linkedin.com/in/anna-de-bruyn/
+      - name: Ronald Rommelse
+        affiliation: Stadsarchief Rotterdam
+        role: Specialist digitaal informatiebeheer
+        url: https://www.linkedin.com/in/ronaldrommelse/
+      - name: Martijn Meijers
+        affiliation: TU Delft
+        role: Georefereren kaartseries
+        url: https://www.tudelft.nl/staff/b.m.meijers/ 
+      - name: Jan van den Noort
+        affiliation: Historicus
+        role: Adviseur
+        url: https://www.jvdn.nl/
+
     links:
       - label: Broncode op GitHub
         url: https://github.com/allmaps/rotterdamtimemachine
       - label: Gouda Tijdmachine
         url: https://www.goudatijdmachine.nl/kaarten-kabinet/
-    linkLabel:
-    url:
   shortcutsTitle: Sneltoetsen
   shortcuts:
     - keys: ["⌘", K, "/", Ctrl, K]

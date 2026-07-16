@@ -141,8 +141,8 @@ about:
       - label: Allmaps
         url: https://allmaps.org/
   institutionsTitle: Kaartbronnen
-  source:
-    title: Open source
+  credits:
+    title: Credits
     description: Het Goudse Kaarten Kabinet gebruikt de open-source code van Rotterdam Time Machine. De broncode is beschikbaar op GitHub en kan worden hergebruikt voor andere kaartcollecties.
     links:
       - label: Bekijk de broncode op GitHub
