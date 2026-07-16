@@ -639,14 +639,14 @@
 		const ids = getSelectedMapIds(annotationForLimit);
 		if (!ids) return undefined;
 
-		const maxZooms = ids
+		const nativeMaxZooms = ids
 			.map((id) => warpedMapLayer.getWarpedMap(id)?.resourceToProjectedGeoScale)
 			.filter(
 				(scale): scale is number => typeof scale === 'number' && Number.isFinite(scale) && scale > 0
 			)
 			.map((scale) => Math.log2((scale * WEB_MERCATOR_WORLD_WIDTH) / MAPLIBRE_TILE_SIZE));
 
-		return maxZooms.length > 0 ? Math.min(...maxZooms) : undefined;
+		return nativeMaxZooms.length > 0 ? Math.max(...nativeMaxZooms) : undefined;
 	}
 
 	function easeToSelectedMapZoomLimit(zoom: number, annotationForLimit: string) {
