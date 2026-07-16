@@ -207,6 +207,20 @@ about:
         url: https://github.com/allmaps/rotterdamtimemachine
       - label: Gouda Tijdmachine
         url: https://www.goudatijdmachine.nl/kaarten-kabinet/
+  contact:
+    title: Contact
+    contacts:
+      - title: Algemene vragen
+        description: Voor algemene vragen over Allmaps en de Rotterdam Time Machine.
+        email:
+          address: info@rotterdamtimemachine.nl
+          revealLabel: Toon e-mailadres
+          copyLabel: Kopieer
+          copiedLabel: Gekopieerd
+      - title: Stadsarchief Rotterdam
+        description: Voor meer informatie over de kaartcollectie van het Stadsarchief Rotterdam.
+        urlLabel: Contact Stadsarchief Rotterdam
+        url: https://stadsarchief.rotterdam.nl/contact
   shortcutsTitle: Sneltoetsen
   shortcuts:
     - keys: ["⌘", K, "/", Ctrl, K]
