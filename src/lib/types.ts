@@ -192,8 +192,10 @@ export type AppConfig = {
 		closeLabel: string;
 		placeholder: string;
 		useLocation: string;
+		stopLocation: string;
 		userLocationLabel: string;
 		clearLocations: string;
+		removeLocation: string;
 		locating: string;
 		loading: string;
 		noResults: string;

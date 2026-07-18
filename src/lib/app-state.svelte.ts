@@ -16,9 +16,21 @@ export type StoredLocation = {
 	id: string;
 	label: string;
 	center: [number, number];
-	source: 'search' | 'user';
+	source: 'search';
 	createdAt: number;
 };
+
+export type LiveUserLocation = {
+	id: string;
+	center: [number, number];
+	heading?: number;
+	accuracy?: number;
+	positionSequence: number;
+	source: 'user';
+	updatedAt: number;
+};
+
+export type LiveUserLocationTrackingStatus = 'off' | 'locating' | 'active' | 'passive';
 
 function getLocalStorage() {
 	return typeof localStorage === 'undefined' ? undefined : localStorage;
@@ -183,16 +195,16 @@ function normalizeStoredLocation(value: unknown): StoredLocation | undefined {
 	const id = typeof location.id === 'string' && location.id.trim() ? location.id : undefined;
 	const label =
 		typeof location.label === 'string' && location.label.trim() ? location.label.trim() : undefined;
-	const source = location.source === 'user' ? 'user' : 'search';
+	const source = typeof location.source === 'string' ? location.source : 'search';
 	const createdAt = Number(location.createdAt);
 
-	if (!id || !label) return undefined;
+	if (!id || !label || source !== 'search') return undefined;
 
 	return {
 		id,
 		label,
 		center: [lng, lat],
-		source,
+		source: 'search',
 		createdAt: Number.isFinite(createdAt) ? createdAt : Date.now()
 	};
 }
@@ -215,6 +227,10 @@ function saveStoredLocations() {
 }
 
 export const storedLocations = $state<StoredLocation[]>(readStoredLocations());
+export const liveUserLocation = $state<{ current?: LiveUserLocation }>({});
+export const liveUserLocationTracking = $state<{ status: LiveUserLocationTrackingStatus }>({
+	status: 'off'
+});
 
 export function configureStoredLocationsStorage(scope: string) {
 	const nextStorageKey = getStoredLocationsStorageKey(scope);
@@ -252,6 +268,26 @@ export function clearStoredLocations() {
 
 	replaceStoredLocations([]);
 	saveStoredLocations();
+}
+
+export function removeStoredLocation(id: string) {
+	const nextLocations = storedLocations.filter((location) => location.id !== id);
+	if (nextLocations.length === storedLocations.length) return;
+
+	replaceStoredLocations(nextLocations);
+	saveStoredLocations();
+}
+
+export function clearStoredUserLocations() {
+	saveStoredLocations();
+}
+
+export function setLiveUserLocation(location: LiveUserLocation | undefined) {
+	liveUserLocation.current = location;
+}
+
+export function setLiveUserLocationTrackingStatus(status: LiveUserLocationTrackingStatus) {
+	liveUserLocationTracking.status = status;
 }
 
 function getStoredLocationsStorageKey(scope: string) {

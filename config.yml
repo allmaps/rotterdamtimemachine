@@ -151,18 +151,18 @@ about:
     websiteLabel: Online
     institutionsLabel: Digitale collecties
     items:
-      - label: "Paul T. van de Laar et al (2012) <i>Historische atlas van Rotterdam: de groei van de stad in beeld</i>, Nijmegen: Vantilt."
+      - label: 'Paul T. van de Laar et al (2012) <i>Historische atlas van Rotterdam: de groei van de stad in beeld</i>, Nijmegen: Vantilt.'
         type: book
         url: https://worldcat.org/nl/title/797468780
       - label: "Joop de Jong (2005) <i>Rotterdam, 1940-1945, in foto's en amateurfilms</i>, Haarlem: Focus."
         type: book
         url: https://worldcat.org/nl/title/500170275
-      - label: "P. Ratsma (1994) Grootschalige Stadsplattegronden van Rotterdam: zes momenten uit de karteringsgeschiedenis, in: <i>Rotterdams Jaarboekje</i>, pp. 219-240."
+      - label: 'P. Ratsma (1994) Grootschalige Stadsplattegronden van Rotterdam: zes momenten uit de karteringsgeschiedenis, in: <i>Rotterdams Jaarboekje</i>, pp. 219-240.'
         type: book
-      - label: "A. Gordijn & P. Ratsma (1984) <i>Catalogus van de kaartenverzameling van de Gemeentelijke Archiefdienst Rotterdam: Stadsplattegronden van Rotterdam tot 1940</i>, Rotterdam"
+      - label: 'A. Gordijn & P. Ratsma (1984) <i>Catalogus van de kaartenverzameling van de Gemeentelijke Archiefdienst Rotterdam: Stadsplattegronden van Rotterdam tot 1940</i>, Rotterdam'
         type: book
         url: https://worldcat.org/nl/title/64110587
-      - label: "W.L. Lievaart, J. Meijer & P. Ratsma (1984) <i>Kaarten en kaartmakers van Rotterdam.</i>, Rotterdam: Gemeentelijke Archiefdienst"
+      - label: 'W.L. Lievaart, J. Meijer & P. Ratsma (1984) <i>Kaarten en kaartmakers van Rotterdam.</i>, Rotterdam: Gemeentelijke Archiefdienst'
         url: https://worldcat.org/nl/title/781615378
         type: book
       - label: Rotterdams Publiek
@@ -273,8 +273,10 @@ search:
   closeLabel: Sluit zoeken
   placeholder: Zoek locatie...
   useLocation: Gebruik mijn locatie
+  stopLocation: Stop locatie volgen
   userLocationLabel: Mijn locatie
   clearLocations: Wis opgeslagen locaties
+  removeLocation: Verwijder locatie
   locating: Locatie bepalen...
   loading: Aan het zoeken...
   noResults: Geen resultaten gevonden.

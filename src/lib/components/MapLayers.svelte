@@ -682,6 +682,20 @@
 		}
 	}
 
+	function handleLayerGroupContentPointerUp(event: PointerEvent, group: LayerGroup) {
+		const target = event.target instanceof HTMLElement ? event.target : undefined;
+		if (target?.closest('button, a')) return;
+		if (hasActiveTextSelection()) return;
+
+		selectLayerGroup(group);
+	}
+
+	function hasActiveTextSelection() {
+		const selection = typeof window === 'undefined' ? undefined : window.getSelection();
+
+		return !!selection && !selection.isCollapsed && selection.toString().trim().length > 0;
+	}
+
 	function scrollCarouselToIndex(index: number, behavior: ScrollBehavior = 'smooth') {
 		const trackElement = carouselTrackElement;
 		const slideElement = trackElement?.children[index] as HTMLElement | undefined;
@@ -985,7 +999,7 @@
 				data-tour="layers"
 				data-map-layers-panel
 				transition:fade={{ duration: 180 }}
-				class="relative z-30 w-full max-w-lg overflow-hidden rounded-md border border-gray-200 bg-white p-1 text-gray-900 shadow-lg transition-all {hasMultipleMaps
+				class="relative z-30 w-full max-w-lg overflow-hidden rounded-md border border-gray-200 bg-white p-1 text-gray-900 shadow-lg transition-all select-none {hasMultipleMaps
 					? 'min-h-16'
 					: 'min-h-14'}"
 			>
@@ -1252,7 +1266,11 @@
 									? 'bg-brand-soft'
 									: 'hover:bg-gray-50'}"
 							></button>
-							<div class="pointer-events-none relative z-10 flex min-w-0 items-stretch">
+							<!-- svelte-ignore a11y_no_static_element_interactions -->
+							<div
+								class="relative z-10 flex min-w-0 cursor-pointer items-stretch select-text"
+								onpointerup={(event) => handleLayerGroupContentPointerUp(event, group)}
+							>
 								<div class="min-w-0 flex-1">
 									<div class="w-full min-w-0 px-4 pt-3 pb-1 text-left">
 										<div class="flex min-w-0 items-start justify-between gap-2">

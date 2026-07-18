@@ -4,12 +4,20 @@
 	import maplibregl from 'maplibre-gl';
 	import { WarpedMapLayer } from '@allmaps/maplibre';
 	import 'maplibre-gl/dist/maplibre-gl.css';
-	import { viewState, flyTo, storedLocations } from '$lib/app-state.svelte.js';
+	import {
+		viewState,
+		flyTo,
+		liveUserLocation,
+		liveUserLocationTracking,
+		setLiveUserLocationTrackingStatus,
+		storedLocations
+	} from '$lib/app-state.svelte.js';
 	import { getProtomapsLayers, getProtomapsStyle } from '$lib/basemap';
 	import { getThemeColor } from '$lib/theme';
 	import { annotationsByMapId, getWarpedMapList, mapIdsByAnnotation } from '$lib/warped-map-list';
 	import MapControls from '$lib/components/MapControls.svelte';
 	import MapVisibilityWarning from '$lib/components/MapVisibilityWarning.svelte';
+	import type { LiveUserLocation, StoredLocation } from '$lib/app-state.svelte.js';
 	import type {
 		AppConfig,
 		GeocoderBounds,
@@ -39,8 +47,10 @@
 		| 'unknown';
 	type MapTouchInteractionState = {
 		dragPan: boolean;
+		doubleClickZoom: boolean;
 		touchZoomRotate: boolean;
 	};
+	type LocationMarker = StoredLocation | LiveUserLocation;
 
 	const CAMERA_BASE_PADDING = 40;
 	const CAMERA_PANEL_GAP = 16;
@@ -57,8 +67,14 @@
 	const ZOOM_LIMIT_RETRY_DELAY_MS = 50;
 	const DEFAULT_OVERVIEW_TILES_RESOLUTION = 2048 * 2048;
 	const LOCATION_SOURCE_ID = 'selected-location-source';
+	const LOCATION_LIVE_PULSE_LAYER_ID = 'selected-location-live-pulse';
+	const LOCATION_HEADING_LAYER_ID = 'selected-location-heading';
 	const LOCATION_CIRCLE_LAYER_ID = 'selected-location-circle';
 	const LOCATION_LABEL_LAYER_ID = 'selected-location-label';
+	const LIVE_LOCATION_CONE_IMAGE_ID = 'live-location-heading-cone';
+	const LIVE_LOCATION_PULSE_DURATION_MS = 1800;
+	const LIVE_LOCATION_MOVE_DURATION_MS = 650;
+	const LIVE_LOCATION_MOVE_EPSILON = 0.0000001;
 	const EMPTY_LOCATION_DATA: GeoJSON.FeatureCollection<GeoJSON.Point> = {
 		type: 'FeatureCollection',
 		features: []
@@ -155,6 +171,18 @@
 	let zoomLimitFrame: number | undefined;
 	let zoomLimitRetryTimer: ReturnType<typeof setTimeout> | undefined;
 	let visibilityCheckFrame: number | undefined;
+	let locationPulseFrame: number | undefined;
+	let locationPulseStartedAt = 0;
+	let liveLocationAnimationFrame: number | undefined;
+	let liveLocationAnimationStartedAt = 0;
+	let liveLocationAnimationFromCenter: [number, number] | undefined;
+	let liveLocationAnimationTarget: LiveUserLocation | undefined;
+	let liveLocationAnimationStoredLocations: StoredLocation[] = [];
+	let renderedLiveUserLocation: LiveUserLocation | undefined;
+	let liveLocationFollowInitialized = false;
+	let liveLocationInitialFlyToActive = false;
+	let liveLocationInitialFlyToPending = false;
+	let previousLiveLocationFollowSequence = 0;
 	let isSyncing = false;
 	let previousLocationSyncCommandId = 0;
 	let activeLocationSyncCommandId = 0;
@@ -207,24 +235,47 @@
 
 	// Fly to the selected search location.
 	$effect(() => {
-		if (enableFlyTo && mapReady && map && flyTo.center) {
+		const center = flyTo.center;
+		if (enableFlyTo && mapReady && map && center) {
 			const cameraPadding = getCameraPadding();
 			const zoom = untrack(getLocationFlyToZoom);
 			clearPreferredSelectionZoom();
 			map.flyTo({
-				center: flyTo.center,
+				center,
 				zoom,
 				offset: getCameraOffset(cameraPadding)
 			});
+			flyTo.center = null;
 		}
+	});
+
+	// Follow the live user location until the user moves the map.
+	$effect(() => {
+		const trackingStatus = liveUserLocationTracking.status;
+		const userLocation = liveUserLocation.current ? { ...liveUserLocation.current } : undefined;
+		const annotationForZoom = activeAnnotation;
+
+		if (trackingStatus !== 'active') {
+			liveLocationFollowInitialized = false;
+			liveLocationInitialFlyToActive = false;
+			liveLocationInitialFlyToPending = false;
+			previousLiveLocationFollowSequence = 0;
+		}
+
+		if (!enableFlyTo || !mapReady || !map || trackingStatus !== 'active' || !userLocation) return;
+		if (userLocation.positionSequence === previousLiveLocationFollowSequence) return;
+
+		previousLiveLocationFollowSequence = userLocation.positionSequence;
+		followLiveUserLocation(userLocation, annotationForZoom);
 	});
 
 	// Show saved search and locator points.
 	$effect(() => {
-		const locations = storedLocations.map((location) => ({ ...location }));
+		const searchLocations = storedLocations.map((location) => ({ ...location }));
+		const userLocation = liveUserLocation.current ? { ...liveUserLocation.current } : undefined;
 
 		if (enableLocationMarker && loaded && map) {
-			updateStoredLocationLayer(locations);
+			updateStoredLocationLayer(searchLocations, userLocation);
 		}
 	});
 
@@ -300,7 +351,7 @@
 
 	$effect(() => {
 		const annotationForLimit = activeAnnotation;
-		const zoomLimitEnabled = !focusActiveMap;
+		const zoomLimitEnabled = !focusActiveMap && liveUserLocationTracking.status !== 'active';
 
 		if (!annotationForLimit) {
 			previousAnnotationForZoomLimit = undefined;
@@ -383,7 +434,7 @@
 
 		let zoom = command.zoomDelta === undefined ? map.getZoom() : map.getZoom() + command.zoomDelta;
 
-		clearPreferredSelectionZoom();
+		handleUserCameraAction();
 		map.easeTo({
 			duration: 300,
 			easeId: 'keyboardHandler',
@@ -435,33 +486,219 @@
 		return /^https?:\/\//.test(id) || id.startsWith('/') || id.startsWith('data:');
 	}
 
+	function followLiveUserLocation(
+		userLocation: LiveUserLocation,
+		annotationForZoom = activeAnnotation
+	) {
+		if (!map) return;
+
+		const zoom = getLocationFlyToZoom(annotationForZoom);
+		const bearing = map.getBearing();
+		if (mapMatchesLocation(userLocation.center, zoom, bearing)) return;
+
+		if (liveLocationInitialFlyToActive) {
+			liveLocationInitialFlyToPending = true;
+			return;
+		}
+
+		if (!liveLocationFollowInitialized || userLocation.positionSequence === 1) {
+			liveLocationFollowInitialized = true;
+			liveLocationInitialFlyToActive = true;
+			liveLocationInitialFlyToPending = false;
+			map.stop();
+			map.once('moveend', handleLiveLocationInitialFlyToEnd);
+			map.flyTo({
+				center: userLocation.center,
+				zoom,
+				bearing,
+				pitch: 0,
+				offset: getCameraOffset(getCameraPadding()),
+				essential: true
+			});
+			return;
+		}
+
+		map.easeTo({
+			center: userLocation.center,
+			zoom,
+			bearing,
+			pitch: 0,
+			duration: LIVE_LOCATION_MOVE_DURATION_MS,
+			essential: true
+		});
+	}
+
+	function handleLiveLocationInitialFlyToEnd() {
+		liveLocationInitialFlyToActive = false;
+		if (!liveLocationInitialFlyToPending) return;
+
+		liveLocationInitialFlyToPending = false;
+		if (liveUserLocationTracking.status !== 'active' || !liveUserLocation.current) return;
+
+		followLiveUserLocation({ ...liveUserLocation.current }, activeAnnotation);
+	}
+
+	function handleUserCameraAction() {
+		clearPreferredSelectionZoom();
+		if ((enableFlyTo || viewsLinked) && liveUserLocationTracking.status === 'active') {
+			setLiveUserLocationTrackingStatus('passive');
+		}
+	}
+
 	function createLocationData(
-		locations = storedLocations
+		locations: LocationMarker[]
 	): GeoJSON.FeatureCollection<GeoJSON.Point> {
 		return {
 			type: 'FeatureCollection',
-			features: locations.map((location) => ({
-				type: 'Feature',
-				geometry: {
-					type: 'Point',
-					coordinates: location.center
-				},
-				properties: {
-					id: location.id,
-					label: location.label,
-					source: location.source
-				}
-			}))
+			features: locations.map((location) => {
+				const heading = location.source === 'user' ? location.heading : undefined;
+
+				return {
+					type: 'Feature',
+					geometry: {
+						type: 'Point',
+						coordinates: location.center
+					},
+					properties: {
+						id: location.id,
+						label: location.source === 'search' ? location.label : '',
+						source: location.source,
+						heading: heading ?? 0,
+						hasHeading: heading !== undefined,
+						isLive: location.source === 'user'
+					}
+				};
+			})
 		};
 	}
 
-	function updateStoredLocationLayer(locations = storedLocations) {
+	function updateStoredLocationLayer(
+		searchLocations: StoredLocation[],
+		userLocation: LiveUserLocation | undefined
+	) {
 		if (!map) return;
 
 		ensureSelectedLocationLayer();
-		const source = map.getSource(LOCATION_SOURCE_ID) as maplibregl.GeoJSONSource | undefined;
-		source?.setData(createLocationData(locations));
 		map.setPaintProperty(LOCATION_CIRCLE_LAYER_ID, 'circle-color', getBrandMainColor());
+		map.setPaintProperty(LOCATION_LIVE_PULSE_LAYER_ID, 'circle-color', getBrandMainColor());
+		setLiveLocationPulseActive(!!userLocation);
+
+		if (!userLocation) {
+			cancelLiveLocationAnimation();
+			renderedLiveUserLocation = undefined;
+			setLocationSourceData(searchLocations);
+			return;
+		}
+
+		updateLiveLocationMarker(searchLocations, userLocation);
+	}
+
+	function setLocationSourceData(
+		searchLocations: StoredLocation[],
+		userLocation: LiveUserLocation | undefined = renderedLiveUserLocation
+	) {
+		const source = map?.getSource(LOCATION_SOURCE_ID) as maplibregl.GeoJSONSource | undefined;
+		source?.setData(
+			createLocationData(userLocation ? [...searchLocations, userLocation] : searchLocations)
+		);
+	}
+
+	function updateLiveLocationMarker(
+		searchLocations: StoredLocation[],
+		userLocation: LiveUserLocation
+	) {
+		liveLocationAnimationStoredLocations = searchLocations;
+
+		if (
+			liveLocationAnimationFrame !== undefined &&
+			liveLocationAnimationTarget &&
+			centersMatch(userLocation.center, liveLocationAnimationTarget.center)
+		) {
+			liveLocationAnimationTarget = { ...userLocation };
+			return;
+		}
+
+		const fromCenter = renderedLiveUserLocation?.center;
+		if (!fromCenter || centersMatch(fromCenter, userLocation.center)) {
+			cancelLiveLocationAnimation();
+			renderedLiveUserLocation = { ...userLocation };
+			setLocationSourceData(searchLocations);
+			return;
+		}
+
+		startLiveLocationAnimation(userLocation, fromCenter);
+	}
+
+	function startLiveLocationAnimation(
+		userLocation: LiveUserLocation,
+		fromCenter: [number, number]
+	) {
+		cancelLiveLocationAnimation();
+		liveLocationAnimationStartedAt = performance.now();
+		liveLocationAnimationFromCenter = [...fromCenter];
+		liveLocationAnimationTarget = { ...userLocation };
+		liveLocationAnimationFrame = requestAnimationFrame(animateLiveLocationMarker);
+	}
+
+	function animateLiveLocationMarker(timestamp: number) {
+		if (!map || !liveLocationAnimationFromCenter || !liveLocationAnimationTarget) {
+			cancelLiveLocationAnimation();
+			return;
+		}
+
+		const elapsed = timestamp - liveLocationAnimationStartedAt;
+		const progress = Math.min(elapsed / LIVE_LOCATION_MOVE_DURATION_MS, 1);
+		const easedProgress = easeOutCubic(progress);
+		const target = liveLocationAnimationTarget;
+
+		renderedLiveUserLocation = {
+			...target,
+			center: interpolateCenter(liveLocationAnimationFromCenter, target.center, easedProgress)
+		};
+		setLocationSourceData(liveLocationAnimationStoredLocations);
+
+		if (progress < 1) {
+			liveLocationAnimationFrame = requestAnimationFrame(animateLiveLocationMarker);
+			return;
+		}
+
+		renderedLiveUserLocation = { ...target };
+		liveLocationAnimationFrame = undefined;
+		liveLocationAnimationFromCenter = undefined;
+		liveLocationAnimationTarget = undefined;
+		setLocationSourceData(liveLocationAnimationStoredLocations);
+	}
+
+	function cancelLiveLocationAnimation() {
+		if (liveLocationAnimationFrame !== undefined) {
+			cancelAnimationFrame(liveLocationAnimationFrame);
+		}
+
+		liveLocationAnimationFrame = undefined;
+		liveLocationAnimationFromCenter = undefined;
+		liveLocationAnimationTarget = undefined;
+	}
+
+	function interpolateCenter(
+		fromCenter: [number, number],
+		toCenter: [number, number],
+		progress: number
+	): [number, number] {
+		return [
+			fromCenter[0] + (toCenter[0] - fromCenter[0]) * progress,
+			fromCenter[1] + (toCenter[1] - fromCenter[1]) * progress
+		];
+	}
+
+	function easeOutCubic(progress: number) {
+		return 1 - Math.pow(1 - progress, 3);
+	}
+
+	function centersMatch(left: [number, number], right: [number, number]) {
+		return (
+			Math.abs(left[0] - right[0]) < LIVE_LOCATION_MOVE_EPSILON &&
+			Math.abs(left[1] - right[1]) < LIVE_LOCATION_MOVE_EPSILON
+		);
 	}
 
 	function ensureSelectedLocationLayer() {
@@ -471,6 +708,43 @@
 			map.addSource(LOCATION_SOURCE_ID, {
 				type: 'geojson',
 				data: EMPTY_LOCATION_DATA
+			});
+		}
+
+		ensureLiveLocationConeImage();
+
+		if (!map.getLayer(LOCATION_LIVE_PULSE_LAYER_ID)) {
+			map.addLayer({
+				id: LOCATION_LIVE_PULSE_LAYER_ID,
+				type: 'circle',
+				source: LOCATION_SOURCE_ID,
+				filter: ['==', ['get', 'isLive'], true],
+				paint: {
+					'circle-radius': 10,
+					'circle-radius-transition': { duration: 0 },
+					'circle-color': getBrandMainColor(),
+					'circle-opacity': 0.18,
+					'circle-opacity-transition': { duration: 0 },
+					'circle-stroke-width': 0
+				}
+			});
+		}
+
+		if (!map.getLayer(LOCATION_HEADING_LAYER_ID)) {
+			map.addLayer({
+				id: LOCATION_HEADING_LAYER_ID,
+				type: 'symbol',
+				source: LOCATION_SOURCE_ID,
+				filter: ['==', ['get', 'hasHeading'], true],
+				layout: {
+					'icon-image': LIVE_LOCATION_CONE_IMAGE_ID,
+					'icon-size': ['interpolate', ['linear'], ['zoom'], 10, 0.48, 15, 0.72, 18, 0.9],
+					'icon-anchor': 'center',
+					'icon-rotate': ['get', 'heading'],
+					'icon-rotation-alignment': 'map',
+					'icon-allow-overlap': true,
+					'icon-ignore-placement': true
+				}
 			});
 		}
 
@@ -515,6 +789,91 @@
 	function clearSelectedLocationCircle() {
 		const source = map?.getSource(LOCATION_SOURCE_ID) as maplibregl.GeoJSONSource | undefined;
 		source?.setData(EMPTY_LOCATION_DATA);
+		setLiveLocationPulseActive(false);
+		cancelLiveLocationAnimation();
+		renderedLiveUserLocation = undefined;
+	}
+
+	function ensureLiveLocationConeImage() {
+		if (!map || typeof document === 'undefined' || map.hasImage(LIVE_LOCATION_CONE_IMAGE_ID))
+			return;
+
+		const image = createLiveLocationConeImage(getBrandMainColor());
+		if (image) {
+			map.addImage(LIVE_LOCATION_CONE_IMAGE_ID, image, { pixelRatio: 2 });
+		}
+	}
+
+	function createLiveLocationConeImage(color: string) {
+		const displaySize = 96;
+		const pixelRatio = 2;
+		const canvas = document.createElement('canvas');
+		const context = canvas.getContext('2d');
+		if (!context) return undefined;
+
+		canvas.width = displaySize * pixelRatio;
+		canvas.height = displaySize * pixelRatio;
+		context.scale(pixelRatio, pixelRatio);
+
+		const center = displaySize / 2;
+		const gradient = context.createLinearGradient(center, center, center, 4);
+		gradient.addColorStop(0, getColorWithAlpha(color, 0.34));
+		gradient.addColorStop(0.7, getColorWithAlpha(color, 0.12));
+		gradient.addColorStop(1, getColorWithAlpha(color, 0.02));
+
+		context.beginPath();
+		context.moveTo(center, center);
+		context.lineTo(center - 25, 10);
+		context.quadraticCurveTo(center, 0, center + 25, 10);
+		context.closePath();
+		context.fillStyle = gradient;
+		context.fill();
+
+		return context.getImageData(0, 0, canvas.width, canvas.height);
+	}
+
+	function getColorWithAlpha(color: string, alpha: number) {
+		const [red, green, blue] = [1, 3, 5].map((start) =>
+			Number.parseInt(color.slice(start, start + 2), 16)
+		);
+
+		return `rgba(${red}, ${green}, ${blue}, ${alpha})`;
+	}
+
+	function setLiveLocationPulseActive(active: boolean) {
+		if (!map) return;
+
+		if (!active) {
+			cancelLiveLocationPulse();
+			if (map.getLayer(LOCATION_LIVE_PULSE_LAYER_ID)) {
+				map.setPaintProperty(LOCATION_LIVE_PULSE_LAYER_ID, 'circle-opacity', 0);
+			}
+			return;
+		}
+
+		if (locationPulseFrame !== undefined) return;
+		locationPulseStartedAt = performance.now();
+		locationPulseFrame = requestAnimationFrame(animateLiveLocationPulse);
+	}
+
+	function animateLiveLocationPulse(timestamp: number) {
+		if (!map || !map.getLayer(LOCATION_LIVE_PULSE_LAYER_ID)) {
+			locationPulseFrame = undefined;
+			return;
+		}
+
+		const elapsed = timestamp - locationPulseStartedAt;
+		const phase = (elapsed % LIVE_LOCATION_PULSE_DURATION_MS) / LIVE_LOCATION_PULSE_DURATION_MS;
+		map.setPaintProperty(LOCATION_LIVE_PULSE_LAYER_ID, 'circle-radius', 8 + phase * 18);
+		map.setPaintProperty(LOCATION_LIVE_PULSE_LAYER_ID, 'circle-opacity', 0.24 * (1 - phase));
+		locationPulseFrame = requestAnimationFrame(animateLiveLocationPulse);
+	}
+
+	function cancelLiveLocationPulse() {
+		if (locationPulseFrame === undefined) return;
+
+		cancelAnimationFrame(locationPulseFrame);
+		locationPulseFrame = undefined;
 	}
 
 	function getBrandMainColor() {
@@ -535,9 +894,11 @@
 
 			mapTouchInteractionState = {
 				dragPan: map.dragPan.isEnabled(),
+				doubleClickZoom: map.doubleClickZoom.isEnabled(),
 				touchZoomRotate: map.touchZoomRotate.isEnabled()
 			};
 			map.dragPan.disable();
+			map.doubleClickZoom.disable();
 			map.touchZoomRotate.disable();
 			return;
 		}
@@ -545,6 +906,7 @@
 		if (!mapTouchInteractionState) return;
 
 		if (mapTouchInteractionState.dragPan) map.dragPan.enable();
+		if (mapTouchInteractionState.doubleClickZoom) map.doubleClickZoom.enable();
 		if (mapTouchInteractionState.touchZoomRotate) map.touchZoomRotate.enable();
 		mapTouchInteractionState = undefined;
 	}
@@ -684,9 +1046,9 @@
 		return Math.min(map.getMaxZoom(), Math.max(map.getMinZoom(), zoom));
 	}
 
-	function getLocationFlyToZoom() {
-		const selectedMaxZoom = activeAnnotation
-			? getSelectedMapNativeMaxZoom(activeAnnotation)
+	function getLocationFlyToZoom(annotationForZoom = activeAnnotation) {
+		const selectedMaxZoom = annotationForZoom
+			? getSelectedMapNativeMaxZoom(annotationForZoom)
 			: undefined;
 
 		return clampZoomToMapLimits(
@@ -707,6 +1069,7 @@
 		if (rotateToMapOrientation) {
 			const camera = getSelectedMapCamera(annotationForFocus, cameraPadding);
 			if (camera) {
+				handleUserCameraAction();
 				map.flyTo({
 					...camera,
 					...getFocusFlyToOptions(cameraPadding, true)
@@ -719,6 +1082,7 @@
 		if (bounds) {
 			const camera = map.cameraForBounds(bounds, { padding: cameraPadding });
 			if (camera) {
+				handleUserCameraAction();
 				map.flyTo({ ...camera, ...getFocusFlyToOptions(cameraPadding, false) });
 			}
 		}
@@ -1113,7 +1477,7 @@
 		disableMapCanvasFocus(mapInstance, blurMapCanvas);
 
 		mapInstance.on('movestart', (event) => {
-			if (event.originalEvent) clearPreferredSelectionZoom();
+			if (event.originalEvent) handleUserCameraAction();
 		});
 
 		mapInstance.on('move', () => {
@@ -1216,7 +1580,7 @@
 			{showZoomControls}
 			{showLinkControl}
 			{showInViewControl}
-			onUserCameraAction={clearPreferredSelectionZoom}
+			onUserCameraAction={handleUserCameraAction}
 		/>
 	</div>
 {/if}

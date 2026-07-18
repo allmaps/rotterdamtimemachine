@@ -4,7 +4,7 @@ site:
   url: https://www.goudatijdmachine.nl/kaarten-kabinet/
   description: Verken historische kaarten van Gouda door de tijd en vergelijk kaartlagen met de huidige stad.
   locale: nl
-  themeColor: "#3891b1"
+  themeColor: '#3891b1'
   favicon: https://www.goudatijdmachine.nl/wp-content/gtm-logo/gtm-logo-2025.svg
 
 header:
@@ -36,7 +36,7 @@ map:
 collection: collection.yml
 
 theme:
-  color: "#3891b1"
+  color: '#3891b1'
   fonts:
     families:
       - name: Bolder
@@ -94,7 +94,7 @@ tour:
   introDescription: Volg een korte rondleiding langs de tijdslider, kaartlagen, zoekfunctie en vergelijkmodus.
   startLabel: Start tour
   dismissLabel: Niet nu
-  progressText: "{{current}} van {{total}}"
+  progressText: '{{current}} van {{total}}'
   storageKey: goudse-kaarten-kabinet-tour-v1
   steps:
     - target: time-slider
@@ -152,19 +152,19 @@ about:
         url: https://rotterdamtimemachine.nl/
   shortcutsTitle: Sneltoetsen
   shortcuts:
-    - keys: ["⌘", K, "/", Ctrl, K]
+    - keys: ['⌘', K, '/', Ctrl, K]
       description: Kaartlagen openen
     - keys: [S]
       description: Zoek locatie openen
     - keys: [C]
       description: Vergelijkmodus aan- of uitzetten
-    - keys: ["↑", "↓"]
+    - keys: ['↑', '↓']
       description: Naar het volgende of vorige beschikbare kaartjaar
-    - keys: ["←", "→"]
+    - keys: ['←', '→']
       description: Door kaarten van hetzelfde jaar bladeren
-    - keys: ["+", "=", "-"]
+    - keys: ['+', '=', '-']
       description: In- en uitzoomen
-    - keys: [Shift, "←", "↑", "↓", "→"]
+    - keys: [Shift, '←', '↑', '↓', '→']
       description: Kaartbeeld verschuiven
     - keys: [R]
       description: Kaartoriëntatie volgen aan- of uitzetten
@@ -193,8 +193,10 @@ search:
   closeLabel: Sluit zoeken
   placeholder: Zoek locatie...
   useLocation: Gebruik mijn locatie
+  stopLocation: Stop locatie volgen
   userLocationLabel: Mijn locatie
   clearLocations: Wis opgeslagen locaties
+  removeLocation: Verwijder locatie
   locating: Locatie bepalen...
   loading: Aan het zoeken...
   noResults: Geen resultaten gevonden.
