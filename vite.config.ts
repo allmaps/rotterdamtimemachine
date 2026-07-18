@@ -11,7 +11,8 @@ export default defineConfig(({ mode }) => {
 	return {
 		plugins: [generateAnnotationsPlugin(configFile), tailwindcss(), sveltekit()],
 		server: {
-			host: 'localhost'
+			host: 'localhost',
+			allowedHosts: ['.ngrok-free.dev']
 		}
 	};
 });

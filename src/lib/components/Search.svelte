@@ -3,10 +3,20 @@
 		addStoredLocation,
 		clearStoredLocations,
 		flyTo,
+		liveUserLocation,
+		liveUserLocationTracking,
+		removeStoredLocation,
 		storedLocations
 	} from '$lib/app-state.svelte.js';
 	import { GeocoderService, type GeocoderResult } from '$lib/services/geocoder.svelte.js';
+	import {
+		liveLocationError,
+		releaseLiveUserLocationFollow,
+		resumeLiveUserLocationFollow,
+		stopLiveUserLocationTracking
+	} from '$lib/services/live-location.svelte.js';
 	import Modal from '$lib/components/Modal.svelte';
+	import SearchLocationButton from '$lib/components/SearchLocationButton.svelte';
 	import {
 		CornerDownLeft,
 		LocateFixed,
@@ -32,14 +42,31 @@
 	const search = untrack(() => new GeocoderService(config.search));
 
 	let selectedIndex = $state(0);
-	let locating = $state(false);
-	let locationError = $state('');
 	let inputElement: HTMLInputElement | undefined = $state();
 	let listElement: HTMLUListElement | undefined = $state();
 	let showSearchResults = $derived(
 		search.searchTerm.trim() !== '' &&
 			(search.loading || search.hasSearched || !!search.error || search.results.length > 0)
 	);
+	let visibleLocations = $derived([
+		...(liveUserLocation.current
+			? [
+					{
+						id: liveUserLocation.current.id,
+						label: config.search.userLocationLabel,
+						center: liveUserLocation.current.center,
+						source: 'user' as const
+					}
+				]
+			: []),
+		...storedLocations.map((location) => ({
+			id: location.id,
+			label: location.label,
+			center: location.center,
+			source: 'search' as const
+		}))
+	]);
+	let showVisibleLocations = $derived(!showSearchResults && visibleLocations.length > 0);
 	let canSubmitSearch = $derived(
 		search.searchTerm.trim().length >= config.search.minLength && !!search.bounds
 	);
@@ -61,7 +88,7 @@
 			search.searchTerm = '';
 			search.reset();
 			selectedIndex = 0;
-			locationError = '';
+			liveLocationError.message = '';
 		}
 	});
 
@@ -75,19 +102,20 @@
 
 	function handleInput() {
 		selectedIndex = 0;
-		locationError = '';
+		liveLocationError.message = '';
 		search.reset();
 	}
 
 	function handleSearchSubmit(event: SubmitEvent) {
 		event.preventDefault();
 		selectedIndex = 0;
-		locationError = '';
+		liveLocationError.message = '';
 		search.searchWithDelay();
 	}
 
 	function selectResult(result: GeocoderResult) {
 		const center = search.selectLocation(result);
+		releaseLiveUserLocationFollow();
 		flyTo.center = center;
 		addStoredLocation({
 			id: getResultLocationId(result),
@@ -129,43 +157,32 @@
 		return `search:${result.place_id}:${result.lon}:${result.lat}`;
 	}
 
-	function useUserLocation() {
-		locationError = '';
+	function handleLiveLocationLocated() {
+		open = false;
+	}
 
-		if (typeof navigator === 'undefined' || !navigator.geolocation) {
-			locationError = config.search.locationUnsupported;
+	function selectVisibleLocation(location: (typeof visibleLocations)[number]) {
+		if (location.source === 'user') {
+			if (liveUserLocationTracking.status === 'active') {
+				flyTo.center = location.center;
+			} else {
+				resumeLiveUserLocationFollow();
+			}
+		} else {
+			releaseLiveUserLocationFollow();
+			flyTo.center = location.center;
+		}
+
+		open = false;
+	}
+
+	function removeVisibleLocation(location: (typeof visibleLocations)[number]) {
+		if (location.source === 'user') {
+			stopLiveUserLocationTracking();
 			return;
 		}
 
-		locating = true;
-
-		navigator.geolocation.getCurrentPosition(
-			(position) => {
-				const center: [number, number] = [position.coords.longitude, position.coords.latitude];
-
-				flyTo.center = center;
-				addStoredLocation({
-					id: 'user:current',
-					label: config.search.userLocationLabel,
-					center,
-					source: 'user'
-				});
-				locating = false;
-				open = false;
-			},
-			(error) => {
-				locating = false;
-
-				if (error.code === error.PERMISSION_DENIED) {
-					locationError = config.search.locationDenied;
-				} else if (error.code === error.TIMEOUT) {
-					locationError = config.search.locationTimeout;
-				} else {
-					locationError = config.search.locationUnavailable;
-				}
-			},
-			{ enableHighAccuracy: true, maximumAge: 60000, timeout: 10000 }
-		);
+		removeStoredLocation(location.id);
 	}
 
 	function scrollSelectedIntoView() {
@@ -241,16 +258,7 @@
 			>
 				<CornerDownLeft class="h-5 w-5" />
 			</button>
-			<button
-				type="button"
-				aria-label={locating ? config.search.locating : config.search.useLocation}
-				title={locating ? config.search.locating : config.search.useLocation}
-				disabled={locating}
-				class="cursor-pointer rounded p-1 text-gray-500 hover:bg-gray-100 hover:text-brand-main disabled:cursor-wait disabled:opacity-70"
-				onclick={useUserLocation}
-			>
-				<LocateFixed class="h-5 w-5 {locating ? 'animate-pulse text-brand-main' : ''}" />
-			</button>
+			<SearchLocationButton config={config.search} onLocated={handleLiveLocationLocated} />
 			<button
 				type="button"
 				aria-label={config.search.clearLocations}
@@ -271,9 +279,9 @@
 			</button>
 		</form>
 
-		{#if locationError}
+		{#if liveLocationError.message}
 			<p class="border-b border-gray-100 px-4 py-2 text-sm font-medium text-red-700" role="alert">
-				{locationError}
+				{liveLocationError.message}
 			</p>
 		{/if}
 
@@ -313,6 +321,39 @@
 						{/if}
 					</li>
 				{/if}
+			</ul>
+		{:else if showVisibleLocations}
+			<ul
+				transition:slide={{ duration: 140 }}
+				class="max-h-[56dvh] overflow-y-auto overscroll-contain bg-white"
+			>
+				{#each visibleLocations as location (location.id)}
+					<li class="flex items-stretch border-b border-gray-100">
+						<button
+							type="button"
+							class="flex min-w-0 flex-1 cursor-pointer items-start gap-3 px-4 py-3 text-left transition hover:bg-brand-soft"
+							onclick={() => selectVisibleLocation(location)}
+						>
+							{#if location.source === 'user'}
+								<LocateFixed class="mt-0.5 h-4 w-4 flex-none text-brand-main" />
+							{:else}
+								<MapPin class="mt-0.5 h-4 w-4 flex-none text-brand-main" />
+							{/if}
+							<span class="min-w-0 flex-1 truncate text-sm font-medium text-gray-800">
+								{location.label}
+							</span>
+						</button>
+						<button
+							type="button"
+							aria-label={config.search.removeLocation}
+							title={config.search.removeLocation}
+							class="flex w-11 flex-none cursor-pointer items-center justify-center text-gray-400 transition hover:bg-gray-100 hover:text-gray-800"
+							onclick={() => removeVisibleLocation(location)}
+						>
+							<X class="h-4 w-4" />
+						</button>
+					</li>
+				{/each}
 			</ul>
 		{/if}
 
