@@ -47,6 +47,7 @@
 		| 'unknown';
 	type MapTouchInteractionState = {
 		dragPan: boolean;
+		doubleClickZoom: boolean;
 		touchZoomRotate: boolean;
 	};
 	type LocationMarker = StoredLocation | LiveUserLocation;
@@ -893,9 +894,11 @@
 
 			mapTouchInteractionState = {
 				dragPan: map.dragPan.isEnabled(),
+				doubleClickZoom: map.doubleClickZoom.isEnabled(),
 				touchZoomRotate: map.touchZoomRotate.isEnabled()
 			};
 			map.dragPan.disable();
+			map.doubleClickZoom.disable();
 			map.touchZoomRotate.disable();
 			return;
 		}
@@ -903,6 +906,7 @@
 		if (!mapTouchInteractionState) return;
 
 		if (mapTouchInteractionState.dragPan) map.dragPan.enable();
+		if (mapTouchInteractionState.doubleClickZoom) map.doubleClickZoom.enable();
 		if (mapTouchInteractionState.touchZoomRotate) map.touchZoomRotate.enable();
 		mapTouchInteractionState = undefined;
 	}
