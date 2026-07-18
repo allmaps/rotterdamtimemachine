@@ -207,15 +207,17 @@
 
 	// Fly to the selected search location.
 	$effect(() => {
-		if (enableFlyTo && mapReady && map && flyTo.center) {
+		const center = flyTo.center;
+		if (enableFlyTo && mapReady && map && center) {
 			const cameraPadding = getCameraPadding();
 			const zoom = untrack(getLocationFlyToZoom);
 			clearPreferredSelectionZoom();
 			map.flyTo({
-				center: flyTo.center,
+				center,
 				zoom,
 				offset: getCameraOffset(cameraPadding)
 			});
+			flyTo.center = null;
 		}
 	});
 
