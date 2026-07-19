@@ -29,7 +29,7 @@
 		showZoomControls = true,
 		showLinkControl = false,
 		showInViewControl = false,
-		onUserCameraAction
+		onUserZoomAction
 	}: {
 		config: AppConfig;
 		map: maplibregl.Map;
@@ -44,7 +44,7 @@
 		showZoomControls?: boolean;
 		showLinkControl?: boolean;
 		showInViewControl?: boolean;
-		onUserCameraAction?: () => void;
+		onUserZoomAction?: () => void;
 	} = $props();
 
 	const positionClass = $derived(position === 'top-left' ? 'top-2 left-2' : 'top-2 right-2');
@@ -63,7 +63,7 @@
 			label: config.controls.zoomIn,
 			icon: Plus,
 			action: () => {
-				onUserCameraAction?.();
+				onUserZoomAction?.();
 				map.zoomIn({ duration: 250 });
 			}
 		},
@@ -71,7 +71,7 @@
 			label: config.controls.zoomOut,
 			icon: Minus,
 			action: () => {
-				onUserCameraAction?.();
+				onUserZoomAction?.();
 				map.zoomOut({ duration: 250 });
 			}
 		}

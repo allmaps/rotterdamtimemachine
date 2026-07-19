@@ -553,6 +553,10 @@
 		}
 	}
 
+	function handleUserZoomAction() {
+		clearPreferredSelectionZoom();
+	}
+
 	function createLocationData(
 		locations: LocationMarker[]
 	): GeoJSON.FeatureCollection<GeoJSON.Point> {
@@ -1592,7 +1596,7 @@
 			{showZoomControls}
 			{showLinkControl}
 			{showInViewControl}
-			onUserCameraAction={handleUserCameraAction}
+			onUserZoomAction={handleUserZoomAction}
 		/>
 	</div>
 {/if}
