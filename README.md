@@ -38,6 +38,8 @@ pnpm run dev
 
 Then open [http://localhost:5173](http://localhost:5173).
 
+The Vite dev server allows hosts ending in `.ngrok-free.dev` so the local app can be exposed through an ngrok tunnel for testing on phones and tablets. This is only for local development; production hosts are controlled by the deployed site URL and hosting provider.
+
 ### Check And build
 
 ```bash

@@ -183,6 +183,7 @@
 	let liveLocationInitialFlyToActive = false;
 	let liveLocationInitialFlyToPending = false;
 	let previousLiveLocationFollowSequence = 0;
+	let previousLiveLocationFollowAnnotation: string | undefined;
 	let isSyncing = false;
 	let previousLocationSyncCommandId = 0;
 	let activeLocationSyncCommandId = 0;
@@ -260,13 +261,19 @@
 			liveLocationInitialFlyToActive = false;
 			liveLocationInitialFlyToPending = false;
 			previousLiveLocationFollowSequence = 0;
+			previousLiveLocationFollowAnnotation = undefined;
 		}
 
 		if (!enableFlyTo || !mapReady || !map || trackingStatus !== 'active' || !userLocation) return;
-		if (userLocation.positionSequence === previousLiveLocationFollowSequence) return;
+		const locationChanged = userLocation.positionSequence !== previousLiveLocationFollowSequence;
+		const annotationChanged = annotationForZoom !== previousLiveLocationFollowAnnotation;
+		if (!locationChanged && !annotationChanged) return;
 
 		previousLiveLocationFollowSequence = userLocation.positionSequence;
-		followLiveUserLocation(userLocation, annotationForZoom);
+		previousLiveLocationFollowAnnotation = annotationForZoom;
+		followLiveUserLocation(userLocation, annotationForZoom, {
+			duration: annotationChanged && !locationChanged ? getCameraCorrectionDuration() : undefined
+		});
 	});
 
 	// Show saved search and locator points.
@@ -488,7 +495,8 @@
 
 	function followLiveUserLocation(
 		userLocation: LiveUserLocation,
-		annotationForZoom = activeAnnotation
+		annotationForZoom = activeAnnotation,
+		options: { duration?: number } = {}
 	) {
 		if (!map) return;
 
@@ -523,7 +531,7 @@
 			zoom,
 			bearing,
 			pitch: 0,
-			duration: LIVE_LOCATION_MOVE_DURATION_MS,
+			duration: options.duration ?? LIVE_LOCATION_MOVE_DURATION_MS,
 			essential: true
 		});
 	}
@@ -1027,8 +1035,12 @@
 			zoom: clampZoomToMapLimits(zoom),
 			bearing: map.getBearing(),
 			pitch: 0,
-			duration: config.autoplay?.flyToDurationMs ?? 100
+			duration: getCameraCorrectionDuration()
 		});
+	}
+
+	function getCameraCorrectionDuration() {
+		return config.autoplay?.flyToDurationMs ?? 100;
 	}
 
 	function finishSelectedMapZoomLimit(annotationForLimit: string) {
