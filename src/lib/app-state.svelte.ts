@@ -3,6 +3,15 @@ const FAVORITES_STORAGE_VERSION = 1;
 const STORED_LOCATIONS_STORAGE_PREFIX = 'locations';
 const STORED_LOCATIONS_STORAGE_VERSION = 1;
 const STORED_LOCATIONS_LIMIT = 25;
+const GEOJSON_GEOMETRY_TYPES = new Set([
+	'Point',
+	'MultiPoint',
+	'LineString',
+	'MultiLineString',
+	'Polygon',
+	'MultiPolygon',
+	'GeometryCollection'
+]);
 
 let favoritesStorageKey = getFavoritesStorageKey('default');
 let allowedFavoriteAnnotations: string[] | undefined;
@@ -16,9 +25,15 @@ export type StoredLocation = {
 	id: string;
 	label: string;
 	center: [number, number];
+	osmId?: string;
+	geometry?: GeoJSON.Geometry;
+	displayMode: StoredLocationDisplayMode;
+	visible: boolean;
 	source: 'search';
 	createdAt: number;
 };
+
+export type StoredLocationDisplayMode = 'point' | 'geometry';
 
 export type LiveUserLocation = {
 	id: string;
@@ -196,6 +211,13 @@ function normalizeStoredLocation(value: unknown): StoredLocation | undefined {
 	const label =
 		typeof location.label === 'string' && location.label.trim() ? location.label.trim() : undefined;
 	const source = typeof location.source === 'string' ? location.source : 'search';
+	const osmId = normalizeOsmId(location.osmId);
+	const geometry = normalizeGeoJsonGeometry(location.geometry);
+	const displayMode =
+		location.displayMode === 'geometry' && hasDisplayableStoredLocationGeometry(geometry)
+			? 'geometry'
+			: ('point' as const);
+	const visible = typeof location.visible === 'boolean' ? location.visible : true;
 	const createdAt = Number(location.createdAt);
 
 	if (!id || !label || source !== 'search') return undefined;
@@ -204,9 +226,54 @@ function normalizeStoredLocation(value: unknown): StoredLocation | undefined {
 		id,
 		label,
 		center: [lng, lat],
+		osmId,
+		geometry,
+		displayMode,
+		visible,
 		source: 'search',
 		createdAt: Number.isFinite(createdAt) ? createdAt : Date.now()
 	};
+}
+
+function normalizeGeoJsonGeometry(value: unknown): GeoJSON.Geometry | undefined {
+	if (!value || typeof value !== 'object') return undefined;
+
+	const geometry = value as Partial<GeoJSON.Geometry>;
+	if (typeof geometry.type !== 'string' || !GEOJSON_GEOMETRY_TYPES.has(geometry.type)) {
+		return undefined;
+	}
+
+	if (geometry.type === 'GeometryCollection') {
+		const geometries = (geometry as Partial<GeoJSON.GeometryCollection>).geometries;
+		if (!Array.isArray(geometries)) return undefined;
+
+		const normalizedGeometries = geometries
+			.map(normalizeGeoJsonGeometry)
+			.filter((item): item is GeoJSON.Geometry => !!item);
+
+		return normalizedGeometries.length > 0
+			? {
+					type: 'GeometryCollection',
+					geometries: normalizedGeometries
+				}
+			: undefined;
+	}
+
+	const coordinates = (geometry as Partial<GeoJSON.Geometry & { coordinates: unknown }>)
+		.coordinates;
+	if (!Array.isArray(coordinates)) return undefined;
+
+	return {
+		type: geometry.type,
+		coordinates
+	} as GeoJSON.Geometry;
+}
+
+function normalizeOsmId(value: unknown) {
+	if (typeof value !== 'string') return undefined;
+
+	const normalizedValue = value.trim().toUpperCase();
+	return /^[NWR]\d+$/.test(normalizedValue) ? normalizedValue : undefined;
 }
 
 function saveStoredLocations() {
@@ -231,6 +298,13 @@ export const liveUserLocation = $state<{ current?: LiveUserLocation }>({});
 export const liveUserLocationTracking = $state<{ status: LiveUserLocationTrackingStatus }>({
 	status: 'off'
 });
+export const activeLocation = $state<{
+	id: string | null;
+	center: [number, number] | null;
+}>({
+	id: null,
+	center: null
+});
 
 export function configureStoredLocationsStorage(scope: string) {
 	const nextStorageKey = getStoredLocationsStorageKey(scope);
@@ -246,7 +320,8 @@ export function configureStoredLocationsStorage(scope: string) {
 }
 
 export function addStoredLocation(
-	location: Omit<StoredLocation, 'createdAt'> & { createdAt?: number }
+	location: Omit<StoredLocation, 'createdAt' | 'displayMode' | 'visible'> &
+		Partial<Pick<StoredLocation, 'displayMode' | 'visible' | 'createdAt'>>
 ) {
 	const normalized = normalizeStoredLocation({
 		...location,
@@ -259,6 +334,7 @@ export function addStoredLocation(
 		...storedLocations.filter((item) => item.id !== normalized.id)
 	].slice(0, STORED_LOCATIONS_LIMIT);
 
+	setActiveLocation(normalized.id, normalized.center);
 	replaceStoredLocations(nextLocations);
 	saveStoredLocations();
 }
@@ -266,6 +342,7 @@ export function addStoredLocation(
 export function clearStoredLocations() {
 	if (storedLocations.length === 0) return;
 
+	clearActiveLocation();
 	replaceStoredLocations([]);
 	saveStoredLocations();
 }
@@ -274,8 +351,64 @@ export function removeStoredLocation(id: string) {
 	const nextLocations = storedLocations.filter((location) => location.id !== id);
 	if (nextLocations.length === storedLocations.length) return;
 
+	clearActiveLocation(id);
 	replaceStoredLocations(nextLocations);
 	saveStoredLocations();
+}
+
+export function setStoredLocationLabel(id: string, label: string) {
+	const normalizedLabel = label.trim();
+	if (!normalizedLabel) return;
+
+	updateStoredLocation(id, (location) => ({
+		...location,
+		label: normalizedLabel
+	}));
+}
+
+export function setStoredLocationGeometry(
+	id: string,
+	geometry: GeoJSON.Geometry | undefined,
+	displayMode?: StoredLocationDisplayMode
+) {
+	updateStoredLocation(id, (location) => ({
+		...location,
+		geometry,
+		displayMode: hasDisplayableStoredLocationGeometry(geometry)
+			? (displayMode ?? location.displayMode)
+			: 'point'
+	}));
+}
+
+export function setStoredLocationDisplayMode(id: string, displayMode: StoredLocationDisplayMode) {
+	updateStoredLocation(id, (location) => ({
+		...location,
+		displayMode:
+			displayMode === 'geometry' && hasDisplayableStoredLocationGeometry(location.geometry)
+				? 'geometry'
+				: 'point'
+	}));
+}
+
+export function hasDisplayableStoredLocationGeometry(
+	geometry: GeoJSON.Geometry | undefined
+): geometry is GeoJSON.Geometry {
+	if (!geometry) return false;
+
+	if (geometry.type === 'Point') return false;
+	if (geometry.type === 'MultiPoint') return geometry.coordinates.length > 1;
+	if (geometry.type === 'GeometryCollection') {
+		return geometry.geometries.some(hasDisplayableStoredLocationGeometry);
+	}
+
+	return true;
+}
+
+export function toggleStoredLocationVisibility(id: string) {
+	updateStoredLocation(id, (location) => ({
+		...location,
+		visible: !location.visible
+	}));
 }
 
 export function clearStoredUserLocations() {
@@ -290,6 +423,18 @@ export function setLiveUserLocationTrackingStatus(status: LiveUserLocationTracki
 	liveUserLocationTracking.status = status;
 }
 
+export function setActiveLocation(id: string, center: [number, number]) {
+	activeLocation.id = id;
+	activeLocation.center = [...center];
+}
+
+export function clearActiveLocation(id?: string) {
+	if (id && activeLocation.id !== id) return;
+
+	activeLocation.id = null;
+	activeLocation.center = null;
+}
+
 function getStoredLocationsStorageKey(scope: string) {
 	const normalizedScope = scope.trim() || 'default';
 	return `${STORED_LOCATIONS_STORAGE_PREFIX}:${normalizedScope}`;
@@ -297,6 +442,17 @@ function getStoredLocationsStorageKey(scope: string) {
 
 function replaceStoredLocations(items: StoredLocation[]) {
 	storedLocations.splice(0, storedLocations.length, ...items);
+}
+
+function updateStoredLocation(id: string, update: (location: StoredLocation) => StoredLocation) {
+	const index = storedLocations.findIndex((location) => location.id === id);
+	if (index === -1) return;
+
+	const normalized = normalizeStoredLocation(update(storedLocations[index]));
+	if (!normalized) return;
+
+	storedLocations.splice(index, 1, normalized);
+	saveStoredLocations();
 }
 
 function ensureStoredLocationsStorageListener() {

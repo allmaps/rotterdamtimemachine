@@ -115,6 +115,7 @@ Important sections:
 - `theme.fonts`: optional custom font files and semantic font roles
 - `map.defaultYear`: the year the app opens with by default
 - `map.initialView`: default map view with `center`, `zoom`, and `bearing`
+- `map.cameraAnimationDurationMs`: default duration for camera animations such as focusing, rotating, and automatic zoom correction
 - `map.autoZoomOutThreshold`: zoom-level margin before the app zooms out to a selected map's native maximum zoom
 - `map.visibilityPaddingPixels`: inset used when checking whether the selected map is meaningfully visible in the viewport
 - `map.tinyVisibilityAreaRatio`: minimum screen-area ratio before a visible selected map is treated as too small to study
@@ -123,7 +124,7 @@ Important sections:
 - `slider.scaleInterval`: year scale interval
 - `slider.showOnlyAvailableYears`: show only years with available maps in the year picker
 - `autoplay.intervalSeconds`: seconds per map slide in presentation mode; omit `autoplay` to hide the header play button
-- `autoplay.flyToDurationMs`: camera animation duration when presentation mode focuses on a map
+- `autoplay.cameraAnimationDurationMs`: optional presentation-mode camera animation duration; if omitted, MapLibre chooses the duration
 - `tour.enabled`: set to `false` to disable the one-time guided tour
 - `search.appendPlaceName`: optional place name appended to Nominatim queries, for example `Rotterdam`
 - `header`, `about`, `share`, `search`, `layers`, `controls`, `mapWarnings`: visible labels and modal text

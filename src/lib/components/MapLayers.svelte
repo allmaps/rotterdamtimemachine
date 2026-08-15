@@ -993,7 +993,7 @@
 	{#if !autoplayActive}
 		<div
 			class="absolute right-2 bottom-2 left-2 grid grid-flow-col items-center justify-items-center"
-			transition:fly={{ y: 32, duration: 180 }}
+			transition:fly={{ y: 32, duration: 420 }}
 		>
 			<div
 				data-tour="layers"

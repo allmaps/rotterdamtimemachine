@@ -47,6 +47,7 @@
 	const PRESENTATION_SWIPE_THRESHOLD = 48;
 	const PRESENTATION_SWIPE_MAX_DURATION_MS = 900;
 	const PRESENTATION_SWIPE_AXIS_RATIO = 1.25;
+	const LAYOUT_TRANSITION_MS = 420;
 
 	let {
 		config,
@@ -124,6 +125,10 @@
 	let appShellElement = $state<HTMLDivElement>();
 	let presentationTouch: PresentationTouch | undefined;
 	let previousCompareViewsLinked = true;
+	let renderComparePane = $state(comparison.active);
+	let compareLayoutActive = $state(comparison.active);
+	let compareLayoutSettled = $state(comparison.active);
+	let rightPaneLoaded = $state(false);
 
 	if (initial.initialMap) viewState.annotation = initial.initialMap.annotation;
 	if (!comparison.rightAnnotation) comparison.rightAnnotation = initial.rightAnnotation;
@@ -131,9 +136,7 @@
 	let rightSelectedYear = $state(
 		yearForAnnotation(comparison.rightAnnotation) ?? initial.rightYear
 	);
-	let leftNavPosition: 'left' | 'right' = $derived(
-		comparison.active && compareStacked ? 'right' : 'left'
-	);
+	let leftNavPosition: 'left' | 'right' = 'left';
 	let autoplayInterval = $derived(config.autoplay?.intervalSeconds);
 	let autoplayIntervalMs = $derived(Math.max(0, (autoplayInterval ?? 0) * 1000));
 	let autoplayViewportMaps = $derived(
@@ -171,6 +174,59 @@
 		if (comparison.active && autoplayActive) {
 			stopAutoplay();
 		}
+	});
+
+	$effect(() => {
+		if (comparison.active) {
+			if (!renderComparePane) {
+				rightPaneLoaded = false;
+			}
+
+			renderComparePane = true;
+			compareLayoutSettled = false;
+
+			if (!rightPaneLoaded) {
+				compareLayoutActive = false;
+				return;
+			}
+
+			let cancelled = false;
+			let frame: number | undefined;
+			let timer: ReturnType<typeof setTimeout> | undefined;
+
+			tick().then(() => {
+				if (cancelled || !comparison.active) return;
+
+				frame = requestAnimationFrame(() => {
+					if (cancelled || !comparison.active) return;
+
+					compareLayoutActive = true;
+					timer = setTimeout(() => {
+						if (!cancelled && comparison.active) {
+							compareLayoutSettled = true;
+						}
+					}, LAYOUT_TRANSITION_MS);
+				});
+			});
+
+			return () => {
+				cancelled = true;
+				if (frame !== undefined) cancelAnimationFrame(frame);
+				if (timer) clearTimeout(timer);
+			};
+		}
+
+		compareLayoutActive = false;
+		compareLayoutSettled = false;
+
+		if (!renderComparePane) return;
+
+		const timer = setTimeout(() => {
+			renderComparePane = false;
+			rightPaneLoaded = false;
+		}, LAYOUT_TRANSITION_MS);
+
+		return () => clearTimeout(timer);
 	});
 
 	$effect(() => {
@@ -638,6 +694,8 @@
 <div
 	bind:this={appShellElement}
 	data-app-shell
+	data-compare={compareLayoutActive ? 'true' : 'false'}
+	data-presentation={autoplayActive ? 'true' : 'false'}
 	class="relative flex h-[100dvh] min-h-0 flex-col overflow-hidden"
 >
 	<AppTour {config} enabled={panesReady && !startsInPresentation} />
@@ -660,64 +718,74 @@
 	/>
 
 	<div
-		class="flex min-h-0 flex-1 bg-white {comparison.active
-			? 'flex-col overflow-y-auto md:flex-row md:overflow-hidden'
-			: 'overflow-hidden'}"
+		class="map-layout-shell min-h-0 flex-1 bg-white"
+		data-compare={compareLayoutActive ? 'true' : 'false'}
 	>
 		{#if panesReady}
-			<MapPane
-				navPosition={leftNavPosition}
-				paneSide="left"
-				layersId="map-layers-left"
-				maps={collection}
-				{config}
-				bind:annotation={viewState.annotation}
-				bind:opacity={viewState.opacity}
-				bind:selectedYear
-				bind:rotateToMapOrientation
-				bind:focusActiveMap
-				bind:currentLocation
-				onLocationChange={handlePrimaryLocationChange}
-				bind:geocoderBounds
-				bind:annotationsInView={leftAnnotationsInView}
-				bind:annotationsAtCenter={leftAnnotationsAtCenter}
-				bind:mapIdsAtCenter={leftMapIdsAtCenter}
-				{mapKeyboardCommand}
-				{mapToolbarCommand}
-				{sliderKeyboardCommand}
-				{mapLayersKeyboardCommand}
-				{mapLayersOpenCommand}
-				enableFlyTo
-				enableLocationMarker
-				enableLayersShortcut
-				showLayersPaneIndicator={comparison.active}
-				{autoplayActive}
-				{autoplayNextAnnotation}
-			/>
-
-			{#if comparison.active}
+			<div class="map-layout-primary flex min-h-0 min-w-0 overflow-hidden">
 				<MapPane
-					navPosition="right"
-					paneSide="right"
-					layersId="map-layers-right"
+					navPosition={leftNavPosition}
+					paneSide="left"
+					layersId="map-layers-left"
 					maps={collection}
 					{config}
-					bind:annotation={comparison.rightAnnotation}
-					bind:opacity={comparison.rightOpacity}
-					bind:selectedYear={rightSelectedYear}
-					bind:viewsLinked={compareViewsLinked}
-					locationSyncCommand={rightLocationSyncCommand}
-					bind:currentLocation={rightLocation}
-					onLocationChange={handleSecondaryLocationChange}
+					bind:annotation={viewState.annotation}
+					bind:opacity={viewState.opacity}
+					bind:selectedYear
+					bind:rotateToMapOrientation
+					bind:focusActiveMap
+					bind:currentLocation
+					onLocationChange={handlePrimaryLocationChange}
+					bind:geocoderBounds
+					bind:annotationsInView={leftAnnotationsInView}
+					bind:annotationsAtCenter={leftAnnotationsAtCenter}
+					bind:mapIdsAtCenter={leftMapIdsAtCenter}
 					{mapKeyboardCommand}
+					{mapToolbarCommand}
+					{sliderKeyboardCommand}
+					{mapLayersKeyboardCommand}
+					{mapLayersOpenCommand}
 					enableLocationMarker
-					showLayersPaneIndicator
-					showZoomControls={!compareViewsLinked}
-					showLinkControl
+					enableFlyTo
+					enableLayersShortcut
+					showLayersPaneIndicator={comparison.active}
+					{autoplayActive}
+					{autoplayNextAnnotation}
 				/>
-			{/if}
+			</div>
+
+			<div
+				class="map-layout-secondary min-h-0 min-w-0 overflow-hidden"
+				aria-hidden={!comparison.active}
+			>
+				{#if renderComparePane}
+					<div class="compare-pane-stage flex h-full min-h-0 min-w-0">
+						<MapPane
+							navPosition={compareStacked ? 'left' : 'right'}
+							paneSide="right"
+							layersId="map-layers-right"
+							maps={collection}
+							{config}
+							bind:annotation={comparison.rightAnnotation}
+							bind:opacity={comparison.rightOpacity}
+							bind:selectedYear={rightSelectedYear}
+							bind:viewsLinked={compareViewsLinked}
+							bind:loaded={rightPaneLoaded}
+							locationSyncCommand={rightLocationSyncCommand}
+							bind:currentLocation={rightLocation}
+							onLocationChange={handleSecondaryLocationChange}
+							{mapKeyboardCommand}
+							enableLocationMarker
+							showLayersPaneIndicator
+							showZoomControls={!compareViewsLinked}
+							showLinkControl
+							layersReady={compareLayoutSettled || !comparison.active}
+						/>
+					</div>
+				{/if}
+			</div>
 		{:else}
-			<div class="grid min-h-0 flex-1 place-items-center">
+			<div class="map-layout-loader grid min-h-0 flex-1 place-items-center">
 				{#if panesError}
 					<p class="px-6 text-center text-sm font-semibold text-gray-700">{panesError}</p>
 				{:else}
@@ -737,3 +805,81 @@
 		<Share {config} onClose={() => (shareOpen = false)} />
 	{/if}
 </div>
+
+<style>
+	.map-layout-shell {
+		position: relative;
+		overflow: hidden;
+	}
+
+	.map-layout-primary,
+	.map-layout-secondary {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		min-width: 0;
+		overflow: hidden;
+	}
+
+	.map-layout-primary {
+		left: 0;
+		width: 100%;
+		transition: width var(--layout-duration) var(--layout-easing);
+	}
+
+	.map-layout-shell[data-compare='true'] .map-layout-primary {
+		width: 50%;
+	}
+
+	.map-layout-secondary {
+		right: 0;
+		width: 50%;
+		transform: translateX(100%);
+		transition: transform var(--layout-duration) var(--layout-easing);
+		pointer-events: none;
+	}
+
+	.map-layout-shell[data-compare='true'] .map-layout-secondary {
+		transform: translateX(0);
+		pointer-events: auto;
+	}
+
+	.map-layout-loader {
+		position: absolute;
+		inset: 0;
+	}
+
+	.compare-pane-stage {
+		width: 100%;
+	}
+
+	@media (max-width: 767px) {
+		.map-layout-primary,
+		.map-layout-secondary {
+			right: 0;
+			left: 0;
+		}
+
+		.map-layout-primary {
+			width: 100%;
+			height: 100%;
+			transition: height var(--layout-duration) var(--layout-easing);
+		}
+
+		.map-layout-shell[data-compare='true'] .map-layout-primary {
+			width: 100%;
+			height: 50%;
+		}
+
+		.map-layout-secondary {
+			top: auto;
+			width: 100%;
+			height: 50%;
+			transform: translateY(100%);
+		}
+
+		.map-layout-shell[data-compare='true'] .map-layout-secondary {
+			transform: translateY(0);
+		}
+	}
+</style>

@@ -29,6 +29,7 @@
 		showZoomControls = true,
 		showLinkControl = false,
 		showInViewControl = false,
+		onZoom,
 		onUserZoomAction
 	}: {
 		config: AppConfig;
@@ -44,6 +45,7 @@
 		showZoomControls?: boolean;
 		showLinkControl?: boolean;
 		showInViewControl?: boolean;
+		onZoom?: (delta: number) => void;
 		onUserZoomAction?: () => void;
 	} = $props();
 
@@ -63,16 +65,24 @@
 			label: config.controls.zoomIn,
 			icon: Plus,
 			action: () => {
-				onUserZoomAction?.();
-				map.zoomIn({ duration: 250 });
+				if (onZoom) {
+					onZoom(1);
+				} else {
+					onUserZoomAction?.();
+					map.zoomIn({ duration: 250 });
+				}
 			}
 		},
 		{
 			label: config.controls.zoomOut,
 			icon: Minus,
 			action: () => {
-				onUserZoomAction?.();
-				map.zoomOut({ duration: 250 });
+				if (onZoom) {
+					onZoom(-1);
+				} else {
+					onUserZoomAction?.();
+					map.zoomOut({ duration: 250 });
+				}
 			}
 		}
 	]);

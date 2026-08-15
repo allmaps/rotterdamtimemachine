@@ -2,7 +2,6 @@
 	import Map from '$lib/components/Map.svelte';
 	import MapLayers from '$lib/components/MapLayers.svelte';
 	import Slider from '$lib/components/Slider.svelte';
-	import { fly } from 'svelte/transition';
 	import type {
 		AppConfig,
 		GeocoderBounds,
@@ -26,6 +25,8 @@
 		sliderKeyboardCommand,
 		mapLayersKeyboardCommand,
 		mapLayersOpenCommand,
+		// eslint-disable-next-line no-useless-assignment -- This bindable prop is written back to the parent.
+		loaded = $bindable(false),
 		currentLocation = $bindable({
 			center: [...config.map.initialView.center] as [number, number],
 			zoom: config.map.initialView.zoom,
@@ -45,6 +46,7 @@
 		showInViewControl = false,
 		showZoomControls = true,
 		showLinkControl = false,
+		layersReady = true,
 		rotateToMapOrientation = $bindable(false),
 		focusActiveMap = $bindable(false),
 		viewsLinked = $bindable(false),
@@ -65,6 +67,7 @@
 		sliderKeyboardCommand?: SliderKeyboardCommand;
 		mapLayersKeyboardCommand?: MapLayersKeyboardCommand;
 		mapLayersOpenCommand?: MapLayersOpenCommand;
+		loaded?: boolean;
 		currentLocation?: MapLocation;
 		geocoderBounds?: GeocoderBounds;
 		navPosition?: 'left' | 'right';
@@ -80,6 +83,7 @@
 		showInViewControl?: boolean;
 		showZoomControls?: boolean;
 		showLinkControl?: boolean;
+		layersReady?: boolean;
 		rotateToMapOrientation?: boolean;
 		focusActiveMap?: boolean;
 		viewsLinked?: boolean;
@@ -104,6 +108,10 @@
 	);
 
 	$effect(() => {
+		loaded = mapLoaded;
+	});
+
+	$effect(() => {
 		if (!mapLoaded) {
 			sliderInitialScrollComplete = false;
 		} else if (!enableLayersShortcut || autoplayActive) {
@@ -112,12 +120,11 @@
 	});
 </script>
 
-<section class="map-pane relative flex min-h-0 min-w-0 flex-1 flex-row overflow-hidden">
+<section
+	class="map-pane relative flex h-full min-h-0 w-full min-w-0 flex-1 flex-row overflow-hidden"
+>
 	{#if !autoplayActive && mapLoaded}
-		<div
-			class="absolute inset-y-0 z-20 flex-none {navPosition === 'right' ? 'right-0' : 'left-0'}"
-			transition:fly={{ x: navPosition === 'right' ? 96 : -96, duration: 180 }}
-		>
+		<div class="absolute inset-y-0 z-20 flex-none {navPosition === 'right' ? 'right-0' : 'left-0'}">
 			<Slider
 				bind:selectedYear
 				bind:inViewOnly={sliderInViewOnly}
@@ -164,7 +171,7 @@
 			{autoplayActive}
 			{autoplayNextAnnotation}
 		/>
-		{#if mapLoaded && sliderInitialScrollComplete}
+		{#if mapLoaded && sliderInitialScrollComplete && layersReady}
 			<MapLayers
 				bind:annotation
 				bind:selectedYear

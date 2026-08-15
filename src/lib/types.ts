@@ -83,6 +83,7 @@ export type AppConfig = {
 	};
 	map: {
 		defaultYear: number;
+		cameraAnimationDurationMs?: number;
 		autoZoomOutThreshold?: number;
 		visibilityPaddingPixels?: number;
 		tinyVisibilityAreaRatio?: number;
@@ -100,7 +101,7 @@ export type AppConfig = {
 	};
 	autoplay?: {
 		intervalSeconds: number;
-		flyToDurationMs?: number;
+		cameraAnimationDurationMs?: number;
 	};
 	header: {
 		search: string;
@@ -196,6 +197,14 @@ export type AppConfig = {
 		userLocationLabel: string;
 		clearLocations: string;
 		removeLocation: string;
+		editLocation: string;
+		saveLocation: string;
+		showLocation: string;
+		hideLocation: string;
+		usePoint: string;
+		useGeometry: string;
+		fetchingGeometry: string;
+		geometryUnavailable: string;
 		locating: string;
 		loading: string;
 		noResults: string;

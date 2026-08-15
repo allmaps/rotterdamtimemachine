@@ -3,13 +3,17 @@
 	import { fly } from 'svelte/transition';
 	import maplibregl from 'maplibre-gl';
 	import { WarpedMapLayer } from '@allmaps/maplibre';
+	import { along, center, length, lineString } from '@turf/turf';
 	import 'maplibre-gl/dist/maplibre-gl.css';
 	import {
+		activeLocation,
+		clearActiveLocation,
 		viewState,
 		flyTo,
 		liveUserLocation,
 		liveUserLocationTracking,
 		setLiveUserLocationTrackingStatus,
+		hasDisplayableStoredLocationGeometry,
 		storedLocations
 	} from '$lib/app-state.svelte.js';
 	import { getProtomapsLayers, getProtomapsStyle } from '$lib/basemap';
@@ -67,15 +71,22 @@
 	const ZOOM_LIMIT_RETRY_DELAY_MS = 50;
 	const DEFAULT_OVERVIEW_TILES_RESOLUTION = 2048 * 2048;
 	const LOCATION_SOURCE_ID = 'selected-location-source';
+	const LOCATION_GEOMETRY_FILL_LAYER_ID = 'selected-location-geometry-fill';
+	const LOCATION_GEOMETRY_LINE_LAYER_ID = 'selected-location-geometry-line';
 	const LOCATION_LIVE_PULSE_LAYER_ID = 'selected-location-live-pulse';
 	const LOCATION_HEADING_LAYER_ID = 'selected-location-heading';
 	const LOCATION_CIRCLE_LAYER_ID = 'selected-location-circle';
+	const LOCATION_LABEL_SOURCE_ID = 'selected-location-label-source';
 	const LOCATION_LABEL_LAYER_ID = 'selected-location-label';
 	const LIVE_LOCATION_CONE_IMAGE_ID = 'live-location-heading-cone';
 	const LIVE_LOCATION_PULSE_DURATION_MS = 1800;
 	const LIVE_LOCATION_MOVE_DURATION_MS = 650;
 	const LIVE_LOCATION_MOVE_EPSILON = 0.0000001;
-	const EMPTY_LOCATION_DATA: GeoJSON.FeatureCollection<GeoJSON.Point> = {
+	const EMPTY_LOCATION_DATA: GeoJSON.FeatureCollection<GeoJSON.Geometry> = {
+		type: 'FeatureCollection',
+		features: []
+	};
+	const EMPTY_LOCATION_LABEL_DATA: GeoJSON.FeatureCollection<GeoJSON.Point> = {
 		type: 'FeatureCollection',
 		features: []
 	};
@@ -159,6 +170,7 @@
 	let previousRotateToMapOrientation = rotateToMapOrientation;
 	let previousRotateToMapOrientationForFocus = rotateToMapOrientation;
 	let previousFocusActiveMap = focusActiveMap;
+	let previousAutoplayActiveForLocationCorrection: boolean | undefined;
 	let previousKeyboardCommandId = 0;
 	let previousToolbarCommandId = 0;
 	let commandIdsInitialized = false;
@@ -248,6 +260,41 @@
 			});
 			flyTo.center = null;
 		}
+	});
+
+	// Remove the slider/panel camera offset when entering presentation with an active location.
+	$effect(() => {
+		const presentationActive = autoplayActive;
+
+		if (previousAutoplayActiveForLocationCorrection === undefined) {
+			previousAutoplayActiveForLocationCorrection = presentationActive;
+			return;
+		}
+
+		if (!mapReady || !map) {
+			previousAutoplayActiveForLocationCorrection = presentationActive;
+			return;
+		}
+
+		const wasPresentationActive = previousAutoplayActiveForLocationCorrection;
+		const enteredPresentation = presentationActive && !wasPresentationActive;
+		const exitedPresentation = !presentationActive && wasPresentationActive;
+		previousAutoplayActiveForLocationCorrection = presentationActive;
+
+		if (!enteredPresentation && !exitedPresentation) return;
+
+		const center = getActiveLocationCenter();
+		if (!center) return;
+
+		map.easeTo({
+			center,
+			zoom: map.getZoom(),
+			bearing: map.getBearing(),
+			pitch: 0,
+			...(exitedPresentation ? { offset: getCameraOffset(getCameraPadding()) } : {}),
+			duration: 300,
+			essential: true
+		});
 	});
 
 	// Follow the live user location until the user moves the map.
@@ -395,7 +442,7 @@
 		if (shouldRotate && annotationForOrientation) {
 			rotateToSelectedMapOrientation(annotationForOrientation);
 		} else if (orientationChanged) {
-			map.easeTo({ bearing: 0, pitch: 0, duration: 250 });
+			easeToBearing(0);
 		}
 	});
 
@@ -439,9 +486,19 @@
 
 		previousKeyboardCommandId = command.id;
 
-		let zoom = command.zoomDelta === undefined ? map.getZoom() : map.getZoom() + command.zoomDelta;
+		if (command.zoomDelta !== undefined && !command.offset) {
+			zoomBy(command.zoomDelta, 300, 'keyboardHandler');
+			return;
+		}
 
-		handleUserCameraAction();
+		const zoom =
+			command.zoomDelta === undefined ? map.getZoom() : map.getZoom() + command.zoomDelta;
+
+		if (command.offset) {
+			handleUserCameraAction();
+		} else {
+			handleUserZoomAction();
+		}
 		map.easeTo({
 			duration: 300,
 			easeId: 'keyboardHandler',
@@ -489,6 +546,17 @@
 		return Math.abs(((a - b + 540) % 360) - 180);
 	}
 
+	function getActiveLocationCenter(): [number, number] | undefined {
+		if (activeLocation.id === liveUserLocation.current?.id) {
+			return liveUserLocationTracking.status === 'active' ||
+				liveUserLocationTracking.status === 'locating'
+				? liveUserLocation.current.center
+				: undefined;
+		}
+
+		return activeLocation.center ?? undefined;
+	}
+
 	function isImageUrl(id: string) {
 		return /^https?:\/\//.test(id) || id.startsWith('/') || id.startsWith('data:');
 	}
@@ -502,6 +570,7 @@
 
 		const zoom = getLocationFlyToZoom(annotationForZoom);
 		const bearing = map.getBearing();
+		const offset = getLocationCameraOffset();
 		if (mapMatchesLocation(userLocation.center, zoom, bearing)) return;
 
 		if (liveLocationInitialFlyToActive) {
@@ -520,7 +589,7 @@
 				zoom,
 				bearing,
 				pitch: 0,
-				offset: getCameraOffset(getCameraPadding()),
+				...(offset ? { offset } : {}),
 				essential: true
 			});
 			return;
@@ -532,6 +601,7 @@
 			bearing,
 			pitch: 0,
 			duration: options.duration ?? LIVE_LOCATION_MOVE_DURATION_MS,
+			...(offset ? { offset } : {}),
 			essential: true
 		});
 	}
@@ -548,6 +618,7 @@
 
 	function handleUserCameraAction() {
 		clearPreferredSelectionZoom();
+		clearActiveLocation();
 		if ((enableFlyTo || viewsLinked) && liveUserLocationTracking.status === 'active') {
 			setLiveUserLocationTrackingStatus('passive');
 		}
@@ -557,24 +628,57 @@
 		clearPreferredSelectionZoom();
 	}
 
+	function handleUserGestureZoomStart(
+		event: maplibregl.MapLibreEvent<MouseEvent | TouchEvent | WheelEvent | undefined>
+	) {
+		if (event.originalEvent) {
+			handleUserCameraAction();
+		}
+	}
+
+	function zoomBy(delta: number, duration = 250, easeId?: string) {
+		if (!map) return;
+
+		handleUserZoomAction();
+		const center = getActiveLocationCenter();
+		const offset = center ? getLocationCameraOffset() : undefined;
+
+		map.easeTo({
+			duration,
+			easeId,
+			center: center ?? map.getCenter(),
+			zoom: clampZoomToMapLimits(map.getZoom() + delta),
+			bearing: map.getBearing(),
+			pitch: 0,
+			...(offset ? { offset } : {})
+		});
+	}
+
+	function getLocationCameraOffset(): [number, number] | undefined {
+		return autoplayActive ? undefined : getCameraOffset(getCameraPadding());
+	}
+
 	function createLocationData(
 		locations: LocationMarker[]
-	): GeoJSON.FeatureCollection<GeoJSON.Point> {
+	): GeoJSON.FeatureCollection<GeoJSON.Geometry> {
+		const visibleLocations = locations.filter(
+			(location) => location.source === 'user' || location.visible
+		);
+
 		return {
 			type: 'FeatureCollection',
-			features: locations.map((location) => {
+			features: visibleLocations.map((location) => {
 				const heading = location.source === 'user' ? location.heading : undefined;
+				const displayMode = getLocationDisplayMode(location);
 
 				return {
 					type: 'Feature',
-					geometry: {
-						type: 'Point',
-						coordinates: location.center
-					},
+					geometry: getLocationGeometry(location),
 					properties: {
 						id: location.id,
 						label: location.source === 'search' ? location.label : '',
 						source: location.source,
+						displayMode,
 						heading: heading ?? 0,
 						hasHeading: heading !== undefined,
 						isLive: location.source === 'user'
@@ -584,6 +688,137 @@
 		};
 	}
 
+	function createLocationLabelData(
+		locations: LocationMarker[]
+	): GeoJSON.FeatureCollection<GeoJSON.Point> {
+		const visibleLocations = locations.filter(
+			(location) => location.source === 'user' || location.visible
+		);
+		const features: GeoJSON.Feature<GeoJSON.Point>[] = [];
+
+		for (const location of visibleLocations) {
+			const label = location.source === 'search' ? location.label : '';
+			if (!label) continue;
+
+			const displayMode = getLocationDisplayMode(location);
+			const geometry = getLocationGeometry(location);
+			const center = getLocationLabelCenter(location, geometry, displayMode);
+			if (!center) continue;
+
+			features.push({
+				type: 'Feature',
+				geometry: {
+					type: 'Point',
+					coordinates: center
+				},
+				properties: {
+					id: location.id,
+					label,
+					source: location.source,
+					displayMode
+				}
+			});
+		}
+
+		return {
+			type: 'FeatureCollection',
+			features
+		};
+	}
+
+	function getLocationDisplayMode(location: LocationMarker) {
+		return location.source === 'search' &&
+			location.displayMode === 'geometry' &&
+			hasDisplayableStoredLocationGeometry(location.geometry)
+			? 'geometry'
+			: 'point';
+	}
+
+	function getLocationGeometry(location: LocationMarker): GeoJSON.Geometry {
+		if (
+			location.source === 'search' &&
+			location.displayMode === 'geometry' &&
+			hasDisplayableStoredLocationGeometry(location.geometry)
+		) {
+			return location.geometry;
+		}
+
+		return {
+			type: 'Point',
+			coordinates: location.center
+		};
+	}
+
+	function getLocationLabelCenter(
+		location: LocationMarker,
+		geometry: GeoJSON.Geometry,
+		displayMode: string
+	): [number, number] | undefined {
+		if (displayMode === 'point') return location.center;
+
+		return getGeometryLabelCenter(geometry) ?? location.center;
+	}
+
+	function getGeometryLabelCenter(geometry: GeoJSON.Geometry): [number, number] | undefined {
+		if (geometry.type === 'LineString') {
+			return getLineStringCenter(geometry.coordinates);
+		}
+
+		if (geometry.type === 'MultiLineString') {
+			return getMultiLineStringCenter(geometry.coordinates);
+		}
+
+		return getPointCoordinates(center({ type: 'Feature', geometry, properties: {} }).geometry);
+	}
+
+	function getLineStringCenter(coordinates: GeoJSON.Position[]): [number, number] | undefined {
+		if (coordinates.length === 0) return undefined;
+
+		const line = lineString(coordinates);
+		const lineLength = length(line);
+
+		return lineLength > 0
+			? getPointCoordinates(along(line, lineLength / 2).geometry)
+			: getPointCoordinates({ type: 'Point', coordinates: coordinates[0] });
+	}
+
+	function getMultiLineStringCenter(lines: GeoJSON.Position[][]): [number, number] | undefined {
+		const lineLengths = lines.map((coordinates) => length(lineString(coordinates)));
+		const totalLength = lineLengths.reduce((sum, lineLength) => sum + lineLength, 0);
+
+		if (totalLength === 0) return getFirstCoordinate(lines);
+
+		let distance = totalLength / 2;
+
+		for (const [index, coordinates] of lines.entries()) {
+			const lineLength = lineLengths[index];
+			if (distance <= lineLength) {
+				return getPointCoordinates(along(lineString(coordinates), distance).geometry);
+			}
+
+			distance -= lineLength;
+		}
+
+		return getFirstCoordinate(lines);
+	}
+
+	function getFirstCoordinate(lines: GeoJSON.Position[][]): [number, number] | undefined {
+		for (const coordinates of lines) {
+			for (const coordinate of coordinates) {
+				const point = getPointCoordinates({ type: 'Point', coordinates: coordinate });
+				if (point) return point;
+			}
+		}
+
+		return undefined;
+	}
+
+	function getPointCoordinates(point: GeoJSON.Point): [number, number] | undefined {
+		const [lng, lat] = point.coordinates;
+
+		return Number.isFinite(lng) && Number.isFinite(lat) ? [lng, lat] : undefined;
+	}
+
 	function updateStoredLocationLayer(
 		searchLocations: StoredLocation[],
 		userLocation: LiveUserLocation | undefined
@@ -591,8 +826,7 @@
 		if (!map) return;
 
 		ensureSelectedLocationLayer();
-		map.setPaintProperty(LOCATION_CIRCLE_LAYER_ID, 'circle-color', getBrandMainColor());
-		map.setPaintProperty(LOCATION_LIVE_PULSE_LAYER_ID, 'circle-color', getBrandMainColor());
+		updateLocationLayerTheme();
 		setLiveLocationPulseActive(!!userLocation);
 
 		if (!userLocation) {
@@ -609,10 +843,14 @@
 		searchLocations: StoredLocation[],
 		userLocation: LiveUserLocation | undefined = renderedLiveUserLocation
 	) {
+		const locations = userLocation ? [...searchLocations, userLocation] : searchLocations;
 		const source = map?.getSource(LOCATION_SOURCE_ID) as maplibregl.GeoJSONSource | undefined;
-		source?.setData(
-			createLocationData(userLocation ? [...searchLocations, userLocation] : searchLocations)
-		);
+		const labelSource = map?.getSource(LOCATION_LABEL_SOURCE_ID) as
+			| maplibregl.GeoJSONSource
+			| undefined;
+
+		source?.setData(createLocationData(locations));
+		labelSource?.setData(createLocationLabelData(locations));
 	}
 
 	function updateLiveLocationMarker(
@@ -723,7 +961,51 @@
 			});
 		}
 
+		if (!map.getSource(LOCATION_LABEL_SOURCE_ID)) {
+			map.addSource(LOCATION_LABEL_SOURCE_ID, {
+				type: 'geojson',
+				data: EMPTY_LOCATION_LABEL_DATA
+			});
+		}
+
 		ensureLiveLocationConeImage();
+
+		if (!map.getLayer(LOCATION_GEOMETRY_FILL_LAYER_ID)) {
+			map.addLayer({
+				id: LOCATION_GEOMETRY_FILL_LAYER_ID,
+				type: 'fill',
+				source: LOCATION_SOURCE_ID,
+				filter: [
+					'all',
+					['==', ['get', 'source'], 'search'],
+					['==', ['get', 'displayMode'], 'geometry'],
+					['==', ['geometry-type'], 'Polygon']
+				],
+				paint: {
+					'fill-color': getBrandMainColor(),
+					'fill-opacity': 0.16
+				}
+			});
+		}
+
+		if (!map.getLayer(LOCATION_GEOMETRY_LINE_LAYER_ID)) {
+			map.addLayer({
+				id: LOCATION_GEOMETRY_LINE_LAYER_ID,
+				type: 'line',
+				source: LOCATION_SOURCE_ID,
+				filter: [
+					'all',
+					['==', ['get', 'source'], 'search'],
+					['==', ['get', 'displayMode'], 'geometry'],
+					['match', ['geometry-type'], ['LineString', 'Polygon'], true, false]
+				],
+				paint: {
+					'line-color': getBrandMainColor(),
+					'line-opacity': 0.85,
+					'line-width': 2
+				}
+			});
+		}
 
 		if (!map.getLayer(LOCATION_LIVE_PULSE_LAYER_ID)) {
 			map.addLayer({
@@ -765,6 +1047,7 @@
 				id: LOCATION_CIRCLE_LAYER_ID,
 				type: 'circle',
 				source: LOCATION_SOURCE_ID,
+				filter: ['==', ['geometry-type'], 'Point'],
 				paint: {
 					'circle-radius': ['interpolate', ['linear'], ['zoom'], 10, 4, 15, 7, 18, 10],
 					'circle-color': getBrandMainColor(),
@@ -780,13 +1063,18 @@
 			map.addLayer({
 				id: LOCATION_LABEL_LAYER_ID,
 				type: 'symbol',
-				source: LOCATION_SOURCE_ID,
+				source: LOCATION_LABEL_SOURCE_ID,
 				layout: {
 					'text-field': ['get', 'label'],
 					'text-font': ['Noto Sans Medium'],
 					'text-size': 13,
-					'text-anchor': 'top',
-					'text-offset': [0, 1.3],
+					'text-anchor': ['case', ['==', ['get', 'displayMode'], 'geometry'], 'center', 'top'],
+					'text-offset': [
+						'case',
+						['==', ['get', 'displayMode'], 'geometry'],
+						['literal', [0, 0]],
+						['literal', [0, 1.3]]
+					],
 					'text-optional': true
 				},
 				paint: {
@@ -798,9 +1086,31 @@
 		}
 	}
 
+	function updateLocationLayerTheme() {
+		const color = getBrandMainColor();
+
+		if (map?.getLayer(LOCATION_GEOMETRY_FILL_LAYER_ID)) {
+			map.setPaintProperty(LOCATION_GEOMETRY_FILL_LAYER_ID, 'fill-color', color);
+		}
+		if (map?.getLayer(LOCATION_GEOMETRY_LINE_LAYER_ID)) {
+			map.setPaintProperty(LOCATION_GEOMETRY_LINE_LAYER_ID, 'line-color', color);
+		}
+		if (map?.getLayer(LOCATION_CIRCLE_LAYER_ID)) {
+			map.setPaintProperty(LOCATION_CIRCLE_LAYER_ID, 'circle-color', color);
+		}
+		if (map?.getLayer(LOCATION_LIVE_PULSE_LAYER_ID)) {
+			map.setPaintProperty(LOCATION_LIVE_PULSE_LAYER_ID, 'circle-color', color);
+		}
+	}
+
 	function clearSelectedLocationCircle() {
 		const source = map?.getSource(LOCATION_SOURCE_ID) as maplibregl.GeoJSONSource | undefined;
+		const labelSource = map?.getSource(LOCATION_LABEL_SOURCE_ID) as
+			| maplibregl.GeoJSONSource
+			| undefined;
+
 		source?.setData(EMPTY_LOCATION_DATA);
+		labelSource?.setData(EMPTY_LOCATION_LABEL_DATA);
 		setLiveLocationPulseActive(false);
 		cancelLiveLocationAnimation();
 		renderedLiveUserLocation = undefined;
@@ -1026,6 +1336,10 @@
 	function easeToSelectedMapZoomLimit(zoom: number, annotationForLimit: string) {
 		if (!map) return;
 
+		const targetBearing = rotateToMapOrientation
+			? getSelectedMapBearing(annotationForLimit, false)
+			: undefined;
+
 		zoomLimitVisibilityCheckAnnotation = annotationForLimit;
 		map.once('moveend', () => {
 			if (zoomLimitVisibilityCheckAnnotation !== annotationForLimit) return;
@@ -1037,14 +1351,24 @@
 		map.easeTo({
 			center: map.getCenter(),
 			zoom: clampZoomToMapLimits(zoom),
-			bearing: map.getBearing(),
+			bearing: targetBearing ?? map.getBearing(),
 			pitch: 0,
-			duration: getCameraCorrectionDuration()
+			...getCameraAnimationOptions()
 		});
 	}
 
 	function getCameraCorrectionDuration() {
-		return config.autoplay?.flyToDurationMs ?? 100;
+		const duration = autoplayActive
+			? config.autoplay?.cameraAnimationDurationMs
+			: config.map.cameraAnimationDurationMs;
+		return typeof duration === 'number' && Number.isFinite(duration)
+			? Math.max(0, duration)
+			: undefined;
+	}
+
+	function getCameraAnimationOptions() {
+		const duration = getCameraCorrectionDuration();
+		return duration === undefined ? {} : { duration };
 	}
 
 	function finishSelectedMapZoomLimit(annotationForLimit: string) {
@@ -1104,13 +1428,42 @@
 		}
 	}
 
-	function rotateToSelectedMapOrientation(annotationForOrientation: string) {
+	function rotateToSelectedMapOrientation(annotationForOrientation: string, warn = true) {
+		if (!map) return false;
+
+		const bearing = getSelectedMapBearing(annotationForOrientation, warn);
+		if (bearing !== undefined) {
+			easeToBearing(bearing);
+			return true;
+		}
+
+		return false;
+	}
+
+	function getSelectedMapBearing(annotationForOrientation: string, warn = true) {
+		return getSelectedMapCamera(annotationForOrientation, CAMERA_BASE_PADDING, warn)?.bearing;
+	}
+
+	function easeToBearing(bearing: number) {
 		if (!map) return;
 
-		const camera = getSelectedMapCamera(annotationForOrientation);
-		if (camera?.bearing !== undefined) {
-			map.easeTo({ bearing: camera.bearing, pitch: 0, duration: 250 });
-		}
+		const offset = getLocationCameraOffset();
+		const center = offset ? getCurrentViewCenterAtOffset(offset) : map.getCenter();
+
+		map.easeTo({
+			center,
+			bearing,
+			pitch: 0,
+			...getCameraAnimationOptions(),
+			...(offset ? { offset } : {})
+		});
+	}
+
+	function getCurrentViewCenterAtOffset(offset: [number, number]) {
+		if (!map) return undefined;
+
+		const canvas = map.getCanvas();
+		return map.unproject([canvas.clientWidth / 2 + offset[0], canvas.clientHeight / 2 + offset[1]]);
 	}
 
 	function queueSelectedMapVisibilityCheck(annotationForCheck: string, showWarning = false) {
@@ -1158,7 +1511,8 @@
 
 	function getSelectedMapCamera(
 		annotationForCheck: string,
-		padding: number | CameraPadding = CAMERA_BASE_PADDING
+		padding: number | CameraPadding = CAMERA_BASE_PADDING,
+		warn = true
 	) {
 		const ids = getSelectedMapIds(annotationForCheck);
 		if (!ids) return undefined;
@@ -1166,7 +1520,7 @@
 		try {
 			return warpedMapLayer.getMapsCenterZoomBearing(ids, { padding });
 		} catch (error) {
-			console.warn('Could not determine map orientation:', error);
+			if (warn) console.warn('Could not determine map orientation:', error);
 			return undefined;
 		}
 	}
@@ -1226,15 +1580,9 @@
 	}
 
 	function getFocusFlyToOptions(padding: CameraPadding, includeOffset: boolean) {
-		if (autoplayActive) {
-			return {
-				pitch: 0,
-				duration: config.autoplay?.flyToDurationMs ?? 100
-			};
-		}
-
 		return {
 			pitch: 0,
+			...getCameraAnimationOptions(),
 			...(includeOffset ? { offset: getCameraOffset(padding) } : {})
 		};
 	}
@@ -1492,9 +1840,8 @@
 		const blurMapCanvas = () => mapInstance.getCanvas().blur();
 		disableMapCanvasFocus(mapInstance, blurMapCanvas);
 
-		mapInstance.on('movestart', (event) => {
-			if (event.originalEvent) handleUserCameraAction();
-		});
+		mapInstance.on('dragstart', handleUserCameraAction);
+		mapInstance.on('zoomstart', handleUserGestureZoomStart);
 
 		mapInstance.on('move', () => {
 			if (!isSyncing) {
@@ -1581,7 +1928,7 @@
 
 <div bind:this={mapElement} class="absolute inset-0 h-full w-full"></div>
 {#if mapReady && map && !autoplayActive}
-	<div transition:fly={{ x: controlsPosition === 'top-left' ? -64 : 64, duration: 180 }}>
+	<div transition:fly={{ x: controlsPosition === 'top-left' ? -64 : 64, duration: 420 }}>
 		<MapControls
 			{map}
 			{config}
@@ -1596,6 +1943,7 @@
 			{showZoomControls}
 			{showLinkControl}
 			{showInViewControl}
+			onZoom={zoomBy}
 			onUserZoomAction={handleUserZoomAction}
 		/>
 	</div>

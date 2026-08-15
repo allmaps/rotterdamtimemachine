@@ -1,6 +1,12 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
 
+:root {
+	--layout-duration: 420ms;
+	--layout-easing: cubic-bezier(0.22, 1, 0.36, 1);
+	--app-header-height: 49px;
+}
+
 @theme {
 	--font-sans: 'Noto Sans', ui-sans-serif, system-ui, sans-serif;
 	--font-noto: 'Noto Sans', ui-sans-serif, system-ui, sans-serif;

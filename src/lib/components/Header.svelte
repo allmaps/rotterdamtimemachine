@@ -71,6 +71,9 @@
 	);
 	const presentationControlButtonClass =
 		'flex h-9 w-9 shrink-0 cursor-pointer items-center justify-center transition hover:bg-gray-100 focus-visible:z-10 focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-brand-main disabled:cursor-not-allowed disabled:opacity-45';
+	const headerFly = {
+		duration: 420
+	};
 
 	onMount(() => {
 		fullscreenSupported = getFullscreenSupported();
@@ -115,7 +118,6 @@
 
 	function syncFullscreenState() {
 		fullscreenActive = getCurrentFullscreenElement() === getFullscreenElement();
-		requestAnimationFrame(() => window.dispatchEvent(new Event('resize')));
 	}
 
 	async function toggleFullscreen() {
@@ -142,7 +144,8 @@
 
 <header
 	bind:this={headerElement}
-	class="font-bolder {autoplayActive ? 'absolute inset-x-0 top-0 z-50' : ''}"
+	data-presentation={autoplayActive ? 'true' : 'false'}
+	class="app-header relative z-50 overflow-visible font-bolder"
 >
 	<nav
 		aria-label="Global"
@@ -151,10 +154,7 @@
 			: 'border-brand-hover/20 bg-brand-main p-2 lg:px-8'}"
 	>
 		{#if !autoplayActive}
-			<div
-				class="flex min-w-0 flex-1 items-center gap-2"
-				transition:fly={{ x: -48, duration: 180 }}
-			>
+			<div class="flex min-w-0 flex-1 items-center gap-2" transition:fly={{ x: -48, ...headerFly }}>
 				<Search bounds={searchBounds} {config} bind:open={searchOpen} />
 
 				<button
@@ -175,7 +175,7 @@
 
 			<div
 				class="relative flex min-w-0 flex-none justify-center px-1 text-center"
-				transition:fly={{ y: -48, duration: 180 }}
+				transition:fly={{ y: -48, ...headerFly }}
 			>
 				<h1
 					title={config.site.name}
@@ -186,7 +186,7 @@
 				</h1>
 			</div>
 
-			<div class="flex flex-1 justify-end gap-1 lg:gap-2" transition:fly={{ x: 48, duration: 180 }}>
+			<div class="flex flex-1 justify-end gap-1 lg:gap-2" transition:fly={{ x: 48, ...headerFly }}>
 				<button
 					onclick={onAboutOpen}
 					aria-label={config.header.about}
@@ -287,6 +287,15 @@
 </header>
 
 <style>
+	.app-header {
+		max-height: var(--app-header-height);
+		transition: max-height var(--layout-duration) var(--layout-easing);
+	}
+
+	.app-header[data-presentation='true'] {
+		max-height: 0;
+	}
+
 	.autoplay-progress {
 		animation-name: autoplay-progress;
 		animation-timing-function: linear;

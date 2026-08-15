@@ -1,7 +1,9 @@
 import {
+	clearActiveLocation,
 	clearStoredUserLocations,
 	liveUserLocation,
 	liveUserLocationTracking,
+	setActiveLocation,
 	setLiveUserLocation,
 	setLiveUserLocationTrackingStatus
 } from '$lib/app-state.svelte.js';
@@ -69,6 +71,7 @@ export function stopLiveUserLocationTracking() {
 	stopCompassTracking();
 	setLiveUserLocation(undefined);
 	setLiveUserLocationTrackingStatus('off');
+	clearActiveLocation('user:current');
 	firstLiveLocationFixReceived = false;
 	latestUserPosition = undefined;
 	compassHeading = undefined;
@@ -83,6 +86,7 @@ export function releaseLiveUserLocationFollow() {
 
 export function resumeLiveUserLocationFollow() {
 	if (liveUserLocation.current && liveUserLocationTracking.status !== 'off') {
+		setActiveLocation(liveUserLocation.current.id, liveUserLocation.current.center);
 		setLiveUserLocationTrackingStatus('active');
 	}
 }
@@ -102,6 +106,13 @@ function handleLiveUserPosition(position: GeolocationPosition) {
 		source: 'user',
 		updatedAt: Date.now()
 	});
+
+	if (
+		liveUserLocationTracking.status === 'locating' ||
+		liveUserLocationTracking.status === 'active'
+	) {
+		setActiveLocation('user:current', center);
+	}
 
 	if (firstLiveLocationFixReceived) return;
 
@@ -185,6 +196,10 @@ function updateLiveUserLocationHeading(position: GeolocationPosition) {
 		source: 'user',
 		updatedAt: Date.now()
 	});
+
+	if (liveUserLocationTracking.status === 'active') {
+		setActiveLocation('user:current', center);
+	}
 }
 
 function getDeviceOrientationHeading(event: DeviceOrientationEvent) {

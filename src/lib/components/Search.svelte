@@ -3,10 +3,16 @@
 		addStoredLocation,
 		clearStoredLocations,
 		flyTo,
+		hasDisplayableStoredLocationGeometry,
 		liveUserLocation,
 		liveUserLocationTracking,
 		removeStoredLocation,
-		storedLocations
+		setActiveLocation,
+		setStoredLocationDisplayMode,
+		setStoredLocationGeometry,
+		setStoredLocationLabel,
+		storedLocations,
+		toggleStoredLocationVisibility
 	} from '$lib/app-state.svelte.js';
 	import { GeocoderService, type GeocoderResult } from '$lib/services/geocoder.svelte.js';
 	import {
@@ -18,16 +24,26 @@
 	import Modal from '$lib/components/Modal.svelte';
 	import SearchLocationButton from '$lib/components/SearchLocationButton.svelte';
 	import {
+		Check,
 		CornerDownLeft,
+		Eye,
+		EyeOff,
 		LocateFixed,
 		MapPin,
+		Pencil,
 		Search as SearchIcon,
+		Shapes,
 		Trash2,
 		X
 	} from '@lucide/svelte';
 	import { tick, untrack } from 'svelte';
 	import { slide } from 'svelte/transition';
 	import type { AppConfig, GeocoderBounds } from '$lib/types';
+
+	type GeometryStatus = {
+		type: 'loading' | 'error';
+		message: string;
+	};
 
 	let {
 		bounds,
@@ -39,11 +55,17 @@
 		open?: boolean;
 	} = $props();
 
-	const search = untrack(() => new GeocoderService(config.search));
+	const search = untrack(() => new GeocoderService(config.search, config.site));
 
 	let selectedIndex = $state(0);
 	let inputElement: HTMLInputElement | undefined = $state();
+	let editingLocationInputElement: HTMLInputElement | undefined = $state();
 	let listElement: HTMLUListElement | undefined = $state();
+	let editingLocationId = $state<string | null>(null);
+	let editingLocationLabel = $state('');
+	let geometryStatusByLocationId = $state<Record<string, GeometryStatus>>({});
+	// eslint-disable-next-line svelte/prefer-svelte-reactivity -- Timer handles are side effects, not UI state.
+	const geometryStatusTimers = new Map<string, ReturnType<typeof setTimeout>>();
 	let showSearchResults = $derived(
 		search.searchTerm.trim() !== '' &&
 			(search.loading || search.hasSearched || !!search.error || search.results.length > 0)
@@ -63,6 +85,16 @@
 			id: location.id,
 			label: location.label,
 			center: location.center,
+			osmId: location.osmId,
+			displayMode: location.displayMode,
+			hasGeometry: hasDisplayableStoredLocationGeometry(location.geometry),
+			canUseGeometry:
+				hasDisplayableStoredLocationGeometry(location.geometry) ||
+				canLoadDisplayableOsmGeometry(location.osmId),
+			geometryStatus: geometryStatusByLocationId[location.id],
+			geometryLoading: geometryStatusByLocationId[location.id]?.type === 'loading',
+			geometryMessage: geometryStatusByLocationId[location.id]?.message,
+			visible: location.visible,
 			source: 'search' as const
 		}))
 	]);
@@ -72,7 +104,7 @@
 	);
 
 	$effect(() => {
-		search.setConfig(config.search);
+		search.setConfig(config.search, config.site);
 	});
 
 	$effect(() => {
@@ -88,6 +120,7 @@
 			search.searchTerm = '';
 			search.reset();
 			selectedIndex = 0;
+			cancelEditingVisibleLocation();
 			liveLocationError.message = '';
 		}
 	});
@@ -115,12 +148,21 @@
 
 	function selectResult(result: GeocoderResult) {
 		const center = search.selectLocation(result);
+		const id = getResultLocationId(result);
+		const osmId = search.getOsmId(result);
+		const geometry = hasDisplayableStoredLocationGeometry(result.geojson)
+			? result.geojson
+			: undefined;
+		const defaultDisplayMode = getDefaultDisplayMode(result, geometry);
 		releaseLiveUserLocationFollow();
 		flyTo.center = center;
 		addStoredLocation({
-			id: getResultLocationId(result),
+			id,
 			label: getResultLabel(result),
 			center,
+			osmId,
+			geometry,
+			displayMode: defaultDisplayMode,
 			source: 'search'
 		});
 		open = false;
@@ -157,11 +199,27 @@
 		return `search:${result.place_id}:${result.lon}:${result.lat}`;
 	}
 
+	function getDefaultDisplayMode(result: GeocoderResult, geometry: GeoJSON.Geometry | undefined) {
+		return isOverpassResult(result) && hasDisplayableStoredLocationGeometry(geometry)
+			? 'geometry'
+			: 'point';
+	}
+
+	function isOverpassResult(result: GeocoderResult) {
+		return typeof result.place_id === 'string' && result.place_id.startsWith('overpass:');
+	}
+
+	function canLoadDisplayableOsmGeometry(osmId: string | undefined) {
+		return !!osmId && /^[WR]\d+$/.test(osmId);
+	}
+
 	function handleLiveLocationLocated() {
 		open = false;
 	}
 
 	function selectVisibleLocation(location: (typeof visibleLocations)[number]) {
+		setActiveLocation(location.id, location.center);
+
 		if (location.source === 'user') {
 			if (liveUserLocationTracking.status === 'active') {
 				flyTo.center = location.center;
@@ -183,6 +241,115 @@
 		}
 
 		removeStoredLocation(location.id);
+	}
+
+	async function toggleVisibleLocationDisplayMode(location: (typeof visibleLocations)[number]) {
+		if (location.source !== 'search' || !location.canUseGeometry || location.geometryLoading)
+			return;
+
+		if (!location.hasGeometry && location.osmId) {
+			setGeometryStatus(location.id, 'loading', config.search.fetchingGeometry);
+
+			try {
+				const geometry = await search.lookupGeometryByOsmId(location.osmId);
+				if (hasDisplayableStoredLocationGeometry(geometry)) {
+					setStoredLocationGeometry(location.id, geometry, 'geometry');
+					clearGeometryStatus(location.id);
+				} else {
+					showTransientGeometryStatus(location.id, config.search.geometryUnavailable);
+				}
+			} catch (error) {
+				console.warn('Could not fetch full geometry:', error);
+				showTransientGeometryStatus(location.id, config.search.geometryUnavailable);
+			}
+
+			return;
+		}
+
+		setStoredLocationDisplayMode(
+			location.id,
+			location.displayMode === 'geometry' ? 'point' : 'geometry'
+		);
+	}
+
+	function setGeometryStatus(id: string, type: GeometryStatus['type'], message: string) {
+		clearGeometryStatusTimer(id);
+		geometryStatusByLocationId = {
+			...geometryStatusByLocationId,
+			[id]: { type, message }
+		};
+	}
+
+	function showTransientGeometryStatus(id: string, message: string) {
+		setGeometryStatus(id, 'error', message);
+		geometryStatusTimers.set(
+			id,
+			setTimeout(() => {
+				clearGeometryStatus(id);
+			}, 2800)
+		);
+	}
+
+	function clearGeometryStatus(id: string) {
+		clearGeometryStatusTimer(id);
+
+		const nextStatuses = { ...geometryStatusByLocationId };
+		delete nextStatuses[id];
+		geometryStatusByLocationId = nextStatuses;
+	}
+
+	function clearGeometryStatusTimer(id: string) {
+		const timer = geometryStatusTimers.get(id);
+		if (timer) clearTimeout(timer);
+		geometryStatusTimers.delete(id);
+	}
+
+	function toggleVisibleLocationVisibility(location: (typeof visibleLocations)[number]) {
+		if (location.source === 'search') {
+			toggleStoredLocationVisibility(location.id);
+		}
+	}
+
+	function startEditingVisibleLocation(location: (typeof visibleLocations)[number]) {
+		if (location.source !== 'search') return;
+
+		editingLocationId = location.id;
+		editingLocationLabel = location.label;
+		tick().then(() => {
+			editingLocationInputElement?.focus({ preventScroll: true });
+			editingLocationInputElement?.select();
+		});
+	}
+
+	function saveEditingVisibleLocation() {
+		if (!editingLocationId) return;
+
+		const label = editingLocationLabel.trim();
+		if (label) {
+			setStoredLocationLabel(editingLocationId, label);
+		}
+
+		cancelEditingVisibleLocation();
+	}
+
+	function cancelEditingVisibleLocation() {
+		editingLocationId = null;
+		editingLocationLabel = '';
+		editingLocationInputElement = undefined;
+	}
+
+	function handleEditingLocationKeydown(event: KeyboardEvent) {
+		event.stopPropagation();
+
+		if (event.key === 'Enter') {
+			event.preventDefault();
+			saveEditingVisibleLocation();
+		}
+
+		if (event.key === 'Escape') {
+			event.preventDefault();
+			cancelEditingVisibleLocation();
+		}
 	}
 
 	function scrollSelectedIntoView() {
@@ -304,7 +471,7 @@
 								onclick={() => selectResult(result)}
 							>
 								<MapPin class="mt-0.5 h-4 w-4 flex-none text-brand-main" />
-								<span class="min-w-0 flex-1 truncate text-sm font-medium text-gray-800">
+								<span class="min-w-0 flex-1 truncate pl-1 text-sm font-medium text-gray-800">
 									{result.display_name}
 								</span>
 							</button>
@@ -328,21 +495,127 @@
 				class="max-h-[56dvh] overflow-y-auto overscroll-contain bg-white"
 			>
 				{#each visibleLocations as location (location.id)}
-					<li class="flex items-stretch border-b border-gray-100">
-						<button
-							type="button"
-							class="flex min-w-0 flex-1 cursor-pointer items-start gap-3 px-4 py-3 text-left transition hover:bg-brand-soft"
-							onclick={() => selectVisibleLocation(location)}
-						>
-							{#if location.source === 'user'}
-								<LocateFixed class="mt-0.5 h-4 w-4 flex-none text-brand-main" />
+					<li
+						class="flex items-stretch border-b border-gray-100 {location.source === 'search' &&
+						location.geometryStatus?.type === 'loading'
+							? 'geometry-row-loading'
+							: ''}"
+					>
+						{#if location.source === 'search' && location.canUseGeometry}
+							<button
+								type="button"
+								aria-label={location.geometryLoading
+									? config.search.fetchingGeometry
+									: location.displayMode === 'geometry'
+										? config.search.usePoint
+										: config.search.useGeometry}
+								title={location.geometryLoading
+									? config.search.fetchingGeometry
+									: location.displayMode === 'geometry'
+										? config.search.usePoint
+										: config.search.useGeometry}
+								aria-pressed={location.displayMode === 'geometry'}
+								disabled={location.geometryLoading}
+								class="flex w-11 flex-none cursor-pointer items-center justify-center text-brand-main transition hover:bg-gray-100 disabled:cursor-default disabled:opacity-60"
+								onclick={() => toggleVisibleLocationDisplayMode(location)}
+							>
+								{#if location.displayMode === 'geometry'}
+									<Shapes class="h-4 w-4" />
+								{:else}
+									<MapPin class="h-4 w-4 {location.geometryLoading ? 'animate-pulse' : ''}" />
+								{/if}
+							</button>
+						{/if}
+						{#if location.source === 'search' && editingLocationId === location.id}
+							<div class="flex min-w-0 flex-1 items-center {location.visible ? '' : 'opacity-55'}">
+								{#if !location.canUseGeometry}
+									<span class="flex w-11 flex-none items-center justify-center">
+										<MapPin class="h-4 w-4 text-brand-main" />
+									</span>
+								{/if}
+								<div class="min-w-0 flex-1 py-3 pr-4 pl-3">
+									<input
+										bind:this={editingLocationInputElement}
+										bind:value={editingLocationLabel}
+										type="text"
+										aria-label={config.search.editLocation}
+										class="w-full min-w-0 rounded-sm border border-brand-main/40 bg-white px-2 py-1 text-sm font-medium text-gray-800 outline-none focus:border-brand-main focus:ring-2 focus:ring-brand-main/20"
+										onkeydown={handleEditingLocationKeydown}
+										onblur={saveEditingVisibleLocation}
+									/>
+								</div>
+							</div>
+						{:else}
+							<button
+								type="button"
+								class="flex min-w-0 flex-1 cursor-pointer items-stretch text-left transition hover:bg-brand-soft {location.source ===
+									'search' && !location.visible
+									? 'opacity-55'
+									: ''}"
+								onclick={() => selectVisibleLocation(location)}
+							>
+								{#if !('canUseGeometry' in location) || !location.canUseGeometry}
+									<span class="flex w-11 flex-none items-start justify-center pt-3">
+										{#if location.source === 'user'}
+											<LocateFixed class="h-4 w-4 text-brand-main" />
+										{:else}
+											<MapPin class="h-4 w-4 text-brand-main" />
+										{/if}
+									</span>
+								{/if}
+								<span
+									class="min-w-0 flex-1 truncate py-3 pr-4 pl-3 text-sm font-medium {location.source ===
+										'search' && location.geometryStatus?.type === 'error'
+										? 'text-red-700'
+										: location.source === 'search' && location.geometryStatus?.type === 'loading'
+											? 'text-brand-main'
+											: 'text-gray-800'}"
+								>
+									{location.source === 'search' && location.geometryMessage
+										? location.geometryMessage
+										: location.label}
+								</span>
+							</button>
+						{/if}
+						{#if location.source === 'search'}
+							<button
+								type="button"
+								aria-label={location.visible
+									? config.search.hideLocation
+									: config.search.showLocation}
+								title={location.visible ? config.search.hideLocation : config.search.showLocation}
+								aria-pressed={location.visible}
+								class="flex w-11 flex-none cursor-pointer items-center justify-center text-gray-400 transition hover:bg-gray-100 hover:text-brand-main"
+								onclick={() => toggleVisibleLocationVisibility(location)}
+							>
+								{#if location.visible}
+									<Eye class="h-4 w-4" />
+								{:else}
+									<EyeOff class="h-4 w-4" />
+								{/if}
+							</button>
+							{#if editingLocationId === location.id}
+								<button
+									type="button"
+									aria-label={config.search.saveLocation}
+									title={config.search.saveLocation}
+									class="flex w-11 flex-none cursor-pointer items-center justify-center text-gray-400 transition hover:bg-gray-100 hover:text-brand-main"
+									onclick={saveEditingVisibleLocation}
+								>
+									<Check class="h-4 w-4" />
+								</button>
 							{:else}
-								<MapPin class="mt-0.5 h-4 w-4 flex-none text-brand-main" />
+								<button
+									type="button"
+									aria-label={config.search.editLocation}
+									title={config.search.editLocation}
+									class="flex w-11 flex-none cursor-pointer items-center justify-center text-gray-400 transition hover:bg-gray-100 hover:text-brand-main"
+									onclick={() => startEditingVisibleLocation(location)}
+								>
+									<Pencil class="h-4 w-4" />
+								</button>
 							{/if}
-							<span class="min-w-0 flex-1 truncate text-sm font-medium text-gray-800">
-								{location.label}
-							</span>
-						</button>
+						{/if}
 						<button
 							type="button"
 							aria-label={config.search.removeLocation}
@@ -382,5 +655,31 @@
 	input[type='search']::-webkit-search-cancel-button {
 		-webkit-appearance: none;
 		appearance: none;
+	}
+
+	.geometry-row-loading {
+		background-color: color-mix(in srgb, var(--color-brand-main) 4%, white);
+		background-image: linear-gradient(
+			105deg,
+			transparent 0%,
+			color-mix(in srgb, var(--color-brand-main) 5%, transparent) 22%,
+			color-mix(in srgb, var(--color-brand-main) 12%, transparent) 42%,
+			color-mix(in srgb, var(--color-brand-main) 18%, transparent) 50%,
+			color-mix(in srgb, var(--color-brand-main) 12%, transparent) 58%,
+			color-mix(in srgb, var(--color-brand-main) 5%, transparent) 78%,
+			transparent 100%
+		);
+		background-size: 220% 100%;
+		animation: geometry-row-loading 4.2s ease-in-out infinite alternate;
+	}
+
+	@keyframes geometry-row-loading {
+		from {
+			background-position: 115% 0;
+		}
+
+		to {
+			background-position: -15% 0;
+		}
 	}
 </style>

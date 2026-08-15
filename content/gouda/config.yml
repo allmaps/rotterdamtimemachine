@@ -22,6 +22,7 @@ header:
 
 map:
   defaultYear: 1710
+  cameraAnimationDurationMs:
   autoZoomOutThreshold: 0.5
   visibilityPaddingPixels: 60
   tinyVisibilityAreaRatio: 0.03
@@ -82,7 +83,7 @@ slider:
 
 autoplay:
   intervalSeconds: 4
-  flyToDurationMs: 2000
+  cameraAnimationDurationMs: 2000
 
 tour:
   enabled: true
@@ -197,6 +198,14 @@ search:
   userLocationLabel: Mijn locatie
   clearLocations: Wis opgeslagen locaties
   removeLocation: Verwijder locatie
+  editLocation: Bewerk locatielabel
+  saveLocation: Sla locatielabel op
+  showLocation: Toon locatie op kaart
+  hideLocation: Verberg locatie op kaart
+  usePoint: Toon als punt
+  useGeometry: Toon geometrie
+  fetchingGeometry: Volledige geometrie ophalen...
+  geometryUnavailable: Geometrie kon niet worden opgehaald
   locating: Locatie bepalen...
   loading: Aan het zoeken...
   noResults: Geen resultaten gevonden.
