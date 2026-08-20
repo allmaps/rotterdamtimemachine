@@ -48,6 +48,7 @@
 	<link rel="icon" href={faviconHref} />
 	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 	{@html `<style>${themeStyle}</style>`}
+	<script defer src="https://stats.allmaps.org/script.js" data-website-id="a9ba6d79-efeb-45ff-8db4-926bfa184e0f"></script>
 </svelte:head>
 
 {@render children()}
